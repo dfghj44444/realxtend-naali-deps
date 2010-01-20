@@ -6,7 +6,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 # Define variables
 # ================
-set(VERSION "0.9.2.1")
+set(VERSION "0.8.3.1")
 #set(CMAKE_SYSTEM_PREFIX_PATH ${CMAKE_SOURCE_DIR}/..) # the *-config.cmake files are located here
 
 
@@ -20,7 +20,7 @@ include (dbus)
 include (dbus_glib)
 include (expat)
 include (loudmouth)
-
+include (gstreamer)
 
 # Define the solution
 # ===================
@@ -35,12 +35,12 @@ if(WIN32)
     
     message("Checking glib")
     #=======================
-    find_path(GLIB_INCLUDE_DIR_FOUND glib.h ${GLIB_DIR}/include/glib-2.0/)
+    find_path(GLIB_INCLUDE_DIR_FOUND glib.h ${GLIB_DIR}/include/)
 	find_path(GLIB_CONFIG_DIR_FOUND glibconfig.h ${GLIB_DIR}/lib/glib-2.0/include/)
     find_path(GLIB_LIB_DIR_FOUND glib-2.0.lib ${GLIB_DIR}/lib/)
     
     if(GLIB_INCLUDE_DIR_FOUND AND GLIB_CONFIG_DIR_FOUND AND GLIB_LIB_DIR_FOUND)
-        set(GLIB_INCLUDE_DIRS "${GLIB_DIR}/include/glib-2.0" "${GLIB_DIR}/lib/glib-2.0/include" "${GLIB_DIR}/lib")
+        set(GLIB_INCLUDE_DIRS "${GLIB_DIR}/include" "${GLIB_DIR}/lib/glib-2.0/include" "${GLIB_DIR}/lib")
         set(GLIB_LIBRARIES glib-2.0.lib gobject-2.0.lib gmodule-2.0.lib)
         set(GLIB_LIB_DIRS ${GLIB_DIR}/lib)
         set(GLIB_PREFIX ${GLIB_DIR})
@@ -73,12 +73,11 @@ if(WIN32)
     message("checking dbus-glib")
     #============================
     find_path(dbus_glib_include_found dbus-glib.h ${DBUS_GLIB_INCLUDE_DIR}/dbus)
-    find_path(dbus_glib_lib_dir_found dbus-glib.lib ${DBUS_GLIB_LIB_DIR}/release)
+    find_path(dbus_glib_lib_dir_found dbus-glib.lib ${DBUS_GLIB_LIB_DIR})
     
     if(dbus_glib_include_found AND dbus_glib_lib_dir_found)
         set(DBUS_GLIB_INCLUDE_DIRS ${DBUS_GLIB_INCLUDE_DIR})
-        set(DBUS_GLIB_LIB_DIRS ${DBUS_GLIB_LIB_DIR} ${DBUS_GLIB_LIB_DIR}/release)
-        #set(DBUS_GLIB_LIB_DIRS ${DBUS_GLIB_LIB_DIR}/release)
+        set(DBUS_GLIB_LIB_DIRS ${DBUS_GLIB_LIB_DIR})
         set(DBUS_GLIB_LIBRARIES dbus-glib.lib)
         message("dbus-glib configured")
         set(dbus_glib_found TRUE)
@@ -129,6 +128,19 @@ if(WIN32)
         message(FATAL_ERROR "loudmouth not found -> config fails")
     endif(loudmouth_include_found AND loudmouth_lib_found)
 
+    message("checking intl")
+    #=======================
+    message(${GSTREAMER_LIB_DIR})
+    find_path(intl_lib_found intl.lib ${GSTREAMER_LIB_DIR})
+    
+    if(intl_lib_found)
+        set(INTL_LIB_DIRS ${GSTREAMER_LIB_DIR})
+        set(INTL_LIBRARIES intl.lib)
+    else(intl_lib_found)
+        set(intl_found false)
+        message(FATAL_ERROR "intl.lib not found -> config fails")
+    endif(intl_lib_found)
+    
 ENDIF(WIN32)
 
 
@@ -143,7 +155,7 @@ endif(UNIX)
 #============
 file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/telepathy-glib/_gen)
 FIND_PROGRAM(PYTHON python)
-FIND_PROGRAM(GGEN  glib-genmarshal ${GLIB_RUNTIME})
+#FIND_PROGRAM(GGEN  glib-genmarshal ${GLIB_RUNTIME})
 #FIND_PROGRAM(XSLTPROC  xsltproc ${XSLTPROC_PATH})
 
 macro (xslt_to_pyrun script  in1 in2 out)
@@ -242,10 +254,12 @@ EXECUTE_PROCESS(COMMAND ${SORT_PROG} "-u" "${CMAKE_SOURCE_DIR}/telepathy-glib/si
                 OUTPUT_FILE  ${CMAKE_SOURCE_DIR}/telepathy-glib/_gen/signals-marshal.list)
 
 
+#EXECUTE_PROCESS(COMMAND ${GGEN} "--header" "--prefix=_tp_marshal" "${CMAKE_SOURCE_DIR}\\telepathy-glib\\_gen/signals-marshal.list"
 EXECUTE_PROCESS(COMMAND ${GGEN} "--header" "--prefix=_tp_marshal" "${CMAKE_SOURCE_DIR}/telepathy-glib/_gen/signals-marshal.list"
                 OUTPUT_FILE ${CMAKE_SOURCE_DIR}/telepathy-glib/_gen/signals-marshal.h)
 
 
+#EXECUTE_PROCESS(COMMAND ${GGEN} "--body" "--prefix=_tp_marshal" "${CMAKE_SOURCE_DIR}\\telepathy-glib\\_gen/signals-marshal.list"
 EXECUTE_PROCESS(COMMAND ${GGEN} "--body" "--prefix=_tp_marshal" "${CMAKE_SOURCE_DIR}/telepathy-glib/_gen/signals-marshal.list"
                 OUTPUT_FILE ${CMAKE_SOURCE_DIR}/telepathy-glib/_gen/signals-marshal.c)
 				

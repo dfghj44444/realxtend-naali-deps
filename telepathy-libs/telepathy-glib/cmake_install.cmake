@@ -1,4 +1,4 @@
-# Install script for directory: C:/CODE/collabora/telepathy-glib-0.9.2
+# Install script for directory: C:/CODE/NaaliDeps/trunk/telepathy-libs/telepathy-glib
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("C:/CODE/collabora/telepathy-glib-0.9.2/telepathy-glib/cmake_install.cmake")
+  INCLUDE("C:/CODE/NaaliDeps/trunk/telepathy-libs/telepathy-glib/telepathy-glib/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -39,7 +39,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "C:/CODE/collabora/telepathy-glib-0.9.2/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "C:/CODE/NaaliDeps/trunk/telepathy-libs/telepathy-glib/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "C:/CODE/collabora/telepathy-glib-0.9.2/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "C:/CODE/NaaliDeps/trunk/telepathy-libs/telepathy-glib/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

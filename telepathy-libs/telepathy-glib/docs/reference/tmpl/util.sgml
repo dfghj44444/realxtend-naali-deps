@@ -1,0 +1,308 @@
+<!-- ##### SECTION Title ##### -->
+util
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO tp_verify ##### -->
+<para>
+
+</para>
+
+@R: 
+
+
+<!-- ##### MACRO tp_verify_true ##### -->
+<para>
+
+</para>
+
+@R: 
+
+
+<!-- ##### MACRO tp_verify_statement ##### -->
+<para>
+
+</para>
+
+@R: 
+
+
+<!-- ##### FUNCTION tp_g_hash_table_update ##### -->
+<para>
+
+</para>
+
+@target: 
+@source: 
+@key_dup: 
+@value_dup: 
+
+
+<!-- ##### FUNCTION tp_g_ptr_array_contains ##### -->
+<para>
+
+</para>
+
+@haystack: 
+@needle: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new ##### -->
+<para>
+
+</para>
+
+@type: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_boolean ##### -->
+<para>
+
+</para>
+
+@b: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_boxed ##### -->
+<para>
+
+</para>
+
+@type: 
+@p: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_static_boxed ##### -->
+<para>
+
+</para>
+
+@type: 
+@p: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_take_boxed ##### -->
+<para>
+
+</para>
+
+@type: 
+@p: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_double ##### -->
+<para>
+
+</para>
+
+@d: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_int ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_int64 ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_string ##### -->
+<para>
+
+</para>
+
+@string: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_static_string ##### -->
+<para>
+
+</para>
+
+@string: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_take_string ##### -->
+<para>
+
+</para>
+
+@string: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_uint ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_new_uint64 ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_free ##### -->
+<para>
+
+</para>
+
+@value: 
+
+
+<!-- ##### FUNCTION tp_g_value_slice_dup ##### -->
+<para>
+
+</para>
+
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_strdiff ##### -->
+<para>
+
+</para>
+
+@left: 
+@right: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_mixin_offset_cast ##### -->
+<para>
+
+</para>
+
+@instance: 
+@offset: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_mixin_class_get_offset ##### -->
+<para>
+
+</para>
+
+@klass: 
+@quark: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_mixin_instance_get_offset ##### -->
+<para>
+
+</para>
+
+@instance: 
+@quark: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_escape_as_identifier ##### -->
+<para>
+
+</para>
+
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_strv_contains ##### -->
+<para>
+
+</para>
+
+@strv: 
+@str: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_key_file_get_int64 ##### -->
+<para>
+
+</para>
+
+@key_file: 
+@group_name: 
+@key: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_key_file_get_uint64 ##### -->
+<para>
+
+</para>
+
+@key_file: 
+@group_name: 
+@key: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_g_signal_connect_object ##### -->
+<para>
+
+</para>
+
+@instance: 
+@detailed_signal: 
+@c_handler: 
+@gobject: 
+@connect_flags: 
+@Returns: 
+
+
+<!-- ##### FUNCTION tp_value_array_build ##### -->
+<para>
+
+</para>
+
+@length: 
+@type: 
+@Varargs: 
+@Returns: 
+
+

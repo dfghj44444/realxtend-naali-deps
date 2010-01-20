@@ -1,0 +1,1532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TpAccountManager</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="telepathy-glib Reference Manual">
+<link rel="up" href="ch-client.html" title="Client-side proxies">
+<link rel="prev" href="telepathy-glib-media-interfaces.html" title="TpMediaSessionHandler, TpMediaStreamHandler">
+<link rel="next" href="telepathy-glib-account.html" title="TpAccount">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch-dbus.html" title="General D-Bus support">
+<link rel="chapter" href="ch-protocol.html" title="The Telepathy protocol">
+<link rel="chapter" href="ch-client.html" title="Client-side proxies">
+<link rel="chapter" href="ch-service-dbus.html" title="Service-side D-Bus interfaces">
+<link rel="chapter" href="ch-service-base.html" title="Service-side implementation">
+<link rel="chapter" href="ch-service-handles.html" title="Service-side handle repositories">
+<link rel="chapter" href="ch-utilities.html" title="Utilities">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="telepathy-glib-media-interfaces.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch-client.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">telepathy-glib Reference Manual</th>
+<td><a accesskey="n" href="telepathy-glib-account.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#telepathy-glib-account-manager.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#telepathy-glib-account-manager.description" class="shortcut">Description</a>
+                 | 
+                <a href="#telepathy-glib-account-manager.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#telepathy-glib-account-manager.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="TpAccountManager">
+<a name="telepathy-glib-account-manager"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="telepathy-glib-account-manager.top_of_page"></a>TpAccountManager</span></h2>
+<p>TpAccountManager — proxy object for the Telepathy account manager</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="telepathy-glib-account-manager.synopsis"></a><h2>Synopsis</h2>
+<a name="TpAccountManager"></a><pre class="synopsis">
+
+#include &lt;telepathy-glib/account-manager.h&gt;
+
+                    <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-struct" title="TpAccountManager">TpAccountManager</a>;
+                    <a class="link" href="telepathy-glib-account-manager.html#TpAccountManagerClass" title="TpAccountManagerClass">TpAccountManagerClass</a>;
+<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *  <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-new" title="tp_account_manager_new ()">tp_account_manager_new</a>              (<a class="link" href="telepathy-glib-dbus.html#TpDBusDaemon">TpDBusDaemon</a> *bus_daemon);
+void                <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-init-known-interfaces" title="tp_account_manager_init_known_interfaces ()">tp_account_manager_init_known_interfaces</a>
+                                                        (void);
+<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *  <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-dup" title="tp_account_manager_dup ()">tp_account_manager_dup</a>              (void);
+void                <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-create-account-async" title="tp_account_manager_create_account_async ()">tp_account_manager_create_account_async</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *connection_manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *protocol,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *display_name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *parameters,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *properties,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"
+>GAsyncReadyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a> *         <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-create-account-finish" title="tp_account_manager_create_account_finish ()">tp_account_manager_create_account_finish</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+>GAsyncResult</a> *result,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a> *         <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-ensure-account" title="tp_account_manager_ensure_account ()">tp_account_manager_ensure_account</a>   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *path);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-get-valid-accounts" title="tp_account_manager_get_valid_accounts ()">tp_account_manager_get_valid_accounts</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager);
+<a class="link" href="telepathy-glib-enums.html#TpConnectionPresenceType" title="enum TpConnectionPresenceType">TpConnectionPresenceType</a>  <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-get-most-available-presence" title="tp_account_manager_get_most_available_presence ()">tp_account_manager_get_most_available_presence</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> **status,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> **message);
+void                <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-set-all-requested-presences" title="tp_account_manager_set_all_requested_presences ()">tp_account_manager_set_all_requested_presences</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a class="link" href="telepathy-glib-enums.html#TpConnectionPresenceType" title="enum TpConnectionPresenceType">TpConnectionPresenceType</a> type,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *status,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *message);
+void                <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-enable-restart" title="tp_account_manager_enable_restart ()">tp_account_manager_enable_restart</a>   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager);
+
+#define             <a class="link" href="telepathy-glib-account-manager.html#TP-ACCOUNT-MANAGER-FEATURE-CORE--CAPS" title="TP_ACCOUNT_MANAGER_FEATURE_CORE">TP_ACCOUNT_MANAGER_FEATURE_CORE</a>
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-is-prepared" title="tp_account_manager_is_prepared ()">tp_account_manager_is_prepared</a>      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"
+>GQuark</a> feature);
+void                <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-async" title="tp_account_manager_prepare_async ()">tp_account_manager_prepare_async</a>    (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"
+>GQuark</a> *features,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"
+>GAsyncReadyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-finish" title="tp_account_manager_prepare_finish ()">tp_account_manager_prepare_finish</a>   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+>GAsyncResult</a> *result,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+
+
+void                (<a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-callback-for-create-account" title="tp_cli_account_manager_callback_for_create_account ()">*tp_cli_account_manager_callback_for_create_account</a>)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *out_Account,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> *error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);
+<a class="link" href="telepathy-glib-proxy.html#TpProxyPendingCall" title="TpProxyPendingCall">TpProxyPendingCall</a> * <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-call-create-account" title="tp_cli_account_manager_call_create_account ()">tp_cli_account_manager_call_create_account</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a> timeout_ms,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Connection_Manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Protocol,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Display_Name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_Parameters,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_Properties,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-callback-for-create-account" title="tp_cli_account_manager_callback_for_create_account ()">tp_cli_account_manager_callback_for_create_account</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);
+void                (<a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-removed" title="tp_cli_account_manager_signal_callback_account_removed ()">*tp_cli_account_manager_signal_callback_account_removed</a>)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *arg_Account,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);
+<a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection">TpProxySignalConnection</a> * <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-connect-to-account-removed" title="tp_cli_account_manager_connect_to_account_removed ()">tp_cli_account_manager_connect_to_account_removed</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-removed" title="tp_cli_account_manager_signal_callback_account_removed ()">tp_cli_account_manager_signal_callback_account_removed</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+void                (<a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-validity-changed" title="tp_cli_account_manager_signal_callback_account_validity_changed ()">*tp_cli_account_manager_signal_callback_account_validity_changed</a>)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *arg_Account,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> arg_Valid,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);
+<a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection">TpProxySignalConnection</a> * <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-connect-to-account-validity-changed" title="tp_cli_account_manager_connect_to_account_validity_changed ()">tp_cli_account_manager_connect_to_account_validity_changed</a>
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-validity-changed" title="tp_cli_account_manager_signal_callback_account_validity_changed ()">tp_cli_account_manager_signal_callback_account_validity_changed</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="telepathy-glib-account-manager.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----<a class="link" href="telepathy-glib-proxy.html#TpProxy">TpProxy</a>
+         +----TpAccountManager
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="telepathy-glib-account-manager.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-account-disabled" title='The "account-disabled" signal'>account-disabled</a>"                               : Run Last
+  "<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-account-enabled" title='The "account-enabled" signal'>account-enabled</a>"                                : Run Last
+  "<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-account-removed" title='The "account-removed" signal'>account-removed</a>"                                : Run Last
+  "<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-account-validity-changed" title='The "account-validity-changed" signal'>account-validity-changed</a>"                       : Run Last
+  "<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager-most-available-presence-changed" title='The "most-available-presence-changed" signal'>most-available-presence-changed</a>"                : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="telepathy-glib-account-manager.description"></a><h2>Description</h2>
+<p>
+The <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> object is used to communicate with the Telepathy
+AccountManager service.</p>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="telepathy-glib-account-manager.details"></a><h2>Details</h2>
+<div class="refsect2" title="TpAccountManager">
+<a name="TpAccountManager-struct"></a><h3>TpAccountManager</h3>
+<pre class="programlisting">typedef struct _TpAccountManager TpAccountManager;</pre>
+<p>
+The Telepathy Account Manager stores real-time communication accounts and
+their configuration, places accounts online on request, and manipulates
+accounts' presence, nicknames and avatars.</p>
+<p>
+</p>
+<p class="since">Since 0.7.32</p>
+</div>
+<hr>
+<div class="refsect2" title="TpAccountManagerClass">
+<a name="TpAccountManagerClass"></a><h3>TpAccountManagerClass</h3>
+<pre class="programlisting">typedef struct {
+} TpAccountManagerClass;
+</pre>
+<p>
+The class of a <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_new ()">
+<a name="tp-account-manager-new"></a><h3>tp_account_manager_new ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *  tp_account_manager_new              (<a class="link" href="telepathy-glib-dbus.html#TpDBusDaemon">TpDBusDaemon</a> *bus_daemon);</pre>
+<p>
+Convenience function to create a new account manager proxy. The returned
+<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> is not guaranteed to be ready on return.
+</p>
+<p>
+Use <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-dup" title="tp_account_manager_dup ()"><code class="function">tp_account_manager_dup()</code></a> instead if you want an account manager proxy
+on the starter or session bus (which is almost always the right thing for
+Telepathy).</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus_daemon</code></em> :</span></p></td>
+<td> Proxy for the D-Bus daemon
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new reference to an account manager proxy
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_init_known_interfaces ()">
+<a name="tp-account-manager-init-known-interfaces"></a><h3>tp_account_manager_init_known_interfaces ()</h3>
+<pre class="programlisting">void                tp_account_manager_init_known_interfaces
+                                                        (void);</pre>
+<p>
+Ensure that the known interfaces for TpAccountManager have been set up.
+This is done automatically when necessary, but for correct
+overriding of library interfaces by local extensions, you should
+call this function before calling
+<a class="link" href="telepathy-glib-proxy-subclass.html#tp-proxy-or-subclass-hook-on-interface-add" title="tp_proxy_or_subclass_hook_on_interface_add ()"><code class="function">tp_proxy_or_subclass_hook_on_interface_add()</code></a> with first argument
+<code class="literal">TP_TYPE_ACCOUNT_MANAGER</code>.</p>
+<p>
+</p>
+<p class="since">Since 0.7.32</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_dup ()">
+<a name="tp-account-manager-dup"></a><h3>tp_account_manager_dup ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *  tp_account_manager_dup              (void);</pre>
+<p>
+Returns an account manager proxy on the D-Bus daemon on which this
+process was activated (if it was launched by D-Bus service activation), or
+the session bus (otherwise).
+</p>
+<p>
+The returned <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> is cached; the same <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> object
+will be returned by this function repeatedly, as long as at least one
+reference exists. Note that the returned <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> is not guaranteed
+to be ready on return.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> an account manager proxy on the starter or session bus, or <code class="literal">NULL</code>
+         if it wasn't possible to get a dbus daemon proxy for the
+         appropriate bus
+
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_create_account_async ()">
+<a name="tp-account-manager-create-account-async"></a><h3>tp_account_manager_create_account_async ()</h3>
+<pre class="programlisting">void                tp_account_manager_create_account_async
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *connection_manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *protocol,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *display_name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *parameters,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *properties,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"
+>GAsyncReadyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Requests an asynchronous create of an account on the account manager
+<em class="parameter"><code>manager</code></em>. When the operation is finished, <em class="parameter"><code>callback</code></em> will be called. You can
+then call <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-create-account-finish" title="tp_account_manager_create_account_finish ()"><code class="function">tp_account_manager_create_account_finish()</code></a> to get the result of
+the operation.
+</p>
+<p>
+<em class="parameter"><code>callback</code></em> will only be called when the newly created <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> has the
+<a class="link" href="telepathy-glib-account.html#TP-ACCOUNT-FEATURE-CORE--CAPS" title="TP_ACCOUNT_FEATURE_CORE"><code class="literal">TP_ACCOUNT_FEATURE_CORE</code></a> feature ready on it, so when calling
+<a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-create-account-finish" title="tp_account_manager_create_account_finish ()"><code class="function">tp_account_manager_create_account_finish()</code></a>, one can guarantee this feature
+will be ready.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection_manager</code></em> :</span></p></td>
+<td> the name of a connection manager
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>protocol</code></em> :</span></p></td>
+<td> the name of a protocol
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>display_name</code></em> :</span></p></td>
+<td> the display name for the account
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parameters</code></em> :</span></p></td>
+<td> parameters for the new account
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>properties</code></em> :</span></p></td>
+<td> properties for the new account
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> a callback to call when the request is satisfied
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> data to pass to <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_create_account_finish ()">
+<a name="tp-account-manager-create-account-finish"></a><h3>tp_account_manager_create_account_finish ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a> *         tp_account_manager_create_account_finish
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+>GAsyncResult</a> *result,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Finishes an async create account operation, and returns a new <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>
+object, with the <a class="link" href="telepathy-glib-account.html#TP-ACCOUNT-FEATURE-CORE--CAPS" title="TP_ACCOUNT_FEATURE_CORE"><code class="literal">TP_ACCOUNT_FEATURE_CORE</code></a> feature ready on it.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+><span class="type">GAsyncResult</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to be filled
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> which was just created on success, otherwise
+         <code class="literal">NULL</code>
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_ensure_account ()">
+<a name="tp-account-manager-ensure-account"></a><h3>tp_account_manager_ensure_account ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a> *         tp_account_manager_ensure_account   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *path);</pre>
+<p>
+Lookup an account in the account manager <em class="parameter"><code>manager</code></em>. If the desired account
+has already been ensured then the same object will be returned, otherwise
+it will create a new <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> and add it to <em class="parameter"><code>manager</code></em>. As a result, if
+<em class="parameter"><code>manager</code></em> thinks that the account doesn't exist, this will still add it to
+<em class="parameter"><code>manager</code></em> to avoid races. Note that the returned <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> is not guaranteed
+to be ready on return.
+</p>
+<p>
+The caller must keep a ref to the returned object using <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-ref"
+><code class="function">g_object_ref()</code></a> if
+it is to be kept.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td> the object path for an account
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> at <em class="parameter"><code>path</code></em>
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_get_valid_accounts ()">
+<a name="tp-account-manager-get-valid-accounts"></a><h3>tp_account_manager_get_valid_accounts ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             tp_account_manager_get_valid_accounts
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager);</pre>
+<p>
+Returns a newly allocated <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of valid accounts in <em class="parameter"><code>manager</code></em>. The list
+must be freed with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"
+><code class="function">g_list_free()</code></a> after used. None of the accounts in the
+returned list are guaranteed to be ready.
+</p>
+<p>
+Note that the <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>s in the returned <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> are not reffed
+before returning from this function. One could ref every item in the list
+like the following example:
+</p>
+<div class="informalexample"><pre class="programlisting">
+GList *accounts;
+account = tp_account_manager_get_valid_accounts (manager);
+g_list_foreach (accounts, (GFunc) g_object_ref, NULL);
+</pre></div>
+<p>
+</p>
+<p>
+The list of valid accounts returned is not guaranteed to have been retrieved
+until <a class="link" href="telepathy-glib-account-manager.html#TP-ACCOUNT-MANAGER-FEATURE-CORE--CAPS" title="TP_ACCOUNT_MANAGER_FEATURE_CORE"><code class="literal">TP_ACCOUNT_MANAGER_FEATURE_CORE</code></a> is prepared
+(<a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-async" title="tp_account_manager_prepare_async ()"><code class="function">tp_account_manager_prepare_async()</code></a> has returned). Until this feature has
+been prepared, an empty list (<code class="literal">NULL</code>) will be returned.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a newly allocated <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of valid accounts in <em class="parameter"><code>manager</code></em>
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_get_most_available_presence ()">
+<a name="tp-account-manager-get-most-available-presence"></a><h3>tp_account_manager_get_most_available_presence ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-enums.html#TpConnectionPresenceType" title="enum TpConnectionPresenceType">TpConnectionPresenceType</a>  tp_account_manager_get_most_available_presence
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> **status,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> **message);</pre>
+<p>
+Gets the most available presence over all accounts in <em class="parameter"><code>manager</code></em>. This
+function does not average presences across all accounts, but it merely
+finds the "most available" presence. As a result, there is a guarantee
+that there exists at least one account in <em class="parameter"><code>manager</code></em> with the returned
+presence.
+</p>
+<p>
+If no accounts are enabled or valid the output will be
+(<a class="link" href="telepathy-glib-enums.html#TP-CONNECTION-PRESENCE-TYPE-OFFLINE--CAPS"><code class="literal">TP_CONNECTION_PRESENCE_TYPE_OFFLINE</code></a>, "offline", "").
+</p>
+<p>
+The return value of this function is not guaranteed to have been retrieved
+until <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-async" title="tp_account_manager_prepare_async ()"><code class="function">tp_account_manager_prepare_async()</code></a> has finished; until then, the
+value will be the same as if no accounts are enabled or valid.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>status</code></em> :</span></p></td>
+<td> a string to fill with the actual status
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td> a string to fill with the actual status message
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the most available presence across all accounts
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_set_all_requested_presences ()">
+<a name="tp-account-manager-set-all-requested-presences"></a><h3>tp_account_manager_set_all_requested_presences ()</h3>
+<pre class="programlisting">void                tp_account_manager_set_all_requested_presences
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a class="link" href="telepathy-glib-enums.html#TpConnectionPresenceType" title="enum TpConnectionPresenceType">TpConnectionPresenceType</a> type,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *status,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *message);</pre>
+<p>
+Iterates through the accounts in <em class="parameter"><code>manager</code></em> and requests the presence
+(<em class="parameter"><code>type</code></em>, <em class="parameter"><code>status</code></em> and <em class="parameter"><code>message</code></em>). Note that the presence requested here is
+merely a request, and if might not be satisfiable.
+</p>
+<p>
+You can find the most available presence across all accounts by calling
+<a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-get-most-available-presence" title="tp_account_manager_get_most_available_presence ()"><code class="function">tp_account_manager_get_most_available_presence()</code></a>.
+</p>
+<p>
+Setting a requested presence on all accounts will have no effect
+until <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-async" title="tp_account_manager_prepare_async ()"><code class="function">tp_account_manager_prepare_async()</code></a> has finished.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td> a presence type to request
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>status</code></em> :</span></p></td>
+<td> a status to request
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td> a status message to request
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_enable_restart ()">
+<a name="tp-account-manager-enable-restart"></a><h3>tp_account_manager_enable_restart ()</h3>
+<pre class="programlisting">void                tp_account_manager_enable_restart   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager);</pre>
+<p>
+Enable autostarting the account manager D-Bus service. This means
+that the account manager will be restarted if it disappears from
+the bus.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="TP_ACCOUNT_MANAGER_FEATURE_CORE">
+<a name="TP-ACCOUNT-MANAGER-FEATURE-CORE--CAPS"></a><h3>TP_ACCOUNT_MANAGER_FEATURE_CORE</h3>
+<pre class="programlisting">#define             TP_ACCOUNT_MANAGER_FEATURE_CORE</pre>
+<p>
+Expands to a call to a function that returns a quark for the "core" feature
+on a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>.
+</p>
+<p>
+When this feature is prepared, the list of accounts have been retrieved and
+are available for use, and change-notification has been set up.
+</p>
+<p>
+One can ask for a feature to be prepared using the
+<a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-async" title="tp_account_manager_prepare_async ()"><code class="function">tp_account_manager_prepare_async()</code></a> function, and waiting for it to callback.</p>
+<p>
+</p>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_is_prepared ()">
+<a name="tp-account-manager-is-prepared"></a><h3>tp_account_manager_is_prepared ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            tp_account_manager_is_prepared      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"
+>GQuark</a> feature);</pre>
+<p>
+</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>feature</code></em> :</span></p></td>
+<td> a feature which is required
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> whether <em class="parameter"><code>feature</code></em> is ready on <em class="parameter"><code>manager</code></em>, otherwise <code class="literal">FALSE</code>
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_prepare_async ()">
+<a name="tp-account-manager-prepare-async"></a><h3>tp_account_manager_prepare_async ()</h3>
+<pre class="programlisting">void                tp_account_manager_prepare_async    (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"
+>GQuark</a> *features,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"
+>GAsyncReadyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Requests an asynchronous preparation of <em class="parameter"><code>manager</code></em> with the features specified
+by <em class="parameter"><code>features</code></em>. When the operation is finished, <em class="parameter"><code>callback</code></em> will be called. You
+can then call <a class="link" href="telepathy-glib-account-manager.html#tp-account-manager-prepare-finish" title="tp_account_manager_prepare_finish ()"><code class="function">tp_account_manager_prepare_finish()</code></a> to get the result of the
+operation.
+</p>
+<p>
+If <em class="parameter"><code>features</code></em> is <code class="literal">NULL</code>, then <em class="parameter"><code>callback</code></em> will be called when the implied
+<a class="link" href="telepathy-glib-account-manager.html#TP-ACCOUNT-MANAGER-FEATURE-CORE--CAPS" title="TP_ACCOUNT_MANAGER_FEATURE_CORE"><code class="literal">TP_ACCOUNT_MANAGER_FEATURE_CORE</code></a> feature is ready.
+</p>
+<p>
+If <code class="literal">NULL</code> is given to <em class="parameter"><code>callback</code></em>, then no callback will be called when the
+operation is finished. Instead, it will simply set <em class="parameter"><code>features</code></em> on <em class="parameter"><code>manager</code></em>.
+Note that if <em class="parameter"><code>callback</code></em> is <code class="literal">NULL</code>, then <em class="parameter"><code>user_data</code></em> must also be <code class="literal">NULL</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>features</code></em> :</span></p></td>
+<td> a 0-terminated list of features, or <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> a callback to call when the request is satisfied
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> data to pass to <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_account_manager_prepare_finish ()">
+<a name="tp-account-manager-prepare-finish"></a><h3>tp_account_manager_prepare_finish ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            tp_account_manager_prepare_finish   (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                         <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+>GAsyncResult</a> *result,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Finishes an async preparation of the account manager <em class="parameter"><code>manager</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"
+><span class="type">GAsyncResult</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to fill
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the preparation was successful, otherwise <code class="literal">FALSE</code>
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_callback_for_create_account ()">
+<a name="tp-cli-account-manager-callback-for-create-account"></a><h3>tp_cli_account_manager_callback_for_create_account ()</h3>
+<pre class="programlisting">void                (*tp_cli_account_manager_callback_for_create_account)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *out_Account,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> *error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);</pre>
+<p>
+Signature of the callback called when a CreateAccount method call
+succeeds or fails.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> the proxy on which the call was made
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>out_Account</code></em> :</span></p></td>
+<td> Used to return an 'out' argument if <em class="parameter"><code>error</code></em> is <code class="literal">NULL</code>: The new &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy"&gt;Account&lt;/tp:dbus-ref&gt;.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> <code class="literal">NULL</code> on success, or an error on failure
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> user-supplied data
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> user-supplied object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_call_create_account ()">
+<a name="tp-cli-account-manager-call-create-account"></a><h3>tp_cli_account_manager_call_create_account ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-proxy.html#TpProxyPendingCall" title="TpProxyPendingCall">TpProxyPendingCall</a> * tp_cli_account_manager_call_create_account
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a> timeout_ms,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Connection_Manager,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Protocol,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *in_Display_Name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_Parameters,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_Properties,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-callback-for-create-account" title="tp_cli_account_manager_callback_for_create_account ()">tp_cli_account_manager_callback_for_create_account</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);</pre>
+<p>
+Start a CreateAccount method call.
+</p>
+<p>
+Request the creation of a new &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy"&gt;Account&lt;/tp:dbus-ref&gt;. The         account manager SHOULD NOT allow invalid accounts to be created.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> the <a class="link" href="telepathy-glib-proxy.html#TpProxy"><span class="type">TpProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td> the timeout in milliseconds, or -1 to use the
+  default
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_Connection_Manager</code></em> :</span></p></td>
+<td> Used to pass an 'in' argument: The name of the connection manager, e.g. &amp;quot;salut&amp;quot;.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_Protocol</code></em> :</span></p></td>
+<td> Used to pass an 'in' argument: The protocol, e.g. &amp;quot;local-xmpp&amp;quot;.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_Display_Name</code></em> :</span></p></td>
+<td> Used to pass an 'in' argument: The initial value of the new account's &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy.Account"&gt;DisplayName&lt;/tp:dbus-ref&gt;           property. The account manager SHOULD modify this to make it unique if           an Account already exists with the same display name, for instance by           appending a number or the 'account' parameter. Account manager           implementations SHOULD accept an empty string, but account editing           user interfaces should avoid passing an empty string for this           parameter.            &lt;tp:rationale&gt;             &lt;p&gt;The account creation UI may ask the user for a name for the new               account. If the author of the UI chooses not to do this, the               account creation UI is better able to suggest a default display               name because it has protocol-specific knowledge which the account               manager does not.&lt;/p&gt;              &lt;p&gt;The account manager always knows the complete list of accounts so               it can easily tell whether it should append something to the               display name to avoid presenting two identically-named accounts to               the user.&lt;/p&gt;           &lt;/tp:rationale&gt;
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_Parameters</code></em> :</span></p></td>
+<td> Used to pass an 'in' argument: Initial parameter values, as would be passed to           &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy.ConnectionManager"&gt;RequestConnection&lt;/tp:dbus-ref&gt;.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_Properties</code></em> :</span></p></td>
+<td> Used to pass an 'in' argument: &lt;tp:docstring xmlns="http://www.w3.org/1999/xhtml"&gt;           &lt;p&gt;The values of any other properties to be set immediately on the             new Account.&lt;/p&gt;            &lt;p&gt;Only the properties mentioned in             &lt;tp:member-ref&gt;SupportedAccountProperties&lt;/tp:member-ref&gt; are             acceptable here. In particular, the &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy.Account"&gt;DisplayName&lt;/tp:dbus-ref&gt;             and &lt;tp:dbus-ref namespace="org.freedesktop.Telepathy.Account"&gt;Parameters&lt;/tp:dbus-ref&gt;             properties are never allowed here, since they are set using the other             arguments to this method.&lt;/p&gt;            &lt;p&gt;Account manager implementations SHOULD support creating accounts             with an empty value for this argument.&lt;/p&gt;
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> called when the method call succeeds or fails;
+  may be <code class="literal">NULL</code> to make a "fire and forget" call with no 
+  reply tracking
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> user-supplied data passed to the callback;
+  must be <code class="literal">NULL</code> if <em class="parameter"><code>callback</code></em> is <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>destroy</code></em> :</span></p></td>
+<td> called with the user_data as argument, after the
+  call has succeeded, failed or been cancelled;
+  must be <code class="literal">NULL</code> if <em class="parameter"><code>callback</code></em> is <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> If not <code class="literal">NULL</code>, a <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+><span class="type">GObject</span></a> which will be 
+  weakly referenced; if it is destroyed, this call 
+  will automatically be cancelled. Must be <code class="literal">NULL</code> if 
+  <em class="parameter"><code>callback</code></em> is <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-proxy.html#TpProxyPendingCall" title="TpProxyPendingCall"><span class="type">TpProxyPendingCall</span></a> representing the call in
+ progress. It is borrowed from the object, and will become
+ invalid when the callback is called, the call is
+ cancelled or the <a class="link" href="telepathy-glib-proxy.html#TpProxy"><span class="type">TpProxy</span></a> becomes invalid.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_signal_callback_account_removed ()">
+<a name="tp-cli-account-manager-signal-callback-account-removed"></a><h3>tp_cli_account_manager_signal_callback_account_removed ()</h3>
+<pre class="programlisting">void                (*tp_cli_account_manager_signal_callback_account_removed)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *arg_Account,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);</pre>
+<p>
+Represents the signature of a callback for the signal AccountRemoved.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> The proxy on which <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-connect-to-account-removed" title="tp_cli_account_manager_connect_to_account_removed ()"><code class="function">tp_cli_account_manager_connect_to_account_removed()</code></a>
+ was called
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>arg_Account</code></em> :</span></p></td>
+<td> An Account, which must not be used any more.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User-supplied data
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> User-supplied weakly referenced object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_connect_to_account_removed ()">
+<a name="tp-cli-account-manager-connect-to-account-removed"></a><h3>tp_cli_account_manager_connect_to_account_removed ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection">TpProxySignalConnection</a> * tp_cli_account_manager_connect_to_account_removed
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-removed" title="tp_cli_account_manager_signal_callback_account_removed ()">tp_cli_account_manager_signal_callback_account_removed</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Connect a handler to the signal AccountRemoved.
+</p>
+<p>
+The given account has been removed.          &lt;tp:rationale&gt;           This is effectively change notification for the valid and invalid           accounts lists. On emission of this signal, the Account indicated           will no longer be present in either of the lists.         &lt;/tp:rationale&gt;</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> or subclass
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> Callback to be called when the signal is
+  received
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User-supplied data for the callback
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>destroy</code></em> :</span></p></td>
+<td> Destructor for the user-supplied data, which
+  will be called when this signal is disconnected, or
+  before this function returns <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+><span class="type">GObject</span></a> which will be weakly referenced; 
+  if it is destroyed, this callback will automatically be
+  disconnected
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> If not <code class="literal">NULL</code>, used to raise an error if <code class="literal">NULL</code> is
+  returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection"><span class="type">TpProxySignalConnection</span></a> containing all of the
+above, which can be used to disconnect the signal; or
+<code class="literal">NULL</code> if the proxy does not have the desired interface
+or has become invalid.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_signal_callback_account_validity_changed ()">
+<a name="tp-cli-account-manager-signal-callback-account-validity-changed"></a><h3>tp_cli_account_manager_signal_callback_account_validity_changed ()</h3>
+<pre class="programlisting">void                (*tp_cli_account_manager_signal_callback_account_validity_changed)
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a> *arg_Account,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> arg_Valid,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object);</pre>
+<p>
+Represents the signature of a callback for the signal AccountValidityChanged.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> The proxy on which <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-connect-to-account-validity-changed" title="tp_cli_account_manager_connect_to_account_validity_changed ()"><code class="function">tp_cli_account_manager_connect_to_account_validity_changed()</code></a>
+ was called
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>arg_Account</code></em> :</span></p></td>
+<td> An Account.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>arg_Valid</code></em> :</span></p></td>
+<td> True if the account is now valid.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User-supplied data
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> User-supplied weakly referenced object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="tp_cli_account_manager_connect_to_account_validity_changed ()">
+<a name="tp-cli-account-manager-connect-to-account-validity-changed"></a><h3>tp_cli_account_manager_connect_to_account_validity_changed ()</h3>
+<pre class="programlisting"><a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection">TpProxySignalConnection</a> * tp_cli_account_manager_connect_to_account_validity_changed
+                                                        (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *proxy,
+                                                         <a class="link" href="telepathy-glib-account-manager.html#tp-cli-account-manager-signal-callback-account-validity-changed" title="tp_cli_account_manager_signal_callback_account_validity_changed ()">tp_cli_account_manager_signal_callback_account_validity_changed</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a> *weak_object,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Connect a handler to the signal AccountValidityChanged.
+</p>
+<p>
+The validity of the given account has changed. New accounts are         also indicated by this signal, as an account validity change         (usually to True) on an account that did not previously exist.          &lt;tp:rationale&gt;           This is effectively change notification for the valid and invalid           accounts lists.         &lt;/tp:rationale&gt;</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a> or subclass
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> Callback to be called when the signal is
+  received
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User-supplied data for the callback
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>destroy</code></em> :</span></p></td>
+<td> Destructor for the user-supplied data, which
+  will be called when this signal is disconnected, or
+  before this function returns <code class="literal">NULL</code>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>weak_object</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+><span class="type">GObject</span></a> which will be weakly referenced; 
+  if it is destroyed, this callback will automatically be
+  disconnected
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> If not <code class="literal">NULL</code>, used to raise an error if <code class="literal">NULL</code> is
+  returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-proxy.html#TpProxySignalConnection" title="TpProxySignalConnection"><span class="type">TpProxySignalConnection</span></a> containing all of the
+above, which can be used to disconnect the signal; or
+<code class="literal">NULL</code> if the proxy does not have the desired interface
+or has become invalid.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="telepathy-glib-account-manager.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "account-disabled" signal'>
+<a name="TpAccountManager-account-disabled"></a><h3>The <code class="literal">"account-disabled"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                        <a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a>        *account,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>          user_data)      : Run Last</pre>
+<p>
+Emitted when an account from <em class="parameter"><code>manager</code></em> is disabled.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>account</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "account-enabled" signal'>
+<a name="TpAccountManager-account-enabled"></a><h3>The <code class="literal">"account-enabled"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                        <a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a>        *account,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>          user_data)      : Run Last</pre>
+<p>
+Emitted when an account from <em class="parameter"><code>manager</code></em> is enabled.
+</p>
+<p>
+Note that the returned <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a> <em class="parameter"><code>account</code></em> is not guaranteed to have any
+features pre-prepared, including <a class="link" href="telepathy-glib-account.html#TP-ACCOUNT-FEATURE-CORE--CAPS" title="TP_ACCOUNT_FEATURE_CORE"><code class="literal">TP_ACCOUNT_FEATURE_CORE</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>account</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "account-removed" signal'>
+<a name="TpAccountManager-account-removed"></a><h3>The <code class="literal">"account-removed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                        <a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a>        *account,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>          user_data)      : Run Last</pre>
+<p>
+Emitted when an account is removed from <em class="parameter"><code>manager</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>account</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "account-validity-changed" signal'>
+<a name="TpAccountManager-account-validity-changed"></a><h3>The <code class="literal">"account-validity-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                        <a class="link" href="telepathy-glib-account.html#TpAccount">TpAccount</a>        *account,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>          valid,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the validity on <em class="parameter"><code>account</code></em> changes. <em class="parameter"><code>account</code></em> is not guaranteed
+to be ready when this signal is emitted.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>account</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account.html#TpAccount"><span class="type">TpAccount</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>valid</code></em> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the account is now valid
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since 0.9.0</p>
+</div>
+<hr>
+<div class="refsect2" title='The "most-available-presence-changed" signal'>
+<a name="TpAccountManager-most-available-presence-changed"></a><h3>The <code class="literal">"most-available-presence-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="telepathy-glib-account-manager.html#TpAccountManager">TpAccountManager</a> *manager,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a>             presence,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>            *status,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>            *message,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>          user_data)      : Run Last</pre>
+<p>
+Emitted when the most available presence on <em class="parameter"><code>manager</code></em> changes.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> a <a class="link" href="telepathy-glib-account-manager.html#TpAccountManager"><span class="type">TpAccountManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>presence</code></em> :</span></p></td>
+<td> new presence type
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>status</code></em> :</span></p></td>
+<td> new status
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td> new status message
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since 0.9.0</p>
+</div>
+</div>
+<div class="refsect1" title="See Also">
+<a name="telepathy-glib-account-manager.see-also"></a><h2>See Also</h2>
+#TpAccount
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

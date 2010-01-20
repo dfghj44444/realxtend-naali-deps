@@ -1,0 +1,15 @@
+diff --git a/dbus/dbus-gvalue.c b/dbus/dbus-gvalue.c
+index 49ae16e..5768b56 100644
+--- a/dbus/dbus-gvalue.c
++++ b/dbus/dbus-gvalue.c
+@@ -802,9 +802,9 @@ demarshal_strv (DBusGValueMarshalCtx    *context,
+ 
+   while ((current_type = dbus_message_iter_get_arg_type (&subiter)) != DBUS_TYPE_INVALID)
+     {
+-      g_assert (current_type == DBUS_TYPE_STRING);
+       const char *str;
+       char *copy;
++      g_assert (current_type == DBUS_TYPE_STRING);
+       
+       dbus_message_iter_get_basic (&subiter, &str);
+       copy = g_strdup (str);

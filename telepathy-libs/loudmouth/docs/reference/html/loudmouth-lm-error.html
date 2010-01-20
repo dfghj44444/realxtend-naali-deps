@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LmError</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.71.0">
+<link rel="start" href="index.html" title="Loudmouth Reference Manual">
+<link rel="up" href="ch01.html" title="Loudmouth">
+<link rel="prev" href="loudmouth-lm-connection.html" title="LmConnection">
+<link rel="next" href="loudmouth-lm-message.html" title="LmMessage">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Loudmouth">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="loudmouth-lm-connection.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Loudmouth Reference Manual</th>
+<td><a accesskey="n" href="loudmouth-lm-message.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#loudmouth-lm-error.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#loudmouth-lm-error.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="loudmouth-lm-error"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="loudmouth-lm-error.top_of_page"></a>LmError</span></h2>
+<p>LmError — Error reporting.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="loudmouth-lm-error.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Quarks.html#GQuark"
+>GQuark</a>              <a href="loudmouth-lm-error.html#lm-error-quark" title="lm_error_quark ()">lm_error_quark</a>                      (void);
+enum                <a href="loudmouth-lm-error.html#LmError" title="enum LmError">LmError</a>;
+#define             <a href="loudmouth-lm-error.html#LM-ERROR--CAPS" title="LM_ERROR">LM_ERROR</a>
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-error.description"></a><h2>Description</h2>
+<p>
+N/A
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-error.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="lm-error-quark"></a><h3>lm_error_quark ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Quarks.html#GQuark"
+>GQuark</a>              lm_error_quark                      (void);</pre>
+<p>
+Returns the Loudmouth <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> domain quark.</p>
+<p>
+-
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The Loudmouth domain quark used by <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmError"></a><h3>enum LmError</h3>
+<pre class="programlisting">typedef enum {
+        LM_ERROR_CONNECTION_NOT_OPEN,
+        LM_ERROR_CONNECTION_OPEN,
+        LM_ERROR_AUTH_FAILED,
+	    LM_ERROR_CONNECTION_FAILED
+} LmError;
+</pre>
+<p>
+Describes the problem of the error.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-ERROR-CONNECTION-NOT-OPEN--CAPS"></a><span class="term"><code class="literal">LM_ERROR_CONNECTION_NOT_OPEN</code></span></td>
+<td>Connection not open when trying to send a message
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-ERROR-CONNECTION-OPEN--CAPS"></a><span class="term"><code class="literal">LM_ERROR_CONNECTION_OPEN</code></span></td>
+<td>Connection is already open when trying to open it again.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-ERROR-AUTH-FAILED--CAPS"></a><span class="term"><code class="literal">LM_ERROR_AUTH_FAILED</code></span></td>
+<td>Authentication failed while opening connection
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-ERROR-CONNECTION-FAILED--CAPS"></a><span class="term"><code class="literal">LM_ERROR_CONNECTION_FAILED</code></span></td>
+<td>Connection failed to open.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LM-ERROR--CAPS"></a><h3>LM_ERROR</h3>
+<pre class="programlisting">#define LM_ERROR lm_error_quark ()
+</pre>
+<p>
+Macro for getting the error quark.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

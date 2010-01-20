@@ -109,7 +109,7 @@ include_directories( ${CMAKE_SOURCE_DIR}
 
 # Define link dirs
 # ================
-link_directories(${GLIB_LIB_DIRS} ${DBUS_LIB_DIRS} ${DBUS_GLIB_LIB_DIRS} ${EXPAT_LIB_DIRS} ${LOUDMOUTH_LIB_DIRS})
+link_directories(${GLIB_LIB_DIRS} ${DBUS_LIB_DIRS} ${DBUS_GLIB_LIB_DIRS} ${EXPAT_LIB_DIRS} ${LOUDMOUTH_LIB_DIRS} ${INTL_LIB_DIRS})
 
 # Define the project
 # ==================
@@ -120,9 +120,9 @@ target_link_libraries(telepathy-glib
 	${GLIB_PREFIX}/lib/gobject-2.0.lib
 	${GLIB_PREFIX}/lib/gmodule-2.0.lib
 	${GLIB_PREFIX}/lib/gio-2.0.lib
-    ${GLIB_PREFIX}/lib/intl.lib
+    #${GLIB_PREFIX}/lib/intl.lib
     ${DBUS_LIBRARIES} 
-    ${DBUS_GLIB_LIBRARIES} ${EXPAT_LIBRARIES} ${LOUDMOUTN_LIBRARIES})
+    ${DBUS_GLIB_LIBRARIES} ${EXPAT_LIBRARIES} ${LOUDMOUTN_LIBRARIES} ${INTL_LIBRARIES})
 
 add_definitions(-DVERSION=\"${VERSION}\")
 

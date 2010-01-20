@@ -1,0 +1,33 @@
+<area shape="rect" href="$classTp_1_1DBusProxy.html" title="DBusProxy" alt="" coords="40,419,128,448">
+<area shape="rect" href="$classTp_1_1StatefulDBusProxy.html" title="StatefulDBusProxy" alt="" coords="317,219,448,248">
+<area shape="rect" href="$classTp_1_1StatelessDBusProxy.html" title="StatelessDBusProxy" alt="" coords="312,619,453,648">
+<area shape="rect" href="$classTp_1_1Channel.html" title="Channel" alt="" coords="755,219,821,248">
+<area shape="rect" href="$classTp_1_1ChannelDispatchOperation.html" title="ChannelDispatchOperation" alt="" coords="700,272,876,301">
+<area shape="rect" href="$classTp_1_1ChannelRequest.html" title="ChannelRequest" alt="" coords="731,165,845,195">
+<area shape="rect" href="$classTp_1_1Connection.html" title="Connection" alt="" coords="745,112,831,141">
+<area shape="rect" href="$classTp_1_1FileTransferChannel.html" title="FileTransferChannel" alt="" coords="1033,192,1169,221">
+<area shape="rect" href="$classTp_1_1RoomListChannel.html" title="RoomListChannel" alt="" coords="1040,245,1163,275">
+<area shape="rect" href="$classTp_1_1StreamedMediaChannel.html" title="StreamedMediaChannel" alt="" coords="1021,299,1181,328">
+<area shape="rect" href="$classTp_1_1TextChannel.html" title="TextChannel" alt="" coords="1055,139,1148,168">
+<area shape="rect" href="$classTp_1_1Account.html" title="Account" alt="" coords="753,699,823,728">
+<area shape="rect" href="$classTp_1_1AccountManager.html" title="The AccountManager class provides an object representing a Telepathy account manager..." alt="" coords="728,379,848,408">
+<area shape="rect" href="$classTp_1_1ConnectionManager.html" title="ConnectionManager" alt="" coords="720,645,856,675">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceCache.html" title="OptionalInterfaceCache" alt="" coords="5,219,163,248">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; Account \&gt;" alt="" coords="265,685,500,715">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; AccountManager \&gt;" alt="" coords="240,379,525,408">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; Channel \&gt;" alt="" coords="265,165,500,195">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; ChannelDispatchOperation \&gt;" alt="" coords="212,272,553,301">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; ChannelRequest \&gt;" alt="" coords="241,112,524,141">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; Connection \&gt;" alt="" coords="256,5,509,35">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; ConnectionManager \&gt;" alt="" coords="231,539,535,568">
+<area shape="rect" href="$classTp_1_1OptionalInterfaceFactory.html" title="OptionalInterfaceFactory\&lt; DBusProxySubclass \&gt;" alt="" coords="229,59,536,88">
+<area shape="rect" href="$classTp_1_1ReadyObject.html" title="ReadyObject" alt="" coords="335,325,431,355">
+<area shape="rect" href="$classTp_1_1MediaStream.html" title="MediaStream" alt="" coords="739,325,837,355">
+<area shape="rect" href="$classTp_1_1RefCounted.html" title="RefCounted" alt="" coords="339,432,427,461">
+<area shape="rect" href="$classTp_1_1MethodInvocationContext.html" title="MethodInvocationContext\&lt;\&gt;" alt="" coords="696,539,880,568">
+<area shape="rect" href="$classTp_1_1AbstractClient.html" title="AbstractClient" alt="" coords="736,592,840,621">
+<area shape="rect" href="$classTp_1_1ClientRegistrar.html" title="ClientRegistrar" alt="" coords="735,432,841,461">
+<area shape="rect" href="$classTp_1_1MethodInvocationContext.html" title="MethodInvocationContext\&lt; T1, T2, T3, T4, T5, T6, T7, T8 \&gt;" alt="" coords="604,485,972,515">
+<area shape="rect" href="$classTp_1_1AbstractClientApprover.html" title="AbstractClientApprover" alt="" coords="1024,592,1179,621">
+<area shape="rect" href="$classTp_1_1AbstractClientHandler.html" title="AbstractClientHandler" alt="" coords="1028,645,1175,675">
+<area shape="rect" href="$classTp_1_1AbstractClientObserver.html" title="AbstractClientObserver" alt="" coords="1024,539,1179,568">

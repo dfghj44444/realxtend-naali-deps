@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LmMessage</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.71.0">
+<link rel="start" href="index.html" title="Loudmouth Reference Manual">
+<link rel="up" href="ch01.html" title="Loudmouth">
+<link rel="prev" href="loudmouth-lm-error.html" title="LmError">
+<link rel="next" href="loudmouth-lm-message-handler.html" title="LmMessageHandler">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Loudmouth">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="loudmouth-lm-error.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Loudmouth Reference Manual</th>
+<td><a accesskey="n" href="loudmouth-lm-message-handler.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#loudmouth-lm-message.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#loudmouth-lm-message.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="loudmouth-lm-message"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="loudmouth-lm-message.top_of_page"></a>LmMessage</span></h2>
+<p>LmMessage — A message is built up like a tree of message nodes.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="loudmouth-lm-message.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a>;
+enum                <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a>;
+enum                <a href="loudmouth-lm-message.html#LmMessageSubType" title="enum LmMessageSubType">LmMessageSubType</a>;
+<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         <a href="loudmouth-lm-message.html#lm-message-new" title="lm_message_new ()">lm_message_new</a>                      (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *to,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type);
+<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         <a href="loudmouth-lm-message.html#lm-message-new-with-sub-type" title="lm_message_new_with_sub_type ()">lm_message_new_with_sub_type</a>        (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *to,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type,
+                                                         <a href="loudmouth-lm-message.html#LmMessageSubType" title="enum LmMessageSubType">LmMessageSubType</a> sub_type);
+<a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a>       <a href="loudmouth-lm-message.html#lm-message-get-type" title="lm_message_get_type ()">lm_message_get_type</a>                 (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);
+<a href="loudmouth-lm-message.html#LmMessageSubType" title="enum LmMessageSubType">LmMessageSubType</a>    <a href="loudmouth-lm-message.html#lm-message-get-sub-type" title="lm_message_get_sub_type ()">lm_message_get_sub_type</a>             (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);
+<a href="loudmouth-lm-message-node.html#LmMessageNode" title="LmMessageNode">LmMessageNode</a> *     <a href="loudmouth-lm-message.html#lm-message-get-node" title="lm_message_get_node ()">lm_message_get_node</a>                 (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);
+<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         <a href="loudmouth-lm-message.html#lm-message-ref" title="lm_message_ref ()">lm_message_ref</a>                      (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);
+void                <a href="loudmouth-lm-message.html#lm-message-unref" title="lm_message_unref ()">lm_message_unref</a>                    (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-message.description"></a><h2>Description</h2>
+<p>
+Represents a message that can be sent with <a href="loudmouth-lm-connection.html#lm-connection-send" title="lm_connection_send ()"><code class="function">lm_connection_send()</code></a>, <a href="loudmouth-lm-connection.html#lm-connection-send-with-reply" title="lm_connection_send_with_reply ()"><code class="function">lm_connection_send_with_reply()</code></a> or <a href="loudmouth-lm-connection.html#lm-connection-send-with-reply-and-block" title="lm_connection_send_with_reply_and_block ()"><code class="function">lm_connection_send_with_reply_and_block()</code></a>. Either use <a href="loudmouth-lm-message.html#lm-message-new" title="lm_message_new ()"><code class="function">lm_message_new()</code></a> or <code class="function">lm_message_new_with_subtype()</code> to create a message. You need to call <a href="loudmouth-lm-message.html#lm-message-unref" title="lm_message_unref ()"><code class="function">lm_message_unref()</code></a> when are finished with it.
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-message.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="LmMessage"></a><h3>LmMessage</h3>
+<pre class="programlisting">typedef struct {
+	LmMessageNode *node;
+
+	LmMessagePriv *priv;
+} LmMessage;
+</pre>
+<p>
+The LmMessage struct
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><a href="loudmouth-lm-message-node.html#LmMessageNode" title="LmMessageNode">LmMessageNode</a> *<em class="structfield"><code>node</code></em>;</span></td>
+<td>The root node of the message, you can also use <a href="loudmouth-lm-message.html#lm-message-get-node" title="lm_message_get_node ()"><code class="function">lm_message_get_node()</code></a> to retrieve this.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term">LmMessagePriv *<em class="structfield"><code>priv</code></em>;</span></td>
+<td>A pointer to message private data. Should never be touched from application code.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmMessageType"></a><h3>enum LmMessageType</h3>
+<pre class="programlisting">typedef enum {
+	LM_MESSAGE_TYPE_MESSAGE,
+	LM_MESSAGE_TYPE_PRESENCE,
+	LM_MESSAGE_TYPE_IQ,
+	LM_MESSAGE_TYPE_STREAM,
+	LM_MESSAGE_TYPE_STREAM_ERROR,
+	LM_MESSAGE_TYPE_STREAM_FEATURES,
+	LM_MESSAGE_TYPE_AUTH,
+	LM_MESSAGE_TYPE_CHALLENGE,
+	LM_MESSAGE_TYPE_RESPONSE,
+	LM_MESSAGE_TYPE_SUCCESS,
+	LM_MESSAGE_TYPE_FAILURE,
+	LM_MESSAGE_TYPE_PROCEED,
+	LM_MESSAGE_TYPE_STARTTLS,
+	LM_MESSAGE_TYPE_UNKNOWN
+} LmMessageType;
+</pre>
+<p>
+Describes what type of message a message is. This maps directly to top level elements in the jabber protocol.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-MESSAGE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_MESSAGE</code></span></td>
+<td>a message, <font color="red">&lt;message&gt;&lt;/message&gt;</font>
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-PRESENCE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_PRESENCE</code></span></td>
+<td>a presence element, <font color="red">&lt;presence&gt;&lt;/presence&gt;</font>
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-IQ--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_IQ</code></span></td>
+<td>an info/query element, <font color="red">&lt;iq&gt;&lt;/iq&gt;</font>
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-STREAM--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_STREAM</code></span></td>
+<td>the stream:stream element, you probably don't need to create a message of this type.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-STREAM-ERROR--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_STREAM_ERROR</code></span></td>
+<td>a stream:error element
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-STREAM-FEATURES--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_STREAM_FEATURES</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-AUTH--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_AUTH</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-CHALLENGE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_CHALLENGE</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-RESPONSE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_RESPONSE</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-SUCCESS--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_SUCCESS</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-FAILURE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_FAILURE</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-PROCEED--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_PROCEED</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-STARTTLS--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_STARTTLS</code></span></td>
+<td>Internal
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-TYPE-UNKNOWN--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_TYPE_UNKNOWN</code></span></td>
+<td>incoming message is of some unknown type.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmMessageSubType"></a><h3>enum LmMessageSubType</h3>
+<pre class="programlisting">typedef enum {
+        LM_MESSAGE_SUB_TYPE_NOT_SET = -10,
+	LM_MESSAGE_SUB_TYPE_AVAILABLE = -1,
+	LM_MESSAGE_SUB_TYPE_NORMAL = 0,
+	LM_MESSAGE_SUB_TYPE_CHAT,
+        LM_MESSAGE_SUB_TYPE_GROUPCHAT,
+        LM_MESSAGE_SUB_TYPE_HEADLINE,
+        LM_MESSAGE_SUB_TYPE_UNAVAILABLE,
+        LM_MESSAGE_SUB_TYPE_PROBE,
+        LM_MESSAGE_SUB_TYPE_SUBSCRIBE,
+        LM_MESSAGE_SUB_TYPE_UNSUBSCRIBE,
+        LM_MESSAGE_SUB_TYPE_SUBSCRIBED,
+        LM_MESSAGE_SUB_TYPE_UNSUBSCRIBED,
+	LM_MESSAGE_SUB_TYPE_GET,
+	LM_MESSAGE_SUB_TYPE_SET,
+	LM_MESSAGE_SUB_TYPE_RESULT,
+	LM_MESSAGE_SUB_TYPE_ERROR
+} LmMessageSubType;
+</pre>
+<p>
+Describes the sub type of a message. This is equal to the "type" attribute in the jabber protocol. What sub type a message can have is depending on the type of the message.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-NOT-SET--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_NOT_SET</code></span></td>
+<td>the default. No "type" attribute will be sent.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-AVAILABLE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_AVAILABLE</code></span></td>
+<td>presence is available, applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-NORMAL--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_NORMAL</code></span></td>
+<td>a normal message.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-CHAT--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_CHAT</code></span></td>
+<td>message is a chat message, applies to message type "message"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-GROUPCHAT--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_GROUPCHAT</code></span></td>
+<td>message is a group chat message, applies to message type "message"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-HEADLINE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_HEADLINE</code></span></td>
+<td>message is a headline message, applies to message type "message"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-UNAVAILABLE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_UNAVAILABLE</code></span></td>
+<td>presence is unavailable, applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-PROBE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_PROBE</code></span></td>
+<td>a probe presence, applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-SUBSCRIBE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_SUBSCRIBE</code></span></td>
+<td>try to subscribe to another jids presence, applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-UNSUBSCRIBE--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_UNSUBSCRIBE</code></span></td>
+<td>unsubscribes from another jids presence, applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-SUBSCRIBED--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_SUBSCRIBED</code></span></td>
+<td>reply from a subscribe message, informs that the subscription was successful. Applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-UNSUBSCRIBED--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_UNSUBSCRIBED</code></span></td>
+<td>reply from subscribe or unsubscribe message. If it's a reply from a subscribe message it notifies that the subscription failed. Applies to message type "presence"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-GET--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_GET</code></span></td>
+<td>used to get information from an IQ query, applies to message type "iq"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-SET--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_SET</code></span></td>
+<td>used to set information in a IQ call, applised to message type "iq"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-RESULT--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_RESULT</code></span></td>
+<td>message is an IQ reply, applies to message type "iq"
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-MESSAGE-SUB-TYPE-ERROR--CAPS"></a><span class="term"><code class="literal">LM_MESSAGE_SUB_TYPE_ERROR</code></span></td>
+<td>messages is an error, applies to all message types.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-new"></a><h3>lm_message_new ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         lm_message_new                      (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *to,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type);</pre>
+<p>
+Creates a new <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a> which can be sent with <a href="loudmouth-lm-connection.html#lm-connection-send" title="lm_connection_send ()"><code class="function">lm_connection_send()</code></a> or 
+<a href="loudmouth-lm-connection.html#lm-connection-send-with-reply" title="lm_connection_send_with_reply ()"><code class="function">lm_connection_send_with_reply()</code></a>. If <em class="parameter"><code>to</code></em> is <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> the message is sent to the
+server. The returned message should be unreferenced with <a href="loudmouth-lm-message.html#lm-message-unref" title="lm_message_unref ()"><code class="function">lm_message_unref()</code></a> 
+when caller is finished with it.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>to</code></em> :</span></td>
+<td> receipient jid
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> message type
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> a newly created <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-new-with-sub-type"></a><h3>lm_message_new_with_sub_type ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         lm_message_new_with_sub_type        (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *to,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type,
+                                                         <a href="loudmouth-lm-message.html#LmMessageSubType" title="enum LmMessageSubType">LmMessageSubType</a> sub_type);</pre>
+<p>
+Creates a new <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a> with sub type set. See <a href="loudmouth-lm-message.html#lm-message-new" title="lm_message_new ()"><code class="function">lm_message_new()</code></a> for more 
+information.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>to</code></em> :</span></td>
+<td> receipient jid
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> message type
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>sub_type</code></em> :</span></td>
+<td> message sub type
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> a newly created <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-get-type"></a><h3>lm_message_get_type ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a>       lm_message_get_type                 (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);</pre>
+<p>
+Fetches the type of <em class="parameter"><code>message</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the message type
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-get-sub-type"></a><h3>lm_message_get_sub_type ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessageSubType" title="enum LmMessageSubType">LmMessageSubType</a>    lm_message_get_sub_type             (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);</pre>
+<p>
+Fetches the sub type of <em class="parameter"><code>message</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the message sub type
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-get-node"></a><h3>lm_message_get_node ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message-node.html#LmMessageNode" title="LmMessageNode">LmMessageNode</a> *     lm_message_get_node                 (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);</pre>
+<p>
+Retrieves the root node from <em class="parameter"><code>message</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> an <a href="loudmouth-lm-message-node.html#LmMessageNode" title="LmMessageNode"><span class="type">LmMessageNode</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-ref"></a><h3>lm_message_ref ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         lm_message_ref                      (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);</pre>
+<p>
+Adds a reference to <em class="parameter"><code>message</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the message
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-message-unref"></a><h3>lm_message_unref ()</h3>
+<pre class="programlisting">void                lm_message_unref                    (<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message);</pre>
+<p>
+Removes a reference from <em class="parameter"><code>message</code></em>. When no more references are present the 
+message is freed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

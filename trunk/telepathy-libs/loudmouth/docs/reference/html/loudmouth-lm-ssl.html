@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LmSSL</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.71.0">
+<link rel="start" href="index.html" title="Loudmouth Reference Manual">
+<link rel="up" href="ch01.html" title="Loudmouth">
+<link rel="prev" href="loudmouth-lm-message-node.html" title="LmMessageNode">
+<link rel="next" href="loudmouth-lm-proxy.html" title="LmProxy">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Loudmouth">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="loudmouth-lm-message-node.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Loudmouth Reference Manual</th>
+<td><a accesskey="n" href="loudmouth-lm-proxy.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#loudmouth-lm-ssl.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#loudmouth-lm-ssl.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="loudmouth-lm-ssl"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="loudmouth-lm-ssl.top_of_page"></a>LmSSL</span></h2>
+<p>LmSSL — SSL struct for SSL support in Loudmouth</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="loudmouth-lm-ssl.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a>;
+enum                <a href="loudmouth-lm-ssl.html#LmCertificateStatus" title="enum LmCertificateStatus">LmCertificateStatus</a>;
+enum                <a href="loudmouth-lm-ssl.html#LmSSLStatus" title="enum LmSSLStatus">LmSSLStatus</a>;
+enum                <a href="loudmouth-lm-ssl.html#LmSSLResponse" title="enum LmSSLResponse">LmSSLResponse</a>;
+<a href="loudmouth-lm-ssl.html#LmSSLResponse" title="enum LmSSLResponse">LmSSLResponse</a>       (<a href="loudmouth-lm-ssl.html#LmSSLFunction" title="LmSSLFunction ()">*LmSSLFunction</a>)                    (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSLStatus" title="enum LmSSLStatus">LmSSLStatus</a> status,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             <a href="loudmouth-lm-ssl.html#lm-ssl-new" title="lm_ssl_new ()">lm_ssl_new</a>                          (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *expected_fingerprint,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSLFunction" title="LmSSLFunction ()">LmSSLFunction</a> ssl_function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-ssl.html#lm-ssl-is-supported" title="lm_ssl_is_supported ()">lm_ssl_is_supported</a>                 (void);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-ssl.html#lm-ssl-get-fingerprint" title="lm_ssl_get_fingerprint ()">lm_ssl_get_fingerprint</a>              (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+void                <a href="loudmouth-lm-ssl.html#lm-ssl-use-starttls" title="lm_ssl_use_starttls ()">lm_ssl_use_starttls</a>                 (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> use_starttls,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> require_starttls);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-ssl.html#lm-ssl-get-use-starttls" title="lm_ssl_get_use_starttls ()">lm_ssl_get_use_starttls</a>             (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-ssl.html#lm-ssl-get-require-starttls" title="lm_ssl_get_require_starttls ()">lm_ssl_get_require_starttls</a>         (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             <a href="loudmouth-lm-ssl.html#lm-ssl-ref" title="lm_ssl_ref ()">lm_ssl_ref</a>                          (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+void                <a href="loudmouth-lm-ssl.html#lm-ssl-unref" title="lm_ssl_unref ()">lm_ssl_unref</a>                        (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-ssl.description"></a><h2>Description</h2>
+<p>
+Use this together with an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to get the connection to use SSL. Example of how to use the <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a> API.
+</p>
+<div class="informalexample"><pre class="programlisting">
+LmConnection *connection;
+LmSSL        *ssl;
+connection = lm_connection_new ("myserver");
+ssl = lm_ssl_new (NULL, my_ssl_func, NULL, NULL);
+lm_connection_set_ssl (connection, ssl);
+...
+</pre></div>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-ssl.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="LmSSL"></a><h3>LmSSL</h3>
+<pre class="programlisting">typedef struct _LmSSL LmSSL;</pre>
+<p>
+This should not be accessed directly. Use the accessor functions as described below.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmCertificateStatus"></a><h3>enum LmCertificateStatus</h3>
+<pre class="programlisting">typedef enum {
+	LM_CERT_INVALID,
+	LM_CERT_ISSUER_NOT_FOUND,
+	LM_CERT_REVOKED
+} LmCertificateStatus;
+</pre>
+<p>
+Provides information of the status of a certain certificate.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-CERT-INVALID--CAPS"></a><span class="term"><code class="literal">LM_CERT_INVALID</code></span></td>
+<td>The certificate is invalid.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CERT-ISSUER-NOT-FOUND--CAPS"></a><span class="term"><code class="literal">LM_CERT_ISSUER_NOT_FOUND</code></span></td>
+<td>The issuer of the certificate is not found.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CERT-REVOKED--CAPS"></a><span class="term"><code class="literal">LM_CERT_REVOKED</code></span></td>
+<td>The certificate has been revoked.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmSSLStatus"></a><h3>enum LmSSLStatus</h3>
+<pre class="programlisting">typedef enum {
+	LM_SSL_STATUS_NO_CERT_FOUND,	
+	LM_SSL_STATUS_UNTRUSTED_CERT,
+	LM_SSL_STATUS_CERT_EXPIRED,
+	LM_SSL_STATUS_CERT_NOT_ACTIVATED,
+	LM_SSL_STATUS_CERT_HOSTNAME_MISMATCH,			
+	LM_SSL_STATUS_CERT_FINGERPRINT_MISMATCH,			
+	LM_SSL_STATUS_GENERIC_ERROR
+} LmSSLStatus;
+</pre>
+<p>
+Provides information about something gone wrong when trying to setup the SSL connection.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-NO-CERT-FOUND--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_NO_CERT_FOUND</code></span></td>
+<td>The server doesn't provide a certificate.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-UNTRUSTED-CERT--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_UNTRUSTED_CERT</code></span></td>
+<td>The certification can not be trusted.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-CERT-EXPIRED--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_CERT_EXPIRED</code></span></td>
+<td>The certificate has expired.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-CERT-NOT-ACTIVATED--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_CERT_NOT_ACTIVATED</code></span></td>
+<td>The certificate has not been activated.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-CERT-HOSTNAME-MISMATCH--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_CERT_HOSTNAME_MISMATCH</code></span></td>
+<td>The server hostname doesn't match the one in the certificate.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-CERT-FINGERPRINT-MISMATCH--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_CERT_FINGERPRINT_MISMATCH</code></span></td>
+<td>The fingerprint doesn't match your expected.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-STATUS-GENERIC-ERROR--CAPS"></a><span class="term"><code class="literal">LM_SSL_STATUS_GENERIC_ERROR</code></span></td>
+<td>Some other error.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmSSLResponse"></a><h3>enum LmSSLResponse</h3>
+<pre class="programlisting">typedef enum {
+	LM_SSL_RESPONSE_CONTINUE,
+	LM_SSL_RESPONSE_STOP
+} LmSSLResponse;
+</pre>
+<p>
+Used to inform <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> if you want to stop due to an error reported or if you want to continue to connect.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-SSL-RESPONSE-CONTINUE--CAPS"></a><span class="term"><code class="literal">LM_SSL_RESPONSE_CONTINUE</code></span></td>
+<td>Continue to connect.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-SSL-RESPONSE-STOP--CAPS"></a><span class="term"><code class="literal">LM_SSL_RESPONSE_STOP</code></span></td>
+<td>Stop the connection.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmSSLFunction"></a><h3>LmSSLFunction ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-ssl.html#LmSSLResponse" title="enum LmSSLResponse">LmSSLResponse</a>       (*LmSSLFunction)                    (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSLStatus" title="enum LmSSLStatus">LmSSLStatus</a> status,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+This function is called if something goes wrong during the connecting phase.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td>An <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>status</code></em> :</span></td>
+<td>The status informing what went wrong.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td>User data provided in the callback.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td>User should return <a href="loudmouth-lm-ssl.html#LM-SSL-RESPONSE-CONTINUE--CAPS"><span class="type">LM_SSL_RESPONSE_CONTINUE</span></a> if connection should proceed and otherwise <a href="loudmouth-lm-ssl.html#LM-SSL-RESPONSE-STOP--CAPS"><span class="type">LM_SSL_RESPONSE_STOP</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-new"></a><h3>lm_ssl_new ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             lm_ssl_new                          (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *expected_fingerprint,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSLFunction" title="LmSSLFunction ()">LmSSLFunction</a> ssl_function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify);</pre>
+<p>
+Creates a new SSL struct, call <a href="loudmouth-lm-connection.html#lm-connection-set-ssl" title="lm_connection_set_ssl ()"><span class="type">lm_connection_set_ssl</span></a> to use it.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>expected_fingerprint</code></em> :</span></td>
+<td> The expected fingerprint. <em class="parameter"><code>ssl_function</code></em> will be called if there is a mismatch. <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if you are not interested in this check.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl_function</code></em> :</span></td>
+<td> Callback called to inform the user of a problem during setting up the SSL connection and how to proceed. If <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> is passed the default function that always continues will be used.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td> Data sent with the callback.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>notify</code></em> :</span></td>
+<td> Function to free <em class="parameter"><code>user_dataa</code></em> when the connection is finished. <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if <em class="parameter"><code>user_data</code></em> should not be freed.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> A new <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a> struct.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-is-supported"></a><h3>lm_ssl_is_supported ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_ssl_is_supported                 (void);</pre>
+<p>
+Checks whether Loudmouth supports SSL or not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if this installation of Loudmouth supports SSL, otherwise returns <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-get-fingerprint"></a><h3>lm_ssl_get_fingerprint ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_ssl_get_fingerprint              (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Returns the MD5 fingerprint of the remote server's certificate.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> A 16-byte array representing the fingerprint or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if unknown.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-use-starttls"></a><h3>lm_ssl_use_starttls ()</h3>
+<pre class="programlisting">void                lm_ssl_use_starttls                 (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> use_starttls,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> require_starttls);</pre>
+<p>
+Set whether STARTTLS should be used.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>use_starttls</code></em> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if STARTTLS should be used.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>require_starttls</code></em> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if STARTTLS should be required.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-get-use-starttls"></a><h3>lm_ssl_get_use_starttls ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_ssl_get_use_starttls             (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Fetches whether STARTTLS is used.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> is <em class="parameter"><code>ssl</code></em> is configured to use STARTTLS.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-get-require-starttls"></a><h3>lm_ssl_get_require_starttls ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_ssl_get_require_starttls         (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Fetches whether STARTTLS is required.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if <em class="parameter"><code>ssl</code></em> requires that STARTTLS succeed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-ref"></a><h3>lm_ssl_ref ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             lm_ssl_ref                          (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Adds a reference to <em class="parameter"><code>ssl</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the ssl
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-ssl-unref"></a><h3>lm_ssl_unref ()</h3>
+<pre class="programlisting">void                lm_ssl_unref                        (<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Removes a reference from <em class="parameter"><code>ssl</code></em>. When no more references are present
+<em class="parameter"><code>ssl</code></em> is freed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

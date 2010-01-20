@@ -1,0 +1,3566 @@
+<?xml version="1.0" ?><tp:spec xmlns:tp="http://telepathy.freedesktop.org/wiki/DbusSpec#extensions-v0" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<tp:title>Connection interfaces</tp:title>
+
+<node name="/Connection" xml:base="../spec/Connection.xml">
+  <tp:copyright>Copyright (C) 2005-2009 Collabora Limited</tp:copyright>
+  <tp:copyright>Copyright (C) 2005-2009 Nokia Corporation</tp:copyright>
+  <tp:copyright>Copyright (C) 2006 INdT</tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+<p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection.Interface.Requests"/>
+    <tp:requires interface="org.freedesktop.Telepathy.Connection.Interface.Contacts"/>
+
+    <tp:struct array-name="Channel_Info_List" name="Channel_Info">
+      <tp:deprecated version="0.17.23"/>
+      <tp:docstring>A struct representing a channel, as returned by
+        ListChannels on the Connection interface.</tp:docstring>
+      <tp:member name="Channel" type="o">
+        <tp:docstring>The object path of the channel, which is on the
+          same bus name as the connection</tp:docstring>
+      </tp:member>
+      <tp:member name="Channel_Type" tp:type="DBus_Interface" type="s">
+        <tp:docstring>The channel's type</tp:docstring>
+      </tp:member>
+      <tp:member name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>The type of the handle that the channel communicates
+          with, or Handle_Type_None if there is no associated
+          handle</tp:docstring>
+      </tp:member>
+      <tp:member name="Handle" tp:type="Handle" type="u">
+        <tp:docstring>The handle that the channel communicates with,
+          or 0 if there is no associated handle</tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <method name="Connect" tp:name-for-bindings="Connect">
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request that the connection be established. This will be done
+          asynchronously and errors will be returned by emitting
+          <tp:member-ref>StatusChanged</tp:member-ref> signals.</p>
+
+        <p>Calling this method on a Connection that is already connecting
+          or connected is allowed, and has no effect.</p>
+      </tp:docstring>
+    </method>
+
+    <method name="Disconnect" tp:name-for-bindings="Disconnect">
+      <tp:docstring>
+        Request that the connection be closed. This closes the connection if
+        it's not already in DISCONNECTED state, and destroys the connection
+        object.
+      </tp:docstring>
+    </method>
+
+    <method name="GetInterfaces" tp:name-for-bindings="Get_Interfaces">
+      <arg direction="out" name="Interfaces" tp:type="DBus_Interface[]" type="as">
+        <tp:docstring>
+          An array of D-Bus interface names
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Get the optional interfaces supported by this connection.
+          Before the connection status changes to CONNECTED, the return
+          from this method may change at any time, but it is guaranteed that
+          interfaces will only be added, not removed. After the connection
+          status changes to CONNECTED, the return from this method cannot
+          change further.</p>
+
+        <p>There is no explicit change notification; reasonable behaviour
+          for a client would be to retrieve the interfaces list once
+          initially, and once more when it becomes CONNECTED.</p>
+
+        <tp:rationale>
+          <p>In some connection managers, certain capabilities of a connection
+            are known to be implemented for all connections (e.g. support
+            for SimplePresence), and some interfaces (like SimplePresence) can
+            even be used before connecting. Other capabilities may
+            or may not exist, depending on server functionality; by the time
+            the connection goes CONNECTED, the connection manager is expected
+            to have evaluated the server's functionality and enabled any extra
+            interfaces for the remainder of the Connection's lifetime.</p>
+        </tp:rationale>
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected">
+          <tp:docstring>
+             Before version 0.17.8 calling GetInterfaces while
+             on a connection that is not yet CONNECTED wasn't allowed. If a
+             CM returns this error, its list of interfaces should be regarded
+             as empty until it becomes CONNECTED.
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <method name="GetProtocol" tp:name-for-bindings="Get_Protocol">
+      <arg direction="out" name="Protocol" tp:type="Protocol" type="s">
+        <tp:docstring>
+          A string identifier for the protocol
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Get the protocol this connection is using.
+      </tp:docstring>
+    </method>
+
+    <signal name="SelfHandleChanged" tp:name-for-bindings="Self_Handle_Changed">
+      <tp:docstring>
+        Emitted whenever the <tp:member-ref>SelfHandle</tp:member-ref> property
+        changes. If the connection
+        is not yet in the CONNECTED state, this signal is not guaranteed
+        to be emitted.
+      </tp:docstring>
+      <tp:added version="0.17.10">Clients MAY assume that if the
+        SelfHandle property exists, this signal will be emitted when
+        necessary.</tp:added>
+
+      <arg name="Self_Handle" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          The new value of the SelfHandle property.
+        </tp:docstring>
+      </arg>
+    </signal>
+
+    <property access="read" name="SelfHandle" tp:name-for-bindings="Self_Handle" tp:type="Contact_Handle" type="u">
+      <tp:docstring>
+        The handle which represents the user on this connection, which will
+        remain valid for the lifetime of this connection, or until a change
+        in the user's identifier is signalled by the
+        <tp:member-ref>SelfHandleChanged</tp:member-ref> signal.
+        If the connection is not yet in the CONNECTED state, the value of
+        this property MAY be zero.
+      </tp:docstring>
+      <tp:added version="0.17.10">For compatibility with older
+        versions, clients should fall back to calling the
+        <tp:member-ref>GetSelfHandle</tp:member-ref>
+        method.</tp:added>
+    </property>
+
+    <method name="GetSelfHandle" tp:name-for-bindings="Get_Self_Handle">
+      <arg direction="out" name="Self_Handle" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          The value of the <tp:member-ref>SelfHandle</tp:member-ref> property
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Returns the value of the SelfHandle property. Change notification
+        is via the SelfHandleChanged signal.
+      </tp:docstring>
+      <tp:deprecated version="0.17.10">Use GetAll to get the
+        SelfHandle property (and all other Connection properties)
+        instead.</tp:deprecated>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="GetStatus" tp:name-for-bindings="Get_Status">
+      <arg direction="out" name="Status" tp:type="Connection_Status" type="u">
+        <tp:docstring>
+          An integer representing the current status
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Get the current status as defined in the
+        <tp:member-ref>StatusChanged</tp:member-ref> signal.
+      </tp:docstring>
+    </method>
+
+    <method name="HoldHandles" tp:name-for-bindings="Hold_Handles">
+      <arg direction="in" name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          The type of handle to be held
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Handles" tp:type="Handle[]" type="au">
+        <tp:docstring>
+          A array of integer handles to hold
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Notify the connection manger that your client is holding a copy
+        of handles which may not be in use in any existing channel or
+        list, and were not obtained by using the
+        <tp:member-ref>RequestHandles</tp:member-ref> method. For
+        example, a handle observed in an emitted signal, or displayed
+        somewhere in the UI that is not associated with a channel. The
+        connection manager must not deallocate a handle where any clients
+        have used this method to indicate it is in use until the
+        <tp:member-ref>ReleaseHandles</tp:member-ref>
+        method is called, or the clients disappear from the bus.</p>
+
+        <p>Note that HoldHandles is idempotent - calling it multiple times
+          is equivalent to calling it once. If a handle is &quot;referenced&quot; by
+          several components which share a D-Bus unique name, the client
+          should perform reference counting internally, and only call
+          ReleaseHandles when none of the cooperating components need the
+          handle any longer.</p>
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          The handle type is invalid
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          One of the given handles is not valid
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <method name="InspectHandles" tp:name-for-bindings="Inspect_Handles">
+      <arg direction="in" name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          The type of handle to be inspected
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Handles" tp:type="Handle[]" type="au">
+        <tp:docstring>
+          An array of integer handles of this type
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Identifiers" type="as">
+        <tp:docstring>
+          An array of handle names in the same order as the given numbers
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Return a string representation for a number of handles of a given
+        type.
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          The handle type is invalid
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          One of the given handles is not valid
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <method name="ListChannels" tp:name-for-bindings="List_Channels">
+      <tp:deprecated version="0.17.23">Use the
+        <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Requests.Channels</tp:dbus-ref>
+        property instead.
+      </tp:deprecated>
+
+      <arg direction="out" name="Channel_Info" tp:type="Channel_Info[]" type="a(osuu)">
+        <tp:docstring>
+          An array of structs representing channels.
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        List all the channels which currently exist on this connection.
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+      </tp:possible-errors>
+    </method>
+
+    <signal name="NewChannel" tp:name-for-bindings="New_Channel">
+      <tp:deprecated version="0.17.23">Connection managers MUST still
+        emit this signal, but clients SHOULD listen for the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Requests.NewChannels</tp:dbus-ref>
+        signal instead.
+      </tp:deprecated>
+
+      <arg name="Object_Path" type="o">
+        <tp:docstring>
+          A D-Bus object path for the channel object on this service
+        </tp:docstring>
+      </arg>
+
+      <arg name="Channel_Type" tp:type="DBus_Interface" type="s">
+        <tp:docstring>
+          A D-Bus interface name representing the channel type
+        </tp:docstring>
+      </arg>
+
+      <arg name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          An integer representing the type of handle this channel
+          communicates with, or Handle_Type_None if no handle is specified
+        </tp:docstring>
+      </arg>
+
+      <arg name="Handle" tp:type="Handle" type="u">
+        <tp:docstring>
+          A handle indicating the specific contact, room or list this
+          channel communicates with, or zero if no handle is specified
+        </tp:docstring>
+      </arg>
+
+      <arg name="Suppress_Handler" type="b">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>If true, the channel was requested by a client that intends to
+            present it to the user itself (i.e. it passed suppress_handler=TRUE
+            to the <tp:member-ref>RequestChannel</tp:member-ref> method), so no
+            other handler should be
+            launched. Clients MAY assume that channels where this is true
+            were created by a user request.</p>
+
+          <p>If false, either the channel was created due to incoming
+            information from the service, or the channel was requested by
+            a local client that does not intend to handle the channel itself
+            (this usage is deprecated).</p>
+
+          <p>Clients MUST NOT assume that only incoming channels will have
+            this flag set to false.</p>
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Emitted when a new Channel object is created, either through user
+        request or incoming information from the service.
+      </tp:docstring>
+    </signal>
+
+    <method name="ReleaseHandles" tp:name-for-bindings="Release_Handles">
+      <arg direction="in" name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          An integer handle type (as defined in RequestHandle)
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Handles" tp:type="Handle[]" type="au">
+        <tp:docstring>
+          An array of integer handles being held by the client
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Explicitly notify the connection manager that your client is no
+        longer holding any references to the given handles, and that they
+        may be deallocated if they are not held by any other clients or
+        referenced by any existing channels. See HoldHandles for notes.
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>
+            The handle type is invalid
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            One of the given handles is not valid
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring>
+            One of the given handles is not held by this client
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <method name="RequestChannel" tp:name-for-bindings="Request_Channel">
+      <tp:deprecated version="0.17.23">Use
+        <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Requests.CreateChannel</tp:dbus-ref>
+        or <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Requests.EnsureChannel</tp:dbus-ref>
+        instead. Connection managers MAY implement RequestChannel by
+        raising NotImplemented, or implement fewer types of channel via
+        this API.</tp:deprecated>
+
+      <arg direction="in" name="Type" tp:type="DBus_Interface" type="s">
+        <tp:docstring>
+          A D-Bus interface name representing base channel type
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          An integer representing the handle type, or Handle_Type_None if
+          no handle is specified
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Handle" tp:type="Handle" type="u">
+        <tp:docstring>
+          A nonzero integer handle representing a contact, room, list etc.
+          according to handle_type, or zero if the handle_type is
+          Handle_Type_None
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Suppress_Handler" type="b">
+        <tp:docstring>
+          <p>Clients SHOULD always set this to true.</p>
+
+          <tp:rationale>
+            <p>The historical meaning was that clients that did not
+              intend to take responsibility for displaying the channel to
+              the user could set this to FALSE, in which case the channel
+              dispatcher would launch an appropriate channel handler.</p>
+
+            <p>However, clients whose functionality relies on having a
+              working channel dispatcher should obtain that functionality by
+              calling methods on the channel dispatcher, so that they will
+              get an appropriate error if the channel dispatcher is missing
+              or not working.</p>
+
+            <p>The channel dispatcher itself should set this to true too,
+              so that it will ignore the
+              <tp:member-ref>NewChannel</tp:member-ref> signal that results
+              from the creation of the channel. It can then dispatch the
+              channel returned from this method to an
+              appropriate handler.</p>
+
+            <p>So, there is no sensible use-case for setting this to false,
+              and setting it to false can result in unhandled channels (in
+              the case where clients assume that a channel dispatcher is
+              present, but it isn't).</p>
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Object_Path" type="o">
+        <tp:docstring>
+          The D-Bus object path for the channel created or retrieved
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request a channel satisfying the specified type and communicating
+          with the contact, room, list etc. indicated by the given
+          handle_type and handle. The handle_type and handle may both be
+          zero to request the creation of a new, empty channel, which may
+          or may not be possible, depending on the protocol and channel
+          type.</p>
+
+        <p>On success, the returned channel will always be of the requested
+          type (i.e. implement the requested channel-type interface).</p>
+
+        <p>If a new, empty channel is requested, on success the returned
+          channel will always be an &quot;anonymous&quot; channel for which the type
+          and handle are both zero.</p>
+
+        <p>If a channel to a contact, room etc. is requested, on success, the
+          returned channel may either be a new or existing channel to
+          the requested entity (i.e. its
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel">TargetHandleType</tp:dbus-ref>
+          and <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel">TargetHandle</tp:dbus-ref>
+          properties are the
+          requested handle type and handle), or a newly created &quot;anonymous&quot;
+          channel associated with the requested handle in some
+          implementation-specific way.</p>
+
+        <p>For example, for a contact handle, the returned channel
+          might be &quot;anonymous&quot;, but implement the groups interface and have
+          the requested contact already present among the members.</p>
+
+        <p>If the request cannot be satisfied, an error is raised and no
+          channel is created.</p>
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotImplemented">
+          <tp:docstring>
+            Unknown channel type
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            The given handle does not exist or cannot be created
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring>
+            The requested channel type cannot be created with the given handle
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotCapable">
+          <tp:docstring>
+            The requested channel cannot be created because contact doesn't
+            have the required capabilities.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Banned"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Full"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.InviteOnly"/>
+      </tp:possible-errors>
+    </method>
+
+    <tp:enum name="Handle_Type" type="u">
+      <tp:enumvalue suffix="None" value="0">
+        <tp:docstring>
+          A &quot;null&quot; handle type used to indicate the absence of a handle.
+          When a handle type and a handle appear as a pair, if the handle
+          type is zero, the handle must also be zero.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Contact" value="1">
+        <tp:docstring>
+          A contact
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Room" value="2">
+        <tp:docstring>
+          A chat room
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="List" value="3">
+        <tp:docstring>
+          A server-generated contact list (see Channel.Interface.Group)
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Group" value="4">
+        <tp:docstring>
+          A user-defined contact list (see Channel.Interface.Group)
+        </tp:docstring>
+      </tp:enumvalue>
+    </tp:enum>
+
+    <tp:simple-type array-name="Handle_List" name="Handle" type="u">
+      <tp:docstring>An unsigned 32-bit integer representing a
+        handle</tp:docstring>
+    </tp:simple-type>
+
+    <tp:simple-type array-name="Contact_Handle_List" name="Contact_Handle" type="u">
+      <tp:docstring>An unsigned 32-bit integer representing a handle of type
+        Handle_Type_Contact</tp:docstring>
+    </tp:simple-type>
+
+    <tp:simple-type array-name="Room_Handle_List" name="Room_Handle" type="u">
+      <tp:docstring>An unsigned 32-bit integer representing a handle of type
+        Handle_Type_Room</tp:docstring>
+    </tp:simple-type>
+
+    <tp:simple-type array-name="List_Handle_List" name="List_Handle" type="u">
+      <tp:docstring>An unsigned 32-bit integer representing a handle of type
+        Handle_Type_List</tp:docstring>
+    </tp:simple-type>
+
+    <tp:simple-type array-name="Group_Handle_List" name="Group_Handle" type="u">
+      <tp:docstring>An unsigned 32-bit integer representing a handle of type
+        Handle_Type_Group</tp:docstring>
+    </tp:simple-type>
+
+    <method name="RequestHandles" tp:name-for-bindings="Request_Handles">
+      <arg direction="in" name="Handle_Type" tp:type="Handle_Type" type="u">
+        <tp:docstring>
+          The type of handle required
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Names" type="as">
+        <tp:docstring>
+          An array of names of entities to request handles for
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Handles" tp:type="Handle[]" type="au">
+        <tp:docstring>
+          An array of integer handle numbers in the same order as the given strings
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Request several handles from the connection manager which represent a
+        number of contacts, rooms or server-stored lists on the service. The
+        connection manager should record that these handles are in use by the
+        client who invokes this method, and must not deallocate the handles
+        until the client disconnects from the bus or calls the
+        <tp:member-ref>ReleaseHandles</tp:member-ref>
+        method. Where the name refers to an entity that already has a handle
+        in this connection manager, this handle should be returned instead.
+        The handle number 0 must not be returned by the connection manager.
+      </tp:docstring>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            The given name does not identify a valid entity of the given type.
+
+            <tp:rationale>
+              For instance, an XMPP connection would raise this error for
+              identifiers with type Handle_Type_Room that do not contain
+              exactly one '@' character, that contain spaces, and so on.
+            </tp:rationale>
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotImplemented">
+          <tp:docstring>
+            The given handle type is not valid, or is not implemented on this
+            connection.
+
+            <tp:rationale>
+              For instance, a connection to a protocol that doesn't have
+              chat rooms would raise this error for room handles, and all CMs
+              would raise this error for Handle_Type_None.
+            </tp:rationale>
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <tp:enum name="Connection_Status" plural="Connection_Statuses" type="u">
+      <tp:enumvalue suffix="Connected" value="0">
+        <tp:docstring>
+            The connection is alive and all methods are available.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Connecting" value="1">
+        <tp:docstring>
+            The connection has not yet been established, or has been
+            severed and reconnection is being attempted. Some methods may fail
+            until the connection has been established.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Disconnected" value="2">
+        <tp:docstring>
+            The connection has been severed and no method calls are
+            valid. The object may be removed from the bus at any time.
+        </tp:docstring>
+      </tp:enumvalue>
+    </tp:enum>
+
+    <tp:enum name="Connection_Status_Reason" type="u">
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>A reason why the status of the connection changed. Apart from
+          Requested, the values of this enumeration only make sense as
+          reasons why the status changed to Disconnected.</p>
+      </tp:docstring>
+
+      <tp:enumvalue suffix="None_Specified" value="0">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>There is no reason set for this state change. Unknown status
+            reasons SHOULD be treated like this reason.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Disconnected</code>.</p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Requested" value="1">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The change is in response to a user request. Changes to the
+            Connecting or Connected status SHOULD always indicate this reason;
+            changes to the Disconnected status SHOULD indicate this reason
+            if and only if the disconnection was requested by the user.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cancelled</code>.</p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Network_Error" value="2">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>There was an error sending or receiving on the network socket.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.NetworkError</code>.</p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Authentication_Failed" value="3">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The username or password was invalid.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.AuthenticationFailed</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Encryption_Error" value="4">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>There was an error negotiating SSL on this connection, or
+            encryption was unavailable and require-encryption was set when the
+            connection was created.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.EncryptionNotAvailable</code>
+            if encryption was not available at all, or
+            <code>org.freedesktop.Telepathy.Error.EncryptionError</code>
+            if encryption failed.</p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Name_In_Use" value="5">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>In general, this reason indicates that the requested account
+            name or other identification could not be used due to conflict
+            with another connection. It can be divided into three cases:</p>
+
+          <ul>
+            <li>If the status change is from Connecting to Disconnected
+              and the 'register' parameter to RequestConnection was present
+              and true, the requested account could not be created on the
+              server because it already exists.</li>
+
+            <li>If the status change is from Connecting to Disconnected
+              but the 'register' parameter is absent or false, the connection
+              manager could not connect to the specified account because
+              a connection to that account already exists.
+
+              <tp:rationale>
+                In some protocols, like XMPP (when connecting with the same
+                JID and resource as an existing connection), the existing
+                connection &quot;wins&quot; and the new one fails to connect.
+              </tp:rationale>
+            </li>
+
+            <li>If the status change is from Connected to Disconnected,
+              the existing connection was automatically disconnected because
+              a new connection to the same account (perhaps from a different
+              client or location) was established.
+
+              <tp:rationale>
+                In some protocols, like MSNP (when connecting twice with the
+                same Passport), the new connection &quot;wins&quot; and the
+                existing one is automatically disconnected.
+              </tp:rationale>
+            </li>
+          </ul>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.NotYours</code>.
+          </p>
+
+          <tp:rationale>
+            These three errors are distinct but very similar, and can be
+            distinguished by other factors.
+          </tp:rationale>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Not_Provided" value="6">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server did not provide a SSL certificate.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.NotProvided</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Untrusted" value="7">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate is signed by an untrusted certifying
+            authority. This error SHOULD NOT be used to represent a self-signed
+            certificate: use the more specific Cert_Self_Signed reason for
+            that.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.Untrusted</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Expired" value="8">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate has expired.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.Expired</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Not_Activated" value="9">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate is not yet valid.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.NotActivated</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Hostname_Mismatch" value="10">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate did not match its hostname.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.HostnameMismatch</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Fingerprint_Mismatch" value="11">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate does not have the expected
+            fingerprint.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.FingerprintMismatch</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Self_Signed" value="12">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The server's SSL certificate is self-signed.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.HostnameMismatch</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+
+      <tp:enumvalue suffix="Cert_Other_Error" value="13">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>There was some other error validating the server's SSL
+            certificate.</p>
+
+          <p>When disconnected for this reason, the equivalent D-Bus error is
+            <code>org.freedesktop.Telepathy.Error.Cert.Invalid</code>.
+          </p>
+        </tp:docstring>
+      </tp:enumvalue>
+    </tp:enum>
+
+    <signal name="ConnectionError" tp:name-for-bindings="Connection_Error">
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Emitted when an error occurs that renders this connection unusable.
+        </p>
+
+        <p>Whenever this signal is emitted, it MUST immediately be followed by
+          a <tp:member-ref>StatusChanged</tp:member-ref> signal with status
+          Connection_Status_Reason_Disconnected and an appropriate reason
+          code.</p>
+
+        <p>Connection managers SHOULD emit this signal on disconnection, but
+          need not do so. Clients MUST support connection managers that emit
+          StatusChanged(Disconnected, ...) without first emitting
+          ConnectionError.</p>
+
+        <tp:rationale>
+          <p>This signal provides additional information about the reason
+            for disconnection. The reason for connection is always
+            straightforward - it was requested - so it does not need further
+            explanation. However, on errors, it can be useful to provide
+            additional information.</p>
+
+          <p>The <tp:type>Connection_Status_Reason</tp:type> is not given
+            here, since it will be signalled in
+            <tp:member-ref>StatusChanged</tp:member-ref>. A reasonable client
+            implementation would be to store the information given by this
+            signal until StatusChanged is received, at which point the
+            information given by this signal can be used to supplement the
+            StatusChanged signal.</p>
+        </tp:rationale>
+      </tp:docstring>
+
+      <arg name="Error" tp:type="DBus_Error_Name" type="s">
+        <tp:docstring>
+          The name of a D-Bus error describing the error that occurred,
+          which may correspond to a
+          <tp:type>Connection_Status_Reason</tp:type> or be a
+          protocol-specific or connection-manager-specific error in a
+          suitable namespace.
+
+          <tp:rationale>
+            For instance, a SIP connection manager could signal
+            &quot;402 Payment Required&quot; as an error in a
+            connection-manager-specific namespace, or a link-local
+            XMPP implementation that used Avahi could provide the error
+            given to it by the avahi-daemon.
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg name="Details" tp:type="String_Variant_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Additional information about the error, which may include
+            the following well-known keys:</p>
+
+          <dl>
+            <dt>debug-message (s)</dt>
+            <dd>Debugging information on the change, corresponding to the
+              message part of a D-Bus error message, which SHOULD NOT be
+              displayed to users under normal circumstances</dd>
+          </dl>
+
+          <tp:rationale>
+            <p>This argument allows for future extensions. For instance,
+              if indicating DNS lookup failure, we could define a key
+              that indicates the hostname that could not be found.</p>
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+    </signal>
+
+    <signal name="StatusChanged" tp:name-for-bindings="Status_Changed">
+      <arg name="Status" tp:type="Connection_Status" type="u">
+        <tp:docstring>
+          An integer indicating the new status, as defined by ConnectionStatus
+        </tp:docstring>
+      </arg>
+
+      <arg name="Reason" tp:type="Connection_Status_Reason" type="u">
+        <tp:docstring>
+          An integer indicating the reason for the status change, as defined
+          by ConnectionStatusReason
+        </tp:docstring>
+      </arg>
+
+      <tp:docstring>
+        Emitted when the status of the connection changes.  All states and
+        reasons have numerical values, as defined in ConnectionStatus
+        and ConnectionStatusReason.
+      </tp:docstring>
+    </signal>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>This models a connection to a single user account on a communication
+        service. Its basic capability is to provide the facility to request and
+        receive channels of differing types (such as text channels or streaming
+        media channels) which are used to carry out further communication.</p>
+
+      <p>In order to allow Connection objects to be discovered by new clients,
+        the object path and well-known bus name MUST be of the form
+        <code>/org/freedesktop/Telepathy/Connection/cmname/proto/account</code>
+        and
+        <code>org.freedesktop.Telepathy.Connection.cmname.proto.account</code>
+        where:</p>
+
+      <ul>
+        <li><em>cmname</em> is the same
+          <tp:type>Connection_Manager_Name</tp:type> that appears
+          in the connection manager's object path and well-known bus name</li>
+        <li><em>proto</em> is the <tp:type>Protocol</tp:type> name as seen in
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.ConnectionManager">ListProtocols</tp:dbus-ref>,
+          but with &quot;-&quot; replaced with &quot;_&quot; to get a valid
+          object path/bus name</li>
+        <li><em>account</em> is some non-empty sequence of ASCII letters,
+          digits and underscores not starting with a digit</li>
+      </ul>
+
+      <p><em>account</em> SHOULD be formed such that any valid distinct
+        connection instance on this protocol has a distinct name. This
+        might be formed by including the server name followed by the user
+        name (escaped via some suitable mechanism like telepathy-glib's
+        tp_escape_as_identifier() function to preserve uniqueness); on
+        protocols where connecting multiple times is permissable, a
+        per-connection identifier might be necessary to ensure
+        uniqueness.</p>
+
+      <p>Clients MAY parse the object path to determine the connection
+        manager name and the protocol, but MUST NOT attempt to parse the
+        <em>account</em> part. Connection managers MAY use any unique string
+        for this part.</p>
+
+    <p>As well as the methods and signatures below, arbitrary interfaces may be
+    provided by the Connection object to represent extra connection-wide
+    functionality, such as the Connection.Interface.SimplePresence for
+    receiving and
+    reporting presence information, and Connection.Interface.Aliasing for
+    connections where contacts may set and change an alias for themselves.
+    These interfaces can be discovered using the
+    <tp:member-ref>GetInterfaces</tp:member-ref> method.</p>
+
+    <p>Contacts, rooms, and server-stored lists (such as subscribed contacts,
+    block lists, or allow lists) on a service are all represented by
+    immutable <em>handles</em>, which are unsigned non-zero integers which are
+    valid only for the lifetime of the connection object, and are used
+    throughout the protocol where these entities are represented, allowing
+    simple testing of equality within clients.</p>
+
+    <p>Zero as a handle value is sometimes used as a &quot;null&quot; value to mean
+    the absence of a contact, room, etc.</p>
+
+    <p>Handles have per-type uniqueness, meaning that
+    every (handle type, handle number) tuple is guaranteed to be unique within
+    a connection and that a handle alone (without its type) is meaningless or
+    ambiguous. Connection manager implementations should reference count these
+    handles to determine if they are in use either by any active clients or any
+    open channels, and may deallocate them when this ceases to be true. Clients
+    may request handles of a given type and name with the
+    <tp:member-ref>RequestHandles</tp:member-ref> method, inspect the entity
+    name of handles with the <tp:member-ref>InspectHandles</tp:member-ref>
+    method, keep handles from being released with
+    <tp:member-ref>HoldHandles</tp:member-ref>, and notify that they are no
+    longer storing handles with
+    <tp:member-ref>ReleaseHandles</tp:member-ref>.</p>
+    </tp:docstring>
+
+    <tp:changed version="0.17.10">Previously, the account part of
+      Connection bus names/object paths was allowed to have more than one
+      component (i.e. contain dots or slashes), resulting in Connection
+      bus names and object paths with more than 7 components. We now restrict
+      Connection bus names/object paths to have exactly 7
+      components.</tp:changed>
+
+    <tp:changed version="0.17.23">The Requests and Contacts interfaces
+      are now mandatory. Their functionality will be merged into the main
+      Connection interface at some point in future.</tp:changed>
+
+  </interface>
+</node>
+
+<node name="/Connection_Interface_Aliasing" xml:base="../spec/Connection_Interface_Aliasing.xml">
+  <tp:copyright> Copyright (C) 2005, 2006 Collabora Limited </tp:copyright>
+  <tp:copyright> Copyright (C) 2005, 2006 Nokia Corporation </tp:copyright>
+  <tp:copyright> Copyright (C) 2006 INdT </tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Aliasing">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+
+    <tp:mapping array-name="" name="Alias_Map">
+      <tp:docstring>A dictionary whose keys are contact handles and whose
+        values are aliases.</tp:docstring>
+      <tp:member name="Handle" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Alias" type="s"/>
+    </tp:mapping>
+
+    <tp:struct array-name="Alias_Pair_List" name="Alias_Pair">
+      <tp:docstring>
+        A pair (contact handle, alias) as seen in the
+        <tp:member-ref>AliasesChanged</tp:member-ref> signal.
+      </tp:docstring>
+      <tp:member name="Handle" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Alias" type="s"/>
+    </tp:struct>
+
+    <signal name="AliasesChanged" tp:name-for-bindings="Aliases_Changed">
+      <arg name="Aliases" tp:type="Alias_Pair[]" type="a(us)">
+        <!-- FIXME: if we break API, this could be an Alias_Map, a{us} -->
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          An array containing structs of:
+          <ul>
+            <li>the handle representing the contact</li>
+            <li>the new alias</li>
+          </ul>
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Signal emitted when a contact's alias (or that of the user) is changed.
+      </tp:docstring>
+    </signal>
+    <tp:flags name="Connection_Alias_Flags" type="u" value-prefix="Connection_Alias_Flag">
+      <tp:flag suffix="User_Set" value="1">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The aliases of contacts on this connection may be changed by the
+            user of the service, not just by the contacts themselves. This is
+            the case on Jabber, for instance.</p>
+          <p>It is possible that aliases can be changed by the contacts too -
+            which alias takes precedence is not defined by this
+            specification, and depends on the server and/or connection manager
+            implementation.</p>
+          <p>This flag only applies to the aliases of &quot;globally valid&quot; contact
+            handles. At this time, clients should not expect to be able to
+            change the aliases corresponding to any channel-specific
+            handles. If this becomes possible in future, a new flag will
+            be defined.</p>
+        </tp:docstring>
+      </tp:flag>
+    </tp:flags>
+    <method name="GetAliasFlags" tp:name-for-bindings="Get_Alias_Flags">
+      <arg direction="out" name="Alias_Flags" tp:type="Connection_Alias_Flags" type="u">
+        <tp:docstring>
+          An integer with a bitwise OR of flags from ConnectionAliasFlags
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Return a bitwise OR of flags detailing the behaviour of aliases on this
+        connection.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+      </tp:possible-errors>
+    </method>
+    <method name="RequestAliases" tp:name-for-bindings="Request_Aliases">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of handles representing contacts
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Aliases" type="as">
+        <tp:docstring>
+          A list of aliases in the same order as the contact handles
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request the value of several contacts' aliases at once.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+      </tp:possible-errors>
+    </method>
+    <method name="GetAliases" tp:name-for-bindings="Get_Aliases">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of handles representing contacts
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Aliases" tp:type="Alias_Map" type="a{us}">
+        <tp:docstring>
+          A dictionary mapping contact handles to aliases
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request the value of several contacts' aliases at once. This SHOULD
+        only return cached aliases, falling back on the handle name if none is
+        present. Also if there was no cached alias, a request SHOULD be started
+        of which the result is later signalled by
+        <tp:member-ref>AliasesChanged</tp:member-ref>.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+      </tp:possible-errors>
+    </method>
+    <method name="SetAliases" tp:name-for-bindings="Set_Aliases">
+      <arg direction="in" name="Aliases" tp:type="Alias_Map" type="a{us}">
+        <tp:docstring>
+          A dictionary mapping integer handles of contacts
+          to strings of the new alias to set.
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request that the alias of the given contact be changed. Success will be
+        indicated by emitting an <tp:member-ref>AliasesChanged</tp:member-ref>
+        signal. On connections where the CONNECTION_ALIAS_FLAG_USER_SET flag is
+        not set, this method will only ever succeed if the contact is the
+        user's own handle (as returned by <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.GetSelfHandle</tp:dbus-ref>).
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+      </tp:possible-errors>
+    </method>
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>An interface on connections to support protocols where contacts have an
+    alias which they can change at will. Provides a method for the user to set
+    their own alias, and a signal which should be emitted when a contact's
+    alias is changed or first discovered.</p>
+
+    <p>On connections where the user is allowed to set aliases for contacts and
+    store them on the server, the <tp:member-ref>GetAliasFlags</tp:member-ref>
+    method will have the CONNECTION_ALIAS_FLAG_USER_SET flag set, and the
+    <tp:member-ref>SetAliases</tp:member-ref> method may be called on contact
+    handles other than the user themselves.</p>
+
+    <p>Aliases are intended to be used as the main displayed name for the
+    contact, where available.</p>
+    </tp:docstring>
+  </interface>
+</node>
+<node name="/Connection_Interface_Avatars" xml:base="../spec/Connection_Interface_Avatars.xml">
+  <tp:copyright>Copyright (C) 2005-2008 Collabora Limited</tp:copyright>
+  <tp:copyright>Copyright (C) 2005-2008 Nokia Corporation</tp:copyright>
+  <tp:copyright>Copyright (C) 2006 INdT</tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Avatars">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+
+    <tp:simple-type array-name="Avatar_Token_List" name="Avatar_Token" type="s">
+      <tp:changed version="0.17.16">strengthened uniqueness requirements
+        so (CM name, protocol, token) is unique; previously only
+        (our Account, remote contact identifier, token) was required to be
+        unique</tp:changed>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>An opaque token chosen by the connection manager, representing
+          a particular avatar.</p>
+
+        <tp:rationale>
+          <p>Because avatars can be relatively large images, most protocols
+            provide a way to detect whether an old avatar is still valid,
+            or whether an avatar has changed, without pushing the actual
+            avatar data to all clients.</p>
+        </tp:rationale>
+
+        <p>The connection manager MUST choose these tokens in a way that
+          makes it highly unlikely that two different avatars with the same
+          connection manager and protocol will have the same token.</p>
+
+        <tp:rationale>
+          <p>This means that clients MAY use the triple
+            (<tp:type>Connection_Manager_Name</tp:type>,
+            <tp:type>Protocol</tp:type>, avatar token) as a key for
+            their avatar cache. For instance, an avatar for a
+            telepathy-gabble Jabber contact might be stored in a file
+            .../gabble/jabber/4e199b4a1c40b497a95fcd1cd896351733849949.png.</p>
+        </tp:rationale>
+
+        <p>For instance, some protocols (like XMPP) identify avatars by a
+          hash of the avatar data; in this case, the hash can be used as the
+          avatar token.</p>
+
+        <p>Some protocols identify avatars by the timestamp of the last
+          change to the avatar; in these protocols it would be necessary for
+          the connection manager to encode both the timestamp and the
+          contact's identifier into the avatar token in order to ensure
+          uniqueness.</p>
+
+        <p>This token SHOULD be kept short and reasonably suitable for use
+          in a filename, but MAY contain any UTF-8 character (so clients using
+          avatar tokens in filenames MUST be prepared to escape characters
+          that are not valid in filenames). Connection managers for protocols
+          where tokens would otherwise become inconveniently large or contain
+          many unsuitable characters SHOULD hash the identifying data to
+          generate the token.</p>
+      </tp:docstring>
+    </tp:simple-type>
+
+    <tp:mapping name="Avatar_Token_Map">
+      <tp:docstring>A dictionary whose keys are contact handles and whose
+        values are avatar tokens.</tp:docstring>
+      <tp:member name="Handle" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Token" tp:type="Avatar_Token" type="s"/>
+    </tp:mapping>
+
+    <signal name="AvatarUpdated" tp:name-for-bindings="Avatar_Updated">
+      <arg name="Contact" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          An integer handle for the contact whose avatar has changed
+        </tp:docstring>
+      </arg>
+      <arg name="New_Avatar_Token" tp:type="Avatar_Token" type="s">
+        <tp:docstring>
+          Unique token for their new avatar
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Emitted when the avatar for a contact has been updated, or first
+        discovered on this connection. If the token differs from the token
+        associated with the client's cached avatar for this contact, the new
+        avatar should be requested with
+        <tp:member-ref>RequestAvatars</tp:member-ref>.
+      </tp:docstring>
+    </signal>
+
+    <signal name="AvatarRetrieved" tp:name-for-bindings="Avatar_Retrieved">
+      <arg name="Contact" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          The contact whose avatar has been retrieved
+        </tp:docstring>
+      </arg>
+      <arg name="Token" tp:type="Avatar_Token" type="s">
+        <tp:docstring>
+          The token corresponding to the avatar
+        </tp:docstring>
+      </arg>
+      <arg name="Avatar" type="ay">
+        <tp:docstring>
+          An array of bytes containing the image data
+        </tp:docstring>
+      </arg>
+      <arg name="Type" type="s">
+        <tp:docstring>
+          A string containing the image MIME type (eg image/jpeg), or empty if
+          unknown
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Emitted when the avatar for a contact has been retrieved.
+      </tp:docstring>
+    </signal>
+
+    <property access="read" name="SupportedAvatarMIMETypes" tp:name-for-bindings="Supported_Avatar_MIME_Types" type="as">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        An array of supported MIME types (e.g. &quot;image/jpeg&quot;).
+        Clients MAY assume that the first type in this array is preferred.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="MinimumAvatarHeight" tp:name-for-bindings="Minimum_Avatar_Height" type="u">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        The minimum height in pixels of an avatar on this protocol, which MAY
+        be 0.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="MinimumAvatarWidth" tp:name-for-bindings="Minimum_Avatar_Width" type="u">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        The minimum width in pixels of an avatar on this protocol, which MAY
+        be 0.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="RecommendedAvatarHeight" tp:name-for-bindings="Recommended_Avatar_Height" type="u">
+      <tp:added version="0.17.22"/>
+      <tp:docstring>
+        The recommended height in pixels of an avatar on this protocol, or 0 if
+        there is no preferred height.
+        This property cannot change after the Connection goes to the Connected
+        state.
+
+        <tp:rationale>
+          In XMPP a recommended width is given by the protocol specification;
+          in proprietary protocols, using the same avatar size as the
+          proprietary client is likely to lead to the best display to other
+          users.
+        </tp:rationale>
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="RecommendedAvatarWidth" tp:name-for-bindings="Recommended_Avatar_Width" type="u">
+      <tp:added version="0.17.22"/>
+      <tp:docstring>
+        The recommended width in pixels of an avatar on this protocol, or 0 if
+        there is no preferred width.
+        This property cannot change after the Connection goes to the Connected
+        state.
+
+        <tp:rationale>
+          The rationale is the same as for
+          <tp:member-ref>RecommendedAvatarHeight</tp:member-ref>.
+        </tp:rationale>
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="MaximumAvatarHeight" tp:name-for-bindings="Maximum_Avatar_Height" type="u">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        The maximum height in pixels of an avatar on this protocol, or 0 if
+        there is no limit.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="MaximumAvatarWidth" tp:name-for-bindings="Maximum_Avatar_Width" type="u">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        The maximum width in pixels of an avatar on this protocol, or 0 if
+        there is no limit.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <property access="read" name="MaximumAvatarBytes" tp:name-for-bindings="Maximum_Avatar_Bytes" type="u">
+      <tp:added version="0.17.22">Fall back to calling
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref> if getting this
+          property fails.</tp:added>
+      <tp:docstring>
+        The maximum size in bytes of an avatar on this protocol, or 0 if
+        there is no limit.
+        This property cannot change after the Connection goes to the Connected
+        state.
+      </tp:docstring>
+    </property>
+
+    <method name="GetAvatarRequirements" tp:name-for-bindings="Get_Avatar_Requirements">
+      <tp:deprecated version="0.17.22">Use GetAll to retrieve the
+        D-Bus properties on this interface, falling back to this method
+        on failure.</tp:deprecated>
+      <arg direction="out" name="MIME_Types" type="as">
+        <tp:docstring>
+          An array of supported MIME types (eg image/jpeg)
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Min_Width" type="q">
+        <tp:docstring>
+          The minimum image width in pixels
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Min_Height" type="q">
+        <tp:docstring>
+          The minimum image height in pixels
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Max_Width" type="q">
+        <tp:docstring>
+          The maximum image width in pixels, or 0 if there is no limit
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Max_Height" type="q">
+        <tp:docstring>
+          The maximum image height in pixels, or 0 if there is no limit
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Max_Bytes" type="u">
+        <tp:docstring>
+          The maximum image size in bytes, or 0 if there is no limit
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Get the required format of avatars on this connection.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="GetAvatarTokens" tp:name-for-bindings="Get_Avatar_Tokens">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+        An array of handles representing contacts
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Tokens" tp:type="Avatar_Token[]" type="as">
+        <tp:docstring>
+          An array of avatar tokens or empty strings (if no avatar is set) in the
+          same order as the given array of contact handles
+        </tp:docstring>
+      </arg>
+      <tp:deprecated version="0.15.5">Use GetKnownAvatarTokens
+        instead.</tp:deprecated>
+      <tp:docstring>
+        Get the unique tokens for all of the given contacts' avatars.
+
+        Using this method in new Telepathy clients is deprecated; use
+        <tp:member-ref>GetKnownAvatarTokens</tp:member-ref> instead.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="GetKnownAvatarTokens" tp:name-for-bindings="Get_Known_Avatar_Tokens">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+        An array of handles representing contacts
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Tokens" tp:type="Avatar_Token_Map" type="a{us}">
+        <tp:docstring>
+          A dictionary of handles mapped to avatar tokens, containing only
+          the known avatar tokens.
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Get the unique tokens for the given contacts' avatars. These tokens
+        can be persisted across connections, and should be used by the client
+        to check whether the avatars have been updated.  For handles other than
+        the self handle, only tokens that are already known are returned; an
+        empty token means the given contact has no avatar.  However, a CM must
+        always have the tokens for the self handle if one is set (even if it is
+        set to no avatar).  On protocols where the avatar does not persist
+        between connections, a CM should omit the self handle from the returned
+        map until an avatar is explicitly set or cleared.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="RequestAvatar" tp:name-for-bindings="Request_Avatar">
+      <arg direction="in" name="Contact" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          An integer handle for the contact to request the avatar for
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Data" type="ay">
+        <tp:docstring>
+          An array of bytes containing the image data
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="MIME_Type" type="s">
+        <tp:docstring>
+        A string containing the image MIME type (eg image/jpeg), or empty if
+        unknown
+        </tp:docstring>
+      </arg>
+      <tp:deprecated version="0.15.5">Use RequestAvatars
+        instead.</tp:deprecated>
+      <tp:docstring>
+        Request the avatar for a given contact. Using this method in new
+        Telepathy clients is deprecated; use RequestAvatars instead.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring>
+            The contact does not currently have an avatar.
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+
+    <method name="RequestAvatars" tp:name-for-bindings="Request_Avatars">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          The contacts to retrieve avatars for
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request avatars for a number of contacts. The
+        <tp:member-ref>AvatarRetrieved</tp:member-ref> signal is emitted for
+        each avatar retrieved. If the handles are valid but retrieving an
+        avatar fails (for any reason, including the contact not having an
+        avatar) the AvatarRetrieved signal is not emitted for that contact.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="SetAvatar" tp:name-for-bindings="Set_Avatar">
+      <arg direction="in" name="Avatar" type="ay">
+        <tp:docstring>
+          An array of bytes representing the avatar image data
+        </tp:docstring>
+      </arg>
+      <arg direction="in" name="MIME_Type" type="s">
+        <tp:docstring>
+          A string representing the image MIME type
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Token" tp:type="Avatar_Token" type="s">
+        <tp:docstring>
+          The string token of the new avatar
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Set a new avatar image for this connection. The avatar image must
+        respect the requirements obtained by
+        <tp:member-ref>GetAvatarRequirements</tp:member-ref>.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="ClearAvatar" tp:name-for-bindings="Clear_Avatar">
+      <tp:added version="0.15.0"/>
+      <tp:docstring>
+        Remove the avatar image for this connection.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+      </tp:possible-errors>
+    </method>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>An interface for requesting avatars for contacts on a given connection,
+    receiving notification when avatars are changed, and publishing your own
+    avatar.</p>
+
+    <p>Avatars are identified by a string, the <tp:type>Avatar_Token</tp:type>,
+    which represents a particular avatar. Tokens MUST be chosen by the
+    connection manager in such a way that the triple
+    (<tp:type>Connection_Manager_Name</tp:type>, <tp:type>Protocol</tp:type>,
+    <tp:type>Avatar_Token</tp:type>) uniquely identifies an avatar.
+    An empty token means that an avatar has not been set for this contact, and
+    a changed token implies the contact's avatar has changed, but the strings
+    should otherwise be considered opaque by clients.</p>
+
+    <p>A client should use <tp:member-ref>GetKnownAvatarTokens</tp:member-ref>
+    to request the tokens for the
+    avatars of all the contacts it is interested in when it connects. The
+    avatars can then be requested using
+    <tp:member-ref>RequestAvatars</tp:member-ref> for the contacts.  Clients
+    should bind to the <tp:member-ref>AvatarUpdated</tp:member-ref> signal and
+    request a new copy of
+    the avatar when a contacts' avatar token changes. Clients should cache the
+    token and data of each contact's avatar between connections, to avoid
+    repeatedly retrieving the same avatar.</p>
+
+    <p>To publish an avatar, a client should use
+    <tp:member-ref>SetAvatar</tp:member-ref> to provide an image which meets
+    the requirements returned by the
+    <tp:member-ref>GetAvatarRequirements</tp:member-ref>
+    function. On some protocols the avatar is stored on the server, so setting
+    the avatar is persistent, but on others it is transferred via a peer to
+    peer mechanism, so needs to be set every connection. Hence, on every
+    connection, clients should inspect the avatar token of the connection's
+    self handle using <tp:member-ref>GetKnownAvatarTokens</tp:member-ref>; if
+    the self handle is not in the
+    returned map, the client should re-set the avatar. If the self handle's
+    avatar token is known, but the avatar has been changed locally since the
+    last connection, the client should upload the new avatar; if the avatar has
+    not changed locally, then the client should download the avatar from the
+    server if its token differs from the that of the local avatar.</p>
+
+    <p>To remove the published avatar on protocols which have persistent avatars,
+    a client should use the <tp:member-ref>ClearAvatar</tp:member-ref> method.
+    This method can safely be used even if there is no avatar for this
+    connection.</p>
+    </tp:docstring>
+  </interface>
+</node>
+<node name="/Connection_Interface_Capabilities" xml:base="../spec/Connection_Interface_Capabilities.xml">
+  <tp:copyright> Copyright (C) 2005, 2006 Collabora Limited </tp:copyright>
+  <tp:copyright> Copyright (C) 2005, 2006 Nokia Corporation </tp:copyright>
+  <tp:copyright> Copyright (C) 2006 INdT </tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Capabilities">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>An interface for connections where it is possible to know what channel
+        types may be requested before the request is made to the connection
+        object. Each capability represents a commitment by the connection
+        manager that it will ordinarily be able to create a channel when given
+        a request with the given type and handle.</p>
+
+      <p>Capabilities pertain to particular contact handles, and represent
+        activities such as having a text chat or a voice call with the user.
+        The activities are represented by the D-Bus interface name of the
+        channel type for that activity.</p>
+
+      <p>The generic capability flags are defined by
+        <tp:type>Connection_Capability_Flags</tp:type>.</p>
+
+      <p>In addition, channel types may have type specific capability flags of
+        their own, which are described in the documentation for each channel
+        type.</p>
+
+      <p>This interface also provides for user interfaces notifying the
+        connection manager of what capabilities to advertise for the user. This
+        is done by using the
+        <tp:member-ref>AdvertiseCapabilities</tp:member-ref> method, and deals
+        with the
+        interface names of channel types and the type specific flags pertaining
+        to them which are implemented by available client processes.</p>
+    </tp:docstring>
+
+    <tp:changed version="0.17.8">Previously, this interface
+      also expressed capabilities of the connection itself, indicating what
+      sorts of channels could be requested (for instance, the ability to
+      open chatroom lists or chatrooms). However, this was never very
+      well-defined or consistent, and as far as we know it was never
+      implemented correctly. This usage is now deprecated.</tp:changed>
+
+    <!-- FIXME: are the type-specific flags sufficient, in a world that has
+    the Requests interface? It'd be nice if we could advertise capabilities
+    that are not defined in terms of a channel type but rather in terms of
+    a property or something, e.g. Channel.Interface.TLS.Secure for
+    individually TLS'd channels. -->
+
+    <tp:flags name="Connection_Capability_Flags" type="u" value-prefix="Connection_Capability_Flag">
+      <tp:flag suffix="Create" value="1">
+        <tp:docstring>
+          The given channel type and handle can be given to <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection">RequestChannel</tp:dbus-ref>
+          to create a new channel of this type.
+        </tp:docstring>
+      </tp:flag>
+      <tp:flag suffix="Invite" value="2">
+        <tp:docstring>
+          The given contact can be invited to an existing channel of this type.
+        </tp:docstring>
+      </tp:flag>
+    </tp:flags>
+
+    <tp:struct array-name="Capability_Pair_List" name="Capability_Pair">
+      <tp:docstring>A pair (channel type, type-specific flags) as passed to
+        <tp:member-ref>AdvertiseCapabilities</tp:member-ref> on the
+        Capabilities interface.</tp:docstring>
+      <tp:member name="Channel_Type" tp:type="DBus_Interface" type="s"/>
+      <tp:member name="Type_Specific_Flags" type="u"/>
+    </tp:struct>
+
+    <tp:struct array-name="Contact_Capability_List" name="Contact_Capability">
+      <tp:docstring>A struct (contact handle, channel type, generic flags,
+        type-specific flags) representing a capability posessed by a contact,
+        as returned by <tp:member-ref>GetCapabilities</tp:member-ref> on the
+        Capabilities interface.</tp:docstring>
+      <tp:member name="Handle" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Channel_Type" tp:type="DBus_Interface" type="s"/>
+      <tp:member name="Generic_Flags" tp:type="Connection_Capability_Flags" type="u"/>
+      <tp:member name="Type_Specific_Flags" type="u"/>
+    </tp:struct>
+
+    <tp:struct array-name="Capability_Change_List" name="Capability_Change">
+      <tp:docstring>A struct (contact handle, channel type, old generic flags,
+        new generic flags, old type-specific flags, new type-specific flags)
+        representing a change to one of a contact's capabilities, as seen in the
+        <tp:member-ref>CapabilitiesChanged</tp:member-ref> signal on the
+        Capabilities interface.</tp:docstring>
+      <tp:member name="Handle" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Channel_Type" tp:type="DBus_Interface" type="s"/>
+      <tp:member name="Old_Generic_Flags" tp:type="Connection_Capability_Flags" type="u"/>
+      <tp:member name="New_Generic_Flags" tp:type="Connection_Capability_Flags" type="u"/>
+      <tp:member name="Old_Type_Specific_Flags" type="u"/>
+      <tp:member name="New_Type_Specific_Flags" type="u"/>
+    </tp:struct>
+
+    <method name="AdvertiseCapabilities" tp:name-for-bindings="Advertise_Capabilities">
+      <arg direction="in" name="Add" tp:type="Capability_Pair[]" type="a(su)">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          An array of structures containing:
+          <ul>
+            <li>a string channel type</li>
+            <li>a bitwise OR of type specific capability flags</li>
+          </ul>
+        </tp:docstring>
+      </arg>
+      <arg direction="in" name="Remove" tp:type="DBus_Interface[]" type="as">
+        <tp:docstring>
+          An array of D-Bus interface names of channel types to remove
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Self_Capabilities" tp:type="Capability_Pair[]" type="a(su)">
+        <tp:docstring>
+          An array of structures describing the current capabilities containing:
+          <ul>
+            <li>a string channel type</li>
+            <li>a bitwise OR of type specific capability flags</li>
+          </ul>
+        </tp:docstring>
+      </arg>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Used by user interfaces to indicate which channel types they are able
+        to handle on this connection. Because these may be provided by
+        different client processes, this method accepts channel types to add
+        and remove from the set already advertised on this connection. The type
+        of advertised capabilities (create versus invite) is protocol-dependent
+        and hence cannot be set by the this method. In the case of a client
+        adding an already advertised channel type but with new channel type
+        specific flags, the connection manager should simply add the new flags
+        to the set of advertised capabilities.</p>
+
+        <p>Upon a successful invocation of this method, the
+        <tp:member-ref>CapabilitiesChanged</tp:member-ref>
+        signal will be emitted for the user's own handle ( <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.GetSelfHandle</tp:dbus-ref>)
+        by the connection manager to indicate the changes
+        that have been made.  This signal should also be monitored to ensure
+        that the set is kept accurate - for example, a client may remove
+        capabilities or type specific capability flags when it exits
+        which are still provided by another client.</p>
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+      </tp:possible-errors>
+    </method>
+
+    <signal name="CapabilitiesChanged" tp:name-for-bindings="Capabilities_Changed">
+      <arg name="Caps" tp:type="Capability_Change[]" type="a(usuuuu)">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          An array of structures containing:
+          <ul>
+            <li>an integer handle representing the contact</li>
+            <li>a string channel type</li>
+            <li>a bitwise OR of the contact's old generic capability flags</li>
+            <li>a bitwise OR of the contact's new generic capability flags</li>
+            <li>a bitwise OR of the contact's old type specific capability flags</li>
+            <li>a bitwise OR of the contact's new type specific capability flags</li>
+          </ul>
+        </tp:docstring>
+      </arg>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Announce that there has been a change of capabilities on the
+          given handle.</p>
+
+        <p>If the handle is zero, the capabilities refer to the connection
+          itself, in some poorly defined way. This usage is deprecated and
+          clients should ignore it.</p>
+      </tp:docstring>
+    </signal>
+
+    <method name="GetCapabilities" tp:name-for-bindings="Get_Capabilities">
+      <arg direction="in" name="Handles" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>An array of contact handles for this connection.</p>
+
+          <p>This may include zero, which originally meant a query for
+            capabilities available on the connection itself. This usage
+            is deprecated; clients SHOULD NOT do this, and connection managers
+            SHOULD proceed as though zero had not been present in this
+            list.</p>
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Contact_Capabilities" tp:type="Contact_Capability[]" type="a(usuu)">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          An array of structures containing:
+          <ul>
+            <li>an integer handle representing the contact</li>
+            <li>a string channel type</li>
+            <li>a bitwise OR of generic capability flags for the type</li>
+            <li>a bitwise OR of type specific capability flags for the type</li>
+          </ul>
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Returns an array of capabilities for the given contact handles.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            The handle does not represent a contact and is not zero
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+      </tp:possible-errors>
+    </method>
+
+  </interface>
+</node>
+<node name="/Connection_Interface_Contacts" xml:base="../spec/Connection_Interface_Contacts.xml">
+  <tp:copyright> Copyright (C) 2005-2008 Collabora Limited </tp:copyright>
+  <tp:copyright> Copyright (C) 2005, 2006 Nokia Corporation </tp:copyright>
+  <tp:copyright> Copyright (C) 2006 INdT </tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or modify it
+      under the terms of the GNU Lesser General Public License as published by
+      the Free Software Foundation; either version 2.1 of the License, or (at
+      your option) any later version.</p>
+
+    <p>This library is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+      General Public License for more details.</p>
+
+    <p>You should have received a copy of the GNU Lesser General Public License
+      along with this library; if not, write to the Free Software Foundation,
+      Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Contacts">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+    <tp:added version="0.17.9"/>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>This interface allows many attributes of many contacts to be
+        obtained in a single D-Bus round trip.</p>
+
+      <p>Each contact attribute has an string identifier
+        (<tp:type>Contact_Attribute</tp:type>), which is namespaced
+        by the D-Bus interface which defines it.</p>
+
+      <p>An initial set of contact attributes is defined here:</p>
+
+      <dl>
+        <dt>org.freedesktop.Telepathy.Connection/contact-id
+          (type s)</dt>
+        <dd>The same string that would be returned by
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection">InspectHandles</tp:dbus-ref>
+          (always present in the result)
+        </dd>
+        <dt>org.freedesktop.Telepathy.Connection.Interface.Aliasing/alias
+          (type s)</dt>
+        <dd>The same string that would be returned by <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Aliasing">GetAliases</tp:dbus-ref>
+          (always present with some value, possibly the
+          same as Connection/contact-id, if information from the
+          Aliasing interface was requested)
+        </dd>
+        <dt>org.freedesktop.Telepathy.Connection.Interface.Avatars/token
+          (type s, <tp:type>Avatar_Token</tp:type>)</dt>
+        <dd>The same string that would be returned by <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Avatars">GetKnownAvatarTokens</tp:dbus-ref>
+          (omitted from the result if the contact's avatar token is not known,
+          present as an empty string if the contact is known not to have
+          an avatar). Unlike in the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Avatars">GetKnownAvatarTokens</tp:dbus-ref>
+            method, the avatar tokens for the self handle aren't required to be
+            present. This attribute should not be used to determine whether or
+            not the Avatar needs to be set.
+        </dd>
+        <dt>org.freedesktop.Telepathy.Connection.Interface.SimplePresence/presence
+          (type (uss), <tp:type>Simple_Presence</tp:type>)</dt>
+        <dd> The same struct that would be returned by
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.SimplePresence">GetPresences</tp:dbus-ref>
+          (always present with some value if information from the
+          SimplePresence interface was requested)
+          </dd>
+        <dt>org.freedesktop.Telepathy.Connection.Interface.Capabilities/caps
+          (type a(usuu), <tp:type>Contact_Capability</tp:type>)</dt>
+        <dd>The same structs that would be returned by
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Capabilities">GetCapabilities</tp:dbus-ref>
+          (all of them will redundantly have the contact's handle as the
+          first member). Omitted from the result if the contact's capabilities
+          are not known; present in the result as an empty array if the
+          contact is known to have no capabilities at all.</dd>
+
+        <dt>org.freedesktop.Telepathy.Connection.Interface.ContactCapabilities.DRAFT/caps
+          (type a{ua(a{sv}as)},
+          <tp:type>Contact_Capabilities_Map</tp:type>)</dt>
+        <dd>The same structs that would be returned by
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.ContactCapabilities.DRAFT">GetContactCapabilities</tp:dbus-ref>
+          Omitted from the result if the contact's capabilities
+          are not known; present in the result as an empty array if the
+          contact is known to have no capabilities at all.</dd>
+
+        <dt>org.freedesktop.Telepathy.Connection.Interface.Location.DRAFT/location
+          (type a{sv}, <tp:type>Location</tp:type>)</dt>
+        <dd>The same struct used by
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Location.DRAFT">GetLocations</tp:dbus-ref>
+          Omitted from the result if the contact's location
+          is not known.</dd>
+
+      </dl>
+    </tp:docstring>
+
+    <tp:simple-type name="Contact_Attribute" type="s">
+      <tp:docstring>
+        A <tp:type>DBus_Interface</tp:type>, followed by a slash '/' character
+        and an identifier for an attribute defined by that interface. The
+        attribute identifier SHOULD be in lower case.
+
+        <tp:rationale>
+          These aren't D-Bus core Properties, and we want them to look visibly
+          different.
+        </tp:rationale>
+      </tp:docstring>
+    </tp:simple-type>
+
+    <tp:mapping name="Single_Contact_Attributes_Map">
+      <tp:docstring>
+        Some of the attributes of a single contact.
+      </tp:docstring>
+
+      <tp:member name="Attribute" tp:type="Contact_Attribute" type="s">
+        <tp:docstring>
+          The name of the attribute
+        </tp:docstring>
+      </tp:member>
+
+      <tp:member name="Value" type="v">
+        <tp:docstring>
+          The value of the attribute
+        </tp:docstring>
+      </tp:member>
+    </tp:mapping>
+
+    <tp:mapping name="Contact_Attributes_Map">
+      <tp:docstring>Mapping returned by
+        <tp:member-ref>GetContactAttributes</tp:member-ref>, representing a
+        collection of Contacts and their requested attributes.</tp:docstring>
+
+      <tp:member name="Contact" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          A contact
+        </tp:docstring>
+      </tp:member>
+
+      <tp:member name="Attributes" tp:type="Single_Contact_Attributes_Map" type="a{sv}">
+        <tp:docstring>
+          Attributes of that contact
+        </tp:docstring>
+      </tp:member>
+    </tp:mapping>
+
+    <property access="read" name="ContactAttributeInterfaces" tp:name-for-bindings="Contact_Attribute_Interfaces" tp:type="DBus_Interface[]" type="as">
+      <tp:docstring>
+        A list of D-Bus interfaces for which
+        <tp:member-ref>GetContactAttributes</tp:member-ref> is expected to work.
+        This cannot change during the lifetime of the Connection.
+      </tp:docstring>
+    </property>
+
+    <method name="GetContactAttributes" tp:name-for-bindings="Get_Contact_Attributes">
+      <tp:docstring>
+        Return any number of contact attributes for the given handles.
+      </tp:docstring>
+
+      <arg direction="in" name="Handles" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of handles representing contacts.
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Interfaces" tp:type="DBus_Interface[]" type="as">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>A list of strings indicating which D-Bus interfaces the calling
+            process is interested in. All supported attributes from these
+            interfaces, whose values can be obtained without additional network
+            activity, will be in the reply.</p>
+
+          <p>It is an error to request interfaces that are not supported by
+            this Connection (i.e. mentioned in the
+            <tp:member-ref>ContactAttributeInterfaces</tp:member-ref>
+            property).</p>
+
+          <tp:rationale>
+            <p>This makes it possible to distinguish between interfaces for
+              which the Connection has nothing to say (e.g. we don't know the
+              avatar tokens of any of the contacts, so we omitted them all),
+              and interfaces for which this API isn't supported.</p>
+          </tp:rationale>
+
+          <p>Attributes from the interface
+            <tp:dbus-ref>org.freedesktop.Telepathy.Connection</tp:dbus-ref>
+            are always returned, and need not be requested explicitly.</p>
+
+          <p>As well as returning cached information immediately, the
+            connection MAY start asynchronous requests to obtain better
+            values for the contact attributes. If better values are later
+            obtained by this process, they will be indicated with the usual
+            signals (such as <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Aliasing">AliasesChanged</tp:dbus-ref>).</p>
+
+          <tp:rationale>
+            For instance, an XMPP connection manager could download vCards
+            in response to a request for <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Aliasing</tp:dbus-ref>
+            attributes.
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="in" name="Hold" type="b">
+        <tp:docstring>
+          If true, all handles in the result have been held on behalf of the
+          calling process, as if by a call to
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.HoldHandles</tp:dbus-ref>.
+
+          <tp:rationale>
+            For further round-trip avoidance.
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Attributes" tp:type="Contact_Attributes_Map" type="a{ua{sv}}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>A dictionary mapping the contact handles to contact attributes.
+            If any of the requested handles are in fact invalid, they are
+            simply omitted from this mapping. If contact attributes are not
+            immediately known, the behaviour is defined by the interface;
+            the attribute should either be omitted from the result or
+            replaced with a default value.</p>
+
+          <p>Each contact's attributes will always include at least the
+            identifier that would be obtained by inspecting the handle
+            (<code>org.freedesktop.Telepathy.Connection/contact-id</code>).</p>
+        </tp:docstring>
+      </arg>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>
+            One of the requested interfaces is not supported (mentioned in
+            <tp:member-ref>ContactAttributeInterfaces</tp:member-ref>).
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+  </interface>
+</node>
+<node name="/Connection_Interface_Presence" xml:base="../spec/Connection_Interface_Presence.xml">
+  <tp:copyright>
+    Copyright (C) 2005, 2006 Collabora Limited
+  </tp:copyright>
+  <tp:copyright>
+Copyright (C) 2005, 2006 Nokia Corporation
+  </tp:copyright>
+  <tp:copyright>
+Copyright (C) 2006 INdT
+  </tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Presence">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+    <tp:requires interface="org.freedesktop.Telepathy.Connection.Interface.SimplePresence"/>
+
+    <tp:mapping name="Multiple_Status_Map">
+      <tp:docstring>Mapping used in
+        <tp:type>Last_Activity_And_Statuses</tp:type> and passed to
+        <tp:member-ref>SetStatus</tp:member-ref>, representing a collection of
+        statuses. Use of this mapping with more than one member is
+        deprecated.</tp:docstring>
+      <tp:member name="Status" type="s"/>
+      <tp:member name="Parameters" tp:type="String_Variant_Map" type="a{sv}"/>
+    </tp:mapping>
+    <tp:struct array-name="" name="Last_Activity_And_Statuses">
+      <tp:docstring>Structure representing a contact's presence, containing
+        a last-activity time (deprecated) and a Multiple_Status_Map.
+      </tp:docstring>
+      <tp:member name="Last_Activity" tp:type="Unix_Timestamp" type="u"/>
+      <tp:member name="Statuses" tp:type="Multiple_Status_Map" type="a{sa{sv}}"/>
+    </tp:struct>
+    <tp:mapping name="Contact_Presences">
+      <tp:docstring>Mapping returned by
+        <tp:member-ref>GetPresence</tp:member-ref> and signalled by
+        <tp:member-ref>PresenceUpdate</tp:member-ref>, where the keys are
+        contacts and the values represent their presences.</tp:docstring>
+      <tp:member name="Contact" tp:type="Contact_Handle" type="u"/>
+      <tp:member name="Presence" tp:type="Last_Activity_And_Statuses" type="(ua{sa{sv}})"/>
+    </tp:mapping>
+    <tp:struct array-name="" name="Status_Spec">
+      <tp:member name="Type" tp:type="Connection_Presence_Type" type="u"/>
+      <tp:member name="May_Set_On_Self" type="b"/>
+      <tp:member name="Exclusive" type="b"/>
+      <tp:member name="Parameter_Types" tp:type="String_String_Map" type="a{ss}"/>
+    </tp:struct>
+    <tp:mapping name="Status_Spec_Map">
+      <tp:member name="Identifier" type="s"/>
+      <tp:member name="Spec" tp:type="Status_Spec" type="(ubba{ss})"/>
+    </tp:mapping>
+
+    <method name="AddStatus" tp:name-for-bindings="Add_Status">
+      <arg direction="in" name="Status" type="s">
+        <tp:docstring>
+          The string identifier of the desired status
+        </tp:docstring>
+      </arg>
+      <arg direction="in" name="Parameters" tp:type="String_Variant_Map" type="a{sv}">
+        <tp:docstring>
+          A dictionary of optional parameter names mapped to their variant-boxed values
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request that a single presence status is published for the user, along
+        with any desired parameters. Changes will be indicated by
+        <tp:member-ref>PresenceUpdate</tp:member-ref> signals being emitted.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+      </tp:possible-errors>
+    </method>
+    <method name="ClearStatus" tp:name-for-bindings="Clear_Status">
+      <tp:docstring>
+        Request that all of a user's presence statuses be removed. Be aware
+        that this request may simply result in the statuses being replaced by a
+        default available status. Changes will be indicated by
+        <tp:member-ref>PresenceUpdate</tp:member-ref> signals being emitted.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+      </tp:possible-errors>
+    </method>
+    <method name="GetPresence" tp:name-for-bindings="Get_Presence">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of the contacts whose presence should be obtained
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Presence" tp:type="Contact_Presences" type="a{u(ua{sa{sv}})}">
+        <tp:docstring>
+          Presence information in the same format as for the
+          <tp:member-ref>PresenceUpdate</tp:member-ref> signal
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Get presence previously emitted by
+        <tp:member-ref>PresenceUpdate</tp:member-ref> for the given contacts.
+        Data is returned in the same structure as the PresenceUpdate signal.
+        Using this method in favour of
+        <tp:member-ref>RequestPresence</tp:member-ref> has the advantage that
+        it will not wake up each client connected to the PresenceUpdate signal.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+    <method name="GetStatuses" tp:name-for-bindings="Get_Statuses">
+      <arg direction="out" name="Available_Statuses" tp:type="Status_Spec_Map" type="a{s(ubba{ss})}">
+        <tp:docstring>
+        A dictionary of string identifiers mapped to a struct for each status, containing:
+        <ul>
+          <li>a type value from one of the values above</li>
+          <li>a boolean to indicate if this status may be set on yourself</li>
+          <li>a boolean to indicate if this is an exclusive status which you
+            may not set alongside any other</li>
+          <li>a dictionary of valid optional string argument names mapped to
+            their types</li>
+        </ul>
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Get a dictionary of the valid presence statuses for this connection.
+        This is only available when online because only some statuses will
+        be available on some servers.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+      </tp:possible-errors>
+    </method>
+    <signal name="PresenceUpdate" tp:name-for-bindings="Presence_Update">
+      <arg name="Presence" tp:type="Contact_Presences" type="a{u(ua{sa{sv}})}">
+        <tp:docstring>
+        A dictionary of contact handles mapped to a struct containing
+        a UNIX timestamp of the last activity time (in UTC), and
+        a dictionary mapping the contact's current status identifiers to
+          a dictionary of optional parameter names mapped to their
+          variant-boxed values
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        This signal should be emitted when your own presence has been changed,
+        or the presence of the member of any of the connection's channels has
+        been changed, or when the presence requested by
+        <tp:member-ref>RequestPresence</tp:member-ref> is available.
+      </tp:docstring>
+    </signal>
+    <method name="RemoveStatus" tp:name-for-bindings="Remove_Status">
+      <arg direction="in" name="Status" type="s">
+        <tp:docstring>
+          The string identifier of the status not to publish anymore for the user
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request that the given presence status is no longer published for the
+        user. Changes will be indicated by
+        <tp:member-ref>PresenceUpdate</tp:member-ref> signals being emitted. As
+        with <tp:member-ref>ClearStatus</tp:member-ref>, removing a status may
+        actually result in it being replaced by a default available status.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>The status requested is not currently set</tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+    <method name="RequestPresence" tp:name-for-bindings="Request_Presence">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of the contacts whose presence should be obtained
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request the presence for contacts on this connection. A <tp:member-ref>PresenceUpdate</tp:member-ref>
+        signal will be emitted when they are received. This is not the same as
+        subscribing to the presence of a contact, which must be done using the
+        'subscription' <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type">ContactList</tp:dbus-ref>,
+        and on some protocols presence information may not be available unless
+        a subscription exists.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring>
+            The presence of the requested contacts is not reported to this connection
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+    <method name="SetLastActivityTime" tp:name-for-bindings="Set_Last_Activity_Time">
+      <arg direction="in" name="Time" tp:type="Unix_Timestamp" type="u">
+        <tp:docstring>
+          A UNIX timestamp of the user's last activity time (in UTC)
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Request that the recorded last activity time for the user be updated on
+        the server.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotImplemented">
+          <tp:docstring>
+            This protocol has no concept of idle time
+          </tp:docstring>
+        </tp:error>
+      </tp:possible-errors>
+    </method>
+    <method name="SetStatus" tp:name-for-bindings="Set_Status">
+      <arg direction="in" name="Statuses" tp:type="Multiple_Status_Map" type="a{sa{sv}}">
+        <tp:docstring>
+          A dictionary mapping status identifiers to dictionaries, which
+          map optional parameter names to their variant-boxed values
+        </tp:docstring>
+      </arg>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request that the user's presence be changed to the given statuses
+          and desired parameters. Changes will be reflected by
+          <tp:member-ref>PresenceUpdate</tp:member-ref>
+          signals being emitted.</p>
+
+        <p>Statuses whose <tp:type>Connection_Presence_Type</tp:type>
+          is Offline, Error or Unknown MUST NOT be passed to this
+          function. Connection managers SHOULD reject these statuses.</p>
+
+        <tp:rationale>
+          <p>The same rationale as for <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">SimplePresence.SetPresence</tp:dbus-ref>
+            applies.</p>
+        </tp:rationale>
+
+        <p>On certain protocols, this method may be
+          called on a newly-created connection which is still in the
+          DISCONNECTED state, and will sign on with the requested status.
+          If the requested status is not available after signing on,
+          NotAvailable will be returned and the connection will remain
+          offline, or if the protocol does not support signing on with
+          a certain status, Disconnected will be returned.</p>
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.PermissionDenied"/>
+      </tp:possible-errors>
+    </method>
+
+    <tp:deprecated version="0.17.21">Client implementations
+      SHOULD use <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">SimplePresence</tp:dbus-ref>
+      instead.</tp:deprecated>
+    <tp:changed version="0.17.23">Connection managers implementing
+      Presence MUST implement SimplePresence too.</tp:changed>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+
+      <p>This interface is for services which have a concept of presence which
+        can be published for yourself and monitored on your contacts.
+        Telepathy's definition of presence is based on that used by
+        <a href="http://www.galago-project.org/">the Galago project</a>.</p>
+
+    <p>Presence on an individual (yourself or one of your contacts) is modelled as
+    a last activity time along with a set of zero or more statuses, each of
+    which may have arbitrary key/value parameters. Valid statuses are defined
+    per connection, and a list of them can be obtained with the
+    <tp:member-ref>GetStatuses</tp:member-ref> method.</p>
+
+    <p>(The SimplePresence interface which replaces this one restricts
+      presences to one status per contact, with an optional message, which is
+      in practice all that was implemented on this interface.)</p>
+
+    <p>Each status has an arbitrary string identifier which should have an agreed
+    meaning between the connection manager and any client which is expected to
+    make use of it. The well-known values defined by the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">SimplePresence</tp:dbus-ref>
+      interface SHOULD be used where possible</p>
+
+    <p>As well as these well-known status identifiers, every status also has a
+    numerical type value chosen from
+    <tp:type>Connection_Presence_Type</tp:type> which can be used by the client
+    to classify even unknown statuses into different fundamental types.</p>
+
+    <p>These numerical types exist so that even if a client does not understand
+    the string identifier being used, and hence cannot present the presence to
+    the user to set on themselves, it may display an approximation of the
+    presence if it is set on a contact.</p>
+
+    <p>The dictionary of variant types allows the connection manager to exchange
+    further protocol-specific information with the client. It is recommended
+    that the string (s) argument 'message' be interpreted as an optional
+    message which can be associated with a presence status.</p>
+
+    <p>If the connection has a 'subscribe' contact list,
+    <tp:member-ref>PresenceUpdate</tp:member-ref> signals should be emitted to
+    indicate changes of contacts on this list, and should also be emitted for
+    changes in your own presence. Depending on the protocol, the signal may
+    also be emitted for others such as people with whom you are communicating,
+    and any user interface should be updated accordingly.</p>
+
+    <p>On some protocols, <tp:member-ref>RequestPresence</tp:member-ref> may
+    only succeed on contacts on your 'subscribe' list, and other contacts will
+    cause a PermissionDenied error.  On protocols where there is no 'subscribe'
+    list, and RequestPresence succeeds, a client may poll the server
+    intermittently to update any display of presence information.</p>
+    </tp:docstring>
+
+  </interface>
+</node>
+<node name="/Connection_Interface_Requests" xml:base="../spec/Connection_Interface_Requests.xml">
+  <tp:copyright>Copyright (C) 2008 Collabora Limited</tp:copyright>
+  <tp:copyright>Copyright (C) 2008 Nokia Corporation</tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or
+      modify it under the terms of the GNU Lesser General Public
+      License as published by the Free Software Foundation; either
+      version 2.1 of the License, or (at your option) any later version.</p>
+
+    <p>This library is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+      Lesser General Public License for more details.</p>
+
+    <p>You should have received a copy of the GNU Lesser General Public
+      License along with this library; if not, write to the Free Software
+      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+      USA.</p>
+  </tp:license>
+
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.Requests">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+    <tp:added version="0.17.11">(as stable API)</tp:added>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>An enhanced version of the Telepathy connection interface, which can
+        represent bundles of channels that should be dispatched together, and
+        does not assume any particular properties by which channels are
+        uniquely identifiable.</p>
+
+      <p>If this interface is implemented on a connection, then
+        <tp:member-ref>NewChannels</tp:member-ref> MUST be emitted for
+        all new channels, even those created with <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection">RequestChannel</tp:dbus-ref>.</p>
+    </tp:docstring>
+
+    <tp:struct array-name="Channel_Details_List" name="Channel_Details">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+
+      <tp:docstring>
+        Enough details of a channel that clients can work out how to dispatch
+        or handle it.
+      </tp:docstring>
+
+      <tp:member name="Channel" type="o">
+        <tp:docstring>
+          The object path of the channel.
+        </tp:docstring>
+      </tp:member>
+
+      <tp:member name="Properties" tp:type="Qualified_Property_Value_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Properties of the channel.</p>
+
+          <p>Connection managers MUST NOT include properties in this mapping
+            if their values can change. Clients MUST ignore properties
+            that appear in this mapping if their values can change.</p>
+
+          <tp:rationale>
+            <p>If properties that could change were included, the following
+              race condition would be likely to exist in some cases:</p>
+
+            <ul>
+              <li>NewChannels or Get(&quot;Channels&quot;) includes a property P with
+                value V1</li>
+              <li>Client creates a proxy object for the channel</li>
+              <li>The value of P changes to V2</li>
+              <li>Client connects to PChanged signal</li>
+              <li>Client should call Get(&quot;P&quot;) or GetAll here, to avoid the
+                race, but client's author has forgotten to do so</li>
+              <li>Proxy object thinks P == V1, but actually P == V2</li>
+            </ul>
+
+            <p>We've taken the opportunity to make the API encourage the
+              client author to get it right. Where possible, we intend that
+              properties whose value will be used in channel dispatching
+              or other &quot;early&quot; processing will be defined so that they are
+              immutable (can never change).</p>
+          </tp:rationale>
+
+          <p>Each dictionary MUST contain the keys
+            <tp:dbus-ref>org.freedesktop.Telepathy.Channel.ChannelType</tp:dbus-ref>,
+            <tp:dbus-ref>org.freedesktop.Telepathy.Channel.TargetHandleType</tp:dbus-ref>,
+            <tp:dbus-ref>org.freedesktop.Telepathy.Channel.TargetHandle</tp:dbus-ref>,
+            <tp:dbus-ref>org.freedesktop.Telepathy.Channel.TargetID</tp:dbus-ref>
+            and
+            <tp:dbus-ref>org.freedesktop.Telepathy.Channel.Requested</tp:dbus-ref>.
+          </p>
+
+          <tp:rationale>
+            <p>We expect these to be crucial to the channel-dispatching
+              process.</p>
+          </tp:rationale>
+        </tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <method name="CreateChannel" tp:name-for-bindings="Create_Channel">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:changed version="0.17.14">It is now guaranteed that
+        CreateChannel returns the channel before NewChannels announces it
+        (the reverse was previously guaranteed).</tp:changed>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request that an entirely new channel is created.</p>
+
+        <tp:rationale>
+          <p>There is deliberately no flag corresponding to the
+            suppress_handler argument to
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.RequestChannel</tp:dbus-ref>,
+            because passing a FALSE value for that argument is deprecated.
+            Requests made using this interface always behave as though
+            suppress_handler was TRUE.</p>
+        </tp:rationale>
+
+      </tp:docstring>
+
+      <arg direction="in" name="Request" tp:type="Qualified_Property_Value_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>A dictionary containing desirable properties, which MUST include
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel">ChannelType</tp:dbus-ref>.
+            Some properties
+            are defined such that only an exact match makes sense, and
+            connection managers MUST NOT satisfy a request with a channel
+            where that property does not match; some properties are defined
+            such that the connection manager MAY treat the request as merely
+            a hint, and make a best-effort attempt to satisfy it. This is
+            documented separately for each property.</p>
+
+          <p>If this dictionary contains a property whose semantics
+            are not known to the connection manager, this method MUST fail
+            without side-effects (in particular it must not create a new
+            channel).</p>
+
+          <tp:rationale>
+            <p>This is necessary if we want to be able to invent properties
+              in future that, when used in a request, are hard requirements
+              rather than just hints. A connection manager that did not know
+              the semantics of those properties could incorrectly return a
+              new channel that did not satisfy the requirements.</p>
+          </tp:rationale>
+
+          <p>The connection manager MUST NOT respond successfully,
+            and SHOULD NOT create a new channel or cause any other
+            side-effects, unless it can create a new channel that satisfies
+            the client's requirements.</p>
+
+          <p>Properties that will be set by this argument need not have write
+            access after the channel has been created - indeed, it is
+            expected that most will be read-only.</p>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Channel" type="o">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The Channel object, which MUST NOT be signalled with
+            <tp:member-ref>NewChannels</tp:member-ref> until after this method
+            returns.</p>
+
+          <tp:rationale>
+            <p>This allows the requester to alter its handling of
+              NewChannels by knowing whether one of the channels satisfied
+              a request it made.</p>
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Properties" tp:type="Qualified_Property_Value_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Properties of the channel that was produced, equivalent to
+            the properties in <tp:type>Channel_Details</tp:type>.
+            Connection managers MUST NOT include properties here whose
+            values can change, for the same reasons as in
+            <tp:type>Channel_Details</tp:type>.</p>
+        </tp:docstring>
+      </arg>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotImplemented">
+          <tp:docstring>
+            The channel request was one that can never succeed,
+            such as requesting an unsupported channel type, or requesting
+            a channel type which this connection manager does not support with
+            the given target handle type.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            An invalid handle was requested as the value of a property whose
+            value is a handle (like
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy">Channel.TargetHandle</tp:dbus-ref>),
+            or a syntactically invalid identifier was requested as the value
+            of a property whose value is the string corresponding to a handle
+            (like <tp:dbus-ref namespace="org.freedesktop.Telepathy">Channel.TargetID</tp:dbus-ref>).
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>
+            The request matched the fixed properties of a
+            <tp:type>Requestable_Channel_Class</tp:type> in
+            <tp:member-ref>RequestableChannelClasses</tp:member-ref>, but the
+            allowed arguments did not make sense; for example, a <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type">RoomList</tp:dbus-ref>
+            was requested, but the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type.RoomList">Server</tp:dbus-ref>
+            property provided was not a valid DNS name.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotCapable">
+          <tp:docstring>
+            The requested channel cannot be created because the requested
+            contact is using a client that lacks a particular feature.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.Offline">
+          <tp:docstring>
+            The requested channel cannot be created because the target is
+            offline.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+            <p>The requested channel cannot be created, but in
+              principle, a similar request might succeed in future.
+              For instance, this might be because:</p>
+
+            <ul>
+              <li>a channel matching the request already exists and the
+                protocol requires that only one such channel can exist at a
+                time</li>
+              <li>a channel matching the request has already been requested
+                (by a previous call to CreateChannel,
+                <tp:member-ref>EnsureChannel</tp:member-ref>,
+                <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.RequestChannel</tp:dbus-ref>
+                or similar) and the protocol requires that only one such
+                channel can exist at a time</li>
+            </ul>
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Banned"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Full"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.InviteOnly"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="EnsureChannel" tp:name-for-bindings="Ensure_Channel">
+      <tp:added version="0.17.12"/>
+      <tp:changed version="0.17.14">It is now guaranteed that if
+        the channel was created by this call to EnsureChannel, it's returned
+        before NewChannels announces it (the reverse was previously
+        guaranteed).</tp:changed>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request that channels are ensured to exist.</p>
+
+        <tp:rationale>
+          <p>The connection manager is in the best position to determine which
+            existing channels could satisfy which requests.</p>
+        </tp:rationale>
+
+      </tp:docstring>
+
+      <arg direction="in" name="Request" tp:type="Qualified_Property_Value_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>A dictionary containing desirable properties, with the same
+            semantics as the corresponding parameter to
+            <tp:member-ref>CreateChannel</tp:member-ref>.</p>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Yours" type="b">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>If false, the caller of EnsureChannel MUST assume that some
+            other process is handling this channel; if true, the caller of
+            EnsureChannel SHOULD handle it themselves or delegate it to another
+            client.</p>
+
+          <p>If the creation of a channel makes several calls to EnsureChannel
+            (and no other requests) successful, exactly one of those calls MUST
+            return a true value for this argument.</p>
+
+          <p>If the creation of a channel makes other requests successful,
+            the value returned for this argument MUST be such that exactly
+            one of the clients making requests ends up responsible for the
+            channel. In particular, if
+            <tp:member-ref>CreateChannel</tp:member-ref> returns a channel
+            <em>C</em>, any EnsureChannel calls that also return <em>C</em>
+            MUST return a false value for this argument.</p>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Channel" type="o">
+        <tp:docstring>
+          The Channel object. If it was created as a result of this method
+          call, it MUST NOT be signalled by
+          <tp:member-ref>NewChannels</tp:member-ref> until after this method
+          returns.
+
+          <tp:rationale>
+            <p>This allows the requester to alter its handling of
+              NewChannels by knowing whether one of the channels satisfied
+              a request it made.</p>
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+
+      <arg direction="out" name="Properties" tp:type="Qualified_Property_Value_Map" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Properties of the channel that was produced, equivalent to
+            the properties in <tp:type>Channel_Details</tp:type>.
+            Connection managers MUST NOT include properties here whose
+            values can change, for the same reasons as in
+            <tp:type>Channel_Details</tp:type>.</p>
+        </tp:docstring>
+      </arg>
+
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotImplemented">
+          <tp:docstring>
+            The channel request was one that can never succeed,
+            such as requesting an unsupported channel type, or requesting
+            a channel type which this connection manager does not support with
+            the given target handle type.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle">
+          <tp:docstring>
+            An invalid handle was requested as the value of a property whose
+            value is a handle (like
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy">Channel.TargetHandle</tp:dbus-ref>),
+            or a syntactically invalid identifier was requested as the value
+            of a property whose value is the string corresponding to a handle
+            (like <tp:dbus-ref namespace="org.freedesktop.Telepathy">Channel.TargetID</tp:dbus-ref>).
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>
+            The request matched the fixed properties of a
+            <tp:type>Requestable_Channel_Class</tp:type> in
+            <tp:member-ref>RequestableChannelClasses</tp:member-ref>, but the
+            allowed arguments did not make sense; for example, a <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type">RoomList</tp:dbus-ref>
+            was requested, but the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type.RoomList">Server</tp:dbus-ref>
+            property provided was not a valid DNS name.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotCapable">
+          <tp:docstring>
+            The requested channel cannot be created because the requested
+            contact is using a client that lacks a particular feature.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.Offline">
+          <tp:docstring>
+            The requested channel cannot be created because the target is
+            offline.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable">
+          <tp:docstring>
+            The requested channel cannot be created, but in
+            principle, a similar request might succeed in future.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Banned"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.Full"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.Channel.InviteOnly"/>
+      </tp:possible-errors>
+    </method>
+
+    <signal name="NewChannels" tp:name-for-bindings="New_Channels">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:changed version="0.17.14">Added a guarantee of ordering
+        relative to NewChannel</tp:changed>
+
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>New channels have been created. The connection manager SHOULD emit
+          a single signal for any group of closely related channels that are
+          created at the same time, so that the channel dispatcher can try to
+          dispatch them to a handler as a unit.</p>
+
+        <p>In particular, if additional channels are created as a side-effect
+          of a call to <tp:member-ref>CreateChannel</tp:member-ref>,
+          these channels SHOULD appear in the same NewChannels signal as
+          the channel that satisfies the request.</p>
+
+        <tp:rationale>
+          <p>Joining a MUC Tube in XMPP requires joining the corresponding
+            MUC (chatroom), so a <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.Type">Text</tp:dbus-ref>
+            channel can be created as a side-effect.</p>
+        </tp:rationale>
+
+        <p>Every time NewChannels is emitted, it MUST be followed by
+          a <tp:dbus-ref namespace="org.freedesktop.Telepathy">Connection.NewChannel</tp:dbus-ref>
+          signal for each channel.</p>
+
+        <tp:rationale>
+          <p>The double signal emission is for the benefit of older Telepathy
+            clients, which won't be listening for NewChannels.</p>
+
+          <p>The more informative NewChannels signal comes first so that
+            clients that did not examine the connection to find
+            out whether Requests is supported will see the more informative
+            signal for each channel first, and then ignore the less
+            informative signal because it announces a new channel of which
+            they are already aware.</p>
+        </tp:rationale>
+      </tp:docstring>
+
+      <arg name="Channels" tp:type="Channel_Details[]" type="a(oa{sv})">
+        <tp:docstring>
+          The channels and their details. All channels that are signalled
+          together like this MUST have the same
+          <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.FUTURE">Bundle</tp:dbus-ref>
+          property, which may
+          either refer to an existing bundle, or establish a new bundle.
+        </tp:docstring>
+      </arg>
+    </signal>
+
+    <property access="read" name="Channels" tp:name-for-bindings="Channels" tp:type="Channel_Details[]" type="a(oa{sv})">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:docstring>
+        A list of all the channels which currently exist on this connection.
+        Change notification is via the
+        <tp:member-ref>NewChannels</tp:member-ref> and
+        <tp:member-ref>ChannelClosed</tp:member-ref> signals.
+      </tp:docstring>
+    </property>
+
+    <signal name="ChannelClosed" tp:name-for-bindings="Channel_Closed">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:docstring>
+        Emitted when a channel is closed and hence disappears from the
+        <tp:member-ref>Channels</tp:member-ref> property.
+
+        <tp:rationale>
+          This is redundant with the <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel">Closed</tp:dbus-ref>
+          signal on the channel itself, but it does provide full change
+          notification for the Channels property.
+        </tp:rationale>
+      </tp:docstring>
+
+      <arg name="Removed" type="o">
+        <tp:docstring>
+          The channel which has been removed from the Channels property
+        </tp:docstring>
+      </arg>
+    </signal>
+
+    <tp:mapping array-name="Channel_Class_List" name="Channel_Class">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Mapping representing a class of channels that can be requested
+          from a connection manager, can be handled by a user interface,
+          are supported by a contact, etc.</p>
+
+        <p>Classes of channel are identified by the fixed values of
+          a subset of their properties.</p>
+
+        <p>Channel classes SHOULD always include the keys
+          <tp:dbus-ref>org.freedesktop.Telepathy.Channel.ChannelType</tp:dbus-ref>
+          and
+          <tp:dbus-ref>org.freedesktop.Telepathy.Channel.TargetHandleType</tp:dbus-ref>.
+          </p>
+      </tp:docstring>
+
+      <tp:member name="Key" tp:type="DBus_Qualified_Member" type="s">
+        <tp:docstring>
+          A D-Bus interface name, followed by a dot and a D-Bus property name.
+        </tp:docstring>
+      </tp:member>
+
+      <tp:member name="Value" type="v">
+        <tp:docstring>
+          The value of the property.
+        </tp:docstring>
+      </tp:member>
+    </tp:mapping>
+
+    <tp:struct array-name="Requestable_Channel_Class_List" name="Requestable_Channel_Class">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Structure representing a class of channels that can be requested,
+          identified by a set of properties that identify that class of
+          channel.</p>
+
+        <tp:rationale>
+          <p>This will often just be the channel type and the handle type,
+            but can include other properties of the channel - for instance,
+            encrypted channels might require properties that
+            unencrypted channels do not, like an encryption key.</p>
+        </tp:rationale>
+
+        <p>In some cases, these classes of channel may overlap, in the sense
+          that one class fixes all the properties that another class does,
+          plus some more properties.</p>
+
+        <tp:rationale>
+          <p>For older clients to still be able to understand how to request
+            channels in the presence of a hypothetical &quot;encryption&quot; interface,
+            we'd need to represent it like this:</p>
+
+          <ul>
+            <li>class 1: ChannelType = Text, TargetHandleType = CONTACT</li>
+            <li>class 2: Channel.ChannelType = Text,
+              Channel.TargetHandleType = CONTACT,
+              Encryption.Encrypted = TRUE</li>
+          </ul>
+        </tp:rationale>
+      </tp:docstring>
+
+      <tp:member name="Fixed_Properties" tp:type="Channel_Class" type="a{sv}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The property values that identify this requestable channel class.
+            These properties MUST be included in requests for a channel of this
+            class, and MUST take these values.</p>
+
+          <p>Clients that do not understand the semantics of all the
+            Fixed_Properties MUST NOT request channels of this class, since
+            they would be unable to avoid making an incorrect request.</p>
+
+          <p>This implies that connection managers wishing to make channels
+            available to old or minimal clients SHOULD have a channel class
+            with the minimum number of Fixed_Properties, and MAY additionally
+            have channel classes with extra Fixed_Properties.</p>
+        </tp:docstring>
+      </tp:member>
+
+      <tp:member name="Allowed_Properties" tp:type="DBus_Qualified_Member[]" type="as">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Properties that MAY be set when requesting a channel of this
+            channel type and handle type.</p>
+
+          <p>This array MUST NOT include properties that are in the
+            Fixed_Properties mapping.</p>
+
+          <p>Properties in this array may either be required or optional,
+            according to their documented semantics.</p>
+
+          <tp:rationale>
+            <p>For instance, if
+              TargetHandleType takes a value that is not Handle_Type_None,
+              one or the other of TargetHandle and TargetID is required.
+              Clients are expected to understand the documented relationship
+              between the properties, so we do not have separate arrays
+              of required and optional properties.</p>
+          </tp:rationale>
+
+          <p>If this array contains the
+            <tp:dbus-ref namespace="org.freedesktop.Telepathy.Channel.FUTURE">Bundle</tp:dbus-ref>
+            property, then this class of channel can be combined with other
+            channels with that property in a request, or added to an existing
+            bundle. If not, this signifies that the connection manager is
+            unable to mark channels of this class as part of a bundle - this
+            means that to the remote contact they are likely to be
+            indistinguishable from channels requested separately.</p>
+        </tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <property access="read" name="RequestableChannelClasses" tp:name-for-bindings="Requestable_Channel_Classes" tp:type="Requestable_Channel_Class[]" type="a(a{sv}as)">
+      <tp:added version="0.17.11">(as stable API)</tp:added>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>The classes of channel that are expected to be available on this
+          connection, i.e. those for which
+          <tp:member-ref>CreateChannel</tp:member-ref> can reasonably
+          be expected to succeed. User interfaces can use this information
+          to show or hide UI components.</p>
+
+        <p>This property cannot change after the connection has gone to
+          state Connection_Status_Connected, so there is no change
+          notification (if the connection has context-dependent capabilities,
+          it SHOULD advertise support for all classes of channel that it might
+          support during its lifetime). Before this state has been reached,
+          the value of this property is undefined.</p>
+
+        <tp:rationale>
+          <p>This is not on an optional interface, because connection
+            managers can always offer some sort of clue about the channel
+            classes they expect to support (at worst, they can announce
+            support for everything for which they have code).</p>
+        </tp:rationale>
+      </tp:docstring>
+    </property>
+
+  </interface>
+</node>
+<node name="/Connection_Interface_Simple_Presence" xml:base="../spec/Connection_Interface_Simple_Presence.xml">
+  <tp:copyright> Copyright (C) 2005-2008 Collabora Limited </tp:copyright>
+  <tp:copyright> Copyright (C) 2005, 2006 Nokia Corporation </tp:copyright>
+  <tp:copyright> Copyright (C) 2006 INdT </tp:copyright>
+  <tp:license xmlns="http://www.w3.org/1999/xhtml">
+    <p>This library is free software; you can redistribute it and/or modify it
+      under the terms of the GNU Lesser General Public License as published by
+      the Free Software Foundation; either version 2.1 of the License, or (at
+      your option) any later version.</p>
+
+    <p>This library is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+      General Public License for more details.</p>
+
+    <p>You should have received a copy of the GNU Lesser General Public License
+      along with this library; if not, write to the Free Software Foundation,
+      Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+  </tp:license>
+
+  <interface name="org.freedesktop.Telepathy.Connection.Interface.SimplePresence">
+    <tp:requires interface="org.freedesktop.Telepathy.Connection"/>
+
+    <tp:struct name="Simple_Presence">
+      <tp:docstring>
+        A struct representing the presence of a contact.
+      </tp:docstring>
+      <tp:member name="Type" tp:type="Connection_Presence_Type" type="u">
+        <tp:docstring>
+          The presence type, e.g. Connection_Presence_Type_Away.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Status" type="s">
+        <tp:docstring>
+          The string identifier of the status, e.g. &quot;brb&quot;, as defined in the
+          <tp:member-ref>Statuses</tp:member-ref> property.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Status_Message" type="s">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The user-defined status message, e.g. &quot;Back soon!&quot;.</p>
+
+          <p>Clients SHOULD set the status message for the local
+            user to the empty string, unless the user has actually provided
+            a specific message (i.e. one that conveys more information than the
+            Status).</p>
+
+          <p>User interfaces SHOULD regard an empty status message as unset,
+            and MAY replace it with a localized string corresponding to the
+            Status or Type.</p>
+
+          <tp:rationale>
+            Use case: Daf sets his status in Empathy by choosing the Welsh
+            translation of &quot;Available&quot; from a menu.
+            It is more informative for his English-speaking colleagues
+            to see the English translation of &quot;Available&quot; (as localized
+            by their own clients) than to see &quot;Ar Gael&quot; (which they don't
+            understand anyway).
+          </tp:rationale>
+        </tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <tp:mapping name="Simple_Contact_Presences">
+      <tp:docstring>
+        Mapping returned by <tp:member-ref>GetPresences</tp:member-ref>
+        and signalled by <tp:member-ref>PresencesChanged</tp:member-ref>,
+        indicating the presence of a number of contacts.
+      </tp:docstring>
+      <tp:member name="Contact" tp:type="Contact_Handle" type="u">
+        <tp:docstring>
+          A contact
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Presence" tp:type="Simple_Presence" type="(uss)">
+        <tp:docstring>
+          The contact's presence
+        </tp:docstring>
+      </tp:member>
+    </tp:mapping>
+
+    <tp:struct name="Simple_Status_Spec">
+      <tp:docstring>
+        A struct containing information about a status.
+      </tp:docstring>
+      <tp:member name="Type" tp:type="Connection_Presence_Type" type="u">
+        <tp:docstring>
+          The type of a presence. This SHOULD NOT be used as a way to set
+          statuses that the client does not recognise (as explained in
+          <tp:member-ref>SetPresence</tp:member-ref>), but MAY be used to check
+          that the client's assumptions about a particular status name
+          match the connection manager's.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="May_Set_On_Self" type="b">
+        <tp:docstring>
+          If true, the user can set this status on themselves using
+          <tp:member-ref>SetPresence</tp:member-ref>.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Can_Have_Message" type="b">
+        <tp:docstring>
+          If true, a non-empty message can be set for this status. Otherwise,
+          the empty string is the only acceptable message.
+
+          <tp:rationale>
+            On IRC you can be Away with a status message, but if you are
+            available you cannot set a status message.
+          </tp:rationale>
+        </tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <tp:mapping name="Simple_Status_Spec_Map">
+      <tp:docstring>
+        A mapping describing possible statuses.
+      </tp:docstring>
+
+      <tp:member name="Identifier" type="s">
+        <tp:docstring>
+          The string identifier of this status.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Spec" tp:type="Simple_Status_Spec" type="(ubb)">
+        <tp:docstring>
+          Details of this status.
+        </tp:docstring>
+      </tp:member>
+    </tp:mapping>
+
+    <method name="SetPresence" tp:name-for-bindings="Set_Presence">
+      <arg direction="in" name="Status" type="s">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>The string identifier of the desired status. Possible status
+            identifiers are defined in the
+            <tp:member-ref>Statuses</tp:member-ref> property.</p>
+
+          <p>Clients MUST NOT set a status whose string value they do not
+            recognise, even if its presence type in Statuses
+            matches what the user requested.</p>
+
+          <tp:rationale>
+            <p>Suppose a protocol has statuses that include 'phone' (of type
+              BUSY) and 'in-a-meeting' (of type BUSY), but there is no
+              generic 'busy' status.</p>
+
+            <p>If the user requests &quot;Busy&quot; status from a menu, a
+              client author might be tempted to pick an arbitrary status
+              that has type BUSY. However, on this protocol, neither of
+              the choices would be appropriate, and incorrect information
+              about the user would be conveyed.</p>
+          </tp:rationale>
+
+          <p>Statuses whose <tp:type>Connection_Presence_Type</tp:type>
+            is Offline, Error or Unknown MUST NOT be passed to this
+            function. Connection managers SHOULD reject these statuses.</p>
+
+          <tp:rationale>
+            <p>To go offline, call <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection">Disconnect</tp:dbus-ref>
+            instead. The &quot;error&quot; and &quot;unknown&quot; statuses make no sense.</p>
+          </tp:rationale>
+        </tp:docstring>
+      </arg>
+      <arg direction="in" name="Status_Message" type="s">
+        <tp:docstring>
+          The status message associated with the current status.
+        </tp:docstring>
+      </arg>
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>Request that the presence status and status message are published for
+          the connection.  Changes will be indicated by
+          <tp:member-ref>PresencesChanged</tp:member-ref>
+          signals being emitted.</p>
+
+        <p>This method may be called on a newly-created connection while it
+          is still in the DISCONNECTED state, to request that when the
+          connection connects, it will do so with the selected status.</p>
+
+        <p>In DISCONNECTED state the
+          <tp:member-ref>Statuses</tp:member-ref>
+          property will indicate which statuses are allowed to be set
+          while DISCONNECTED (none, if the Connection Manager doesn't allow
+          this). This value MUST NOT be cached, as the set of allowed
+          presences might change upon connecting.</p>
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidArgument">
+          <tp:docstring>
+            Either the specified status is not supported, the specified
+            status cannot be set on the user themselves, or a non-empty
+            message was supplied for a status that does not
+            accept a message.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <method name="GetPresences" tp:name-for-bindings="Get_Presences">
+      <arg direction="in" name="Contacts" tp:type="Contact_Handle[]" type="au">
+        <tp:docstring>
+          An array of the contacts whose presence should be obtained.
+        </tp:docstring>
+      </arg>
+      <arg direction="out" name="Presence" tp:type="Simple_Contact_Presences" type="a{u(uss)}">
+        <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+          <p>Presence information in the same format as for the
+            <tp:member-ref>PresencesChanged</tp:member-ref> signal.
+            The returned mapping MUST include an entry for each contact
+            in the method's argument.</p>
+
+          <p>The definition of the connection presence types Unknown
+            and Offline means that if a connection manager will return
+            Unknown for contacts not on the subscribe list, it MUST delay
+            the reply to this method call until it has found out which
+            contacts are, in fact, on the subscribe list.</p>
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        Get presence previously emitted by
+        <tp:member-ref>PresencesChanged</tp:member-ref> for the given
+        contacts. Data is returned in the same structure as the
+        PresencesChanged signal; no additional network requests are made.
+      </tp:docstring>
+      <tp:possible-errors>
+        <tp:error name="org.freedesktop.Telepathy.Error.Disconnected"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.InvalidHandle"/>
+        <tp:error name="org.freedesktop.Telepathy.Error.NetworkError">
+          <tp:docstring>
+            While discovering the subscribe list in order to distinguish
+            between Unknown and Offline statuses, a network error occurred.
+          </tp:docstring>
+        </tp:error>
+        <tp:error name="org.freedesktop.Telepathy.Error.NotAvailable"/>
+      </tp:possible-errors>
+    </method>
+
+    <property access="read" name="Statuses" tp:name-for-bindings="Statuses" tp:type="Simple_Status_Spec_Map" type="a{s(ubb)}">
+      <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+        <p>A dictionary where the keys are the presence statuses that are
+          available on this connection, and the values are the corresponding
+          presence types.</p>
+
+        <p>While the connection is in the DISCONNECTED state, it contains
+          the set of presence statuses allowed to be set before connecting.
+          The connection manager will attempt to set the appropriate status
+          when the connection becomes connected, but cannot necessarily
+          guarantee it. The available statuses cannot change until the
+          connection status changes, so there is no change notification.</p>
+
+        <p>While the connection is in the CONNECTED state, this property
+          contains the set of presence statuses which are actually available
+          on this protocol. This set is constant for the remaining lifetime
+          of the connection, so again, there is no change notification.</p>
+
+        <p>While the connection is in the CONNECTING state, the value of
+          this property is undefined and SHOULD NOT be used. It can change
+          at any time without notification (in particular, any cached values
+          from when the connection was in the DISCONNECTED or CONNECTING
+          state MUST NOT be assumed to still be correct when the state has
+          become CONNECTED).</p>
+
+        <p>This property MUST include the special statuses &quot;unknown&quot; and
+          &quot;error&quot; if and only if the connection manager can emit them
+          as a contact's status.</p>
+
+        <tp:rationale>
+          For instance, connection managers for local-xmpp (XEP-0174) would
+          omit &quot;unknown&quot; since there is no such concept.
+        </tp:rationale>
+      </tp:docstring>
+    </property>
+
+    <signal name="PresencesChanged" tp:name-for-bindings="Presences_Changed">
+      <arg name="Presence" tp:type="Simple_Contact_Presences" type="a{u(uss)}">
+        <tp:docstring>
+          A dictionary of contact handles mapped to the status,
+          presence type and status message.
+        </tp:docstring>
+      </arg>
+      <tp:docstring>
+        This signal should be emitted when your own presence has been changed,
+        or the presence of the member of any of the connection's channels has
+        been changed.
+      </tp:docstring>
+    </signal>
+
+    <tp:enum name="Connection_Presence_Type" type="u">
+      <tp:enumvalue suffix="Unset" value="0">
+        <tp:docstring>
+          An invalid presence type used as a null value. This value MUST NOT
+          appear in the <tp:member-ref>Statuses</tp:member-ref> property,
+          or in the result of <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface.Presence">GetStatuses</tp:dbus-ref>
+          on the deprecated <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Presence</tp:dbus-ref>
+          interface.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Offline" value="1">
+        <tp:docstring>
+          Offline
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Available" value="2">
+        <tp:docstring>
+          Available
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Away" value="3">
+        <tp:docstring>
+          Away
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Extended_Away" value="4">
+        <tp:docstring>
+          Away for an extended time
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Hidden" value="5">
+        <tp:docstring>
+          Hidden (invisible)
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Busy" value="6">
+        <tp:added version="0.17.0"/>
+        <tp:docstring>
+          Busy, Do Not Disturb.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Unknown" value="7">
+        <tp:added version="0.17.8"/>
+        <tp:docstring>
+          Unknown, unable to determine presence for this contact, for example
+          if the protocol only allows presence of subscribed contacts.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Error" value="8">
+        <tp:added version="0.17.8"/>
+        <tp:docstring>
+          Error, an error occurred while trying to determine presence.  The
+          message, if set, is an error from the server.
+        </tp:docstring>
+      </tp:enumvalue>
+    </tp:enum>
+
+    <tp:enum array-name="Rich_Presence_Access_Control_Type_List" name="Rich_Presence_Access_Control_Type" type="u">
+      <tp:docstring>
+        A type of access control for Rich_Presence_Access_Control.
+        For most types, the exact access control is given by an associated
+        variant.
+
+        <tp:rationale>
+          These are the access control types from XMPP publish/subscribe
+          (XEP-0060).
+        </tp:rationale>
+      </tp:docstring>
+
+      <tp:enumvalue suffix="Whitelist" value="0">
+        <tp:docstring>
+          The associated variant is a list of contacts (signature 'au',
+          Contact_Handle[]) who can see the extended presence information.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Publish_List" value="1">
+        <tp:docstring>
+          All contacts in the user's 'publish' contact list can see the
+          extended presence information. The associated variant is ignored.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Group" value="2">
+        <tp:docstring>
+          The associated variant is a handle of type Group (signature 'u',
+          Group_Handle) representing a group of contacts who can see the
+          extended presence information.
+        </tp:docstring>
+      </tp:enumvalue>
+      <tp:enumvalue suffix="Open" value="3">
+        <tp:docstring>
+          Anyone with access to the service can see the extended presence
+          information.
+        </tp:docstring>
+      </tp:enumvalue>
+    </tp:enum>
+
+    <tp:struct name="Rich_Presence_Access_Control">
+      <tp:docstring>
+        An access control mode for extended presence items like geolocation.
+        This type isn't actually used by the SimplePresence interface, but
+        it's included here so it can be referenced by rich presence interfaces
+        such as <tp:dbus-ref namespace="org.freedesktop.Telepathy.Connection.Interface">Location.DRAFT</tp:dbus-ref>.
+      </tp:docstring>
+
+      <tp:member name="Type" tp:type="Rich_Presence_Access_Control_Type" type="u">
+        <tp:docstring>
+          The type of access control to apply.
+        </tp:docstring>
+      </tp:member>
+      <tp:member name="Detail" type="v">
+        <tp:docstring>
+          Any additional information required by the Type. The required
+          type and semantics are defined for each
+          <tp:type>Rich_Presence_Access_Control_Type</tp:type>.
+        </tp:docstring>
+      </tp:member>
+    </tp:struct>
+
+    <tp:docstring xmlns="http://www.w3.org/1999/xhtml">
+      <p>This interface is for services which have a concept of presence which
+        can be published for yourself and monitored on your contacts.</p>
+
+      <p>Presence on an individual (yourself or one of your contacts) is
+        modelled as a status and a status message. Valid statuses are defined
+        per connection, and a list of those that can be set on youself
+        can be obtained from the
+        <tp:member-ref>Statuses</tp:member-ref>
+        property.</p>
+
+      <p>Each status has an arbitrary string identifier which should have an
+        agreed meaning between the connection manager and any client which is
+        expected to make use of it. The following well-known values should be
+        used where possible to allow clients to identify common choices:</p>
+
+      <table>
+        <tr>
+          <th>status identifier</th>
+          <th>Connection_Presence_Type</th>
+          <th>comments</th>
+        </tr>
+        <tr>
+          <td>available</td>
+          <td>Connection_Presence_Type_Available</td>
+          <td/>
+        </tr>
+        <tr>
+          <td>away</td>
+          <td>Connection_Presence_Type_Away</td>
+          <td/>
+        </tr>
+        <tr>
+          <td>brb</td>
+          <td>Connection_Presence_Type_Away</td>
+          <td>Be Right Back (a more specific form of Away)</td>
+        </tr>
+        <tr>
+          <td>busy</td>
+          <td>Connection_Presence_Type_Busy</td>
+          <td/>
+        </tr>
+        <tr><td>dnd</td>
+          <td>Connection_Presence_Type_Busy</td>
+          <td>Do Not Disturb (a more specific form of Busy)</td>
+        </tr>
+        <tr>
+          <td>xa</td>
+          <td>Connection_Presence_Type_Extended_Away</td>
+          <td>Extended Away</td>
+        </tr>
+        <tr>
+          <td>hidden</td>
+          <td>Connection_Presence_Type_Hidden</td>
+          <td>Also known as &quot;Invisible&quot; or &quot;Appear Offline&quot;</td>
+        </tr>
+        <tr>
+          <td>offline</td>
+          <td>Connection_Presence_Type_Offline</td>
+          <td/>
+        </tr>
+        <tr>
+          <td>unknown</td>
+          <td>Connection_Presence_Type_Unknown</td>
+          <td>special, see below</td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td>Connection_Presence_Type_Error</td>
+          <td>special, see below</td>
+        </tr>
+      </table>
+
+      <p>As well as these well-known status identifiers, every status also has
+        a numerical type value chosen from
+        <tp:type>Connection_Presence_Type</tp:type> which can be
+        used by the client to classify even unknown statuses into different
+        fundamental types.</p>
+
+      <p>These numerical types exist so that even if a client does not
+        understand the string identifier being used, and hence cannot present
+        the presence to the user to set on themselves, it may display an
+        approximation of the presence if it is set on a contact.</p>
+
+      <p>As well as the normal status identifiers, there are two special ones
+        that may be present: 'unknown' with type Unknown and 'error' with type
+        Error. 'unknown' indicates that it is impossible to determine the
+        presence of a contact at this time, for example because it's not on the
+        'subscribe' list and the protocol only allows one to determine the
+        presence of contacts you're subscribed to. 'error' indicates that there
+        was a failure in determining the status of a contact.</p>
+
+      <p>If the connection has a 'subscribe' contact list,
+        <tp:member-ref>PresencesChanged</tp:member-ref>
+        signals should be emitted to indicate changes of contacts on this list,
+        and should also be emitted for changes in your own presence. Depending
+        on the protocol, the signal may also be emitted for others such as
+        people with whom you are communicating, and any user interface should
+        be updated accordingly.</p>
+    </tp:docstring>
+  </interface>
+</node>
+
+</tp:spec>

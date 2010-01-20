@@ -1,0 +1,126 @@
+## Copyright (C) 2007 Crestez Leonard - cdleonard@gmail.com
+##
+## This file is part of Caelum
+##
+## Caelum is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+##
+## Caelum is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import os, sys, glob
+import SCons.Action
+import SCons.Builder
+import SCons.Scanner.C
+import SCons.Util
+import SCons.Script
+from stat import *
+
+SCons.Script.EnsureSConsVersion(0,98,1)
+SConsignFile()
+
+# Setup build variables (used to be options in older versions).
+# These are specified as "scons debug=1" on the command line and are saved in SConstruct.config
+def HandleVariables(env):
+    # Create options
+    vars = Variables('SConstruct.config')
+    vars.AddVariables(
+        BoolOption('debug', 'Build with debugging options', 0),
+        ('extra_ccflags', 'Extra C/C++ flags; like -Wno-deprecated', ''),
+    )
+
+    # Create help
+    Help(vars.GenerateHelpText(env))
+
+    # Update env and save
+    vars.Update(env);
+    vars.Save('SConstruct.config', env);
+
+# Search for external libraries. Returns a dict of extra flags
+def AutoConfigure(env):
+    # Get dependency flags from pkg-config.
+    depflags = {
+        'ogre': env.ParseFlags('!pkg-config OGRE --cflags --libs'),
+        'ois': env.ParseFlags('!pkg-config OIS --cflags --libs'),
+        'cegui': env.ParseFlags('!pkg-config CEGUI CEGUI-OGRE --cflags --libs'),
+    }
+
+    # Don't do checks on cleaning.
+    if env.GetOption('clean'):
+        return depflags
+
+    # Check if the dependency flags work correctly. Don't add any.
+    conf_env = env.Clone();
+    map(conf_env.MergeFlags, depflags.values());
+    conf = conf_env.Configure()
+
+    if not conf.CheckCXXHeader('Ogre.h'):
+        print 'Fatal error: Did not find Ogre library or headers.'
+        Exit(1)
+
+    if not conf.CheckCXXHeader('OIS.h'):
+        print 'Warning: Did not find OIS library or headers, demos will be skipped.'
+        depflags['ois'] = None
+
+    if depflags.has_key('ois') and not conf.CheckCXXHeader('CEGUI/CEGUI.h'):
+        print 'Warning: Did not find CEGUI library, CEGUI demos will be skipped.'
+        depflags['cegui'] = None
+
+    # Don't replace env
+    conf.Finish()
+    return depflags
+
+# Create the actual projects.
+def CreateProjects(env, depflags):
+    # configure debug in standard env.
+    if env.get('debug', 0):
+        env.Append(CPPDEFINES = '_DEBUG')
+        env.Append(CCFLAGS = Split('-g -Wsign-compare -Wall'))
+    else:
+        env.Append(CPPDEFINES = 'NDEBUG')
+        env.Append(CCFLAGS = Split('-O2'))
+
+    env.AppendUnique(CCFLAGS=Split(env.get('extra_ccflags', '')))
+
+    # Main caelum lib
+    ogreEnv = env.Clone()
+    ogreEnv.Append(**depflags['ogre'])
+    ogreEnv.Append(CPPPATH = 'main/include')
+    ogreEnv.Library('Caelum', Glob('main/src/*.cpp'))
+
+    # Environment for samples
+    demoEnv = ogreEnv.Clone()
+    demoEnv.AppendUnique(LIBPATH = '.')
+    demoEnv.AppendUnique(LIBS = 'Caelum')
+    demoEnv.AppendUnique(CPPPATH = 'samples/include');
+
+    # OIS-only demos
+    if depflags.has_key('ois'):
+        oisDemoEnv = demoEnv.Clone()
+        oisDemoEnv.AppendUnique(**depflags['ois'])
+    else:
+        oisDemoEnv = null
+
+    # CEGUI-based demos
+    if depflags.has_key('cegui'):
+        ceguiDemoEnv = oisDemoEnv.Clone();
+        ceguiDemoEnv.AppendUnique(**depflags['cegui'])
+
+    if oisDemoEnv:
+        oisDemoEnv.Program('CaelumDemo', 'samples/src/CaelumDemo.cpp')
+    if ceguiDemoEnv:
+        ceguiDemoEnv.Program('CaelumLab', 'samples/src/CaelumLab.cpp')
+    # This is how you add an ogre scratch exe:
+    #demoEnv.Program('CaelumUnitTest', 'samples/src/CaelumUnitTest.cpp')
+
+env = Environment()
+HandleVariables(env)
+depflags = AutoConfigure(env)
+CreateProjects(env, depflags)

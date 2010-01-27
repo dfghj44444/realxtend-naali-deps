@@ -1,4 +1,4 @@
-QMAKE_PRL_BUILD_DIR = C:/Qt/2009.05/qt/tools/assistant/lib
+QMAKE_PRL_BUILD_DIR = C:/Qt/2010.01/qt/tools/assistant/lib
 QMAKE_PRO_INPUT = lib.pro
 QMAKE_PRL_TARGET = QtHelpd
 QMAKE_PRL_DEFINES = QT_SHARED QT_THREAD_SUPPORT

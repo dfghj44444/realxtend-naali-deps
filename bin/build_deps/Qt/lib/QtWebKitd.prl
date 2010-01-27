@@ -1,4 +1,4 @@
-QMAKE_PRL_BUILD_DIR = C:/Qt/2009.05/qt/src/3rdparty/webkit/WebCore
+QMAKE_PRL_BUILD_DIR = C:/Qt/2010.01/qt/src/3rdparty/webkit/WebCore
 QMAKE_PRO_INPUT = WebCore.pro
 QMAKE_PRL_TARGET = QtWebKitd
 QMAKE_PRL_DEFINES = QT_SHARED QT_THREAD_SUPPORT

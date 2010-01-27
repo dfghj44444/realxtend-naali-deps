@@ -1,4 +1,4 @@
-QMAKE_PRL_BUILD_DIR = C:/Qt/2009.05/qt/tools/assistant/lib/fulltextsearch
+QMAKE_PRL_BUILD_DIR = C:/Qt/2010.01/qt/tools/assistant/lib/fulltextsearch
 QMAKE_PRO_INPUT = fulltextsearch.pro
 QMAKE_PRL_TARGET = QtCLucened
 QMAKE_PRL_DEFINES = QT_SHARED QT_THREAD_SUPPORT

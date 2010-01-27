@@ -1,4 +1,4 @@
-QMAKE_PRL_BUILD_DIR = C:/Qt/2009.05/qt/src/multimedia
+QMAKE_PRL_BUILD_DIR = C:/Qt/2010.01/qt/src/multimedia
 QMAKE_PRO_INPUT = multimedia.pro
 QMAKE_PRL_TARGET = QtMultimedia
 QMAKE_PRL_DEFINES = QT_SHARED QT_THREAD_SUPPORT

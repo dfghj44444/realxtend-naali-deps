@@ -77,7 +77,6 @@ Allocate memory aligned to a 16 byte boundry
 			#define HAVE_MEMALIGN
 		#elif defined(__GNUC__)
 			#define HAVE_MEMALIGN
-			#include <malloc.h>		
 		/* Linux x86_64 and OSX always align allocations to 16 bytes */
 		#elif !defined(__amd64__) && !defined(__APPLE__)	
 			/* FIXME: Yes, this is a big assumption */

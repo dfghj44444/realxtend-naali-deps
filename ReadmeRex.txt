@@ -1,1 +1,0 @@
-This foled contains source distributions of most dependencies used with the viewer. See ReadmeRex.txt in each subfolder for more information about the contents and for build instructions.

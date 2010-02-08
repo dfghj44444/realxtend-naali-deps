@@ -1,0 +1,43 @@
+<SECTION>
+<FILE>stream</FILE>
+<TITLE>TfStream</TITLE>
+TfStream
+TfStreamClass
+tf_stream_error
+tf_stream_get_id
+<SUBSECTION Private>
+TfStreamPrivate
+fserror_to_tperror
+<SUBSECTION Standard>
+TF_STREAM
+TF_TYPE_STREAM
+tf_stream_get_type
+TF_STREAM_CLASS
+TF_STREAM_GET_CLASS
+TF_IS_STREAM
+TF_IS_STREAM_CLASS
+</SECTION>
+
+<SECTION>
+<FILE>channel</FILE>
+<TITLE>TfChannel</TITLE>
+TfChannel
+TfChannelClass
+tf_channel_new
+tf_channel_error
+tf_channel_lookup_stream
+TfChannelStreamFunc
+tf_channel_foreach_stream
+tf_channel_bus_message
+<SUBSECTION Private>
+TfChannelPrivate
+TfNatProperties
+<SUBSECTION Standard>
+TF_CHANNEL
+TF_TYPE_CHANNEL
+tf_channel_get_type
+TF_CHANNEL_CLASS
+TF_CHANNEL_GET_CLASS
+TF_IS_CHANNEL
+TF_IS_CHANNEL_CLASS
+</SECTION>

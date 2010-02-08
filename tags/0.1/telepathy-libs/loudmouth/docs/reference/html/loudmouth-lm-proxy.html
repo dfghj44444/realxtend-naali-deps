@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LmProxy</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.71.0">
+<link rel="start" href="index.html" title="Loudmouth Reference Manual">
+<link rel="up" href="ch01.html" title="Loudmouth">
+<link rel="prev" href="loudmouth-lm-ssl.html" title="LmSSL">
+<link rel="next" href="loudmouth-lm-utils.html" title="Miscellaneous Utility Functions">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Loudmouth">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="loudmouth-lm-ssl.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Loudmouth Reference Manual</th>
+<td><a accesskey="n" href="loudmouth-lm-utils.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#loudmouth-lm-proxy.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#loudmouth-lm-proxy.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="loudmouth-lm-proxy"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="loudmouth-lm-proxy.top_of_page"></a>LmProxy</span></h2>
+<p>LmProxy — API for the proxy support in Loudmouth</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="loudmouth-lm-proxy.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a>;
+enum                <a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a>;
+<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           <a href="loudmouth-lm-proxy.html#lm-proxy-new" title="lm_proxy_new ()">lm_proxy_new</a>                        (<a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type);
+<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           <a href="loudmouth-lm-proxy.html#lm-proxy-new-with-server" title="lm_proxy_new_with_server ()">lm_proxy_new_with_server</a>            (<a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);
+<a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a>         <a href="loudmouth-lm-proxy.html#lm-proxy-get-type" title="lm_proxy_get_type ()">lm_proxy_get_type</a>                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-set-type" title="lm_proxy_set_type ()">lm_proxy_set_type</a>                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         <a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-proxy.html#lm-proxy-get-server" title="lm_proxy_get_server ()">lm_proxy_get_server</a>                 (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-set-server" title="lm_proxy_set_server ()">lm_proxy_set_server</a>                 (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               <a href="loudmouth-lm-proxy.html#lm-proxy-get-port" title="lm_proxy_get_port ()">lm_proxy_get_port</a>                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-set-port" title="lm_proxy_set_port ()">lm_proxy_set_port</a>                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-proxy.html#lm-proxy-get-username" title="lm_proxy_get_username ()">lm_proxy_get_username</a>               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-set-username" title="lm_proxy_set_username ()">lm_proxy_set_username</a>               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-proxy.html#lm-proxy-get-password" title="lm_proxy_get_password ()">lm_proxy_get_password</a>               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-set-password" title="lm_proxy_set_password ()">lm_proxy_set_password</a>               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password);
+<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           <a href="loudmouth-lm-proxy.html#lm-proxy-ref" title="lm_proxy_ref ()">lm_proxy_ref</a>                        (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+void                <a href="loudmouth-lm-proxy.html#lm-proxy-unref" title="lm_proxy_unref ()">lm_proxy_unref</a>                      (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-proxy.description"></a><h2>Description</h2>
+<p>
+Use this together with an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to get the connection to use connect through a proxy. Example of how to use the <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a> API.
+</p>
+<div class="informalexample"><pre class="programlisting">
+LmConnection *connection;
+LmProxy      *proxy;
+connection = lm_connection_new ("myserver");
+proxy = lm_proxy_new_with_server (LM_PROXY_TYPE_HTTP,
+				  "myproxyserver",
+				  8080);
+lm_connection_set_proxy (connection, proxy);
+...</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-proxy.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="LmProxy"></a><h3>LmProxy</h3>
+<pre class="programlisting">typedef struct _LmProxy LmProxy;</pre>
+<p>
+This should not be accessed directly. Use the accessor functions as described below.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmProxyType"></a><h3>enum LmProxyType</h3>
+<pre class="programlisting">typedef enum {
+	LM_PROXY_TYPE_NONE = 0,
+	LM_PROXY_TYPE_HTTP
+} LmProxyType;
+</pre>
+<p>
+The type of the proxy.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-PROXY-TYPE-NONE--CAPS"></a><span class="term"><code class="literal">LM_PROXY_TYPE_NONE</code></span></td>
+<td>Unused
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-PROXY-TYPE-HTTP--CAPS"></a><span class="term"><code class="literal">LM_PROXY_TYPE_HTTP</code></span></td>
+<td>An HTTP proxy.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-new"></a><h3>lm_proxy_new ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           lm_proxy_new                        (<a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type);</pre>
+<p>
+Creates a new Proxy. Used <a href="loudmouth-lm-connection.html#lm-connection-set-proxy" title="lm_connection_set_proxy ()"><span class="type">lm_connection_set_proxy</span></a> to make a connection 
+user this proxy.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> the type of the new proxy
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> a newly create proxy
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-new-with-server"></a><h3>lm_proxy_new_with_server ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           lm_proxy_new_with_server            (<a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);</pre>
+<p>
+Creates a new Proxy. Use <a href="loudmouth-lm-connection.html#lm-connection-set-proxy" title="lm_connection_set_proxy ()"><span class="type">lm_connection_set_proxy</span></a> to make a connection 
+user this proxy.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> the type of the new proxy
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>server</code></em> :</span></td>
+<td> the proxy server
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>port</code></em> :</span></td>
+<td> the proxy server port
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> a newly create proxy
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-get-type"></a><h3>lm_proxy_get_type ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a>         lm_proxy_get_type                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Fetches the proxy type</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the type 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-set-type"></a><h3>lm_proxy_set_type ()</h3>
+<pre class="programlisting">void                lm_proxy_set_type                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         <a href="loudmouth-lm-proxy.html#LmProxyType" title="enum LmProxyType">LmProxyType</a> type);</pre>
+<p>
+Sets the proxy type for <em class="parameter"><code>proxy</code></em> to <em class="parameter"><code>type</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> an LmProxyType
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-get-server"></a><h3>lm_proxy_get_server ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_proxy_get_server                 (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Fetches the server address that <em class="parameter"><code>proxy</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the proxy server address
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-set-server"></a><h3>lm_proxy_set_server ()</h3>
+<pre class="programlisting">void                lm_proxy_set_server                 (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);</pre>
+<p>
+Sets the server address for <em class="parameter"><code>proxy</code></em> to <em class="parameter"><code>server</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>server</code></em> :</span></td>
+<td> Address of the proxy server
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-get-port"></a><h3>lm_proxy_get_port ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               lm_proxy_get_port                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Fetches the port that <em class="parameter"><code>proxy</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The port 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-set-port"></a><h3>lm_proxy_set_port ()</h3>
+<pre class="programlisting">void                lm_proxy_set_port                   (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);</pre>
+<p>
+Sets the server port that <em class="parameter"><code>proxy</code></em> will be using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>port</code></em> :</span></td>
+<td> proxy server port
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-get-username"></a><h3>lm_proxy_get_username ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_proxy_get_username               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Fetches the username that <em class="parameter"><code>proxy</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the username
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-set-username"></a><h3>lm_proxy_set_username ()</h3>
+<pre class="programlisting">void                lm_proxy_set_username               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username);</pre>
+<p>
+Sets the username for <em class="parameter"><code>proxy</code></em> to <em class="parameter"><code>username</code></em> or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> to unset.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>username</code></em> :</span></td>
+<td> Username
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-get-password"></a><h3>lm_proxy_get_password ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_proxy_get_password               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Fetches the password that <em class="parameter"><code>proxy</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the proxy password
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-set-password"></a><h3>lm_proxy_set_password ()</h3>
+<pre class="programlisting">void                lm_proxy_set_password               (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password);</pre>
+<p>
+Sets the password for <em class="parameter"><code>proxy</code></em> to <em class="parameter"><code>password</code></em> or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> to unset.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>password</code></em> :</span></td>
+<td> Password
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-ref"></a><h3>lm_proxy_ref ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           lm_proxy_ref                        (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Adds a reference to <em class="parameter"><code>proxy</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the proxy
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-proxy-unref"></a><h3>lm_proxy_unref ()</h3>
+<pre class="programlisting">void                lm_proxy_unref                      (<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Removes a reference from <em class="parameter"><code>proxy</code></em>. When no more references are present
+<em class="parameter"><code>proxy</code></em> is freed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

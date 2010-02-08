@@ -1,0 +1,21 @@
+
+IF(WIN32)
+    message("Checking dbus")
+    #=======================
+    find_path(DBUS_INCLUDE_DIR_FOUND dbus.h ${DBUS_INCLUDE_DIR}/dbus)
+    find_path(DBUS_LIB_DIR_FOUND dbus-1.lib ${DBUS_LIB_DIR}/release ${DBUS_LIB_DIR})
+    
+    if(DBUS_LIB_DIR_FOUND AND DBUS_INCLUDE_DIR_FOUND)
+        set(DBUS_INCLUDE_DIRS "${DBUS_INCLUDE_DIR}")
+        set(DBUS_LIB_DIRS ${DBUS_LIB_DIR} debug ${DBUS_LIB_DIR}/debug optimized ${DBUS_LIB_DIR}/release)
+        set(DBUS_LIBRARIES debug dbus-1d.lib optimized dbus-1.lib)
+        #set(DBUS_LIBRARIES dbus-1d.lib)
+        message("dbus configured")
+        set(DBUS_FOUND TRUE)
+    else(DBUS_LIB_DIR_FOUND AND DBUS_INCLUDE_DIR_FOUND)
+        message(${DBUS_LIB_DIR_FOUND})
+        message(${DBUS_INCLUDE_DIR_FOUND})
+        set(DBUS_FOUND FALSE)
+        message(FATAL_ERROR "dbus not found -> config fails")
+    endif(DBUS_LIB_DIR_FOUND AND DBUS_INCLUDE_DIR_FOUND)
+ENDIF(WIN32)

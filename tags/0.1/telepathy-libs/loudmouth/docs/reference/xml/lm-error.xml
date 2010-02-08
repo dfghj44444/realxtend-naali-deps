@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="loudmouth-lm-error">
+<refmeta>
+<refentrytitle role="top_of_page" id="loudmouth-lm-error.top_of_page">LmError</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>LOUDMOUTH Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>LmError</refname>
+<refpurpose>Error reporting.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="loudmouth-lm-error.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="GQuark">GQuark</link>              <link linkend="lm-error-quark">lm_error_quark</link>                      (void);
+enum                <link linkend="LmError">LmError</link>;
+#define             <link linkend="LM-ERROR--CAPS">LM_ERROR</link>
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="loudmouth-lm-error.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+N/A
+</para>
+</refsect1>
+
+<refsect1 id="loudmouth-lm-error.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="lm-error-quark" role="function">
+<title>lm_error_quark ()</title>
+<indexterm zone="lm-error-quark"><primary sortas="lm_error_quark">lm_error_quark</primary></indexterm><programlisting><link linkend="GQuark">GQuark</link>              lm_error_quark                      (void);</programlisting>
+<para>
+Returns the Loudmouth <link linkend="GError"><type>GError</type></link> domain quark.</para>
+<para>
+-
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The Loudmouth domain quark used by <link linkend="GError"><type>GError</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="LmError" role="enum">
+<title>enum LmError</title>
+<indexterm zone="LmError"><primary sortas="LmError">LmError</primary></indexterm><programlisting>typedef enum {
+        LM_ERROR_CONNECTION_NOT_OPEN,
+        LM_ERROR_CONNECTION_OPEN,
+        LM_ERROR_AUTH_FAILED,
+	    LM_ERROR_CONNECTION_FAILED
+} LmError;
+</programlisting>
+<para>
+Describes the problem of the error.
+</para><variablelist role="enum">
+<varlistentry id="LM-ERROR-CONNECTION-NOT-OPEN--CAPS" role="constant">
+<term><literal>LM_ERROR_CONNECTION_NOT_OPEN</literal></term>
+<listitem><simpara>Connection not open when trying to send a message
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="LM-ERROR-CONNECTION-OPEN--CAPS" role="constant">
+<term><literal>LM_ERROR_CONNECTION_OPEN</literal></term>
+<listitem><simpara>Connection is already open when trying to open it again.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="LM-ERROR-AUTH-FAILED--CAPS" role="constant">
+<term><literal>LM_ERROR_AUTH_FAILED</literal></term>
+<listitem><simpara>Authentication failed while opening connection
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="LM-ERROR-CONNECTION-FAILED--CAPS" role="constant">
+<term><literal>LM_ERROR_CONNECTION_FAILED</literal></term>
+<listitem><simpara>Connection failed to open.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="LM-ERROR--CAPS" role="macro">
+<title>LM_ERROR</title>
+<indexterm zone="LM-ERROR--CAPS"><primary sortas="LM_ERROR">LM_ERROR</primary></indexterm><programlisting>#define LM_ERROR lm_error_quark ()
+</programlisting>
+<para>
+Macro for getting the error quark.
+</para></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

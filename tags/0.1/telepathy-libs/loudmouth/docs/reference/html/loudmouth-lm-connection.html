@@ -1,0 +1,1773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LmConnection</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.71.0">
+<link rel="start" href="index.html" title="Loudmouth Reference Manual">
+<link rel="up" href="ch01.html" title="Loudmouth">
+<link rel="prev" href="ch01.html" title="Loudmouth">
+<link rel="next" href="loudmouth-lm-error.html" title="LmError">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Loudmouth">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Loudmouth Reference Manual</th>
+<td><a accesskey="n" href="loudmouth-lm-error.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#loudmouth-lm-connection.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#loudmouth-lm-connection.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="loudmouth-lm-connection"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="loudmouth-lm-connection.top_of_page"></a>LmConnection</span></h2>
+<p>LmConnection — A client connection to the server</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="loudmouth-lm-connection.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#define             <a href="loudmouth-lm-connection.html#LM-CONNECTION--CAPS" title="LM_CONNECTION()">LM_CONNECTION</a>                       (o)
+#define             <a href="loudmouth-lm-connection.html#LM-CONNECTION-DEFAULT-PORT--CAPS" title="LM_CONNECTION_DEFAULT_PORT">LM_CONNECTION_DEFAULT_PORT</a>
+#define             <a href="loudmouth-lm-connection.html#LM-CONNECTION-DEFAULT-PORT-SSL--CAPS" title="LM_CONNECTION_DEFAULT_PORT_SSL">LM_CONNECTION_DEFAULT_PORT_SSL</a>
+                    <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a>;
+enum                <a href="loudmouth-lm-connection.html#LmHandlerResult" title="enum LmHandlerResult">LmHandlerResult</a>;
+enum                <a href="loudmouth-lm-connection.html#LmHandlerPriority" title="enum LmHandlerPriority">LmHandlerPriority</a>;
+enum                <a href="loudmouth-lm-connection.html#LmDisconnectReason" title="enum LmDisconnectReason">LmDisconnectReason</a>;
+enum                <a href="loudmouth-lm-connection.html#LmConnectionState" title="enum LmConnectionState">LmConnectionState</a>;
+void                (<a href="loudmouth-lm-connection.html#LmResultFunction" title="LmResultFunction ()">*LmResultFunction</a>)                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> success,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+void                (<a href="loudmouth-lm-connection.html#LmDisconnectFunction" title="LmDisconnectFunction ()">*LmDisconnectFunction</a>)             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmDisconnectReason" title="enum LmDisconnectReason">LmDisconnectReason</a> reason,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *      <a href="loudmouth-lm-connection.html#lm-connection-new" title="lm_connection_new ()">lm_connection_new</a>                   (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);
+<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *      <a href="loudmouth-lm-connection.html#lm-connection-new-with-context" title="lm_connection_new_with_context ()">lm_connection_new_with_context</a>      (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-The-Main-Event-Loop.html#GMainContext"
+>GMainContext</a> *context);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()">lm_connection_open</a>                  (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmResultFunction" title="LmResultFunction ()">LmResultFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-open-and-block" title="lm_connection_open_and_block ()">lm_connection_open_and_block</a>        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-close" title="lm_connection_close ()">lm_connection_close</a>                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-authenticate" title="lm_connection_authenticate ()">lm_connection_authenticate</a>          (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *resource,
+                                                         <a href="loudmouth-lm-connection.html#LmResultFunction" title="LmResultFunction ()">LmResultFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-authenticate-and-block" title="lm_connection_authenticate_and_block ()">lm_connection_authenticate_and_block</a>
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *resource,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               <a href="loudmouth-lm-connection.html#lm-connection-get-keep-alive-rate" title="lm_connection_get_keep_alive_rate ()">lm_connection_get_keep_alive_rate</a>   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-keep-alive-rate" title="lm_connection_set_keep_alive_rate ()">lm_connection_set_keep_alive_rate</a>   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> rate);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-is-open" title="lm_connection_is_open ()">lm_connection_is_open</a>               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-is-authenticated" title="lm_connection_is_authenticated ()">lm_connection_is_authenticated</a>      (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-connection.html#lm-connection-get-server" title="lm_connection_get_server ()">lm_connection_get_server</a>            (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-server" title="lm_connection_set_server ()">lm_connection_set_server</a>            (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);
+const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       <a href="loudmouth-lm-connection.html#lm-connection-get-jid" title="lm_connection_get_jid ()">lm_connection_get_jid</a>               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-jid" title="lm_connection_set_jid ()">lm_connection_set_jid</a>               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *jid);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               <a href="loudmouth-lm-connection.html#lm-connection-get-port" title="lm_connection_get_port ()">lm_connection_get_port</a>              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-port" title="lm_connection_set_port ()">lm_connection_set_port</a>              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);
+<a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             <a href="loudmouth-lm-connection.html#lm-connection-get-ssl" title="lm_connection_get_ssl ()">lm_connection_get_ssl</a>               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-ssl" title="lm_connection_set_ssl ()">lm_connection_set_ssl</a>               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);
+<a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           <a href="loudmouth-lm-connection.html#lm-connection-get-proxy" title="lm_connection_get_proxy ()">lm_connection_get_proxy</a>             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-proxy" title="lm_connection_set_proxy ()">lm_connection_set_proxy</a>             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-send" title="lm_connection_send ()">lm_connection_send</a>                  (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-send-with-reply" title="lm_connection_send_with_reply ()">lm_connection_send_with_reply</a>       (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         LmMessageHandler *handler,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         <a href="loudmouth-lm-connection.html#lm-connection-send-with-reply-and-block" title="lm_connection_send_with_reply_and_block ()">lm_connection_send_with_reply_and_block</a>
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+void                <a href="loudmouth-lm-connection.html#lm-connection-register-message-handler" title="lm_connection_register_message_handler ()">lm_connection_register_message_handler</a>
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         LmMessageHandler *handler,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type,
+                                                         <a href="loudmouth-lm-connection.html#LmHandlerPriority" title="enum LmHandlerPriority">LmHandlerPriority</a> priority);
+void                <a href="loudmouth-lm-connection.html#lm-connection-unregister-message-handler" title="lm_connection_unregister_message_handler ()">lm_connection_unregister_message_handler</a>
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         LmMessageHandler *handler,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type);
+void                <a href="loudmouth-lm-connection.html#lm-connection-set-disconnect-function" title="lm_connection_set_disconnect_function ()">lm_connection_set_disconnect_function</a>
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmDisconnectFunction" title="LmDisconnectFunction ()">LmDisconnectFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify);
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a href="loudmouth-lm-connection.html#lm-connection-send-raw" title="lm_connection_send_raw ()">lm_connection_send_raw</a>              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *str,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a href="loudmouth-lm-connection.html#LmConnectionState" title="enum LmConnectionState">LmConnectionState</a>   <a href="loudmouth-lm-connection.html#lm-connection-get-state" title="lm_connection_get_state ()">lm_connection_get_state</a>             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a>*       <a href="loudmouth-lm-connection.html#lm-connection-ref" title="lm_connection_ref ()">lm_connection_ref</a>                   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+void                <a href="loudmouth-lm-connection.html#lm-connection-unref" title="lm_connection_unref ()">lm_connection_unref</a>                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-connection.description"></a><h2>Description</h2>
+<p>
+An example of how to use Loudmouth with the synchronous API.
+</p>
+<div class="informalexample"><pre class="programlisting">
+int
+main (int argc, char **argv)
+{
+        LmConnection *connection;
+        GError       *error = NULL;
+        gint          i;
+	LmMessage    *m;
+        connection = lm_connection_new ("myserver");
+        if (!lm_connection_open_and_block (connection, &amp;error)) {
+                g_error ("Failed to open: %s\n", error-&gt;message);
+        }
+	if (!lm_connection_authenticate_and_block (connection,
+						   "username", "password",
+						   "resource",
+						   &amp;error)) {
+		g_error ("Failed to authenticate: %s\n", error-&gt;message);
+	}
+	m = lm_message_new ("recipient", LM_MESSAGE_TYPE_MESSAGE);
+	lm_message_node_add_child (m-&gt;node, "body", "message");
+	if (!lm_connection_send (connection, m, &amp;error)) {
+		g_error ("Send failed: %s\n", error-&gt;message);
+	}
+	lm_message_unref (m);
+	lm_connection_close (connection, NULL);
+	lm_connection_unref (connection);
+        return 0;
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="loudmouth-lm-connection.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="LM-CONNECTION--CAPS"></a><h3>LM_CONNECTION()</h3>
+<pre class="programlisting">#define LM_CONNECTION(o) (LmConnection *) o;
+</pre>
+<p>
+Convenience macro used to cast a pointer to a <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><em class="parameter"><code>o</code></em> :</span></td>
+<td>pointer to cast
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LM-CONNECTION-DEFAULT-PORT--CAPS"></a><h3>LM_CONNECTION_DEFAULT_PORT</h3>
+<pre class="programlisting">#define LM_CONNECTION_DEFAULT_PORT     5222
+</pre>
+<p>
+Default jabber client port.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LM-CONNECTION-DEFAULT-PORT-SSL--CAPS"></a><h3>LM_CONNECTION_DEFAULT_PORT_SSL</h3>
+<pre class="programlisting">#define LM_CONNECTION_DEFAULT_PORT_SSL 5223
+</pre>
+<p>
+Default jabber client port when using SSL encryption.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmConnection"></a><h3>LmConnection</h3>
+<pre class="programlisting">typedef struct _LmConnection LmConnection;</pre>
+<p>
+This should not be accessed directly. Use the accessor functions as described below.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmHandlerResult"></a><h3>enum LmHandlerResult</h3>
+<pre class="programlisting">typedef enum {
+	LM_HANDLER_RESULT_REMOVE_MESSAGE,
+	LM_HANDLER_RESULT_ALLOW_MORE_HANDLERS
+} LmHandlerResult;
+</pre>
+<p>
+The return type of an LmMessageHandler. This determines whether more message handlers should be called.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-HANDLER-RESULT-REMOVE-MESSAGE--CAPS"></a><span class="term"><code class="literal">LM_HANDLER_RESULT_REMOVE_MESSAGE</code></span></td>
+<td>Stop calling message handlers. The message handler returning this declares the message has been handled and should be removed.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-HANDLER-RESULT-ALLOW-MORE-HANDLERS--CAPS"></a><span class="term"><code class="literal">LM_HANDLER_RESULT_ALLOW_MORE_HANDLERS</code></span></td>
+<td>Return to continue the calling handlers from the handler list. This declares that another handlers should handle the message.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmHandlerPriority"></a><h3>enum LmHandlerPriority</h3>
+<pre class="programlisting">typedef enum {
+	LM_HANDLER_PRIORITY_LAST   = 1,
+	LM_HANDLER_PRIORITY_NORMAL = 2,
+	LM_HANDLER_PRIORITY_FIRST  = 3
+} LmHandlerPriority;
+</pre>
+<p>
+Since the handlers decide whether to stop the calling chain with there return values it's sometimes decirable to be able to set priority. For example a handler that only logs all incoming messages and then pass the message on to another handler wants to have priority <a href="loudmouth-lm-connection.html#LM-HANDLER-PRIORITY-FIRST--CAPS"><code class="literal">LM_HANDLER_PRIORITY_FIRST</code></a>. An handler that should take all messages that wasn't handled by anything else would want to have priority <a href="loudmouth-lm-connection.html#LM-HANDLER-PRIORITY-LAST--CAPS"><code class="literal">LM_HANDLER_PRIORITY_LAST</code></a>. If several handlers have the same priority nothing can be said about the order the handlers will be called in.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-HANDLER-PRIORITY-LAST--CAPS"></a><span class="term"><code class="literal">LM_HANDLER_PRIORITY_LAST</code></span></td>
+<td>Call the handler after all handlers with <span class="type">NORMAL</span> and <span class="type">FIRST</span> priority.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-HANDLER-PRIORITY-NORMAL--CAPS"></a><span class="term"><code class="literal">LM_HANDLER_PRIORITY_NORMAL</code></span></td>
+<td>Called before handlers with priority <span class="type">LAST</span> and after those with <span class="type">FIRST</span>.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-HANDLER-PRIORITY-FIRST--CAPS"></a><span class="term"><code class="literal">LM_HANDLER_PRIORITY_FIRST</code></span></td>
+<td>These are called before all other handlers.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmDisconnectReason"></a><h3>enum LmDisconnectReason</h3>
+<pre class="programlisting">typedef enum {
+	LM_DISCONNECT_REASON_OK,
+	LM_DISCONNECT_REASON_PING_TIME_OUT,
+	LM_DISCONNECT_REASON_HUP,
+	LM_DISCONNECT_REASON_ERROR,
+	LM_DISCONNECT_REASON_RESOURCE_CONFLICT,
+	LM_DISCONNECT_REASON_INVALID_XML,
+	LM_DISCONNECT_REASON_UNKNOWN
+} LmDisconnectReason;
+</pre>
+<p>
+Sent with <a href="loudmouth-lm-connection.html#LmDisconnectFunction" title="LmDisconnectFunction ()"><span class="type">LmDisconnectFunction</span></a> to describe why a connection was closed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-OK--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_OK</code></span></td>
+<td>User requested disconnect.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-PING-TIME-OUT--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_PING_TIME_OUT</code></span></td>
+<td>Connection to the server timed out.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-HUP--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_HUP</code></span></td>
+<td>The socket emitted that the connection was hung up.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-ERROR--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_ERROR</code></span></td>
+<td>A generic error somewhere in the transport layer.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-RESOURCE-CONFLICT--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_RESOURCE_CONFLICT</code></span></td>
+<td>Another connection was made to the server with the same resource.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-INVALID-XML--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_INVALID_XML</code></span></td>
+<td>Invalid XML was sent from the client.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-DISCONNECT-REASON-UNKNOWN--CAPS"></a><span class="term"><code class="literal">LM_DISCONNECT_REASON_UNKNOWN</code></span></td>
+<td>An unknown error.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmConnectionState"></a><h3>enum LmConnectionState</h3>
+<pre class="programlisting">typedef enum {
+	LM_CONNECTION_STATE_CLOSED,
+	LM_CONNECTION_STATE_OPENING,
+	LM_CONNECTION_STATE_OPEN,
+	LM_CONNECTION_STATE_AUTHENTICATING,
+	LM_CONNECTION_STATE_AUTHENTICATED
+} LmConnectionState;
+</pre>
+<p>
+Describes the current state of an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<a name="LM-CONNECTION-STATE-CLOSED--CAPS"></a><span class="term"><code class="literal">LM_CONNECTION_STATE_CLOSED</code></span></td>
+<td>The connection is closed.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CONNECTION-STATE-OPENING--CAPS"></a><span class="term"><code class="literal">LM_CONNECTION_STATE_OPENING</code></span></td>
+<td>The connection is in the process of opening.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CONNECTION-STATE-OPEN--CAPS"></a><span class="term"><code class="literal">LM_CONNECTION_STATE_OPEN</code></span></td>
+<td>The connection is open.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CONNECTION-STATE-AUTHENTICATING--CAPS"></a><span class="term"><code class="literal">LM_CONNECTION_STATE_AUTHENTICATING</code></span></td>
+<td>The connection is in the process of authenticating.
+</td>
+</tr>
+<tr>
+<td>
+<a name="LM-CONNECTION-STATE-AUTHENTICATED--CAPS"></a><span class="term"><code class="literal">LM_CONNECTION_STATE_AUTHENTICATED</code></span></td>
+<td>The connection is authenticated and is ready to start sending/receiving messages.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmResultFunction"></a><h3>LmResultFunction ()</h3>
+<pre class="programlisting">void                (*LmResultFunction)                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a> success,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Callback for informing if an asynchronous operation was successful.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td>an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>success</code></em> :</span></td>
+<td>the result, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if operation succeeded, otherwise <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><code class="literal">FALSE</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td>User data passed when function being called.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="LmDisconnectFunction"></a><h3>LmDisconnectFunction ()</h3>
+<pre class="programlisting">void                (*LmDisconnectFunction)             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmDisconnectReason" title="enum LmDisconnectReason">LmDisconnectReason</a> reason,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Callback called when a connection is closed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td>an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>reason</code></em> :</span></td>
+<td>the reason the connection was closed.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td>User data passed when function being called.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-new"></a><h3>lm_connection_new ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *      lm_connection_new                   (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);</pre>
+<p>
+Creates a new closed connection. To open the connection call 
+<a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()"><code class="function">lm_connection_open()</code></a>. <em class="parameter"><code>server</code></em> can be <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> but must be set before calling <a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()"><code class="function">lm_connection_open()</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>server</code></em> :</span></td>
+<td> The hostname to the server for the connection.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> A newly created LmConnection, should be unreffed with <a href="loudmouth-lm-connection.html#lm-connection-unref" title="lm_connection_unref ()"><code class="function">lm_connection_unref()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-new-with-context"></a><h3>lm_connection_new_with_context ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *      lm_connection_new_with_context      (const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-The-Main-Event-Loop.html#GMainContext"
+>GMainContext</a> *context);</pre>
+<p>
+Creates a new closed connection running in a certain context. To open the 
+connection call <a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()"><span class="type">lm_connection_open</span></a>. <em class="parameter"><code>server</code></em> can be <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> but must be set 
+before calling <a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()"><span class="type">lm_connection_open</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>server</code></em> :</span></td>
+<td> The hostname to the server for the connection.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>context</code></em> :</span></td>
+<td> The context this connection should be running in.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> A newly created LmConnection, should be unreffed with <a href="loudmouth-lm-connection.html#lm-connection-unref" title="lm_connection_unref ()"><code class="function">lm_connection_unref()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-open"></a><h3>lm_connection_open ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_open                  (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmResultFunction" title="LmResultFunction ()">LmResultFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+An async call to open <em class="parameter"><code>connection</code></em>. When the connection is open <em class="parameter"><code>function</code></em> will be called.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to open
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>function</code></em> :</span></td>
+<td> Callback function that will be called when the connection is open.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td> User data that will be passed to <em class="parameter"><code>function</code></em>.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>notify</code></em> :</span></td>
+<td> Function for freeing that user_data, can be NULL.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if everything went fine, otherwise <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-open-and-block"></a><h3>lm_connection_open_and_block ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_open_and_block        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Opens <em class="parameter"><code>connection</code></em> and waits until the stream is setup.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to open
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where encountered during opening and stream setup successfully, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-close"></a><h3>lm_connection_close ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_close                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+A synchronous call to close the connection. When returning the connection is considered to be closed and can be opened again with <a href="loudmouth-lm-connection.html#lm-connection-open" title="lm_connection_open ()"><code class="function">lm_connection_open()</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to close 
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> Returns <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where detected, otherwise <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-authenticate"></a><h3>lm_connection_authenticate ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_authenticate          (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *resource,
+                                                         <a href="loudmouth-lm-connection.html#LmResultFunction" title="LmResultFunction ()">LmResultFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Tries to authenticate a user against the server. The <span class="type">LmResult</span> in the result callback <em class="parameter"><code>function</code></em> will say whether it succeeded or not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to authenticate.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>username</code></em> :</span></td>
+<td> Username used to authenticate.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>password</code></em> :</span></td>
+<td> Password corresponding to <em class="parameter"><code>username</code></em>.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>resource</code></em> :</span></td>
+<td> Resource used for this connection.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>function</code></em> :</span></td>
+<td> Callback called when authentication is finished.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td> Userdata passed to <em class="parameter"><code>function</code></em> when called.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>notify</code></em> :</span></td>
+<td> Destroy function to free the memory used by <em class="parameter"><code>user_data</code></em>, can be NULL.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where detected while sending the authentication message, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-authenticate-and-block"></a><h3>lm_connection_authenticate_and_block ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_authenticate_and_block
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *username,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *password,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *resource,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Tries to authenticate a user against the server. This function blocks until a reply to the authentication attempt is returned and returns whether it was successful or not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>username</code></em> :</span></td>
+<td> Username used to authenticate.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>password</code></em> :</span></td>
+<td> Password corresponding to <em class="parameter"><code>username</code></em>.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>resource</code></em> :</span></td>
+<td> Resource used for this connection.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where detected and authentication was successful. <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-keep-alive-rate"></a><h3>lm_connection_get_keep_alive_rate ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               lm_connection_get_keep_alive_rate   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Get the keep alive rate, in seconds. Zero is returned if no keep alive rate has been set.
+</p>
+<p>
+Since 1.4.0</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> 
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The keep alive rate in seconds.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-keep-alive-rate"></a><h3>lm_connection_set_keep_alive_rate ()</h3>
+<pre class="programlisting">void                lm_connection_set_keep_alive_rate   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> rate);</pre>
+<p>
+Set the keep alive rate, in seconds. Set to 0 to prevent keep alive messages to be sent.
+A keep alive message is a single space character.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>rate</code></em> :</span></td>
+<td> Number of seconds between keep alive packages are sent.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-is-open"></a><h3>lm_connection_is_open ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_is_open               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Check if the <em class="parameter"><code>connection</code></em> is currently open.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to check if it is open.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if connection is open and <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> if it is closed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-is-authenticated"></a><h3>lm_connection_is_authenticated ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_is_authenticated      (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Check if <em class="parameter"><code>connection</code></em> is authenticated.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to check if it is authenticated
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if connection is authenticated, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-server"></a><h3>lm_connection_get_server ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_connection_get_server            (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Fetches the server address that <em class="parameter"><code>connection</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the server address
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-server"></a><h3>lm_connection_set_server ()</h3>
+<pre class="programlisting">void                lm_connection_set_server            (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *server);</pre>
+<p>
+Sets the server address for <em class="parameter"><code>connection</code></em> to <em class="parameter"><code>server</code></em>. Notice that <em class="parameter"><code>connection</code></em>
+can't be open while doing this.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>server</code></em> :</span></td>
+<td> Address of the server
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-jid"></a><h3>lm_connection_get_jid ()</h3>
+<pre class="programlisting">const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *       lm_connection_get_jid               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Fetches the jid set for <em class="parameter"><code>connection</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> the jid
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-jid"></a><h3>lm_connection_set_jid ()</h3>
+<pre class="programlisting">void                lm_connection_set_jid               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *jid);</pre>
+<p>
+Sets the JID to be used for <em class="parameter"><code>connection</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>jid</code></em> :</span></td>
+<td> JID to be used for <em class="parameter"><code>connection</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-port"></a><h3>lm_connection_get_port ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a>               lm_connection_get_port              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Fetches the port that <em class="parameter"><code>connection</code></em> is using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The port used.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-port"></a><h3>lm_connection_set_port ()</h3>
+<pre class="programlisting">void                lm_connection_set_port              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"
+>guint</a> port);</pre>
+<p>
+Sets the server port that <em class="parameter"><code>connection</code></em> will be using.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>port</code></em> :</span></td>
+<td> server port
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-ssl"></a><h3>lm_connection_get_ssl ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *             lm_connection_get_ssl               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Returns the SSL struct if the connection is using one.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The ssl struct or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if no proxy is used.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-ssl"></a><h3>lm_connection_set_ssl ()</h3>
+<pre class="programlisting">void                lm_connection_set_ssl               (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL">LmSSL</a> *ssl);</pre>
+<p>
+Sets SSL struct or unset if <em class="parameter"><code>ssl</code></em> is <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. If set <em class="parameter"><code>connection</code></em> will use SSL to for the connection.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> An <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ssl</code></em> :</span></td>
+<td> An <a href="loudmouth-lm-ssl.html#LmSSL" title="LmSSL"><span class="type">LmSSL</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-proxy"></a><h3>lm_connection_get_proxy ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *           lm_connection_get_proxy             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Returns the proxy if the connection is using one.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The proxy or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if no proxy is used.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-proxy"></a><h3>lm_connection_set_proxy ()</h3>
+<pre class="programlisting">void                lm_connection_set_proxy             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy">LmProxy</a> *proxy);</pre>
+<p>
+Sets the proxy to use for this connection. To unset pass <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>proxy</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-proxy.html#LmProxy" title="LmProxy"><span class="type">LmProxy</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-send"></a><h3>lm_connection_send ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_send                  (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Asynchronous call to send a message.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> to send message over.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a> to send.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> Returns <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where detected while sending, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-send-with-reply"></a><h3>lm_connection_send_with_reply ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_send_with_reply       (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         LmMessageHandler *handler,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Send a <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a> which will result in a reply.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a> used to send message.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a> to send.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>handler</code></em> :</span></td>
+<td> <span class="type">LmMessageHandler</span> that will be used when a reply to <em class="parameter"><code>message</code></em> arrives
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> location to store error, or <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> Returns <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors where detected while sending, <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-send-with-reply-and-block"></a><h3>lm_connection_send_with_reply_and_block ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *         lm_connection_send_with_reply_and_block
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage">LmMessage</a> *message,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Send <em class="parameter"><code>message</code></em> and wait for return.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection"><span class="type">LmConnection</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>message</code></em> :</span></td>
+<td> an <a href="loudmouth-lm-message.html#LmMessage" title="LmMessage"><span class="type">LmMessage</span></a>
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> Set if error was detected during sending.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The reply
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-register-message-handler"></a><h3>lm_connection_register_message_handler ()</h3>
+<pre class="programlisting">void                lm_connection_register_message_handler
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         LmMessageHandler *handler,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type,
+                                                         <a href="loudmouth-lm-connection.html#LmHandlerPriority" title="enum LmHandlerPriority">LmHandlerPriority</a> priority);</pre>
+<p>
+Registers a <span class="type">LmMessageHandler</span> to handle incoming messages of a certain type.
+To unregister the handler call <a href="loudmouth-lm-connection.html#lm-connection-unregister-message-handler" title="lm_connection_unregister_message_handler ()"><code class="function">lm_connection_unregister_message_handler()</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to register a handler for.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>handler</code></em> :</span></td>
+<td> Message handler to register.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> Message type that <em class="parameter"><code>handler</code></em> will handle.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>priority</code></em> :</span></td>
+<td> The priority in which to call <em class="parameter"><code>handler</code></em>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-unregister-message-handler"></a><h3>lm_connection_unregister_message_handler ()</h3>
+<pre class="programlisting">void                lm_connection_unregister_message_handler
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         LmMessageHandler *handler,
+                                                         <a href="loudmouth-lm-message.html#LmMessageType" title="enum LmMessageType">LmMessageType</a> type);</pre>
+<p>
+Unregisters a handler for <em class="parameter"><code>connection</code></em>. <em class="parameter"><code>handler</code></em> will no longer be called 
+when incoming messages of <em class="parameter"><code>type</code></em> arrive.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to unregister a handler for.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>handler</code></em> :</span></td>
+<td> The handler to unregister.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>type</code></em> :</span></td>
+<td> What type of messages to unregister this handler for.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-set-disconnect-function"></a><h3>lm_connection_set_disconnect_function ()</h3>
+<pre class="programlisting">void                lm_connection_set_disconnect_function
+                                                        (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         <a href="loudmouth-lm-connection.html#LmDisconnectFunction" title="LmDisconnectFunction ()">LmDisconnectFunction</a> function,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> notify);</pre>
+<p>
+Set the callback that will be called when a connection is closed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to register disconnect callback for.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>function</code></em> :</span></td>
+<td> Function to be called when <em class="parameter"><code>connection</code></em> is closed.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>user_data</code></em> :</span></td>
+<td> User data passed to <em class="parameter"><code>function</code></em>.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>notify</code></em> :</span></td>
+<td> Function that will be called with <em class="parameter"><code>user_data</code></em> when <em class="parameter"><code>user_data</code></em> needs to be freed. Pass <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> if it shouldn't be freed.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-send-raw"></a><h3>lm_connection_send_raw ()</h3>
+<pre class="programlisting"><a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"
+>gboolean</a>            lm_connection_send_raw              (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection,
+                                                         const <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a> *str,
+                                                         <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Asynchronous call to send a raw string. Useful for debugging and testing.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection used to send
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>str</code></em> :</span></td>
+<td> The string to send, the entire string will be sent.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>error</code></em> :</span></td>
+<td> Set if error was detected during sending.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> Returns <a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if no errors was detected during sending, 
+<a
+href="/Users/micke/gtk/inst/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-get-state"></a><h3>lm_connection_get_state ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-connection.html#LmConnectionState" title="enum LmConnectionState">LmConnectionState</a>   lm_connection_get_state             (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Returns the state of the connection.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to get state on
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> The state of the connection.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-ref"></a><h3>lm_connection_ref ()</h3>
+<pre class="programlisting"><a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a>*       lm_connection_ref                   (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Add a reference on <em class="parameter"><code>connection</code></em>. To remove a reference call 
+<a href="loudmouth-lm-connection.html#lm-connection-unref" title="lm_connection_unref ()"><code class="function">lm_connection_unref()</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to add a reference to.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td>
+<td> Returns the same connection.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="lm-connection-unref"></a><h3>lm_connection_unref ()</h3>
+<pre class="programlisting">void                lm_connection_unref                 (<a href="loudmouth-lm-connection.html#LmConnection" title="LmConnection">LmConnection</a> *connection);</pre>
+<p>
+Removes a reference on <em class="parameter"><code>connection</code></em>. If there are no references to
+<em class="parameter"><code>connection</code></em> it will be freed and shouldn't be used again.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><em class="parameter"><code>connection</code></em> :</span></td>
+<td> Connection to remove reference from.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

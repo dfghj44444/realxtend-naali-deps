@@ -5,6 +5,7 @@
 #include <PythonQtConversion.h>
 #include <QVariant>
 #include <qabstractxmlnodemodel.h>
+#include <qsourcelocation.h>
 #include <qurl.h>
 #include <qvector.h>
 #include <qxmlname.h>
@@ -386,7 +387,8 @@ if (_wrapper) {
   QVariant result;
 return result;
 }
-QAbstractXmlNodeModel* PythonQtWrapper_QAbstractXmlNodeModel::new_QAbstractXmlNodeModel()
-{ 
-return new PythonQtShell_QAbstractXmlNodeModel(); }
+QSourceLocation  PythonQtWrapper_QAbstractXmlNodeModel::sourceLocation(QAbstractXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  index) const
+{
+  return ( theWrappedObject->sourceLocation(index));
+}
 

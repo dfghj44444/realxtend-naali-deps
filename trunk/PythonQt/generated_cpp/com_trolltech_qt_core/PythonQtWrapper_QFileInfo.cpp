@@ -31,9 +31,144 @@ QFileInfo* PythonQtWrapper_QFileInfo::new_QFileInfo(const QString&  file)
 { 
 return new QFileInfo(file); }
 
-QString  PythonQtWrapper_QFileInfo::absoluteFilePath(QFileInfo* theWrappedObject) const
+QString  PythonQtWrapper_QFileInfo::symLinkTarget(QFileInfo* theWrappedObject) const
 {
-  return ( theWrappedObject->absoluteFilePath());
+  return ( theWrappedObject->symLinkTarget());
+}
+
+void PythonQtWrapper_QFileInfo::setCaching(QFileInfo* theWrappedObject, bool  on)
+{
+  ( theWrappedObject->setCaching(on));
+}
+
+void PythonQtWrapper_QFileInfo::refresh(QFileInfo* theWrappedObject)
+{
+  ( theWrappedObject->refresh());
+}
+
+QString  PythonQtWrapper_QFileInfo::canonicalFilePath(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->canonicalFilePath());
+}
+
+bool  PythonQtWrapper_QFileInfo::isWritable(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isWritable());
+}
+
+bool  PythonQtWrapper_QFileInfo::caching(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->caching());
+}
+
+bool  PythonQtWrapper_QFileInfo::isSymLink(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isSymLink());
+}
+
+QString  PythonQtWrapper_QFileInfo::completeBaseName(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->completeBaseName());
+}
+
+uint  PythonQtWrapper_QFileInfo::groupId(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->groupId());
+}
+
+QDateTime  PythonQtWrapper_QFileInfo::lastModified(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->lastModified());
+}
+
+void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QFile&  file)
+{
+  ( theWrappedObject->setFile(file));
+}
+
+QDateTime  PythonQtWrapper_QFileInfo::lastRead(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->lastRead());
+}
+
+QString  PythonQtWrapper_QFileInfo::path(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->path());
+}
+
+QString  PythonQtWrapper_QFileInfo::owner(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->owner());
+}
+
+bool  PythonQtWrapper_QFileInfo::isRelative(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isRelative());
+}
+
+bool  PythonQtWrapper_QFileInfo::isFile(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isFile());
+}
+
+QString  PythonQtWrapper_QFileInfo::filePath(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->filePath());
+}
+
+QDir  PythonQtWrapper_QFileInfo::dir(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->dir());
+}
+
+bool  PythonQtWrapper_QFileInfo::operator_equal(QFileInfo* theWrappedObject, const QFileInfo&  fileinfo)
+{
+  return ( (*theWrappedObject)== fileinfo);
+}
+
+bool  PythonQtWrapper_QFileInfo::permission(QFileInfo* theWrappedObject, QFile::Permissions  permissions) const
+{
+  return ( theWrappedObject->permission(permissions));
+}
+
+QString  PythonQtWrapper_QFileInfo::canonicalPath(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->canonicalPath());
+}
+
+bool  PythonQtWrapper_QFileInfo::isRoot(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isRoot());
+}
+
+QDir  PythonQtWrapper_QFileInfo::absoluteDir(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->absoluteDir());
+}
+
+uint  PythonQtWrapper_QFileInfo::ownerId(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->ownerId());
+}
+
+bool  PythonQtWrapper_QFileInfo::isDir(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isDir());
+}
+
+bool  PythonQtWrapper_QFileInfo::isHidden(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isHidden());
+}
+
+QString  PythonQtWrapper_QFileInfo::baseName(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->baseName());
+}
+
+QDateTime  PythonQtWrapper_QFileInfo::created(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->created());
 }
 
 bool  PythonQtWrapper_QFileInfo::isExecutable(QFileInfo* theWrappedObject) const
@@ -46,154 +181,9 @@ QString  PythonQtWrapper_QFileInfo::suffix(QFileInfo* theWrappedObject) const
   return ( theWrappedObject->suffix());
 }
 
-void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QDir&  dir, const QString&  file)
+QString  PythonQtWrapper_QFileInfo::group(QFileInfo* theWrappedObject) const
 {
-  ( theWrappedObject->setFile(dir, file));
-}
-
-QString  PythonQtWrapper_QFileInfo::bundleName(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->bundleName());
-}
-
-bool  PythonQtWrapper_QFileInfo::isDir(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isDir());
-}
-
-QFile::Permissions  PythonQtWrapper_QFileInfo::permissions(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->permissions());
-}
-
-void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QFile&  file)
-{
-  ( theWrappedObject->setFile(file));
-}
-
-QDir  PythonQtWrapper_QFileInfo::absoluteDir(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->absoluteDir());
-}
-
-QString  PythonQtWrapper_QFileInfo::owner(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->owner());
-}
-
-void PythonQtWrapper_QFileInfo::setCaching(QFileInfo* theWrappedObject, bool  on)
-{
-  ( theWrappedObject->setCaching(on));
-}
-
-bool  PythonQtWrapper_QFileInfo::isHidden(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isHidden());
-}
-
-QDir  PythonQtWrapper_QFileInfo::dir(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->dir());
-}
-
-uint  PythonQtWrapper_QFileInfo::ownerId(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->ownerId());
-}
-
-QString  PythonQtWrapper_QFileInfo::baseName(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->baseName());
-}
-
-QString  PythonQtWrapper_QFileInfo::fileName(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->fileName());
-}
-
-bool  PythonQtWrapper_QFileInfo::isSymLink(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isSymLink());
-}
-
-QDateTime  PythonQtWrapper_QFileInfo::created(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->created());
-}
-
-QString  PythonQtWrapper_QFileInfo::canonicalPath(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->canonicalPath());
-}
-
-uint  PythonQtWrapper_QFileInfo::groupId(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->groupId());
-}
-
-bool  PythonQtWrapper_QFileInfo::isRoot(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isRoot());
-}
-
-bool  PythonQtWrapper_QFileInfo::caching(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->caching());
-}
-
-void PythonQtWrapper_QFileInfo::refresh(QFileInfo* theWrappedObject)
-{
-  ( theWrappedObject->refresh());
-}
-
-QString  PythonQtWrapper_QFileInfo::absolutePath(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->absolutePath());
-}
-
-QDateTime  PythonQtWrapper_QFileInfo::lastModified(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->lastModified());
-}
-
-qint64  PythonQtWrapper_QFileInfo::size(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->size());
-}
-
-bool  PythonQtWrapper_QFileInfo::isBundle(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isBundle());
-}
-
-QString  PythonQtWrapper_QFileInfo::symLinkTarget(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->symLinkTarget());
-}
-
-bool  PythonQtWrapper_QFileInfo::isFile(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isFile());
-}
-
-bool  PythonQtWrapper_QFileInfo::isRelative(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isRelative());
-}
-
-bool  PythonQtWrapper_QFileInfo::isReadable(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isReadable());
-}
-
-bool  PythonQtWrapper_QFileInfo::isWritable(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->isWritable());
-}
-
-QString  PythonQtWrapper_QFileInfo::canonicalFilePath(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->canonicalFilePath());
+  return ( theWrappedObject->group());
 }
 
 bool  PythonQtWrapper_QFileInfo::isAbsolute(QFileInfo* theWrappedObject) const
@@ -201,19 +191,29 @@ bool  PythonQtWrapper_QFileInfo::isAbsolute(QFileInfo* theWrappedObject) const
   return ( theWrappedObject->isAbsolute());
 }
 
+bool  PythonQtWrapper_QFileInfo::isReadable(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->isReadable());
+}
+
+QString  PythonQtWrapper_QFileInfo::absolutePath(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->absolutePath());
+}
+
+QString  PythonQtWrapper_QFileInfo::fileName(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->fileName());
+}
+
+QString  PythonQtWrapper_QFileInfo::bundleName(QFileInfo* theWrappedObject) const
+{
+  return ( theWrappedObject->bundleName());
+}
+
 bool  PythonQtWrapper_QFileInfo::exists(QFileInfo* theWrappedObject) const
 {
   return ( theWrappedObject->exists());
-}
-
-QString  PythonQtWrapper_QFileInfo::filePath(QFileInfo* theWrappedObject) const
-{
-  return ( theWrappedObject->filePath());
-}
-
-bool  PythonQtWrapper_QFileInfo::operator_equal(QFileInfo* theWrappedObject, const QFileInfo&  fileinfo)
-{
-  return ( (*theWrappedObject)== fileinfo);
 }
 
 bool  PythonQtWrapper_QFileInfo::makeAbsolute(QFileInfo* theWrappedObject)
@@ -221,19 +221,19 @@ bool  PythonQtWrapper_QFileInfo::makeAbsolute(QFileInfo* theWrappedObject)
   return ( theWrappedObject->makeAbsolute());
 }
 
-QString  PythonQtWrapper_QFileInfo::group(QFileInfo* theWrappedObject) const
+void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QString&  file)
 {
-  return ( theWrappedObject->group());
+  ( theWrappedObject->setFile(file));
 }
 
-bool  PythonQtWrapper_QFileInfo::permission(QFileInfo* theWrappedObject, QFile::Permissions  permissions) const
+qint64  PythonQtWrapper_QFileInfo::size(QFileInfo* theWrappedObject) const
 {
-  return ( theWrappedObject->permission(permissions));
+  return ( theWrappedObject->size());
 }
 
-QDateTime  PythonQtWrapper_QFileInfo::lastRead(QFileInfo* theWrappedObject) const
+QString  PythonQtWrapper_QFileInfo::absoluteFilePath(QFileInfo* theWrappedObject) const
 {
-  return ( theWrappedObject->lastRead());
+  return ( theWrappedObject->absoluteFilePath());
 }
 
 QString  PythonQtWrapper_QFileInfo::completeSuffix(QFileInfo* theWrappedObject) const
@@ -241,18 +241,18 @@ QString  PythonQtWrapper_QFileInfo::completeSuffix(QFileInfo* theWrappedObject) 
   return ( theWrappedObject->completeSuffix());
 }
 
-void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QString&  file)
+void PythonQtWrapper_QFileInfo::setFile(QFileInfo* theWrappedObject, const QDir&  dir, const QString&  file)
 {
-  ( theWrappedObject->setFile(file));
+  ( theWrappedObject->setFile(dir, file));
 }
 
-QString  PythonQtWrapper_QFileInfo::completeBaseName(QFileInfo* theWrappedObject) const
+QFile::Permissions  PythonQtWrapper_QFileInfo::permissions(QFileInfo* theWrappedObject) const
 {
-  return ( theWrappedObject->completeBaseName());
+  return ( theWrappedObject->permissions());
 }
 
-QString  PythonQtWrapper_QFileInfo::path(QFileInfo* theWrappedObject) const
+bool  PythonQtWrapper_QFileInfo::isBundle(QFileInfo* theWrappedObject) const
 {
-  return ( theWrappedObject->path());
+  return ( theWrappedObject->isBundle());
 }
 

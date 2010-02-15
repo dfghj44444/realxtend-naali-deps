@@ -123,9 +123,9 @@ QUndoGroup* PythonQtWrapper_QUndoGroup::new_QUndoGroup(QObject*  parent)
 { 
 return new PythonQtShell_QUndoGroup(parent); }
 
-bool  PythonQtWrapper_QUndoGroup::canUndo(QUndoGroup* theWrappedObject) const
+QUndoStack*  PythonQtWrapper_QUndoGroup::activeStack(QUndoGroup* theWrappedObject) const
 {
-  return ( theWrappedObject->canUndo());
+  return ( theWrappedObject->activeStack());
 }
 
 QAction*  PythonQtWrapper_QUndoGroup::createRedoAction(QUndoGroup* theWrappedObject, QObject*  parent, const QString&  prefix) const
@@ -133,29 +133,9 @@ QAction*  PythonQtWrapper_QUndoGroup::createRedoAction(QUndoGroup* theWrappedObj
   return ( theWrappedObject->createRedoAction(parent, prefix));
 }
 
-void PythonQtWrapper_QUndoGroup::removeStack(QUndoGroup* theWrappedObject, QUndoStack*  stack)
+QAction*  PythonQtWrapper_QUndoGroup::createUndoAction(QUndoGroup* theWrappedObject, QObject*  parent, const QString&  prefix) const
 {
-  ( theWrappedObject->removeStack(stack));
-}
-
-QUndoStack*  PythonQtWrapper_QUndoGroup::activeStack(QUndoGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->activeStack());
-}
-
-bool  PythonQtWrapper_QUndoGroup::canRedo(QUndoGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->canRedo());
-}
-
-QString  PythonQtWrapper_QUndoGroup::redoText(QUndoGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->redoText());
-}
-
-QList<QUndoStack* >  PythonQtWrapper_QUndoGroup::stacks(QUndoGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->stacks());
+  return ( theWrappedObject->createUndoAction(parent, prefix));
 }
 
 void PythonQtWrapper_QUndoGroup::addStack(QUndoGroup* theWrappedObject, QUndoStack*  stack)
@@ -163,9 +143,9 @@ void PythonQtWrapper_QUndoGroup::addStack(QUndoGroup* theWrappedObject, QUndoSta
   ( theWrappedObject->addStack(stack));
 }
 
-QString  PythonQtWrapper_QUndoGroup::undoText(QUndoGroup* theWrappedObject) const
+QList<QUndoStack* >  PythonQtWrapper_QUndoGroup::stacks(QUndoGroup* theWrappedObject) const
 {
-  return ( theWrappedObject->undoText());
+  return ( theWrappedObject->stacks());
 }
 
 bool  PythonQtWrapper_QUndoGroup::isClean(QUndoGroup* theWrappedObject) const
@@ -173,8 +153,28 @@ bool  PythonQtWrapper_QUndoGroup::isClean(QUndoGroup* theWrappedObject) const
   return ( theWrappedObject->isClean());
 }
 
-QAction*  PythonQtWrapper_QUndoGroup::createUndoAction(QUndoGroup* theWrappedObject, QObject*  parent, const QString&  prefix) const
+bool  PythonQtWrapper_QUndoGroup::canRedo(QUndoGroup* theWrappedObject) const
 {
-  return ( theWrappedObject->createUndoAction(parent, prefix));
+  return ( theWrappedObject->canRedo());
+}
+
+bool  PythonQtWrapper_QUndoGroup::canUndo(QUndoGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->canUndo());
+}
+
+QString  PythonQtWrapper_QUndoGroup::redoText(QUndoGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->redoText());
+}
+
+void PythonQtWrapper_QUndoGroup::removeStack(QUndoGroup* theWrappedObject, QUndoStack*  stack)
+{
+  ( theWrappedObject->removeStack(stack));
+}
+
+QString  PythonQtWrapper_QUndoGroup::undoText(QUndoGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->undoText());
 }
 

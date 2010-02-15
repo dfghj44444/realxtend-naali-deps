@@ -390,19 +390,14 @@ QLayoutItem* PythonQtWrapper_QLayoutItem::new_QLayoutItem(Qt::Alignment  alignme
 { 
 return new PythonQtShell_QLayoutItem(alignment); }
 
+QSizePolicy::ControlTypes  PythonQtWrapper_QLayoutItem::controlTypes(QLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->controlTypes());
+}
+
 int  PythonQtWrapper_QLayoutItem::minimumHeightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const
 {
   return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_minimumHeightForWidth(arg__1));
-}
-
-Qt::Alignment  PythonQtWrapper_QLayoutItem::alignment(QLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->alignment());
-}
-
-void PythonQtWrapper_QLayoutItem::invalidate(QLayoutItem* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_invalidate());
 }
 
 void PythonQtWrapper_QLayoutItem::setAlignment(QLayoutItem* theWrappedObject, Qt::Alignment  a)
@@ -410,19 +405,19 @@ void PythonQtWrapper_QLayoutItem::setAlignment(QLayoutItem* theWrappedObject, Qt
   ( theWrappedObject->setAlignment(a));
 }
 
-bool  PythonQtWrapper_QLayoutItem::hasHeightForWidth(QLayoutItem* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_hasHeightForWidth());
-}
-
-QLayout*  PythonQtWrapper_QLayoutItem::layout(QLayoutItem* theWrappedObject)
-{
-  return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_layout());
-}
-
 QWidget*  PythonQtWrapper_QLayoutItem::widget(QLayoutItem* theWrappedObject)
 {
   return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_widget());
+}
+
+Qt::Alignment  PythonQtWrapper_QLayoutItem::alignment(QLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->alignment());
+}
+
+bool  PythonQtWrapper_QLayoutItem::hasHeightForWidth(QLayoutItem* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_hasHeightForWidth());
 }
 
 QSpacerItem*  PythonQtWrapper_QLayoutItem::spacerItem(QLayoutItem* theWrappedObject)
@@ -430,13 +425,18 @@ QSpacerItem*  PythonQtWrapper_QLayoutItem::spacerItem(QLayoutItem* theWrappedObj
   return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_spacerItem());
 }
 
+void PythonQtWrapper_QLayoutItem::invalidate(QLayoutItem* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_invalidate());
+}
+
+QLayout*  PythonQtWrapper_QLayoutItem::layout(QLayoutItem* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_layout());
+}
+
 int  PythonQtWrapper_QLayoutItem::heightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const
 {
   return ( ((PythonQtPublicPromoter_QLayoutItem*)theWrappedObject)->promoted_heightForWidth(arg__1));
-}
-
-QSizePolicy::ControlTypes  PythonQtWrapper_QLayoutItem::controlTypes(QLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->controlTypes());
 }
 

@@ -14,29 +14,24 @@ QDomNamedNodeMap* PythonQtWrapper_QDomNamedNodeMap::new_QDomNamedNodeMap(const Q
 { 
 return new QDomNamedNodeMap(arg__1); }
 
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::removeNamedItemNS(QDomNamedNodeMap* theWrappedObject, const QString&  nsURI, const QString&  localName)
+int  PythonQtWrapper_QDomNamedNodeMap::size(QDomNamedNodeMap* theWrappedObject) const
 {
-  return ( theWrappedObject->removeNamedItemNS(nsURI, localName));
+  return ( theWrappedObject->size());
 }
 
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::namedItem(QDomNamedNodeMap* theWrappedObject, const QString&  name) const
+bool  PythonQtWrapper_QDomNamedNodeMap::contains(QDomNamedNodeMap* theWrappedObject, const QString&  name) const
 {
-  return ( theWrappedObject->namedItem(name));
+  return ( theWrappedObject->contains(name));
 }
 
-bool  PythonQtWrapper_QDomNamedNodeMap::operator_equal(QDomNamedNodeMap* theWrappedObject, const QDomNamedNodeMap&  arg__1) const
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::setNamedItem(QDomNamedNodeMap* theWrappedObject, const QDomNode&  newNode)
 {
-  return ( (*theWrappedObject)== arg__1);
+  return ( theWrappedObject->setNamedItem(newNode));
 }
 
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::setNamedItemNS(QDomNamedNodeMap* theWrappedObject, const QDomNode&  newNode)
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::namedItemNS(QDomNamedNodeMap* theWrappedObject, const QString&  nsURI, const QString&  localName) const
 {
-  return ( theWrappedObject->setNamedItemNS(newNode));
-}
-
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::item(QDomNamedNodeMap* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->item(index));
+  return ( theWrappedObject->namedItemNS(nsURI, localName));
 }
 
 int  PythonQtWrapper_QDomNamedNodeMap::count(QDomNamedNodeMap* theWrappedObject) const
@@ -49,9 +44,9 @@ uint  PythonQtWrapper_QDomNamedNodeMap::length(QDomNamedNodeMap* theWrappedObjec
   return ( theWrappedObject->length());
 }
 
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::namedItemNS(QDomNamedNodeMap* theWrappedObject, const QString&  nsURI, const QString&  localName) const
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::namedItem(QDomNamedNodeMap* theWrappedObject, const QString&  name) const
 {
-  return ( theWrappedObject->namedItemNS(nsURI, localName));
+  return ( theWrappedObject->namedItem(name));
 }
 
 QDomNode  PythonQtWrapper_QDomNamedNodeMap::removeNamedItem(QDomNamedNodeMap* theWrappedObject, const QString&  name)
@@ -59,14 +54,19 @@ QDomNode  PythonQtWrapper_QDomNamedNodeMap::removeNamedItem(QDomNamedNodeMap* th
   return ( theWrappedObject->removeNamedItem(name));
 }
 
-QDomNode  PythonQtWrapper_QDomNamedNodeMap::setNamedItem(QDomNamedNodeMap* theWrappedObject, const QDomNode&  newNode)
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::removeNamedItemNS(QDomNamedNodeMap* theWrappedObject, const QString&  nsURI, const QString&  localName)
 {
-  return ( theWrappedObject->setNamedItem(newNode));
+  return ( theWrappedObject->removeNamedItemNS(nsURI, localName));
 }
 
-int  PythonQtWrapper_QDomNamedNodeMap::size(QDomNamedNodeMap* theWrappedObject) const
+bool  PythonQtWrapper_QDomNamedNodeMap::operator_equal(QDomNamedNodeMap* theWrappedObject, const QDomNamedNodeMap&  arg__1) const
 {
-  return ( theWrappedObject->size());
+  return ( (*theWrappedObject)== arg__1);
+}
+
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::item(QDomNamedNodeMap* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->item(index));
 }
 
 bool  PythonQtWrapper_QDomNamedNodeMap::isEmpty(QDomNamedNodeMap* theWrappedObject) const
@@ -74,8 +74,8 @@ bool  PythonQtWrapper_QDomNamedNodeMap::isEmpty(QDomNamedNodeMap* theWrappedObje
   return ( theWrappedObject->isEmpty());
 }
 
-bool  PythonQtWrapper_QDomNamedNodeMap::contains(QDomNamedNodeMap* theWrappedObject, const QString&  name) const
+QDomNode  PythonQtWrapper_QDomNamedNodeMap::setNamedItemNS(QDomNamedNodeMap* theWrappedObject, const QDomNode&  newNode)
 {
-  return ( theWrappedObject->contains(name));
+  return ( theWrappedObject->setNamedItemNS(newNode));
 }
 

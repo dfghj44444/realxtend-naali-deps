@@ -127,9 +127,14 @@ QDrag* PythonQtWrapper_QDrag::new_QDrag(QWidget*  dragSource)
 { 
 return new PythonQtShell_QDrag(dragSource); }
 
-Qt::DropAction  PythonQtWrapper_QDrag::exec(QDrag* theWrappedObject, Qt::DropActions  supportedActions)
+QPoint  PythonQtWrapper_QDrag::hotSpot(QDrag* theWrappedObject) const
 {
-  return ( theWrappedObject->exec(supportedActions));
+  return ( theWrappedObject->hotSpot());
+}
+
+void PythonQtWrapper_QDrag::setDragCursor(QDrag* theWrappedObject, const QPixmap&  cursor, Qt::DropAction  action)
+{
+  ( theWrappedObject->setDragCursor(cursor, action));
 }
 
 void PythonQtWrapper_QDrag::setHotSpot(QDrag* theWrappedObject, const QPoint&  hotspot)
@@ -137,9 +142,14 @@ void PythonQtWrapper_QDrag::setHotSpot(QDrag* theWrappedObject, const QPoint&  h
   ( theWrappedObject->setHotSpot(hotspot));
 }
 
-QMimeData*  PythonQtWrapper_QDrag::mimeData(QDrag* theWrappedObject) const
+QWidget*  PythonQtWrapper_QDrag::target(QDrag* theWrappedObject) const
 {
-  return ( theWrappedObject->mimeData());
+  return ( theWrappedObject->target());
+}
+
+Qt::DropAction  PythonQtWrapper_QDrag::exec(QDrag* theWrappedObject, Qt::DropActions  supportedActions)
+{
+  return ( theWrappedObject->exec(supportedActions));
 }
 
 QPixmap  PythonQtWrapper_QDrag::pixmap(QDrag* theWrappedObject) const
@@ -152,33 +162,23 @@ void PythonQtWrapper_QDrag::setMimeData(QDrag* theWrappedObject, QMimeData*  dat
   ( theWrappedObject->setMimeData(data));
 }
 
-void PythonQtWrapper_QDrag::setDragCursor(QDrag* theWrappedObject, const QPixmap&  cursor, Qt::DropAction  action)
-{
-  ( theWrappedObject->setDragCursor(cursor, action));
-}
-
-QWidget*  PythonQtWrapper_QDrag::target(QDrag* theWrappedObject) const
-{
-  return ( theWrappedObject->target());
-}
-
-Qt::DropAction  PythonQtWrapper_QDrag::exec(QDrag* theWrappedObject, Qt::DropActions  supportedActions, Qt::DropAction  defaultAction)
-{
-  return ( theWrappedObject->exec(supportedActions, defaultAction));
-}
-
 void PythonQtWrapper_QDrag::setPixmap(QDrag* theWrappedObject, const QPixmap&  arg__1)
 {
   ( theWrappedObject->setPixmap(arg__1));
 }
 
-QPoint  PythonQtWrapper_QDrag::hotSpot(QDrag* theWrappedObject) const
-{
-  return ( theWrappedObject->hotSpot());
-}
-
 QWidget*  PythonQtWrapper_QDrag::source(QDrag* theWrappedObject) const
 {
   return ( theWrappedObject->source());
+}
+
+QMimeData*  PythonQtWrapper_QDrag::mimeData(QDrag* theWrappedObject) const
+{
+  return ( theWrappedObject->mimeData());
+}
+
+Qt::DropAction  PythonQtWrapper_QDrag::exec(QDrag* theWrappedObject, Qt::DropActions  supportedActions, Qt::DropAction  defaultAction)
+{
+  return ( theWrappedObject->exec(supportedActions, defaultAction));
 }
 

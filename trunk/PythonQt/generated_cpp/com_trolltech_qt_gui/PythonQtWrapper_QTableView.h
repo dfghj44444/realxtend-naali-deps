@@ -16,6 +16,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qheaderview.h>
 #include <qicon.h>
 #include <qinputcontext.h>
@@ -24,6 +26,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -128,29 +131,29 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QTableView : public QTableView
 { public:
-inline QRect  promoted_visualRect(const QModelIndex&  index) const { return QTableView::visualRect(index); }
-inline void promoted_verticalScrollbarAction(int  action) { QTableView::verticalScrollbarAction(action); }
-inline void promoted_paintEvent(QPaintEvent*  e) { QTableView::paintEvent(e); }
-inline int  promoted_verticalOffset() const { return QTableView::verticalOffset(); }
-inline void promoted_setModel(QAbstractItemModel*  model) { QTableView::setModel(model); }
-inline int  promoted_horizontalOffset() const { return QTableView::horizontalOffset(); }
-inline void promoted_selectionChanged(const QItemSelection&  selected, const QItemSelection&  deselected) { QTableView::selectionChanged(selected, deselected); }
-inline QModelIndex  promoted_indexAt(const QPoint&  p) const { return QTableView::indexAt(p); }
-inline void promoted_timerEvent(QTimerEvent*  event) { QTableView::timerEvent(event); }
-inline void promoted_horizontalScrollbarAction(int  action) { QTableView::horizontalScrollbarAction(action); }
-inline QRegion  promoted_visualRegionForSelection(const QItemSelection&  selection) const { return QTableView::visualRegionForSelection(selection); }
-inline QStyleOptionViewItem  promoted_viewOptions() const { return QTableView::viewOptions(); }
-inline int  promoted_sizeHintForColumn(int  column) const { return QTableView::sizeHintForColumn(column); }
-inline QList<QModelIndex >  promoted_selectedIndexes() const { return QTableView::selectedIndexes(); }
 inline void promoted_scrollContentsBy(int  dx, int  dy) { QTableView::scrollContentsBy(dx, dy); }
+inline void promoted_selectionChanged(const QItemSelection&  selected, const QItemSelection&  deselected) { QTableView::selectionChanged(selected, deselected); }
+inline void promoted_currentChanged(const QModelIndex&  current, const QModelIndex&  previous) { QTableView::currentChanged(current, previous); }
+inline int  promoted_horizontalOffset() const { return QTableView::horizontalOffset(); }
+inline int  promoted_verticalOffset() const { return QTableView::verticalOffset(); }
+inline int  promoted_sizeHintForColumn(int  column) const { return QTableView::sizeHintForColumn(column); }
+inline void promoted_verticalScrollbarAction(int  action) { QTableView::verticalScrollbarAction(action); }
 inline void promoted_setSelectionModel(QItemSelectionModel*  selectionModel) { QTableView::setSelectionModel(selectionModel); }
 inline void promoted_setSelection(const QRect&  rect, QItemSelectionModel::SelectionFlags  command) { QTableView::setSelection(rect, command); }
-inline bool  promoted_isIndexHidden(const QModelIndex&  index) const { return QTableView::isIndexHidden(index); }
+inline void promoted_paintEvent(QPaintEvent*  e) { QTableView::paintEvent(e); }
 inline void promoted_scrollTo(const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible) { QTableView::scrollTo(index, hint); }
-inline void promoted_setRootIndex(const QModelIndex&  index) { QTableView::setRootIndex(index); }
+inline void promoted_setModel(QAbstractItemModel*  model) { QTableView::setModel(model); }
 inline void promoted_updateGeometries() { QTableView::updateGeometries(); }
-inline void promoted_currentChanged(const QModelIndex&  current, const QModelIndex&  previous) { QTableView::currentChanged(current, previous); }
+inline void promoted_horizontalScrollbarAction(int  action) { QTableView::horizontalScrollbarAction(action); }
+inline QRegion  promoted_visualRegionForSelection(const QItemSelection&  selection) const { return QTableView::visualRegionForSelection(selection); }
+inline QModelIndex  promoted_indexAt(const QPoint&  p) const { return QTableView::indexAt(p); }
+inline QRect  promoted_visualRect(const QModelIndex&  index) const { return QTableView::visualRect(index); }
+inline QStyleOptionViewItem  promoted_viewOptions() const { return QTableView::viewOptions(); }
+inline void promoted_setRootIndex(const QModelIndex&  index) { QTableView::setRootIndex(index); }
+inline QList<QModelIndex >  promoted_selectedIndexes() const { return QTableView::selectedIndexes(); }
 inline int  promoted_sizeHintForRow(int  row) const { return QTableView::sizeHintForRow(row); }
+inline void promoted_timerEvent(QTimerEvent*  event) { QTableView::timerEvent(event); }
+inline bool  promoted_isIndexHidden(const QModelIndex&  index) const { return QTableView::isIndexHidden(index); }
 };
 
 class PythonQtWrapper_QTableView : public QObject
@@ -159,59 +162,59 @@ public:
 public slots:
 QTableView* new_QTableView(QWidget*  parent = 0);
 void delete_QTableView(QTableView* obj) { delete obj; } 
-   QRect  visualRect(QTableView* theWrappedObject, const QModelIndex&  index) const;
-   void verticalScrollbarAction(QTableView* theWrappedObject, int  action);
-   void setVerticalHeader(QTableView* theWrappedObject, QHeaderView*  header);
-   QHeaderView*  verticalHeader(QTableView* theWrappedObject) const;
-   void setSpan(QTableView* theWrappedObject, int  row, int  column, int  rowSpan, int  columnSpan);
-   void paintEvent(QTableView* theWrappedObject, QPaintEvent*  e);
-   int  verticalOffset(QTableView* theWrappedObject) const;
-   void setModel(QTableView* theWrappedObject, QAbstractItemModel*  model);
-   bool  showGrid(QTableView* theWrappedObject) const;
-   void setColumnWidth(QTableView* theWrappedObject, int  column, int  width);
-   int  columnViewportPosition(QTableView* theWrappedObject, int  column) const;
-   void setSortingEnabled(QTableView* theWrappedObject, bool  enable);
-   bool  isRowHidden(QTableView* theWrappedObject, int  row) const;
-   void setRowHidden(QTableView* theWrappedObject, int  row, bool  hide);
-   int  columnSpan(QTableView* theWrappedObject, int  row, int  column) const;
-   int  horizontalOffset(QTableView* theWrappedObject) const;
+   void setRowHeight(QTableView* theWrappedObject, int  row, int  height);
+   void scrollContentsBy(QTableView* theWrappedObject, int  dx, int  dy);
    void selectionChanged(QTableView* theWrappedObject, const QItemSelection&  selected, const QItemSelection&  deselected);
-   QHeaderView*  horizontalHeader(QTableView* theWrappedObject) const;
-   QModelIndex  indexAt(QTableView* theWrappedObject, const QPoint&  p) const;
+   void currentChanged(QTableView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous);
    int  columnAt(QTableView* theWrappedObject, int  x) const;
    Qt::PenStyle  gridStyle(QTableView* theWrappedObject) const;
-   void timerEvent(QTableView* theWrappedObject, QTimerEvent*  event);
+   int  rowAt(QTableView* theWrappedObject, int  y) const;
+   void setRowHidden(QTableView* theWrappedObject, int  row, bool  hide);
+   void setVerticalHeader(QTableView* theWrappedObject, QHeaderView*  header);
+   int  horizontalOffset(QTableView* theWrappedObject) const;
+   int  verticalOffset(QTableView* theWrappedObject) const;
+   bool  showGrid(QTableView* theWrappedObject) const;
+   void setColumnWidth(QTableView* theWrappedObject, int  column, int  width);
+   void sortByColumn(QTableView* theWrappedObject, int  column, Qt::SortOrder  order);
+   int  rowSpan(QTableView* theWrappedObject, int  row, int  column) const;
    void setColumnHidden(QTableView* theWrappedObject, int  column, bool  hide);
+   int  rowViewportPosition(QTableView* theWrappedObject, int  row) const;
+   bool  isColumnHidden(QTableView* theWrappedObject, int  column) const;
+   int  sizeHintForColumn(QTableView* theWrappedObject, int  column) const;
+   void verticalScrollbarAction(QTableView* theWrappedObject, int  action);
+   bool  isSortingEnabled(QTableView* theWrappedObject) const;
+   void setSortingEnabled(QTableView* theWrappedObject, bool  enable);
+   void setSelectionModel(QTableView* theWrappedObject, QItemSelectionModel*  selectionModel);
+   QHeaderView*  verticalHeader(QTableView* theWrappedObject) const;
+   void setSelection(QTableView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command);
+   void setCornerButtonEnabled(QTableView* theWrappedObject, bool  enable);
+   void paintEvent(QTableView* theWrappedObject, QPaintEvent*  e);
+   int  columnSpan(QTableView* theWrappedObject, int  row, int  column) const;
+   int  columnWidth(QTableView* theWrappedObject, int  column) const;
+   bool  isCornerButtonEnabled(QTableView* theWrappedObject) const;
+   QHeaderView*  horizontalHeader(QTableView* theWrappedObject) const;
+   void setWordWrap(QTableView* theWrappedObject, bool  on);
+   void scrollTo(QTableView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible);
+   void setModel(QTableView* theWrappedObject, QAbstractItemModel*  model);
+   void clearSpans(QTableView* theWrappedObject);
+   void updateGeometries(QTableView* theWrappedObject);
    void horizontalScrollbarAction(QTableView* theWrappedObject, int  action);
    QRegion  visualRegionForSelection(QTableView* theWrappedObject, const QItemSelection&  selection) const;
-   int  rowSpan(QTableView* theWrappedObject, int  row, int  column) const;
-   QStyleOptionViewItem  viewOptions(QTableView* theWrappedObject) const;
-   int  sizeHintForColumn(QTableView* theWrappedObject, int  column) const;
-   QList<QModelIndex >  selectedIndexes(QTableView* theWrappedObject) const;
-   void clearSpans(QTableView* theWrappedObject);
-   void scrollContentsBy(QTableView* theWrappedObject, int  dx, int  dy);
-   int  rowAt(QTableView* theWrappedObject, int  y) const;
-   void setSelectionModel(QTableView* theWrappedObject, QItemSelectionModel*  selectionModel);
-   bool  wordWrap(QTableView* theWrappedObject) const;
-   void setSelection(QTableView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command);
-   void setGridStyle(QTableView* theWrappedObject, Qt::PenStyle  style);
-   bool  isIndexHidden(QTableView* theWrappedObject, const QModelIndex&  index) const;
-   int  rowViewportPosition(QTableView* theWrappedObject, int  row) const;
-   void scrollTo(QTableView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible);
-   void setRootIndex(QTableView* theWrappedObject, const QModelIndex&  index);
-   bool  isSortingEnabled(QTableView* theWrappedObject) const;
-   bool  isColumnHidden(QTableView* theWrappedObject, int  column) const;
-   void sortByColumn(QTableView* theWrappedObject, int  column, Qt::SortOrder  order);
-   bool  isCornerButtonEnabled(QTableView* theWrappedObject) const;
-   void setWordWrap(QTableView* theWrappedObject, bool  on);
    void setHorizontalHeader(QTableView* theWrappedObject, QHeaderView*  header);
-   void updateGeometries(QTableView* theWrappedObject);
-   void currentChanged(QTableView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous);
-   int  columnWidth(QTableView* theWrappedObject, int  column) const;
-   void setRowHeight(QTableView* theWrappedObject, int  row, int  height);
-   void setCornerButtonEnabled(QTableView* theWrappedObject, bool  enable);
-   int  sizeHintForRow(QTableView* theWrappedObject, int  row) const;
+   void setSpan(QTableView* theWrappedObject, int  row, int  column, int  rowSpan, int  columnSpan);
+   int  columnViewportPosition(QTableView* theWrappedObject, int  column) const;
+   QModelIndex  indexAt(QTableView* theWrappedObject, const QPoint&  p) const;
+   bool  wordWrap(QTableView* theWrappedObject) const;
+   bool  isRowHidden(QTableView* theWrappedObject, int  row) const;
+   QRect  visualRect(QTableView* theWrappedObject, const QModelIndex&  index) const;
+   QStyleOptionViewItem  viewOptions(QTableView* theWrappedObject) const;
+   void setGridStyle(QTableView* theWrappedObject, Qt::PenStyle  style);
+   void setRootIndex(QTableView* theWrappedObject, const QModelIndex&  index);
+   QList<QModelIndex >  selectedIndexes(QTableView* theWrappedObject) const;
    int  rowHeight(QTableView* theWrappedObject, int  row) const;
+   int  sizeHintForRow(QTableView* theWrappedObject, int  row) const;
+   void timerEvent(QTableView* theWrappedObject, QTimerEvent*  event);
+   bool  isIndexHidden(QTableView* theWrappedObject, const QModelIndex&  index) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTABLEVIEW_H

@@ -20,13 +20,13 @@ void PythonQtWrapper_QMutex::unlock(QMutex* theWrappedObject)
   ( theWrappedObject->unlock());
 }
 
-bool  PythonQtWrapper_QMutex::tryLock(QMutex* theWrappedObject)
-{
-  return ( theWrappedObject->tryLock());
-}
-
 void PythonQtWrapper_QMutex::lock(QMutex* theWrappedObject)
 {
   ( theWrappedObject->lock());
+}
+
+bool  PythonQtWrapper_QMutex::tryLock(QMutex* theWrappedObject)
+{
+  return ( theWrappedObject->tryLock());
 }
 

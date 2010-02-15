@@ -121,19 +121,34 @@ QPicture* PythonQtWrapper_QPicture::new_QPicture(int  formatVersion)
 { 
 return new PythonQtShell_QPicture(formatVersion); }
 
+void PythonQtWrapper_QPicture::readFrom(QPicture* theWrappedObject, QDataStream&  arg__1)
+{
+  arg__1 >>  (*theWrappedObject);
+}
+
+bool  PythonQtWrapper_QPicture::load(QPicture* theWrappedObject, const QString&  fileName, const char*  format)
+{
+  return ( theWrappedObject->load(fileName, format));
+}
+
 bool  PythonQtWrapper_QPicture::load(QPicture* theWrappedObject, QIODevice*  dev, const char*  format)
 {
   return ( theWrappedObject->load(dev, format));
 }
 
-bool  PythonQtWrapper_QPicture::save(QPicture* theWrappedObject, const QString&  fileName, const char*  format)
+bool  PythonQtWrapper_QPicture::play(QPicture* theWrappedObject, QPainter*  p)
 {
-  return ( theWrappedObject->save(fileName, format));
+  return ( theWrappedObject->play(p));
 }
 
-int  PythonQtWrapper_QPicture::metric(QPicture* theWrappedObject, QPaintDevice::PaintDeviceMetric  m) const
+bool  PythonQtWrapper_QPicture::save(QPicture* theWrappedObject, QIODevice*  dev, const char*  format)
 {
-  return ( ((PythonQtPublicPromoter_QPicture*)theWrappedObject)->promoted_metric(m));
+  return ( theWrappedObject->save(dev, format));
+}
+
+void PythonQtWrapper_QPicture::setBoundingRect(QPicture* theWrappedObject, const QRect&  r)
+{
+  ( theWrappedObject->setBoundingRect(r));
 }
 
 const char*  PythonQtWrapper_QPicture::data(QPicture* theWrappedObject) const
@@ -141,14 +156,9 @@ const char*  PythonQtWrapper_QPicture::data(QPicture* theWrappedObject) const
   return ( theWrappedObject->data());
 }
 
-int  PythonQtWrapper_QPicture::devType(QPicture* theWrappedObject) const
+bool  PythonQtWrapper_QPicture::isNull(QPicture* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QPicture*)theWrappedObject)->promoted_devType());
-}
-
-uint  PythonQtWrapper_QPicture::size(QPicture* theWrappedObject) const
-{
-  return ( theWrappedObject->size());
+  return ( theWrappedObject->isNull());
 }
 
 QRect  PythonQtWrapper_QPicture::boundingRect(QPicture* theWrappedObject) const
@@ -156,9 +166,9 @@ QRect  PythonQtWrapper_QPicture::boundingRect(QPicture* theWrappedObject) const
   return ( theWrappedObject->boundingRect());
 }
 
-bool  PythonQtWrapper_QPicture::load(QPicture* theWrappedObject, const QString&  fileName, const char*  format)
+int  PythonQtWrapper_QPicture::metric(QPicture* theWrappedObject, QPaintDevice::PaintDeviceMetric  m) const
 {
-  return ( theWrappedObject->load(fileName, format));
+  return ( ((PythonQtPublicPromoter_QPicture*)theWrappedObject)->promoted_metric(m));
 }
 
 void PythonQtWrapper_QPicture::writeTo(QPicture* theWrappedObject, QDataStream&  arg__1)
@@ -171,28 +181,18 @@ QPaintEngine*  PythonQtWrapper_QPicture::paintEngine(QPicture* theWrappedObject)
   return ( ((PythonQtPublicPromoter_QPicture*)theWrappedObject)->promoted_paintEngine());
 }
 
-bool  PythonQtWrapper_QPicture::save(QPicture* theWrappedObject, QIODevice*  dev, const char*  format)
+int  PythonQtWrapper_QPicture::devType(QPicture* theWrappedObject) const
 {
-  return ( theWrappedObject->save(dev, format));
+  return ( ((PythonQtPublicPromoter_QPicture*)theWrappedObject)->promoted_devType());
 }
 
-bool  PythonQtWrapper_QPicture::isNull(QPicture* theWrappedObject) const
+bool  PythonQtWrapper_QPicture::save(QPicture* theWrappedObject, const QString&  fileName, const char*  format)
 {
-  return ( theWrappedObject->isNull());
+  return ( theWrappedObject->save(fileName, format));
 }
 
-void PythonQtWrapper_QPicture::setBoundingRect(QPicture* theWrappedObject, const QRect&  r)
+uint  PythonQtWrapper_QPicture::size(QPicture* theWrappedObject) const
 {
-  ( theWrappedObject->setBoundingRect(r));
-}
-
-bool  PythonQtWrapper_QPicture::play(QPicture* theWrappedObject, QPainter*  p)
-{
-  return ( theWrappedObject->play(p));
-}
-
-void PythonQtWrapper_QPicture::readFrom(QPicture* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 >>  (*theWrappedObject);
+  return ( theWrappedObject->size());
 }
 

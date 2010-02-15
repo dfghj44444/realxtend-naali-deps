@@ -29,14 +29,14 @@ QGradient* a = new QGradient();
 *((QGradient*)a) = other;
 return a; }
 void delete_QGradient(QGradient* obj) { delete obj; } 
-   QVector<QPair<qreal , QColor >  >  stops(QGradient* theWrappedObject) const;
-   QGradient::CoordinateMode  coordinateMode(QGradient* theWrappedObject) const;
-   QGradient::Spread  spread(QGradient* theWrappedObject) const;
-   void setColorAt(QGradient* theWrappedObject, qreal  pos, const QColor&  color);
-   void setSpread(QGradient* theWrappedObject, QGradient::Spread  spread);
-   QGradient::Type  type(QGradient* theWrappedObject) const;
-   void setCoordinateMode(QGradient* theWrappedObject, QGradient::CoordinateMode  mode);
    void setStops(QGradient* theWrappedObject, const QVector<QPair<qreal , QColor >  >&  stops);
+   QVector<QPair<qreal , QColor >  >  stops(QGradient* theWrappedObject) const;
+   QGradient::Type  type(QGradient* theWrappedObject) const;
+   void setColorAt(QGradient* theWrappedObject, qreal  pos, const QColor&  color);
+   void setCoordinateMode(QGradient* theWrappedObject, QGradient::CoordinateMode  mode);
+   void setSpread(QGradient* theWrappedObject, QGradient::Spread  spread);
+   QGradient::Spread  spread(QGradient* theWrappedObject) const;
+   QGradient::CoordinateMode  coordinateMode(QGradient* theWrappedObject) const;
    bool  operator_equal(QGradient* theWrappedObject, const QGradient&  gradient) const;
 };
 

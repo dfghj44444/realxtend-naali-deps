@@ -20,22 +20,22 @@ Q_ENUMS(RestartHint )
 enum RestartHint{
   RestartIfRunning = QSessionManager::RestartIfRunning,   RestartAnyway = QSessionManager::RestartAnyway,   RestartImmediately = QSessionManager::RestartImmediately,   RestartNever = QSessionManager::RestartNever};
 public slots:
+   void release(QSessionManager* theWrappedObject);
+   void cancel(QSessionManager* theWrappedObject);
+   QSessionManager::RestartHint  restartHint(QSessionManager* theWrappedObject) const;
+   void setRestartHint(QSessionManager* theWrappedObject, QSessionManager::RestartHint  arg__1);
+   bool  allowsInteraction(QSessionManager* theWrappedObject);
+   void setRestartCommand(QSessionManager* theWrappedObject, const QStringList&  arg__1);
+   QString  sessionId(QSessionManager* theWrappedObject) const;
+   void setManagerProperty(QSessionManager* theWrappedObject, const QString&  name, const QStringList&  value);
+   bool  isPhase2(QSessionManager* theWrappedObject) const;
+   QString  sessionKey(QSessionManager* theWrappedObject) const;
+   bool  allowsErrorInteraction(QSessionManager* theWrappedObject);
    QStringList  discardCommand(QSessionManager* theWrappedObject) const;
    void setDiscardCommand(QSessionManager* theWrappedObject, const QStringList&  arg__1);
-   void requestPhase2(QSessionManager* theWrappedObject);
-   void release(QSessionManager* theWrappedObject);
-   QString  sessionId(QSessionManager* theWrappedObject) const;
-   void setManagerProperty(QSessionManager* theWrappedObject, const QString&  name, const QString&  value);
-   void setRestartCommand(QSessionManager* theWrappedObject, const QStringList&  arg__1);
-   void cancel(QSessionManager* theWrappedObject);
-   QString  sessionKey(QSessionManager* theWrappedObject) const;
-   bool  isPhase2(QSessionManager* theWrappedObject) const;
-   QSessionManager::RestartHint  restartHint(QSessionManager* theWrappedObject) const;
-   bool  allowsErrorInteraction(QSessionManager* theWrappedObject);
-   void setManagerProperty(QSessionManager* theWrappedObject, const QString&  name, const QStringList&  value);
-   void setRestartHint(QSessionManager* theWrappedObject, QSessionManager::RestartHint  arg__1);
    QStringList  restartCommand(QSessionManager* theWrappedObject) const;
-   bool  allowsInteraction(QSessionManager* theWrappedObject);
+   void requestPhase2(QSessionManager* theWrappedObject);
+   void setManagerProperty(QSessionManager* theWrappedObject, const QString&  name, const QString&  value);
 };
 
 #endif // PYTHONQTWRAPPER_QSESSIONMANAGER_H

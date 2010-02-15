@@ -122,6 +122,81 @@ QUndoStack* PythonQtWrapper_QUndoStack::new_QUndoStack(QObject*  parent)
 { 
 return new PythonQtShell_QUndoStack(parent); }
 
+int  PythonQtWrapper_QUndoStack::undoLimit(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->undoLimit());
+}
+
+void PythonQtWrapper_QUndoStack::clear(QUndoStack* theWrappedObject)
+{
+  ( theWrappedObject->clear());
+}
+
+QString  PythonQtWrapper_QUndoStack::redoText(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->redoText());
+}
+
+int  PythonQtWrapper_QUndoStack::index(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->index());
+}
+
+bool  PythonQtWrapper_QUndoStack::isActive(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->isActive());
+}
+
+bool  PythonQtWrapper_QUndoStack::isClean(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->isClean());
+}
+
+QAction*  PythonQtWrapper_QUndoStack::createRedoAction(QUndoStack* theWrappedObject, QObject*  parent, const QString&  prefix) const
+{
+  return ( theWrappedObject->createRedoAction(parent, prefix));
+}
+
+void PythonQtWrapper_QUndoStack::endMacro(QUndoStack* theWrappedObject)
+{
+  ( theWrappedObject->endMacro());
+}
+
+int  PythonQtWrapper_QUndoStack::cleanIndex(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->cleanIndex());
+}
+
+QString  PythonQtWrapper_QUndoStack::text(QUndoStack* theWrappedObject, int  idx) const
+{
+  return ( theWrappedObject->text(idx));
+}
+
+bool  PythonQtWrapper_QUndoStack::canRedo(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->canRedo());
+}
+
+QString  PythonQtWrapper_QUndoStack::undoText(QUndoStack* theWrappedObject) const
+{
+  return ( theWrappedObject->undoText());
+}
+
+void PythonQtWrapper_QUndoStack::push(QUndoStack* theWrappedObject, QUndoCommand*  cmd)
+{
+  ( theWrappedObject->push(cmd));
+}
+
+void PythonQtWrapper_QUndoStack::beginMacro(QUndoStack* theWrappedObject, const QString&  text)
+{
+  ( theWrappedObject->beginMacro(text));
+}
+
+void PythonQtWrapper_QUndoStack::setUndoLimit(QUndoStack* theWrappedObject, int  limit)
+{
+  ( theWrappedObject->setUndoLimit(limit));
+}
+
 const QUndoCommand*  PythonQtWrapper_QUndoStack::command(QUndoStack* theWrappedObject, int  index) const
 {
   return ( theWrappedObject->command(index));
@@ -132,88 +207,13 @@ QAction*  PythonQtWrapper_QUndoStack::createUndoAction(QUndoStack* theWrappedObj
   return ( theWrappedObject->createUndoAction(parent, prefix));
 }
 
-bool  PythonQtWrapper_QUndoStack::isActive(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->isActive());
-}
-
-bool  PythonQtWrapper_QUndoStack::canRedo(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->canRedo());
-}
-
-int  PythonQtWrapper_QUndoStack::index(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->index());
-}
-
-void PythonQtWrapper_QUndoStack::push(QUndoStack* theWrappedObject, QUndoCommand*  cmd)
-{
-  ( theWrappedObject->push(cmd));
-}
-
-int  PythonQtWrapper_QUndoStack::count(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->count());
-}
-
-QString  PythonQtWrapper_QUndoStack::redoText(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->redoText());
-}
-
-int  PythonQtWrapper_QUndoStack::cleanIndex(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->cleanIndex());
-}
-
-void PythonQtWrapper_QUndoStack::clear(QUndoStack* theWrappedObject)
-{
-  ( theWrappedObject->clear());
-}
-
-QAction*  PythonQtWrapper_QUndoStack::createRedoAction(QUndoStack* theWrappedObject, QObject*  parent, const QString&  prefix) const
-{
-  return ( theWrappedObject->createRedoAction(parent, prefix));
-}
-
-int  PythonQtWrapper_QUndoStack::undoLimit(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->undoLimit());
-}
-
-bool  PythonQtWrapper_QUndoStack::isClean(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->isClean());
-}
-
-void PythonQtWrapper_QUndoStack::setUndoLimit(QUndoStack* theWrappedObject, int  limit)
-{
-  ( theWrappedObject->setUndoLimit(limit));
-}
-
 bool  PythonQtWrapper_QUndoStack::canUndo(QUndoStack* theWrappedObject) const
 {
   return ( theWrappedObject->canUndo());
 }
 
-void PythonQtWrapper_QUndoStack::beginMacro(QUndoStack* theWrappedObject, const QString&  text)
+int  PythonQtWrapper_QUndoStack::count(QUndoStack* theWrappedObject) const
 {
-  ( theWrappedObject->beginMacro(text));
-}
-
-void PythonQtWrapper_QUndoStack::endMacro(QUndoStack* theWrappedObject)
-{
-  ( theWrappedObject->endMacro());
-}
-
-QString  PythonQtWrapper_QUndoStack::undoText(QUndoStack* theWrappedObject) const
-{
-  return ( theWrappedObject->undoText());
-}
-
-QString  PythonQtWrapper_QUndoStack::text(QUndoStack* theWrappedObject, int  idx) const
-{
-  return ( theWrappedObject->text(idx));
+  return ( theWrappedObject->count());
 }
 

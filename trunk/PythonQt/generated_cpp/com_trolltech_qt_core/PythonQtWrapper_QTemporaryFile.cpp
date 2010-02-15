@@ -599,9 +599,29 @@ QTemporaryFile* PythonQtWrapper_QTemporaryFile::new_QTemporaryFile(const QString
 { 
 return new PythonQtShell_QTemporaryFile(templateName, parent); }
 
-QString  PythonQtWrapper_QTemporaryFile::fileTemplate(QTemporaryFile* theWrappedObject) const
+bool  PythonQtWrapper_QTemporaryFile::autoRemove(QTemporaryFile* theWrappedObject) const
 {
-  return ( theWrappedObject->fileTemplate());
+  return ( theWrappedObject->autoRemove());
+}
+
+bool  PythonQtWrapper_QTemporaryFile::open(QTemporaryFile* theWrappedObject)
+{
+  return ( theWrappedObject->open());
+}
+
+QTemporaryFile*  PythonQtWrapper_QTemporaryFile::static_QTemporaryFile_createLocalFile(QFile&  file)
+{
+  return (QTemporaryFile::createLocalFile(file));
+}
+
+bool  PythonQtWrapper_QTemporaryFile::open(QTemporaryFile* theWrappedObject, QIODevice::OpenMode  flags)
+{
+  return ( ((PythonQtPublicPromoter_QTemporaryFile*)theWrappedObject)->promoted_open(flags));
+}
+
+QAbstractFileEngine*  PythonQtWrapper_QTemporaryFile::fileEngine(QTemporaryFile* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QTemporaryFile*)theWrappedObject)->promoted_fileEngine());
 }
 
 QTemporaryFile*  PythonQtWrapper_QTemporaryFile::static_QTemporaryFile_createLocalFile(const QString&  fileName)
@@ -614,19 +634,9 @@ QString  PythonQtWrapper_QTemporaryFile::fileName(QTemporaryFile* theWrappedObje
   return ( theWrappedObject->fileName());
 }
 
-bool  PythonQtWrapper_QTemporaryFile::autoRemove(QTemporaryFile* theWrappedObject) const
+QString  PythonQtWrapper_QTemporaryFile::fileTemplate(QTemporaryFile* theWrappedObject) const
 {
-  return ( theWrappedObject->autoRemove());
-}
-
-QTemporaryFile*  PythonQtWrapper_QTemporaryFile::static_QTemporaryFile_createLocalFile(QFile&  file)
-{
-  return (QTemporaryFile::createLocalFile(file));
-}
-
-QAbstractFileEngine*  PythonQtWrapper_QTemporaryFile::fileEngine(QTemporaryFile* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QTemporaryFile*)theWrappedObject)->promoted_fileEngine());
+  return ( theWrappedObject->fileTemplate());
 }
 
 void PythonQtWrapper_QTemporaryFile::setFileTemplate(QTemporaryFile* theWrappedObject, const QString&  name)
@@ -634,18 +644,8 @@ void PythonQtWrapper_QTemporaryFile::setFileTemplate(QTemporaryFile* theWrappedO
   ( theWrappedObject->setFileTemplate(name));
 }
 
-bool  PythonQtWrapper_QTemporaryFile::open(QTemporaryFile* theWrappedObject)
-{
-  return ( theWrappedObject->open());
-}
-
 void PythonQtWrapper_QTemporaryFile::setAutoRemove(QTemporaryFile* theWrappedObject, bool  b)
 {
   ( theWrappedObject->setAutoRemove(b));
-}
-
-bool  PythonQtWrapper_QTemporaryFile::open(QTemporaryFile* theWrappedObject, QIODevice::OpenMode  flags)
-{
-  return ( ((PythonQtPublicPromoter_QTemporaryFile*)theWrappedObject)->promoted_open(flags));
 }
 

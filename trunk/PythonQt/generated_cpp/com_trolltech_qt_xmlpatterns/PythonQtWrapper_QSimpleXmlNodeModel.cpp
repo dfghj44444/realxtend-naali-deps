@@ -5,6 +5,7 @@
 #include <PythonQtConversion.h>
 #include <QVariant>
 #include <qabstractxmlnodemodel.h>
+#include <qsourcelocation.h>
 #include <qurl.h>
 #include <qvector.h>
 #include <qxmlname.h>
@@ -386,24 +387,9 @@ QSimpleXmlNodeModel* PythonQtWrapper_QSimpleXmlNodeModel::new_QSimpleXmlNodeMode
 { 
 return new PythonQtShell_QSimpleXmlNodeModel(namePool); }
 
-QXmlNamePool*  PythonQtWrapper_QSimpleXmlNodeModel::namePool(QSimpleXmlNodeModel* theWrappedObject) const
-{
-  return &( theWrappedObject->namePool());
-}
-
-QString  PythonQtWrapper_QSimpleXmlNodeModel::stringValue(QSimpleXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  node) const
-{
-  return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_stringValue(node));
-}
-
 QXmlNodeModelIndex  PythonQtWrapper_QSimpleXmlNodeModel::elementById(QSimpleXmlNodeModel* theWrappedObject, const QXmlName&  id) const
 {
   return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_elementById(id));
-}
-
-QUrl  PythonQtWrapper_QSimpleXmlNodeModel::baseUri(QSimpleXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  node) const
-{
-  return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_baseUri(node));
 }
 
 QVector<QXmlName >  PythonQtWrapper_QSimpleXmlNodeModel::namespaceBindings(QSimpleXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  arg__1) const
@@ -411,8 +397,23 @@ QVector<QXmlName >  PythonQtWrapper_QSimpleXmlNodeModel::namespaceBindings(QSimp
   return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_namespaceBindings(arg__1));
 }
 
+QString  PythonQtWrapper_QSimpleXmlNodeModel::stringValue(QSimpleXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  node) const
+{
+  return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_stringValue(node));
+}
+
 QVector<QXmlNodeModelIndex >  PythonQtWrapper_QSimpleXmlNodeModel::nodesByIdref(QSimpleXmlNodeModel* theWrappedObject, const QXmlName&  idref) const
 {
   return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_nodesByIdref(idref));
+}
+
+QXmlNamePool*  PythonQtWrapper_QSimpleXmlNodeModel::namePool(QSimpleXmlNodeModel* theWrappedObject) const
+{
+  return &( theWrappedObject->namePool());
+}
+
+QUrl  PythonQtWrapper_QSimpleXmlNodeModel::baseUri(QSimpleXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  node) const
+{
+  return ( ((PythonQtPublicPromoter_QSimpleXmlNodeModel*)theWrappedObject)->promoted_baseUri(node));
 }
 

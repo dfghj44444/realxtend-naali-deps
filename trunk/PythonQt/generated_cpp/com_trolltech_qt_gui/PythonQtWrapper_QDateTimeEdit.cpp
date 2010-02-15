@@ -14,6 +14,8 @@
 #include <qdatetimeedit.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -21,6 +23,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -948,174 +951,9 @@ QDateTimeEdit* PythonQtWrapper_QDateTimeEdit::new_QDateTimeEdit(const QTime&  t,
 { 
 return new PythonQtShell_QDateTimeEdit(t, parent); }
 
-void PythonQtWrapper_QDateTimeEdit::setCurrentSectionIndex(QDateTimeEdit* theWrappedObject, int  index)
+QTime  PythonQtWrapper_QDateTimeEdit::maximumTime(QDateTimeEdit* theWrappedObject) const
 {
-  ( theWrappedObject->setCurrentSectionIndex(index));
-}
-
-QAbstractSpinBox::StepEnabled  PythonQtWrapper_QDateTimeEdit::stepEnabled(QDateTimeEdit* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_stepEnabled());
-}
-
-QDateTimeEdit::Sections  PythonQtWrapper_QDateTimeEdit::displayedSections(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->displayedSections());
-}
-
-void PythonQtWrapper_QDateTimeEdit::setCalendarWidget(QDateTimeEdit* theWrappedObject, QCalendarWidget*  calendarWidget)
-{
-  ( theWrappedObject->setCalendarWidget(calendarWidget));
-}
-
-void PythonQtWrapper_QDateTimeEdit::keyPressEvent(QDateTimeEdit* theWrappedObject, QKeyEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_keyPressEvent(event));
-}
-
-void PythonQtWrapper_QDateTimeEdit::setDateTimeRange(QDateTimeEdit* theWrappedObject, const QDateTime&  min, const QDateTime&  max)
-{
-  ( theWrappedObject->setDateTimeRange(min, max));
-}
-
-QDateTimeEdit::Section  PythonQtWrapper_QDateTimeEdit::sectionAt(QDateTimeEdit* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->sectionAt(index));
-}
-
-void PythonQtWrapper_QDateTimeEdit::mousePressEvent(QDateTimeEdit* theWrappedObject, QMouseEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_mousePressEvent(event));
-}
-
-QDateTime  PythonQtWrapper_QDateTimeEdit::minimumDateTime(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumDateTime());
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMaximumDateTime(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMaximumDateTime());
-}
-
-QString  PythonQtWrapper_QDateTimeEdit::sectionText(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section) const
-{
-  return ( theWrappedObject->sectionText(section));
-}
-
-void PythonQtWrapper_QDateTimeEdit::fixup(QDateTimeEdit* theWrappedObject, QString&  input) const
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_fixup(input));
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMaximumTime(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMaximumTime());
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMaximumDate(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMaximumDate());
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMinimumDateTime(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMinimumDateTime());
-}
-
-QTime  PythonQtWrapper_QDateTimeEdit::minimumTime(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumTime());
-}
-
-QString  PythonQtWrapper_QDateTimeEdit::textFromDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt) const
-{
-  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_textFromDateTime(dt));
-}
-
-void PythonQtWrapper_QDateTimeEdit::setSelectedSection(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section)
-{
-  ( theWrappedObject->setSelectedSection(section));
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMinimumDate(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMinimumDate());
-}
-
-QDate  PythonQtWrapper_QDateTimeEdit::date(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->date());
-}
-
-bool  PythonQtWrapper_QDateTimeEdit::event(QDateTimeEdit* theWrappedObject, QEvent*  event)
-{
-  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_event(event));
-}
-
-Qt::TimeSpec  PythonQtWrapper_QDateTimeEdit::timeSpec(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->timeSpec());
-}
-
-void PythonQtWrapper_QDateTimeEdit::clearMinimumTime(QDateTimeEdit* theWrappedObject)
-{
-  ( theWrappedObject->clearMinimumTime());
-}
-
-void PythonQtWrapper_QDateTimeEdit::wheelEvent(QDateTimeEdit* theWrappedObject, QWheelEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_wheelEvent(event));
-}
-
-void PythonQtWrapper_QDateTimeEdit::setDateRange(QDateTimeEdit* theWrappedObject, const QDate&  min, const QDate&  max)
-{
-  ( theWrappedObject->setDateRange(min, max));
-}
-
-QDate  PythonQtWrapper_QDateTimeEdit::maximumDate(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->maximumDate());
-}
-
-void PythonQtWrapper_QDateTimeEdit::setCalendarPopup(QDateTimeEdit* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setCalendarPopup(enable));
-}
-
-QTime  PythonQtWrapper_QDateTimeEdit::time(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->time());
-}
-
-QDateTime  PythonQtWrapper_QDateTimeEdit::dateTimeFromText(QDateTimeEdit* theWrappedObject, const QString&  text) const
-{
-  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_dateTimeFromText(text));
-}
-
-void PythonQtWrapper_QDateTimeEdit::setDisplayFormat(QDateTimeEdit* theWrappedObject, const QString&  format)
-{
-  ( theWrappedObject->setDisplayFormat(format));
-}
-
-QDateTime  PythonQtWrapper_QDateTimeEdit::dateTime(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->dateTime());
-}
-
-void PythonQtWrapper_QDateTimeEdit::paintEvent(QDateTimeEdit* theWrappedObject, QPaintEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_paintEvent(event));
-}
-
-QDate  PythonQtWrapper_QDateTimeEdit::minimumDate(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumDate());
-}
-
-void PythonQtWrapper_QDateTimeEdit::setMaximumDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt)
-{
-  ( theWrappedObject->setMaximumDateTime(dt));
+  return ( theWrappedObject->maximumTime());
 }
 
 bool  PythonQtWrapper_QDateTimeEdit::focusNextPrevChild(QDateTimeEdit* theWrappedObject, bool  next)
@@ -1123,14 +961,104 @@ bool  PythonQtWrapper_QDateTimeEdit::focusNextPrevChild(QDateTimeEdit* theWrappe
   return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_focusNextPrevChild(next));
 }
 
-void PythonQtWrapper_QDateTimeEdit::setMaximumDate(QDateTimeEdit* theWrappedObject, const QDate&  max)
+void PythonQtWrapper_QDateTimeEdit::mousePressEvent(QDateTimeEdit* theWrappedObject, QMouseEvent*  event)
 {
-  ( theWrappedObject->setMaximumDate(max));
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_mousePressEvent(event));
 }
 
-void PythonQtWrapper_QDateTimeEdit::setMinimumDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt)
+QValidator::State  PythonQtWrapper_QDateTimeEdit::validate(QDateTimeEdit* theWrappedObject, QString&  input, int&  pos) const
 {
-  ( theWrappedObject->setMinimumDateTime(dt));
+  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_validate(input, pos));
+}
+
+void PythonQtWrapper_QDateTimeEdit::stepBy(QDateTimeEdit* theWrappedObject, int  steps)
+{
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_stepBy(steps));
+}
+
+void PythonQtWrapper_QDateTimeEdit::setCurrentSectionIndex(QDateTimeEdit* theWrappedObject, int  index)
+{
+  ( theWrappedObject->setCurrentSectionIndex(index));
+}
+
+void PythonQtWrapper_QDateTimeEdit::setMaximumTime(QDateTimeEdit* theWrappedObject, const QTime&  max)
+{
+  ( theWrappedObject->setMaximumTime(max));
+}
+
+QDate  PythonQtWrapper_QDateTimeEdit::maximumDate(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->maximumDate());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setDisplayFormat(QDateTimeEdit* theWrappedObject, const QString&  format)
+{
+  ( theWrappedObject->setDisplayFormat(format));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMinimumDateTime(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMinimumDateTime());
+}
+
+void PythonQtWrapper_QDateTimeEdit::paintEvent(QDateTimeEdit* theWrappedObject, QPaintEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_paintEvent(event));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMaximumDateTime(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMaximumDateTime());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setCurrentSection(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section)
+{
+  ( theWrappedObject->setCurrentSection(section));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMaximumTime(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMaximumTime());
+}
+
+QDateTime  PythonQtWrapper_QDateTimeEdit::minimumDateTime(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumDateTime());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setDateTimeRange(QDateTimeEdit* theWrappedObject, const QDateTime&  min, const QDateTime&  max)
+{
+  ( theWrappedObject->setDateTimeRange(min, max));
+}
+
+void PythonQtWrapper_QDateTimeEdit::setSelectedSection(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section)
+{
+  ( theWrappedObject->setSelectedSection(section));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMaximumDate(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMaximumDate());
+}
+
+QDate  PythonQtWrapper_QDateTimeEdit::minimumDate(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumDate());
+}
+
+QString  PythonQtWrapper_QDateTimeEdit::textFromDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt) const
+{
+  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_textFromDateTime(dt));
+}
+
+QCalendarWidget*  PythonQtWrapper_QDateTimeEdit::calendarWidget(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->calendarWidget());
+}
+
+QDateTimeEdit::Section  PythonQtWrapper_QDateTimeEdit::sectionAt(QDateTimeEdit* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->sectionAt(index));
 }
 
 void PythonQtWrapper_QDateTimeEdit::setTimeRange(QDateTimeEdit* theWrappedObject, const QTime&  min, const QTime&  max)
@@ -1138,24 +1066,24 @@ void PythonQtWrapper_QDateTimeEdit::setTimeRange(QDateTimeEdit* theWrappedObject
   ( theWrappedObject->setTimeRange(min, max));
 }
 
-QTime  PythonQtWrapper_QDateTimeEdit::maximumTime(QDateTimeEdit* theWrappedObject) const
+void PythonQtWrapper_QDateTimeEdit::setMaximumDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt)
 {
-  return ( theWrappedObject->maximumTime());
+  ( theWrappedObject->setMaximumDateTime(dt));
 }
 
-int  PythonQtWrapper_QDateTimeEdit::currentSectionIndex(QDateTimeEdit* theWrappedObject) const
+void PythonQtWrapper_QDateTimeEdit::keyPressEvent(QDateTimeEdit* theWrappedObject, QKeyEvent*  event)
 {
-  return ( theWrappedObject->currentSectionIndex());
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_keyPressEvent(event));
 }
 
-int  PythonQtWrapper_QDateTimeEdit::sectionCount(QDateTimeEdit* theWrappedObject) const
+QDate  PythonQtWrapper_QDateTimeEdit::date(QDateTimeEdit* theWrappedObject) const
 {
-  return ( theWrappedObject->sectionCount());
+  return ( theWrappedObject->date());
 }
 
-QSize  PythonQtWrapper_QDateTimeEdit::sizeHint(QDateTimeEdit* theWrappedObject) const
+void PythonQtWrapper_QDateTimeEdit::wheelEvent(QDateTimeEdit* theWrappedObject, QWheelEvent*  event)
 {
-  return ( theWrappedObject->sizeHint());
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_wheelEvent(event));
 }
 
 bool  PythonQtWrapper_QDateTimeEdit::calendarPopup(QDateTimeEdit* theWrappedObject) const
@@ -1163,9 +1091,99 @@ bool  PythonQtWrapper_QDateTimeEdit::calendarPopup(QDateTimeEdit* theWrappedObje
   return ( theWrappedObject->calendarPopup());
 }
 
+void PythonQtWrapper_QDateTimeEdit::setMaximumDate(QDateTimeEdit* theWrappedObject, const QDate&  max)
+{
+  ( theWrappedObject->setMaximumDate(max));
+}
+
 QDateTimeEdit::Section  PythonQtWrapper_QDateTimeEdit::currentSection(QDateTimeEdit* theWrappedObject) const
 {
   return ( theWrappedObject->currentSection());
+}
+
+QString  PythonQtWrapper_QDateTimeEdit::sectionText(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section) const
+{
+  return ( theWrappedObject->sectionText(section));
+}
+
+void PythonQtWrapper_QDateTimeEdit::setMinimumDate(QDateTimeEdit* theWrappedObject, const QDate&  min)
+{
+  ( theWrappedObject->setMinimumDate(min));
+}
+
+QDateTime  PythonQtWrapper_QDateTimeEdit::dateTimeFromText(QDateTimeEdit* theWrappedObject, const QString&  text) const
+{
+  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_dateTimeFromText(text));
+}
+
+QDateTimeEdit::Sections  PythonQtWrapper_QDateTimeEdit::displayedSections(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->displayedSections());
+}
+
+QTime  PythonQtWrapper_QDateTimeEdit::minimumTime(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumTime());
+}
+
+QAbstractSpinBox::StepEnabled  PythonQtWrapper_QDateTimeEdit::stepEnabled(QDateTimeEdit* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_stepEnabled());
+}
+
+int  PythonQtWrapper_QDateTimeEdit::currentSectionIndex(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->currentSectionIndex());
+}
+
+QDateTime  PythonQtWrapper_QDateTimeEdit::maximumDateTime(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->maximumDateTime());
+}
+
+bool  PythonQtWrapper_QDateTimeEdit::event(QDateTimeEdit* theWrappedObject, QEvent*  event)
+{
+  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_event(event));
+}
+
+void PythonQtWrapper_QDateTimeEdit::setDateRange(QDateTimeEdit* theWrappedObject, const QDate&  min, const QDate&  max)
+{
+  ( theWrappedObject->setDateRange(min, max));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMinimumDate(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMinimumDate());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setMinimumDateTime(QDateTimeEdit* theWrappedObject, const QDateTime&  dt)
+{
+  ( theWrappedObject->setMinimumDateTime(dt));
+}
+
+Qt::TimeSpec  PythonQtWrapper_QDateTimeEdit::timeSpec(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->timeSpec());
+}
+
+QTime  PythonQtWrapper_QDateTimeEdit::time(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->time());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setCalendarWidget(QDateTimeEdit* theWrappedObject, QCalendarWidget*  calendarWidget)
+{
+  ( theWrappedObject->setCalendarWidget(calendarWidget));
+}
+
+void PythonQtWrapper_QDateTimeEdit::focusInEvent(QDateTimeEdit* theWrappedObject, QFocusEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_focusInEvent(event));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clearMinimumTime(QDateTimeEdit* theWrappedObject)
+{
+  ( theWrappedObject->clearMinimumTime());
 }
 
 QString  PythonQtWrapper_QDateTimeEdit::displayFormat(QDateTimeEdit* theWrappedObject) const
@@ -1178,53 +1196,38 @@ void PythonQtWrapper_QDateTimeEdit::setMinimumTime(QDateTimeEdit* theWrappedObje
   ( theWrappedObject->setMinimumTime(min));
 }
 
-void PythonQtWrapper_QDateTimeEdit::stepBy(QDateTimeEdit* theWrappedObject, int  steps)
+void PythonQtWrapper_QDateTimeEdit::fixup(QDateTimeEdit* theWrappedObject, QString&  input) const
 {
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_stepBy(steps));
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_fixup(input));
 }
 
-void PythonQtWrapper_QDateTimeEdit::setCurrentSection(QDateTimeEdit* theWrappedObject, QDateTimeEdit::Section  section)
+int  PythonQtWrapper_QDateTimeEdit::sectionCount(QDateTimeEdit* theWrappedObject) const
 {
-  ( theWrappedObject->setCurrentSection(section));
+  return ( theWrappedObject->sectionCount());
 }
 
-void PythonQtWrapper_QDateTimeEdit::focusInEvent(QDateTimeEdit* theWrappedObject, QFocusEvent*  event)
+QDateTime  PythonQtWrapper_QDateTimeEdit::dateTime(QDateTimeEdit* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_focusInEvent(event));
-}
-
-QValidator::State  PythonQtWrapper_QDateTimeEdit::validate(QDateTimeEdit* theWrappedObject, QString&  input, int&  pos) const
-{
-  return ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_validate(input, pos));
-}
-
-void PythonQtWrapper_QDateTimeEdit::clear(QDateTimeEdit* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_clear());
-}
-
-void PythonQtWrapper_QDateTimeEdit::setMaximumTime(QDateTimeEdit* theWrappedObject, const QTime&  max)
-{
-  ( theWrappedObject->setMaximumTime(max));
-}
-
-void PythonQtWrapper_QDateTimeEdit::setMinimumDate(QDateTimeEdit* theWrappedObject, const QDate&  min)
-{
-  ( theWrappedObject->setMinimumDate(min));
-}
-
-QCalendarWidget*  PythonQtWrapper_QDateTimeEdit::calendarWidget(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->calendarWidget());
-}
-
-QDateTime  PythonQtWrapper_QDateTimeEdit::maximumDateTime(QDateTimeEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->maximumDateTime());
+  return ( theWrappedObject->dateTime());
 }
 
 void PythonQtWrapper_QDateTimeEdit::setTimeSpec(QDateTimeEdit* theWrappedObject, Qt::TimeSpec  spec)
 {
   ( theWrappedObject->setTimeSpec(spec));
+}
+
+QSize  PythonQtWrapper_QDateTimeEdit::sizeHint(QDateTimeEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+void PythonQtWrapper_QDateTimeEdit::setCalendarPopup(QDateTimeEdit* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setCalendarPopup(enable));
+}
+
+void PythonQtWrapper_QDateTimeEdit::clear(QDateTimeEdit* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QDateTimeEdit*)theWrappedObject)->promoted_clear());
 }
 

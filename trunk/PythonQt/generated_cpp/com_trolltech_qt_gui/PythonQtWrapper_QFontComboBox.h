@@ -19,6 +19,8 @@
 #include <qevent.h>
 #include <qfont.h>
 #include <qfontcombobox.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -26,6 +28,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -107,11 +110,11 @@ Q_DECLARE_FLAGS(FontFilters, FontFilter)
 public slots:
 QFontComboBox* new_QFontComboBox(QWidget*  parent = 0);
 void delete_QFontComboBox(QFontComboBox* obj) { delete obj; } 
-   QFont  currentFont(QFontComboBox* theWrappedObject) const;
-   QFontDatabase::WritingSystem  writingSystem(QFontComboBox* theWrappedObject) const;
-   QFontComboBox::FontFilters  fontFilters(QFontComboBox* theWrappedObject) const;
-   void setFontFilters(QFontComboBox* theWrappedObject, QFontComboBox::FontFilters  filters);
    bool  event(QFontComboBox* theWrappedObject, QEvent*  e);
+   QFontComboBox::FontFilters  fontFilters(QFontComboBox* theWrappedObject) const;
+   QFontDatabase::WritingSystem  writingSystem(QFontComboBox* theWrappedObject) const;
+   void setFontFilters(QFontComboBox* theWrappedObject, QFontComboBox::FontFilters  filters);
+   QFont  currentFont(QFontComboBox* theWrappedObject) const;
    void setWritingSystem(QFontComboBox* theWrappedObject, QFontDatabase::WritingSystem  arg__1);
    QSize  sizeHint(QFontComboBox* theWrappedObject) const;
 };

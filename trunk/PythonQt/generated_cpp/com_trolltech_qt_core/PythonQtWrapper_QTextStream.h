@@ -9,6 +9,7 @@
 #include <QVariant>
 #include <qbytearray.h>
 #include <qiodevice.h>
+#include <qlocale.h>
 #include <qtextcodec.h>
 #include <qtextstream.h>
 
@@ -42,57 +43,59 @@ QTextStream* new_QTextStream();
 QTextStream* new_QTextStream(QIODevice*  device);
 QTextStream* new_QTextStream(const QByteArray&  array, QIODevice::OpenMode  openMode = QIODevice::ReadOnly);
 void delete_QTextStream(QTextStream* obj) { delete obj; } 
-   QTextCodec*  codec(QTextStream* theWrappedObject) const;
-   void skipWhiteSpace(QTextStream* theWrappedObject);
-   bool  generateByteOrderMark(QTextStream* theWrappedObject) const;
-   void setFieldAlignment(QTextStream* theWrappedObject, QTextStream::FieldAlignment  alignment);
-   void setGenerateByteOrderMark(QTextStream* theWrappedObject, bool  generate);
-   QTextStream*  readShort(QTextStream* theWrappedObject, signed short&  i);
-   int  fieldWidth(QTextStream* theWrappedObject) const;
-   QTextStream*  writeFloat(QTextStream* theWrappedObject, float  f);
-   bool  seek(QTextStream* theWrappedObject, qint64  pos);
-   bool  autoDetectUnicode(QTextStream* theWrappedObject) const;
-   QTextStream::FieldAlignment  fieldAlignment(QTextStream* theWrappedObject) const;
-   void setNumberFlags(QTextStream* theWrappedObject, QTextStream::NumberFlags  flags);
-   void setPadChar(QTextStream* theWrappedObject, QChar  ch);
-   int  integerBase(QTextStream* theWrappedObject) const;
-   bool  atEnd(QTextStream* theWrappedObject) const;
-   QTextStream*  writeShort(QTextStream* theWrappedObject, signed short  i);
-   QString  read(QTextStream* theWrappedObject, qint64  maxlen);
-   QTextStream*  writeBoolean(QTextStream* theWrappedObject, QBool  b);
-   QString  readLine(QTextStream* theWrappedObject, qint64  maxlen = 0);
-   QTextStream*  readUShort(QTextStream* theWrappedObject, unsigned short&  i);
-   void resetStatus(QTextStream* theWrappedObject);
-   QIODevice*  device(QTextStream* theWrappedObject) const;
-   QTextStream*  readLongLong(QTextStream* theWrappedObject, qlonglong&  i);
-   QChar  padChar(QTextStream* theWrappedObject) const;
-   QTextStream*  writeInt(QTextStream* theWrappedObject, signed int  i);
    void setFieldWidth(QTextStream* theWrappedObject, int  width);
-   QTextStream*  writeString(QTextStream* theWrappedObject, const QString&  s);
+   QTextStream::Status  status(QTextStream* theWrappedObject) const;
+   QTextStream*  readFloat(QTextStream* theWrappedObject, float&  f);
+   QTextStream*  writeInt(QTextStream* theWrappedObject, signed int  i);
+   void setCodec(QTextStream* theWrappedObject, const char*  codecName);
+   QTextStream*  readLongLong(QTextStream* theWrappedObject, qlonglong&  i);
+   void setDevice(QTextStream* theWrappedObject, QIODevice*  device);
+   QLocale  locale(QTextStream* theWrappedObject) const;
+   QTextStream*  writeDouble(QTextStream* theWrappedObject, double  f);
+   void resetStatus(QTextStream* theWrappedObject);
+   QTextStream*  writeBoolean(QTextStream* theWrappedObject, QBool  b);
+   void setRealNumberPrecision(QTextStream* theWrappedObject, int  precision);
+   bool  generateByteOrderMark(QTextStream* theWrappedObject) const;
+   QTextStream*  writeByteArray(QTextStream* theWrappedObject, const QByteArray&  array);
+   void setStatus(QTextStream* theWrappedObject, QTextStream::Status  status);
+   void setRealNumberNotation(QTextStream* theWrappedObject, QTextStream::RealNumberNotation  notation);
+   void skipWhiteSpace(QTextStream* theWrappedObject);
+   bool  atEnd(QTextStream* theWrappedObject) const;
+   int  realNumberPrecision(QTextStream* theWrappedObject) const;
+   void setNumberFlags(QTextStream* theWrappedObject, QTextStream::NumberFlags  flags);
+   qint64  pos(QTextStream* theWrappedObject) const;
+   QTextCodec*  codec(QTextStream* theWrappedObject) const;
+   QTextStream*  writeShort(QTextStream* theWrappedObject, signed short  i);
+   QTextStream*  readShort(QTextStream* theWrappedObject, signed short&  i);
+   QTextStream*  writeFloat(QTextStream* theWrappedObject, float  f);
+   QTextStream*  readByte(QTextStream* theWrappedObject, char&  ch);
+   QTextStream*  readDouble(QTextStream* theWrappedObject, double&  f);
+   void reset(QTextStream* theWrappedObject);
+   void setFieldAlignment(QTextStream* theWrappedObject, QTextStream::FieldAlignment  alignment);
    void flush(QTextStream* theWrappedObject);
+   void setAutoDetectUnicode(QTextStream* theWrappedObject, bool  enabled);
+   QTextStream*  readUShort(QTextStream* theWrappedObject, unsigned short&  i);
+   void setLocale(QTextStream* theWrappedObject, const QLocale&  locale);
+   QChar  padChar(QTextStream* theWrappedObject) const;
    QString  readAll(QTextStream* theWrappedObject);
-   QTextStream*  writeByte(QTextStream* theWrappedObject, char  ch);
+   bool  autoDetectUnicode(QTextStream* theWrappedObject) const;
+   int  integerBase(QTextStream* theWrappedObject) const;
+   QTextStream::RealNumberNotation  realNumberNotation(QTextStream* theWrappedObject) const;
    QTextStream::NumberFlags  numberFlags(QTextStream* theWrappedObject) const;
    QTextStream*  readUInt(QTextStream* theWrappedObject, unsigned int&  i);
-   void setIntegerBase(QTextStream* theWrappedObject, int  base);
-   QTextStream::RealNumberNotation  realNumberNotation(QTextStream* theWrappedObject) const;
    void setCodec(QTextStream* theWrappedObject, QTextCodec*  codec);
-   int  realNumberPrecision(QTextStream* theWrappedObject) const;
-   void setCodec(QTextStream* theWrappedObject, const char*  codecName);
-   QTextStream*  writeByteArray(QTextStream* theWrappedObject, const QByteArray&  array);
-   QTextStream*  readDouble(QTextStream* theWrappedObject, double&  f);
-   void setStatus(QTextStream* theWrappedObject, QTextStream::Status  status);
-   QTextStream*  writeDouble(QTextStream* theWrappedObject, double  f);
-   qint64  pos(QTextStream* theWrappedObject) const;
-   void setDevice(QTextStream* theWrappedObject, QIODevice*  device);
-   QTextStream*  readFloat(QTextStream* theWrappedObject, float&  f);
-   QTextStream::Status  status(QTextStream* theWrappedObject) const;
-   void setAutoDetectUnicode(QTextStream* theWrappedObject, bool  enabled);
-   void setRealNumberNotation(QTextStream* theWrappedObject, QTextStream::RealNumberNotation  notation);
+   void setIntegerBase(QTextStream* theWrappedObject, int  base);
    QTextStream*  readInt(QTextStream* theWrappedObject, signed int&  i);
-   void reset(QTextStream* theWrappedObject);
-   void setRealNumberPrecision(QTextStream* theWrappedObject, int  precision);
-   QTextStream*  readByte(QTextStream* theWrappedObject, char&  ch);
+   void setPadChar(QTextStream* theWrappedObject, QChar  ch);
+   QIODevice*  device(QTextStream* theWrappedObject) const;
+   QTextStream::FieldAlignment  fieldAlignment(QTextStream* theWrappedObject) const;
+   int  fieldWidth(QTextStream* theWrappedObject) const;
+   QString  read(QTextStream* theWrappedObject, qint64  maxlen);
+   bool  seek(QTextStream* theWrappedObject, qint64  pos);
+   void setGenerateByteOrderMark(QTextStream* theWrappedObject, bool  generate);
+   QTextStream*  writeString(QTextStream* theWrappedObject, const QString&  s);
+   QString  readLine(QTextStream* theWrappedObject, qint64  maxlen = 0);
+   QTextStream*  writeByte(QTextStream* theWrappedObject, char  ch);
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTSTREAM_H

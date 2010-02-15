@@ -35,6 +35,7 @@ QStyleOption* new_QStyleOption(const QStyleOption&  other);
 QStyleOption* new_QStyleOption(int  version = QStyleOption::Version, int  type = SO_Default);
 void delete_QStyleOption(QStyleOption* obj) { delete obj; } 
    void initFrom(QStyleOption* theWrappedObject, const QWidget*  w);
+    QString toString(QStyleOption*);
 };
 
 #endif // PYTHONQTWRAPPER_QSTYLEOPTION_H

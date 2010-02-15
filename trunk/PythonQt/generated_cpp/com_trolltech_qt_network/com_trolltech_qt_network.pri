@@ -1,4 +1,5 @@
 HEADERS += \
+           $$PWD/PythonQtWrapper_QAbstractNetworkCache.h \
            $$PWD/PythonQtWrapper_QAbstractSocket.h \
            $$PWD/PythonQtWrapper_QAuthenticator.h \
            $$PWD/PythonQtWrapper_QFtp.h \
@@ -13,19 +14,30 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QLocalSocket.h \
            $$PWD/PythonQtWrapper_QNetworkAccessManager.h \
            $$PWD/PythonQtWrapper_QNetworkAddressEntry.h \
+           $$PWD/PythonQtWrapper_QNetworkCacheMetaData.h \
            $$PWD/PythonQtWrapper_QNetworkCookie.h \
            $$PWD/PythonQtWrapper_QNetworkCookieJar.h \
+           $$PWD/PythonQtWrapper_QNetworkDiskCache.h \
            $$PWD/PythonQtWrapper_QNetworkInterface.h \
            $$PWD/PythonQtWrapper_QNetworkProxy.h \
+           $$PWD/PythonQtWrapper_QNetworkProxyFactory.h \
+           $$PWD/PythonQtWrapper_QNetworkProxyQuery.h \
            $$PWD/PythonQtWrapper_QNetworkReply.h \
            $$PWD/PythonQtWrapper_QNetworkRequest.h \
            $$PWD/PythonQtWrapper_QSsl.h \
+           $$PWD/PythonQtWrapper_QSslCertificate.h \
+           $$PWD/PythonQtWrapper_QSslCipher.h \
+           $$PWD/PythonQtWrapper_QSslConfiguration.h \
+           $$PWD/PythonQtWrapper_QSslError.h \
+           $$PWD/PythonQtWrapper_QSslKey.h \
+           $$PWD/PythonQtWrapper_QSslSocket.h \
            $$PWD/PythonQtWrapper_QTcpServer.h \
            $$PWD/PythonQtWrapper_QTcpSocket.h \
            $$PWD/PythonQtWrapper_QUdpSocket.h \
            $$PWD/PythonQtWrapper_QUrlInfo.h \
 
 SOURCES += \
+           $$PWD/PythonQtWrapper_QAbstractNetworkCache.cpp \
            $$PWD/PythonQtWrapper_QAbstractSocket.cpp \
            $$PWD/PythonQtWrapper_QAuthenticator.cpp \
            $$PWD/PythonQtWrapper_QFtp.cpp \
@@ -40,13 +52,23 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QLocalSocket.cpp \
            $$PWD/PythonQtWrapper_QNetworkAccessManager.cpp \
            $$PWD/PythonQtWrapper_QNetworkAddressEntry.cpp \
+           $$PWD/PythonQtWrapper_QNetworkCacheMetaData.cpp \
            $$PWD/PythonQtWrapper_QNetworkCookie.cpp \
            $$PWD/PythonQtWrapper_QNetworkCookieJar.cpp \
+           $$PWD/PythonQtWrapper_QNetworkDiskCache.cpp \
            $$PWD/PythonQtWrapper_QNetworkInterface.cpp \
            $$PWD/PythonQtWrapper_QNetworkProxy.cpp \
+           $$PWD/PythonQtWrapper_QNetworkProxyFactory.cpp \
+           $$PWD/PythonQtWrapper_QNetworkProxyQuery.cpp \
            $$PWD/PythonQtWrapper_QNetworkReply.cpp \
            $$PWD/PythonQtWrapper_QNetworkRequest.cpp \
            $$PWD/PythonQtWrapper_QSsl.cpp \
+           $$PWD/PythonQtWrapper_QSslCertificate.cpp \
+           $$PWD/PythonQtWrapper_QSslCipher.cpp \
+           $$PWD/PythonQtWrapper_QSslConfiguration.cpp \
+           $$PWD/PythonQtWrapper_QSslError.cpp \
+           $$PWD/PythonQtWrapper_QSslKey.cpp \
+           $$PWD/PythonQtWrapper_QSslSocket.cpp \
            $$PWD/PythonQtWrapper_QTcpServer.cpp \
            $$PWD/PythonQtWrapper_QTcpSocket.cpp \
            $$PWD/PythonQtWrapper_QUdpSocket.cpp \

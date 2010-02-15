@@ -12,12 +12,15 @@
 #include <qevent.h>
 #include <qfocusframe.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -826,11 +829,6 @@ QFocusFrame* PythonQtWrapper_QFocusFrame::new_QFocusFrame(QWidget*  parent)
 { 
 return new PythonQtShell_QFocusFrame(parent); }
 
-bool  PythonQtWrapper_QFocusFrame::event(QFocusFrame* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QFocusFrame*)theWrappedObject)->promoted_event(e));
-}
-
 QWidget*  PythonQtWrapper_QFocusFrame::widget(QFocusFrame* theWrappedObject) const
 {
   return ( theWrappedObject->widget());
@@ -841,13 +839,18 @@ void PythonQtWrapper_QFocusFrame::paintEvent(QFocusFrame* theWrappedObject, QPai
   ( ((PythonQtPublicPromoter_QFocusFrame*)theWrappedObject)->promoted_paintEvent(arg__1));
 }
 
-bool  PythonQtWrapper_QFocusFrame::eventFilter(QFocusFrame* theWrappedObject, QObject*  arg__1, QEvent*  arg__2)
+bool  PythonQtWrapper_QFocusFrame::event(QFocusFrame* theWrappedObject, QEvent*  e)
 {
-  return ( ((PythonQtPublicPromoter_QFocusFrame*)theWrappedObject)->promoted_eventFilter(arg__1, arg__2));
+  return ( ((PythonQtPublicPromoter_QFocusFrame*)theWrappedObject)->promoted_event(e));
 }
 
 void PythonQtWrapper_QFocusFrame::setWidget(QFocusFrame* theWrappedObject, QWidget*  widget)
 {
   ( theWrappedObject->setWidget(widget));
+}
+
+bool  PythonQtWrapper_QFocusFrame::eventFilter(QFocusFrame* theWrappedObject, QObject*  arg__1, QEvent*  arg__2)
+{
+  return ( ((PythonQtPublicPromoter_QFocusFrame*)theWrappedObject)->promoted_eventFilter(arg__1, arg__2));
 }
 

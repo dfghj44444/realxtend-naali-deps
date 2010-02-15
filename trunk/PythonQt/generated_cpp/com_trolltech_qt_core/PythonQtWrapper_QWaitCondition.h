@@ -17,10 +17,10 @@ public:
 public slots:
 QWaitCondition* new_QWaitCondition();
 void delete_QWaitCondition(QWaitCondition* obj) { delete obj; } 
-   bool  wait(QWaitCondition* theWrappedObject, QReadWriteLock*  readWriteLock, unsigned long  time = 0xffffffffUL);
-   void wakeAll(QWaitCondition* theWrappedObject);
+   bool  wait(QWaitCondition* theWrappedObject, QMutex*  mutex, unsigned long  time = ULONG_MAX);
    void wakeOne(QWaitCondition* theWrappedObject);
-   bool  wait(QWaitCondition* theWrappedObject, QMutex*  mutex, unsigned long  time = 0xffffffffUL);
+   void wakeAll(QWaitCondition* theWrappedObject);
+   bool  wait(QWaitCondition* theWrappedObject, QReadWriteLock*  readWriteLock, unsigned long  time = ULONG_MAX);
 };
 
 #endif // PYTHONQTWRAPPER_QWAITCONDITION_H

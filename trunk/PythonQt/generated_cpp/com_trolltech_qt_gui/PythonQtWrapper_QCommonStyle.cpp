@@ -17,6 +17,7 @@
 #include <qpoint.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qstyle.h>
 #include <qstyleoption.h>
 #include <qwidget.h>
 
@@ -307,7 +308,7 @@ if (_wrapper) {
 }
   return QCommonStyle::pixelMetric(m, opt, widget);
 }
-void PythonQtShell_QCommonStyle::polish(QApplication*  arg__1)
+void PythonQtShell_QCommonStyle::polish(QApplication*  app)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "polish");
@@ -315,14 +316,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "QApplication*"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&app};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QCommonStyle::polish(arg__1);
+  QCommonStyle::polish(app);
 }
 void PythonQtShell_QCommonStyle::polish(QPalette&  arg__1)
 {
@@ -341,7 +342,7 @@ if (_wrapper) {
 }
   QCommonStyle::polish(arg__1);
 }
-void PythonQtShell_QCommonStyle::polish(QWidget*  arg__1)
+void PythonQtShell_QCommonStyle::polish(QWidget*  widget)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "polish");
@@ -349,14 +350,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "QWidget*"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&widget};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QCommonStyle::polish(arg__1);
+  QCommonStyle::polish(widget);
 }
 QSize  PythonQtShell_QCommonStyle::sizeFromContents(QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
 {
@@ -544,7 +545,7 @@ if (_wrapper) {
 }
   QCommonStyle::timerEvent(arg__1);
 }
-void PythonQtShell_QCommonStyle::unpolish(QApplication*  arg__1)
+void PythonQtShell_QCommonStyle::unpolish(QApplication*  application)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "unpolish");
@@ -552,16 +553,16 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "QApplication*"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&application};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QCommonStyle::unpolish(arg__1);
+  QCommonStyle::unpolish(application);
 }
-void PythonQtShell_QCommonStyle::unpolish(QWidget*  arg__1)
+void PythonQtShell_QCommonStyle::unpolish(QWidget*  widget)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "unpolish");
@@ -569,47 +570,22 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "QWidget*"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&widget};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QCommonStyle::unpolish(arg__1);
+  QCommonStyle::unpolish(widget);
 }
 QCommonStyle* PythonQtWrapper_QCommonStyle::new_QCommonStyle()
 { 
 return new PythonQtShell_QCommonStyle(); }
 
-void PythonQtWrapper_QCommonStyle::drawControl(QCommonStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+void PythonQtWrapper_QCommonStyle::unpolish(QCommonStyle* theWrappedObject, QWidget*  widget)
 {
-  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
-}
-
-QPixmap  PythonQtWrapper_QCommonStyle::generatedIconPixmap(QCommonStyle* theWrappedObject, QIcon::Mode  iconMode, const QPixmap&  pixmap, const QStyleOption*  opt) const
-{
-  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_generatedIconPixmap(iconMode, pixmap, opt));
-}
-
-void PythonQtWrapper_QCommonStyle::drawPrimitive(QCommonStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
-{
-  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
-}
-
-int  PythonQtWrapper_QCommonStyle::styleHint(QCommonStyle* theWrappedObject, QStyle::StyleHint  sh, const QStyleOption*  opt, const QWidget*  w, QStyleHintReturn*  shret) const
-{
-  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_styleHint(sh, opt, w, shret));
-}
-
-QRect  PythonQtWrapper_QCommonStyle::subElementRect(QCommonStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
-}
-
-QSize  PythonQtWrapper_QCommonStyle::sizeFromContents(QCommonStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_unpolish(widget));
 }
 
 void PythonQtWrapper_QCommonStyle::drawComplexControl(QCommonStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QPainter*  p, const QWidget*  w) const
@@ -617,9 +593,24 @@ void PythonQtWrapper_QCommonStyle::drawComplexControl(QCommonStyle* theWrappedOb
   ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_drawComplexControl(cc, opt, p, w));
 }
 
-QRect  PythonQtWrapper_QCommonStyle::subControlRect(QCommonStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QStyle::SubControl  sc, const QWidget*  w) const
+void PythonQtWrapper_QCommonStyle::drawPrimitive(QCommonStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
 {
-  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_subControlRect(cc, opt, sc, w));
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
+}
+
+void PythonQtWrapper_QCommonStyle::polish(QCommonStyle* theWrappedObject, QWidget*  widget)
+{
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_polish(widget));
+}
+
+QPixmap  PythonQtWrapper_QCommonStyle::generatedIconPixmap(QCommonStyle* theWrappedObject, QIcon::Mode  iconMode, const QPixmap&  pixmap, const QStyleOption*  opt) const
+{
+  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_generatedIconPixmap(iconMode, pixmap, opt));
+}
+
+void PythonQtWrapper_QCommonStyle::unpolish(QCommonStyle* theWrappedObject, QApplication*  application)
+{
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_unpolish(application));
 }
 
 QStyle::SubControl  PythonQtWrapper_QCommonStyle::hitTestComplexControl(QCommonStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, const QPoint&  pt, const QWidget*  w) const
@@ -627,8 +618,43 @@ QStyle::SubControl  PythonQtWrapper_QCommonStyle::hitTestComplexControl(QCommonS
   return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_hitTestComplexControl(cc, opt, pt, w));
 }
 
+void PythonQtWrapper_QCommonStyle::polish(QCommonStyle* theWrappedObject, QApplication*  app)
+{
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_polish(app));
+}
+
+int  PythonQtWrapper_QCommonStyle::styleHint(QCommonStyle* theWrappedObject, QStyle::StyleHint  sh, const QStyleOption*  opt, const QWidget*  w, QStyleHintReturn*  shret) const
+{
+  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_styleHint(sh, opt, w, shret));
+}
+
+QRect  PythonQtWrapper_QCommonStyle::subControlRect(QCommonStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QStyle::SubControl  sc, const QWidget*  w) const
+{
+  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_subControlRect(cc, opt, sc, w));
+}
+
 int  PythonQtWrapper_QCommonStyle::pixelMetric(QCommonStyle* theWrappedObject, QStyle::PixelMetric  m, const QStyleOption*  opt, const QWidget*  widget) const
 {
   return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_pixelMetric(m, opt, widget));
+}
+
+void PythonQtWrapper_QCommonStyle::drawControl(QCommonStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
+}
+
+void PythonQtWrapper_QCommonStyle::polish(QCommonStyle* theWrappedObject, QPalette&  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_polish(arg__1));
+}
+
+QSize  PythonQtWrapper_QCommonStyle::sizeFromContents(QCommonStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
+}
+
+QRect  PythonQtWrapper_QCommonStyle::subElementRect(QCommonStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QCommonStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
 }
 

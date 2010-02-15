@@ -16,12 +16,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qmimedata.h>
 #include <qobject.h>
@@ -105,20 +108,20 @@ virtual void wheelEvent(QWheelEvent*  e);
 
 class PythonQtPublicPromoter_QTextBrowser : public QTextBrowser
 { public:
-inline void promoted_forward() { QTextBrowser::forward(); }
-inline void promoted_mousePressEvent(QMouseEvent*  ev) { QTextBrowser::mousePressEvent(ev); }
-inline void promoted_paintEvent(QPaintEvent*  e) { QTextBrowser::paintEvent(e); }
-inline bool  promoted_focusNextPrevChild(bool  next) { return QTextBrowser::focusNextPrevChild(next); }
-inline void promoted_setSource(const QUrl&  name) { QTextBrowser::setSource(name); }
-inline void promoted_mouseReleaseEvent(QMouseEvent*  ev) { QTextBrowser::mouseReleaseEvent(ev); }
-inline void promoted_home() { QTextBrowser::home(); }
 inline void promoted_reload() { QTextBrowser::reload(); }
+inline void promoted_setSource(const QUrl&  name) { QTextBrowser::setSource(name); }
+inline void promoted_mousePressEvent(QMouseEvent*  ev) { QTextBrowser::mousePressEvent(ev); }
+inline bool  promoted_focusNextPrevChild(bool  next) { return QTextBrowser::focusNextPrevChild(next); }
+inline void promoted_forward() { QTextBrowser::forward(); }
+inline bool  promoted_event(QEvent*  e) { return QTextBrowser::event(e); }
+inline void promoted_paintEvent(QPaintEvent*  e) { QTextBrowser::paintEvent(e); }
 inline void promoted_backward() { QTextBrowser::backward(); }
-inline void promoted_focusOutEvent(QFocusEvent*  ev) { QTextBrowser::focusOutEvent(ev); }
 inline QVariant  promoted_loadResource(int  type, const QUrl&  name) { return QTextBrowser::loadResource(type, name); }
 inline void promoted_mouseMoveEvent(QMouseEvent*  ev) { QTextBrowser::mouseMoveEvent(ev); }
-inline bool  promoted_event(QEvent*  e) { return QTextBrowser::event(e); }
+inline void promoted_mouseReleaseEvent(QMouseEvent*  ev) { QTextBrowser::mouseReleaseEvent(ev); }
+inline void promoted_home() { QTextBrowser::home(); }
 inline void promoted_keyPressEvent(QKeyEvent*  ev) { QTextBrowser::keyPressEvent(ev); }
+inline void promoted_focusOutEvent(QFocusEvent*  ev) { QTextBrowser::focusOutEvent(ev); }
 };
 
 class PythonQtWrapper_QTextBrowser : public QObject
@@ -127,29 +130,29 @@ public:
 public slots:
 QTextBrowser* new_QTextBrowser(QWidget*  parent = 0);
 void delete_QTextBrowser(QTextBrowser* obj) { delete obj; } 
+   void setOpenExternalLinks(QTextBrowser* theWrappedObject, bool  open);
+   bool  openExternalLinks(QTextBrowser* theWrappedObject) const;
+   int  backwardHistoryCount(QTextBrowser* theWrappedObject) const;
+   QStringList  searchPaths(QTextBrowser* theWrappedObject) const;
+   QUrl  historyUrl(QTextBrowser* theWrappedObject, int  arg__1) const;
    bool  isBackwardAvailable(QTextBrowser* theWrappedObject) const;
    bool  openLinks(QTextBrowser* theWrappedObject) const;
-   QString  historyTitle(QTextBrowser* theWrappedObject, int  arg__1) const;
-   QUrl  historyUrl(QTextBrowser* theWrappedObject, int  arg__1) const;
-   bool  openExternalLinks(QTextBrowser* theWrappedObject) const;
    void mousePressEvent(QTextBrowser* theWrappedObject, QMouseEvent*  ev);
-   void paintEvent(QTextBrowser* theWrappedObject, QPaintEvent*  e);
-   void setOpenExternalLinks(QTextBrowser* theWrappedObject, bool  open);
-   bool  isForwardAvailable(QTextBrowser* theWrappedObject) const;
    bool  focusNextPrevChild(QTextBrowser* theWrappedObject, bool  next);
-   void setOpenLinks(QTextBrowser* theWrappedObject, bool  open);
-   void mouseReleaseEvent(QTextBrowser* theWrappedObject, QMouseEvent*  ev);
-   int  backwardHistoryCount(QTextBrowser* theWrappedObject) const;
    QUrl  source(QTextBrowser* theWrappedObject) const;
+   bool  event(QTextBrowser* theWrappedObject, QEvent*  e);
+   bool  isForwardAvailable(QTextBrowser* theWrappedObject) const;
+   void paintEvent(QTextBrowser* theWrappedObject, QPaintEvent*  e);
    void clearHistory(QTextBrowser* theWrappedObject);
+   QVariant  loadResource(QTextBrowser* theWrappedObject, int  type, const QUrl&  name);
+   void setOpenLinks(QTextBrowser* theWrappedObject, bool  open);
+   void mouseMoveEvent(QTextBrowser* theWrappedObject, QMouseEvent*  ev);
+   void mouseReleaseEvent(QTextBrowser* theWrappedObject, QMouseEvent*  ev);
+   int  forwardHistoryCount(QTextBrowser* theWrappedObject) const;
+   QString  historyTitle(QTextBrowser* theWrappedObject, int  arg__1) const;
+   void keyPressEvent(QTextBrowser* theWrappedObject, QKeyEvent*  ev);
    void setSearchPaths(QTextBrowser* theWrappedObject, const QStringList&  paths);
    void focusOutEvent(QTextBrowser* theWrappedObject, QFocusEvent*  ev);
-   QVariant  loadResource(QTextBrowser* theWrappedObject, int  type, const QUrl&  name);
-   QStringList  searchPaths(QTextBrowser* theWrappedObject) const;
-   void mouseMoveEvent(QTextBrowser* theWrappedObject, QMouseEvent*  ev);
-   int  forwardHistoryCount(QTextBrowser* theWrappedObject) const;
-   bool  event(QTextBrowser* theWrappedObject, QEvent*  e);
-   void keyPressEvent(QTextBrowser* theWrappedObject, QKeyEvent*  ev);
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTBROWSER_H

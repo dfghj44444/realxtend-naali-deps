@@ -38,14 +38,13 @@ public:
 public slots:
 QTimer* new_QTimer(QObject*  parent = 0);
 void delete_QTimer(QTimer* obj) { delete obj; } 
-   void setInterval(QTimer* theWrappedObject, int  msec);
-   void static_QTimer_singleShot(int  msec, QObject*  receiver, const char*  member);
-   bool  isActive(QTimer* theWrappedObject) const;
-   int  interval(QTimer* theWrappedObject) const;
-   bool  isSingleShot(QTimer* theWrappedObject) const;
    int  timerId(QTimer* theWrappedObject) const;
-   void setSingleShot(QTimer* theWrappedObject, bool  singleShot);
+   void setInterval(QTimer* theWrappedObject, int  msec);
    void timerEvent(QTimer* theWrappedObject, QTimerEvent*  arg__1);
+   bool  isSingleShot(QTimer* theWrappedObject) const;
+   bool  isActive(QTimer* theWrappedObject) const;
+   void setSingleShot(QTimer* theWrappedObject, bool  singleShot);
+   int  interval(QTimer* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTIMER_H

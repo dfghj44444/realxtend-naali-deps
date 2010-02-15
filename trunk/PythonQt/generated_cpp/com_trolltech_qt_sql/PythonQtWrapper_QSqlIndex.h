@@ -18,14 +18,14 @@ public slots:
 QSqlIndex* new_QSqlIndex(const QSqlIndex&  other);
 QSqlIndex* new_QSqlIndex(const QString&  cursorName = QString(), const QString&  name = QString());
 void delete_QSqlIndex(QSqlIndex* obj) { delete obj; } 
-   bool  isDescending(QSqlIndex* theWrappedObject, int  i) const;
-   QString  name(QSqlIndex* theWrappedObject) const;
-   void append(QSqlIndex* theWrappedObject, const QSqlField&  field, bool  desc);
+   void append(QSqlIndex* theWrappedObject, const QSqlField&  field);
    void setDescending(QSqlIndex* theWrappedObject, int  i, bool  desc);
+   bool  isDescending(QSqlIndex* theWrappedObject, int  i) const;
+   void setCursorName(QSqlIndex* theWrappedObject, const QString&  cursorName);
+   void append(QSqlIndex* theWrappedObject, const QSqlField&  field, bool  desc);
+   QString  name(QSqlIndex* theWrappedObject) const;
    void setName(QSqlIndex* theWrappedObject, const QString&  name);
    QString  cursorName(QSqlIndex* theWrappedObject) const;
-   void setCursorName(QSqlIndex* theWrappedObject, const QString&  cursorName);
-   void append(QSqlIndex* theWrappedObject, const QSqlField&  field);
 };
 
 #endif // PYTHONQTWRAPPER_QSQLINDEX_H

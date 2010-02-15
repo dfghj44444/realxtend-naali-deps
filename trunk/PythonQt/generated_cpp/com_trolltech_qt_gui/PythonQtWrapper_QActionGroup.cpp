@@ -123,34 +123,24 @@ QActionGroup* PythonQtWrapper_QActionGroup::new_QActionGroup(QObject*  parent)
 { 
 return new PythonQtShell_QActionGroup(parent); }
 
-QAction*  PythonQtWrapper_QActionGroup::checkedAction(QActionGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->checkedAction());
-}
-
-QAction*  PythonQtWrapper_QActionGroup::addAction(QActionGroup* theWrappedObject, QAction*  a)
-{
-  return ( theWrappedObject->addAction(a));
-}
-
-QAction*  PythonQtWrapper_QActionGroup::addAction(QActionGroup* theWrappedObject, const QString&  text)
-{
-  return ( theWrappedObject->addAction(text));
-}
-
-bool  PythonQtWrapper_QActionGroup::isEnabled(QActionGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->isEnabled());
-}
-
 bool  PythonQtWrapper_QActionGroup::isExclusive(QActionGroup* theWrappedObject) const
 {
   return ( theWrappedObject->isExclusive());
 }
 
+void PythonQtWrapper_QActionGroup::removeAction(QActionGroup* theWrappedObject, QAction*  a)
+{
+  ( theWrappedObject->removeAction(a));
+}
+
 bool  PythonQtWrapper_QActionGroup::isVisible(QActionGroup* theWrappedObject) const
 {
   return ( theWrappedObject->isVisible());
+}
+
+bool  PythonQtWrapper_QActionGroup::isEnabled(QActionGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->isEnabled());
 }
 
 QList<QAction* >  PythonQtWrapper_QActionGroup::actions(QActionGroup* theWrappedObject) const
@@ -163,8 +153,18 @@ QAction*  PythonQtWrapper_QActionGroup::addAction(QActionGroup* theWrappedObject
   return ( theWrappedObject->addAction(icon, text));
 }
 
-void PythonQtWrapper_QActionGroup::removeAction(QActionGroup* theWrappedObject, QAction*  a)
+QAction*  PythonQtWrapper_QActionGroup::addAction(QActionGroup* theWrappedObject, const QString&  text)
 {
-  ( theWrappedObject->removeAction(a));
+  return ( theWrappedObject->addAction(text));
+}
+
+QAction*  PythonQtWrapper_QActionGroup::checkedAction(QActionGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->checkedAction());
+}
+
+QAction*  PythonQtWrapper_QActionGroup::addAction(QActionGroup* theWrappedObject, QAction*  a)
+{
+  return ( theWrappedObject->addAction(a));
 }
 

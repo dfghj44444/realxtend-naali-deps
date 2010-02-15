@@ -18,6 +18,7 @@
 #include <qpixmap.h>
 #include <qpoint.h>
 #include <qrect.h>
+#include <qregion.h>
 #include <qsize.h>
 #include <qtransform.h>
 #include <qwidget.h>

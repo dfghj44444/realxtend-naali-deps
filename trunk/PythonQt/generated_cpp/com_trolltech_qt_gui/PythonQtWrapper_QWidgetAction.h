@@ -11,6 +11,7 @@
 #include <qbytearray.h>
 #include <qcoreevent.h>
 #include <qfont.h>
+#include <qgraphicswidget.h>
 #include <qicon.h>
 #include <qkeysequence.h>
 #include <qlist.h>
@@ -38,9 +39,9 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 class PythonQtPublicPromoter_QWidgetAction : public QWidgetAction
 { public:
 inline bool  promoted_event(QEvent*  arg__1) { return QWidgetAction::event(arg__1); }
-inline void promoted_deleteWidget(QWidget*  widget) { QWidgetAction::deleteWidget(widget); }
-inline QWidget*  promoted_createWidget(QWidget*  parent) { return QWidgetAction::createWidget(parent); }
 inline bool  promoted_eventFilter(QObject*  arg__1, QEvent*  arg__2) { return QWidgetAction::eventFilter(arg__1, arg__2); }
+inline QWidget*  promoted_createWidget(QWidget*  parent) { return QWidgetAction::createWidget(parent); }
+inline void promoted_deleteWidget(QWidget*  widget) { QWidgetAction::deleteWidget(widget); }
 };
 
 class PythonQtWrapper_QWidgetAction : public QObject
@@ -51,12 +52,12 @@ QWidgetAction* new_QWidgetAction(QObject*  parent);
 void delete_QWidgetAction(QWidgetAction* obj) { delete obj; } 
    bool  event(QWidgetAction* theWrappedObject, QEvent*  arg__1);
    QWidget*  requestWidget(QWidgetAction* theWrappedObject, QWidget*  parent);
-   void deleteWidget(QWidgetAction* theWrappedObject, QWidget*  widget);
-   void releaseWidget(QWidgetAction* theWrappedObject, QWidget*  widget);
-   QWidget*  defaultWidget(QWidgetAction* theWrappedObject) const;
    void setDefaultWidget(QWidgetAction* theWrappedObject, QWidget*  w);
-   QWidget*  createWidget(QWidgetAction* theWrappedObject, QWidget*  parent);
    bool  eventFilter(QWidgetAction* theWrappedObject, QObject*  arg__1, QEvent*  arg__2);
+   QWidget*  createWidget(QWidgetAction* theWrappedObject, QWidget*  parent);
+   void deleteWidget(QWidgetAction* theWrappedObject, QWidget*  widget);
+   QWidget*  defaultWidget(QWidgetAction* theWrappedObject) const;
+   void releaseWidget(QWidgetAction* theWrappedObject, QWidget*  widget);
 };
 
 #endif // PYTHONQTWRAPPER_QWIDGETACTION_H

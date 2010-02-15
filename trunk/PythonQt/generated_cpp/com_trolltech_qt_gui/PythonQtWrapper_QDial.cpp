@@ -12,12 +12,15 @@
 #include <qdial.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -775,39 +778,9 @@ bool  PythonQtWrapper_QDial::notchesVisible(QDial* theWrappedObject) const
   return ( theWrappedObject->notchesVisible());
 }
 
-QSize  PythonQtWrapper_QDial::sizeHint(QDial* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
 qreal  PythonQtWrapper_QDial::notchTarget(QDial* theWrappedObject) const
 {
   return ( theWrappedObject->notchTarget());
-}
-
-int  PythonQtWrapper_QDial::notchSize(QDial* theWrappedObject) const
-{
-  return ( theWrappedObject->notchSize());
-}
-
-void PythonQtWrapper_QDial::mouseMoveEvent(QDial* theWrappedObject, QMouseEvent*  me)
-{
-  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_mouseMoveEvent(me));
-}
-
-bool  PythonQtWrapper_QDial::wrapping(QDial* theWrappedObject) const
-{
-  return ( theWrappedObject->wrapping());
-}
-
-QSize  PythonQtWrapper_QDial::minimumSizeHint(QDial* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumSizeHint());
-}
-
-void PythonQtWrapper_QDial::resizeEvent(QDial* theWrappedObject, QResizeEvent*  re)
-{
-  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_resizeEvent(re));
 }
 
 void PythonQtWrapper_QDial::mousePressEvent(QDial* theWrappedObject, QMouseEvent*  me)
@@ -815,9 +788,9 @@ void PythonQtWrapper_QDial::mousePressEvent(QDial* theWrappedObject, QMouseEvent
   ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_mousePressEvent(me));
 }
 
-void PythonQtWrapper_QDial::mouseReleaseEvent(QDial* theWrappedObject, QMouseEvent*  me)
+QSize  PythonQtWrapper_QDial::sizeHint(QDial* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_mouseReleaseEvent(me));
+  return ( theWrappedObject->sizeHint());
 }
 
 bool  PythonQtWrapper_QDial::event(QDial* theWrappedObject, QEvent*  e)
@@ -825,13 +798,43 @@ bool  PythonQtWrapper_QDial::event(QDial* theWrappedObject, QEvent*  e)
   return ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_event(e));
 }
 
-void PythonQtWrapper_QDial::setNotchTarget(QDial* theWrappedObject, double  target)
+void PythonQtWrapper_QDial::mouseMoveEvent(QDial* theWrappedObject, QMouseEvent*  me)
 {
-  ( theWrappedObject->setNotchTarget(target));
+  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_mouseMoveEvent(me));
 }
 
 void PythonQtWrapper_QDial::paintEvent(QDial* theWrappedObject, QPaintEvent*  pe)
 {
   ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_paintEvent(pe));
+}
+
+void PythonQtWrapper_QDial::resizeEvent(QDial* theWrappedObject, QResizeEvent*  re)
+{
+  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_resizeEvent(re));
+}
+
+bool  PythonQtWrapper_QDial::wrapping(QDial* theWrappedObject) const
+{
+  return ( theWrappedObject->wrapping());
+}
+
+void PythonQtWrapper_QDial::setNotchTarget(QDial* theWrappedObject, double  target)
+{
+  ( theWrappedObject->setNotchTarget(target));
+}
+
+void PythonQtWrapper_QDial::mouseReleaseEvent(QDial* theWrappedObject, QMouseEvent*  me)
+{
+  ( ((PythonQtPublicPromoter_QDial*)theWrappedObject)->promoted_mouseReleaseEvent(me));
+}
+
+QSize  PythonQtWrapper_QDial::minimumSizeHint(QDial* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumSizeHint());
+}
+
+int  PythonQtWrapper_QDial::notchSize(QDial* theWrappedObject) const
+{
+  return ( theWrappedObject->notchSize());
 }
 

@@ -14,12 +14,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -93,15 +96,15 @@ public:
 public slots:
 QStackedWidget* new_QStackedWidget(QWidget*  parent = 0);
 void delete_QStackedWidget(QStackedWidget* obj) { delete obj; } 
-   QWidget*  currentWidget(QStackedWidget* theWrappedObject) const;
    int  indexOf(QStackedWidget* theWrappedObject, QWidget*  arg__1) const;
-   int  insertWidget(QStackedWidget* theWrappedObject, int  index, QWidget*  w);
-   int  currentIndex(QStackedWidget* theWrappedObject) const;
-   QWidget*  widget(QStackedWidget* theWrappedObject, int  arg__1) const;
    bool  event(QStackedWidget* theWrappedObject, QEvent*  e);
-   int  addWidget(QStackedWidget* theWrappedObject, QWidget*  w);
+   int  currentIndex(QStackedWidget* theWrappedObject) const;
+   int  insertWidget(QStackedWidget* theWrappedObject, int  index, QWidget*  w);
    int  count(QStackedWidget* theWrappedObject) const;
    void removeWidget(QStackedWidget* theWrappedObject, QWidget*  w);
+   QWidget*  widget(QStackedWidget* theWrappedObject, int  arg__1) const;
+   int  addWidget(QStackedWidget* theWrappedObject, QWidget*  w);
+   QWidget*  currentWidget(QStackedWidget* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QSTACKEDWIDGET_H

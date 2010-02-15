@@ -96,24 +96,9 @@ QPaintDevice* PythonQtWrapper_QPaintDevice::new_QPaintDevice()
 { 
 return new PythonQtShell_QPaintDevice(); }
 
-int  PythonQtWrapper_QPaintDevice::depth(QPaintDevice* theWrappedObject) const
+int  PythonQtWrapper_QPaintDevice::height(QPaintDevice* theWrappedObject) const
 {
-  return ( theWrappedObject->depth());
-}
-
-int  PythonQtWrapper_QPaintDevice::logicalDpiY(QPaintDevice* theWrappedObject) const
-{
-  return ( theWrappedObject->logicalDpiY());
-}
-
-int  PythonQtWrapper_QPaintDevice::widthMM(QPaintDevice* theWrappedObject) const
-{
-  return ( theWrappedObject->widthMM());
-}
-
-int  PythonQtWrapper_QPaintDevice::physicalDpiX(QPaintDevice* theWrappedObject) const
-{
-  return ( theWrappedObject->physicalDpiX());
+  return ( theWrappedObject->height());
 }
 
 int  PythonQtWrapper_QPaintDevice::logicalDpiX(QPaintDevice* theWrappedObject) const
@@ -121,9 +106,24 @@ int  PythonQtWrapper_QPaintDevice::logicalDpiX(QPaintDevice* theWrappedObject) c
   return ( theWrappedObject->logicalDpiX());
 }
 
-int  PythonQtWrapper_QPaintDevice::width(QPaintDevice* theWrappedObject) const
+int  PythonQtWrapper_QPaintDevice::devType(QPaintDevice* theWrappedObject) const
 {
-  return ( theWrappedObject->width());
+  return ( ((PythonQtPublicPromoter_QPaintDevice*)theWrappedObject)->promoted_devType());
+}
+
+int  PythonQtWrapper_QPaintDevice::colorCount(QPaintDevice* theWrappedObject) const
+{
+  return ( theWrappedObject->colorCount());
+}
+
+int  PythonQtWrapper_QPaintDevice::depth(QPaintDevice* theWrappedObject) const
+{
+  return ( theWrappedObject->depth());
+}
+
+int  PythonQtWrapper_QPaintDevice::widthMM(QPaintDevice* theWrappedObject) const
+{
+  return ( theWrappedObject->widthMM());
 }
 
 int  PythonQtWrapper_QPaintDevice::heightMM(QPaintDevice* theWrappedObject) const
@@ -136,24 +136,29 @@ int  PythonQtWrapper_QPaintDevice::numColors(QPaintDevice* theWrappedObject) con
   return ( theWrappedObject->numColors());
 }
 
-bool  PythonQtWrapper_QPaintDevice::paintingActive(QPaintDevice* theWrappedObject) const
-{
-  return ( theWrappedObject->paintingActive());
-}
-
 int  PythonQtWrapper_QPaintDevice::metric(QPaintDevice* theWrappedObject, QPaintDevice::PaintDeviceMetric  metric) const
 {
   return ( ((PythonQtPublicPromoter_QPaintDevice*)theWrappedObject)->promoted_metric(metric));
 }
 
-int  PythonQtWrapper_QPaintDevice::devType(QPaintDevice* theWrappedObject) const
+int  PythonQtWrapper_QPaintDevice::logicalDpiY(QPaintDevice* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QPaintDevice*)theWrappedObject)->promoted_devType());
+  return ( theWrappedObject->logicalDpiY());
 }
 
-int  PythonQtWrapper_QPaintDevice::height(QPaintDevice* theWrappedObject) const
+int  PythonQtWrapper_QPaintDevice::physicalDpiX(QPaintDevice* theWrappedObject) const
 {
-  return ( theWrappedObject->height());
+  return ( theWrappedObject->physicalDpiX());
+}
+
+bool  PythonQtWrapper_QPaintDevice::paintingActive(QPaintDevice* theWrappedObject) const
+{
+  return ( theWrappedObject->paintingActive());
+}
+
+int  PythonQtWrapper_QPaintDevice::width(QPaintDevice* theWrappedObject) const
+{
+  return ( theWrappedObject->width());
 }
 
 int  PythonQtWrapper_QPaintDevice::physicalDpiY(QPaintDevice* theWrappedObject) const

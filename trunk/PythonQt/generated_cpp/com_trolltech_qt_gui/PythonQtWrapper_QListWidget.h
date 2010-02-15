@@ -16,6 +16,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qitemselectionmodel.h>
@@ -24,6 +26,7 @@
 #include <qlist.h>
 #include <qlistwidget.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmimedata.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -132,11 +135,11 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QListWidget : public QListWidget
 { public:
-inline void promoted_dropEvent(QDropEvent*  event) { QListWidget::dropEvent(event); }
-inline QStringList  promoted_mimeTypes() const { return QListWidget::mimeTypes(); }
 inline Qt::DropActions  promoted_supportedDropActions() const { return QListWidget::supportedDropActions(); }
+inline void promoted_dropEvent(QDropEvent*  event) { QListWidget::dropEvent(event); }
 inline bool  promoted_event(QEvent*  e) { return QListWidget::event(e); }
 inline bool  promoted_dropMimeData(int  index, const QMimeData*  data, Qt::DropAction  action) { return QListWidget::dropMimeData(index, data, action); }
+inline QStringList  promoted_mimeTypes() const { return QListWidget::mimeTypes(); }
 };
 
 class PythonQtWrapper_QListWidget : public QObject
@@ -145,40 +148,40 @@ public:
 public slots:
 QListWidget* new_QListWidget(QWidget*  parent = 0);
 void delete_QListWidget(QListWidget* obj) { delete obj; } 
-   void setSortingEnabled(QListWidget* theWrappedObject, bool  enable);
-   QRect  visualItemRect(QListWidget* theWrappedObject, const QListWidgetItem*  item) const;
-   void dropEvent(QListWidget* theWrappedObject, QDropEvent*  event);
-   QListWidgetItem*  takeItem(QListWidget* theWrappedObject, int  row);
-   void removeItemWidget(QListWidget* theWrappedObject, QListWidgetItem*  item);
-   QStringList  mimeTypes(QListWidget* theWrappedObject) const;
-   void addItem(QListWidget* theWrappedObject, const QString&  label);
-   void insertItem(QListWidget* theWrappedObject, int  row, QListWidgetItem*  item);
-   QList<QListWidgetItem* >  selectedItems(QListWidget* theWrappedObject) const;
-   Qt::DropActions  supportedDropActions(QListWidget* theWrappedObject) const;
-   bool  isSortingEnabled(QListWidget* theWrappedObject) const;
-   int  currentRow(QListWidget* theWrappedObject) const;
-   int  row(QListWidget* theWrappedObject, const QListWidgetItem*  item) const;
-   void sortItems(QListWidget* theWrappedObject, Qt::SortOrder  order = Qt::AscendingOrder);
-   void insertItems(QListWidget* theWrappedObject, int  row, const QStringList&  labels);
-   int  count(QListWidget* theWrappedObject) const;
-   void editItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
-   bool  event(QListWidget* theWrappedObject, QEvent*  e);
-   void setCurrentItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
-   bool  dropMimeData(QListWidget* theWrappedObject, int  index, const QMimeData*  data, Qt::DropAction  action);
-   QListWidgetItem*  item(QListWidget* theWrappedObject, int  row) const;
-   QWidget*  itemWidget(QListWidget* theWrappedObject, QListWidgetItem*  item) const;
-   void setCurrentRow(QListWidget* theWrappedObject, int  row);
-   void insertItem(QListWidget* theWrappedObject, int  row, const QString&  label);
-   void addItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
-   QListWidgetItem*  itemAt(QListWidget* theWrappedObject, const QPoint&  p) const;
    void setCurrentItem(QListWidget* theWrappedObject, QListWidgetItem*  item, QItemSelectionModel::SelectionFlags  command);
-   void closePersistentEditor(QListWidget* theWrappedObject, QListWidgetItem*  item);
-   QListWidgetItem*  itemAt(QListWidget* theWrappedObject, int  x, int  y) const;
+   void setCurrentRow(QListWidget* theWrappedObject, int  row);
    void setItemWidget(QListWidget* theWrappedObject, QListWidgetItem*  item, QWidget*  widget);
-   void addItems(QListWidget* theWrappedObject, const QStringList&  labels);
-   QListWidgetItem*  currentItem(QListWidget* theWrappedObject) const;
    void setCurrentRow(QListWidget* theWrappedObject, int  row, QItemSelectionModel::SelectionFlags  command);
+   Qt::DropActions  supportedDropActions(QListWidget* theWrappedObject) const;
+   void addItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
+   QRect  visualItemRect(QListWidget* theWrappedObject, const QListWidgetItem*  item) const;
+   void addItems(QListWidget* theWrappedObject, const QStringList&  labels);
+   void insertItem(QListWidget* theWrappedObject, int  row, const QString&  label);
+   QListWidgetItem*  currentItem(QListWidget* theWrappedObject) const;
+   void dropEvent(QListWidget* theWrappedObject, QDropEvent*  event);
+   void sortItems(QListWidget* theWrappedObject, Qt::SortOrder  order = Qt::AscendingOrder);
+   void editItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
+   QListWidgetItem*  takeItem(QListWidget* theWrappedObject, int  row);
+   bool  isSortingEnabled(QListWidget* theWrappedObject) const;
+   void setCurrentItem(QListWidget* theWrappedObject, QListWidgetItem*  item);
+   void setSortingEnabled(QListWidget* theWrappedObject, bool  enable);
+   QList<QListWidgetItem* >  selectedItems(QListWidget* theWrappedObject) const;
+   bool  event(QListWidget* theWrappedObject, QEvent*  e);
+   int  row(QListWidget* theWrappedObject, const QListWidgetItem*  item) const;
+   void removeItemWidget(QListWidget* theWrappedObject, QListWidgetItem*  item);
+   QListWidgetItem*  itemAt(QListWidget* theWrappedObject, const QPoint&  p) const;
+   QListWidgetItem*  itemAt(QListWidget* theWrappedObject, int  x, int  y) const;
    void openPersistentEditor(QListWidget* theWrappedObject, QListWidgetItem*  item);
+   int  currentRow(QListWidget* theWrappedObject) const;
+   int  count(QListWidget* theWrappedObject) const;
+   bool  dropMimeData(QListWidget* theWrappedObject, int  index, const QMimeData*  data, Qt::DropAction  action);
+   QStringList  mimeTypes(QListWidget* theWrappedObject) const;
+   void insertItems(QListWidget* theWrappedObject, int  row, const QStringList&  labels);
+   QListWidgetItem*  item(QListWidget* theWrappedObject, int  row) const;
+   void insertItem(QListWidget* theWrappedObject, int  row, QListWidgetItem*  item);
+   void addItem(QListWidget* theWrappedObject, const QString&  label);
+   QWidget*  itemWidget(QListWidget* theWrappedObject, QListWidgetItem*  item) const;
+   void closePersistentEditor(QListWidget* theWrappedObject, QListWidgetItem*  item);
    QList<QListWidgetItem* >  findItems(QListWidget* theWrappedObject, const QString&  text, Qt::MatchFlags  flags) const;
 };
 

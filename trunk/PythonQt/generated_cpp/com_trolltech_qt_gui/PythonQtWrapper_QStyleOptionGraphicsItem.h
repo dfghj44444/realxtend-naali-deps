@@ -8,6 +8,7 @@
 
 #include <QVariant>
 #include <qstyleoption.h>
+#include <qtransform.h>
 #include <qwidget.h>
 
 class PythonQtShell_QStyleOptionGraphicsItem : public QStyleOptionGraphicsItem
@@ -33,6 +34,7 @@ public slots:
 QStyleOptionGraphicsItem* new_QStyleOptionGraphicsItem();
 QStyleOptionGraphicsItem* new_QStyleOptionGraphicsItem(const QStyleOptionGraphicsItem&  other);
 void delete_QStyleOptionGraphicsItem(QStyleOptionGraphicsItem* obj) { delete obj; } 
+   qreal  static_QStyleOptionGraphicsItem_levelOfDetailFromTransform(const QTransform&  worldTransform);
 };
 
 #endif // PYTHONQTWRAPPER_QSTYLEOPTIONGRAPHICSITEM_H

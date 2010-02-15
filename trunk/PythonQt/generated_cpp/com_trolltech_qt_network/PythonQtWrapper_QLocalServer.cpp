@@ -195,9 +195,29 @@ QLocalServer* PythonQtWrapper_QLocalServer::new_QLocalServer(QObject*  parent)
 { 
 return new PythonQtShell_QLocalServer(parent); }
 
+QString  PythonQtWrapper_QLocalServer::serverName(QLocalServer* theWrappedObject) const
+{
+  return ( theWrappedObject->serverName());
+}
+
+void PythonQtWrapper_QLocalServer::setMaxPendingConnections(QLocalServer* theWrappedObject, int  numConnections)
+{
+  ( theWrappedObject->setMaxPendingConnections(numConnections));
+}
+
 void PythonQtWrapper_QLocalServer::incomingConnection(QLocalServer* theWrappedObject, quintptr  socketDescriptor)
 {
   ( ((PythonQtPublicPromoter_QLocalServer*)theWrappedObject)->promoted_incomingConnection(socketDescriptor));
+}
+
+QString  PythonQtWrapper_QLocalServer::fullServerName(QLocalServer* theWrappedObject) const
+{
+  return ( theWrappedObject->fullServerName());
+}
+
+bool  PythonQtWrapper_QLocalServer::listen(QLocalServer* theWrappedObject, const QString&  name)
+{
+  return ( theWrappedObject->listen(name));
 }
 
 bool  PythonQtWrapper_QLocalServer::waitForNewConnection(QLocalServer* theWrappedObject, int  msec, bool*  timedOut)
@@ -205,14 +225,34 @@ bool  PythonQtWrapper_QLocalServer::waitForNewConnection(QLocalServer* theWrappe
   return ( theWrappedObject->waitForNewConnection(msec, timedOut));
 }
 
-QString  PythonQtWrapper_QLocalServer::serverName(QLocalServer* theWrappedObject) const
+bool  PythonQtWrapper_QLocalServer::static_QLocalServer_removeServer(const QString&  name)
 {
-  return ( theWrappedObject->serverName());
+  return (QLocalServer::removeServer(name));
 }
 
-bool  PythonQtWrapper_QLocalServer::listen(QLocalServer* theWrappedObject, const QString&  name)
+bool  PythonQtWrapper_QLocalServer::hasPendingConnections(QLocalServer* theWrappedObject) const
 {
-  return ( theWrappedObject->listen(name));
+  return ( ((PythonQtPublicPromoter_QLocalServer*)theWrappedObject)->promoted_hasPendingConnections());
+}
+
+QAbstractSocket::SocketError  PythonQtWrapper_QLocalServer::serverError(QLocalServer* theWrappedObject) const
+{
+  return ( theWrappedObject->serverError());
+}
+
+void PythonQtWrapper_QLocalServer::close(QLocalServer* theWrappedObject)
+{
+  ( theWrappedObject->close());
+}
+
+bool  PythonQtWrapper_QLocalServer::isListening(QLocalServer* theWrappedObject) const
+{
+  return ( theWrappedObject->isListening());
+}
+
+QString  PythonQtWrapper_QLocalServer::errorString(QLocalServer* theWrappedObject) const
+{
+  return ( theWrappedObject->errorString());
 }
 
 int  PythonQtWrapper_QLocalServer::maxPendingConnections(QLocalServer* theWrappedObject) const
@@ -223,40 +263,5 @@ int  PythonQtWrapper_QLocalServer::maxPendingConnections(QLocalServer* theWrappe
 QLocalSocket*  PythonQtWrapper_QLocalServer::nextPendingConnection(QLocalServer* theWrappedObject)
 {
   return ( ((PythonQtPublicPromoter_QLocalServer*)theWrappedObject)->promoted_nextPendingConnection());
-}
-
-void PythonQtWrapper_QLocalServer::close(QLocalServer* theWrappedObject)
-{
-  ( theWrappedObject->close());
-}
-
-QString  PythonQtWrapper_QLocalServer::errorString(QLocalServer* theWrappedObject) const
-{
-  return ( theWrappedObject->errorString());
-}
-
-void PythonQtWrapper_QLocalServer::setMaxPendingConnections(QLocalServer* theWrappedObject, int  numConnections)
-{
-  ( theWrappedObject->setMaxPendingConnections(numConnections));
-}
-
-bool  PythonQtWrapper_QLocalServer::hasPendingConnections(QLocalServer* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLocalServer*)theWrappedObject)->promoted_hasPendingConnections());
-}
-
-bool  PythonQtWrapper_QLocalServer::isListening(QLocalServer* theWrappedObject) const
-{
-  return ( theWrappedObject->isListening());
-}
-
-QAbstractSocket::SocketError  PythonQtWrapper_QLocalServer::serverError(QLocalServer* theWrappedObject) const
-{
-  return ( theWrappedObject->serverError());
-}
-
-QString  PythonQtWrapper_QLocalServer::fullServerName(QLocalServer* theWrappedObject) const
-{
-  return ( theWrappedObject->fullServerName());
 }
 

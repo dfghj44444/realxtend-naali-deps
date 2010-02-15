@@ -16,6 +16,7 @@
 #include <qpainter.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qxmlstream.h>
 
 void PythonQtShell_QSvgRenderer::childEvent(QChildEvent*  arg__1)
 {
@@ -128,6 +129,10 @@ QSvgRenderer* PythonQtWrapper_QSvgRenderer::new_QSvgRenderer(QObject*  parent)
 { 
 return new PythonQtShell_QSvgRenderer(parent); }
 
+QSvgRenderer* PythonQtWrapper_QSvgRenderer::new_QSvgRenderer(QXmlStreamReader*  contents, QObject*  parent)
+{ 
+return new PythonQtShell_QSvgRenderer(contents, parent); }
+
 QSvgRenderer* PythonQtWrapper_QSvgRenderer::new_QSvgRenderer(const QByteArray&  contents, QObject*  parent)
 { 
 return new PythonQtShell_QSvgRenderer(contents, parent); }
@@ -136,29 +141,9 @@ QSvgRenderer* PythonQtWrapper_QSvgRenderer::new_QSvgRenderer(const QString&  fil
 { 
 return new PythonQtShell_QSvgRenderer(filename, parent); }
 
-QRect  PythonQtWrapper_QSvgRenderer::viewBox(QSvgRenderer* theWrappedObject) const
-{
-  return ( theWrappedObject->viewBox());
-}
-
 void PythonQtWrapper_QSvgRenderer::setCurrentFrame(QSvgRenderer* theWrappedObject, int  arg__1)
 {
   ( theWrappedObject->setCurrentFrame(arg__1));
-}
-
-int  PythonQtWrapper_QSvgRenderer::currentFrame(QSvgRenderer* theWrappedObject) const
-{
-  return ( theWrappedObject->currentFrame());
-}
-
-int  PythonQtWrapper_QSvgRenderer::animationDuration(QSvgRenderer* theWrappedObject) const
-{
-  return ( theWrappedObject->animationDuration());
-}
-
-bool  PythonQtWrapper_QSvgRenderer::animated(QSvgRenderer* theWrappedObject) const
-{
-  return ( theWrappedObject->animated());
 }
 
 QSize  PythonQtWrapper_QSvgRenderer::defaultSize(QSvgRenderer* theWrappedObject) const
@@ -166,19 +151,24 @@ QSize  PythonQtWrapper_QSvgRenderer::defaultSize(QSvgRenderer* theWrappedObject)
   return ( theWrappedObject->defaultSize());
 }
 
-int  PythonQtWrapper_QSvgRenderer::framesPerSecond(QSvgRenderer* theWrappedObject) const
+bool  PythonQtWrapper_QSvgRenderer::animated(QSvgRenderer* theWrappedObject) const
 {
-  return ( theWrappedObject->framesPerSecond());
+  return ( theWrappedObject->animated());
 }
 
-void PythonQtWrapper_QSvgRenderer::setFramesPerSecond(QSvgRenderer* theWrappedObject, int  num)
+QRectF  PythonQtWrapper_QSvgRenderer::viewBoxF(QSvgRenderer* theWrappedObject) const
 {
-  ( theWrappedObject->setFramesPerSecond(num));
+  return ( theWrappedObject->viewBoxF());
 }
 
-QRectF  PythonQtWrapper_QSvgRenderer::boundsOnElement(QSvgRenderer* theWrappedObject, const QString&  id) const
+int  PythonQtWrapper_QSvgRenderer::animationDuration(QSvgRenderer* theWrappedObject) const
 {
-  return ( theWrappedObject->boundsOnElement(id));
+  return ( theWrappedObject->animationDuration());
+}
+
+int  PythonQtWrapper_QSvgRenderer::currentFrame(QSvgRenderer* theWrappedObject) const
+{
+  return ( theWrappedObject->currentFrame());
 }
 
 QMatrix  PythonQtWrapper_QSvgRenderer::matrixForElement(QSvgRenderer* theWrappedObject, const QString&  id) const
@@ -191,14 +181,19 @@ bool  PythonQtWrapper_QSvgRenderer::elementExists(QSvgRenderer* theWrappedObject
   return ( theWrappedObject->elementExists(id));
 }
 
-bool  PythonQtWrapper_QSvgRenderer::isValid(QSvgRenderer* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
 void PythonQtWrapper_QSvgRenderer::setViewBox(QSvgRenderer* theWrappedObject, const QRect&  viewbox)
 {
   ( theWrappedObject->setViewBox(viewbox));
+}
+
+QRectF  PythonQtWrapper_QSvgRenderer::boundsOnElement(QSvgRenderer* theWrappedObject, const QString&  id) const
+{
+  return ( theWrappedObject->boundsOnElement(id));
+}
+
+bool  PythonQtWrapper_QSvgRenderer::isValid(QSvgRenderer* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
 }
 
 void PythonQtWrapper_QSvgRenderer::setViewBox(QSvgRenderer* theWrappedObject, const QRectF&  viewbox)
@@ -206,8 +201,18 @@ void PythonQtWrapper_QSvgRenderer::setViewBox(QSvgRenderer* theWrappedObject, co
   ( theWrappedObject->setViewBox(viewbox));
 }
 
-QRectF  PythonQtWrapper_QSvgRenderer::viewBoxF(QSvgRenderer* theWrappedObject) const
+void PythonQtWrapper_QSvgRenderer::setFramesPerSecond(QSvgRenderer* theWrappedObject, int  num)
 {
-  return ( theWrappedObject->viewBoxF());
+  ( theWrappedObject->setFramesPerSecond(num));
+}
+
+int  PythonQtWrapper_QSvgRenderer::framesPerSecond(QSvgRenderer* theWrappedObject) const
+{
+  return ( theWrappedObject->framesPerSecond());
+}
+
+QRect  PythonQtWrapper_QSvgRenderer::viewBox(QSvgRenderer* theWrappedObject) const
+{
+  return ( theWrappedObject->viewBox());
 }
 

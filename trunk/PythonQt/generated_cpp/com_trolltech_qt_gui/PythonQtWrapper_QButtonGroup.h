@@ -34,17 +34,17 @@ public:
 public slots:
 QButtonGroup* new_QButtonGroup(QObject*  parent = 0);
 void delete_QButtonGroup(QButtonGroup* obj) { delete obj; } 
+   void removeButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1);
+   QAbstractButton*  checkedButton(QButtonGroup* theWrappedObject) const;
+   bool  exclusive(QButtonGroup* theWrappedObject) const;
+   void setExclusive(QButtonGroup* theWrappedObject, bool  arg__1);
+   void addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1, int  id);
+   void addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1);
    int  id(QButtonGroup* theWrappedObject, QAbstractButton*  button) const;
+   void setId(QButtonGroup* theWrappedObject, QAbstractButton*  button, int  id);
    int  checkedId(QButtonGroup* theWrappedObject) const;
    QAbstractButton*  button(QButtonGroup* theWrappedObject, int  id) const;
-   bool  exclusive(QButtonGroup* theWrappedObject) const;
-   void setId(QButtonGroup* theWrappedObject, QAbstractButton*  button, int  id);
-   void addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1, int  id);
-   QAbstractButton*  checkedButton(QButtonGroup* theWrappedObject) const;
-   void addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1);
    QList<QAbstractButton* >  buttons(QButtonGroup* theWrappedObject) const;
-   void removeButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1);
-   void setExclusive(QButtonGroup* theWrappedObject, bool  arg__1);
 };
 
 #endif // PYTHONQTWRAPPER_QBUTTONGROUP_H

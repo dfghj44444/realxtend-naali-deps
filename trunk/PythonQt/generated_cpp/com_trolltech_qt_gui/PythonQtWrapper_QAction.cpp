@@ -9,6 +9,7 @@
 #include <qbytearray.h>
 #include <qcoreevent.h>
 #include <qfont.h>
+#include <qgraphicswidget.h>
 #include <qicon.h>
 #include <qkeysequence.h>
 #include <qlist.h>
@@ -135,54 +136,24 @@ QAction* PythonQtWrapper_QAction::new_QAction(const QString&  text, QObject*  pa
 { 
 return new PythonQtShell_QAction(text, parent); }
 
-void PythonQtWrapper_QAction::setData(QAction* theWrappedObject, const QVariant&  var)
+void PythonQtWrapper_QAction::setIconVisibleInMenu(QAction* theWrappedObject, bool  visible)
 {
-  ( theWrappedObject->setData(var));
+  ( theWrappedObject->setIconVisibleInMenu(visible));
 }
 
-QIcon  PythonQtWrapper_QAction::icon(QAction* theWrappedObject) const
+QKeySequence  PythonQtWrapper_QAction::shortcut(QAction* theWrappedObject) const
 {
-  return ( theWrappedObject->icon());
+  return ( theWrappedObject->shortcut());
 }
 
-void PythonQtWrapper_QAction::setShortcuts(QAction* theWrappedObject, const QList<QKeySequence >&  shortcuts)
+bool  PythonQtWrapper_QAction::event(QAction* theWrappedObject, QEvent*  arg__1)
 {
-  ( theWrappedObject->setShortcuts(shortcuts));
+  return ( ((PythonQtPublicPromoter_QAction*)theWrappedObject)->promoted_event(arg__1));
 }
 
-QString  PythonQtWrapper_QAction::whatsThis(QAction* theWrappedObject) const
+QFont  PythonQtWrapper_QAction::font(QAction* theWrappedObject) const
 {
-  return ( theWrappedObject->whatsThis());
-}
-
-void PythonQtWrapper_QAction::setIconText(QAction* theWrappedObject, const QString&  text)
-{
-  ( theWrappedObject->setIconText(text));
-}
-
-bool  PythonQtWrapper_QAction::isVisible(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->isVisible());
-}
-
-void PythonQtWrapper_QAction::setSeparator(QAction* theWrappedObject, bool  b)
-{
-  ( theWrappedObject->setSeparator(b));
-}
-
-bool  PythonQtWrapper_QAction::isEnabled(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->isEnabled());
-}
-
-void PythonQtWrapper_QAction::setText(QAction* theWrappedObject, const QString&  text)
-{
-  ( theWrappedObject->setText(text));
-}
-
-QList<QKeySequence >  PythonQtWrapper_QAction::shortcuts(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->shortcuts());
+  return ( theWrappedObject->font());
 }
 
 QWidget*  PythonQtWrapper_QAction::parentWidget(QAction* theWrappedObject) const
@@ -190,54 +161,14 @@ QWidget*  PythonQtWrapper_QAction::parentWidget(QAction* theWrappedObject) const
   return ( theWrappedObject->parentWidget());
 }
 
-void PythonQtWrapper_QAction::setWhatsThis(QAction* theWrappedObject, const QString&  what)
-{
-  ( theWrappedObject->setWhatsThis(what));
-}
-
-void PythonQtWrapper_QAction::setIconVisibleInMenu(QAction* theWrappedObject, bool  visible)
-{
-  ( theWrappedObject->setIconVisibleInMenu(visible));
-}
-
-QActionGroup*  PythonQtWrapper_QAction::actionGroup(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->actionGroup());
-}
-
-void PythonQtWrapper_QAction::setMenuRole(QAction* theWrappedObject, QAction::MenuRole  menuRole)
-{
-  ( theWrappedObject->setMenuRole(menuRole));
-}
-
-QString  PythonQtWrapper_QAction::statusTip(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->statusTip());
-}
-
-void PythonQtWrapper_QAction::setShortcutContext(QAction* theWrappedObject, Qt::ShortcutContext  context)
-{
-  ( theWrappedObject->setShortcutContext(context));
-}
-
-QString  PythonQtWrapper_QAction::iconText(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->iconText());
-}
-
 void PythonQtWrapper_QAction::setAutoRepeat(QAction* theWrappedObject, bool  arg__1)
 {
   ( theWrappedObject->setAutoRepeat(arg__1));
 }
 
-bool  PythonQtWrapper_QAction::isChecked(QAction* theWrappedObject) const
+QAction::SoftKeyRole  PythonQtWrapper_QAction::softKeyRole(QAction* theWrappedObject) const
 {
-  return ( theWrappedObject->isChecked());
-}
-
-void PythonQtWrapper_QAction::setStatusTip(QAction* theWrappedObject, const QString&  statusTip)
-{
-  ( theWrappedObject->setStatusTip(statusTip));
+  return ( theWrappedObject->softKeyRole());
 }
 
 bool  PythonQtWrapper_QAction::showStatusText(QAction* theWrappedObject, QWidget*  widget)
@@ -245,14 +176,9 @@ bool  PythonQtWrapper_QAction::showStatusText(QAction* theWrappedObject, QWidget
   return ( theWrappedObject->showStatusText(widget));
 }
 
-QVariant  PythonQtWrapper_QAction::data(QAction* theWrappedObject) const
+void PythonQtWrapper_QAction::activate(QAction* theWrappedObject, QAction::ActionEvent  event)
 {
-  return ( theWrappedObject->data());
-}
-
-void PythonQtWrapper_QAction::setFont(QAction* theWrappedObject, const QFont&  font)
-{
-  ( theWrappedObject->setFont(font));
+  ( theWrappedObject->activate(event));
 }
 
 void PythonQtWrapper_QAction::setShortcuts(QAction* theWrappedObject, QKeySequence::StandardKey  arg__1)
@@ -265,79 +191,9 @@ bool  PythonQtWrapper_QAction::isSeparator(QAction* theWrappedObject) const
   return ( theWrappedObject->isSeparator());
 }
 
-bool  PythonQtWrapper_QAction::autoRepeat(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->autoRepeat());
-}
-
-void PythonQtWrapper_QAction::setActionGroup(QAction* theWrappedObject, QActionGroup*  group)
-{
-  ( theWrappedObject->setActionGroup(group));
-}
-
-QFont  PythonQtWrapper_QAction::font(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->font());
-}
-
-void PythonQtWrapper_QAction::setToolTip(QAction* theWrappedObject, const QString&  tip)
-{
-  ( theWrappedObject->setToolTip(tip));
-}
-
-void PythonQtWrapper_QAction::setShortcut(QAction* theWrappedObject, const QKeySequence&  shortcut)
-{
-  ( theWrappedObject->setShortcut(shortcut));
-}
-
-void PythonQtWrapper_QAction::activate(QAction* theWrappedObject, QAction::ActionEvent  event)
-{
-  ( theWrappedObject->activate(event));
-}
-
 QAction::MenuRole  PythonQtWrapper_QAction::menuRole(QAction* theWrappedObject) const
 {
   return ( theWrappedObject->menuRole());
-}
-
-bool  PythonQtWrapper_QAction::event(QAction* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QAction*)theWrappedObject)->promoted_event(arg__1));
-}
-
-Qt::ShortcutContext  PythonQtWrapper_QAction::shortcutContext(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->shortcutContext());
-}
-
-void PythonQtWrapper_QAction::setMenu(QAction* theWrappedObject, QMenu*  menu)
-{
-  ( theWrappedObject->setMenu(menu));
-}
-
-QString  PythonQtWrapper_QAction::toolTip(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->toolTip());
-}
-
-QKeySequence  PythonQtWrapper_QAction::shortcut(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->shortcut());
-}
-
-bool  PythonQtWrapper_QAction::isCheckable(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->isCheckable());
-}
-
-QString  PythonQtWrapper_QAction::text(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->text());
-}
-
-QList<QWidget* >  PythonQtWrapper_QAction::associatedWidgets(QAction* theWrappedObject) const
-{
-  return ( theWrappedObject->associatedWidgets());
 }
 
 void PythonQtWrapper_QAction::setIcon(QAction* theWrappedObject, const QIcon&  icon)
@@ -345,9 +201,74 @@ void PythonQtWrapper_QAction::setIcon(QAction* theWrappedObject, const QIcon&  i
   ( theWrappedObject->setIcon(icon));
 }
 
-QMenu*  PythonQtWrapper_QAction::menu(QAction* theWrappedObject) const
+void PythonQtWrapper_QAction::setText(QAction* theWrappedObject, const QString&  text)
 {
-  return ( theWrappedObject->menu());
+  ( theWrappedObject->setText(text));
+}
+
+void PythonQtWrapper_QAction::setShortcuts(QAction* theWrappedObject, const QList<QKeySequence >&  shortcuts)
+{
+  ( theWrappedObject->setShortcuts(shortcuts));
+}
+
+QAction::Priority  PythonQtWrapper_QAction::priority(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->priority());
+}
+
+void PythonQtWrapper_QAction::setShortcut(QAction* theWrappedObject, const QKeySequence&  shortcut)
+{
+  ( theWrappedObject->setShortcut(shortcut));
+}
+
+void PythonQtWrapper_QAction::setData(QAction* theWrappedObject, const QVariant&  var)
+{
+  ( theWrappedObject->setData(var));
+}
+
+bool  PythonQtWrapper_QAction::isEnabled(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->isEnabled());
+}
+
+QList<QGraphicsWidget* >  PythonQtWrapper_QAction::associatedGraphicsWidgets(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->associatedGraphicsWidgets());
+}
+
+QString  PythonQtWrapper_QAction::whatsThis(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->whatsThis());
+}
+
+QVariant  PythonQtWrapper_QAction::data(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->data());
+}
+
+void PythonQtWrapper_QAction::setMenuRole(QAction* theWrappedObject, QAction::MenuRole  menuRole)
+{
+  ( theWrappedObject->setMenuRole(menuRole));
+}
+
+QString  PythonQtWrapper_QAction::text(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->text());
+}
+
+void PythonQtWrapper_QAction::setPriority(QAction* theWrappedObject, QAction::Priority  priority)
+{
+  ( theWrappedObject->setPriority(priority));
+}
+
+void PythonQtWrapper_QAction::setMenu(QAction* theWrappedObject, QMenu*  menu)
+{
+  ( theWrappedObject->setMenu(menu));
+}
+
+QList<QKeySequence >  PythonQtWrapper_QAction::shortcuts(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->shortcuts());
 }
 
 void PythonQtWrapper_QAction::setCheckable(QAction* theWrappedObject, bool  arg__1)
@@ -355,8 +276,113 @@ void PythonQtWrapper_QAction::setCheckable(QAction* theWrappedObject, bool  arg_
   ( theWrappedObject->setCheckable(arg__1));
 }
 
+void PythonQtWrapper_QAction::setFont(QAction* theWrappedObject, const QFont&  font)
+{
+  ( theWrappedObject->setFont(font));
+}
+
+QActionGroup*  PythonQtWrapper_QAction::actionGroup(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->actionGroup());
+}
+
+void PythonQtWrapper_QAction::setShortcutContext(QAction* theWrappedObject, Qt::ShortcutContext  context)
+{
+  ( theWrappedObject->setShortcutContext(context));
+}
+
+QMenu*  PythonQtWrapper_QAction::menu(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->menu());
+}
+
+QIcon  PythonQtWrapper_QAction::icon(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->icon());
+}
+
+QList<QWidget* >  PythonQtWrapper_QAction::associatedWidgets(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->associatedWidgets());
+}
+
+bool  PythonQtWrapper_QAction::isChecked(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->isChecked());
+}
+
+void PythonQtWrapper_QAction::setSeparator(QAction* theWrappedObject, bool  b)
+{
+  ( theWrappedObject->setSeparator(b));
+}
+
+QString  PythonQtWrapper_QAction::iconText(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->iconText());
+}
+
+bool  PythonQtWrapper_QAction::autoRepeat(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->autoRepeat());
+}
+
+void PythonQtWrapper_QAction::setIconText(QAction* theWrappedObject, const QString&  text)
+{
+  ( theWrappedObject->setIconText(text));
+}
+
+void PythonQtWrapper_QAction::setToolTip(QAction* theWrappedObject, const QString&  tip)
+{
+  ( theWrappedObject->setToolTip(tip));
+}
+
+void PythonQtWrapper_QAction::setActionGroup(QAction* theWrappedObject, QActionGroup*  group)
+{
+  ( theWrappedObject->setActionGroup(group));
+}
+
+void PythonQtWrapper_QAction::setStatusTip(QAction* theWrappedObject, const QString&  statusTip)
+{
+  ( theWrappedObject->setStatusTip(statusTip));
+}
+
+bool  PythonQtWrapper_QAction::isCheckable(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->isCheckable());
+}
+
+void PythonQtWrapper_QAction::setSoftKeyRole(QAction* theWrappedObject, QAction::SoftKeyRole  softKeyRole)
+{
+  ( theWrappedObject->setSoftKeyRole(softKeyRole));
+}
+
+QString  PythonQtWrapper_QAction::toolTip(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->toolTip());
+}
+
 bool  PythonQtWrapper_QAction::isIconVisibleInMenu(QAction* theWrappedObject) const
 {
   return ( theWrappedObject->isIconVisibleInMenu());
+}
+
+void PythonQtWrapper_QAction::setWhatsThis(QAction* theWrappedObject, const QString&  what)
+{
+  ( theWrappedObject->setWhatsThis(what));
+}
+
+Qt::ShortcutContext  PythonQtWrapper_QAction::shortcutContext(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->shortcutContext());
+}
+
+QString  PythonQtWrapper_QAction::statusTip(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->statusTip());
+}
+
+bool  PythonQtWrapper_QAction::isVisible(QAction* theWrappedObject) const
+{
+  return ( theWrappedObject->isVisible());
 }
 

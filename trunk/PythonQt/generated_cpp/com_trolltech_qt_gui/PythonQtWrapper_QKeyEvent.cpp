@@ -10,44 +10,9 @@ QKeyEvent* PythonQtWrapper_QKeyEvent::new_QKeyEvent(QEvent::Type  type, int  key
 { 
 return new PythonQtShell_QKeyEvent(type, key, modifiers, text, autorep, count); }
 
-QString  PythonQtWrapper_QKeyEvent::text(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->text());
-}
-
-unsigned int  PythonQtWrapper_QKeyEvent::nativeVirtualKey(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->nativeVirtualKey());
-}
-
 unsigned int  PythonQtWrapper_QKeyEvent::nativeModifiers(QKeyEvent* theWrappedObject) const
 {
   return ( theWrappedObject->nativeModifiers());
-}
-
-bool  PythonQtWrapper_QKeyEvent::hasExtendedInfo(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->hasExtendedInfo());
-}
-
-int  PythonQtWrapper_QKeyEvent::key(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->key());
-}
-
-QKeyEvent*  PythonQtWrapper_QKeyEvent::static_QKeyEvent_createExtendedKeyEvent(QEvent::Type  type, int  key, Qt::KeyboardModifiers  modifiers, unsigned int  nativeScanCode, unsigned int  nativeVirtualKey, unsigned int  nativeModifiers, const QString&  text, bool  autorep, ushort  count)
-{
-  return (QKeyEvent::createExtendedKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count));
-}
-
-bool  PythonQtWrapper_QKeyEvent::isAutoRepeat(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->isAutoRepeat());
-}
-
-Qt::KeyboardModifiers  PythonQtWrapper_QKeyEvent::modifiers(QKeyEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->modifiers());
 }
 
 unsigned int  PythonQtWrapper_QKeyEvent::nativeScanCode(QKeyEvent* theWrappedObject) const
@@ -55,9 +20,44 @@ unsigned int  PythonQtWrapper_QKeyEvent::nativeScanCode(QKeyEvent* theWrappedObj
   return ( theWrappedObject->nativeScanCode());
 }
 
+Qt::KeyboardModifiers  PythonQtWrapper_QKeyEvent::modifiers(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->modifiers());
+}
+
+QKeyEvent*  PythonQtWrapper_QKeyEvent::static_QKeyEvent_createExtendedKeyEvent(QEvent::Type  type, int  key, Qt::KeyboardModifiers  modifiers, unsigned int  nativeScanCode, unsigned int  nativeVirtualKey, unsigned int  nativeModifiers, const QString&  text, bool  autorep, ushort  count)
+{
+  return (QKeyEvent::createExtendedKeyEvent(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, text, autorep, count));
+}
+
+unsigned int  PythonQtWrapper_QKeyEvent::nativeVirtualKey(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->nativeVirtualKey());
+}
+
 int  PythonQtWrapper_QKeyEvent::count(QKeyEvent* theWrappedObject) const
 {
   return ( theWrappedObject->count());
+}
+
+int  PythonQtWrapper_QKeyEvent::key(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->key());
+}
+
+QString  PythonQtWrapper_QKeyEvent::text(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->text());
+}
+
+bool  PythonQtWrapper_QKeyEvent::hasExtendedInfo(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->hasExtendedInfo());
+}
+
+bool  PythonQtWrapper_QKeyEvent::isAutoRepeat(QKeyEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->isAutoRepeat());
 }
 
 bool  PythonQtWrapper_QKeyEvent::matches(QKeyEvent* theWrappedObject, QKeySequence::StandardKey  key) const

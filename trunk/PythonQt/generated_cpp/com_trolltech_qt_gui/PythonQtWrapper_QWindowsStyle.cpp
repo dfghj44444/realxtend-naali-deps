@@ -16,6 +16,7 @@
 #include <qpoint.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qstyle.h>
 #include <qstyleoption.h>
 #include <qwidget.h>
 #include <qwindowsstyle.h>
@@ -582,44 +583,9 @@ QWindowsStyle* PythonQtWrapper_QWindowsStyle::new_QWindowsStyle()
 { 
 return new PythonQtShell_QWindowsStyle(); }
 
-int  PythonQtWrapper_QWindowsStyle::styleHint(QWindowsStyle* theWrappedObject, QStyle::StyleHint  hint, const QStyleOption*  opt, const QWidget*  widget, QStyleHintReturn*  returnData) const
-{
-  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_styleHint(hint, opt, widget, returnData));
-}
-
-void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QPalette&  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_polish(arg__1));
-}
-
-void PythonQtWrapper_QWindowsStyle::unpolish(QWindowsStyle* theWrappedObject, QApplication*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_unpolish(arg__1));
-}
-
 void PythonQtWrapper_QWindowsStyle::timerEvent(QWindowsStyle* theWrappedObject, QTimerEvent*  event)
 {
   ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_timerEvent(event));
-}
-
-QRect  PythonQtWrapper_QWindowsStyle::subElementRect(QWindowsStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
-}
-
-QSize  PythonQtWrapper_QWindowsStyle::sizeFromContents(QWindowsStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
-}
-
-void PythonQtWrapper_QWindowsStyle::drawComplexControl(QWindowsStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QPainter*  p, const QWidget*  w) const
-{
-  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_drawComplexControl(cc, opt, p, w));
-}
-
-void PythonQtWrapper_QWindowsStyle::unpolish(QWindowsStyle* theWrappedObject, QWidget*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_unpolish(arg__1));
 }
 
 void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QApplication*  arg__1)
@@ -627,9 +593,14 @@ void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QApp
   ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
-void PythonQtWrapper_QWindowsStyle::drawControl(QWindowsStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+QSize  PythonQtWrapper_QWindowsStyle::sizeFromContents(QWindowsStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
 {
-  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
+  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
+}
+
+void PythonQtWrapper_QWindowsStyle::unpolish(QWindowsStyle* theWrappedObject, QApplication*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_unpolish(arg__1));
 }
 
 void PythonQtWrapper_QWindowsStyle::drawPrimitive(QWindowsStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
@@ -637,9 +608,29 @@ void PythonQtWrapper_QWindowsStyle::drawPrimitive(QWindowsStyle* theWrappedObjec
   ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
 }
 
-bool  PythonQtWrapper_QWindowsStyle::eventFilter(QWindowsStyle* theWrappedObject, QObject*  o, QEvent*  e)
+void PythonQtWrapper_QWindowsStyle::unpolish(QWindowsStyle* theWrappedObject, QWidget*  arg__1)
 {
-  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_eventFilter(o, e));
+  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_unpolish(arg__1));
+}
+
+void PythonQtWrapper_QWindowsStyle::drawComplexControl(QWindowsStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_drawComplexControl(cc, opt, p, w));
+}
+
+void PythonQtWrapper_QWindowsStyle::drawControl(QWindowsStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
+}
+
+int  PythonQtWrapper_QWindowsStyle::pixelMetric(QWindowsStyle* theWrappedObject, QStyle::PixelMetric  pm, const QStyleOption*  option, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_pixelMetric(pm, option, widget));
+}
+
+void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QPalette&  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
 void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QWidget*  arg__1)
@@ -647,8 +638,18 @@ void PythonQtWrapper_QWindowsStyle::polish(QWindowsStyle* theWrappedObject, QWid
   ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
-int  PythonQtWrapper_QWindowsStyle::pixelMetric(QWindowsStyle* theWrappedObject, QStyle::PixelMetric  pm, const QStyleOption*  option, const QWidget*  widget) const
+QRect  PythonQtWrapper_QWindowsStyle::subElementRect(QWindowsStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
 {
-  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_pixelMetric(pm, option, widget));
+  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
+}
+
+int  PythonQtWrapper_QWindowsStyle::styleHint(QWindowsStyle* theWrappedObject, QStyle::StyleHint  hint, const QStyleOption*  opt, const QWidget*  widget, QStyleHintReturn*  returnData) const
+{
+  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_styleHint(hint, opt, widget, returnData));
+}
+
+bool  PythonQtWrapper_QWindowsStyle::eventFilter(QWindowsStyle* theWrappedObject, QObject*  o, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QWindowsStyle*)theWrappedObject)->promoted_eventFilter(o, e));
 }
 

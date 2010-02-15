@@ -16,12 +16,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -91,9 +94,9 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QCommandLinkButton : public QCommandLinkButton
 { public:
-inline bool  promoted_event(QEvent*  e) { return QCommandLinkButton::event(e); }
-inline int  promoted_heightForWidth(int  arg__1) const { return QCommandLinkButton::heightForWidth(arg__1); }
 inline void promoted_paintEvent(QPaintEvent*  arg__1) { QCommandLinkButton::paintEvent(arg__1); }
+inline int  promoted_heightForWidth(int  arg__1) const { return QCommandLinkButton::heightForWidth(arg__1); }
+inline bool  promoted_event(QEvent*  e) { return QCommandLinkButton::event(e); }
 };
 
 class PythonQtWrapper_QCommandLinkButton : public QObject
@@ -104,11 +107,11 @@ QCommandLinkButton* new_QCommandLinkButton(QWidget*  parent = 0);
 QCommandLinkButton* new_QCommandLinkButton(const QString&  text, QWidget*  parent = 0);
 QCommandLinkButton* new_QCommandLinkButton(const QString&  text, const QString&  description, QWidget*  parent = 0);
 void delete_QCommandLinkButton(QCommandLinkButton* obj) { delete obj; } 
-   bool  event(QCommandLinkButton* theWrappedObject, QEvent*  e);
    QString  description(QCommandLinkButton* theWrappedObject) const;
-   void setDescription(QCommandLinkButton* theWrappedObject, const QString&  description);
-   int  heightForWidth(QCommandLinkButton* theWrappedObject, int  arg__1) const;
    void paintEvent(QCommandLinkButton* theWrappedObject, QPaintEvent*  arg__1);
+   int  heightForWidth(QCommandLinkButton* theWrappedObject, int  arg__1) const;
+   void setDescription(QCommandLinkButton* theWrappedObject, const QString&  description);
+   bool  event(QCommandLinkButton* theWrappedObject, QEvent*  e);
 };
 
 #endif // PYTHONQTWRAPPER_QCOMMANDLINKBUTTON_H

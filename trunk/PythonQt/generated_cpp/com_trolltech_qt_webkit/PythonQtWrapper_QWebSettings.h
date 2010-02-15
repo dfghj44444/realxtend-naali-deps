@@ -23,29 +23,43 @@ enum WebGraphic{
 enum FontFamily{
   StandardFont = QWebSettings::StandardFont,   FixedFont = QWebSettings::FixedFont,   SerifFont = QWebSettings::SerifFont,   SansSerifFont = QWebSettings::SansSerifFont,   CursiveFont = QWebSettings::CursiveFont,   FantasyFont = QWebSettings::FantasyFont};
 enum WebAttribute{
-  AutoLoadImages = QWebSettings::AutoLoadImages,   JavascriptEnabled = QWebSettings::JavascriptEnabled,   JavaEnabled = QWebSettings::JavaEnabled,   PluginsEnabled = QWebSettings::PluginsEnabled,   PrivateBrowsingEnabled = QWebSettings::PrivateBrowsingEnabled,   JavascriptCanOpenWindows = QWebSettings::JavascriptCanOpenWindows,   JavascriptCanAccessClipboard = QWebSettings::JavascriptCanAccessClipboard,   DeveloperExtrasEnabled = QWebSettings::DeveloperExtrasEnabled,   LinksIncludedInFocusChain = QWebSettings::LinksIncludedInFocusChain};
+  AutoLoadImages = QWebSettings::AutoLoadImages,   JavascriptEnabled = QWebSettings::JavascriptEnabled,   JavaEnabled = QWebSettings::JavaEnabled,   PluginsEnabled = QWebSettings::PluginsEnabled,   PrivateBrowsingEnabled = QWebSettings::PrivateBrowsingEnabled,   JavascriptCanOpenWindows = QWebSettings::JavascriptCanOpenWindows,   JavascriptCanAccessClipboard = QWebSettings::JavascriptCanAccessClipboard,   DeveloperExtrasEnabled = QWebSettings::DeveloperExtrasEnabled,   LinksIncludedInFocusChain = QWebSettings::LinksIncludedInFocusChain,   ZoomTextOnly = QWebSettings::ZoomTextOnly,   PrintElementBackgrounds = QWebSettings::PrintElementBackgrounds,   OfflineStorageDatabaseEnabled = QWebSettings::OfflineStorageDatabaseEnabled,   OfflineWebApplicationCacheEnabled = QWebSettings::OfflineWebApplicationCacheEnabled,   LocalStorageEnabled = QWebSettings::LocalStorageEnabled,   LocalStorageDatabaseEnabled = QWebSettings::LocalStorageDatabaseEnabled,   LocalContentCanAccessRemoteUrls = QWebSettings::LocalContentCanAccessRemoteUrls,   DnsPrefetchEnabled = QWebSettings::DnsPrefetchEnabled};
 public slots:
-   void setUserStyleSheetUrl(QWebSettings* theWrappedObject, const QUrl&  location);
-   void resetAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr);
-   void static_QWebSettings_setMaximumPagesInCache(int  pages);
-   void static_QWebSettings_clearIconDatabase();
-   void static_QWebSettings_setWebGraphic(QWebSettings::WebGraphic  type, const QPixmap&  graphic);
-   QPixmap  static_QWebSettings_webGraphic(QWebSettings::WebGraphic  type);
-   void setFontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type, int  size);
-   void resetFontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which);
-   void setAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr, bool  on);
-   void static_QWebSettings_setObjectCacheCapacities(int  cacheMinDeadCapacity, int  cacheMaxDead, int  totalCapacity);
-   void resetFontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type);
-   void static_QWebSettings_setIconDatabasePath(const QString&  location);
-   int  fontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type) const;
-   QWebSettings*  static_QWebSettings_globalSettings();
-   QString  static_QWebSettings_iconDatabasePath();
-   bool  testAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr) const;
-   QString  fontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which) const;
-   void setFontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which, const QString&  family);
-   QUrl  userStyleSheetUrl(QWebSettings* theWrappedObject) const;
    QIcon  static_QWebSettings_iconForUrl(const QUrl&  url);
    int  static_QWebSettings_maximumPagesInCache();
+   void resetFontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type);
+   int  fontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type) const;
+   QString  static_QWebSettings_iconDatabasePath();
+   QString  static_QWebSettings_offlineStoragePath();
+   QString  defaultTextEncoding(QWebSettings* theWrappedObject) const;
+   bool  testAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr) const;
+   void static_QWebSettings_clearIconDatabase();
+   QWebSettings*  static_QWebSettings_globalSettings();
+   void setDefaultTextEncoding(QWebSettings* theWrappedObject, const QString&  encoding);
+   void setUserStyleSheetUrl(QWebSettings* theWrappedObject, const QUrl&  location);
+   QUrl  userStyleSheetUrl(QWebSettings* theWrappedObject) const;
+   QString  localStoragePath(QWebSettings* theWrappedObject) const;
+   void static_QWebSettings_enablePersistentStorage(const QString&  path = QString());
+   void static_QWebSettings_setOfflineWebApplicationCachePath(const QString&  path);
+   QString  fontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which) const;
+   void setFontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which, const QString&  family);
+   void static_QWebSettings_setOfflineStorageDefaultQuota(qint64  maximumSize);
+   void static_QWebSettings_setOfflineWebApplicationCacheQuota(qint64  maximumSize);
+   QString  static_QWebSettings_offlineWebApplicationCachePath();
+   void static_QWebSettings_setMaximumPagesInCache(int  pages);
+   void static_QWebSettings_setIconDatabasePath(const QString&  location);
+   void setFontSize(QWebSettings* theWrappedObject, QWebSettings::FontSize  type, int  size);
+   void setAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr, bool  on);
+   qint64  static_QWebSettings_offlineStorageDefaultQuota();
+   void static_QWebSettings_setOfflineStoragePath(const QString&  path);
+   QPixmap  static_QWebSettings_webGraphic(QWebSettings::WebGraphic  type);
+   void static_QWebSettings_clearMemoryCaches();
+   void setLocalStoragePath(QWebSettings* theWrappedObject, const QString&  path);
+   void static_QWebSettings_setWebGraphic(QWebSettings::WebGraphic  type, const QPixmap&  graphic);
+   qint64  static_QWebSettings_offlineWebApplicationCacheQuota();
+   void static_QWebSettings_setObjectCacheCapacities(int  cacheMinDeadCapacity, int  cacheMaxDead, int  totalCapacity);
+   void resetFontFamily(QWebSettings* theWrappedObject, QWebSettings::FontFamily  which);
+   void resetAttribute(QWebSettings* theWrappedObject, QWebSettings::WebAttribute  attr);
 };
 
 #endif // PYTHONQTWRAPPER_QWEBSETTINGS_H

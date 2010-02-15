@@ -12,12 +12,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -848,19 +851,9 @@ QSplashScreen* PythonQtWrapper_QSplashScreen::new_QSplashScreen(const QPixmap&  
 { 
 return new PythonQtShell_QSplashScreen(pixmap, f); }
 
-void PythonQtWrapper_QSplashScreen::setPixmap(QSplashScreen* theWrappedObject, const QPixmap&  pixmap)
+void PythonQtWrapper_QSplashScreen::finish(QSplashScreen* theWrappedObject, QWidget*  w)
 {
-  ( theWrappedObject->setPixmap(pixmap));
-}
-
-const QPixmap  PythonQtWrapper_QSplashScreen::pixmap(QSplashScreen* theWrappedObject) const
-{
-  return ( theWrappedObject->pixmap());
-}
-
-void PythonQtWrapper_QSplashScreen::drawContents(QSplashScreen* theWrappedObject, QPainter*  painter)
-{
-  ( ((PythonQtPublicPromoter_QSplashScreen*)theWrappedObject)->promoted_drawContents(painter));
+  ( theWrappedObject->finish(w));
 }
 
 bool  PythonQtWrapper_QSplashScreen::event(QSplashScreen* theWrappedObject, QEvent*  e)
@@ -868,13 +861,23 @@ bool  PythonQtWrapper_QSplashScreen::event(QSplashScreen* theWrappedObject, QEve
   return ( ((PythonQtPublicPromoter_QSplashScreen*)theWrappedObject)->promoted_event(e));
 }
 
-void PythonQtWrapper_QSplashScreen::finish(QSplashScreen* theWrappedObject, QWidget*  w)
+void PythonQtWrapper_QSplashScreen::drawContents(QSplashScreen* theWrappedObject, QPainter*  painter)
 {
-  ( theWrappedObject->finish(w));
+  ( ((PythonQtPublicPromoter_QSplashScreen*)theWrappedObject)->promoted_drawContents(painter));
 }
 
 void PythonQtWrapper_QSplashScreen::mousePressEvent(QSplashScreen* theWrappedObject, QMouseEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QSplashScreen*)theWrappedObject)->promoted_mousePressEvent(arg__1));
+}
+
+const QPixmap  PythonQtWrapper_QSplashScreen::pixmap(QSplashScreen* theWrappedObject) const
+{
+  return ( theWrappedObject->pixmap());
+}
+
+void PythonQtWrapper_QSplashScreen::setPixmap(QSplashScreen* theWrappedObject, const QPixmap&  pixmap)
+{
+  ( theWrappedObject->setPixmap(pixmap));
 }
 

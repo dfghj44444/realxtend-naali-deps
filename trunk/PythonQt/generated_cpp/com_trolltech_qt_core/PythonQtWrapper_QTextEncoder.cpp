@@ -16,3 +16,8 @@ QByteArray  PythonQtWrapper_QTextEncoder::fromUnicode(QTextEncoder* theWrappedOb
   return ( theWrappedObject->fromUnicode(str));
 }
 
+bool  PythonQtWrapper_QTextEncoder::hasFailure(QTextEncoder* theWrappedObject) const
+{
+  return ( theWrappedObject->hasFailure());
+}
+

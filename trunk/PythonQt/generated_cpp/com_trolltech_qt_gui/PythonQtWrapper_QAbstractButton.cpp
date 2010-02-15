@@ -13,12 +13,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -888,49 +891,9 @@ QAbstractButton* PythonQtWrapper_QAbstractButton::new_QAbstractButton(QWidget*  
 { 
 return new PythonQtShell_QAbstractButton(parent); }
 
-void PythonQtWrapper_QAbstractButton::setAutoRepeatInterval(QAbstractButton* theWrappedObject, int  arg__1)
+bool  PythonQtWrapper_QAbstractButton::isDown(QAbstractButton* theWrappedObject) const
 {
-  ( theWrappedObject->setAutoRepeatInterval(arg__1));
-}
-
-void PythonQtWrapper_QAbstractButton::timerEvent(QAbstractButton* theWrappedObject, QTimerEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_timerEvent(e));
-}
-
-void PythonQtWrapper_QAbstractButton::focusOutEvent(QAbstractButton* theWrappedObject, QFocusEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_focusOutEvent(e));
-}
-
-void PythonQtWrapper_QAbstractButton::checkStateSet(QAbstractButton* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_checkStateSet());
-}
-
-bool  PythonQtWrapper_QAbstractButton::hitButton(QAbstractButton* theWrappedObject, const QPoint&  pos) const
-{
-  return ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_hitButton(pos));
-}
-
-void PythonQtWrapper_QAbstractButton::mouseReleaseEvent(QAbstractButton* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_mouseReleaseEvent(e));
-}
-
-void PythonQtWrapper_QAbstractButton::setAutoExclusive(QAbstractButton* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setAutoExclusive(arg__1));
-}
-
-void PythonQtWrapper_QAbstractButton::setText(QAbstractButton* theWrappedObject, const QString&  text)
-{
-  ( theWrappedObject->setText(text));
-}
-
-void PythonQtWrapper_QAbstractButton::setCheckable(QAbstractButton* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setCheckable(arg__1));
+  return ( theWrappedObject->isDown());
 }
 
 QSize  PythonQtWrapper_QAbstractButton::iconSize(QAbstractButton* theWrappedObject) const
@@ -938,69 +901,29 @@ QSize  PythonQtWrapper_QAbstractButton::iconSize(QAbstractButton* theWrappedObje
   return ( theWrappedObject->iconSize());
 }
 
-QKeySequence  PythonQtWrapper_QAbstractButton::shortcut(QAbstractButton* theWrappedObject) const
+void PythonQtWrapper_QAbstractButton::setCheckable(QAbstractButton* theWrappedObject, bool  arg__1)
 {
-  return ( theWrappedObject->shortcut());
+  ( theWrappedObject->setCheckable(arg__1));
 }
 
-int  PythonQtWrapper_QAbstractButton::autoRepeatInterval(QAbstractButton* theWrappedObject) const
+bool  PythonQtWrapper_QAbstractButton::isCheckable(QAbstractButton* theWrappedObject) const
 {
-  return ( theWrappedObject->autoRepeatInterval());
+  return ( theWrappedObject->isCheckable());
 }
 
-void PythonQtWrapper_QAbstractButton::keyPressEvent(QAbstractButton* theWrappedObject, QKeyEvent*  e)
+QIcon  PythonQtWrapper_QAbstractButton::icon(QAbstractButton* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_keyPressEvent(e));
+  return ( theWrappedObject->icon());
 }
 
-QString  PythonQtWrapper_QAbstractButton::text(QAbstractButton* theWrappedObject) const
+void PythonQtWrapper_QAbstractButton::changeEvent(QAbstractButton* theWrappedObject, QEvent*  e)
 {
-  return ( theWrappedObject->text());
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_changeEvent(e));
 }
 
-void PythonQtWrapper_QAbstractButton::setShortcut(QAbstractButton* theWrappedObject, const QKeySequence&  key)
+int  PythonQtWrapper_QAbstractButton::autoRepeatDelay(QAbstractButton* theWrappedObject) const
 {
-  ( theWrappedObject->setShortcut(key));
-}
-
-void PythonQtWrapper_QAbstractButton::keyReleaseEvent(QAbstractButton* theWrappedObject, QKeyEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_keyReleaseEvent(e));
-}
-
-bool  PythonQtWrapper_QAbstractButton::isDown(QAbstractButton* theWrappedObject) const
-{
-  return ( theWrappedObject->isDown());
-}
-
-bool  PythonQtWrapper_QAbstractButton::autoExclusive(QAbstractButton* theWrappedObject) const
-{
-  return ( theWrappedObject->autoExclusive());
-}
-
-void PythonQtWrapper_QAbstractButton::nextCheckState(QAbstractButton* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_nextCheckState());
-}
-
-void PythonQtWrapper_QAbstractButton::setDown(QAbstractButton* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setDown(arg__1));
-}
-
-void PythonQtWrapper_QAbstractButton::focusInEvent(QAbstractButton* theWrappedObject, QFocusEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_focusInEvent(e));
-}
-
-void PythonQtWrapper_QAbstractButton::setAutoRepeat(QAbstractButton* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setAutoRepeat(arg__1));
-}
-
-bool  PythonQtWrapper_QAbstractButton::isChecked(QAbstractButton* theWrappedObject) const
-{
-  return ( theWrappedObject->isChecked());
+  return ( theWrappedObject->autoRepeatDelay());
 }
 
 bool  PythonQtWrapper_QAbstractButton::autoRepeat(QAbstractButton* theWrappedObject) const
@@ -1008,9 +931,14 @@ bool  PythonQtWrapper_QAbstractButton::autoRepeat(QAbstractButton* theWrappedObj
   return ( theWrappedObject->autoRepeat());
 }
 
-QIcon  PythonQtWrapper_QAbstractButton::icon(QAbstractButton* theWrappedObject) const
+void PythonQtWrapper_QAbstractButton::focusOutEvent(QAbstractButton* theWrappedObject, QFocusEvent*  e)
 {
-  return ( theWrappedObject->icon());
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_focusOutEvent(e));
+}
+
+QString  PythonQtWrapper_QAbstractButton::text(QAbstractButton* theWrappedObject) const
+{
+  return ( theWrappedObject->text());
 }
 
 void PythonQtWrapper_QAbstractButton::mouseMoveEvent(QAbstractButton* theWrappedObject, QMouseEvent*  e)
@@ -1023,24 +951,9 @@ void PythonQtWrapper_QAbstractButton::mousePressEvent(QAbstractButton* theWrappe
   ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_mousePressEvent(e));
 }
 
-void PythonQtWrapper_QAbstractButton::changeEvent(QAbstractButton* theWrappedObject, QEvent*  e)
+void PythonQtWrapper_QAbstractButton::setAutoExclusive(QAbstractButton* theWrappedObject, bool  arg__1)
 {
-  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_changeEvent(e));
-}
-
-bool  PythonQtWrapper_QAbstractButton::isCheckable(QAbstractButton* theWrappedObject) const
-{
-  return ( theWrappedObject->isCheckable());
-}
-
-bool  PythonQtWrapper_QAbstractButton::event(QAbstractButton* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_event(e));
-}
-
-void PythonQtWrapper_QAbstractButton::setAutoRepeatDelay(QAbstractButton* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setAutoRepeatDelay(arg__1));
+  ( theWrappedObject->setAutoExclusive(arg__1));
 }
 
 void PythonQtWrapper_QAbstractButton::setIcon(QAbstractButton* theWrappedObject, const QIcon&  icon)
@@ -1048,13 +961,103 @@ void PythonQtWrapper_QAbstractButton::setIcon(QAbstractButton* theWrappedObject,
   ( theWrappedObject->setIcon(icon));
 }
 
-int  PythonQtWrapper_QAbstractButton::autoRepeatDelay(QAbstractButton* theWrappedObject) const
+void PythonQtWrapper_QAbstractButton::mouseReleaseEvent(QAbstractButton* theWrappedObject, QMouseEvent*  e)
 {
-  return ( theWrappedObject->autoRepeatDelay());
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_mouseReleaseEvent(e));
+}
+
+void PythonQtWrapper_QAbstractButton::setAutoRepeatInterval(QAbstractButton* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setAutoRepeatInterval(arg__1));
+}
+
+int  PythonQtWrapper_QAbstractButton::autoRepeatInterval(QAbstractButton* theWrappedObject) const
+{
+  return ( theWrappedObject->autoRepeatInterval());
+}
+
+void PythonQtWrapper_QAbstractButton::checkStateSet(QAbstractButton* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_checkStateSet());
+}
+
+void PythonQtWrapper_QAbstractButton::setAutoRepeatDelay(QAbstractButton* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setAutoRepeatDelay(arg__1));
+}
+
+void PythonQtWrapper_QAbstractButton::nextCheckState(QAbstractButton* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_nextCheckState());
+}
+
+void PythonQtWrapper_QAbstractButton::timerEvent(QAbstractButton* theWrappedObject, QTimerEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_timerEvent(e));
+}
+
+bool  PythonQtWrapper_QAbstractButton::autoExclusive(QAbstractButton* theWrappedObject) const
+{
+  return ( theWrappedObject->autoExclusive());
+}
+
+bool  PythonQtWrapper_QAbstractButton::hitButton(QAbstractButton* theWrappedObject, const QPoint&  pos) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_hitButton(pos));
+}
+
+void PythonQtWrapper_QAbstractButton::focusInEvent(QAbstractButton* theWrappedObject, QFocusEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_focusInEvent(e));
+}
+
+void PythonQtWrapper_QAbstractButton::keyReleaseEvent(QAbstractButton* theWrappedObject, QKeyEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_keyReleaseEvent(e));
+}
+
+void PythonQtWrapper_QAbstractButton::setAutoRepeat(QAbstractButton* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setAutoRepeat(arg__1));
+}
+
+void PythonQtWrapper_QAbstractButton::setShortcut(QAbstractButton* theWrappedObject, const QKeySequence&  key)
+{
+  ( theWrappedObject->setShortcut(key));
+}
+
+bool  PythonQtWrapper_QAbstractButton::event(QAbstractButton* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_event(e));
 }
 
 QButtonGroup*  PythonQtWrapper_QAbstractButton::group(QAbstractButton* theWrappedObject) const
 {
   return ( theWrappedObject->group());
+}
+
+QKeySequence  PythonQtWrapper_QAbstractButton::shortcut(QAbstractButton* theWrappedObject) const
+{
+  return ( theWrappedObject->shortcut());
+}
+
+void PythonQtWrapper_QAbstractButton::setDown(QAbstractButton* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setDown(arg__1));
+}
+
+void PythonQtWrapper_QAbstractButton::setText(QAbstractButton* theWrappedObject, const QString&  text)
+{
+  ( theWrappedObject->setText(text));
+}
+
+bool  PythonQtWrapper_QAbstractButton::isChecked(QAbstractButton* theWrappedObject) const
+{
+  return ( theWrappedObject->isChecked());
+}
+
+void PythonQtWrapper_QAbstractButton::keyPressEvent(QAbstractButton* theWrappedObject, QKeyEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractButton*)theWrappedObject)->promoted_keyPressEvent(e));
 }
 

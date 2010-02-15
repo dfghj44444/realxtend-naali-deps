@@ -26,8 +26,8 @@ virtual QString  type(const QFileInfo&  info) const;
 class PythonQtPublicPromoter_QFileIconProvider : public QFileIconProvider
 { public:
 inline QIcon  promoted_icon(QFileIconProvider::IconType  type) const { return QFileIconProvider::icon(type); }
-inline QString  promoted_type(const QFileInfo&  info) const { return QFileIconProvider::type(info); }
 inline QIcon  promoted_icon(const QFileInfo&  info) const { return QFileIconProvider::icon(info); }
+inline QString  promoted_type(const QFileInfo&  info) const { return QFileIconProvider::type(info); }
 };
 
 class PythonQtWrapper_QFileIconProvider : public QObject
@@ -40,8 +40,8 @@ public slots:
 QFileIconProvider* new_QFileIconProvider();
 void delete_QFileIconProvider(QFileIconProvider* obj) { delete obj; } 
    QIcon  icon(QFileIconProvider* theWrappedObject, QFileIconProvider::IconType  type) const;
-   QString  type(QFileIconProvider* theWrappedObject, const QFileInfo&  info) const;
    QIcon  icon(QFileIconProvider* theWrappedObject, const QFileInfo&  info) const;
+   QString  type(QFileIconProvider* theWrappedObject, const QFileInfo&  info) const;
 };
 
 #endif // PYTHONQTWRAPPER_QFILEICONPROVIDER_H

@@ -19,74 +19,14 @@ QTextBlock* PythonQtWrapper_QTextBlock::new_QTextBlock(const QTextBlock&  o)
 { 
 return new QTextBlock(o); }
 
-QString  PythonQtWrapper_QTextBlock::text(QTextBlock* theWrappedObject) const
+int  PythonQtWrapper_QTextBlock::blockFormatIndex(QTextBlock* theWrappedObject) const
 {
-  return ( theWrappedObject->text());
+  return ( theWrappedObject->blockFormatIndex());
 }
 
-void PythonQtWrapper_QTextBlock::setUserData(QTextBlock* theWrappedObject, QTextBlockUserData*  data)
+void PythonQtWrapper_QTextBlock::setLineCount(QTextBlock* theWrappedObject, int  count)
 {
-  ( theWrappedObject->setUserData(data));
-}
-
-QTextBlockFormat  PythonQtWrapper_QTextBlock::blockFormat(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->blockFormat());
-}
-
-int  PythonQtWrapper_QTextBlock::position(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->position());
-}
-
-QTextBlock::iterator  PythonQtWrapper_QTextBlock::end(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->end());
-}
-
-QTextBlockUserData*  PythonQtWrapper_QTextBlock::userData(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->userData());
-}
-
-bool  PythonQtWrapper_QTextBlock::operator_equal(QTextBlock* theWrappedObject, const QTextBlock&  o) const
-{
-  return ( (*theWrappedObject)== o);
-}
-
-QTextBlock::iterator  PythonQtWrapper_QTextBlock::begin(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->begin());
-}
-
-int  PythonQtWrapper_QTextBlock::revision(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->revision());
-}
-
-void PythonQtWrapper_QTextBlock::setUserState(QTextBlock* theWrappedObject, int  state)
-{
-  ( theWrappedObject->setUserState(state));
-}
-
-int  PythonQtWrapper_QTextBlock::userState(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->userState());
-}
-
-int  PythonQtWrapper_QTextBlock::charFormatIndex(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->charFormatIndex());
-}
-
-QTextLayout*  PythonQtWrapper_QTextBlock::layout(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->layout());
-}
-
-void PythonQtWrapper_QTextBlock::setRevision(QTextBlock* theWrappedObject, int  rev)
-{
-  ( theWrappedObject->setRevision(rev));
+  ( theWrappedObject->setLineCount(count));
 }
 
 const QTextDocument*  PythonQtWrapper_QTextBlock::document(QTextBlock* theWrappedObject) const
@@ -94,9 +34,14 @@ const QTextDocument*  PythonQtWrapper_QTextBlock::document(QTextBlock* theWrappe
   return ( theWrappedObject->document());
 }
 
-bool  PythonQtWrapper_QTextBlock::contains(QTextBlock* theWrappedObject, int  position) const
+QTextBlock::iterator  PythonQtWrapper_QTextBlock::end(QTextBlock* theWrappedObject) const
 {
-  return ( theWrappedObject->contains(position));
+  return ( theWrappedObject->end());
+}
+
+QString  PythonQtWrapper_QTextBlock::text(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->text());
 }
 
 QTextCharFormat  PythonQtWrapper_QTextBlock::charFormat(QTextBlock* theWrappedObject) const
@@ -104,24 +49,14 @@ QTextCharFormat  PythonQtWrapper_QTextBlock::charFormat(QTextBlock* theWrappedOb
   return ( theWrappedObject->charFormat());
 }
 
-bool  PythonQtWrapper_QTextBlock::isValid(QTextBlock* theWrappedObject) const
+QTextBlock::iterator  PythonQtWrapper_QTextBlock::begin(QTextBlock* theWrappedObject) const
 {
-  return ( theWrappedObject->isValid());
+  return ( theWrappedObject->begin());
 }
 
-bool  PythonQtWrapper_QTextBlock::operator_less(QTextBlock* theWrappedObject, const QTextBlock&  o) const
+void PythonQtWrapper_QTextBlock::setUserState(QTextBlock* theWrappedObject, int  state)
 {
-  return ( (*theWrappedObject)< o);
-}
-
-QTextBlock  PythonQtWrapper_QTextBlock::previous(QTextBlock* theWrappedObject) const
-{
-  return ( theWrappedObject->previous());
-}
-
-void PythonQtWrapper_QTextBlock::setVisible(QTextBlock* theWrappedObject, bool  visible)
-{
-  ( theWrappedObject->setVisible(visible));
+  ( theWrappedObject->setUserState(state));
 }
 
 int  PythonQtWrapper_QTextBlock::blockNumber(QTextBlock* theWrappedObject) const
@@ -129,14 +64,9 @@ int  PythonQtWrapper_QTextBlock::blockNumber(QTextBlock* theWrappedObject) const
   return ( theWrappedObject->blockNumber());
 }
 
-int  PythonQtWrapper_QTextBlock::length(QTextBlock* theWrappedObject) const
+int  PythonQtWrapper_QTextBlock::charFormatIndex(QTextBlock* theWrappedObject) const
 {
-  return ( theWrappedObject->length());
-}
-
-void PythonQtWrapper_QTextBlock::clearLayout(QTextBlock* theWrappedObject)
-{
-  ( theWrappedObject->clearLayout());
+  return ( theWrappedObject->charFormatIndex());
 }
 
 bool  PythonQtWrapper_QTextBlock::isVisible(QTextBlock* theWrappedObject) const
@@ -144,9 +74,64 @@ bool  PythonQtWrapper_QTextBlock::isVisible(QTextBlock* theWrappedObject) const
   return ( theWrappedObject->isVisible());
 }
 
+int  PythonQtWrapper_QTextBlock::revision(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->revision());
+}
+
+int  PythonQtWrapper_QTextBlock::userState(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->userState());
+}
+
+void PythonQtWrapper_QTextBlock::clearLayout(QTextBlock* theWrappedObject)
+{
+  ( theWrappedObject->clearLayout());
+}
+
+bool  PythonQtWrapper_QTextBlock::operator_less(QTextBlock* theWrappedObject, const QTextBlock&  o) const
+{
+  return ( (*theWrappedObject)< o);
+}
+
+void PythonQtWrapper_QTextBlock::setUserData(QTextBlock* theWrappedObject, QTextBlockUserData*  data)
+{
+  ( theWrappedObject->setUserData(data));
+}
+
+int  PythonQtWrapper_QTextBlock::position(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->position());
+}
+
+int  PythonQtWrapper_QTextBlock::firstLineNumber(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->firstLineNumber());
+}
+
+QTextLayout*  PythonQtWrapper_QTextBlock::layout(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->layout());
+}
+
+bool  PythonQtWrapper_QTextBlock::isValid(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
+}
+
+void PythonQtWrapper_QTextBlock::setRevision(QTextBlock* theWrappedObject, int  rev)
+{
+  ( theWrappedObject->setRevision(rev));
+}
+
 QTextBlock  PythonQtWrapper_QTextBlock::next(QTextBlock* theWrappedObject) const
 {
   return ( theWrappedObject->next());
+}
+
+void PythonQtWrapper_QTextBlock::setVisible(QTextBlock* theWrappedObject, bool  visible)
+{
+  ( theWrappedObject->setVisible(visible));
 }
 
 QTextList*  PythonQtWrapper_QTextBlock::textList(QTextBlock* theWrappedObject) const
@@ -154,8 +139,43 @@ QTextList*  PythonQtWrapper_QTextBlock::textList(QTextBlock* theWrappedObject) c
   return ( theWrappedObject->textList());
 }
 
-int  PythonQtWrapper_QTextBlock::blockFormatIndex(QTextBlock* theWrappedObject) const
+bool  PythonQtWrapper_QTextBlock::contains(QTextBlock* theWrappedObject, int  position) const
 {
-  return ( theWrappedObject->blockFormatIndex());
+  return ( theWrappedObject->contains(position));
+}
+
+QTextBlockUserData*  PythonQtWrapper_QTextBlock::userData(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->userData());
+}
+
+QTextBlock  PythonQtWrapper_QTextBlock::previous(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->previous());
+}
+
+int  PythonQtWrapper_QTextBlock::fragmentIndex(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->fragmentIndex());
+}
+
+int  PythonQtWrapper_QTextBlock::lineCount(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->lineCount());
+}
+
+int  PythonQtWrapper_QTextBlock::length(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->length());
+}
+
+QTextBlockFormat  PythonQtWrapper_QTextBlock::blockFormat(QTextBlock* theWrappedObject) const
+{
+  return ( theWrappedObject->blockFormat());
+}
+
+bool  PythonQtWrapper_QTextBlock::operator_equal(QTextBlock* theWrappedObject, const QTextBlock&  o) const
+{
+  return ( (*theWrappedObject)== o);
 }
 

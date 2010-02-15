@@ -194,14 +194,9 @@ QItemSelectionModel* PythonQtWrapper_QItemSelectionModel::new_QItemSelectionMode
 { 
 return new PythonQtShell_QItemSelectionModel(model, parent); }
 
-const QItemSelection  PythonQtWrapper_QItemSelectionModel::selection(QItemSelectionModel* theWrappedObject) const
+bool  PythonQtWrapper_QItemSelectionModel::hasSelection(QItemSelectionModel* theWrappedObject) const
 {
-  return ( theWrappedObject->selection());
-}
-
-bool  PythonQtWrapper_QItemSelectionModel::columnIntersectsSelection(QItemSelectionModel* theWrappedObject, int  column, const QModelIndex&  parent) const
-{
-  return ( theWrappedObject->columnIntersectsSelection(column, parent));
+  return ( theWrappedObject->hasSelection());
 }
 
 bool  PythonQtWrapper_QItemSelectionModel::isSelected(QItemSelectionModel* theWrappedObject, const QModelIndex&  index) const
@@ -209,24 +204,9 @@ bool  PythonQtWrapper_QItemSelectionModel::isSelected(QItemSelectionModel* theWr
   return ( theWrappedObject->isSelected(index));
 }
 
-bool  PythonQtWrapper_QItemSelectionModel::isColumnSelected(QItemSelectionModel* theWrappedObject, int  column, const QModelIndex&  parent) const
-{
-  return ( theWrappedObject->isColumnSelected(column, parent));
-}
-
-QList<QModelIndex >  PythonQtWrapper_QItemSelectionModel::selectedColumns(QItemSelectionModel* theWrappedObject, int  row) const
-{
-  return ( theWrappedObject->selectedColumns(row));
-}
-
 QList<QModelIndex >  PythonQtWrapper_QItemSelectionModel::selectedIndexes(QItemSelectionModel* theWrappedObject) const
 {
   return ( theWrappedObject->selectedIndexes());
-}
-
-bool  PythonQtWrapper_QItemSelectionModel::isRowSelected(QItemSelectionModel* theWrappedObject, int  row, const QModelIndex&  parent) const
-{
-  return ( theWrappedObject->isRowSelected(row, parent));
 }
 
 QModelIndex  PythonQtWrapper_QItemSelectionModel::currentIndex(QItemSelectionModel* theWrappedObject) const
@@ -239,18 +219,38 @@ const QAbstractItemModel*  PythonQtWrapper_QItemSelectionModel::model(QItemSelec
   return ( theWrappedObject->model());
 }
 
-bool  PythonQtWrapper_QItemSelectionModel::hasSelection(QItemSelectionModel* theWrappedObject) const
-{
-  return ( theWrappedObject->hasSelection());
-}
-
 bool  PythonQtWrapper_QItemSelectionModel::rowIntersectsSelection(QItemSelectionModel* theWrappedObject, int  row, const QModelIndex&  parent) const
 {
   return ( theWrappedObject->rowIntersectsSelection(row, parent));
 }
 
+bool  PythonQtWrapper_QItemSelectionModel::columnIntersectsSelection(QItemSelectionModel* theWrappedObject, int  column, const QModelIndex&  parent) const
+{
+  return ( theWrappedObject->columnIntersectsSelection(column, parent));
+}
+
+bool  PythonQtWrapper_QItemSelectionModel::isRowSelected(QItemSelectionModel* theWrappedObject, int  row, const QModelIndex&  parent) const
+{
+  return ( theWrappedObject->isRowSelected(row, parent));
+}
+
+const QItemSelection  PythonQtWrapper_QItemSelectionModel::selection(QItemSelectionModel* theWrappedObject) const
+{
+  return ( theWrappedObject->selection());
+}
+
+bool  PythonQtWrapper_QItemSelectionModel::isColumnSelected(QItemSelectionModel* theWrappedObject, int  column, const QModelIndex&  parent) const
+{
+  return ( theWrappedObject->isColumnSelected(column, parent));
+}
+
 QList<QModelIndex >  PythonQtWrapper_QItemSelectionModel::selectedRows(QItemSelectionModel* theWrappedObject, int  column) const
 {
   return ( theWrappedObject->selectedRows(column));
+}
+
+QList<QModelIndex >  PythonQtWrapper_QItemSelectionModel::selectedColumns(QItemSelectionModel* theWrappedObject, int  row) const
+{
+  return ( theWrappedObject->selectedColumns(row));
 }
 

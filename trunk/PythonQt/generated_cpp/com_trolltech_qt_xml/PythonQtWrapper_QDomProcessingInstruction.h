@@ -17,9 +17,9 @@ public slots:
 QDomProcessingInstruction* new_QDomProcessingInstruction();
 QDomProcessingInstruction* new_QDomProcessingInstruction(const QDomProcessingInstruction&  x);
 void delete_QDomProcessingInstruction(QDomProcessingInstruction* obj) { delete obj; } 
-   QString  data(QDomProcessingInstruction* theWrappedObject) const;
-   void setData(QDomProcessingInstruction* theWrappedObject, const QString&  d);
    QString  target(QDomProcessingInstruction* theWrappedObject) const;
+   void setData(QDomProcessingInstruction* theWrappedObject, const QString&  d);
+   QString  data(QDomProcessingInstruction* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QDOMPROCESSINGINSTRUCTION_H

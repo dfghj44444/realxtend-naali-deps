@@ -12,6 +12,7 @@
 #include <qbytearray.h>
 #include <qcoreevent.h>
 #include <qfont.h>
+#include <qgraphicswidget.h>
 #include <qicon.h>
 #include <qkeysequence.h>
 #include <qlist.h>
@@ -51,51 +52,56 @@ QAction* new_QAction(QObject*  parent);
 QAction* new_QAction(const QIcon&  icon, const QString&  text, QObject*  parent);
 QAction* new_QAction(const QString&  text, QObject*  parent);
 void delete_QAction(QAction* obj) { delete obj; } 
-   void setData(QAction* theWrappedObject, const QVariant&  var);
-   QIcon  icon(QAction* theWrappedObject) const;
-   void setShortcuts(QAction* theWrappedObject, const QList<QKeySequence >&  shortcuts);
-   QString  whatsThis(QAction* theWrappedObject) const;
-   void setIconText(QAction* theWrappedObject, const QString&  text);
-   bool  isVisible(QAction* theWrappedObject) const;
-   void setSeparator(QAction* theWrappedObject, bool  b);
-   bool  isEnabled(QAction* theWrappedObject) const;
-   void setText(QAction* theWrappedObject, const QString&  text);
-   QList<QKeySequence >  shortcuts(QAction* theWrappedObject) const;
-   QWidget*  parentWidget(QAction* theWrappedObject) const;
-   void setWhatsThis(QAction* theWrappedObject, const QString&  what);
    void setIconVisibleInMenu(QAction* theWrappedObject, bool  visible);
-   QActionGroup*  actionGroup(QAction* theWrappedObject) const;
-   void setMenuRole(QAction* theWrappedObject, QAction::MenuRole  menuRole);
-   QString  statusTip(QAction* theWrappedObject) const;
-   void setShortcutContext(QAction* theWrappedObject, Qt::ShortcutContext  context);
-   QString  iconText(QAction* theWrappedObject) const;
+   QKeySequence  shortcut(QAction* theWrappedObject) const;
+   bool  event(QAction* theWrappedObject, QEvent*  arg__1);
+   QFont  font(QAction* theWrappedObject) const;
+   QWidget*  parentWidget(QAction* theWrappedObject) const;
    void setAutoRepeat(QAction* theWrappedObject, bool  arg__1);
-   bool  isChecked(QAction* theWrappedObject) const;
-   void setStatusTip(QAction* theWrappedObject, const QString&  statusTip);
+   QAction::SoftKeyRole  softKeyRole(QAction* theWrappedObject) const;
    bool  showStatusText(QAction* theWrappedObject, QWidget*  widget = 0);
-   QVariant  data(QAction* theWrappedObject) const;
-   void setFont(QAction* theWrappedObject, const QFont&  font);
+   void activate(QAction* theWrappedObject, QAction::ActionEvent  event);
    void setShortcuts(QAction* theWrappedObject, QKeySequence::StandardKey  arg__1);
    bool  isSeparator(QAction* theWrappedObject) const;
-   bool  autoRepeat(QAction* theWrappedObject) const;
-   void setActionGroup(QAction* theWrappedObject, QActionGroup*  group);
-   QFont  font(QAction* theWrappedObject) const;
-   void setToolTip(QAction* theWrappedObject, const QString&  tip);
-   void setShortcut(QAction* theWrappedObject, const QKeySequence&  shortcut);
-   void activate(QAction* theWrappedObject, QAction::ActionEvent  event);
    QAction::MenuRole  menuRole(QAction* theWrappedObject) const;
-   bool  event(QAction* theWrappedObject, QEvent*  arg__1);
-   Qt::ShortcutContext  shortcutContext(QAction* theWrappedObject) const;
-   void setMenu(QAction* theWrappedObject, QMenu*  menu);
-   QString  toolTip(QAction* theWrappedObject) const;
-   QKeySequence  shortcut(QAction* theWrappedObject) const;
-   bool  isCheckable(QAction* theWrappedObject) const;
-   QString  text(QAction* theWrappedObject) const;
-   QList<QWidget* >  associatedWidgets(QAction* theWrappedObject) const;
    void setIcon(QAction* theWrappedObject, const QIcon&  icon);
-   QMenu*  menu(QAction* theWrappedObject) const;
+   void setText(QAction* theWrappedObject, const QString&  text);
+   void setShortcuts(QAction* theWrappedObject, const QList<QKeySequence >&  shortcuts);
+   QAction::Priority  priority(QAction* theWrappedObject) const;
+   void setShortcut(QAction* theWrappedObject, const QKeySequence&  shortcut);
+   void setData(QAction* theWrappedObject, const QVariant&  var);
+   bool  isEnabled(QAction* theWrappedObject) const;
+   QList<QGraphicsWidget* >  associatedGraphicsWidgets(QAction* theWrappedObject) const;
+   QString  whatsThis(QAction* theWrappedObject) const;
+   QVariant  data(QAction* theWrappedObject) const;
+   void setMenuRole(QAction* theWrappedObject, QAction::MenuRole  menuRole);
+   QString  text(QAction* theWrappedObject) const;
+   void setPriority(QAction* theWrappedObject, QAction::Priority  priority);
+   void setMenu(QAction* theWrappedObject, QMenu*  menu);
+   QList<QKeySequence >  shortcuts(QAction* theWrappedObject) const;
    void setCheckable(QAction* theWrappedObject, bool  arg__1);
+   void setFont(QAction* theWrappedObject, const QFont&  font);
+   QActionGroup*  actionGroup(QAction* theWrappedObject) const;
+   void setShortcutContext(QAction* theWrappedObject, Qt::ShortcutContext  context);
+   QMenu*  menu(QAction* theWrappedObject) const;
+   QIcon  icon(QAction* theWrappedObject) const;
+   QList<QWidget* >  associatedWidgets(QAction* theWrappedObject) const;
+   bool  isChecked(QAction* theWrappedObject) const;
+   void setSeparator(QAction* theWrappedObject, bool  b);
+   QString  iconText(QAction* theWrappedObject) const;
+   bool  autoRepeat(QAction* theWrappedObject) const;
+   void setIconText(QAction* theWrappedObject, const QString&  text);
+   void setToolTip(QAction* theWrappedObject, const QString&  tip);
+   void setActionGroup(QAction* theWrappedObject, QActionGroup*  group);
+   void setStatusTip(QAction* theWrappedObject, const QString&  statusTip);
+   bool  isCheckable(QAction* theWrappedObject) const;
+   void setSoftKeyRole(QAction* theWrappedObject, QAction::SoftKeyRole  softKeyRole);
+   QString  toolTip(QAction* theWrappedObject) const;
    bool  isIconVisibleInMenu(QAction* theWrappedObject) const;
+   void setWhatsThis(QAction* theWrappedObject, const QString&  what);
+   Qt::ShortcutContext  shortcutContext(QAction* theWrappedObject) const;
+   QString  statusTip(QAction* theWrappedObject) const;
+   bool  isVisible(QAction* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QACTION_H

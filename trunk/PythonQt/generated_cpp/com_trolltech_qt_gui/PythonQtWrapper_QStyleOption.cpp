@@ -20,3 +20,10 @@ void PythonQtWrapper_QStyleOption::initFrom(QStyleOption* theWrappedObject, cons
   ( theWrappedObject->initFrom(w));
 }
 
+QString PythonQtWrapper_QStyleOption::toString(QStyleOption* obj) {
+  QString result;
+  QDebug d(&result);
+  d << *obj;
+  return result;
+}
+

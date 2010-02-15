@@ -32,8 +32,8 @@ virtual void setData(const char*  data, uint  size);
 class PythonQtPublicPromoter_QPicture : public QPicture
 { public:
 inline int  promoted_metric(QPaintDevice::PaintDeviceMetric  m) const { return QPicture::metric(m); }
-inline int  promoted_devType() const { return QPicture::devType(); }
 inline QPaintEngine*  promoted_paintEngine() const { return QPicture::paintEngine(); }
+inline int  promoted_devType() const { return QPicture::devType(); }
 };
 
 class PythonQtWrapper_QPicture : public QObject
@@ -43,21 +43,21 @@ public slots:
 QPicture* new_QPicture(const QPicture&  arg__1);
 QPicture* new_QPicture(int  formatVersion = -1);
 void delete_QPicture(QPicture* obj) { delete obj; } 
-   bool  load(QPicture* theWrappedObject, QIODevice*  dev, const char*  format = 0);
-   bool  save(QPicture* theWrappedObject, const QString&  fileName, const char*  format = 0);
-   int  metric(QPicture* theWrappedObject, QPaintDevice::PaintDeviceMetric  m) const;
-   const char*  data(QPicture* theWrappedObject) const;
-   int  devType(QPicture* theWrappedObject) const;
-   uint  size(QPicture* theWrappedObject) const;
-   QRect  boundingRect(QPicture* theWrappedObject) const;
+   void readFrom(QPicture* theWrappedObject, QDataStream&  arg__1);
    bool  load(QPicture* theWrappedObject, const QString&  fileName, const char*  format = 0);
+   bool  load(QPicture* theWrappedObject, QIODevice*  dev, const char*  format = 0);
+   bool  play(QPicture* theWrappedObject, QPainter*  p);
+   bool  save(QPicture* theWrappedObject, QIODevice*  dev, const char*  format = 0);
+   void setBoundingRect(QPicture* theWrappedObject, const QRect&  r);
+   const char*  data(QPicture* theWrappedObject) const;
+   bool  isNull(QPicture* theWrappedObject) const;
+   QRect  boundingRect(QPicture* theWrappedObject) const;
+   int  metric(QPicture* theWrappedObject, QPaintDevice::PaintDeviceMetric  m) const;
    void writeTo(QPicture* theWrappedObject, QDataStream&  arg__1);
    QPaintEngine*  paintEngine(QPicture* theWrappedObject) const;
-   bool  save(QPicture* theWrappedObject, QIODevice*  dev, const char*  format = 0);
-   bool  isNull(QPicture* theWrappedObject) const;
-   void setBoundingRect(QPicture* theWrappedObject, const QRect&  r);
-   bool  play(QPicture* theWrappedObject, QPainter*  p);
-   void readFrom(QPicture* theWrappedObject, QDataStream&  arg__1);
+   int  devType(QPicture* theWrappedObject) const;
+   bool  save(QPicture* theWrappedObject, const QString&  fileName, const char*  format = 0);
+   uint  size(QPicture* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QPICTURE_H

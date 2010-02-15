@@ -576,19 +576,9 @@ QProcess* PythonQtWrapper_QProcess::new_QProcess(QObject*  parent)
 { 
 return new PythonQtShell_QProcess(parent); }
 
-qint64  PythonQtWrapper_QProcess::bytesAvailable(QProcess* theWrappedObject) const
+QStringList  PythonQtWrapper_QProcess::environment(QProcess* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_bytesAvailable());
-}
-
-void PythonQtWrapper_QProcess::closeReadChannel(QProcess* theWrappedObject, QProcess::ProcessChannel  channel)
-{
-  ( theWrappedObject->closeReadChannel(channel));
-}
-
-void PythonQtWrapper_QProcess::setStandardInputFile(QProcess* theWrappedObject, const QString&  fileName)
-{
-  ( theWrappedObject->setStandardInputFile(fileName));
+  return ( theWrappedObject->environment());
 }
 
 bool  PythonQtWrapper_QProcess::isSequential(QProcess* theWrappedObject) const
@@ -596,134 +586,9 @@ bool  PythonQtWrapper_QProcess::isSequential(QProcess* theWrappedObject) const
   return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_isSequential());
 }
 
-QProcess::ProcessError  PythonQtWrapper_QProcess::error(QProcess* theWrappedObject) const
+qint64  PythonQtWrapper_QProcess::bytesAvailable(QProcess* theWrappedObject) const
 {
-  return ( theWrappedObject->error());
-}
-
-QProcess::ProcessChannel  PythonQtWrapper_QProcess::readChannel(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->readChannel());
-}
-
-bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program, const QStringList&  arguments, const QString&  workingDirectory, qint64*  pid)
-{
-  return (QProcess::startDetached(program, arguments, workingDirectory, pid));
-}
-
-bool  PythonQtWrapper_QProcess::waitForFinished(QProcess* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForFinished(msecs));
-}
-
-QStringList  PythonQtWrapper_QProcess::environment(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->environment());
-}
-
-void PythonQtWrapper_QProcess::setStandardOutputProcess(QProcess* theWrappedObject, QProcess*  destination)
-{
-  ( theWrappedObject->setStandardOutputProcess(destination));
-}
-
-QByteArray  PythonQtWrapper_QProcess::readAllStandardError(QProcess* theWrappedObject)
-{
-  return ( theWrappedObject->readAllStandardError());
-}
-
-void PythonQtWrapper_QProcess::start(QProcess* theWrappedObject, const QString&  program, const QStringList&  arguments, QIODevice::OpenMode  mode)
-{
-  ( theWrappedObject->start(program, arguments, mode));
-}
-
-qint64  PythonQtWrapper_QProcess::readData(QProcess* theWrappedObject, char*  data, qint64  maxlen)
-{
-  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_readData(data, maxlen));
-}
-
-QString  PythonQtWrapper_QProcess::workingDirectory(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->workingDirectory());
-}
-
-bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program)
-{
-  return (QProcess::startDetached(program));
-}
-
-bool  PythonQtWrapper_QProcess::waitForBytesWritten(QProcess* theWrappedObject, int  msecs)
-{
-  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
-}
-
-void PythonQtWrapper_QProcess::setStandardErrorFile(QProcess* theWrappedObject, const QString&  fileName, QIODevice::OpenMode  mode)
-{
-  ( theWrappedObject->setStandardErrorFile(fileName, mode));
-}
-
-bool  PythonQtWrapper_QProcess::waitForReadyRead(QProcess* theWrappedObject, int  msecs)
-{
-  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_waitForReadyRead(msecs));
-}
-
-int  PythonQtWrapper_QProcess::exitCode(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->exitCode());
-}
-
-bool  PythonQtWrapper_QProcess::waitForStarted(QProcess* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForStarted(msecs));
-}
-
-int  PythonQtWrapper_QProcess::static_QProcess_execute(const QString&  program, const QStringList&  arguments)
-{
-  return (QProcess::execute(program, arguments));
-}
-
-bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program, const QStringList&  arguments)
-{
-  return (QProcess::startDetached(program, arguments));
-}
-
-int  PythonQtWrapper_QProcess::static_QProcess_execute(const QString&  program)
-{
-  return (QProcess::execute(program));
-}
-
-void PythonQtWrapper_QProcess::start(QProcess* theWrappedObject, const QString&  program, QIODevice::OpenMode  mode)
-{
-  ( theWrappedObject->start(program, mode));
-}
-
-void PythonQtWrapper_QProcess::setProcessChannelMode(QProcess* theWrappedObject, QProcess::ProcessChannelMode  mode)
-{
-  ( theWrappedObject->setProcessChannelMode(mode));
-}
-
-void PythonQtWrapper_QProcess::close(QProcess* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_close());
-}
-
-QStringList  PythonQtWrapper_QProcess::static_QProcess_systemEnvironment()
-{
-  return (QProcess::systemEnvironment());
-}
-
-void PythonQtWrapper_QProcess::setupChildProcess(QProcess* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_setupChildProcess());
-}
-
-void PythonQtWrapper_QProcess::setReadChannel(QProcess* theWrappedObject, QProcess::ProcessChannel  channel)
-{
-  ( theWrappedObject->setReadChannel(channel));
-}
-
-QProcess::ProcessState  PythonQtWrapper_QProcess::state(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->state());
+  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_bytesAvailable());
 }
 
 bool  PythonQtWrapper_QProcess::canReadLine(QProcess* theWrappedObject) const
@@ -731,34 +596,14 @@ bool  PythonQtWrapper_QProcess::canReadLine(QProcess* theWrappedObject) const
   return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_canReadLine());
 }
 
-void PythonQtWrapper_QProcess::closeWriteChannel(QProcess* theWrappedObject)
+void PythonQtWrapper_QProcess::setStandardInputFile(QProcess* theWrappedObject, const QString&  fileName)
 {
-  ( theWrappedObject->closeWriteChannel());
+  ( theWrappedObject->setStandardInputFile(fileName));
 }
 
-QProcess::ProcessChannelMode  PythonQtWrapper_QProcess::processChannelMode(QProcess* theWrappedObject) const
+bool  PythonQtWrapper_QProcess::waitForBytesWritten(QProcess* theWrappedObject, int  msecs)
 {
-  return ( theWrappedObject->processChannelMode());
-}
-
-void PythonQtWrapper_QProcess::setStandardOutputFile(QProcess* theWrappedObject, const QString&  fileName, QIODevice::OpenMode  mode)
-{
-  ( theWrappedObject->setStandardOutputFile(fileName, mode));
-}
-
-bool  PythonQtWrapper_QProcess::atEnd(QProcess* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_atEnd());
-}
-
-QProcess::ExitStatus  PythonQtWrapper_QProcess::exitStatus(QProcess* theWrappedObject) const
-{
-  return ( theWrappedObject->exitStatus());
-}
-
-QByteArray  PythonQtWrapper_QProcess::readAllStandardOutput(QProcess* theWrappedObject)
-{
-  return ( theWrappedObject->readAllStandardOutput());
+  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
 }
 
 qint64  PythonQtWrapper_QProcess::writeData(QProcess* theWrappedObject, const char*  data, qint64  len)
@@ -766,9 +611,84 @@ qint64  PythonQtWrapper_QProcess::writeData(QProcess* theWrappedObject, const ch
   return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_writeData(data, len));
 }
 
-void PythonQtWrapper_QProcess::setEnvironment(QProcess* theWrappedObject, const QStringList&  environment)
+int  PythonQtWrapper_QProcess::exitCode(QProcess* theWrappedObject) const
 {
-  ( theWrappedObject->setEnvironment(environment));
+  return ( theWrappedObject->exitCode());
+}
+
+void PythonQtWrapper_QProcess::setStandardErrorFile(QProcess* theWrappedObject, const QString&  fileName, QIODevice::OpenMode  mode)
+{
+  ( theWrappedObject->setStandardErrorFile(fileName, mode));
+}
+
+void PythonQtWrapper_QProcess::setStandardOutputProcess(QProcess* theWrappedObject, QProcess*  destination)
+{
+  ( theWrappedObject->setStandardOutputProcess(destination));
+}
+
+QStringList  PythonQtWrapper_QProcess::static_QProcess_systemEnvironment()
+{
+  return (QProcess::systemEnvironment());
+}
+
+void PythonQtWrapper_QProcess::setReadChannel(QProcess* theWrappedObject, QProcess::ProcessChannel  channel)
+{
+  ( theWrappedObject->setReadChannel(channel));
+}
+
+void PythonQtWrapper_QProcess::start(QProcess* theWrappedObject, const QString&  program, QIODevice::OpenMode  mode)
+{
+  ( theWrappedObject->start(program, mode));
+}
+
+bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program, const QStringList&  arguments, const QString&  workingDirectory, qint64*  pid)
+{
+  return (QProcess::startDetached(program, arguments, workingDirectory, pid));
+}
+
+void PythonQtWrapper_QProcess::closeWriteChannel(QProcess* theWrappedObject)
+{
+  ( theWrappedObject->closeWriteChannel());
+}
+
+void PythonQtWrapper_QProcess::setWorkingDirectory(QProcess* theWrappedObject, const QString&  dir)
+{
+  ( theWrappedObject->setWorkingDirectory(dir));
+}
+
+QByteArray  PythonQtWrapper_QProcess::readAllStandardOutput(QProcess* theWrappedObject)
+{
+  return ( theWrappedObject->readAllStandardOutput());
+}
+
+void PythonQtWrapper_QProcess::setProcessChannelMode(QProcess* theWrappedObject, QProcess::ProcessChannelMode  mode)
+{
+  ( theWrappedObject->setProcessChannelMode(mode));
+}
+
+QString  PythonQtWrapper_QProcess::workingDirectory(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->workingDirectory());
+}
+
+QProcess::ProcessChannelMode  PythonQtWrapper_QProcess::processChannelMode(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->processChannelMode());
+}
+
+int  PythonQtWrapper_QProcess::static_QProcess_execute(const QString&  program)
+{
+  return (QProcess::execute(program));
+}
+
+void PythonQtWrapper_QProcess::start(QProcess* theWrappedObject, const QString&  program, const QStringList&  arguments, QIODevice::OpenMode  mode)
+{
+  ( theWrappedObject->start(program, arguments, mode));
+}
+
+bool  PythonQtWrapper_QProcess::waitForStarted(QProcess* theWrappedObject, int  msecs)
+{
+  return ( theWrappedObject->waitForStarted(msecs));
 }
 
 qint64  PythonQtWrapper_QProcess::bytesToWrite(QProcess* theWrappedObject) const
@@ -776,8 +696,98 @@ qint64  PythonQtWrapper_QProcess::bytesToWrite(QProcess* theWrappedObject) const
   return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_bytesToWrite());
 }
 
-void PythonQtWrapper_QProcess::setWorkingDirectory(QProcess* theWrappedObject, const QString&  dir)
+QByteArray  PythonQtWrapper_QProcess::readAllStandardError(QProcess* theWrappedObject)
 {
-  ( theWrappedObject->setWorkingDirectory(dir));
+  return ( theWrappedObject->readAllStandardError());
+}
+
+void PythonQtWrapper_QProcess::setProcessEnvironment(QProcess* theWrappedObject, const QProcessEnvironment&  environment)
+{
+  ( theWrappedObject->setProcessEnvironment(environment));
+}
+
+QProcess::ProcessError  PythonQtWrapper_QProcess::error(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->error());
+}
+
+bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program, const QStringList&  arguments)
+{
+  return (QProcess::startDetached(program, arguments));
+}
+
+bool  PythonQtWrapper_QProcess::atEnd(QProcess* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_atEnd());
+}
+
+void PythonQtWrapper_QProcess::setEnvironment(QProcess* theWrappedObject, const QStringList&  environment)
+{
+  ( theWrappedObject->setEnvironment(environment));
+}
+
+void PythonQtWrapper_QProcess::setStandardOutputFile(QProcess* theWrappedObject, const QString&  fileName, QIODevice::OpenMode  mode)
+{
+  ( theWrappedObject->setStandardOutputFile(fileName, mode));
+}
+
+bool  PythonQtWrapper_QProcess::static_QProcess_startDetached(const QString&  program)
+{
+  return (QProcess::startDetached(program));
+}
+
+bool  PythonQtWrapper_QProcess::waitForReadyRead(QProcess* theWrappedObject, int  msecs)
+{
+  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_waitForReadyRead(msecs));
+}
+
+bool  PythonQtWrapper_QProcess::waitForFinished(QProcess* theWrappedObject, int  msecs)
+{
+  return ( theWrappedObject->waitForFinished(msecs));
+}
+
+QProcess::ProcessChannel  PythonQtWrapper_QProcess::readChannel(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->readChannel());
+}
+
+void PythonQtWrapper_QProcess::close(QProcess* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_close());
+}
+
+int  PythonQtWrapper_QProcess::static_QProcess_execute(const QString&  program, const QStringList&  arguments)
+{
+  return (QProcess::execute(program, arguments));
+}
+
+QProcess::ProcessState  PythonQtWrapper_QProcess::state(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->state());
+}
+
+qint64  PythonQtWrapper_QProcess::readData(QProcess* theWrappedObject, char*  data, qint64  maxlen)
+{
+  return ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_readData(data, maxlen));
+}
+
+QProcessEnvironment  PythonQtWrapper_QProcess::processEnvironment(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->processEnvironment());
+}
+
+QProcess::ExitStatus  PythonQtWrapper_QProcess::exitStatus(QProcess* theWrappedObject) const
+{
+  return ( theWrappedObject->exitStatus());
+}
+
+void PythonQtWrapper_QProcess::closeReadChannel(QProcess* theWrappedObject, QProcess::ProcessChannel  channel)
+{
+  ( theWrappedObject->closeReadChannel(channel));
+}
+
+void PythonQtWrapper_QProcess::setupChildProcess(QProcess* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QProcess*)theWrappedObject)->promoted_setupChildProcess());
 }
 

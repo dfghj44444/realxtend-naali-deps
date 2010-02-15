@@ -29,13 +29,13 @@ virtual void setData(const QString&  dat);
 
 class PythonQtPublicPromoter_QXmlInputSource : public QXmlInputSource
 { public:
-inline void promoted_fetchData() { QXmlInputSource::fetchData(); }
-inline void promoted_setData(const QByteArray&  dat) { QXmlInputSource::setData(dat); }
+inline void promoted_reset() { QXmlInputSource::reset(); }
 inline void promoted_setData(const QString&  dat) { QXmlInputSource::setData(dat); }
 inline QChar  promoted_next() { return QXmlInputSource::next(); }
-inline QString  promoted_fromRawData(const QByteArray&  data, bool  beginning = false) { return QXmlInputSource::fromRawData(data, beginning); }
+inline void promoted_setData(const QByteArray&  dat) { QXmlInputSource::setData(dat); }
 inline QString  promoted_data() const { return QXmlInputSource::data(); }
-inline void promoted_reset() { QXmlInputSource::reset(); }
+inline QString  promoted_fromRawData(const QByteArray&  data, bool  beginning = false) { return QXmlInputSource::fromRawData(data, beginning); }
+inline void promoted_fetchData() { QXmlInputSource::fetchData(); }
 };
 
 class PythonQtWrapper_QXmlInputSource : public QObject
@@ -45,13 +45,13 @@ public slots:
 QXmlInputSource* new_QXmlInputSource();
 QXmlInputSource* new_QXmlInputSource(QIODevice*  dev);
 void delete_QXmlInputSource(QXmlInputSource* obj) { delete obj; } 
-   void fetchData(QXmlInputSource* theWrappedObject);
-   void setData(QXmlInputSource* theWrappedObject, const QByteArray&  dat);
+   void reset(QXmlInputSource* theWrappedObject);
    void setData(QXmlInputSource* theWrappedObject, const QString&  dat);
    QChar  next(QXmlInputSource* theWrappedObject);
-   QString  fromRawData(QXmlInputSource* theWrappedObject, const QByteArray&  data, bool  beginning = false);
+   void setData(QXmlInputSource* theWrappedObject, const QByteArray&  dat);
    QString  data(QXmlInputSource* theWrappedObject) const;
-   void reset(QXmlInputSource* theWrappedObject);
+   QString  fromRawData(QXmlInputSource* theWrappedObject, const QByteArray&  data, bool  beginning = false);
+   void fetchData(QXmlInputSource* theWrappedObject);
 };
 
 #endif // PYTHONQTWRAPPER_QXMLINPUTSOURCE_H

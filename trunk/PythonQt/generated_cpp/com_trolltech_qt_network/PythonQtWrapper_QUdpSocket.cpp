@@ -561,14 +561,9 @@ QUdpSocket* PythonQtWrapper_QUdpSocket::new_QUdpSocket(QObject*  parent)
 { 
 return new PythonQtShell_QUdpSocket(parent); }
 
-qint64  PythonQtWrapper_QUdpSocket::pendingDatagramSize(QUdpSocket* theWrappedObject) const
+bool  PythonQtWrapper_QUdpSocket::hasPendingDatagrams(QUdpSocket* theWrappedObject) const
 {
-  return ( theWrappedObject->pendingDatagramSize());
-}
-
-bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port, QUdpSocket::BindMode  mode)
-{
-  return ( theWrappedObject->bind(address, port, mode));
+  return ( theWrappedObject->hasPendingDatagrams());
 }
 
 bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, unsigned short  port, QUdpSocket::BindMode  mode)
@@ -576,14 +571,9 @@ bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, unsigned sh
   return ( theWrappedObject->bind(port, mode));
 }
 
-bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port)
+bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, unsigned short  port)
 {
-  return ( theWrappedObject->bind(address, port));
-}
-
-bool  PythonQtWrapper_QUdpSocket::hasPendingDatagrams(QUdpSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->hasPendingDatagrams());
+  return ( theWrappedObject->bind(port));
 }
 
 qint64  PythonQtWrapper_QUdpSocket::readDatagram(QUdpSocket* theWrappedObject, char*  data, qint64  maxlen, QHostAddress*  host, unsigned short*  port)
@@ -591,9 +581,19 @@ qint64  PythonQtWrapper_QUdpSocket::readDatagram(QUdpSocket* theWrappedObject, c
   return ( theWrappedObject->readDatagram(data, maxlen, host, port));
 }
 
-bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, unsigned short  port)
+bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port)
 {
-  return ( theWrappedObject->bind(port));
+  return ( theWrappedObject->bind(address, port));
+}
+
+bool  PythonQtWrapper_QUdpSocket::bind(QUdpSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port, QUdpSocket::BindMode  mode)
+{
+  return ( theWrappedObject->bind(address, port, mode));
+}
+
+qint64  PythonQtWrapper_QUdpSocket::pendingDatagramSize(QUdpSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->pendingDatagramSize());
 }
 
 qint64  PythonQtWrapper_QUdpSocket::writeDatagram(QUdpSocket* theWrappedObject, const QByteArray&  datagram, const QHostAddress&  host, unsigned short  port)

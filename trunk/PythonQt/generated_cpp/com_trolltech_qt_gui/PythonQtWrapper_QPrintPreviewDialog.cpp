@@ -12,12 +12,15 @@
 #include <qdialog.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -179,7 +182,7 @@ if (_wrapper) {
 }
   return QPrintPreviewDialog::devType();
 }
-void PythonQtShell_QPrintPreviewDialog::done(int  arg__1)
+void PythonQtShell_QPrintPreviewDialog::done(int  result)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "done");
@@ -187,14 +190,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "int"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&result};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QPrintPreviewDialog::done(arg__1);
+  QPrintPreviewDialog::done(result);
 }
 void PythonQtShell_QPrintPreviewDialog::dragEnterEvent(QDragEnterEvent*  arg__1)
 {
@@ -824,4 +827,29 @@ return new PythonQtShell_QPrintPreviewDialog(printer, parent, flags); }
 QPrintPreviewDialog* PythonQtWrapper_QPrintPreviewDialog::new_QPrintPreviewDialog(QWidget*  parent, Qt::WindowFlags  flags)
 { 
 return new PythonQtShell_QPrintPreviewDialog(parent, flags); }
+
+QPrinter*  PythonQtWrapper_QPrintPreviewDialog::printer(QPrintPreviewDialog* theWrappedObject)
+{
+  return ( theWrappedObject->printer());
+}
+
+void PythonQtWrapper_QPrintPreviewDialog::setVisible(QPrintPreviewDialog* theWrappedObject, bool  visible)
+{
+  ( theWrappedObject->setVisible(visible));
+}
+
+void PythonQtWrapper_QPrintPreviewDialog::done(QPrintPreviewDialog* theWrappedObject, int  result)
+{
+  ( ((PythonQtPublicPromoter_QPrintPreviewDialog*)theWrappedObject)->promoted_done(result));
+}
+
+void PythonQtWrapper_QPrintPreviewDialog::open(QPrintPreviewDialog* theWrappedObject)
+{
+  ( theWrappedObject->open());
+}
+
+void PythonQtWrapper_QPrintPreviewDialog::open(QPrintPreviewDialog* theWrappedObject, QObject*  receiver, const char*  member)
+{
+  ( theWrappedObject->open(receiver, member));
+}
 

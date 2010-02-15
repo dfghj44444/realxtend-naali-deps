@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -831,24 +834,29 @@ QToolBox* PythonQtWrapper_QToolBox::new_QToolBox(QWidget*  parent, Qt::WindowFla
 { 
 return new PythonQtShell_QToolBox(parent, f); }
 
-int  PythonQtWrapper_QToolBox::addItem(QToolBox* theWrappedObject, QWidget*  widget, const QString&  text)
+int  PythonQtWrapper_QToolBox::addItem(QToolBox* theWrappedObject, QWidget*  widget, const QIcon&  icon, const QString&  text)
 {
-  return ( theWrappedObject->addItem(widget, text));
+  return ( theWrappedObject->addItem(widget, icon, text));
 }
 
-void PythonQtWrapper_QToolBox::showEvent(QToolBox* theWrappedObject, QShowEvent*  e)
+QWidget*  PythonQtWrapper_QToolBox::widget(QToolBox* theWrappedObject, int  index) const
 {
-  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_showEvent(e));
+  return ( theWrappedObject->widget(index));
 }
 
-QWidget*  PythonQtWrapper_QToolBox::currentWidget(QToolBox* theWrappedObject) const
+int  PythonQtWrapper_QToolBox::indexOf(QToolBox* theWrappedObject, QWidget*  widget) const
 {
-  return ( theWrappedObject->currentWidget());
+  return ( theWrappedObject->indexOf(widget));
 }
 
-void PythonQtWrapper_QToolBox::setItemToolTip(QToolBox* theWrappedObject, int  index, const QString&  toolTip)
+QString  PythonQtWrapper_QToolBox::itemText(QToolBox* theWrappedObject, int  index) const
 {
-  ( theWrappedObject->setItemToolTip(index, toolTip));
+  return ( theWrappedObject->itemText(index));
+}
+
+void PythonQtWrapper_QToolBox::setItemEnabled(QToolBox* theWrappedObject, int  index, bool  enabled)
+{
+  ( theWrappedObject->setItemEnabled(index, enabled));
 }
 
 bool  PythonQtWrapper_QToolBox::isItemEnabled(QToolBox* theWrappedObject, int  index) const
@@ -856,19 +864,19 @@ bool  PythonQtWrapper_QToolBox::isItemEnabled(QToolBox* theWrappedObject, int  i
   return ( theWrappedObject->isItemEnabled(index));
 }
 
-void PythonQtWrapper_QToolBox::itemInserted(QToolBox* theWrappedObject, int  index)
+QWidget*  PythonQtWrapper_QToolBox::currentWidget(QToolBox* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_itemInserted(index));
+  return ( theWrappedObject->currentWidget());
 }
 
-QIcon  PythonQtWrapper_QToolBox::itemIcon(QToolBox* theWrappedObject, int  index) const
+void PythonQtWrapper_QToolBox::removeItem(QToolBox* theWrappedObject, int  index)
 {
-  return ( theWrappedObject->itemIcon(index));
+  ( theWrappedObject->removeItem(index));
 }
 
-QString  PythonQtWrapper_QToolBox::itemToolTip(QToolBox* theWrappedObject, int  index) const
+int  PythonQtWrapper_QToolBox::currentIndex(QToolBox* theWrappedObject) const
 {
-  return ( theWrappedObject->itemToolTip(index));
+  return ( theWrappedObject->currentIndex());
 }
 
 int  PythonQtWrapper_QToolBox::count(QToolBox* theWrappedObject) const
@@ -876,14 +884,14 @@ int  PythonQtWrapper_QToolBox::count(QToolBox* theWrappedObject) const
   return ( theWrappedObject->count());
 }
 
-void PythonQtWrapper_QToolBox::itemRemoved(QToolBox* theWrappedObject, int  index)
+void PythonQtWrapper_QToolBox::itemInserted(QToolBox* theWrappedObject, int  index)
 {
-  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_itemRemoved(index));
+  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_itemInserted(index));
 }
 
-int  PythonQtWrapper_QToolBox::addItem(QToolBox* theWrappedObject, QWidget*  widget, const QIcon&  icon, const QString&  text)
+void PythonQtWrapper_QToolBox::setItemToolTip(QToolBox* theWrappedObject, int  index, const QString&  toolTip)
 {
-  return ( theWrappedObject->addItem(widget, icon, text));
+  ( theWrappedObject->setItemToolTip(index, toolTip));
 }
 
 int  PythonQtWrapper_QToolBox::insertItem(QToolBox* theWrappedObject, int  index, QWidget*  widget, const QIcon&  icon, const QString&  text)
@@ -896,14 +904,19 @@ void PythonQtWrapper_QToolBox::setItemText(QToolBox* theWrappedObject, int  inde
   ( theWrappedObject->setItemText(index, text));
 }
 
-bool  PythonQtWrapper_QToolBox::event(QToolBox* theWrappedObject, QEvent*  e)
+void PythonQtWrapper_QToolBox::changeEvent(QToolBox* theWrappedObject, QEvent*  arg__1)
 {
-  return ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_event(e));
+  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_changeEvent(arg__1));
 }
 
-QString  PythonQtWrapper_QToolBox::itemText(QToolBox* theWrappedObject, int  index) const
+void PythonQtWrapper_QToolBox::showEvent(QToolBox* theWrappedObject, QShowEvent*  e)
 {
-  return ( theWrappedObject->itemText(index));
+  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_showEvent(e));
+}
+
+QString  PythonQtWrapper_QToolBox::itemToolTip(QToolBox* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->itemToolTip(index));
 }
 
 int  PythonQtWrapper_QToolBox::insertItem(QToolBox* theWrappedObject, int  index, QWidget*  widget, const QString&  text)
@@ -911,38 +924,28 @@ int  PythonQtWrapper_QToolBox::insertItem(QToolBox* theWrappedObject, int  index
   return ( theWrappedObject->insertItem(index, widget, text));
 }
 
-int  PythonQtWrapper_QToolBox::currentIndex(QToolBox* theWrappedObject) const
+bool  PythonQtWrapper_QToolBox::event(QToolBox* theWrappedObject, QEvent*  e)
 {
-  return ( theWrappedObject->currentIndex());
+  return ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_event(e));
 }
 
-QWidget*  PythonQtWrapper_QToolBox::widget(QToolBox* theWrappedObject, int  index) const
+QIcon  PythonQtWrapper_QToolBox::itemIcon(QToolBox* theWrappedObject, int  index) const
 {
-  return ( theWrappedObject->widget(index));
+  return ( theWrappedObject->itemIcon(index));
+}
+
+void PythonQtWrapper_QToolBox::itemRemoved(QToolBox* theWrappedObject, int  index)
+{
+  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_itemRemoved(index));
+}
+
+int  PythonQtWrapper_QToolBox::addItem(QToolBox* theWrappedObject, QWidget*  widget, const QString&  text)
+{
+  return ( theWrappedObject->addItem(widget, text));
 }
 
 void PythonQtWrapper_QToolBox::setItemIcon(QToolBox* theWrappedObject, int  index, const QIcon&  icon)
 {
   ( theWrappedObject->setItemIcon(index, icon));
-}
-
-int  PythonQtWrapper_QToolBox::indexOf(QToolBox* theWrappedObject, QWidget*  widget) const
-{
-  return ( theWrappedObject->indexOf(widget));
-}
-
-void PythonQtWrapper_QToolBox::setItemEnabled(QToolBox* theWrappedObject, int  index, bool  enabled)
-{
-  ( theWrappedObject->setItemEnabled(index, enabled));
-}
-
-void PythonQtWrapper_QToolBox::removeItem(QToolBox* theWrappedObject, int  index)
-{
-  ( theWrappedObject->removeItem(index));
-}
-
-void PythonQtWrapper_QToolBox::changeEvent(QToolBox* theWrappedObject, QEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QToolBox*)theWrappedObject)->promoted_changeEvent(arg__1));
 }
 

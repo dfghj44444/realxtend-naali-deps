@@ -23,15 +23,17 @@ public slots:
 QNetworkInterface* new_QNetworkInterface();
 QNetworkInterface* new_QNetworkInterface(const QNetworkInterface&  other);
 void delete_QNetworkInterface(QNetworkInterface* obj) { delete obj; } 
-   QList<QHostAddress >  static_QNetworkInterface_allAddresses();
-   QNetworkInterface::InterfaceFlags  flags(QNetworkInterface* theWrappedObject) const;
-   QString  name(QNetworkInterface* theWrappedObject) const;
-   QString  hardwareAddress(QNetworkInterface* theWrappedObject) const;
-   QList<QNetworkAddressEntry >  addressEntries(QNetworkInterface* theWrappedObject) const;
    bool  isValid(QNetworkInterface* theWrappedObject) const;
+   QList<QNetworkAddressEntry >  addressEntries(QNetworkInterface* theWrappedObject) const;
+   QList<QHostAddress >  static_QNetworkInterface_allAddresses();
    QNetworkInterface  static_QNetworkInterface_interfaceFromIndex(int  index);
-   QList<QNetworkInterface >  static_QNetworkInterface_allInterfaces();
    QNetworkInterface  static_QNetworkInterface_interfaceFromName(const QString&  name);
+   QNetworkInterface::InterfaceFlags  flags(QNetworkInterface* theWrappedObject) const;
+   QList<QNetworkInterface >  static_QNetworkInterface_allInterfaces();
+   QString  name(QNetworkInterface* theWrappedObject) const;
+   int  index(QNetworkInterface* theWrappedObject) const;
+   QString  humanReadableName(QNetworkInterface* theWrappedObject) const;
+   QString  hardwareAddress(QNetworkInterface* theWrappedObject) const;
     QString toString(QNetworkInterface*);
 };
 

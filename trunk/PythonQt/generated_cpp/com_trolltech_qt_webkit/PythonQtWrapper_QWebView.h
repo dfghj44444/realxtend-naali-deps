@@ -14,12 +14,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qnetworkrequest.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -78,8 +81,8 @@ virtual void mousePressEvent(QMouseEvent*  arg__1);
 virtual void mouseReleaseEvent(QMouseEvent*  arg__1);
 virtual void moveEvent(QMoveEvent*  arg__1);
 virtual QPaintEngine*  paintEngine() const;
-virtual void paintEvent(QPaintEvent*  ev);
-virtual void resizeEvent(QResizeEvent*  e);
+virtual void paintEvent(QPaintEvent*  arg__1);
+virtual void resizeEvent(QResizeEvent*  arg__1);
 virtual void showEvent(QShowEvent*  arg__1);
 virtual void tabletEvent(QTabletEvent*  arg__1);
 virtual void timerEvent(QTimerEvent*  arg__1);
@@ -90,28 +93,28 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QWebView : public QWebView
 { public:
-inline void promoted_focusOutEvent(QFocusEvent*  arg__1) { QWebView::focusOutEvent(arg__1); }
 inline void promoted_dragEnterEvent(QDragEnterEvent*  arg__1) { QWebView::dragEnterEvent(arg__1); }
-inline void promoted_mouseReleaseEvent(QMouseEvent*  arg__1) { QWebView::mouseReleaseEvent(arg__1); }
-inline void promoted_resizeEvent(QResizeEvent*  e) { QWebView::resizeEvent(e); }
-inline void promoted_paintEvent(QPaintEvent*  ev) { QWebView::paintEvent(ev); }
-inline bool  promoted_focusNextPrevChild(bool  next) { return QWebView::focusNextPrevChild(next); }
-inline void promoted_dropEvent(QDropEvent*  arg__1) { QWebView::dropEvent(arg__1); }
-inline void promoted_mouseMoveEvent(QMouseEvent*  arg__1) { QWebView::mouseMoveEvent(arg__1); }
-inline void promoted_dragMoveEvent(QDragMoveEvent*  arg__1) { QWebView::dragMoveEvent(arg__1); }
-inline void promoted_keyPressEvent(QKeyEvent*  arg__1) { QWebView::keyPressEvent(arg__1); }
-inline bool  promoted_event(QEvent*  arg__1) { return QWebView::event(arg__1); }
 inline void promoted_mousePressEvent(QMouseEvent*  arg__1) { QWebView::mousePressEvent(arg__1); }
-inline void promoted_keyReleaseEvent(QKeyEvent*  arg__1) { QWebView::keyReleaseEvent(arg__1); }
-inline void promoted_mouseDoubleClickEvent(QMouseEvent*  arg__1) { QWebView::mouseDoubleClickEvent(arg__1); }
+inline void promoted_resizeEvent(QResizeEvent*  arg__1) { QWebView::resizeEvent(arg__1); }
 inline QWebView*  promoted_createWindow(QWebPage::WebWindowType  type) { return QWebView::createWindow(type); }
-inline void promoted_focusInEvent(QFocusEvent*  arg__1) { QWebView::focusInEvent(arg__1); }
-inline void promoted_contextMenuEvent(QContextMenuEvent*  arg__1) { QWebView::contextMenuEvent(arg__1); }
 inline QVariant  promoted_inputMethodQuery(Qt::InputMethodQuery  property) const { return QWebView::inputMethodQuery(property); }
-inline void promoted_inputMethodEvent(QInputMethodEvent*  arg__1) { QWebView::inputMethodEvent(arg__1); }
+inline void promoted_keyReleaseEvent(QKeyEvent*  arg__1) { QWebView::keyReleaseEvent(arg__1); }
+inline void promoted_contextMenuEvent(QContextMenuEvent*  arg__1) { QWebView::contextMenuEvent(arg__1); }
 inline void promoted_changeEvent(QEvent*  arg__1) { QWebView::changeEvent(arg__1); }
-inline void promoted_dragLeaveEvent(QDragLeaveEvent*  arg__1) { QWebView::dragLeaveEvent(arg__1); }
+inline void promoted_mouseMoveEvent(QMouseEvent*  arg__1) { QWebView::mouseMoveEvent(arg__1); }
+inline void promoted_dropEvent(QDropEvent*  arg__1) { QWebView::dropEvent(arg__1); }
+inline void promoted_focusOutEvent(QFocusEvent*  arg__1) { QWebView::focusOutEvent(arg__1); }
+inline void promoted_mouseReleaseEvent(QMouseEvent*  arg__1) { QWebView::mouseReleaseEvent(arg__1); }
+inline void promoted_keyPressEvent(QKeyEvent*  arg__1) { QWebView::keyPressEvent(arg__1); }
+inline void promoted_dragMoveEvent(QDragMoveEvent*  arg__1) { QWebView::dragMoveEvent(arg__1); }
+inline void promoted_mouseDoubleClickEvent(QMouseEvent*  arg__1) { QWebView::mouseDoubleClickEvent(arg__1); }
+inline void promoted_paintEvent(QPaintEvent*  arg__1) { QWebView::paintEvent(arg__1); }
+inline bool  promoted_event(QEvent*  arg__1) { return QWebView::event(arg__1); }
 inline void promoted_wheelEvent(QWheelEvent*  arg__1) { QWebView::wheelEvent(arg__1); }
+inline void promoted_focusInEvent(QFocusEvent*  arg__1) { QWebView::focusInEvent(arg__1); }
+inline void promoted_inputMethodEvent(QInputMethodEvent*  arg__1) { QWebView::inputMethodEvent(arg__1); }
+inline void promoted_dragLeaveEvent(QDragLeaveEvent*  arg__1) { QWebView::dragLeaveEvent(arg__1); }
+inline bool  promoted_focusNextPrevChild(bool  next) { return QWebView::focusNextPrevChild(next); }
 };
 
 class PythonQtWrapper_QWebView : public QObject
@@ -120,48 +123,53 @@ public:
 public slots:
 QWebView* new_QWebView(QWidget*  parent = 0);
 void delete_QWebView(QWebView* obj) { delete obj; } 
-   void focusOutEvent(QWebView* theWrappedObject, QFocusEvent*  arg__1);
-   void setHtml(QWebView* theWrappedObject, const QString&  html, const QUrl&  baseUrl = QUrl());
    void dragEnterEvent(QWebView* theWrappedObject, QDragEnterEvent*  arg__1);
-   void mouseReleaseEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
-   void resizeEvent(QWebView* theWrappedObject, QResizeEvent*  e);
-   bool  isModified(QWebView* theWrappedObject) const;
-   void triggerPageAction(QWebView* theWrappedObject, QWebPage::WebAction  action, bool  checked = false);
-   void paintEvent(QWebView* theWrappedObject, QPaintEvent*  ev);
-   bool  findText(QWebView* theWrappedObject, const QString&  subString, QWebPage::FindFlags  options = 0);
-   bool  focusNextPrevChild(QWebView* theWrappedObject, bool  next);
-   void dropEvent(QWebView* theWrappedObject, QDropEvent*  arg__1);
-   QWebHistory*  history(QWebView* theWrappedObject) const;
-   void setUrl(QWebView* theWrappedObject, const QUrl&  url);
-   void mouseMoveEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
-   QWebPage*  page(QWebView* theWrappedObject) const;
-   void dragMoveEvent(QWebView* theWrappedObject, QDragMoveEvent*  arg__1);
-   void keyPressEvent(QWebView* theWrappedObject, QKeyEvent*  arg__1);
-   QWebSettings*  settings(QWebView* theWrappedObject) const;
-   bool  event(QWebView* theWrappedObject, QEvent*  arg__1);
-   QString  selectedText(QWebView* theWrappedObject) const;
    void mousePressEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
-   void keyReleaseEvent(QWebView* theWrappedObject, QKeyEvent*  arg__1);
-   QUrl  url(QWebView* theWrappedObject) const;
-   void mouseDoubleClickEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
-   QIcon  icon(QWebView* theWrappedObject) const;
+   void resizeEvent(QWebView* theWrappedObject, QResizeEvent*  arg__1);
    QWebView*  createWindow(QWebView* theWrappedObject, QWebPage::WebWindowType  type);
-   void focusInEvent(QWebView* theWrappedObject, QFocusEvent*  arg__1);
-   void setPage(QWebView* theWrappedObject, QWebPage*  page);
-   void load(QWebView* theWrappedObject, const QUrl&  url);
-   void contextMenuEvent(QWebView* theWrappedObject, QContextMenuEvent*  arg__1);
-   QString  title(QWebView* theWrappedObject) const;
-   QSize  sizeHint(QWebView* theWrappedObject) const;
-   QAction*  pageAction(QWebView* theWrappedObject, QWebPage::WebAction  action) const;
    QVariant  inputMethodQuery(QWebView* theWrappedObject, Qt::InputMethodQuery  property) const;
-   void inputMethodEvent(QWebView* theWrappedObject, QInputMethodEvent*  arg__1);
-   void load(QWebView* theWrappedObject, const QNetworkRequest&  request, QNetworkAccessManager::Operation  operation = QNetworkAccessManager::GetOperation, const QByteArray&  body = QByteArray());
+   void setRenderHints(QWebView* theWrappedObject, QPainter::RenderHints  hints);
+   void load(QWebView* theWrappedObject, const QUrl&  url);
+   QPainter::RenderHints  renderHints(QWebView* theWrappedObject) const;
+   bool  isModified(QWebView* theWrappedObject) const;
+   void keyReleaseEvent(QWebView* theWrappedObject, QKeyEvent*  arg__1);
+   void contextMenuEvent(QWebView* theWrappedObject, QContextMenuEvent*  arg__1);
    void changeEvent(QWebView* theWrappedObject, QEvent*  arg__1);
+   void setRenderHint(QWebView* theWrappedObject, QPainter::RenderHint  hint, bool  enabled = true);
+   QWebSettings*  settings(QWebView* theWrappedObject) const;
+   QWebPage*  page(QWebView* theWrappedObject) const;
+   void mouseMoveEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
+   qreal  zoomFactor(QWebView* theWrappedObject) const;
+   void dropEvent(QWebView* theWrappedObject, QDropEvent*  arg__1);
+   void focusOutEvent(QWebView* theWrappedObject, QFocusEvent*  arg__1);
+   QUrl  url(QWebView* theWrappedObject) const;
+   void triggerPageAction(QWebView* theWrappedObject, QWebPage::WebAction  action, bool  checked = false);
+   void mouseReleaseEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
+   void load(QWebView* theWrappedObject, const QNetworkRequest&  request, QNetworkAccessManager::Operation  operation = QNetworkAccessManager::GetOperation, const QByteArray&  body = QByteArray());
+   void setZoomFactor(QWebView* theWrappedObject, qreal  factor);
    void setContent(QWebView* theWrappedObject, const QByteArray&  data, const QString&  mimeType = QString(), const QUrl&  baseUrl = QUrl());
-   void dragLeaveEvent(QWebView* theWrappedObject, QDragLeaveEvent*  arg__1);
+   void keyPressEvent(QWebView* theWrappedObject, QKeyEvent*  arg__1);
+   void dragMoveEvent(QWebView* theWrappedObject, QDragMoveEvent*  arg__1);
+   void setHtml(QWebView* theWrappedObject, const QString&  html, const QUrl&  baseUrl = QUrl());
+   QString  selectedText(QWebView* theWrappedObject) const;
+   QIcon  icon(QWebView* theWrappedObject) const;
+   QAction*  pageAction(QWebView* theWrappedObject, QWebPage::WebAction  action) const;
    void setTextSizeMultiplier(QWebView* theWrappedObject, qreal  factor);
-   qreal  textSizeMultiplier(QWebView* theWrappedObject) const;
+   void mouseDoubleClickEvent(QWebView* theWrappedObject, QMouseEvent*  arg__1);
+   void setUrl(QWebView* theWrappedObject, const QUrl&  url);
+   void paintEvent(QWebView* theWrappedObject, QPaintEvent*  arg__1);
+   bool  event(QWebView* theWrappedObject, QEvent*  arg__1);
+   bool  findText(QWebView* theWrappedObject, const QString&  subString, QWebPage::FindFlags  options = 0);
+   QSize  sizeHint(QWebView* theWrappedObject) const;
+   void setPage(QWebView* theWrappedObject, QWebPage*  page);
    void wheelEvent(QWebView* theWrappedObject, QWheelEvent*  arg__1);
+   QWebHistory*  history(QWebView* theWrappedObject) const;
+   void focusInEvent(QWebView* theWrappedObject, QFocusEvent*  arg__1);
+   void inputMethodEvent(QWebView* theWrappedObject, QInputMethodEvent*  arg__1);
+   void dragLeaveEvent(QWebView* theWrappedObject, QDragLeaveEvent*  arg__1);
+   qreal  textSizeMultiplier(QWebView* theWrappedObject) const;
+   bool  focusNextPrevChild(QWebView* theWrappedObject, bool  next);
+   QString  title(QWebView* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QWEBVIEW_H

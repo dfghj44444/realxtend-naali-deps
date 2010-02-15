@@ -145,7 +145,7 @@ if (_wrapper) {
 }
   QTranslator::timerEvent(arg__1);
 }
-QString  PythonQtShell_QTranslator::translate(const char*  context, const char*  sourceText, const char*  comment) const
+QString  PythonQtShell_QTranslator::translate(const char*  context, const char*  sourceText, const char*  disambiguation) const
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "translate");
@@ -154,7 +154,7 @@ if (_wrapper) {
     static const char* argumentList[] ={"QString" , "const char*" , "const char*" , "const char*"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(4, argumentList);
       QString returnValue;
-    void* args[4] = {NULL, (void*)&context, (void*)&sourceText, (void*)&comment};
+    void* args[4] = {NULL, (void*)&context, (void*)&sourceText, (void*)&disambiguation};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) {
       args[0] = PythonQtConv::ConvertPythonToQt(methodInfo->parameters().at(0), result, false, NULL, &returnValue);
@@ -171,20 +171,20 @@ if (_wrapper) {
     return returnValue;
   }
 }
-  return QTranslator::translate(context, sourceText, comment);
+  return QTranslator::translate(context, sourceText, disambiguation);
 }
 QTranslator* PythonQtWrapper_QTranslator::new_QTranslator(QObject*  parent)
 { 
 return new PythonQtShell_QTranslator(parent); }
 
+bool  PythonQtWrapper_QTranslator::load(QTranslator* theWrappedObject, const QString&  filename, const QString&  directory, const QString&  search_delimiters, const QString&  suffix)
+{
+  return ( theWrappedObject->load(filename, directory, search_delimiters, suffix));
+}
+
 bool  PythonQtWrapper_QTranslator::isEmpty(QTranslator* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QTranslator*)theWrappedObject)->promoted_isEmpty());
-}
-
-QString  PythonQtWrapper_QTranslator::translate(QTranslator* theWrappedObject, const char*  context, const char*  sourceText, const char*  comment) const
-{
-  return ( ((PythonQtPublicPromoter_QTranslator*)theWrappedObject)->promoted_translate(context, sourceText, comment));
 }
 
 bool  PythonQtWrapper_QTranslator::load(QTranslator* theWrappedObject, const uchar*  data, int  len)
@@ -192,8 +192,8 @@ bool  PythonQtWrapper_QTranslator::load(QTranslator* theWrappedObject, const uch
   return ( theWrappedObject->load(data, len));
 }
 
-bool  PythonQtWrapper_QTranslator::load(QTranslator* theWrappedObject, const QString&  filename, const QString&  directory, const QString&  search_delimiters, const QString&  suffix)
+QString  PythonQtWrapper_QTranslator::translate(QTranslator* theWrappedObject, const char*  context, const char*  sourceText, const char*  disambiguation) const
 {
-  return ( theWrappedObject->load(filename, directory, search_delimiters, suffix));
+  return ( ((PythonQtPublicPromoter_QTranslator*)theWrappedObject)->promoted_translate(context, sourceText, disambiguation));
 }
 

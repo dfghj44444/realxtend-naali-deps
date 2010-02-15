@@ -24,6 +24,7 @@ public slots:
 QInputEvent* new_QInputEvent(QEvent::Type  type, Qt::KeyboardModifiers  modifiers = Qt::NoModifier);
 void delete_QInputEvent(QInputEvent* obj) { delete obj; } 
    Qt::KeyboardModifiers  modifiers(QInputEvent* theWrappedObject) const;
+   void setModifiers(QInputEvent* theWrappedObject, Qt::KeyboardModifiers  amodifiers);
 };
 
 #endif // PYTHONQTWRAPPER_QINPUTEVENT_H

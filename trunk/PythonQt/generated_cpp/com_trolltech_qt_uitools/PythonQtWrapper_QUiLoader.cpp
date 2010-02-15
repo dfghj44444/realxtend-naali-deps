@@ -240,49 +240,9 @@ QUiLoader* PythonQtWrapper_QUiLoader::new_QUiLoader(QObject*  parent)
 { 
 return new PythonQtShell_QUiLoader(parent); }
 
-bool  PythonQtWrapper_QUiLoader::isScriptingEnabled(QUiLoader* theWrappedObject) const
-{
-  return ( theWrappedObject->isScriptingEnabled());
-}
-
-void PythonQtWrapper_QUiLoader::setWorkingDirectory(QUiLoader* theWrappedObject, const QDir&  dir)
-{
-  ( theWrappedObject->setWorkingDirectory(dir));
-}
-
-QDir  PythonQtWrapper_QUiLoader::workingDirectory(QUiLoader* theWrappedObject) const
-{
-  return ( theWrappedObject->workingDirectory());
-}
-
-QWidget*  PythonQtWrapper_QUiLoader::createWidget(QUiLoader* theWrappedObject, const QString&  className, QWidget*  parent, const QString&  name)
-{
-  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createWidget(className, parent, name));
-}
-
 QStringList  PythonQtWrapper_QUiLoader::availableWidgets(QUiLoader* theWrappedObject) const
 {
   return ( theWrappedObject->availableWidgets());
-}
-
-QStringList  PythonQtWrapper_QUiLoader::pluginPaths(QUiLoader* theWrappedObject) const
-{
-  return ( theWrappedObject->pluginPaths());
-}
-
-void PythonQtWrapper_QUiLoader::clearPluginPaths(QUiLoader* theWrappedObject)
-{
-  ( theWrappedObject->clearPluginPaths());
-}
-
-QAction*  PythonQtWrapper_QUiLoader::createAction(QUiLoader* theWrappedObject, QObject*  parent, const QString&  name)
-{
-  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createAction(parent, name));
-}
-
-void PythonQtWrapper_QUiLoader::setScriptingEnabled(QUiLoader* theWrappedObject, bool  enabled)
-{
-  ( theWrappedObject->setScriptingEnabled(enabled));
 }
 
 void PythonQtWrapper_QUiLoader::addPluginPath(QUiLoader* theWrappedObject, const QString&  path)
@@ -290,18 +250,83 @@ void PythonQtWrapper_QUiLoader::addPluginPath(QUiLoader* theWrappedObject, const
   ( theWrappedObject->addPluginPath(path));
 }
 
+QWidget*  PythonQtWrapper_QUiLoader::createWidget(QUiLoader* theWrappedObject, const QString&  className, QWidget*  parent, const QString&  name)
+{
+  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createWidget(className, parent, name));
+}
+
+QStringList  PythonQtWrapper_QUiLoader::availableLayouts(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->availableLayouts());
+}
+
 QWidget*  PythonQtWrapper_QUiLoader::load(QUiLoader* theWrappedObject, QIODevice*  device, QWidget*  parentWidget)
 {
   return ( theWrappedObject->load(device, parentWidget));
 }
 
-QActionGroup*  PythonQtWrapper_QUiLoader::createActionGroup(QUiLoader* theWrappedObject, QObject*  parent, const QString&  name)
+void PythonQtWrapper_QUiLoader::setWorkingDirectory(QUiLoader* theWrappedObject, const QDir&  dir)
 {
-  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createActionGroup(parent, name));
+  ( theWrappedObject->setWorkingDirectory(dir));
+}
+
+void PythonQtWrapper_QUiLoader::setLanguageChangeEnabled(QUiLoader* theWrappedObject, bool  enabled)
+{
+  ( theWrappedObject->setLanguageChangeEnabled(enabled));
+}
+
+bool  PythonQtWrapper_QUiLoader::isScriptingEnabled(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->isScriptingEnabled());
+}
+
+QStringList  PythonQtWrapper_QUiLoader::pluginPaths(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->pluginPaths());
+}
+
+QAction*  PythonQtWrapper_QUiLoader::createAction(QUiLoader* theWrappedObject, QObject*  parent, const QString&  name)
+{
+  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createAction(parent, name));
+}
+
+void PythonQtWrapper_QUiLoader::setTranslationEnabled(QUiLoader* theWrappedObject, bool  enabled)
+{
+  ( theWrappedObject->setTranslationEnabled(enabled));
+}
+
+bool  PythonQtWrapper_QUiLoader::isLanguageChangeEnabled(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->isLanguageChangeEnabled());
+}
+
+void PythonQtWrapper_QUiLoader::clearPluginPaths(QUiLoader* theWrappedObject)
+{
+  ( theWrappedObject->clearPluginPaths());
 }
 
 QLayout*  PythonQtWrapper_QUiLoader::createLayout(QUiLoader* theWrappedObject, const QString&  className, QObject*  parent, const QString&  name)
 {
   return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createLayout(className, parent, name));
+}
+
+void PythonQtWrapper_QUiLoader::setScriptingEnabled(QUiLoader* theWrappedObject, bool  enabled)
+{
+  ( theWrappedObject->setScriptingEnabled(enabled));
+}
+
+QDir  PythonQtWrapper_QUiLoader::workingDirectory(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->workingDirectory());
+}
+
+bool  PythonQtWrapper_QUiLoader::isTranslationEnabled(QUiLoader* theWrappedObject) const
+{
+  return ( theWrappedObject->isTranslationEnabled());
+}
+
+QActionGroup*  PythonQtWrapper_QUiLoader::createActionGroup(QUiLoader* theWrappedObject, QObject*  parent, const QString&  name)
+{
+  return ( ((PythonQtPublicPromoter_QUiLoader*)theWrappedObject)->promoted_createActionGroup(parent, name));
 }
 

@@ -12,6 +12,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -19,6 +21,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -777,64 +780,9 @@ QLineEdit* PythonQtWrapper_QLineEdit::new_QLineEdit(const QString&  arg__1, QWid
 { 
 return new PythonQtShell_QLineEdit(arg__1, parent); }
 
-void PythonQtWrapper_QLineEdit::setValidator(QLineEdit* theWrappedObject, const QValidator*  arg__1)
+void PythonQtWrapper_QLineEdit::setCompleter(QLineEdit* theWrappedObject, QCompleter*  completer)
 {
-  ( theWrappedObject->setValidator(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::inputMethodEvent(QLineEdit* theWrappedObject, QInputMethodEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_inputMethodEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::home(QLineEdit* theWrappedObject, bool  mark)
-{
-  ( theWrappedObject->home(mark));
-}
-
-void PythonQtWrapper_QLineEdit::dragMoveEvent(QLineEdit* theWrappedObject, QDragMoveEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragMoveEvent(e));
-}
-
-QString  PythonQtWrapper_QLineEdit::selectedText(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->selectedText());
-}
-
-void PythonQtWrapper_QLineEdit::deselect(QLineEdit* theWrappedObject)
-{
-  ( theWrappedObject->deselect());
-}
-
-bool  PythonQtWrapper_QLineEdit::hasSelectedText(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->hasSelectedText());
-}
-
-void PythonQtWrapper_QLineEdit::keyPressEvent(QLineEdit* theWrappedObject, QKeyEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_keyPressEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::cursorBackward(QLineEdit* theWrappedObject, bool  mark, int  steps)
-{
-  ( theWrappedObject->cursorBackward(mark, steps));
-}
-
-int  PythonQtWrapper_QLineEdit::maxLength(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->maxLength());
-}
-
-void PythonQtWrapper_QLineEdit::cursorForward(QLineEdit* theWrappedObject, bool  mark, int  steps)
-{
-  ( theWrappedObject->cursorForward(mark, steps));
-}
-
-void PythonQtWrapper_QLineEdit::setCursorPosition(QLineEdit* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setCursorPosition(arg__1));
+  ( theWrappedObject->setCompleter(completer));
 }
 
 QString  PythonQtWrapper_QLineEdit::text(QLineEdit* theWrappedObject) const
@@ -842,104 +790,24 @@ QString  PythonQtWrapper_QLineEdit::text(QLineEdit* theWrappedObject) const
   return ( theWrappedObject->text());
 }
 
-void PythonQtWrapper_QLineEdit::end(QLineEdit* theWrappedObject, bool  mark)
+void PythonQtWrapper_QLineEdit::inputMethodEvent(QLineEdit* theWrappedObject, QInputMethodEvent*  arg__1)
 {
-  ( theWrappedObject->end(mark));
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_inputMethodEvent(arg__1));
 }
 
-void PythonQtWrapper_QLineEdit::changeEvent(QLineEdit* theWrappedObject, QEvent*  arg__1)
+void PythonQtWrapper_QLineEdit::setTextMargins(QLineEdit* theWrappedObject, const QMargins&  margins)
 {
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_changeEvent(arg__1));
+  ( theWrappedObject->setTextMargins(margins));
 }
 
-void PythonQtWrapper_QLineEdit::insert(QLineEdit* theWrappedObject, const QString&  arg__1)
+QString  PythonQtWrapper_QLineEdit::inputMask(QLineEdit* theWrappedObject) const
 {
-  ( theWrappedObject->insert(arg__1));
+  return ( theWrappedObject->inputMask());
 }
 
-void PythonQtWrapper_QLineEdit::setAlignment(QLineEdit* theWrappedObject, Qt::Alignment  flag)
+QMargins  PythonQtWrapper_QLineEdit::textMargins(QLineEdit* theWrappedObject) const
 {
-  ( theWrappedObject->setAlignment(flag));
-}
-
-void PythonQtWrapper_QLineEdit::dropEvent(QLineEdit* theWrappedObject, QDropEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dropEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::setEchoMode(QLineEdit* theWrappedObject, QLineEdit::EchoMode  arg__1)
-{
-  ( theWrappedObject->setEchoMode(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::contextMenuEvent(QLineEdit* theWrappedObject, QContextMenuEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_contextMenuEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::backspace(QLineEdit* theWrappedObject)
-{
-  ( theWrappedObject->backspace());
-}
-
-void PythonQtWrapper_QLineEdit::focusOutEvent(QLineEdit* theWrappedObject, QFocusEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_focusOutEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::mouseReleaseEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseReleaseEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::setInputMask(QLineEdit* theWrappedObject, const QString&  inputMask)
-{
-  ( theWrappedObject->setInputMask(inputMask));
-}
-
-int  PythonQtWrapper_QLineEdit::cursorPosition(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->cursorPosition());
-}
-
-void PythonQtWrapper_QLineEdit::focusInEvent(QLineEdit* theWrappedObject, QFocusEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_focusInEvent(arg__1));
-}
-
-bool  PythonQtWrapper_QLineEdit::hasFrame(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->hasFrame());
-}
-
-void PythonQtWrapper_QLineEdit::dragEnterEvent(QLineEdit* theWrappedObject, QDragEnterEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragEnterEvent(arg__1));
-}
-
-bool  PythonQtWrapper_QLineEdit::isReadOnly(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->isReadOnly());
-}
-
-bool  PythonQtWrapper_QLineEdit::isRedoAvailable(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->isRedoAvailable());
-}
-
-QCompleter*  PythonQtWrapper_QLineEdit::completer(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->completer());
-}
-
-void PythonQtWrapper_QLineEdit::setMaxLength(QLineEdit* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setMaxLength(arg__1));
-}
-
-bool  PythonQtWrapper_QLineEdit::event(QLineEdit* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_event(arg__1));
+  return ( theWrappedObject->textMargins());
 }
 
 bool  PythonQtWrapper_QLineEdit::dragEnabled(QLineEdit* theWrappedObject) const
@@ -947,44 +815,19 @@ bool  PythonQtWrapper_QLineEdit::dragEnabled(QLineEdit* theWrappedObject) const
   return ( theWrappedObject->dragEnabled());
 }
 
-void PythonQtWrapper_QLineEdit::dragLeaveEvent(QLineEdit* theWrappedObject, QDragLeaveEvent*  e)
+void PythonQtWrapper_QLineEdit::setValidator(QLineEdit* theWrappedObject, const QValidator*  arg__1)
 {
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragLeaveEvent(e));
+  ( theWrappedObject->setValidator(arg__1));
 }
 
-void PythonQtWrapper_QLineEdit::cursorWordBackward(QLineEdit* theWrappedObject, bool  mark)
+void PythonQtWrapper_QLineEdit::setAlignment(QLineEdit* theWrappedObject, Qt::Alignment  flag)
 {
-  ( theWrappedObject->cursorWordBackward(mark));
+  ( theWrappedObject->setAlignment(flag));
 }
 
-Qt::Alignment  PythonQtWrapper_QLineEdit::alignment(QLineEdit* theWrappedObject) const
+void PythonQtWrapper_QLineEdit::end(QLineEdit* theWrappedObject, bool  mark)
 {
-  return ( theWrappedObject->alignment());
-}
-
-QString  PythonQtWrapper_QLineEdit::displayText(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->displayText());
-}
-
-void PythonQtWrapper_QLineEdit::mouseMoveEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
-}
-
-void PythonQtWrapper_QLineEdit::mousePressEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mousePressEvent(arg__1));
-}
-
-int  PythonQtWrapper_QLineEdit::cursorPositionAt(QLineEdit* theWrappedObject, const QPoint&  pos)
-{
-  return ( theWrappedObject->cursorPositionAt(pos));
-}
-
-void PythonQtWrapper_QLineEdit::setCompleter(QLineEdit* theWrappedObject, QCompleter*  completer)
-{
-  ( theWrappedObject->setCompleter(completer));
+  ( theWrappedObject->end(mark));
 }
 
 void PythonQtWrapper_QLineEdit::setReadOnly(QLineEdit* theWrappedObject, bool  arg__1)
@@ -992,34 +835,29 @@ void PythonQtWrapper_QLineEdit::setReadOnly(QLineEdit* theWrappedObject, bool  a
   ( theWrappedObject->setReadOnly(arg__1));
 }
 
-QMenu*  PythonQtWrapper_QLineEdit::createStandardContextMenu(QLineEdit* theWrappedObject)
+Qt::Alignment  PythonQtWrapper_QLineEdit::alignment(QLineEdit* theWrappedObject) const
 {
-  return ( theWrappedObject->createStandardContextMenu());
+  return ( theWrappedObject->alignment());
 }
 
-void PythonQtWrapper_QLineEdit::setModified(QLineEdit* theWrappedObject, bool  arg__1)
+void PythonQtWrapper_QLineEdit::mouseMoveEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
 {
-  ( theWrappedObject->setModified(arg__1));
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
 }
 
-void PythonQtWrapper_QLineEdit::mouseDoubleClickEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
+int  PythonQtWrapper_QLineEdit::maxLength(QLineEdit* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseDoubleClickEvent(arg__1));
+  return ( theWrappedObject->maxLength());
 }
 
-int  PythonQtWrapper_QLineEdit::selectionStart(QLineEdit* theWrappedObject) const
+void PythonQtWrapper_QLineEdit::cursorWordBackward(QLineEdit* theWrappedObject, bool  mark)
 {
-  return ( theWrappedObject->selectionStart());
+  ( theWrappedObject->cursorWordBackward(mark));
 }
 
-void PythonQtWrapper_QLineEdit::del(QLineEdit* theWrappedObject)
+void PythonQtWrapper_QLineEdit::setFrame(QLineEdit* theWrappedObject, bool  arg__1)
 {
-  ( theWrappedObject->del());
-}
-
-bool  PythonQtWrapper_QLineEdit::isUndoAvailable(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->isUndoAvailable());
+  ( theWrappedObject->setFrame(arg__1));
 }
 
 bool  PythonQtWrapper_QLineEdit::hasAcceptableInput(QLineEdit* theWrappedObject) const
@@ -1027,19 +865,34 @@ bool  PythonQtWrapper_QLineEdit::hasAcceptableInput(QLineEdit* theWrappedObject)
   return ( theWrappedObject->hasAcceptableInput());
 }
 
-void PythonQtWrapper_QLineEdit::setSelection(QLineEdit* theWrappedObject, int  arg__1, int  arg__2)
+QString  PythonQtWrapper_QLineEdit::selectedText(QLineEdit* theWrappedObject) const
 {
-  ( theWrappedObject->setSelection(arg__1, arg__2));
+  return ( theWrappedObject->selectedText());
 }
 
-void PythonQtWrapper_QLineEdit::paintEvent(QLineEdit* theWrappedObject, QPaintEvent*  arg__1)
+QLineEdit::EchoMode  PythonQtWrapper_QLineEdit::echoMode(QLineEdit* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_paintEvent(arg__1));
+  return ( theWrappedObject->echoMode());
 }
 
-void PythonQtWrapper_QLineEdit::setDragEnabled(QLineEdit* theWrappedObject, bool  b)
+void PythonQtWrapper_QLineEdit::keyPressEvent(QLineEdit* theWrappedObject, QKeyEvent*  arg__1)
 {
-  ( theWrappedObject->setDragEnabled(b));
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_keyPressEvent(arg__1));
+}
+
+QSize  PythonQtWrapper_QLineEdit::sizeHint(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+bool  PythonQtWrapper_QLineEdit::isUndoAvailable(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->isUndoAvailable());
+}
+
+void PythonQtWrapper_QLineEdit::changeEvent(QLineEdit* theWrappedObject, QEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_changeEvent(arg__1));
 }
 
 const QValidator*  PythonQtWrapper_QLineEdit::validator(QLineEdit* theWrappedObject) const
@@ -1052,19 +905,9 @@ QSize  PythonQtWrapper_QLineEdit::minimumSizeHint(QLineEdit* theWrappedObject) c
   return ( theWrappedObject->minimumSizeHint());
 }
 
-bool  PythonQtWrapper_QLineEdit::isModified(QLineEdit* theWrappedObject) const
+bool  PythonQtWrapper_QLineEdit::event(QLineEdit* theWrappedObject, QEvent*  arg__1)
 {
-  return ( theWrappedObject->isModified());
-}
-
-void PythonQtWrapper_QLineEdit::cursorWordForward(QLineEdit* theWrappedObject, bool  mark)
-{
-  ( theWrappedObject->cursorWordForward(mark));
-}
-
-QSize  PythonQtWrapper_QLineEdit::sizeHint(QLineEdit* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
+  return ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_event(arg__1));
 }
 
 QVariant  PythonQtWrapper_QLineEdit::inputMethodQuery(QLineEdit* theWrappedObject, Qt::InputMethodQuery  arg__1) const
@@ -1072,18 +915,198 @@ QVariant  PythonQtWrapper_QLineEdit::inputMethodQuery(QLineEdit* theWrappedObjec
   return ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_inputMethodQuery(arg__1));
 }
 
-QLineEdit::EchoMode  PythonQtWrapper_QLineEdit::echoMode(QLineEdit* theWrappedObject) const
+void PythonQtWrapper_QLineEdit::del(QLineEdit* theWrappedObject)
 {
-  return ( theWrappedObject->echoMode());
+  ( theWrappedObject->del());
 }
 
-QString  PythonQtWrapper_QLineEdit::inputMask(QLineEdit* theWrappedObject) const
+void PythonQtWrapper_QLineEdit::dragLeaveEvent(QLineEdit* theWrappedObject, QDragLeaveEvent*  e)
 {
-  return ( theWrappedObject->inputMask());
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragLeaveEvent(e));
 }
 
-void PythonQtWrapper_QLineEdit::setFrame(QLineEdit* theWrappedObject, bool  arg__1)
+void PythonQtWrapper_QLineEdit::setEchoMode(QLineEdit* theWrappedObject, QLineEdit::EchoMode  arg__1)
 {
-  ( theWrappedObject->setFrame(arg__1));
+  ( theWrappedObject->setEchoMode(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::deselect(QLineEdit* theWrappedObject)
+{
+  ( theWrappedObject->deselect());
+}
+
+void PythonQtWrapper_QLineEdit::dragEnterEvent(QLineEdit* theWrappedObject, QDragEnterEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragEnterEvent(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::dropEvent(QLineEdit* theWrappedObject, QDropEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dropEvent(arg__1));
+}
+
+bool  PythonQtWrapper_QLineEdit::isReadOnly(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->isReadOnly());
+}
+
+void PythonQtWrapper_QLineEdit::setSelection(QLineEdit* theWrappedObject, int  arg__1, int  arg__2)
+{
+  ( theWrappedObject->setSelection(arg__1, arg__2));
+}
+
+bool  PythonQtWrapper_QLineEdit::isModified(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->isModified());
+}
+
+QMenu*  PythonQtWrapper_QLineEdit::createStandardContextMenu(QLineEdit* theWrappedObject)
+{
+  return ( theWrappedObject->createStandardContextMenu());
+}
+
+bool  PythonQtWrapper_QLineEdit::hasFrame(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->hasFrame());
+}
+
+void PythonQtWrapper_QLineEdit::home(QLineEdit* theWrappedObject, bool  mark)
+{
+  ( theWrappedObject->home(mark));
+}
+
+void PythonQtWrapper_QLineEdit::setCursorPosition(QLineEdit* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setCursorPosition(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::insert(QLineEdit* theWrappedObject, const QString&  arg__1)
+{
+  ( theWrappedObject->insert(arg__1));
+}
+
+bool  PythonQtWrapper_QLineEdit::isRedoAvailable(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->isRedoAvailable());
+}
+
+void PythonQtWrapper_QLineEdit::paintEvent(QLineEdit* theWrappedObject, QPaintEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_paintEvent(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::focusOutEvent(QLineEdit* theWrappedObject, QFocusEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_focusOutEvent(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::setDragEnabled(QLineEdit* theWrappedObject, bool  b)
+{
+  ( theWrappedObject->setDragEnabled(b));
+}
+
+void PythonQtWrapper_QLineEdit::cursorWordForward(QLineEdit* theWrappedObject, bool  mark)
+{
+  ( theWrappedObject->cursorWordForward(mark));
+}
+
+void PythonQtWrapper_QLineEdit::setModified(QLineEdit* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setModified(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::mouseReleaseEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseReleaseEvent(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::setTextMargins(QLineEdit* theWrappedObject, int  left, int  top, int  right, int  bottom)
+{
+  ( theWrappedObject->setTextMargins(left, top, right, bottom));
+}
+
+int  PythonQtWrapper_QLineEdit::selectionStart(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->selectionStart());
+}
+
+void PythonQtWrapper_QLineEdit::setMaxLength(QLineEdit* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setMaxLength(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::mousePressEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mousePressEvent(arg__1));
+}
+
+int  PythonQtWrapper_QLineEdit::cursorPosition(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->cursorPosition());
+}
+
+void PythonQtWrapper_QLineEdit::setInputMask(QLineEdit* theWrappedObject, const QString&  inputMask)
+{
+  ( theWrappedObject->setInputMask(inputMask));
+}
+
+QCompleter*  PythonQtWrapper_QLineEdit::completer(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->completer());
+}
+
+int  PythonQtWrapper_QLineEdit::cursorPositionAt(QLineEdit* theWrappedObject, const QPoint&  pos)
+{
+  return ( theWrappedObject->cursorPositionAt(pos));
+}
+
+void PythonQtWrapper_QLineEdit::cursorForward(QLineEdit* theWrappedObject, bool  mark, int  steps)
+{
+  ( theWrappedObject->cursorForward(mark, steps));
+}
+
+void PythonQtWrapper_QLineEdit::focusInEvent(QLineEdit* theWrappedObject, QFocusEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_focusInEvent(arg__1));
+}
+
+bool  PythonQtWrapper_QLineEdit::hasSelectedText(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->hasSelectedText());
+}
+
+QString  PythonQtWrapper_QLineEdit::displayText(QLineEdit* theWrappedObject) const
+{
+  return ( theWrappedObject->displayText());
+}
+
+void PythonQtWrapper_QLineEdit::cursorBackward(QLineEdit* theWrappedObject, bool  mark, int  steps)
+{
+  ( theWrappedObject->cursorBackward(mark, steps));
+}
+
+void PythonQtWrapper_QLineEdit::contextMenuEvent(QLineEdit* theWrappedObject, QContextMenuEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_contextMenuEvent(arg__1));
+}
+
+void PythonQtWrapper_QLineEdit::backspace(QLineEdit* theWrappedObject)
+{
+  ( theWrappedObject->backspace());
+}
+
+void PythonQtWrapper_QLineEdit::getTextMargins(QLineEdit* theWrappedObject, int*  left, int*  top, int*  right, int*  bottom) const
+{
+  ( theWrappedObject->getTextMargins(left, top, right, bottom));
+}
+
+void PythonQtWrapper_QLineEdit::dragMoveEvent(QLineEdit* theWrappedObject, QDragMoveEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_dragMoveEvent(e));
+}
+
+void PythonQtWrapper_QLineEdit::mouseDoubleClickEvent(QLineEdit* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLineEdit*)theWrappedObject)->promoted_mouseDoubleClickEvent(arg__1));
 }
 

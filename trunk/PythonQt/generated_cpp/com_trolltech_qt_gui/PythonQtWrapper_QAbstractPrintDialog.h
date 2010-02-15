@@ -15,12 +15,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -99,20 +102,20 @@ Q_DECLARE_FLAGS(PrintDialogOptions, PrintDialogOption)
 public slots:
 QAbstractPrintDialog* new_QAbstractPrintDialog(QPrinter*  printer, QWidget*  parent = 0);
 void delete_QAbstractPrintDialog(QAbstractPrintDialog* obj) { delete obj; } 
-   void addEnabledOption(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option);
-   int  minPage(QAbstractPrintDialog* theWrappedObject) const;
-   void setEnabledOptions(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOptions  options);
-   void setMinMax(QAbstractPrintDialog* theWrappedObject, int  min, int  max);
-   void setOptionTabs(QAbstractPrintDialog* theWrappedObject, const QList<QWidget* >&  tabs);
-   void setPrintRange(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintRange  range);
-   bool  isOptionEnabled(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option) const;
-   int  maxPage(QAbstractPrintDialog* theWrappedObject) const;
-   void setFromTo(QAbstractPrintDialog* theWrappedObject, int  fromPage, int  toPage);
    int  toPage(QAbstractPrintDialog* theWrappedObject) const;
    QAbstractPrintDialog::PrintRange  printRange(QAbstractPrintDialog* theWrappedObject) const;
-   QAbstractPrintDialog::PrintDialogOptions  enabledOptions(QAbstractPrintDialog* theWrappedObject) const;
-   int  fromPage(QAbstractPrintDialog* theWrappedObject) const;
+   void addEnabledOption(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option);
    QPrinter*  printer(QAbstractPrintDialog* theWrappedObject) const;
+   void setPrintRange(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintRange  range);
+   int  minPage(QAbstractPrintDialog* theWrappedObject) const;
+   void setFromTo(QAbstractPrintDialog* theWrappedObject, int  fromPage, int  toPage);
+   int  fromPage(QAbstractPrintDialog* theWrappedObject) const;
+   bool  isOptionEnabled(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option) const;
+   int  maxPage(QAbstractPrintDialog* theWrappedObject) const;
+   void setEnabledOptions(QAbstractPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOptions  options);
+   void setOptionTabs(QAbstractPrintDialog* theWrappedObject, const QList<QWidget* >&  tabs);
+   QAbstractPrintDialog::PrintDialogOptions  enabledOptions(QAbstractPrintDialog* theWrappedObject) const;
+   void setMinMax(QAbstractPrintDialog* theWrappedObject, int  min, int  max);
 };
 
 #endif // PYTHONQTWRAPPER_QABSTRACTPRINTDIALOG_H

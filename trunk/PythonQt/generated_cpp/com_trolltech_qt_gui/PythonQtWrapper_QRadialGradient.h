@@ -27,14 +27,14 @@ QRadialGradient* a = new QRadialGradient();
 *((QRadialGradient*)a) = other;
 return a; }
 void delete_QRadialGradient(QRadialGradient* obj) { delete obj; } 
-   void setCenter(QRadialGradient* theWrappedObject, const QPointF&  center);
-   qreal  radius(QRadialGradient* theWrappedObject) const;
-   void setFocalPoint(QRadialGradient* theWrappedObject, qreal  x, qreal  y);
-   void setCenter(QRadialGradient* theWrappedObject, qreal  x, qreal  y);
-   void setFocalPoint(QRadialGradient* theWrappedObject, const QPointF&  focalPoint);
-   void setRadius(QRadialGradient* theWrappedObject, qreal  radius);
-   QPointF  center(QRadialGradient* theWrappedObject) const;
    QPointF  focalPoint(QRadialGradient* theWrappedObject) const;
+   QPointF  center(QRadialGradient* theWrappedObject) const;
+   void setCenter(QRadialGradient* theWrappedObject, qreal  x, qreal  y);
+   void setCenter(QRadialGradient* theWrappedObject, const QPointF&  center);
+   void setFocalPoint(QRadialGradient* theWrappedObject, const QPointF&  focalPoint);
+   qreal  radius(QRadialGradient* theWrappedObject) const;
+   void setRadius(QRadialGradient* theWrappedObject, qreal  radius);
+   void setFocalPoint(QRadialGradient* theWrappedObject, qreal  x, qreal  y);
 };
 
 #endif // PYTHONQTWRAPPER_QRADIALGRADIENT_H

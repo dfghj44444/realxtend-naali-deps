@@ -20,9 +20,9 @@ int  PythonQtWrapper_QMouseEvent::globalX(QMouseEvent* theWrappedObject) const
   return ( theWrappedObject->globalX());
 }
 
-Qt::MouseButton  PythonQtWrapper_QMouseEvent::button(QMouseEvent* theWrappedObject) const
+const QPoint*  PythonQtWrapper_QMouseEvent::globalPos(QMouseEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->button());
+  return &( theWrappedObject->globalPos());
 }
 
 int  PythonQtWrapper_QMouseEvent::globalY(QMouseEvent* theWrappedObject) const
@@ -30,19 +30,9 @@ int  PythonQtWrapper_QMouseEvent::globalY(QMouseEvent* theWrappedObject) const
   return ( theWrappedObject->globalY());
 }
 
-Qt::MouseButtons  PythonQtWrapper_QMouseEvent::buttons(QMouseEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->buttons());
-}
-
 QMouseEvent*  PythonQtWrapper_QMouseEvent::static_QMouseEvent_createExtendedMouseEvent(QEvent::Type  type, const QPointF&  pos, const QPoint&  globalPos, Qt::MouseButton  button, Qt::MouseButtons  buttons, Qt::KeyboardModifiers  modifiers)
 {
   return (QMouseEvent::createExtendedMouseEvent(type, pos, globalPos, button, buttons, modifiers));
-}
-
-const QPoint*  PythonQtWrapper_QMouseEvent::pos(QMouseEvent* theWrappedObject) const
-{
-  return &( theWrappedObject->pos());
 }
 
 QPointF  PythonQtWrapper_QMouseEvent::posF(QMouseEvent* theWrappedObject) const
@@ -50,9 +40,9 @@ QPointF  PythonQtWrapper_QMouseEvent::posF(QMouseEvent* theWrappedObject) const
   return ( theWrappedObject->posF());
 }
 
-int  PythonQtWrapper_QMouseEvent::x(QMouseEvent* theWrappedObject) const
+Qt::MouseButtons  PythonQtWrapper_QMouseEvent::buttons(QMouseEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->x());
+  return ( theWrappedObject->buttons());
 }
 
 bool  PythonQtWrapper_QMouseEvent::hasExtendedInfo(QMouseEvent* theWrappedObject) const
@@ -60,9 +50,19 @@ bool  PythonQtWrapper_QMouseEvent::hasExtendedInfo(QMouseEvent* theWrappedObject
   return ( theWrappedObject->hasExtendedInfo());
 }
 
-const QPoint*  PythonQtWrapper_QMouseEvent::globalPos(QMouseEvent* theWrappedObject) const
+int  PythonQtWrapper_QMouseEvent::x(QMouseEvent* theWrappedObject) const
 {
-  return &( theWrappedObject->globalPos());
+  return ( theWrappedObject->x());
+}
+
+Qt::MouseButton  PythonQtWrapper_QMouseEvent::button(QMouseEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->button());
+}
+
+const QPoint*  PythonQtWrapper_QMouseEvent::pos(QMouseEvent* theWrappedObject) const
+{
+  return &( theWrappedObject->pos());
 }
 
 int  PythonQtWrapper_QMouseEvent::y(QMouseEvent* theWrappedObject) const

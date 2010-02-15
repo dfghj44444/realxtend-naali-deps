@@ -34,16 +34,16 @@ public:
 public slots:
 QThreadPool* new_QThreadPool(QObject*  parent = 0);
 void delete_QThreadPool(QThreadPool* obj) { delete obj; } 
-   QThreadPool*  static_QThreadPool_globalInstance();
-   void releaseThread(QThreadPool* theWrappedObject);
+   int  expiryTimeout(QThreadPool* theWrappedObject) const;
    void waitForDone(QThreadPool* theWrappedObject);
    void setExpiryTimeout(QThreadPool* theWrappedObject, int  expiryTimeout);
-   void setMaxThreadCount(QThreadPool* theWrappedObject, int  maxThreadCount);
-   int  activeThreadCount(QThreadPool* theWrappedObject) const;
-   void reserveThread(QThreadPool* theWrappedObject);
-   int  expiryTimeout(QThreadPool* theWrappedObject) const;
    void start(QThreadPool* theWrappedObject, QRunnable*  runnable, int  priority = 0);
    bool  tryStart(QThreadPool* theWrappedObject, QRunnable*  runnable);
+   void releaseThread(QThreadPool* theWrappedObject);
+   QThreadPool*  static_QThreadPool_globalInstance();
+   int  activeThreadCount(QThreadPool* theWrappedObject) const;
+   void setMaxThreadCount(QThreadPool* theWrappedObject, int  maxThreadCount);
+   void reserveThread(QThreadPool* theWrappedObject);
    int  maxThreadCount(QThreadPool* theWrappedObject) const;
 };
 

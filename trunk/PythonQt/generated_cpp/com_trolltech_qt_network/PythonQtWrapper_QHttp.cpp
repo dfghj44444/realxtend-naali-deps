@@ -12,6 +12,7 @@
 #include <qlist.h>
 #include <qnetworkproxy.h>
 #include <qobject.h>
+#include <qsslerror.h>
 #include <qtcpsocket.h>
 
 void PythonQtShell_QHttp::childEvent(QChildEvent*  arg__1)
@@ -133,34 +134,9 @@ QHttp* PythonQtWrapper_QHttp::new_QHttp(const QString&  hostname, unsigned short
 { 
 return new PythonQtShell_QHttp(hostname, port, parent); }
 
-int  PythonQtWrapper_QHttp::setProxy(QHttp* theWrappedObject, const QNetworkProxy&  proxy)
+int  PythonQtWrapper_QHttp::head(QHttp* theWrappedObject, const QString&  path)
 {
-  return ( theWrappedObject->setProxy(proxy));
-}
-
-int  PythonQtWrapper_QHttp::request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, QIODevice*  device, QIODevice*  to)
-{
-  return ( theWrappedObject->request(header, device, to));
-}
-
-QHttpRequestHeader  PythonQtWrapper_QHttp::currentRequest(QHttp* theWrappedObject) const
-{
-  return ( theWrappedObject->currentRequest());
-}
-
-QHttp::State  PythonQtWrapper_QHttp::state(QHttp* theWrappedObject) const
-{
-  return ( theWrappedObject->state());
-}
-
-QHttp::Error  PythonQtWrapper_QHttp::error(QHttp* theWrappedObject) const
-{
-  return ( theWrappedObject->error());
-}
-
-int  PythonQtWrapper_QHttp::request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, const QByteArray&  data, QIODevice*  to)
-{
-  return ( theWrappedObject->request(header, data, to));
+  return ( theWrappedObject->head(path));
 }
 
 bool  PythonQtWrapper_QHttp::hasPendingRequests(QHttp* theWrappedObject) const
@@ -168,24 +144,9 @@ bool  PythonQtWrapper_QHttp::hasPendingRequests(QHttp* theWrappedObject) const
   return ( theWrappedObject->hasPendingRequests());
 }
 
-int  PythonQtWrapper_QHttp::setSocket(QHttp* theWrappedObject, QTcpSocket*  socket)
-{
-  return ( theWrappedObject->setSocket(socket));
-}
-
-int  PythonQtWrapper_QHttp::setUser(QHttp* theWrappedObject, const QString&  username, const QString&  password)
-{
-  return ( theWrappedObject->setUser(username, password));
-}
-
 int  PythonQtWrapper_QHttp::post(QHttp* theWrappedObject, const QString&  path, const QByteArray&  data, QIODevice*  to)
 {
   return ( theWrappedObject->post(path, data, to));
-}
-
-QIODevice*  PythonQtWrapper_QHttp::currentDestinationDevice(QHttp* theWrappedObject) const
-{
-  return ( theWrappedObject->currentDestinationDevice());
 }
 
 qint64  PythonQtWrapper_QHttp::bytesAvailable(QHttp* theWrappedObject) const
@@ -193,9 +154,14 @@ qint64  PythonQtWrapper_QHttp::bytesAvailable(QHttp* theWrappedObject) const
   return ( theWrappedObject->bytesAvailable());
 }
 
-QByteArray  PythonQtWrapper_QHttp::readAll(QHttp* theWrappedObject)
+int  PythonQtWrapper_QHttp::setHost(QHttp* theWrappedObject, const QString&  hostname, unsigned short  port)
 {
-  return ( theWrappedObject->readAll());
+  return ( theWrappedObject->setHost(hostname, port));
+}
+
+int  PythonQtWrapper_QHttp::close(QHttp* theWrappedObject)
+{
+  return ( theWrappedObject->close());
 }
 
 int  PythonQtWrapper_QHttp::setHost(QHttp* theWrappedObject, const QString&  hostname, QHttp::ConnectionMode  mode, unsigned short  port)
@@ -203,19 +169,34 @@ int  PythonQtWrapper_QHttp::setHost(QHttp* theWrappedObject, const QString&  hos
   return ( theWrappedObject->setHost(hostname, mode, port));
 }
 
-int  PythonQtWrapper_QHttp::currentId(QHttp* theWrappedObject) const
+int  PythonQtWrapper_QHttp::setSocket(QHttp* theWrappedObject, QTcpSocket*  socket)
 {
-  return ( theWrappedObject->currentId());
+  return ( theWrappedObject->setSocket(socket));
 }
 
-int  PythonQtWrapper_QHttp::setHost(QHttp* theWrappedObject, const QString&  hostname, unsigned short  port)
+QHttp::Error  PythonQtWrapper_QHttp::error(QHttp* theWrappedObject) const
 {
-  return ( theWrappedObject->setHost(hostname, port));
+  return ( theWrappedObject->error());
 }
 
-int  PythonQtWrapper_QHttp::setProxy(QHttp* theWrappedObject, const QString&  host, int  port, const QString&  username, const QString&  password)
+int  PythonQtWrapper_QHttp::get(QHttp* theWrappedObject, const QString&  path, QIODevice*  to)
 {
-  return ( theWrappedObject->setProxy(host, port, username, password));
+  return ( theWrappedObject->get(path, to));
+}
+
+int  PythonQtWrapper_QHttp::request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, const QByteArray&  data, QIODevice*  to)
+{
+  return ( theWrappedObject->request(header, data, to));
+}
+
+QHttpRequestHeader  PythonQtWrapper_QHttp::currentRequest(QHttp* theWrappedObject) const
+{
+  return ( theWrappedObject->currentRequest());
+}
+
+QByteArray  PythonQtWrapper_QHttp::readAll(QHttp* theWrappedObject)
+{
+  return ( theWrappedObject->readAll());
 }
 
 void PythonQtWrapper_QHttp::clearPendingRequests(QHttp* theWrappedObject)
@@ -233,14 +214,39 @@ qint64  PythonQtWrapper_QHttp::read(QHttp* theWrappedObject, char*  data, qint64
   return ( theWrappedObject->read(data, maxlen));
 }
 
-QIODevice*  PythonQtWrapper_QHttp::currentSourceDevice(QHttp* theWrappedObject) const
+int  PythonQtWrapper_QHttp::setProxy(QHttp* theWrappedObject, const QNetworkProxy&  proxy)
 {
-  return ( theWrappedObject->currentSourceDevice());
+  return ( theWrappedObject->setProxy(proxy));
 }
 
-int  PythonQtWrapper_QHttp::get(QHttp* theWrappedObject, const QString&  path, QIODevice*  to)
+int  PythonQtWrapper_QHttp::setProxy(QHttp* theWrappedObject, const QString&  host, int  port, const QString&  username, const QString&  password)
 {
-  return ( theWrappedObject->get(path, to));
+  return ( theWrappedObject->setProxy(host, port, username, password));
+}
+
+int  PythonQtWrapper_QHttp::request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, QIODevice*  device, QIODevice*  to)
+{
+  return ( theWrappedObject->request(header, device, to));
+}
+
+int  PythonQtWrapper_QHttp::currentId(QHttp* theWrappedObject) const
+{
+  return ( theWrappedObject->currentId());
+}
+
+QIODevice*  PythonQtWrapper_QHttp::currentDestinationDevice(QHttp* theWrappedObject) const
+{
+  return ( theWrappedObject->currentDestinationDevice());
+}
+
+int  PythonQtWrapper_QHttp::setUser(QHttp* theWrappedObject, const QString&  username, const QString&  password)
+{
+  return ( theWrappedObject->setUser(username, password));
+}
+
+QHttp::State  PythonQtWrapper_QHttp::state(QHttp* theWrappedObject) const
+{
+  return ( theWrappedObject->state());
 }
 
 QString  PythonQtWrapper_QHttp::errorString(QHttp* theWrappedObject) const
@@ -248,18 +254,13 @@ QString  PythonQtWrapper_QHttp::errorString(QHttp* theWrappedObject) const
   return ( theWrappedObject->errorString());
 }
 
-int  PythonQtWrapper_QHttp::close(QHttp* theWrappedObject)
-{
-  return ( theWrappedObject->close());
-}
-
-int  PythonQtWrapper_QHttp::head(QHttp* theWrappedObject, const QString&  path)
-{
-  return ( theWrappedObject->head(path));
-}
-
 int  PythonQtWrapper_QHttp::post(QHttp* theWrappedObject, const QString&  path, QIODevice*  data, QIODevice*  to)
 {
   return ( theWrappedObject->post(path, data, to));
+}
+
+QIODevice*  PythonQtWrapper_QHttp::currentSourceDevice(QHttp* theWrappedObject) const
+{
+  return ( theWrappedObject->currentSourceDevice());
 }
 

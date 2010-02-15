@@ -561,34 +561,49 @@ QAbstractSocket* PythonQtWrapper_QAbstractSocket::new_QAbstractSocket(QAbstractS
 { 
 return new PythonQtShell_QAbstractSocket(socketType, parent); }
 
-bool  PythonQtWrapper_QAbstractSocket::waitForReadyRead(QAbstractSocket* theWrappedObject, int  msecs)
+QNetworkProxy  PythonQtWrapper_QAbstractSocket::proxy(QAbstractSocket* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_waitForReadyRead(msecs));
+  return ( theWrappedObject->proxy());
 }
 
-qint64  PythonQtWrapper_QAbstractSocket::writeData(QAbstractSocket* theWrappedObject, const char*  data, qint64  len)
+bool  PythonQtWrapper_QAbstractSocket::isValid(QAbstractSocket* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_writeData(data, len));
+  return ( theWrappedObject->isValid());
 }
 
-QHostAddress  PythonQtWrapper_QAbstractSocket::localAddress(QAbstractSocket* theWrappedObject) const
+QHostAddress  PythonQtWrapper_QAbstractSocket::peerAddress(QAbstractSocket* theWrappedObject) const
 {
-  return ( theWrappedObject->localAddress());
+  return ( theWrappedObject->peerAddress());
 }
 
-void PythonQtWrapper_QAbstractSocket::setProxy(QAbstractSocket* theWrappedObject, const QNetworkProxy&  networkProxy)
+bool  PythonQtWrapper_QAbstractSocket::waitForBytesWritten(QAbstractSocket* theWrappedObject, int  msecs)
 {
-  ( theWrappedObject->setProxy(networkProxy));
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
 }
 
-bool  PythonQtWrapper_QAbstractSocket::setSocketDescriptor(QAbstractSocket* theWrappedObject, int  socketDescriptor, QAbstractSocket::SocketState  state, QIODevice::OpenMode  openMode)
+void PythonQtWrapper_QAbstractSocket::connectToHost(QAbstractSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port, QIODevice::OpenMode  mode)
 {
-  return ( theWrappedObject->setSocketDescriptor(socketDescriptor, state, openMode));
+  ( theWrappedObject->connectToHost(address, port, mode));
 }
 
-bool  PythonQtWrapper_QAbstractSocket::atEnd(QAbstractSocket* theWrappedObject) const
+void PythonQtWrapper_QAbstractSocket::abort(QAbstractSocket* theWrappedObject)
 {
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_atEnd());
+  ( theWrappedObject->abort());
+}
+
+QAbstractSocket::SocketError  PythonQtWrapper_QAbstractSocket::error(QAbstractSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->error());
+}
+
+int  PythonQtWrapper_QAbstractSocket::socketDescriptor(QAbstractSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->socketDescriptor());
+}
+
+qint64  PythonQtWrapper_QAbstractSocket::readLineData(QAbstractSocket* theWrappedObject, char*  data, qint64  maxlen)
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_readLineData(data, maxlen));
 }
 
 void PythonQtWrapper_QAbstractSocket::close(QAbstractSocket* theWrappedObject)
@@ -596,14 +611,49 @@ void PythonQtWrapper_QAbstractSocket::close(QAbstractSocket* theWrappedObject)
   ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_close());
 }
 
-unsigned short  PythonQtWrapper_QAbstractSocket::localPort(QAbstractSocket* theWrappedObject) const
+bool  PythonQtWrapper_QAbstractSocket::flush(QAbstractSocket* theWrappedObject)
 {
-  return ( theWrappedObject->localPort());
+  return ( theWrappedObject->flush());
 }
 
-unsigned short  PythonQtWrapper_QAbstractSocket::peerPort(QAbstractSocket* theWrappedObject) const
+QString  PythonQtWrapper_QAbstractSocket::peerName(QAbstractSocket* theWrappedObject) const
 {
-  return ( theWrappedObject->peerPort());
+  return ( theWrappedObject->peerName());
+}
+
+bool  PythonQtWrapper_QAbstractSocket::waitForDisconnected(QAbstractSocket* theWrappedObject, int  msecs)
+{
+  return ( theWrappedObject->waitForDisconnected(msecs));
+}
+
+void PythonQtWrapper_QAbstractSocket::setSocketOption(QAbstractSocket* theWrappedObject, QAbstractSocket::SocketOption  option, const QVariant&  value)
+{
+  ( theWrappedObject->setSocketOption(option, value));
+}
+
+bool  PythonQtWrapper_QAbstractSocket::waitForConnected(QAbstractSocket* theWrappedObject, int  msecs)
+{
+  return ( theWrappedObject->waitForConnected(msecs));
+}
+
+qint64  PythonQtWrapper_QAbstractSocket::bytesToWrite(QAbstractSocket* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_bytesToWrite());
+}
+
+void PythonQtWrapper_QAbstractSocket::setReadBufferSize(QAbstractSocket* theWrappedObject, qint64  size)
+{
+  ( theWrappedObject->setReadBufferSize(size));
+}
+
+bool  PythonQtWrapper_QAbstractSocket::waitForReadyRead(QAbstractSocket* theWrappedObject, int  msecs)
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_waitForReadyRead(msecs));
+}
+
+QHostAddress  PythonQtWrapper_QAbstractSocket::localAddress(QAbstractSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->localAddress());
 }
 
 qint64  PythonQtWrapper_QAbstractSocket::readData(QAbstractSocket* theWrappedObject, char*  data, qint64  maxlen)
@@ -616,34 +666,9 @@ void PythonQtWrapper_QAbstractSocket::connectToHost(QAbstractSocket* theWrappedO
   ( theWrappedObject->connectToHost(hostName, port, mode));
 }
 
-bool  PythonQtWrapper_QAbstractSocket::flush(QAbstractSocket* theWrappedObject)
+void PythonQtWrapper_QAbstractSocket::disconnectFromHost(QAbstractSocket* theWrappedObject)
 {
-  return ( theWrappedObject->flush());
-}
-
-void PythonQtWrapper_QAbstractSocket::setReadBufferSize(QAbstractSocket* theWrappedObject, qint64  size)
-{
-  ( theWrappedObject->setReadBufferSize(size));
-}
-
-bool  PythonQtWrapper_QAbstractSocket::canReadLine(QAbstractSocket* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_canReadLine());
-}
-
-void PythonQtWrapper_QAbstractSocket::connectToHost(QAbstractSocket* theWrappedObject, const QHostAddress&  address, unsigned short  port, QIODevice::OpenMode  mode)
-{
-  ( theWrappedObject->connectToHost(address, port, mode));
-}
-
-QNetworkProxy  PythonQtWrapper_QAbstractSocket::proxy(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->proxy());
-}
-
-qint64  PythonQtWrapper_QAbstractSocket::readBufferSize(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->readBufferSize());
+  ( theWrappedObject->disconnectFromHost());
 }
 
 bool  PythonQtWrapper_QAbstractSocket::isSequential(QAbstractSocket* theWrappedObject) const
@@ -651,69 +676,29 @@ bool  PythonQtWrapper_QAbstractSocket::isSequential(QAbstractSocket* theWrappedO
   return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_isSequential());
 }
 
-QAbstractSocket::SocketState  PythonQtWrapper_QAbstractSocket::state(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->state());
-}
-
-int  PythonQtWrapper_QAbstractSocket::socketDescriptor(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->socketDescriptor());
-}
-
-QAbstractSocket::SocketError  PythonQtWrapper_QAbstractSocket::error(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->error());
-}
-
-qint64  PythonQtWrapper_QAbstractSocket::readLineData(QAbstractSocket* theWrappedObject, char*  data, qint64  maxlen)
-{
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_readLineData(data, maxlen));
-}
-
-QString  PythonQtWrapper_QAbstractSocket::peerName(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->peerName());
-}
-
-bool  PythonQtWrapper_QAbstractSocket::waitForConnected(QAbstractSocket* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForConnected(msecs));
-}
-
 qint64  PythonQtWrapper_QAbstractSocket::bytesAvailable(QAbstractSocket* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_bytesAvailable());
 }
 
-void PythonQtWrapper_QAbstractSocket::abort(QAbstractSocket* theWrappedObject)
+unsigned short  PythonQtWrapper_QAbstractSocket::localPort(QAbstractSocket* theWrappedObject) const
 {
-  ( theWrappedObject->abort());
+  return ( theWrappedObject->localPort());
 }
 
-QHostAddress  PythonQtWrapper_QAbstractSocket::peerAddress(QAbstractSocket* theWrappedObject) const
+void PythonQtWrapper_QAbstractSocket::setProxy(QAbstractSocket* theWrappedObject, const QNetworkProxy&  networkProxy)
 {
-  return ( theWrappedObject->peerAddress());
+  ( theWrappedObject->setProxy(networkProxy));
 }
 
-qint64  PythonQtWrapper_QAbstractSocket::bytesToWrite(QAbstractSocket* theWrappedObject) const
+unsigned short  PythonQtWrapper_QAbstractSocket::peerPort(QAbstractSocket* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_bytesToWrite());
+  return ( theWrappedObject->peerPort());
 }
 
-void PythonQtWrapper_QAbstractSocket::disconnectFromHost(QAbstractSocket* theWrappedObject)
+qint64  PythonQtWrapper_QAbstractSocket::readBufferSize(QAbstractSocket* theWrappedObject) const
 {
-  ( theWrappedObject->disconnectFromHost());
-}
-
-bool  PythonQtWrapper_QAbstractSocket::isValid(QAbstractSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
-bool  PythonQtWrapper_QAbstractSocket::waitForDisconnected(QAbstractSocket* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForDisconnected(msecs));
+  return ( theWrappedObject->readBufferSize());
 }
 
 QAbstractSocket::SocketType  PythonQtWrapper_QAbstractSocket::socketType(QAbstractSocket* theWrappedObject) const
@@ -721,8 +706,33 @@ QAbstractSocket::SocketType  PythonQtWrapper_QAbstractSocket::socketType(QAbstra
   return ( theWrappedObject->socketType());
 }
 
-bool  PythonQtWrapper_QAbstractSocket::waitForBytesWritten(QAbstractSocket* theWrappedObject, int  msecs)
+bool  PythonQtWrapper_QAbstractSocket::setSocketDescriptor(QAbstractSocket* theWrappedObject, int  socketDescriptor, QAbstractSocket::SocketState  state, QIODevice::OpenMode  openMode)
 {
-  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
+  return ( theWrappedObject->setSocketDescriptor(socketDescriptor, state, openMode));
+}
+
+qint64  PythonQtWrapper_QAbstractSocket::writeData(QAbstractSocket* theWrappedObject, const char*  data, qint64  len)
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_writeData(data, len));
+}
+
+bool  PythonQtWrapper_QAbstractSocket::atEnd(QAbstractSocket* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_atEnd());
+}
+
+QAbstractSocket::SocketState  PythonQtWrapper_QAbstractSocket::state(QAbstractSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->state());
+}
+
+bool  PythonQtWrapper_QAbstractSocket::canReadLine(QAbstractSocket* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractSocket*)theWrappedObject)->promoted_canReadLine());
+}
+
+QVariant  PythonQtWrapper_QAbstractSocket::socketOption(QAbstractSocket* theWrappedObject, QAbstractSocket::SocketOption  option)
+{
+  return ( theWrappedObject->socketOption(option));
 }
 

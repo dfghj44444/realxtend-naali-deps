@@ -16,6 +16,11 @@ QPointF  PythonQtWrapper_QGraphicsSceneHelpEvent::scenePos(QGraphicsSceneHelpEve
   return ( theWrappedObject->scenePos());
 }
 
+void PythonQtWrapper_QGraphicsSceneHelpEvent::setScreenPos(QGraphicsSceneHelpEvent* theWrappedObject, const QPoint&  pos)
+{
+  ( theWrappedObject->setScreenPos(pos));
+}
+
 QPoint  PythonQtWrapper_QGraphicsSceneHelpEvent::screenPos(QGraphicsSceneHelpEvent* theWrappedObject) const
 {
   return ( theWrappedObject->screenPos());
@@ -24,10 +29,5 @@ QPoint  PythonQtWrapper_QGraphicsSceneHelpEvent::screenPos(QGraphicsSceneHelpEve
 void PythonQtWrapper_QGraphicsSceneHelpEvent::setScenePos(QGraphicsSceneHelpEvent* theWrappedObject, const QPointF&  pos)
 {
   ( theWrappedObject->setScenePos(pos));
-}
-
-void PythonQtWrapper_QGraphicsSceneHelpEvent::setScreenPos(QGraphicsSceneHelpEvent* theWrappedObject, const QPoint&  pos)
-{
-  ( theWrappedObject->setScreenPos(pos));
 }
 

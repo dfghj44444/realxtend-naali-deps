@@ -71,7 +71,14 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QFontMetricsF.h \
            $$PWD/PythonQtWrapper_QFormLayout.h \
            $$PWD/PythonQtWrapper_QFrame.h \
+           $$PWD/PythonQtWrapper_QGesture.h \
            $$PWD/PythonQtWrapper_QGradient.h \
+           $$PWD/PythonQtWrapper_QGraphicsAnchor.h \
+           $$PWD/PythonQtWrapper_QGraphicsAnchorLayout.h \
+           $$PWD/PythonQtWrapper_QGraphicsBlurEffect.h \
+           $$PWD/PythonQtWrapper_QGraphicsColorizeEffect.h \
+           $$PWD/PythonQtWrapper_QGraphicsDropShadowEffect.h \
+           $$PWD/PythonQtWrapper_QGraphicsEffect.h \
            $$PWD/PythonQtWrapper_QGraphicsEllipseItem.h \
            $$PWD/PythonQtWrapper_QGraphicsGridLayout.h \
            $$PWD/PythonQtWrapper_QGraphicsItem.h \
@@ -81,13 +88,18 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QGraphicsLayoutItem.h \
            $$PWD/PythonQtWrapper_QGraphicsLineItem.h \
            $$PWD/PythonQtWrapper_QGraphicsLinearLayout.h \
+           $$PWD/PythonQtWrapper_QGraphicsObject.h \
+           $$PWD/PythonQtWrapper_QGraphicsOpacityEffect.h \
            $$PWD/PythonQtWrapper_QGraphicsPathItem.h \
            $$PWD/PythonQtWrapper_QGraphicsPixmapItem.h \
            $$PWD/PythonQtWrapper_QGraphicsPolygonItem.h \
            $$PWD/PythonQtWrapper_QGraphicsProxyWidget.h \
            $$PWD/PythonQtWrapper_QGraphicsRectItem.h \
+           $$PWD/PythonQtWrapper_QGraphicsRotation.h \
+           $$PWD/PythonQtWrapper_QGraphicsScale.h \
            $$PWD/PythonQtWrapper_QGraphicsScene.h \
            $$PWD/PythonQtWrapper_QGraphicsSceneContextMenuEvent.h \
+           $$PWD/PythonQtWrapper_QGraphicsSceneDragDropEvent.h \
            $$PWD/PythonQtWrapper_QGraphicsSceneEvent.h \
            $$PWD/PythonQtWrapper_QGraphicsSceneHelpEvent.h \
            $$PWD/PythonQtWrapper_QGraphicsSceneHoverEvent.h \
@@ -97,6 +109,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QGraphicsSceneWheelEvent.h \
            $$PWD/PythonQtWrapper_QGraphicsSimpleTextItem.h \
            $$PWD/PythonQtWrapper_QGraphicsTextItem.h \
+           $$PWD/PythonQtWrapper_QGraphicsTransform.h \
            $$PWD/PythonQtWrapper_QGraphicsView.h \
            $$PWD/PythonQtWrapper_QGraphicsWidget.h \
            $$PWD/PythonQtWrapper_QGridLayout.h \
@@ -126,6 +139,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QItemSelectionModel.h \
            $$PWD/PythonQtWrapper_QItemSelectionRange.h \
            $$PWD/PythonQtWrapper_QKeyEvent.h \
+           $$PWD/PythonQtWrapper_QKeyEventTransition.h \
            $$PWD/PythonQtWrapper_QLCDNumber.h \
            $$PWD/PythonQtWrapper_QLabel.h \
            $$PWD/PythonQtWrapper_QLayout.h \
@@ -136,6 +150,8 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QListWidget.h \
            $$PWD/PythonQtWrapper_QListWidgetItem.h \
            $$PWD/PythonQtWrapper_QMainWindow.h \
+           $$PWD/PythonQtWrapper_QMatrix3x3.h \
+           $$PWD/PythonQtWrapper_QMatrix4x4.h \
            $$PWD/PythonQtWrapper_QMdiArea.h \
            $$PWD/PythonQtWrapper_QMdiSubWindow.h \
            $$PWD/PythonQtWrapper_QMenu.h \
@@ -143,6 +159,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QMessageBox.h \
            $$PWD/PythonQtWrapper_QMotifStyle.h \
            $$PWD/PythonQtWrapper_QMouseEvent.h \
+           $$PWD/PythonQtWrapper_QMouseEventTransition.h \
            $$PWD/PythonQtWrapper_QMoveEvent.h \
            $$PWD/PythonQtWrapper_QMovie.h \
            $$PWD/PythonQtWrapper_QPageSetupDialog.h \
@@ -153,11 +170,13 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QPainter.h \
            $$PWD/PythonQtWrapper_QPainterPath.h \
            $$PWD/PythonQtWrapper_QPainterPathStroker.h \
+           $$PWD/PythonQtWrapper_QPanGesture.h \
            $$PWD/PythonQtWrapper_QPen.h \
            $$PWD/PythonQtWrapper_QPicture.h \
            $$PWD/PythonQtWrapper_QPictureFormatPlugin.h \
            $$PWD/PythonQtWrapper_QPictureIO.h \
            $$PWD/PythonQtWrapper_QPixmapCache.h \
+           $$PWD/PythonQtWrapper_QPixmapCache_Key.h \
            $$PWD/PythonQtWrapper_QPlainTextDocumentLayout.h \
            $$PWD/PythonQtWrapper_QPlainTextEdit.h \
            $$PWD/PythonQtWrapper_QPlastiqueStyle.h \
@@ -170,9 +189,9 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QProgressBar.h \
            $$PWD/PythonQtWrapper_QProgressDialog.h \
            $$PWD/PythonQtWrapper_QPushButton.h \
+           $$PWD/PythonQtWrapper_QQuaternion.h \
            $$PWD/PythonQtWrapper_QRadialGradient.h \
            $$PWD/PythonQtWrapper_QRadioButton.h \
-           $$PWD/PythonQtWrapper_QReadWriteLock.h \
            $$PWD/PythonQtWrapper_QRegExpValidator.h \
            $$PWD/PythonQtWrapper_QResizeEvent.h \
            $$PWD/PythonQtWrapper_QRubberBand.h \
@@ -210,6 +229,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QStyleOptionFocusRect.h \
            $$PWD/PythonQtWrapper_QStyleOptionFrame.h \
            $$PWD/PythonQtWrapper_QStyleOptionFrameV2.h \
+           $$PWD/PythonQtWrapper_QStyleOptionFrameV3.h \
            $$PWD/PythonQtWrapper_QStyleOptionGraphicsItem.h \
            $$PWD/PythonQtWrapper_QStyleOptionGroupBox.h \
            $$PWD/PythonQtWrapper_QStyleOptionHeader.h \
@@ -222,7 +242,9 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QStyleOptionSpinBox.h \
            $$PWD/PythonQtWrapper_QStyleOptionTab.h \
            $$PWD/PythonQtWrapper_QStyleOptionTabBarBase.h \
+           $$PWD/PythonQtWrapper_QStyleOptionTabBarBaseV2.h \
            $$PWD/PythonQtWrapper_QStyleOptionTabV2.h \
+           $$PWD/PythonQtWrapper_QStyleOptionTabV3.h \
            $$PWD/PythonQtWrapper_QStyleOptionTabWidgetFrame.h \
            $$PWD/PythonQtWrapper_QStyleOptionTitleBar.h \
            $$PWD/PythonQtWrapper_QStyleOptionToolBar.h \
@@ -236,6 +258,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QStylePainter.h \
            $$PWD/PythonQtWrapper_QStylePlugin.h \
            $$PWD/PythonQtWrapper_QStyledItemDelegate.h \
+           $$PWD/PythonQtWrapper_QSwipeGesture.h \
            $$PWD/PythonQtWrapper_QSyntaxHighlighter.h \
            $$PWD/PythonQtWrapper_QSystemTrayIcon.h \
            $$PWD/PythonQtWrapper_QTabBar.h \
@@ -254,6 +277,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QTextCursor.h \
            $$PWD/PythonQtWrapper_QTextDocument.h \
            $$PWD/PythonQtWrapper_QTextDocumentFragment.h \
+           $$PWD/PythonQtWrapper_QTextDocumentWriter.h \
            $$PWD/PythonQtWrapper_QTextEdit.h \
            $$PWD/PythonQtWrapper_QTextFragment.h \
            $$PWD/PythonQtWrapper_QTextFrame.h \
@@ -265,17 +289,19 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QTextList.h \
            $$PWD/PythonQtWrapper_QTextListFormat.h \
            $$PWD/PythonQtWrapper_QTextObject.h \
-           $$PWD/PythonQtWrapper_QTextObjectInterface.h \
            $$PWD/PythonQtWrapper_QTextTable.h \
            $$PWD/PythonQtWrapper_QTextTableCell.h \
            $$PWD/PythonQtWrapper_QTextTableCellFormat.h \
            $$PWD/PythonQtWrapper_QTextTableFormat.h \
+           $$PWD/PythonQtWrapper_QTileRules.h \
            $$PWD/PythonQtWrapper_QTimeEdit.h \
            $$PWD/PythonQtWrapper_QToolBar.h \
            $$PWD/PythonQtWrapper_QToolBarChangeEvent.h \
            $$PWD/PythonQtWrapper_QToolBox.h \
            $$PWD/PythonQtWrapper_QToolButton.h \
            $$PWD/PythonQtWrapper_QToolTip.h \
+           $$PWD/PythonQtWrapper_QTouchEvent.h \
+           $$PWD/PythonQtWrapper_QTouchEvent_TouchPoint.h \
            $$PWD/PythonQtWrapper_QTransform.h \
            $$PWD/PythonQtWrapper_QTreeView.h \
            $$PWD/PythonQtWrapper_QTreeWidget.h \
@@ -286,6 +312,9 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QUndoView.h \
            $$PWD/PythonQtWrapper_QVBoxLayout.h \
            $$PWD/PythonQtWrapper_QValidator.h \
+           $$PWD/PythonQtWrapper_QVector2D.h \
+           $$PWD/PythonQtWrapper_QVector3D.h \
+           $$PWD/PythonQtWrapper_QVector4D.h \
            $$PWD/PythonQtWrapper_QWhatsThis.h \
            $$PWD/PythonQtWrapper_QWhatsThisClickedEvent.h \
            $$PWD/PythonQtWrapper_QWheelEvent.h \
@@ -371,7 +400,14 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QFontMetricsF.cpp \
            $$PWD/PythonQtWrapper_QFormLayout.cpp \
            $$PWD/PythonQtWrapper_QFrame.cpp \
+           $$PWD/PythonQtWrapper_QGesture.cpp \
            $$PWD/PythonQtWrapper_QGradient.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsAnchor.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsAnchorLayout.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsBlurEffect.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsColorizeEffect.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsDropShadowEffect.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsEffect.cpp \
            $$PWD/PythonQtWrapper_QGraphicsEllipseItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsGridLayout.cpp \
            $$PWD/PythonQtWrapper_QGraphicsItem.cpp \
@@ -381,13 +417,18 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QGraphicsLayoutItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsLineItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsLinearLayout.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsObject.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsOpacityEffect.cpp \
            $$PWD/PythonQtWrapper_QGraphicsPathItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsPixmapItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsPolygonItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsProxyWidget.cpp \
            $$PWD/PythonQtWrapper_QGraphicsRectItem.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsRotation.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsScale.cpp \
            $$PWD/PythonQtWrapper_QGraphicsScene.cpp \
            $$PWD/PythonQtWrapper_QGraphicsSceneContextMenuEvent.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsSceneDragDropEvent.cpp \
            $$PWD/PythonQtWrapper_QGraphicsSceneEvent.cpp \
            $$PWD/PythonQtWrapper_QGraphicsSceneHelpEvent.cpp \
            $$PWD/PythonQtWrapper_QGraphicsSceneHoverEvent.cpp \
@@ -397,6 +438,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QGraphicsSceneWheelEvent.cpp \
            $$PWD/PythonQtWrapper_QGraphicsSimpleTextItem.cpp \
            $$PWD/PythonQtWrapper_QGraphicsTextItem.cpp \
+           $$PWD/PythonQtWrapper_QGraphicsTransform.cpp \
            $$PWD/PythonQtWrapper_QGraphicsView.cpp \
            $$PWD/PythonQtWrapper_QGraphicsWidget.cpp \
            $$PWD/PythonQtWrapper_QGridLayout.cpp \
@@ -426,6 +468,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QItemSelectionModel.cpp \
            $$PWD/PythonQtWrapper_QItemSelectionRange.cpp \
            $$PWD/PythonQtWrapper_QKeyEvent.cpp \
+           $$PWD/PythonQtWrapper_QKeyEventTransition.cpp \
            $$PWD/PythonQtWrapper_QLCDNumber.cpp \
            $$PWD/PythonQtWrapper_QLabel.cpp \
            $$PWD/PythonQtWrapper_QLayout.cpp \
@@ -436,6 +479,8 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QListWidget.cpp \
            $$PWD/PythonQtWrapper_QListWidgetItem.cpp \
            $$PWD/PythonQtWrapper_QMainWindow.cpp \
+           $$PWD/PythonQtWrapper_QMatrix3x3.cpp \
+           $$PWD/PythonQtWrapper_QMatrix4x4.cpp \
            $$PWD/PythonQtWrapper_QMdiArea.cpp \
            $$PWD/PythonQtWrapper_QMdiSubWindow.cpp \
            $$PWD/PythonQtWrapper_QMenu.cpp \
@@ -443,6 +488,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QMessageBox.cpp \
            $$PWD/PythonQtWrapper_QMotifStyle.cpp \
            $$PWD/PythonQtWrapper_QMouseEvent.cpp \
+           $$PWD/PythonQtWrapper_QMouseEventTransition.cpp \
            $$PWD/PythonQtWrapper_QMoveEvent.cpp \
            $$PWD/PythonQtWrapper_QMovie.cpp \
            $$PWD/PythonQtWrapper_QPageSetupDialog.cpp \
@@ -453,11 +499,13 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QPainter.cpp \
            $$PWD/PythonQtWrapper_QPainterPath.cpp \
            $$PWD/PythonQtWrapper_QPainterPathStroker.cpp \
+           $$PWD/PythonQtWrapper_QPanGesture.cpp \
            $$PWD/PythonQtWrapper_QPen.cpp \
            $$PWD/PythonQtWrapper_QPicture.cpp \
            $$PWD/PythonQtWrapper_QPictureFormatPlugin.cpp \
            $$PWD/PythonQtWrapper_QPictureIO.cpp \
            $$PWD/PythonQtWrapper_QPixmapCache.cpp \
+           $$PWD/PythonQtWrapper_QPixmapCache_Key.cpp \
            $$PWD/PythonQtWrapper_QPlainTextDocumentLayout.cpp \
            $$PWD/PythonQtWrapper_QPlainTextEdit.cpp \
            $$PWD/PythonQtWrapper_QPlastiqueStyle.cpp \
@@ -470,9 +518,9 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QProgressBar.cpp \
            $$PWD/PythonQtWrapper_QProgressDialog.cpp \
            $$PWD/PythonQtWrapper_QPushButton.cpp \
+           $$PWD/PythonQtWrapper_QQuaternion.cpp \
            $$PWD/PythonQtWrapper_QRadialGradient.cpp \
            $$PWD/PythonQtWrapper_QRadioButton.cpp \
-           $$PWD/PythonQtWrapper_QReadWriteLock.cpp \
            $$PWD/PythonQtWrapper_QRegExpValidator.cpp \
            $$PWD/PythonQtWrapper_QResizeEvent.cpp \
            $$PWD/PythonQtWrapper_QRubberBand.cpp \
@@ -510,6 +558,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QStyleOptionFocusRect.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionFrame.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionFrameV2.cpp \
+           $$PWD/PythonQtWrapper_QStyleOptionFrameV3.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionGraphicsItem.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionGroupBox.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionHeader.cpp \
@@ -522,7 +571,9 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QStyleOptionSpinBox.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionTab.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionTabBarBase.cpp \
+           $$PWD/PythonQtWrapper_QStyleOptionTabBarBaseV2.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionTabV2.cpp \
+           $$PWD/PythonQtWrapper_QStyleOptionTabV3.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionTabWidgetFrame.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionTitleBar.cpp \
            $$PWD/PythonQtWrapper_QStyleOptionToolBar.cpp \
@@ -536,6 +587,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QStylePainter.cpp \
            $$PWD/PythonQtWrapper_QStylePlugin.cpp \
            $$PWD/PythonQtWrapper_QStyledItemDelegate.cpp \
+           $$PWD/PythonQtWrapper_QSwipeGesture.cpp \
            $$PWD/PythonQtWrapper_QSyntaxHighlighter.cpp \
            $$PWD/PythonQtWrapper_QSystemTrayIcon.cpp \
            $$PWD/PythonQtWrapper_QTabBar.cpp \
@@ -554,6 +606,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QTextCursor.cpp \
            $$PWD/PythonQtWrapper_QTextDocument.cpp \
            $$PWD/PythonQtWrapper_QTextDocumentFragment.cpp \
+           $$PWD/PythonQtWrapper_QTextDocumentWriter.cpp \
            $$PWD/PythonQtWrapper_QTextEdit.cpp \
            $$PWD/PythonQtWrapper_QTextFragment.cpp \
            $$PWD/PythonQtWrapper_QTextFrame.cpp \
@@ -565,17 +618,19 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QTextList.cpp \
            $$PWD/PythonQtWrapper_QTextListFormat.cpp \
            $$PWD/PythonQtWrapper_QTextObject.cpp \
-           $$PWD/PythonQtWrapper_QTextObjectInterface.cpp \
            $$PWD/PythonQtWrapper_QTextTable.cpp \
            $$PWD/PythonQtWrapper_QTextTableCell.cpp \
            $$PWD/PythonQtWrapper_QTextTableCellFormat.cpp \
            $$PWD/PythonQtWrapper_QTextTableFormat.cpp \
+           $$PWD/PythonQtWrapper_QTileRules.cpp \
            $$PWD/PythonQtWrapper_QTimeEdit.cpp \
            $$PWD/PythonQtWrapper_QToolBar.cpp \
            $$PWD/PythonQtWrapper_QToolBarChangeEvent.cpp \
            $$PWD/PythonQtWrapper_QToolBox.cpp \
            $$PWD/PythonQtWrapper_QToolButton.cpp \
            $$PWD/PythonQtWrapper_QToolTip.cpp \
+           $$PWD/PythonQtWrapper_QTouchEvent.cpp \
+           $$PWD/PythonQtWrapper_QTouchEvent_TouchPoint.cpp \
            $$PWD/PythonQtWrapper_QTransform.cpp \
            $$PWD/PythonQtWrapper_QTreeView.cpp \
            $$PWD/PythonQtWrapper_QTreeWidget.cpp \
@@ -586,6 +641,9 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QUndoView.cpp \
            $$PWD/PythonQtWrapper_QVBoxLayout.cpp \
            $$PWD/PythonQtWrapper_QValidator.cpp \
+           $$PWD/PythonQtWrapper_QVector2D.cpp \
+           $$PWD/PythonQtWrapper_QVector3D.cpp \
+           $$PWD/PythonQtWrapper_QVector4D.cpp \
            $$PWD/PythonQtWrapper_QWhatsThis.cpp \
            $$PWD/PythonQtWrapper_QWhatsThisClickedEvent.cpp \
            $$PWD/PythonQtWrapper_QWheelEvent.cpp \

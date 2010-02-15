@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -797,29 +800,9 @@ QSplitterHandle* PythonQtWrapper_QSplitterHandle::new_QSplitterHandle(Qt::Orient
 { 
 return new PythonQtShell_QSplitterHandle(o, parent); }
 
-void PythonQtWrapper_QSplitterHandle::paintEvent(QSplitterHandle* theWrappedObject, QPaintEvent*  arg__1)
+void PythonQtWrapper_QSplitterHandle::setOrientation(QSplitterHandle* theWrappedObject, Qt::Orientation  o)
 {
-  ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_paintEvent(arg__1));
-}
-
-bool  PythonQtWrapper_QSplitterHandle::opaqueResize(QSplitterHandle* theWrappedObject) const
-{
-  return ( theWrappedObject->opaqueResize());
-}
-
-Qt::Orientation  PythonQtWrapper_QSplitterHandle::orientation(QSplitterHandle* theWrappedObject) const
-{
-  return ( theWrappedObject->orientation());
-}
-
-QSplitter*  PythonQtWrapper_QSplitterHandle::splitter(QSplitterHandle* theWrappedObject) const
-{
-  return ( theWrappedObject->splitter());
-}
-
-void PythonQtWrapper_QSplitterHandle::mouseMoveEvent(QSplitterHandle* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
+  ( theWrappedObject->setOrientation(o));
 }
 
 void PythonQtWrapper_QSplitterHandle::mousePressEvent(QSplitterHandle* theWrappedObject, QMouseEvent*  arg__1)
@@ -827,9 +810,34 @@ void PythonQtWrapper_QSplitterHandle::mousePressEvent(QSplitterHandle* theWrappe
   ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_mousePressEvent(arg__1));
 }
 
+void PythonQtWrapper_QSplitterHandle::paintEvent(QSplitterHandle* theWrappedObject, QPaintEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_paintEvent(arg__1));
+}
+
+void PythonQtWrapper_QSplitterHandle::mouseMoveEvent(QSplitterHandle* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
+}
+
+QSize  PythonQtWrapper_QSplitterHandle::sizeHint(QSplitterHandle* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
 void PythonQtWrapper_QSplitterHandle::mouseReleaseEvent(QSplitterHandle* theWrappedObject, QMouseEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_mouseReleaseEvent(arg__1));
+}
+
+Qt::Orientation  PythonQtWrapper_QSplitterHandle::orientation(QSplitterHandle* theWrappedObject) const
+{
+  return ( theWrappedObject->orientation());
+}
+
+bool  PythonQtWrapper_QSplitterHandle::opaqueResize(QSplitterHandle* theWrappedObject) const
+{
+  return ( theWrappedObject->opaqueResize());
 }
 
 bool  PythonQtWrapper_QSplitterHandle::event(QSplitterHandle* theWrappedObject, QEvent*  arg__1)
@@ -837,13 +845,8 @@ bool  PythonQtWrapper_QSplitterHandle::event(QSplitterHandle* theWrappedObject, 
   return ( ((PythonQtPublicPromoter_QSplitterHandle*)theWrappedObject)->promoted_event(arg__1));
 }
 
-void PythonQtWrapper_QSplitterHandle::setOrientation(QSplitterHandle* theWrappedObject, Qt::Orientation  o)
+QSplitter*  PythonQtWrapper_QSplitterHandle::splitter(QSplitterHandle* theWrappedObject) const
 {
-  ( theWrappedObject->setOrientation(o));
-}
-
-QSize  PythonQtWrapper_QSplitterHandle::sizeHint(QSplitterHandle* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
+  return ( theWrappedObject->splitter());
 }
 

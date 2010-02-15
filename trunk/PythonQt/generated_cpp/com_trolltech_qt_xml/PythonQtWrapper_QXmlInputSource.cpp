@@ -167,14 +167,9 @@ QXmlInputSource* PythonQtWrapper_QXmlInputSource::new_QXmlInputSource(QIODevice*
 { 
 return new PythonQtShell_QXmlInputSource(dev); }
 
-void PythonQtWrapper_QXmlInputSource::fetchData(QXmlInputSource* theWrappedObject)
+void PythonQtWrapper_QXmlInputSource::reset(QXmlInputSource* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_fetchData());
-}
-
-void PythonQtWrapper_QXmlInputSource::setData(QXmlInputSource* theWrappedObject, const QByteArray&  dat)
-{
-  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_setData(dat));
+  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_reset());
 }
 
 void PythonQtWrapper_QXmlInputSource::setData(QXmlInputSource* theWrappedObject, const QString&  dat)
@@ -187,9 +182,9 @@ QChar  PythonQtWrapper_QXmlInputSource::next(QXmlInputSource* theWrappedObject)
   return ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_next());
 }
 
-QString  PythonQtWrapper_QXmlInputSource::fromRawData(QXmlInputSource* theWrappedObject, const QByteArray&  data, bool  beginning)
+void PythonQtWrapper_QXmlInputSource::setData(QXmlInputSource* theWrappedObject, const QByteArray&  dat)
 {
-  return ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_fromRawData(data, beginning));
+  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_setData(dat));
 }
 
 QString  PythonQtWrapper_QXmlInputSource::data(QXmlInputSource* theWrappedObject) const
@@ -197,8 +192,13 @@ QString  PythonQtWrapper_QXmlInputSource::data(QXmlInputSource* theWrappedObject
   return ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_data());
 }
 
-void PythonQtWrapper_QXmlInputSource::reset(QXmlInputSource* theWrappedObject)
+QString  PythonQtWrapper_QXmlInputSource::fromRawData(QXmlInputSource* theWrappedObject, const QByteArray&  data, bool  beginning)
 {
-  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_reset());
+  return ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_fromRawData(data, beginning));
+}
+
+void PythonQtWrapper_QXmlInputSource::fetchData(QXmlInputSource* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QXmlInputSource*)theWrappedObject)->promoted_fetchData());
 }
 

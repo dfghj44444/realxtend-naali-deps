@@ -16,14 +16,24 @@ QSqlIndex* PythonQtWrapper_QSqlIndex::new_QSqlIndex(const QString&  cursorName, 
 { 
 return new QSqlIndex(cursorName, name); }
 
+void PythonQtWrapper_QSqlIndex::append(QSqlIndex* theWrappedObject, const QSqlField&  field)
+{
+  ( theWrappedObject->append(field));
+}
+
+void PythonQtWrapper_QSqlIndex::setDescending(QSqlIndex* theWrappedObject, int  i, bool  desc)
+{
+  ( theWrappedObject->setDescending(i, desc));
+}
+
 bool  PythonQtWrapper_QSqlIndex::isDescending(QSqlIndex* theWrappedObject, int  i) const
 {
   return ( theWrappedObject->isDescending(i));
 }
 
-QString  PythonQtWrapper_QSqlIndex::name(QSqlIndex* theWrappedObject) const
+void PythonQtWrapper_QSqlIndex::setCursorName(QSqlIndex* theWrappedObject, const QString&  cursorName)
 {
-  return ( theWrappedObject->name());
+  ( theWrappedObject->setCursorName(cursorName));
 }
 
 void PythonQtWrapper_QSqlIndex::append(QSqlIndex* theWrappedObject, const QSqlField&  field, bool  desc)
@@ -31,9 +41,9 @@ void PythonQtWrapper_QSqlIndex::append(QSqlIndex* theWrappedObject, const QSqlFi
   ( theWrappedObject->append(field, desc));
 }
 
-void PythonQtWrapper_QSqlIndex::setDescending(QSqlIndex* theWrappedObject, int  i, bool  desc)
+QString  PythonQtWrapper_QSqlIndex::name(QSqlIndex* theWrappedObject) const
 {
-  ( theWrappedObject->setDescending(i, desc));
+  return ( theWrappedObject->name());
 }
 
 void PythonQtWrapper_QSqlIndex::setName(QSqlIndex* theWrappedObject, const QString&  name)
@@ -44,15 +54,5 @@ void PythonQtWrapper_QSqlIndex::setName(QSqlIndex* theWrappedObject, const QStri
 QString  PythonQtWrapper_QSqlIndex::cursorName(QSqlIndex* theWrappedObject) const
 {
   return ( theWrappedObject->cursorName());
-}
-
-void PythonQtWrapper_QSqlIndex::setCursorName(QSqlIndex* theWrappedObject, const QString&  cursorName)
-{
-  ( theWrappedObject->setCursorName(cursorName));
-}
-
-void PythonQtWrapper_QSqlIndex::append(QSqlIndex* theWrappedObject, const QSqlField&  field)
-{
-  ( theWrappedObject->append(field));
 }
 

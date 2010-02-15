@@ -212,29 +212,9 @@ QTextDocument* PythonQtWrapper_QTextDocument::new_QTextDocument(const QString&  
 { 
 return new PythonQtShell_QTextDocument(text, parent); }
 
-QTextFrame*  PythonQtWrapper_QTextDocument::frameAt(QTextDocument* theWrappedObject, int  pos) const
+int  PythonQtWrapper_QTextDocument::revision(QTextDocument* theWrappedObject) const
 {
-  return ( theWrappedObject->frameAt(pos));
-}
-
-QSizeF  PythonQtWrapper_QTextDocument::pageSize(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->pageSize());
-}
-
-void PythonQtWrapper_QTextDocument::adjustSize(QTextDocument* theWrappedObject)
-{
-  ( theWrappedObject->adjustSize());
-}
-
-QTextBlock  PythonQtWrapper_QTextDocument::begin(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->begin());
-}
-
-qreal  PythonQtWrapper_QTextDocument::idealWidth(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->idealWidth());
+  return ( theWrappedObject->revision());
 }
 
 qreal  PythonQtWrapper_QTextDocument::indentWidth(QTextDocument* theWrappedObject) const
@@ -242,219 +222,9 @@ qreal  PythonQtWrapper_QTextDocument::indentWidth(QTextDocument* theWrappedObjec
   return ( theWrappedObject->indentWidth());
 }
 
-void PythonQtWrapper_QTextDocument::setPlainText(QTextDocument* theWrappedObject, const QString&  text)
+int  PythonQtWrapper_QTextDocument::availableUndoSteps(QTextDocument* theWrappedObject) const
 {
-  ( theWrappedObject->setPlainText(text));
-}
-
-void PythonQtWrapper_QTextDocument::setHtml(QTextDocument* theWrappedObject, const QString&  html)
-{
-  ( theWrappedObject->setHtml(html));
-}
-
-void PythonQtWrapper_QTextDocument::setMaximumBlockCount(QTextDocument* theWrappedObject, int  maximum)
-{
-  ( theWrappedObject->setMaximumBlockCount(maximum));
-}
-
-QString  PythonQtWrapper_QTextDocument::metaInformation(QTextDocument* theWrappedObject, QTextDocument::MetaInformation  info) const
-{
-  return ( theWrappedObject->metaInformation(info));
-}
-
-QTextBlock  PythonQtWrapper_QTextDocument::lastBlock(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->lastBlock());
-}
-
-QTextBlock  PythonQtWrapper_QTextDocument::findBlock(QTextDocument* theWrappedObject, int  pos) const
-{
-  return ( theWrappedObject->findBlock(pos));
-}
-
-QTextBlock  PythonQtWrapper_QTextDocument::end(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->end());
-}
-
-bool  PythonQtWrapper_QTextDocument::isEmpty(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->isEmpty());
-}
-
-QTextObject*  PythonQtWrapper_QTextDocument::objectForFormat(QTextDocument* theWrappedObject, const QTextFormat&  arg__1) const
-{
-  return ( theWrappedObject->objectForFormat(arg__1));
-}
-
-qreal  PythonQtWrapper_QTextDocument::textWidth(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->textWidth());
-}
-
-QTextObject*  PythonQtWrapper_QTextDocument::createObject(QTextDocument* theWrappedObject, const QTextFormat&  f)
-{
-  return ( ((PythonQtPublicPromoter_QTextDocument*)theWrappedObject)->promoted_createObject(f));
-}
-
-QVector<QTextFormat >  PythonQtWrapper_QTextDocument::allFormats(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->allFormats());
-}
-
-void PythonQtWrapper_QTextDocument::undo(QTextDocument* theWrappedObject, QTextCursor*  cursor)
-{
-  ( theWrappedObject->undo(cursor));
-}
-
-QString  PythonQtWrapper_QTextDocument::toPlainText(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->toPlainText());
-}
-
-QString  PythonQtWrapper_QTextDocument::defaultStyleSheet(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->defaultStyleSheet());
-}
-
-QAbstractTextDocumentLayout*  PythonQtWrapper_QTextDocument::documentLayout(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->documentLayout());
-}
-
-void PythonQtWrapper_QTextDocument::drawContents(QTextDocument* theWrappedObject, QPainter*  painter, const QRectF&  rect)
-{
-  ( theWrappedObject->drawContents(painter, rect));
-}
-
-QTextObject*  PythonQtWrapper_QTextDocument::object(QTextDocument* theWrappedObject, int  objectIndex) const
-{
-  return ( theWrappedObject->object(objectIndex));
-}
-
-void PythonQtWrapper_QTextDocument::clear(QTextDocument* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QTextDocument*)theWrappedObject)->promoted_clear());
-}
-
-void PythonQtWrapper_QTextDocument::markContentsDirty(QTextDocument* theWrappedObject, int  from, int  length)
-{
-  ( theWrappedObject->markContentsDirty(from, length));
-}
-
-int  PythonQtWrapper_QTextDocument::pageCount(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->pageCount());
-}
-
-void PythonQtWrapper_QTextDocument::setDefaultFont(QTextDocument* theWrappedObject, const QFont&  font)
-{
-  ( theWrappedObject->setDefaultFont(font));
-}
-
-void PythonQtWrapper_QTextDocument::setDefaultStyleSheet(QTextDocument* theWrappedObject, const QString&  sheet)
-{
-  ( theWrappedObject->setDefaultStyleSheet(sheet));
-}
-
-QVariant  PythonQtWrapper_QTextDocument::resource(QTextDocument* theWrappedObject, int  type, const QUrl&  name) const
-{
-  return ( theWrappedObject->resource(type, name));
-}
-
-void PythonQtWrapper_QTextDocument::setUndoRedoEnabled(QTextDocument* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setUndoRedoEnabled(enable));
-}
-
-QTextOption  PythonQtWrapper_QTextDocument::defaultTextOption(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->defaultTextOption());
-}
-
-QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QRegExp&  expr, int  from, QTextDocument::FindFlags  options) const
-{
-  return ( theWrappedObject->find(expr, from, options));
-}
-
-bool  PythonQtWrapper_QTextDocument::isUndoAvailable(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->isUndoAvailable());
-}
-
-bool  PythonQtWrapper_QTextDocument::isModified(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->isModified());
-}
-
-void PythonQtWrapper_QTextDocument::setDocumentLayout(QTextDocument* theWrappedObject, QAbstractTextDocumentLayout*  layout)
-{
-  ( theWrappedObject->setDocumentLayout(layout));
-}
-
-void PythonQtWrapper_QTextDocument::setTextWidth(QTextDocument* theWrappedObject, qreal  width)
-{
-  ( theWrappedObject->setTextWidth(width));
-}
-
-void PythonQtWrapper_QTextDocument::addResource(QTextDocument* theWrappedObject, int  type, const QUrl&  name, const QVariant&  resource)
-{
-  ( theWrappedObject->addResource(type, name, resource));
-}
-
-QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QRegExp&  expr, const QTextCursor&  from, QTextDocument::FindFlags  options) const
-{
-  return ( theWrappedObject->find(expr, from, options));
-}
-
-void PythonQtWrapper_QTextDocument::setIndentWidth(QTextDocument* theWrappedObject, qreal  width)
-{
-  ( theWrappedObject->setIndentWidth(width));
-}
-
-void PythonQtWrapper_QTextDocument::setUseDesignMetrics(QTextDocument* theWrappedObject, bool  b)
-{
-  ( theWrappedObject->setUseDesignMetrics(b));
-}
-
-void PythonQtWrapper_QTextDocument::setDefaultTextOption(QTextDocument* theWrappedObject, const QTextOption&  option)
-{
-  ( theWrappedObject->setDefaultTextOption(option));
-}
-
-QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QString&  subString, int  from, QTextDocument::FindFlags  options) const
-{
-  return ( theWrappedObject->find(subString, from, options));
-}
-
-QTextDocument*  PythonQtWrapper_QTextDocument::clone(QTextDocument* theWrappedObject, QObject*  parent) const
-{
-  return ( theWrappedObject->clone(parent));
-}
-
-void PythonQtWrapper_QTextDocument::setPageSize(QTextDocument* theWrappedObject, const QSizeF&  size)
-{
-  ( theWrappedObject->setPageSize(size));
-}
-
-int  PythonQtWrapper_QTextDocument::blockCount(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->blockCount());
-}
-
-int  PythonQtWrapper_QTextDocument::revision(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->revision());
-}
-
-QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QString&  subString, const QTextCursor&  from, QTextDocument::FindFlags  options) const
-{
-  return ( theWrappedObject->find(subString, from, options));
-}
-
-QTextBlock  PythonQtWrapper_QTextDocument::firstBlock(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->firstBlock());
+  return ( theWrappedObject->availableUndoSteps());
 }
 
 QTextBlock  PythonQtWrapper_QTextDocument::findBlockByNumber(QTextDocument* theWrappedObject, int  blockNumber) const
@@ -462,19 +232,9 @@ QTextBlock  PythonQtWrapper_QTextDocument::findBlockByNumber(QTextDocument* theW
   return ( theWrappedObject->findBlockByNumber(blockNumber));
 }
 
-void PythonQtWrapper_QTextDocument::print(QTextDocument* theWrappedObject, QPrinter*  printer) const
+qreal  PythonQtWrapper_QTextDocument::documentMargin(QTextDocument* theWrappedObject) const
 {
-  ( theWrappedObject->print(printer));
-}
-
-void PythonQtWrapper_QTextDocument::redo(QTextDocument* theWrappedObject, QTextCursor*  cursor)
-{
-  ( theWrappedObject->redo(cursor));
-}
-
-QTextFrame*  PythonQtWrapper_QTextDocument::rootFrame(QTextDocument* theWrappedObject) const
-{
-  return ( theWrappedObject->rootFrame());
+  return ( theWrappedObject->documentMargin());
 }
 
 QSizeF  PythonQtWrapper_QTextDocument::size(QTextDocument* theWrappedObject) const
@@ -482,19 +242,19 @@ QSizeF  PythonQtWrapper_QTextDocument::size(QTextDocument* theWrappedObject) con
   return ( theWrappedObject->size());
 }
 
-bool  PythonQtWrapper_QTextDocument::isRedoAvailable(QTextDocument* theWrappedObject) const
+QTextObject*  PythonQtWrapper_QTextDocument::createObject(QTextDocument* theWrappedObject, const QTextFormat&  f)
 {
-  return ( theWrappedObject->isRedoAvailable());
+  return ( ((PythonQtPublicPromoter_QTextDocument*)theWrappedObject)->promoted_createObject(f));
 }
 
-QFont  PythonQtWrapper_QTextDocument::defaultFont(QTextDocument* theWrappedObject) const
+void PythonQtWrapper_QTextDocument::addResource(QTextDocument* theWrappedObject, int  type, const QUrl&  name, const QVariant&  resource)
 {
-  return ( theWrappedObject->defaultFont());
+  ( theWrappedObject->addResource(type, name, resource));
 }
 
-QString  PythonQtWrapper_QTextDocument::toHtml(QTextDocument* theWrappedObject, const QByteArray&  encoding) const
+QTextObject*  PythonQtWrapper_QTextDocument::objectForFormat(QTextDocument* theWrappedObject, const QTextFormat&  arg__1) const
 {
-  return ( theWrappedObject->toHtml(encoding));
+  return ( theWrappedObject->objectForFormat(arg__1));
 }
 
 bool  PythonQtWrapper_QTextDocument::useDesignMetrics(QTextDocument* theWrappedObject) const
@@ -502,14 +262,59 @@ bool  PythonQtWrapper_QTextDocument::useDesignMetrics(QTextDocument* theWrappedO
   return ( theWrappedObject->useDesignMetrics());
 }
 
-int  PythonQtWrapper_QTextDocument::maximumBlockCount(QTextDocument* theWrappedObject) const
+void PythonQtWrapper_QTextDocument::setUseDesignMetrics(QTextDocument* theWrappedObject, bool  b)
 {
-  return ( theWrappedObject->maximumBlockCount());
+  ( theWrappedObject->setUseDesignMetrics(b));
 }
 
-void PythonQtWrapper_QTextDocument::setMetaInformation(QTextDocument* theWrappedObject, QTextDocument::MetaInformation  info, const QString&  arg__2)
+bool  PythonQtWrapper_QTextDocument::isEmpty(QTextDocument* theWrappedObject) const
 {
-  ( theWrappedObject->setMetaInformation(info, arg__2));
+  return ( theWrappedObject->isEmpty());
+}
+
+void PythonQtWrapper_QTextDocument::markContentsDirty(QTextDocument* theWrappedObject, int  from, int  length)
+{
+  ( theWrappedObject->markContentsDirty(from, length));
+}
+
+QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QRegExp&  expr, const QTextCursor&  from, QTextDocument::FindFlags  options) const
+{
+  return ( theWrappedObject->find(expr, from, options));
+}
+
+void PythonQtWrapper_QTextDocument::setDefaultFont(QTextDocument* theWrappedObject, const QFont&  font)
+{
+  ( theWrappedObject->setDefaultFont(font));
+}
+
+QTextDocument*  PythonQtWrapper_QTextDocument::clone(QTextDocument* theWrappedObject, QObject*  parent) const
+{
+  return ( theWrappedObject->clone(parent));
+}
+
+QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QString&  subString, int  from, QTextDocument::FindFlags  options) const
+{
+  return ( theWrappedObject->find(subString, from, options));
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::findBlockByLineNumber(QTextDocument* theWrappedObject, int  blockNumber) const
+{
+  return ( theWrappedObject->findBlockByLineNumber(blockNumber));
+}
+
+void PythonQtWrapper_QTextDocument::setUndoRedoEnabled(QTextDocument* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setUndoRedoEnabled(enable));
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::lastBlock(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->lastBlock());
+}
+
+void PythonQtWrapper_QTextDocument::setIndentWidth(QTextDocument* theWrappedObject, qreal  width)
+{
+  ( theWrappedObject->setIndentWidth(width));
 }
 
 QVariant  PythonQtWrapper_QTextDocument::loadResource(QTextDocument* theWrappedObject, int  type, const QUrl&  name)
@@ -517,8 +322,243 @@ QVariant  PythonQtWrapper_QTextDocument::loadResource(QTextDocument* theWrappedO
   return ( ((PythonQtPublicPromoter_QTextDocument*)theWrappedObject)->promoted_loadResource(type, name));
 }
 
+void PythonQtWrapper_QTextDocument::setTextWidth(QTextDocument* theWrappedObject, qreal  width)
+{
+  ( theWrappedObject->setTextWidth(width));
+}
+
+int  PythonQtWrapper_QTextDocument::availableRedoSteps(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->availableRedoSteps());
+}
+
+QAbstractTextDocumentLayout*  PythonQtWrapper_QTextDocument::documentLayout(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->documentLayout());
+}
+
+int  PythonQtWrapper_QTextDocument::pageCount(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->pageCount());
+}
+
+void PythonQtWrapper_QTextDocument::adjustSize(QTextDocument* theWrappedObject)
+{
+  ( theWrappedObject->adjustSize());
+}
+
+QString  PythonQtWrapper_QTextDocument::toPlainText(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->toPlainText());
+}
+
+void PythonQtWrapper_QTextDocument::redo(QTextDocument* theWrappedObject, QTextCursor*  cursor)
+{
+  ( theWrappedObject->redo(cursor));
+}
+
 bool  PythonQtWrapper_QTextDocument::isUndoRedoEnabled(QTextDocument* theWrappedObject) const
 {
   return ( theWrappedObject->isUndoRedoEnabled());
+}
+
+void PythonQtWrapper_QTextDocument::setPlainText(QTextDocument* theWrappedObject, const QString&  text)
+{
+  ( theWrappedObject->setPlainText(text));
+}
+
+int  PythonQtWrapper_QTextDocument::maximumBlockCount(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->maximumBlockCount());
+}
+
+void PythonQtWrapper_QTextDocument::setDefaultTextOption(QTextDocument* theWrappedObject, const QTextOption&  option)
+{
+  ( theWrappedObject->setDefaultTextOption(option));
+}
+
+void PythonQtWrapper_QTextDocument::setMetaInformation(QTextDocument* theWrappedObject, QTextDocument::MetaInformation  info, const QString&  arg__2)
+{
+  ( theWrappedObject->setMetaInformation(info, arg__2));
+}
+
+QTextOption  PythonQtWrapper_QTextDocument::defaultTextOption(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultTextOption());
+}
+
+void PythonQtWrapper_QTextDocument::setMaximumBlockCount(QTextDocument* theWrappedObject, int  maximum)
+{
+  ( theWrappedObject->setMaximumBlockCount(maximum));
+}
+
+void PythonQtWrapper_QTextDocument::setPageSize(QTextDocument* theWrappedObject, const QSizeF&  size)
+{
+  ( theWrappedObject->setPageSize(size));
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::firstBlock(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->firstBlock());
+}
+
+bool  PythonQtWrapper_QTextDocument::isRedoAvailable(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->isRedoAvailable());
+}
+
+QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QString&  subString, const QTextCursor&  from, QTextDocument::FindFlags  options) const
+{
+  return ( theWrappedObject->find(subString, from, options));
+}
+
+void PythonQtWrapper_QTextDocument::undo(QTextDocument* theWrappedObject, QTextCursor*  cursor)
+{
+  ( theWrappedObject->undo(cursor));
+}
+
+QFont  PythonQtWrapper_QTextDocument::defaultFont(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultFont());
+}
+
+void PythonQtWrapper_QTextDocument::setDefaultStyleSheet(QTextDocument* theWrappedObject, const QString&  sheet)
+{
+  ( theWrappedObject->setDefaultStyleSheet(sheet));
+}
+
+QTextFrame*  PythonQtWrapper_QTextDocument::rootFrame(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->rootFrame());
+}
+
+qreal  PythonQtWrapper_QTextDocument::idealWidth(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->idealWidth());
+}
+
+bool  PythonQtWrapper_QTextDocument::isUndoAvailable(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->isUndoAvailable());
+}
+
+int  PythonQtWrapper_QTextDocument::blockCount(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->blockCount());
+}
+
+QChar  PythonQtWrapper_QTextDocument::characterAt(QTextDocument* theWrappedObject, int  pos) const
+{
+  return ( theWrappedObject->characterAt(pos));
+}
+
+void PythonQtWrapper_QTextDocument::print(QTextDocument* theWrappedObject, QPrinter*  printer) const
+{
+  ( theWrappedObject->print(printer));
+}
+
+bool  PythonQtWrapper_QTextDocument::isModified(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->isModified());
+}
+
+void PythonQtWrapper_QTextDocument::setHtml(QTextDocument* theWrappedObject, const QString&  html)
+{
+  ( theWrappedObject->setHtml(html));
+}
+
+void PythonQtWrapper_QTextDocument::clear(QTextDocument* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QTextDocument*)theWrappedObject)->promoted_clear());
+}
+
+QTextCursor  PythonQtWrapper_QTextDocument::find(QTextDocument* theWrappedObject, const QRegExp&  expr, int  from, QTextDocument::FindFlags  options) const
+{
+  return ( theWrappedObject->find(expr, from, options));
+}
+
+QTextFrame*  PythonQtWrapper_QTextDocument::frameAt(QTextDocument* theWrappedObject, int  pos) const
+{
+  return ( theWrappedObject->frameAt(pos));
+}
+
+QString  PythonQtWrapper_QTextDocument::defaultStyleSheet(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultStyleSheet());
+}
+
+QTextObject*  PythonQtWrapper_QTextDocument::object(QTextDocument* theWrappedObject, int  objectIndex) const
+{
+  return ( theWrappedObject->object(objectIndex));
+}
+
+QSizeF  PythonQtWrapper_QTextDocument::pageSize(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->pageSize());
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::begin(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->begin());
+}
+
+void PythonQtWrapper_QTextDocument::setDocumentLayout(QTextDocument* theWrappedObject, QAbstractTextDocumentLayout*  layout)
+{
+  ( theWrappedObject->setDocumentLayout(layout));
+}
+
+int  PythonQtWrapper_QTextDocument::characterCount(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->characterCount());
+}
+
+QVector<QTextFormat >  PythonQtWrapper_QTextDocument::allFormats(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->allFormats());
+}
+
+qreal  PythonQtWrapper_QTextDocument::textWidth(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->textWidth());
+}
+
+QVariant  PythonQtWrapper_QTextDocument::resource(QTextDocument* theWrappedObject, int  type, const QUrl&  name) const
+{
+  return ( theWrappedObject->resource(type, name));
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::end(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->end());
+}
+
+void PythonQtWrapper_QTextDocument::drawContents(QTextDocument* theWrappedObject, QPainter*  painter, const QRectF&  rect)
+{
+  ( theWrappedObject->drawContents(painter, rect));
+}
+
+int  PythonQtWrapper_QTextDocument::lineCount(QTextDocument* theWrappedObject) const
+{
+  return ( theWrappedObject->lineCount());
+}
+
+QTextBlock  PythonQtWrapper_QTextDocument::findBlock(QTextDocument* theWrappedObject, int  pos) const
+{
+  return ( theWrappedObject->findBlock(pos));
+}
+
+QString  PythonQtWrapper_QTextDocument::toHtml(QTextDocument* theWrappedObject, const QByteArray&  encoding) const
+{
+  return ( theWrappedObject->toHtml(encoding));
+}
+
+void PythonQtWrapper_QTextDocument::setDocumentMargin(QTextDocument* theWrappedObject, qreal  margin)
+{
+  ( theWrappedObject->setDocumentMargin(margin));
+}
+
+QString  PythonQtWrapper_QTextDocument::metaInformation(QTextDocument* theWrappedObject, QTextDocument::MetaInformation  info) const
+{
+  return ( theWrappedObject->metaInformation(info));
 }
 

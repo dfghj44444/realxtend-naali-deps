@@ -39,15 +39,15 @@ public:
 public slots:
 QTextList* new_QTextList(QTextDocument*  doc);
 void delete_QTextList(QTextList* obj) { delete obj; } 
-   QTextBlock  item(QTextList* theWrappedObject, int  i) const;
-   void add(QTextList* theWrappedObject, const QTextBlock&  block);
-   int  itemNumber(QTextList* theWrappedObject, const QTextBlock&  arg__1) const;
-   void setFormat(QTextList* theWrappedObject, const QTextListFormat&  format);
-   QString  itemText(QTextList* theWrappedObject, const QTextBlock&  arg__1) const;
-   QTextListFormat  format(QTextList* theWrappedObject) const;
    void remove(QTextList* theWrappedObject, const QTextBlock&  arg__1);
-   void removeItem(QTextList* theWrappedObject, int  i);
+   int  itemNumber(QTextList* theWrappedObject, const QTextBlock&  arg__1) const;
+   QString  itemText(QTextList* theWrappedObject, const QTextBlock&  arg__1) const;
    int  count(QTextList* theWrappedObject) const;
+   void setFormat(QTextList* theWrappedObject, const QTextListFormat&  format);
+   void add(QTextList* theWrappedObject, const QTextBlock&  block);
+   QTextBlock  item(QTextList* theWrappedObject, int  i) const;
+   void removeItem(QTextList* theWrappedObject, int  i);
+   QTextListFormat  format(QTextList* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTLIST_H

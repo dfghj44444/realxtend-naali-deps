@@ -14,12 +14,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -91,10 +94,10 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QWizardPage : public QWizardPage
 { public:
+inline bool  promoted_isComplete() const { return QWizardPage::isComplete(); }
 inline bool  promoted_validatePage() { return QWizardPage::validatePage(); }
 inline void promoted_initializePage() { QWizardPage::initializePage(); }
 inline void promoted_cleanupPage() { QWizardPage::cleanupPage(); }
-inline bool  promoted_isComplete() const { return QWizardPage::isComplete(); }
 inline int  promoted_nextId() const { return QWizardPage::nextId(); }
 };
 
@@ -104,23 +107,23 @@ public:
 public slots:
 QWizardPage* new_QWizardPage(QWidget*  parent = 0);
 void delete_QWizardPage(QWizardPage* obj) { delete obj; } 
-   bool  validatePage(QWizardPage* theWrappedObject);
-   void initializePage(QWizardPage* theWrappedObject);
-   QPixmap  pixmap(QWizardPage* theWrappedObject, QWizard::WizardPixmap  which) const;
-   QString  buttonText(QWizardPage* theWrappedObject, QWizard::WizardButton  which) const;
    void setPixmap(QWizardPage* theWrappedObject, QWizard::WizardPixmap  which, const QPixmap&  pixmap);
    void setSubTitle(QWizardPage* theWrappedObject, const QString&  subTitle);
-   void setFinalPage(QWizardPage* theWrappedObject, bool  finalPage);
+   bool  isComplete(QWizardPage* theWrappedObject) const;
    void setTitle(QWizardPage* theWrappedObject, const QString&  title);
-   QString  title(QWizardPage* theWrappedObject) const;
+   QString  subTitle(QWizardPage* theWrappedObject) const;
+   bool  isCommitPage(QWizardPage* theWrappedObject) const;
+   QPixmap  pixmap(QWizardPage* theWrappedObject, QWizard::WizardPixmap  which) const;
+   bool  validatePage(QWizardPage* theWrappedObject);
+   void initializePage(QWizardPage* theWrappedObject);
+   QString  buttonText(QWizardPage* theWrappedObject, QWizard::WizardButton  which) const;
    void setButtonText(QWizardPage* theWrappedObject, QWizard::WizardButton  which, const QString&  text);
    void setCommitPage(QWizardPage* theWrappedObject, bool  commitPage);
-   bool  isCommitPage(QWizardPage* theWrappedObject) const;
+   void setFinalPage(QWizardPage* theWrappedObject, bool  finalPage);
    bool  isFinalPage(QWizardPage* theWrappedObject) const;
    void cleanupPage(QWizardPage* theWrappedObject);
-   bool  isComplete(QWizardPage* theWrappedObject) const;
    int  nextId(QWizardPage* theWrappedObject) const;
-   QString  subTitle(QWizardPage* theWrappedObject) const;
+   QString  title(QWizardPage* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QWIZARDPAGE_H

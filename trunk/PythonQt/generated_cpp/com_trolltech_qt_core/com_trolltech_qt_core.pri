@@ -1,7 +1,11 @@
 HEADERS += \
+           $$PWD/PythonQtWrapper_QAbstractAnimation.h \
            $$PWD/PythonQtWrapper_QAbstractItemModel.h \
            $$PWD/PythonQtWrapper_QAbstractListModel.h \
+           $$PWD/PythonQtWrapper_QAbstractState.h \
            $$PWD/PythonQtWrapper_QAbstractTableModel.h \
+           $$PWD/PythonQtWrapper_QAbstractTransition.h \
+           $$PWD/PythonQtWrapper_QAnimationGroup.h \
            $$PWD/PythonQtWrapper_QBasicTimer.h \
            $$PWD/PythonQtWrapper_QBitArray.h \
            $$PWD/PythonQtWrapper_QBuffer.h \
@@ -14,24 +18,40 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QDir.h \
            $$PWD/PythonQtWrapper_QDirIterator.h \
            $$PWD/PythonQtWrapper_QDynamicPropertyChangeEvent.h \
+           $$PWD/PythonQtWrapper_QEasingCurve.h \
            $$PWD/PythonQtWrapper_QEvent.h \
            $$PWD/PythonQtWrapper_QEventLoop.h \
+           $$PWD/PythonQtWrapper_QEventTransition.h \
            $$PWD/PythonQtWrapper_QFile.h \
            $$PWD/PythonQtWrapper_QFileInfo.h \
            $$PWD/PythonQtWrapper_QFileSystemWatcher.h \
+           $$PWD/PythonQtWrapper_QFinalState.h \
+           $$PWD/PythonQtWrapper_QHistoryState.h \
            $$PWD/PythonQtWrapper_QIODevice.h \
            $$PWD/PythonQtWrapper_QLibraryInfo.h \
+           $$PWD/PythonQtWrapper_QMargins.h \
            $$PWD/PythonQtWrapper_QMimeData.h \
            $$PWD/PythonQtWrapper_QModelIndex.h \
            $$PWD/PythonQtWrapper_QMutex.h \
            $$PWD/PythonQtWrapper_QObject.h \
+           $$PWD/PythonQtWrapper_QParallelAnimationGroup.h \
+           $$PWD/PythonQtWrapper_QPauseAnimation.h \
            $$PWD/PythonQtWrapper_QPersistentModelIndex.h \
            $$PWD/PythonQtWrapper_QProcess.h \
+           $$PWD/PythonQtWrapper_QProcessEnvironment.h \
+           $$PWD/PythonQtWrapper_QPropertyAnimation.h \
+           $$PWD/PythonQtWrapper_QReadWriteLock.h \
            $$PWD/PythonQtWrapper_QRunnable.h \
            $$PWD/PythonQtWrapper_QSemaphore.h \
+           $$PWD/PythonQtWrapper_QSequentialAnimationGroup.h \
            $$PWD/PythonQtWrapper_QSettings.h \
            $$PWD/PythonQtWrapper_QSignalMapper.h \
+           $$PWD/PythonQtWrapper_QSignalTransition.h \
            $$PWD/PythonQtWrapper_QSocketNotifier.h \
+           $$PWD/PythonQtWrapper_QState.h \
+           $$PWD/PythonQtWrapper_QStateMachine.h \
+           $$PWD/PythonQtWrapper_QStateMachine_SignalEvent.h \
+           $$PWD/PythonQtWrapper_QStateMachine_WrappedEvent.h \
            $$PWD/PythonQtWrapper_QStringMatcher.h \
            $$PWD/PythonQtWrapper_QSystemSemaphore.h \
            $$PWD/PythonQtWrapper_QTemporaryFile.h \
@@ -47,6 +67,7 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QTimerEvent.h \
            $$PWD/PythonQtWrapper_QTranslator.h \
            $$PWD/PythonQtWrapper_QUuid.h \
+           $$PWD/PythonQtWrapper_QVariantAnimation.h \
            $$PWD/PythonQtWrapper_QWaitCondition.h \
            $$PWD/PythonQtWrapper_QXmlStreamAttribute.h \
            $$PWD/PythonQtWrapper_QXmlStreamAttributes.h \
@@ -59,9 +80,13 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QtConcurrent.h \
 
 SOURCES += \
+           $$PWD/PythonQtWrapper_QAbstractAnimation.cpp \
            $$PWD/PythonQtWrapper_QAbstractItemModel.cpp \
            $$PWD/PythonQtWrapper_QAbstractListModel.cpp \
+           $$PWD/PythonQtWrapper_QAbstractState.cpp \
            $$PWD/PythonQtWrapper_QAbstractTableModel.cpp \
+           $$PWD/PythonQtWrapper_QAbstractTransition.cpp \
+           $$PWD/PythonQtWrapper_QAnimationGroup.cpp \
            $$PWD/PythonQtWrapper_QBasicTimer.cpp \
            $$PWD/PythonQtWrapper_QBitArray.cpp \
            $$PWD/PythonQtWrapper_QBuffer.cpp \
@@ -74,24 +99,40 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QDir.cpp \
            $$PWD/PythonQtWrapper_QDirIterator.cpp \
            $$PWD/PythonQtWrapper_QDynamicPropertyChangeEvent.cpp \
+           $$PWD/PythonQtWrapper_QEasingCurve.cpp \
            $$PWD/PythonQtWrapper_QEvent.cpp \
            $$PWD/PythonQtWrapper_QEventLoop.cpp \
+           $$PWD/PythonQtWrapper_QEventTransition.cpp \
            $$PWD/PythonQtWrapper_QFile.cpp \
            $$PWD/PythonQtWrapper_QFileInfo.cpp \
            $$PWD/PythonQtWrapper_QFileSystemWatcher.cpp \
+           $$PWD/PythonQtWrapper_QFinalState.cpp \
+           $$PWD/PythonQtWrapper_QHistoryState.cpp \
            $$PWD/PythonQtWrapper_QIODevice.cpp \
            $$PWD/PythonQtWrapper_QLibraryInfo.cpp \
+           $$PWD/PythonQtWrapper_QMargins.cpp \
            $$PWD/PythonQtWrapper_QMimeData.cpp \
            $$PWD/PythonQtWrapper_QModelIndex.cpp \
            $$PWD/PythonQtWrapper_QMutex.cpp \
            $$PWD/PythonQtWrapper_QObject.cpp \
+           $$PWD/PythonQtWrapper_QParallelAnimationGroup.cpp \
+           $$PWD/PythonQtWrapper_QPauseAnimation.cpp \
            $$PWD/PythonQtWrapper_QPersistentModelIndex.cpp \
            $$PWD/PythonQtWrapper_QProcess.cpp \
+           $$PWD/PythonQtWrapper_QProcessEnvironment.cpp \
+           $$PWD/PythonQtWrapper_QPropertyAnimation.cpp \
+           $$PWD/PythonQtWrapper_QReadWriteLock.cpp \
            $$PWD/PythonQtWrapper_QRunnable.cpp \
            $$PWD/PythonQtWrapper_QSemaphore.cpp \
+           $$PWD/PythonQtWrapper_QSequentialAnimationGroup.cpp \
            $$PWD/PythonQtWrapper_QSettings.cpp \
            $$PWD/PythonQtWrapper_QSignalMapper.cpp \
+           $$PWD/PythonQtWrapper_QSignalTransition.cpp \
            $$PWD/PythonQtWrapper_QSocketNotifier.cpp \
+           $$PWD/PythonQtWrapper_QState.cpp \
+           $$PWD/PythonQtWrapper_QStateMachine.cpp \
+           $$PWD/PythonQtWrapper_QStateMachine_SignalEvent.cpp \
+           $$PWD/PythonQtWrapper_QStateMachine_WrappedEvent.cpp \
            $$PWD/PythonQtWrapper_QStringMatcher.cpp \
            $$PWD/PythonQtWrapper_QSystemSemaphore.cpp \
            $$PWD/PythonQtWrapper_QTemporaryFile.cpp \
@@ -107,6 +148,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QTimerEvent.cpp \
            $$PWD/PythonQtWrapper_QTranslator.cpp \
            $$PWD/PythonQtWrapper_QUuid.cpp \
+           $$PWD/PythonQtWrapper_QVariantAnimation.cpp \
            $$PWD/PythonQtWrapper_QWaitCondition.cpp \
            $$PWD/PythonQtWrapper_QXmlStreamAttribute.cpp \
            $$PWD/PythonQtWrapper_QXmlStreamAttributes.cpp \

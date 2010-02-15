@@ -10,9 +10,11 @@
 #include <qcoreevent.h>
 #include <qcursor.h>
 #include <qevent.h>
+#include <qgraphicseffect.h>
 #include <qgraphicsitem.h>
 #include <qgraphicsscene.h>
 #include <qgraphicssceneevent.h>
+#include <qgraphicstransform.h>
 #include <qgraphicswidget.h>
 #include <qlist.h>
 #include <qpainter.h>
@@ -72,212 +74,265 @@ virtual void wheelEvent(QGraphicsSceneWheelEvent*  event);
 
 class PythonQtPublicPromoter_QGraphicsItem : public QGraphicsItem
 { public:
-inline void promoted_hoverMoveEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverMoveEvent(event); }
-inline void promoted_dropEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dropEvent(event); }
-inline void promoted_mouseReleaseEvent(QGraphicsSceneMouseEvent*  event) { QGraphicsItem::mouseReleaseEvent(event); }
+inline bool  promoted_collidesWithPath(const QPainterPath&  path, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const { return QGraphicsItem::collidesWithPath(path, mode); }
+inline void promoted_focusInEvent(QFocusEvent*  event) { QGraphicsItem::focusInEvent(event); }
+inline QVariant  promoted_itemChange(QGraphicsItem::GraphicsItemChange  change, const QVariant&  value) { return QGraphicsItem::itemChange(change, value); }
 inline void promoted_dragLeaveEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dragLeaveEvent(event); }
-inline void promoted_advance(int  phase) { QGraphicsItem::advance(phase); }
+inline void promoted_hoverMoveEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverMoveEvent(event); }
 inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsItem::isObscuredBy(item); }
-inline int  promoted_type() const { return QGraphicsItem::type(); }
+inline void promoted_contextMenuEvent(QGraphicsSceneContextMenuEvent*  event) { QGraphicsItem::contextMenuEvent(event); }
 inline bool  promoted_collidesWithItem(const QGraphicsItem*  other, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const { return QGraphicsItem::collidesWithItem(other, mode); }
-inline void promoted_dragMoveEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dragMoveEvent(event); }
+inline void promoted_hoverEnterEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverEnterEvent(event); }
 inline void promoted_mousePressEvent(QGraphicsSceneMouseEvent*  event) { QGraphicsItem::mousePressEvent(event); }
 inline void promoted_mouseMoveEvent(QGraphicsSceneMouseEvent*  event) { QGraphicsItem::mouseMoveEvent(event); }
-inline QVariant  promoted_itemChange(QGraphicsItem::GraphicsItemChange  change, const QVariant&  value) { return QGraphicsItem::itemChange(change, value); }
-inline void promoted_focusOutEvent(QFocusEvent*  event) { QGraphicsItem::focusOutEvent(event); }
-inline void promoted_keyReleaseEvent(QKeyEvent*  event) { QGraphicsItem::keyReleaseEvent(event); }
-inline void promoted_dragEnterEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dragEnterEvent(event); }
-inline QVariant  promoted_inputMethodQuery(Qt::InputMethodQuery  query) const { return QGraphicsItem::inputMethodQuery(query); }
-inline bool  promoted_sceneEventFilter(QGraphicsItem*  watched, QEvent*  event) { return QGraphicsItem::sceneEventFilter(watched, event); }
-inline bool  promoted_collidesWithPath(const QPainterPath&  path, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const { return QGraphicsItem::collidesWithPath(path, mode); }
-inline void promoted_wheelEvent(QGraphicsSceneWheelEvent*  event) { QGraphicsItem::wheelEvent(event); }
+inline int  promoted_type() const { return QGraphicsItem::type(); }
+inline void promoted_hoverLeaveEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverLeaveEvent(event); }
+inline void promoted_dropEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dropEvent(event); }
+inline void promoted_mouseReleaseEvent(QGraphicsSceneMouseEvent*  event) { QGraphicsItem::mouseReleaseEvent(event); }
+inline QPainterPath  promoted_shape() const { return QGraphicsItem::shape(); }
 inline QVariant  promoted_extension(const QVariant&  variant) const { return QGraphicsItem::extension(variant); }
 inline void promoted_mouseDoubleClickEvent(QGraphicsSceneMouseEvent*  event) { QGraphicsItem::mouseDoubleClickEvent(event); }
-inline QPainterPath  promoted_shape() const { return QGraphicsItem::shape(); }
-inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsItem::contains(point); }
-inline void promoted_hoverLeaveEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverLeaveEvent(event); }
-inline void promoted_contextMenuEvent(QGraphicsSceneContextMenuEvent*  event) { QGraphicsItem::contextMenuEvent(event); }
-inline void promoted_hoverEnterEvent(QGraphicsSceneHoverEvent*  event) { QGraphicsItem::hoverEnterEvent(event); }
-inline void promoted_inputMethodEvent(QInputMethodEvent*  event) { QGraphicsItem::inputMethodEvent(event); }
+inline void promoted_advance(int  phase) { QGraphicsItem::advance(phase); }
+inline bool  promoted_sceneEventFilter(QGraphicsItem*  watched, QEvent*  event) { return QGraphicsItem::sceneEventFilter(watched, event); }
+inline QVariant  promoted_inputMethodQuery(Qt::InputMethodQuery  query) const { return QGraphicsItem::inputMethodQuery(query); }
+inline void promoted_keyReleaseEvent(QKeyEvent*  event) { QGraphicsItem::keyReleaseEvent(event); }
+inline void promoted_wheelEvent(QGraphicsSceneWheelEvent*  event) { QGraphicsItem::wheelEvent(event); }
 inline QPainterPath  promoted_opaqueArea() const { return QGraphicsItem::opaqueArea(); }
-inline void promoted_focusInEvent(QFocusEvent*  event) { QGraphicsItem::focusInEvent(event); }
 inline bool  promoted_sceneEvent(QEvent*  event) { return QGraphicsItem::sceneEvent(event); }
+inline void promoted_dragMoveEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dragMoveEvent(event); }
+inline void promoted_dragEnterEvent(QGraphicsSceneDragDropEvent*  event) { QGraphicsItem::dragEnterEvent(event); }
+inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsItem::contains(point); }
 inline void promoted_keyPressEvent(QKeyEvent*  event) { QGraphicsItem::keyPressEvent(event); }
+inline void promoted_focusOutEvent(QFocusEvent*  event) { QGraphicsItem::focusOutEvent(event); }
+inline void promoted_inputMethodEvent(QInputMethodEvent*  event) { QGraphicsItem::inputMethodEvent(event); }
 };
 
 class PythonQtWrapper_QGraphicsItem : public QObject
 { Q_OBJECT
 public:
-Q_ENUMS(CacheMode enum_1 GraphicsItemFlag GraphicsItemChange )
+Q_ENUMS(CacheMode PanelModality enum_1 GraphicsItemFlag GraphicsItemChange )
 Q_FLAGS(GraphicsItemFlags )
 enum CacheMode{
   NoCache = QGraphicsItem::NoCache,   ItemCoordinateCache = QGraphicsItem::ItemCoordinateCache,   DeviceCoordinateCache = QGraphicsItem::DeviceCoordinateCache};
+enum PanelModality{
+  NonModal = QGraphicsItem::NonModal,   PanelModal = QGraphicsItem::PanelModal,   SceneModal = QGraphicsItem::SceneModal};
 enum enum_1{
   Type = QGraphicsItem::Type,   UserType = QGraphicsItem::UserType};
 enum GraphicsItemFlag{
-  ItemIsMovable = QGraphicsItem::ItemIsMovable,   ItemIsSelectable = QGraphicsItem::ItemIsSelectable,   ItemIsFocusable = QGraphicsItem::ItemIsFocusable,   ItemClipsToShape = QGraphicsItem::ItemClipsToShape,   ItemClipsChildrenToShape = QGraphicsItem::ItemClipsChildrenToShape,   ItemIgnoresTransformations = QGraphicsItem::ItemIgnoresTransformations};
+  ItemIsMovable = QGraphicsItem::ItemIsMovable,   ItemIsSelectable = QGraphicsItem::ItemIsSelectable,   ItemIsFocusable = QGraphicsItem::ItemIsFocusable,   ItemClipsToShape = QGraphicsItem::ItemClipsToShape,   ItemClipsChildrenToShape = QGraphicsItem::ItemClipsChildrenToShape,   ItemIgnoresTransformations = QGraphicsItem::ItemIgnoresTransformations,   ItemIgnoresParentOpacity = QGraphicsItem::ItemIgnoresParentOpacity,   ItemDoesntPropagateOpacityToChildren = QGraphicsItem::ItemDoesntPropagateOpacityToChildren,   ItemStacksBehindParent = QGraphicsItem::ItemStacksBehindParent,   ItemUsesExtendedStyleOption = QGraphicsItem::ItemUsesExtendedStyleOption,   ItemHasNoContents = QGraphicsItem::ItemHasNoContents,   ItemSendsGeometryChanges = QGraphicsItem::ItemSendsGeometryChanges,   ItemAcceptsInputMethod = QGraphicsItem::ItemAcceptsInputMethod,   ItemNegativeZStacksBehindParent = QGraphicsItem::ItemNegativeZStacksBehindParent,   ItemIsPanel = QGraphicsItem::ItemIsPanel,   ItemIsFocusScope = QGraphicsItem::ItemIsFocusScope,   ItemSendsScenePositionChanges = QGraphicsItem::ItemSendsScenePositionChanges};
 enum GraphicsItemChange{
-  ItemPositionChange = QGraphicsItem::ItemPositionChange,   ItemMatrixChange = QGraphicsItem::ItemMatrixChange,   ItemVisibleChange = QGraphicsItem::ItemVisibleChange,   ItemEnabledChange = QGraphicsItem::ItemEnabledChange,   ItemSelectedChange = QGraphicsItem::ItemSelectedChange,   ItemParentChange = QGraphicsItem::ItemParentChange,   ItemChildAddedChange = QGraphicsItem::ItemChildAddedChange,   ItemChildRemovedChange = QGraphicsItem::ItemChildRemovedChange,   ItemTransformChange = QGraphicsItem::ItemTransformChange,   ItemPositionHasChanged = QGraphicsItem::ItemPositionHasChanged,   ItemTransformHasChanged = QGraphicsItem::ItemTransformHasChanged,   ItemSceneChange = QGraphicsItem::ItemSceneChange,   ItemVisibleHasChanged = QGraphicsItem::ItemVisibleHasChanged,   ItemEnabledHasChanged = QGraphicsItem::ItemEnabledHasChanged,   ItemSelectedHasChanged = QGraphicsItem::ItemSelectedHasChanged,   ItemParentHasChanged = QGraphicsItem::ItemParentHasChanged,   ItemSceneHasChanged = QGraphicsItem::ItemSceneHasChanged,   ItemCursorChange = QGraphicsItem::ItemCursorChange,   ItemCursorHasChanged = QGraphicsItem::ItemCursorHasChanged,   ItemToolTipChange = QGraphicsItem::ItemToolTipChange,   ItemToolTipHasChanged = QGraphicsItem::ItemToolTipHasChanged,   ItemFlagsChange = QGraphicsItem::ItemFlagsChange,   ItemFlagsHaveChanged = QGraphicsItem::ItemFlagsHaveChanged,   ItemZValueChange = QGraphicsItem::ItemZValueChange,   ItemZValueHasChanged = QGraphicsItem::ItemZValueHasChanged};
+  ItemPositionChange = QGraphicsItem::ItemPositionChange,   ItemMatrixChange = QGraphicsItem::ItemMatrixChange,   ItemVisibleChange = QGraphicsItem::ItemVisibleChange,   ItemEnabledChange = QGraphicsItem::ItemEnabledChange,   ItemSelectedChange = QGraphicsItem::ItemSelectedChange,   ItemParentChange = QGraphicsItem::ItemParentChange,   ItemChildAddedChange = QGraphicsItem::ItemChildAddedChange,   ItemChildRemovedChange = QGraphicsItem::ItemChildRemovedChange,   ItemTransformChange = QGraphicsItem::ItemTransformChange,   ItemPositionHasChanged = QGraphicsItem::ItemPositionHasChanged,   ItemTransformHasChanged = QGraphicsItem::ItemTransformHasChanged,   ItemSceneChange = QGraphicsItem::ItemSceneChange,   ItemVisibleHasChanged = QGraphicsItem::ItemVisibleHasChanged,   ItemEnabledHasChanged = QGraphicsItem::ItemEnabledHasChanged,   ItemSelectedHasChanged = QGraphicsItem::ItemSelectedHasChanged,   ItemParentHasChanged = QGraphicsItem::ItemParentHasChanged,   ItemSceneHasChanged = QGraphicsItem::ItemSceneHasChanged,   ItemCursorChange = QGraphicsItem::ItemCursorChange,   ItemCursorHasChanged = QGraphicsItem::ItemCursorHasChanged,   ItemToolTipChange = QGraphicsItem::ItemToolTipChange,   ItemToolTipHasChanged = QGraphicsItem::ItemToolTipHasChanged,   ItemFlagsChange = QGraphicsItem::ItemFlagsChange,   ItemFlagsHaveChanged = QGraphicsItem::ItemFlagsHaveChanged,   ItemZValueChange = QGraphicsItem::ItemZValueChange,   ItemZValueHasChanged = QGraphicsItem::ItemZValueHasChanged,   ItemOpacityChange = QGraphicsItem::ItemOpacityChange,   ItemOpacityHasChanged = QGraphicsItem::ItemOpacityHasChanged,   ItemScenePositionHasChanged = QGraphicsItem::ItemScenePositionHasChanged};
 Q_DECLARE_FLAGS(GraphicsItemFlags, GraphicsItemFlag)
 public slots:
 QGraphicsItem* new_QGraphicsItem(QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 void delete_QGraphicsItem(QGraphicsItem* obj) { delete obj; } 
 bool hasOwner(QGraphicsItem* theWrappedObject) { return theWrappedObject->scene()!=NULL || theWrappedObject->parentItem()!=NULL; }
-   void hoverMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
-   QPolygonF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   QPointF  mapToParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
-   void dropEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
-   void setPos(QGraphicsItem* theWrappedObject, const QPointF&  pos);
-   QRectF  sceneBoundingRect(QGraphicsItem* theWrappedObject) const;
-   void mouseReleaseEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
-   QGraphicsItem*  parentItem(QGraphicsItem* theWrappedObject) const;
-   QGraphicsItem::CacheMode  cacheMode(QGraphicsItem* theWrappedObject) const;
-   void dragLeaveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
-   bool  isVisible(QGraphicsItem* theWrappedObject) const;
-   void advance(QGraphicsItem* theWrappedObject, int  phase);
-   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
-   void setVisible(QGraphicsItem* theWrappedObject, bool  visible);
-   void update(QGraphicsItem* theWrappedObject, const QRectF&  rect = QRectF());
-   void setBoundingRegionGranularity(QGraphicsItem* theWrappedObject, qreal  granularity);
-   bool  isObscuredBy(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item) const;
-   int  type(QGraphicsItem* theWrappedObject) const;
-   QList<QGraphicsItem* >  collidingItems(QGraphicsItem* theWrappedObject, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const;
-   QPointF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y) const;
-   Qt::MouseButtons  acceptedMouseButtons(QGraphicsItem* theWrappedObject) const;
-   QPointF  mapFromScene(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
-   void setAcceptsHoverEvents(QGraphicsItem* theWrappedObject, bool  enabled);
-   bool  collidesWithItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  other, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const;
-   void setPos(QGraphicsItem* theWrappedObject, qreal  x, qreal  y);
-   void setAcceptDrops(QGraphicsItem* theWrappedObject, bool  on);
-   void unsetCursor(QGraphicsItem* theWrappedObject);
-   QPointF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPointF&  point) const;
-   void setCursor(QGraphicsItem* theWrappedObject, const QCursor&  cursor);
-   void setAcceptedMouseButtons(QGraphicsItem* theWrappedObject, Qt::MouseButtons  buttons);
-   void hide(QGraphicsItem* theWrappedObject);
-   void setZValue(QGraphicsItem* theWrappedObject, qreal  z);
-   QPointF  mapToScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
-   void setAcceptHoverEvents(QGraphicsItem* theWrappedObject, bool  enabled);
-   void dragMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
-   void mousePressEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
-   QPointF  mapToScene(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
-   void scale(QGraphicsItem* theWrappedObject, qreal  sx, qreal  sy);
-   QTransform  sceneTransform(QGraphicsItem* theWrappedObject) const;
-   QList<QGraphicsItem* >  childItems(QGraphicsItem* theWrappedObject) const;
-   bool  isUnderMouse(QGraphicsItem* theWrappedObject) const;
-   void grabKeyboard(QGraphicsItem* theWrappedObject);
-   void setSelected(QGraphicsItem* theWrappedObject, bool  selected);
-   void moveBy(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy);
-   void mouseMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
-   void setFlags(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemFlags  flags);
-   QVariant  itemChange(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemChange  change, const QVariant&  value);
    void setEnabled(QGraphicsItem* theWrappedObject, bool  enabled);
-   QPainterPath  mapFromScene(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
-   QGraphicsWidget*  topLevelWidget(QGraphicsItem* theWrappedObject) const;
-   bool  isObscured(QGraphicsItem* theWrappedObject) const;
-   void grabMouse(QGraphicsItem* theWrappedObject);
-   QPainterPath  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPainterPath&  path) const;
-   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
-   bool  isVisibleTo(QGraphicsItem* theWrappedObject, const QGraphicsItem*  parent) const;
-   QPointF  pos(QGraphicsItem* theWrappedObject) const;
-   bool  isWindow(QGraphicsItem* theWrappedObject) const;
-   QGraphicsScene*  scene(QGraphicsItem* theWrappedObject) const;
-   bool  acceptDrops(QGraphicsItem* theWrappedObject) const;
-   void focusOutEvent(QGraphicsItem* theWrappedObject, QFocusEvent*  event);
-   bool  acceptsHoverEvents(QGraphicsItem* theWrappedObject) const;
-   bool  handlesChildEvents(QGraphicsItem* theWrappedObject) const;
-   QPainterPath  mapFromParent(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
-   void setData(QGraphicsItem* theWrappedObject, int  key, const QVariant&  value);
-   QGraphicsItem*  topLevelItem(QGraphicsItem* theWrappedObject) const;
-   void keyReleaseEvent(QGraphicsItem* theWrappedObject, QKeyEvent*  event);
-   void ungrabMouse(QGraphicsItem* theWrappedObject);
-   void dragEnterEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
-   QVariant  inputMethodQuery(QGraphicsItem* theWrappedObject, Qt::InputMethodQuery  query) const;
-   bool  sceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  watched, QEvent*  event);
+   void setFiltersChildEvents(QGraphicsItem* theWrappedObject, bool  enabled);
    bool  collidesWithPath(QGraphicsItem* theWrappedObject, const QPainterPath&  path, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const;
-   QPointF  mapFromParent(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
-   void wheelEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneWheelEvent*  event);
-   void setTransform(QGraphicsItem* theWrappedObject, const QTransform&  matrix, bool  combine = false);
-   QVariant  extension(QGraphicsItem* theWrappedObject, const QVariant&  variant) const;
-   void mouseDoubleClickEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
-   bool  hasCursor(QGraphicsItem* theWrappedObject) const;
-   void setParentItem(QGraphicsItem* theWrappedObject, QGraphicsItem*  parent);
-   QPolygonF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
-   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   QVariant  data(QGraphicsItem* theWrappedObject, int  key) const;
-   void removeSceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  filterItem);
-   QPainterPath  shape(QGraphicsItem* theWrappedObject) const;
+   void hide(QGraphicsItem* theWrappedObject);
+   void setX(QGraphicsItem* theWrappedObject, qreal  x);
+   qreal  effectiveOpacity(QGraphicsItem* theWrappedObject) const;
+   void setAcceptTouchEvents(QGraphicsItem* theWrappedObject, bool  enabled);
    void show(QGraphicsItem* theWrappedObject);
-   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
-   void setHandlesChildEvents(QGraphicsItem* theWrappedObject, bool  enabled);
-   void update(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  width, qreal  height);
-   bool  contains(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
-   void setCacheMode(QGraphicsItem* theWrappedObject, QGraphicsItem::CacheMode  mode, const QSize&  cacheSize = QSize());
-   void hoverLeaveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
-   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPolygonF&  polygon) const;
-   void setFlag(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemFlag  flag, bool  enabled = true);
-   void contextMenuEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneContextMenuEvent*  event);
-   qreal  y(QGraphicsItem* theWrappedObject) const;
-   bool  acceptHoverEvents(QGraphicsItem* theWrappedObject) const;
-   bool  isAncestorOf(QGraphicsItem* theWrappedObject, const QGraphicsItem*  child) const;
-   QPainterPath  mapToScene(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
-   void rotate(QGraphicsItem* theWrappedObject, qreal  angle);
-   QGraphicsWidget*  parentWidget(QGraphicsItem* theWrappedObject) const;
-   void hoverEnterEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
-   void setGroup(QGraphicsItem* theWrappedObject, QGraphicsItemGroup*  group);
-   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
-   QGraphicsItem::GraphicsItemFlags  flags(QGraphicsItem* theWrappedObject) const;
-   QRectF  childrenBoundingRect(QGraphicsItem* theWrappedObject) const;
-   void translate(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy);
-   qreal  zValue(QGraphicsItem* theWrappedObject) const;
-   QPolygonF  mapFromScene(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
-   void inputMethodEvent(QGraphicsItem* theWrappedObject, QInputMethodEvent*  event);
-   QTransform  transform(QGraphicsItem* theWrappedObject) const;
-   QPointF  mapFromScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
-   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
-   void ensureVisible(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  xmargin = 50, int  ymargin = 50);
-   QPainterPath  opaqueArea(QGraphicsItem* theWrappedObject) const;
-   QPointF  scenePos(QGraphicsItem* theWrappedObject) const;
-   QString  toolTip(QGraphicsItem* theWrappedObject) const;
-   void installSceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  filterItem);
-   QCursor  cursor(QGraphicsItem* theWrappedObject) const;
-   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
-   QPointF  mapToParent(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
-   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
-   void focusInEvent(QGraphicsItem* theWrappedObject, QFocusEvent*  event);
-   bool  sceneEvent(QGraphicsItem* theWrappedObject, QEvent*  event);
-   bool  isObscured(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
-   QTransform  deviceTransform(QGraphicsItem* theWrappedObject, const QTransform&  viewportTransform) const;
-   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   void shear(QGraphicsItem* theWrappedObject, qreal  sh, qreal  sv);
-   bool  isWidget(QGraphicsItem* theWrappedObject) const;
-   QPainterPath  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPainterPath&  path) const;
-   QPointF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y) const;
-   void setToolTip(QGraphicsItem* theWrappedObject, const QString&  toolTip);
-   QGraphicsWidget*  window(QGraphicsItem* theWrappedObject) const;
-   void keyPressEvent(QGraphicsItem* theWrappedObject, QKeyEvent*  event);
-   QRegion  boundingRegion(QGraphicsItem* theWrappedObject, const QTransform&  itemToDeviceTransform) const;
-   void clearFocus(QGraphicsItem* theWrappedObject);
-   QPolygonF  mapFromScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   void resetTransform(QGraphicsItem* theWrappedObject);
-   void scroll(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy, const QRectF&  rect = QRectF());
-   QPainterPath  mapToParent(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
-   QGraphicsItem*  commonAncestorItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  other) const;
-   QPointF  mapFromParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
-   void setFocus(QGraphicsItem* theWrappedObject, Qt::FocusReason  focusReason = Qt::OtherFocusReason);
-   QPointF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPointF&  point) const;
-   bool  isObscured(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
-   qreal  x(QGraphicsItem* theWrappedObject) const;
-   bool  hasFocus(QGraphicsItem* theWrappedObject) const;
    bool  isSelected(QGraphicsItem* theWrappedObject) const;
-   void ungrabKeyboard(QGraphicsItem* theWrappedObject);
+   QGraphicsItem*  panel(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
+   void removeSceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  filterItem);
+   void focusInEvent(QGraphicsItem* theWrappedObject, QFocusEvent*  event);
+   void ensureVisible(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  xmargin = 50, int  ymargin = 50);
+   QVariant  itemChange(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemChange  change, const QVariant&  value);
+   bool  hasCursor(QGraphicsItem* theWrappedObject) const;
+   void setFlags(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemFlags  flags);
+   void update(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  width, qreal  height);
+   qreal  opacity(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QRectF  mapRectFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   void dragLeaveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
+   bool  acceptDrops(QGraphicsItem* theWrappedObject) const;
+   void rotate(QGraphicsItem* theWrappedObject, qreal  angle);
+   QPointF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPointF&  point) const;
+   bool  isVisibleTo(QGraphicsItem* theWrappedObject, const QGraphicsItem*  parent) const;
+   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   void setCacheMode(QGraphicsItem* theWrappedObject, QGraphicsItem::CacheMode  mode, const QSize&  cacheSize = QSize());
+   void setFlag(QGraphicsItem* theWrappedObject, QGraphicsItem::GraphicsItemFlag  flag, bool  enabled = true);
+   void setScale(QGraphicsItem* theWrappedObject, qreal  scale);
+   void setTransform(QGraphicsItem* theWrappedObject, const QTransform&  matrix, bool  combine = false);
    QGraphicsItemGroup*  group(QGraphicsItem* theWrappedObject) const;
-   void ensureVisible(QGraphicsItem* theWrappedObject, const QRectF&  rect = QRectF(), int  xmargin = 50, int  ymargin = 50);
+   bool  isObscured(QGraphicsItem* theWrappedObject) const;
+   void hoverMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
+   bool  isObscured(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QPointF  mapToScene(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
+   void setRotation(QGraphicsItem* theWrappedObject, qreal  angle);
    QPolygonF  mapFromScene(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
-   qreal  boundingRegionGranularity(QGraphicsItem* theWrappedObject) const;
-   bool  isEnabled(QGraphicsItem* theWrappedObject) const;
+   QPointF  transformOriginPoint(QGraphicsItem* theWrappedObject) const;
+   bool  isObscuredBy(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item) const;
+   void setOpacity(QGraphicsItem* theWrappedObject, qreal  opacity);
+   bool  acceptsHoverEvents(QGraphicsItem* theWrappedObject) const;
+   void setGraphicsEffect(QGraphicsItem* theWrappedObject, QGraphicsEffect*  effect);
+   void contextMenuEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneContextMenuEvent*  event);
+   bool  collidesWithItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  other, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const;
+   QCursor  cursor(QGraphicsItem* theWrappedObject) const;
+   void setFocusProxy(QGraphicsItem* theWrappedObject, QGraphicsItem*  item);
+   void setPanelModality(QGraphicsItem* theWrappedObject, QGraphicsItem::PanelModality  panelModality);
+   void translate(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy);
+   QRectF  mapRectFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
+   void setY(QGraphicsItem* theWrappedObject, qreal  y);
+   QList<QGraphicsItem* >  childItems(QGraphicsItem* theWrappedObject) const;
+   void hoverEnterEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
+   QPainterPath  mapToParent(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
+   void mousePressEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
+   void clearFocus(QGraphicsItem* theWrappedObject);
+   void setZValue(QGraphicsItem* theWrappedObject, qreal  z);
+   QRectF  mapRectToScene(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   void unsetCursor(QGraphicsItem* theWrappedObject);
+   QPolygonF  mapFromScene(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
+   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
+   QGraphicsWidget*  window(QGraphicsItem* theWrappedObject) const;
+   void mouseMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
+   void grabKeyboard(QGraphicsItem* theWrappedObject);
+   int  type(QGraphicsItem* theWrappedObject) const;
+   QGraphicsItem::CacheMode  cacheMode(QGraphicsItem* theWrappedObject) const;
+   void setAcceptHoverEvents(QGraphicsItem* theWrappedObject, bool  enabled);
+   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
+   QTransform  transform(QGraphicsItem* theWrappedObject) const;
+   Qt::MouseButtons  acceptedMouseButtons(QGraphicsItem* theWrappedObject) const;
+   QGraphicsItem*  focusScopeItem(QGraphicsItem* theWrappedObject) const;
+   void setGroup(QGraphicsItem* theWrappedObject, QGraphicsItemGroup*  group);
+   void hoverLeaveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneHoverEvent*  event);
+   bool  isWidget(QGraphicsItem* theWrappedObject) const;
+   void setTransformOriginPoint(QGraphicsItem* theWrappedObject, const QPointF&  origin);
+   void dropEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
+   QVariant  data(QGraphicsItem* theWrappedObject, int  key) const;
+   void installSceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  filterItem);
+   void setTransformOriginPoint(QGraphicsItem* theWrappedObject, qreal  ax, qreal  ay);
+   QGraphicsObject*  parentObject(QGraphicsItem* theWrappedObject) const;
+   QGraphicsWidget*  topLevelWidget(QGraphicsItem* theWrappedObject) const;
+   QPointF  pos(QGraphicsItem* theWrappedObject) const;
+   QPointF  mapFromScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
+   QPointF  scenePos(QGraphicsItem* theWrappedObject) const;
+   bool  isPanel(QGraphicsItem* theWrappedObject) const;
+   QPainterPath  clipPath(QGraphicsItem* theWrappedObject) const;
+   QGraphicsItem*  parentItem(QGraphicsItem* theWrappedObject) const;
    QPolygonF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPolygonF&  polygon) const;
+   QGraphicsItem*  commonAncestorItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  other) const;
+   void resetTransform(QGraphicsItem* theWrappedObject);
+   QGraphicsObject*  toGraphicsObject(QGraphicsItem* theWrappedObject);
+   bool  acceptHoverEvents(QGraphicsItem* theWrappedObject) const;
+   QGraphicsItem::PanelModality  panelModality(QGraphicsItem* theWrappedObject) const;
+   QRectF  mapRectFromParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QRectF  mapRectFromParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   void setAcceptDrops(QGraphicsItem* theWrappedObject, bool  on);
+   qreal  boundingRegionGranularity(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QPointF  mapToScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
+   void mouseReleaseEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
+   QTransform  deviceTransform(QGraphicsItem* theWrappedObject, const QTransform&  viewportTransform) const;
+   QGraphicsItem*  focusItem(QGraphicsItem* theWrappedObject) const;
+   QPainterPath  mapFromParent(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
+   QPointF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPointF&  point) const;
+   bool  isWindow(QGraphicsItem* theWrappedObject) const;
+   QRectF  childrenBoundingRect(QGraphicsItem* theWrappedObject) const;
+   bool  handlesChildEvents(QGraphicsItem* theWrappedObject) const;
+   bool  filtersChildEvents(QGraphicsItem* theWrappedObject) const;
+   QGraphicsEffect*  graphicsEffect(QGraphicsItem* theWrappedObject) const;
+   qreal  y(QGraphicsItem* theWrappedObject) const;
+   QPainterPath  shape(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
+   QVariant  extension(QGraphicsItem* theWrappedObject, const QVariant&  variant) const;
+   QPolygonF  mapToParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QPointF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y) const;
+   void setVisible(QGraphicsItem* theWrappedObject, bool  visible);
+   void ungrabKeyboard(QGraphicsItem* theWrappedObject);
+   void setData(QGraphicsItem* theWrappedObject, int  key, const QVariant&  value);
+   qreal  zValue(QGraphicsItem* theWrappedObject) const;
+   QList<QGraphicsItem* >  collidingItems(QGraphicsItem* theWrappedObject, Qt::ItemSelectionMode  mode = Qt::IntersectsItemShape) const;
+   QTransform  itemTransform(QGraphicsItem* theWrappedObject, const QGraphicsItem*  other, bool*  ok = 0) const;
+   void mouseDoubleClickEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneMouseEvent*  event);
+   bool  isUnderMouse(QGraphicsItem* theWrappedObject) const;
+   void advance(QGraphicsItem* theWrappedObject, int  phase);
+   QPainterPath  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPainterPath&  path) const;
+   QRectF  mapRectToParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   bool  sceneEventFilter(QGraphicsItem* theWrappedObject, QGraphicsItem*  watched, QEvent*  event);
+   QVariant  inputMethodQuery(QGraphicsItem* theWrappedObject, Qt::InputMethodQuery  query) const;
+   void setParentItem(QGraphicsItem* theWrappedObject, QGraphicsItem*  parent);
+   QGraphicsItem*  topLevelItem(QGraphicsItem* theWrappedObject) const;
+   QGraphicsWidget*  parentWidget(QGraphicsItem* theWrappedObject) const;
+   void keyReleaseEvent(QGraphicsItem* theWrappedObject, QKeyEvent*  event);
+   bool  isAncestorOf(QGraphicsItem* theWrappedObject, const QGraphicsItem*  child) const;
+   void ungrabMouse(QGraphicsItem* theWrappedObject);
+   qreal  x(QGraphicsItem* theWrappedObject) const;
+   void wheelEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneWheelEvent*  event);
+   void setFocus(QGraphicsItem* theWrappedObject, Qt::FocusReason  focusReason = Qt::OtherFocusReason);
+   QList<QGraphicsTransform* >  transformations(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapFromParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QRectF  mapRectToParent(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QGraphicsItem::GraphicsItemFlags  flags(QGraphicsItem* theWrappedObject) const;
+   QPolygonF  mapFromScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   void update(QGraphicsItem* theWrappedObject, const QRectF&  rect = QRectF());
+   QPointF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y) const;
+   bool  isVisible(QGraphicsItem* theWrappedObject) const;
+   void scroll(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy, const QRectF&  rect = QRectF());
+   QTransform  sceneTransform(QGraphicsItem* theWrappedObject) const;
+   QGraphicsItem*  focusProxy(QGraphicsItem* theWrappedObject) const;
+   void setAcceptsHoverEvents(QGraphicsItem* theWrappedObject, bool  enabled);
+   QPolygonF  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QPointF  mapFromScene(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
+   bool  isObscured(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QString  toolTip(QGraphicsItem* theWrappedObject) const;
+   void setCursor(QGraphicsItem* theWrappedObject, const QCursor&  cursor);
+   QRectF  mapRectToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QRectF&  rect) const;
+   void setActive(QGraphicsItem* theWrappedObject, bool  active);
+   void setToolTip(QGraphicsItem* theWrappedObject, const QString&  toolTip);
+   void setAcceptedMouseButtons(QGraphicsItem* theWrappedObject, Qt::MouseButtons  buttons);
+   qreal  scale(QGraphicsItem* theWrappedObject) const;
+   bool  acceptTouchEvents(QGraphicsItem* theWrappedObject) const;
+   QRectF  mapRectFromScene(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   bool  isEnabled(QGraphicsItem* theWrappedObject) const;
+   QPainterPath  opaqueArea(QGraphicsItem* theWrappedObject) const;
+   bool  hasFocus(QGraphicsItem* theWrappedObject) const;
+   void ensureVisible(QGraphicsItem* theWrappedObject, const QRectF&  rect = QRectF(), int  xmargin = 50, int  ymargin = 50);
+   bool  sceneEvent(QGraphicsItem* theWrappedObject, QEvent*  event);
+   bool  isActive(QGraphicsItem* theWrappedObject) const;
+   void dragMoveEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
+   QRegion  boundingRegion(QGraphicsItem* theWrappedObject, const QTransform&  itemToDeviceTransform) const;
+   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPolygonF&  polygon) const;
+   void scale(QGraphicsItem* theWrappedObject, qreal  sx, qreal  sy);
+   void setTransformations(QGraphicsItem* theWrappedObject, const QList<QGraphicsTransform* >&  transformations);
+   Qt::InputMethodHints  inputMethodHints(QGraphicsItem* theWrappedObject) const;
+   QPointF  mapFromParent(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
+   void setPos(QGraphicsItem* theWrappedObject, qreal  x, qreal  y);
+   void grabMouse(QGraphicsItem* theWrappedObject);
+   void setPos(QGraphicsItem* theWrappedObject, const QPointF&  pos);
+   void setBoundingRegionGranularity(QGraphicsItem* theWrappedObject, qreal  granularity);
+   QRectF  mapRectFromScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QPolygonF  mapToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QGraphicsScene*  scene(QGraphicsItem* theWrappedObject) const;
+   QRectF  sceneBoundingRect(QGraphicsItem* theWrappedObject) const;
+   QRectF  mapRectToItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   QRectF  mapRectToScene(QGraphicsItem* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h) const;
+   void dragEnterEvent(QGraphicsItem* theWrappedObject, QGraphicsSceneDragDropEvent*  event);
+   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, const QRectF&  rect) const;
+   QPointF  mapToParent(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
+   QPolygonF  mapToScene(QGraphicsItem* theWrappedObject, const QPolygonF&  polygon) const;
+   QPainterPath  mapFromItem(QGraphicsItem* theWrappedObject, const QGraphicsItem*  item, const QPainterPath&  path) const;
+   QPainterPath  mapToScene(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
+   void shear(QGraphicsItem* theWrappedObject, qreal  sh, qreal  sv);
+   bool  contains(QGraphicsItem* theWrappedObject, const QPointF&  point) const;
+   void setInputMethodHints(QGraphicsItem* theWrappedObject, Qt::InputMethodHints  hints);
+   void stackBefore(QGraphicsItem* theWrappedObject, const QGraphicsItem*  sibling);
+   void keyPressEvent(QGraphicsItem* theWrappedObject, QKeyEvent*  event);
+   QPointF  mapFromParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
+   bool  isClipped(QGraphicsItem* theWrappedObject) const;
+   qreal  rotation(QGraphicsItem* theWrappedObject) const;
+   void focusOutEvent(QGraphicsItem* theWrappedObject, QFocusEvent*  event);
+   void moveBy(QGraphicsItem* theWrappedObject, qreal  dx, qreal  dy);
+   QPainterPath  mapFromScene(QGraphicsItem* theWrappedObject, const QPainterPath&  path) const;
+   void setHandlesChildEvents(QGraphicsItem* theWrappedObject, bool  enabled);
+   bool  isBlockedByModalPanel(QGraphicsItem* theWrappedObject, QGraphicsItem**  blockingPanel = 0) const;
+   QPointF  mapToParent(QGraphicsItem* theWrappedObject, qreal  x, qreal  y) const;
+   void inputMethodEvent(QGraphicsItem* theWrappedObject, QInputMethodEvent*  event);
+   void setSelected(QGraphicsItem* theWrappedObject, bool  selected);
     QString toString(QGraphicsItem*);
 };
 

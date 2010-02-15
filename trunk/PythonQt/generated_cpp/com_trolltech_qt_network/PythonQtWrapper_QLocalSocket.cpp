@@ -558,74 +558,9 @@ QLocalSocket* PythonQtWrapper_QLocalSocket::new_QLocalSocket(QObject*  parent)
 { 
 return new PythonQtShell_QLocalSocket(parent); }
 
-bool  PythonQtWrapper_QLocalSocket::isSequential(QLocalSocket* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_isSequential());
-}
-
-QLocalSocket::LocalSocketError  PythonQtWrapper_QLocalSocket::error(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->error());
-}
-
-qint64  PythonQtWrapper_QLocalSocket::readBufferSize(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->readBufferSize());
-}
-
-qint64  PythonQtWrapper_QLocalSocket::readData(QLocalSocket* theWrappedObject, char*  arg__1, qint64  arg__2)
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_readData(arg__1, arg__2));
-}
-
-bool  PythonQtWrapper_QLocalSocket::flush(QLocalSocket* theWrappedObject)
-{
-  return ( theWrappedObject->flush());
-}
-
-QString  PythonQtWrapper_QLocalSocket::serverName(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->serverName());
-}
-
-void PythonQtWrapper_QLocalSocket::close(QLocalSocket* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_close());
-}
-
-qint64  PythonQtWrapper_QLocalSocket::writeData(QLocalSocket* theWrappedObject, const char*  arg__1, qint64  arg__2)
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_writeData(arg__1, arg__2));
-}
-
-bool  PythonQtWrapper_QLocalSocket::waitForBytesWritten(QLocalSocket* theWrappedObject, int  msecs)
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
-}
-
-bool  PythonQtWrapper_QLocalSocket::waitForConnected(QLocalSocket* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForConnected(msecs));
-}
-
-bool  PythonQtWrapper_QLocalSocket::setSocketDescriptor(QLocalSocket* theWrappedObject, quintptr  socketDescriptor, QLocalSocket::LocalSocketState  socketState, QIODevice::OpenMode  openMode)
-{
-  return ( theWrappedObject->setSocketDescriptor(socketDescriptor, socketState, openMode));
-}
-
 qint64  PythonQtWrapper_QLocalSocket::bytesAvailable(QLocalSocket* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_bytesAvailable());
-}
-
-QString  PythonQtWrapper_QLocalSocket::fullServerName(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->fullServerName());
-}
-
-bool  PythonQtWrapper_QLocalSocket::waitForDisconnected(QLocalSocket* theWrappedObject, int  msecs)
-{
-  return ( theWrappedObject->waitForDisconnected(msecs));
 }
 
 bool  PythonQtWrapper_QLocalSocket::isValid(QLocalSocket* theWrappedObject) const
@@ -633,39 +568,14 @@ bool  PythonQtWrapper_QLocalSocket::isValid(QLocalSocket* theWrappedObject) cons
   return ( theWrappedObject->isValid());
 }
 
-bool  PythonQtWrapper_QLocalSocket::waitForReadyRead(QLocalSocket* theWrappedObject, int  msecs)
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_waitForReadyRead(msecs));
-}
-
 void PythonQtWrapper_QLocalSocket::abort(QLocalSocket* theWrappedObject)
 {
   ( theWrappedObject->abort());
 }
 
-void PythonQtWrapper_QLocalSocket::setReadBufferSize(QLocalSocket* theWrappedObject, qint64  size)
+bool  PythonQtWrapper_QLocalSocket::waitForConnected(QLocalSocket* theWrappedObject, int  msecs)
 {
-  ( theWrappedObject->setReadBufferSize(size));
-}
-
-void PythonQtWrapper_QLocalSocket::connectToServer(QLocalSocket* theWrappedObject, const QString&  name, QIODevice::OpenMode  openMode)
-{
-  ( theWrappedObject->connectToServer(name, openMode));
-}
-
-bool  PythonQtWrapper_QLocalSocket::canReadLine(QLocalSocket* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_canReadLine());
-}
-
-quintptr  PythonQtWrapper_QLocalSocket::socketDescriptor(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->socketDescriptor());
-}
-
-QLocalSocket::LocalSocketState  PythonQtWrapper_QLocalSocket::state(QLocalSocket* theWrappedObject) const
-{
-  return ( theWrappedObject->state());
+  return ( theWrappedObject->waitForConnected(msecs));
 }
 
 void PythonQtWrapper_QLocalSocket::disconnectFromServer(QLocalSocket* theWrappedObject)
@@ -673,8 +583,98 @@ void PythonQtWrapper_QLocalSocket::disconnectFromServer(QLocalSocket* theWrapped
   ( theWrappedObject->disconnectFromServer());
 }
 
+void PythonQtWrapper_QLocalSocket::close(QLocalSocket* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_close());
+}
+
+bool  PythonQtWrapper_QLocalSocket::flush(QLocalSocket* theWrappedObject)
+{
+  return ( theWrappedObject->flush());
+}
+
+bool  PythonQtWrapper_QLocalSocket::setSocketDescriptor(QLocalSocket* theWrappedObject, quintptr  socketDescriptor, QLocalSocket::LocalSocketState  socketState, QIODevice::OpenMode  openMode)
+{
+  return ( theWrappedObject->setSocketDescriptor(socketDescriptor, socketState, openMode));
+}
+
 qint64  PythonQtWrapper_QLocalSocket::bytesToWrite(QLocalSocket* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_bytesToWrite());
+}
+
+void PythonQtWrapper_QLocalSocket::setReadBufferSize(QLocalSocket* theWrappedObject, qint64  size)
+{
+  ( theWrappedObject->setReadBufferSize(size));
+}
+
+bool  PythonQtWrapper_QLocalSocket::waitForBytesWritten(QLocalSocket* theWrappedObject, int  msecs)
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_waitForBytesWritten(msecs));
+}
+
+QLocalSocket::LocalSocketError  PythonQtWrapper_QLocalSocket::error(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->error());
+}
+
+QString  PythonQtWrapper_QLocalSocket::serverName(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->serverName());
+}
+
+bool  PythonQtWrapper_QLocalSocket::waitForDisconnected(QLocalSocket* theWrappedObject, int  msecs)
+{
+  return ( theWrappedObject->waitForDisconnected(msecs));
+}
+
+bool  PythonQtWrapper_QLocalSocket::waitForReadyRead(QLocalSocket* theWrappedObject, int  msecs)
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_waitForReadyRead(msecs));
+}
+
+QString  PythonQtWrapper_QLocalSocket::fullServerName(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->fullServerName());
+}
+
+void PythonQtWrapper_QLocalSocket::connectToServer(QLocalSocket* theWrappedObject, const QString&  name, QIODevice::OpenMode  openMode)
+{
+  ( theWrappedObject->connectToServer(name, openMode));
+}
+
+qint64  PythonQtWrapper_QLocalSocket::readBufferSize(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->readBufferSize());
+}
+
+qint64  PythonQtWrapper_QLocalSocket::writeData(QLocalSocket* theWrappedObject, const char*  arg__1, qint64  arg__2)
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_writeData(arg__1, arg__2));
+}
+
+quintptr  PythonQtWrapper_QLocalSocket::socketDescriptor(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->socketDescriptor());
+}
+
+bool  PythonQtWrapper_QLocalSocket::canReadLine(QLocalSocket* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_canReadLine());
+}
+
+bool  PythonQtWrapper_QLocalSocket::isSequential(QLocalSocket* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_isSequential());
+}
+
+QLocalSocket::LocalSocketState  PythonQtWrapper_QLocalSocket::state(QLocalSocket* theWrappedObject) const
+{
+  return ( theWrappedObject->state());
+}
+
+qint64  PythonQtWrapper_QLocalSocket::readData(QLocalSocket* theWrappedObject, char*  arg__1, qint64  arg__2)
+{
+  return ( ((PythonQtPublicPromoter_QLocalSocket*)theWrappedObject)->promoted_readData(arg__1, arg__2));
 }
 

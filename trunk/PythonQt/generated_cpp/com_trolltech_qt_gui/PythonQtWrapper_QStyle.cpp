@@ -617,14 +617,9 @@ QStyle* PythonQtWrapper_QStyle::new_QStyle()
 { 
 return new PythonQtShell_QStyle(); }
 
-QPoint  PythonQtWrapper_QStyle::static_QStyle_visualPos(Qt::LayoutDirection  direction, const QRect&  boundingRect, const QPoint&  logicalPos)
+void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QPalette&  arg__1)
 {
-  return (QStyle::visualPos(direction, boundingRect, logicalPos));
-}
-
-int  PythonQtWrapper_QStyle::combinedLayoutSpacing(QStyle* theWrappedObject, QSizePolicy::ControlTypes  controls1, QSizePolicy::ControlTypes  controls2, Qt::Orientation  orientation, QStyleOption*  option, QWidget*  widget) const
-{
-  return ( theWrappedObject->combinedLayoutSpacing(controls1, controls2, orientation, option, widget));
+  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
 QPalette  PythonQtWrapper_QStyle::standardPalette(QStyle* theWrappedObject) const
@@ -632,14 +627,9 @@ QPalette  PythonQtWrapper_QStyle::standardPalette(QStyle* theWrappedObject) cons
   return ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_standardPalette());
 }
 
-void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QApplication*  arg__1)
+QRect  PythonQtWrapper_QStyle::static_QStyle_alignedRect(Qt::LayoutDirection  direction, Qt::Alignment  alignment, const QSize&  size, const QRect&  rectangle)
 {
-  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_polish(arg__1));
-}
-
-void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QWidget*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_polish(arg__1));
+  return (QStyle::alignedRect(direction, alignment, size, rectangle));
 }
 
 int  PythonQtWrapper_QStyle::static_QStyle_sliderPositionFromValue(int  min, int  max, int  val, int  space, bool  upsideDown)
@@ -647,34 +637,19 @@ int  PythonQtWrapper_QStyle::static_QStyle_sliderPositionFromValue(int  min, int
   return (QStyle::sliderPositionFromValue(min, max, val, space, upsideDown));
 }
 
-int  PythonQtWrapper_QStyle::static_QStyle_sliderValueFromPosition(int  min, int  max, int  pos, int  space, bool  upsideDown)
-{
-  return (QStyle::sliderValueFromPosition(min, max, pos, space, upsideDown));
-}
-
-QIcon  PythonQtWrapper_QStyle::standardIcon(QStyle* theWrappedObject, QStyle::StandardPixmap  standardIcon, const QStyleOption*  option, const QWidget*  widget) const
-{
-  return ( theWrappedObject->standardIcon(standardIcon, option, widget));
-}
-
-void PythonQtWrapper_QStyle::unpolish(QStyle* theWrappedObject, QApplication*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_unpolish(arg__1));
-}
-
-void PythonQtWrapper_QStyle::drawItemPixmap(QStyle* theWrappedObject, QPainter*  painter, const QRect&  rect, int  alignment, const QPixmap&  pixmap) const
-{
-  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_drawItemPixmap(painter, rect, alignment, pixmap));
-}
-
 void PythonQtWrapper_QStyle::drawItemText(QStyle* theWrappedObject, QPainter*  painter, const QRect&  rect, int  flags, const QPalette&  pal, bool  enabled, const QString&  text, QPalette::ColorRole  textRole) const
 {
   ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_drawItemText(painter, rect, flags, pal, enabled, text, textRole));
 }
 
-int  PythonQtWrapper_QStyle::layoutSpacing(QStyle* theWrappedObject, QSizePolicy::ControlType  control1, QSizePolicy::ControlType  control2, Qt::Orientation  orientation, const QStyleOption*  option, const QWidget*  widget) const
+QPoint  PythonQtWrapper_QStyle::static_QStyle_visualPos(Qt::LayoutDirection  direction, const QRect&  boundingRect, const QPoint&  logicalPos)
 {
-  return ( theWrappedObject->layoutSpacing(control1, control2, orientation, option, widget));
+  return (QStyle::visualPos(direction, boundingRect, logicalPos));
+}
+
+int  PythonQtWrapper_QStyle::static_QStyle_sliderValueFromPosition(int  min, int  max, int  pos, int  space, bool  upsideDown)
+{
+  return (QStyle::sliderValueFromPosition(min, max, pos, space, upsideDown));
 }
 
 void PythonQtWrapper_QStyle::unpolish(QStyle* theWrappedObject, QWidget*  arg__1)
@@ -687,9 +662,29 @@ QRect  PythonQtWrapper_QStyle::static_QStyle_visualRect(Qt::LayoutDirection  dir
   return (QStyle::visualRect(direction, boundingRect, logicalRect));
 }
 
+const QStyle*  PythonQtWrapper_QStyle::proxy(QStyle* theWrappedObject) const
+{
+  return ( theWrappedObject->proxy());
+}
+
 QRect  PythonQtWrapper_QStyle::itemPixmapRect(QStyle* theWrappedObject, const QRect&  r, int  flags, const QPixmap&  pixmap) const
 {
   return ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_itemPixmapRect(r, flags, pixmap));
+}
+
+QIcon  PythonQtWrapper_QStyle::standardIcon(QStyle* theWrappedObject, QStyle::StandardPixmap  standardIcon, const QStyleOption*  option, const QWidget*  widget) const
+{
+  return ( theWrappedObject->standardIcon(standardIcon, option, widget));
+}
+
+int  PythonQtWrapper_QStyle::combinedLayoutSpacing(QStyle* theWrappedObject, QSizePolicy::ControlTypes  controls1, QSizePolicy::ControlTypes  controls2, Qt::Orientation  orientation, QStyleOption*  option, QWidget*  widget) const
+{
+  return ( theWrappedObject->combinedLayoutSpacing(controls1, controls2, orientation, option, widget));
+}
+
+void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QApplication*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
 Qt::Alignment  PythonQtWrapper_QStyle::static_QStyle_visualAlignment(Qt::LayoutDirection  direction, Qt::Alignment  alignment)
@@ -697,13 +692,23 @@ Qt::Alignment  PythonQtWrapper_QStyle::static_QStyle_visualAlignment(Qt::LayoutD
   return (QStyle::visualAlignment(direction, alignment));
 }
 
-QRect  PythonQtWrapper_QStyle::static_QStyle_alignedRect(Qt::LayoutDirection  direction, Qt::Alignment  alignment, const QSize&  size, const QRect&  rectangle)
-{
-  return (QStyle::alignedRect(direction, alignment, size, rectangle));
-}
-
-void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QPalette&  arg__1)
+void PythonQtWrapper_QStyle::polish(QStyle* theWrappedObject, QWidget*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_polish(arg__1));
+}
+
+void PythonQtWrapper_QStyle::drawItemPixmap(QStyle* theWrappedObject, QPainter*  painter, const QRect&  rect, int  alignment, const QPixmap&  pixmap) const
+{
+  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_drawItemPixmap(painter, rect, alignment, pixmap));
+}
+
+int  PythonQtWrapper_QStyle::layoutSpacing(QStyle* theWrappedObject, QSizePolicy::ControlType  control1, QSizePolicy::ControlType  control2, Qt::Orientation  orientation, const QStyleOption*  option, const QWidget*  widget) const
+{
+  return ( theWrappedObject->layoutSpacing(control1, control2, orientation, option, widget));
+}
+
+void PythonQtWrapper_QStyle::unpolish(QStyle* theWrappedObject, QApplication*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QStyle*)theWrappedObject)->promoted_unpolish(arg__1));
 }
 

@@ -12,14 +12,14 @@ QInputContextFactory* PythonQtWrapper_QInputContextFactory::new_QInputContextFac
 { 
 return new PythonQtShell_QInputContextFactory(); }
 
+QString  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_description(const QString&  key)
+{
+  return (QInputContextFactory::description(key));
+}
+
 QString  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_displayName(const QString&  key)
 {
   return (QInputContextFactory::displayName(key));
-}
-
-QStringList  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_languages(const QString&  key)
-{
-  return (QInputContextFactory::languages(key));
 }
 
 QStringList  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_keys()
@@ -27,13 +27,13 @@ QStringList  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_k
   return (QInputContextFactory::keys());
 }
 
-QString  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_description(const QString&  key)
-{
-  return (QInputContextFactory::description(key));
-}
-
 QInputContext*  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_create(const QString&  key, QObject*  parent)
 {
   return (QInputContextFactory::create(key, parent));
+}
+
+QStringList  PythonQtWrapper_QInputContextFactory::static_QInputContextFactory_languages(const QString&  key)
+{
+  return (QInputContextFactory::languages(key));
 }
 

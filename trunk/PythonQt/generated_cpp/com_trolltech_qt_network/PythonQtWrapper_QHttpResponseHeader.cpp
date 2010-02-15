@@ -142,6 +142,16 @@ int  PythonQtWrapper_QHttpResponseHeader::majorVersion(QHttpResponseHeader* theW
   return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_majorVersion());
 }
 
+int  PythonQtWrapper_QHttpResponseHeader::minorVersion(QHttpResponseHeader* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_minorVersion());
+}
+
+QString  PythonQtWrapper_QHttpResponseHeader::reasonPhrase(QHttpResponseHeader* theWrappedObject) const
+{
+  return ( theWrappedObject->reasonPhrase());
+}
+
 int  PythonQtWrapper_QHttpResponseHeader::statusCode(QHttpResponseHeader* theWrappedObject) const
 {
   return ( theWrappedObject->statusCode());
@@ -152,23 +162,13 @@ QString  PythonQtWrapper_QHttpResponseHeader::toString(QHttpResponseHeader* theW
   return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_toString());
 }
 
-QString  PythonQtWrapper_QHttpResponseHeader::reasonPhrase(QHttpResponseHeader* theWrappedObject) const
+bool  PythonQtWrapper_QHttpResponseHeader::parseLine(QHttpResponseHeader* theWrappedObject, const QString&  line, int  number)
 {
-  return ( theWrappedObject->reasonPhrase());
+  return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_parseLine(line, number));
 }
 
 void PythonQtWrapper_QHttpResponseHeader::setStatusLine(QHttpResponseHeader* theWrappedObject, int  code, const QString&  text, int  majorVer, int  minorVer)
 {
   ( theWrappedObject->setStatusLine(code, text, majorVer, minorVer));
-}
-
-int  PythonQtWrapper_QHttpResponseHeader::minorVersion(QHttpResponseHeader* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_minorVersion());
-}
-
-bool  PythonQtWrapper_QHttpResponseHeader::parseLine(QHttpResponseHeader* theWrappedObject, const QString&  line, int  number)
-{
-  return ( ((PythonQtPublicPromoter_QHttpResponseHeader*)theWrappedObject)->promoted_parseLine(line, number));
 }
 

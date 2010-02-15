@@ -19,59 +19,9 @@ QSizePolicy* PythonQtWrapper_QSizePolicy::new_QSizePolicy(QSizePolicy::Policy  h
 { 
 return new QSizePolicy(horizontal, vertical, type); }
 
-QSizePolicy::ControlType  PythonQtWrapper_QSizePolicy::controlType(QSizePolicy* theWrappedObject) const
-{
-  return ( theWrappedObject->controlType());
-}
-
-void PythonQtWrapper_QSizePolicy::setHorizontalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d)
-{
-  ( theWrappedObject->setHorizontalPolicy(d));
-}
-
-int  PythonQtWrapper_QSizePolicy::verticalStretch(QSizePolicy* theWrappedObject) const
-{
-  return ( theWrappedObject->verticalStretch());
-}
-
-int  PythonQtWrapper_QSizePolicy::horizontalStretch(QSizePolicy* theWrappedObject) const
-{
-  return ( theWrappedObject->horizontalStretch());
-}
-
-bool  PythonQtWrapper_QSizePolicy::operator_equal(QSizePolicy* theWrappedObject, const QSizePolicy&  s) const
-{
-  return ( (*theWrappedObject)== s);
-}
-
-void PythonQtWrapper_QSizePolicy::setHorizontalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor)
-{
-  ( theWrappedObject->setHorizontalStretch(stretchFactor));
-}
-
-void PythonQtWrapper_QSizePolicy::setHeightForWidth(QSizePolicy* theWrappedObject, bool  b)
-{
-  ( theWrappedObject->setHeightForWidth(b));
-}
-
-void PythonQtWrapper_QSizePolicy::writeTo(QSizePolicy* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 <<  (*theWrappedObject);
-}
-
-void PythonQtWrapper_QSizePolicy::setVerticalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor)
-{
-  ( theWrappedObject->setVerticalStretch(stretchFactor));
-}
-
 void PythonQtWrapper_QSizePolicy::transpose(QSizePolicy* theWrappedObject)
 {
   ( theWrappedObject->transpose());
-}
-
-Qt::Orientations  PythonQtWrapper_QSizePolicy::expandingDirections(QSizePolicy* theWrappedObject) const
-{
-  return ( theWrappedObject->expandingDirections());
 }
 
 QSizePolicy::Policy  PythonQtWrapper_QSizePolicy::verticalPolicy(QSizePolicy* theWrappedObject) const
@@ -79,14 +29,14 @@ QSizePolicy::Policy  PythonQtWrapper_QSizePolicy::verticalPolicy(QSizePolicy* th
   return ( theWrappedObject->verticalPolicy());
 }
 
-bool  PythonQtWrapper_QSizePolicy::hasHeightForWidth(QSizePolicy* theWrappedObject) const
+int  PythonQtWrapper_QSizePolicy::verticalStretch(QSizePolicy* theWrappedObject) const
 {
-  return ( theWrappedObject->hasHeightForWidth());
+  return ( theWrappedObject->verticalStretch());
 }
 
-QSizePolicy::Policy  PythonQtWrapper_QSizePolicy::horizontalPolicy(QSizePolicy* theWrappedObject) const
+void PythonQtWrapper_QSizePolicy::setHorizontalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d)
 {
-  return ( theWrappedObject->horizontalPolicy());
+  ( theWrappedObject->setHorizontalPolicy(d));
 }
 
 void PythonQtWrapper_QSizePolicy::setControlType(QSizePolicy* theWrappedObject, QSizePolicy::ControlType  type)
@@ -94,13 +44,63 @@ void PythonQtWrapper_QSizePolicy::setControlType(QSizePolicy* theWrappedObject, 
   ( theWrappedObject->setControlType(type));
 }
 
-void PythonQtWrapper_QSizePolicy::setVerticalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d)
+void PythonQtWrapper_QSizePolicy::setHeightForWidth(QSizePolicy* theWrappedObject, bool  b)
 {
-  ( theWrappedObject->setVerticalPolicy(d));
+  ( theWrappedObject->setHeightForWidth(b));
 }
 
 void PythonQtWrapper_QSizePolicy::readFrom(QSizePolicy* theWrappedObject, QDataStream&  arg__1)
 {
   arg__1 >>  (*theWrappedObject);
+}
+
+Qt::Orientations  PythonQtWrapper_QSizePolicy::expandingDirections(QSizePolicy* theWrappedObject) const
+{
+  return ( theWrappedObject->expandingDirections());
+}
+
+bool  PythonQtWrapper_QSizePolicy::hasHeightForWidth(QSizePolicy* theWrappedObject) const
+{
+  return ( theWrappedObject->hasHeightForWidth());
+}
+
+QSizePolicy::ControlType  PythonQtWrapper_QSizePolicy::controlType(QSizePolicy* theWrappedObject) const
+{
+  return ( theWrappedObject->controlType());
+}
+
+void PythonQtWrapper_QSizePolicy::setVerticalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d)
+{
+  ( theWrappedObject->setVerticalPolicy(d));
+}
+
+void PythonQtWrapper_QSizePolicy::writeTo(QSizePolicy* theWrappedObject, QDataStream&  arg__1)
+{
+  arg__1 <<  (*theWrappedObject);
+}
+
+bool  PythonQtWrapper_QSizePolicy::operator_equal(QSizePolicy* theWrappedObject, const QSizePolicy&  s) const
+{
+  return ( (*theWrappedObject)== s);
+}
+
+int  PythonQtWrapper_QSizePolicy::horizontalStretch(QSizePolicy* theWrappedObject) const
+{
+  return ( theWrappedObject->horizontalStretch());
+}
+
+void PythonQtWrapper_QSizePolicy::setVerticalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor)
+{
+  ( theWrappedObject->setVerticalStretch(stretchFactor));
+}
+
+QSizePolicy::Policy  PythonQtWrapper_QSizePolicy::horizontalPolicy(QSizePolicy* theWrappedObject) const
+{
+  return ( theWrappedObject->horizontalPolicy());
+}
+
+void PythonQtWrapper_QSizePolicy::setHorizontalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor)
+{
+  ( theWrappedObject->setHorizontalStretch(stretchFactor));
 }
 

@@ -24,9 +24,9 @@ QDomNode  PythonQtWrapper_QDomNodeList::at(QDomNodeList* theWrappedObject, int  
   return ( theWrappedObject->at(index));
 }
 
-int  PythonQtWrapper_QDomNodeList::count(QDomNodeList* theWrappedObject) const
+bool  PythonQtWrapper_QDomNodeList::operator_equal(QDomNodeList* theWrappedObject, const QDomNodeList&  arg__1) const
 {
-  return ( theWrappedObject->count());
+  return ( (*theWrappedObject)== arg__1);
 }
 
 int  PythonQtWrapper_QDomNodeList::size(QDomNodeList* theWrappedObject) const
@@ -44,8 +44,8 @@ uint  PythonQtWrapper_QDomNodeList::length(QDomNodeList* theWrappedObject) const
   return ( theWrappedObject->length());
 }
 
-bool  PythonQtWrapper_QDomNodeList::operator_equal(QDomNodeList* theWrappedObject, const QDomNodeList&  arg__1) const
+int  PythonQtWrapper_QDomNodeList::count(QDomNodeList* theWrappedObject) const
 {
-  return ( (*theWrappedObject)== arg__1);
+  return ( theWrappedObject->count());
 }
 

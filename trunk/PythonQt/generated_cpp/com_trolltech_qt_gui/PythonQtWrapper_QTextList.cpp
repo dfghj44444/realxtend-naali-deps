@@ -175,14 +175,9 @@ QTextList* PythonQtWrapper_QTextList::new_QTextList(QTextDocument*  doc)
 { 
 return new PythonQtShell_QTextList(doc); }
 
-QTextBlock  PythonQtWrapper_QTextList::item(QTextList* theWrappedObject, int  i) const
+void PythonQtWrapper_QTextList::remove(QTextList* theWrappedObject, const QTextBlock&  arg__1)
 {
-  return ( theWrappedObject->item(i));
-}
-
-void PythonQtWrapper_QTextList::add(QTextList* theWrappedObject, const QTextBlock&  block)
-{
-  ( theWrappedObject->add(block));
+  ( theWrappedObject->remove(arg__1));
 }
 
 int  PythonQtWrapper_QTextList::itemNumber(QTextList* theWrappedObject, const QTextBlock&  arg__1) const
@@ -190,24 +185,29 @@ int  PythonQtWrapper_QTextList::itemNumber(QTextList* theWrappedObject, const QT
   return ( theWrappedObject->itemNumber(arg__1));
 }
 
-void PythonQtWrapper_QTextList::setFormat(QTextList* theWrappedObject, const QTextListFormat&  format)
-{
-  ( theWrappedObject->setFormat(format));
-}
-
 QString  PythonQtWrapper_QTextList::itemText(QTextList* theWrappedObject, const QTextBlock&  arg__1) const
 {
   return ( theWrappedObject->itemText(arg__1));
 }
 
-QTextListFormat  PythonQtWrapper_QTextList::format(QTextList* theWrappedObject) const
+int  PythonQtWrapper_QTextList::count(QTextList* theWrappedObject) const
 {
-  return ( theWrappedObject->format());
+  return ( theWrappedObject->count());
 }
 
-void PythonQtWrapper_QTextList::remove(QTextList* theWrappedObject, const QTextBlock&  arg__1)
+void PythonQtWrapper_QTextList::setFormat(QTextList* theWrappedObject, const QTextListFormat&  format)
 {
-  ( theWrappedObject->remove(arg__1));
+  ( theWrappedObject->setFormat(format));
+}
+
+void PythonQtWrapper_QTextList::add(QTextList* theWrappedObject, const QTextBlock&  block)
+{
+  ( theWrappedObject->add(block));
+}
+
+QTextBlock  PythonQtWrapper_QTextList::item(QTextList* theWrappedObject, int  i) const
+{
+  return ( theWrappedObject->item(i));
 }
 
 void PythonQtWrapper_QTextList::removeItem(QTextList* theWrappedObject, int  i)
@@ -215,8 +215,8 @@ void PythonQtWrapper_QTextList::removeItem(QTextList* theWrappedObject, int  i)
   ( theWrappedObject->removeItem(i));
 }
 
-int  PythonQtWrapper_QTextList::count(QTextList* theWrappedObject) const
+QTextListFormat  PythonQtWrapper_QTextList::format(QTextList* theWrappedObject) const
 {
-  return ( theWrappedObject->count());
+  return ( theWrappedObject->format());
 }
 

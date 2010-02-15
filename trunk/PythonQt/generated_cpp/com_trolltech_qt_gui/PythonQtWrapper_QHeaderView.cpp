@@ -13,6 +13,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qheaderview.h>
 #include <qicon.h>
 #include <qinputcontext.h>
@@ -21,6 +23,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -1221,7 +1224,7 @@ if (_wrapper) {
 }
   QHeaderView::setRootIndex(index);
 }
-void PythonQtShell_QHeaderView::setSelection(const QRect&  arg__1, QItemSelectionModel::SelectionFlags  arg__2)
+void PythonQtShell_QHeaderView::setSelection(const QRect&  rect, QItemSelectionModel::SelectionFlags  flags)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "setSelection");
@@ -1229,14 +1232,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "const QRect&" , "QItemSelectionModel::SelectionFlags"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(3, argumentList);
-    void* args[3] = {NULL, (void*)&arg__1, (void*)&arg__2};
+    void* args[3] = {NULL, (void*)&rect, (void*)&flags};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QHeaderView::setSelection(arg__1, arg__2);
+  QHeaderView::setSelection(rect, flags);
 }
 void PythonQtShell_QHeaderView::setSelectionModel(QItemSelectionModel*  selectionModel)
 {
@@ -1625,59 +1628,14 @@ QHeaderView* PythonQtWrapper_QHeaderView::new_QHeaderView(Qt::Orientation  orien
 { 
 return new PythonQtShell_QHeaderView(orientation, parent); }
 
-void PythonQtWrapper_QHeaderView::showSection(QHeaderView* theWrappedObject, int  logicalIndex)
-{
-  ( theWrappedObject->showSection(logicalIndex));
-}
-
-bool  PythonQtWrapper_QHeaderView::isSortIndicatorShown(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->isSortIndicatorShown());
-}
-
-int  PythonQtWrapper_QHeaderView::count(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->count());
-}
-
-bool  PythonQtWrapper_QHeaderView::highlightSections(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->highlightSections());
-}
-
-Qt::SortOrder  PythonQtWrapper_QHeaderView::sortIndicatorOrder(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->sortIndicatorOrder());
-}
-
-void PythonQtWrapper_QHeaderView::dataChanged(QHeaderView* theWrappedObject, const QModelIndex&  topLeft, const QModelIndex&  bottomRight)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_dataChanged(topLeft, bottomRight));
-}
-
-void PythonQtWrapper_QHeaderView::currentChanged(QHeaderView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  old)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_currentChanged(current, old));
-}
-
-void PythonQtWrapper_QHeaderView::setHighlightSections(QHeaderView* theWrappedObject, bool  highlight)
-{
-  ( theWrappedObject->setHighlightSections(highlight));
-}
-
-void PythonQtWrapper_QHeaderView::setSortIndicatorShown(QHeaderView* theWrappedObject, bool  show)
-{
-  ( theWrappedObject->setSortIndicatorShown(show));
-}
-
 int  PythonQtWrapper_QHeaderView::visualIndexAt(QHeaderView* theWrappedObject, int  position) const
 {
   return ( theWrappedObject->visualIndexAt(position));
 }
 
-void PythonQtWrapper_QHeaderView::setCascadingSectionResizes(QHeaderView* theWrappedObject, bool  enable)
+void PythonQtWrapper_QHeaderView::paintSection(QHeaderView* theWrappedObject, QPainter*  painter, const QRect&  rect, int  logicalIndex) const
 {
-  ( theWrappedObject->setCascadingSectionResizes(enable));
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_paintSection(painter, rect, logicalIndex));
 }
 
 void PythonQtWrapper_QHeaderView::reset(QHeaderView* theWrappedObject)
@@ -1685,9 +1643,144 @@ void PythonQtWrapper_QHeaderView::reset(QHeaderView* theWrappedObject)
   ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_reset());
 }
 
-int  PythonQtWrapper_QHeaderView::sortIndicatorSection(QHeaderView* theWrappedObject) const
+void PythonQtWrapper_QHeaderView::mouseDoubleClickEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
 {
-  return ( theWrappedObject->sortIndicatorSection());
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseDoubleClickEvent(e));
+}
+
+QRect  PythonQtWrapper_QHeaderView::visualRect(QHeaderView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_visualRect(index));
+}
+
+void PythonQtWrapper_QHeaderView::setStretchLastSection(QHeaderView* theWrappedObject, bool  stretch)
+{
+  ( theWrappedObject->setStretchLastSection(stretch));
+}
+
+bool  PythonQtWrapper_QHeaderView::sectionsHidden(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->sectionsHidden());
+}
+
+int  PythonQtWrapper_QHeaderView::sectionViewportPosition(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( theWrappedObject->sectionViewportPosition(logicalIndex));
+}
+
+int  PythonQtWrapper_QHeaderView::offset(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->offset());
+}
+
+bool  PythonQtWrapper_QHeaderView::isClickable(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->isClickable());
+}
+
+void PythonQtWrapper_QHeaderView::setSortIndicator(QHeaderView* theWrappedObject, int  logicalIndex, Qt::SortOrder  order)
+{
+  ( theWrappedObject->setSortIndicator(logicalIndex, order));
+}
+
+Qt::Alignment  PythonQtWrapper_QHeaderView::defaultAlignment(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultAlignment());
+}
+
+QByteArray  PythonQtWrapper_QHeaderView::saveState(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->saveState());
+}
+
+int  PythonQtWrapper_QHeaderView::sectionSizeHint(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( theWrappedObject->sectionSizeHint(logicalIndex));
+}
+
+void PythonQtWrapper_QHeaderView::setHighlightSections(QHeaderView* theWrappedObject, bool  highlight)
+{
+  ( theWrappedObject->setHighlightSections(highlight));
+}
+
+void PythonQtWrapper_QHeaderView::updateGeometries(QHeaderView* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_updateGeometries());
+}
+
+Qt::SortOrder  PythonQtWrapper_QHeaderView::sortIndicatorOrder(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->sortIndicatorOrder());
+}
+
+int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, int  position) const
+{
+  return ( theWrappedObject->logicalIndexAt(position));
+}
+
+int  PythonQtWrapper_QHeaderView::horizontalOffset(QHeaderView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_horizontalOffset());
+}
+
+void PythonQtWrapper_QHeaderView::swapSections(QHeaderView* theWrappedObject, int  first, int  second)
+{
+  ( theWrappedObject->swapSections(first, second));
+}
+
+QSize  PythonQtWrapper_QHeaderView::sizeHint(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+bool  PythonQtWrapper_QHeaderView::event(QHeaderView* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_event(e));
+}
+
+void PythonQtWrapper_QHeaderView::setSortIndicatorShown(QHeaderView* theWrappedObject, bool  show)
+{
+  ( theWrappedObject->setSortIndicatorShown(show));
+}
+
+int  PythonQtWrapper_QHeaderView::defaultSectionSize(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultSectionSize());
+}
+
+void PythonQtWrapper_QHeaderView::paintEvent(QHeaderView* theWrappedObject, QPaintEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_paintEvent(e));
+}
+
+void PythonQtWrapper_QHeaderView::scrollContentsBy(QHeaderView* theWrappedObject, int  dx, int  dy)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
+}
+
+QSize  PythonQtWrapper_QHeaderView::sectionSizeFromContents(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_sectionSizeFromContents(logicalIndex));
+}
+
+void PythonQtWrapper_QHeaderView::setModel(QHeaderView* theWrappedObject, QAbstractItemModel*  model)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_setModel(model));
+}
+
+void PythonQtWrapper_QHeaderView::setResizeMode(QHeaderView* theWrappedObject, QHeaderView::ResizeMode  mode)
+{
+  ( theWrappedObject->setResizeMode(mode));
+}
+
+bool  PythonQtWrapper_QHeaderView::isIndexHidden(QHeaderView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_isIndexHidden(index));
+}
+
+Qt::Orientation  PythonQtWrapper_QHeaderView::orientation(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->orientation());
 }
 
 int  PythonQtWrapper_QHeaderView::sectionSize(QHeaderView* theWrappedObject, int  logicalIndex) const
@@ -1695,9 +1788,164 @@ int  PythonQtWrapper_QHeaderView::sectionSize(QHeaderView* theWrappedObject, int
   return ( theWrappedObject->sectionSize(logicalIndex));
 }
 
+int  PythonQtWrapper_QHeaderView::hiddenSectionCount(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->hiddenSectionCount());
+}
+
+void PythonQtWrapper_QHeaderView::scrollTo(QHeaderView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_scrollTo(index, hint));
+}
+
+int  PythonQtWrapper_QHeaderView::sortIndicatorSection(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->sortIndicatorSection());
+}
+
+void PythonQtWrapper_QHeaderView::setSelection(QHeaderView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  flags)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_setSelection(rect, flags));
+}
+
+void PythonQtWrapper_QHeaderView::mouseMoveEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseMoveEvent(e));
+}
+
+void PythonQtWrapper_QHeaderView::currentChanged(QHeaderView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  old)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_currentChanged(current, old));
+}
+
+void PythonQtWrapper_QHeaderView::resizeSection(QHeaderView* theWrappedObject, int  logicalIndex, int  size)
+{
+  ( theWrappedObject->resizeSection(logicalIndex, size));
+}
+
+bool  PythonQtWrapper_QHeaderView::stretchLastSection(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->stretchLastSection());
+}
+
+QHeaderView::ResizeMode  PythonQtWrapper_QHeaderView::resizeMode(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( theWrappedObject->resizeMode(logicalIndex));
+}
+
+QModelIndex  PythonQtWrapper_QHeaderView::indexAt(QHeaderView* theWrappedObject, const QPoint&  p) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_indexAt(p));
+}
+
+int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, const QPoint&  pos) const
+{
+  return ( theWrappedObject->logicalIndexAt(pos));
+}
+
+QRegion  PythonQtWrapper_QHeaderView::visualRegionForSelection(QHeaderView* theWrappedObject, const QItemSelection&  selection) const
+{
+  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_visualRegionForSelection(selection));
+}
+
+bool  PythonQtWrapper_QHeaderView::cascadingSectionResizes(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->cascadingSectionResizes());
+}
+
 int  PythonQtWrapper_QHeaderView::verticalOffset(QHeaderView* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_verticalOffset());
+}
+
+void PythonQtWrapper_QHeaderView::setMinimumSectionSize(QHeaderView* theWrappedObject, int  size)
+{
+  ( theWrappedObject->setMinimumSectionSize(size));
+}
+
+bool  PythonQtWrapper_QHeaderView::isSectionHidden(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( theWrappedObject->isSectionHidden(logicalIndex));
+}
+
+int  PythonQtWrapper_QHeaderView::length(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->length());
+}
+
+void PythonQtWrapper_QHeaderView::setDefaultSectionSize(QHeaderView* theWrappedObject, int  size)
+{
+  ( theWrappedObject->setDefaultSectionSize(size));
+}
+
+void PythonQtWrapper_QHeaderView::rowsInserted(QHeaderView* theWrappedObject, const QModelIndex&  parent, int  start, int  end)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_rowsInserted(parent, start, end));
+}
+
+bool  PythonQtWrapper_QHeaderView::isMovable(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->isMovable());
+}
+
+int  PythonQtWrapper_QHeaderView::count(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->count());
+}
+
+int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, int  x, int  y) const
+{
+  return ( theWrappedObject->logicalIndexAt(x, y));
+}
+
+void PythonQtWrapper_QHeaderView::hideSection(QHeaderView* theWrappedObject, int  logicalIndex)
+{
+  ( theWrappedObject->hideSection(logicalIndex));
+}
+
+void PythonQtWrapper_QHeaderView::setClickable(QHeaderView* theWrappedObject, bool  clickable)
+{
+  ( theWrappedObject->setClickable(clickable));
+}
+
+void PythonQtWrapper_QHeaderView::setSectionHidden(QHeaderView* theWrappedObject, int  logicalIndex, bool  hide)
+{
+  ( theWrappedObject->setSectionHidden(logicalIndex, hide));
+}
+
+void PythonQtWrapper_QHeaderView::showSection(QHeaderView* theWrappedObject, int  logicalIndex)
+{
+  ( theWrappedObject->showSection(logicalIndex));
+}
+
+int  PythonQtWrapper_QHeaderView::stretchSectionCount(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->stretchSectionCount());
+}
+
+int  PythonQtWrapper_QHeaderView::sectionPosition(QHeaderView* theWrappedObject, int  logicalIndex) const
+{
+  return ( theWrappedObject->sectionPosition(logicalIndex));
+}
+
+int  PythonQtWrapper_QHeaderView::minimumSectionSize(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumSectionSize());
+}
+
+void PythonQtWrapper_QHeaderView::dataChanged(QHeaderView* theWrappedObject, const QModelIndex&  topLeft, const QModelIndex&  bottomRight)
+{
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_dataChanged(topLeft, bottomRight));
+}
+
+bool  PythonQtWrapper_QHeaderView::sectionsMoved(QHeaderView* theWrappedObject) const
+{
+  return ( theWrappedObject->sectionsMoved());
+}
+
+void PythonQtWrapper_QHeaderView::resizeSections(QHeaderView* theWrappedObject, QHeaderView::ResizeMode  mode)
+{
+  ( theWrappedObject->resizeSections(mode));
 }
 
 void PythonQtWrapper_QHeaderView::setResizeMode(QHeaderView* theWrappedObject, int  logicalIndex, QHeaderView::ResizeMode  mode)
@@ -1710,224 +1958,9 @@ void PythonQtWrapper_QHeaderView::moveSection(QHeaderView* theWrappedObject, int
   ( theWrappedObject->moveSection(from, to));
 }
 
-QSize  PythonQtWrapper_QHeaderView::sectionSizeFromContents(QHeaderView* theWrappedObject, int  logicalIndex) const
+void PythonQtWrapper_QHeaderView::setMovable(QHeaderView* theWrappedObject, bool  movable)
 {
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_sectionSizeFromContents(logicalIndex));
-}
-
-int  PythonQtWrapper_QHeaderView::sectionPosition(QHeaderView* theWrappedObject, int  logicalIndex) const
-{
-  return ( theWrappedObject->sectionPosition(logicalIndex));
-}
-
-void PythonQtWrapper_QHeaderView::setDefaultSectionSize(QHeaderView* theWrappedObject, int  size)
-{
-  ( theWrappedObject->setDefaultSectionSize(size));
-}
-
-void PythonQtWrapper_QHeaderView::mousePressEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mousePressEvent(e));
-}
-
-void PythonQtWrapper_QHeaderView::setStretchLastSection(QHeaderView* theWrappedObject, bool  stretch)
-{
-  ( theWrappedObject->setStretchLastSection(stretch));
-}
-
-bool  PythonQtWrapper_QHeaderView::isSectionHidden(QHeaderView* theWrappedObject, int  logicalIndex) const
-{
-  return ( theWrappedObject->isSectionHidden(logicalIndex));
-}
-
-void PythonQtWrapper_QHeaderView::rowsInserted(QHeaderView* theWrappedObject, const QModelIndex&  parent, int  start, int  end)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_rowsInserted(parent, start, end));
-}
-
-int  PythonQtWrapper_QHeaderView::stretchSectionCount(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->stretchSectionCount());
-}
-
-int  PythonQtWrapper_QHeaderView::offset(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->offset());
-}
-
-void PythonQtWrapper_QHeaderView::mouseDoubleClickEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseDoubleClickEvent(e));
-}
-
-QRegion  PythonQtWrapper_QHeaderView::visualRegionForSelection(QHeaderView* theWrappedObject, const QItemSelection&  selection) const
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_visualRegionForSelection(selection));
-}
-
-void PythonQtWrapper_QHeaderView::hideSection(QHeaderView* theWrappedObject, int  logicalIndex)
-{
-  ( theWrappedObject->hideSection(logicalIndex));
-}
-
-int  PythonQtWrapper_QHeaderView::minimumSectionSize(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumSectionSize());
-}
-
-void PythonQtWrapper_QHeaderView::mouseMoveEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseMoveEvent(e));
-}
-
-bool  PythonQtWrapper_QHeaderView::stretchLastSection(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->stretchLastSection());
-}
-
-QSize  PythonQtWrapper_QHeaderView::sizeHint(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
-Qt::Alignment  PythonQtWrapper_QHeaderView::defaultAlignment(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->defaultAlignment());
-}
-
-void PythonQtWrapper_QHeaderView::mouseReleaseEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseReleaseEvent(e));
-}
-
-int  PythonQtWrapper_QHeaderView::length(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->length());
-}
-
-void PythonQtWrapper_QHeaderView::setModel(QHeaderView* theWrappedObject, QAbstractItemModel*  model)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_setModel(model));
-}
-
-void PythonQtWrapper_QHeaderView::resizeSection(QHeaderView* theWrappedObject, int  logicalIndex, int  size)
-{
-  ( theWrappedObject->resizeSection(logicalIndex, size));
-}
-
-int  PythonQtWrapper_QHeaderView::hiddenSectionCount(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->hiddenSectionCount());
-}
-
-int  PythonQtWrapper_QHeaderView::horizontalOffset(QHeaderView* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_horizontalOffset());
-}
-
-bool  PythonQtWrapper_QHeaderView::isMovable(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->isMovable());
-}
-
-void PythonQtWrapper_QHeaderView::resizeSections(QHeaderView* theWrappedObject, QHeaderView::ResizeMode  mode)
-{
-  ( theWrappedObject->resizeSections(mode));
-}
-
-void PythonQtWrapper_QHeaderView::scrollContentsBy(QHeaderView* theWrappedObject, int  dx, int  dy)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
-}
-
-int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, int  x, int  y) const
-{
-  return ( theWrappedObject->logicalIndexAt(x, y));
-}
-
-int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, int  position) const
-{
-  return ( theWrappedObject->logicalIndexAt(position));
-}
-
-void PythonQtWrapper_QHeaderView::setSelection(QHeaderView* theWrappedObject, const QRect&  arg__1, QItemSelectionModel::SelectionFlags  arg__2)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_setSelection(arg__1, arg__2));
-}
-
-void PythonQtWrapper_QHeaderView::doItemsLayout(QHeaderView* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_doItemsLayout());
-}
-
-QRect  PythonQtWrapper_QHeaderView::visualRect(QHeaderView* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_visualRect(index));
-}
-
-int  PythonQtWrapper_QHeaderView::logicalIndexAt(QHeaderView* theWrappedObject, const QPoint&  pos) const
-{
-  return ( theWrappedObject->logicalIndexAt(pos));
-}
-
-QHeaderView::ResizeMode  PythonQtWrapper_QHeaderView::resizeMode(QHeaderView* theWrappedObject, int  logicalIndex) const
-{
-  return ( theWrappedObject->resizeMode(logicalIndex));
-}
-
-void PythonQtWrapper_QHeaderView::setSortIndicator(QHeaderView* theWrappedObject, int  logicalIndex, Qt::SortOrder  order)
-{
-  ( theWrappedObject->setSortIndicator(logicalIndex, order));
-}
-
-bool  PythonQtWrapper_QHeaderView::isIndexHidden(QHeaderView* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_isIndexHidden(index));
-}
-
-void PythonQtWrapper_QHeaderView::scrollTo(QHeaderView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_scrollTo(index, hint));
-}
-
-bool  PythonQtWrapper_QHeaderView::isClickable(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->isClickable());
-}
-
-int  PythonQtWrapper_QHeaderView::defaultSectionSize(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->defaultSectionSize());
-}
-
-int  PythonQtWrapper_QHeaderView::sectionSizeHint(QHeaderView* theWrappedObject, int  logicalIndex) const
-{
-  return ( theWrappedObject->sectionSizeHint(logicalIndex));
-}
-
-Qt::Orientation  PythonQtWrapper_QHeaderView::orientation(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->orientation());
-}
-
-void PythonQtWrapper_QHeaderView::setSectionHidden(QHeaderView* theWrappedObject, int  logicalIndex, bool  hide)
-{
-  ( theWrappedObject->setSectionHidden(logicalIndex, hide));
-}
-
-bool  PythonQtWrapper_QHeaderView::restoreState(QHeaderView* theWrappedObject, const QByteArray&  state)
-{
-  return ( theWrappedObject->restoreState(state));
-}
-
-void PythonQtWrapper_QHeaderView::setMinimumSectionSize(QHeaderView* theWrappedObject, int  size)
-{
-  ( theWrappedObject->setMinimumSectionSize(size));
-}
-
-QByteArray  PythonQtWrapper_QHeaderView::saveState(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->saveState());
+  ( theWrappedObject->setMovable(movable));
 }
 
 void PythonQtWrapper_QHeaderView::setDefaultAlignment(QHeaderView* theWrappedObject, Qt::Alignment  alignment)
@@ -1935,14 +1968,9 @@ void PythonQtWrapper_QHeaderView::setDefaultAlignment(QHeaderView* theWrappedObj
   ( theWrappedObject->setDefaultAlignment(alignment));
 }
 
-void PythonQtWrapper_QHeaderView::paintEvent(QHeaderView* theWrappedObject, QPaintEvent*  e)
+bool  PythonQtWrapper_QHeaderView::isSortIndicatorShown(QHeaderView* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_paintEvent(e));
-}
-
-int  PythonQtWrapper_QHeaderView::visualIndex(QHeaderView* theWrappedObject, int  logicalIndex) const
-{
-  return ( theWrappedObject->visualIndex(logicalIndex));
+  return ( theWrappedObject->isSortIndicatorShown());
 }
 
 bool  PythonQtWrapper_QHeaderView::viewportEvent(QHeaderView* theWrappedObject, QEvent*  e)
@@ -1950,14 +1978,9 @@ bool  PythonQtWrapper_QHeaderView::viewportEvent(QHeaderView* theWrappedObject, 
   return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_viewportEvent(e));
 }
 
-void PythonQtWrapper_QHeaderView::setClickable(QHeaderView* theWrappedObject, bool  clickable)
+void PythonQtWrapper_QHeaderView::doItemsLayout(QHeaderView* theWrappedObject)
 {
-  ( theWrappedObject->setClickable(clickable));
-}
-
-bool  PythonQtWrapper_QHeaderView::event(QHeaderView* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_event(e));
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_doItemsLayout());
 }
 
 int  PythonQtWrapper_QHeaderView::logicalIndex(QHeaderView* theWrappedObject, int  visualIndex) const
@@ -1965,53 +1988,33 @@ int  PythonQtWrapper_QHeaderView::logicalIndex(QHeaderView* theWrappedObject, in
   return ( theWrappedObject->logicalIndex(visualIndex));
 }
 
-int  PythonQtWrapper_QHeaderView::sectionViewportPosition(QHeaderView* theWrappedObject, int  logicalIndex) const
+bool  PythonQtWrapper_QHeaderView::highlightSections(QHeaderView* theWrappedObject) const
 {
-  return ( theWrappedObject->sectionViewportPosition(logicalIndex));
+  return ( theWrappedObject->highlightSections());
 }
 
-bool  PythonQtWrapper_QHeaderView::sectionsHidden(QHeaderView* theWrappedObject) const
+void PythonQtWrapper_QHeaderView::setCascadingSectionResizes(QHeaderView* theWrappedObject, bool  enable)
 {
-  return ( theWrappedObject->sectionsHidden());
+  ( theWrappedObject->setCascadingSectionResizes(enable));
 }
 
-void PythonQtWrapper_QHeaderView::setResizeMode(QHeaderView* theWrappedObject, QHeaderView::ResizeMode  mode)
+int  PythonQtWrapper_QHeaderView::visualIndex(QHeaderView* theWrappedObject, int  logicalIndex) const
 {
-  ( theWrappedObject->setResizeMode(mode));
+  return ( theWrappedObject->visualIndex(logicalIndex));
 }
 
-void PythonQtWrapper_QHeaderView::swapSections(QHeaderView* theWrappedObject, int  first, int  second)
+void PythonQtWrapper_QHeaderView::mouseReleaseEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
 {
-  ( theWrappedObject->swapSections(first, second));
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mouseReleaseEvent(e));
 }
 
-void PythonQtWrapper_QHeaderView::updateGeometries(QHeaderView* theWrappedObject)
+void PythonQtWrapper_QHeaderView::mousePressEvent(QHeaderView* theWrappedObject, QMouseEvent*  e)
 {
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_updateGeometries());
+  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_mousePressEvent(e));
 }
 
-bool  PythonQtWrapper_QHeaderView::sectionsMoved(QHeaderView* theWrappedObject) const
+bool  PythonQtWrapper_QHeaderView::restoreState(QHeaderView* theWrappedObject, const QByteArray&  state)
 {
-  return ( theWrappedObject->sectionsMoved());
-}
-
-void PythonQtWrapper_QHeaderView::paintSection(QHeaderView* theWrappedObject, QPainter*  painter, const QRect&  rect, int  logicalIndex) const
-{
-  ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_paintSection(painter, rect, logicalIndex));
-}
-
-QModelIndex  PythonQtWrapper_QHeaderView::indexAt(QHeaderView* theWrappedObject, const QPoint&  p) const
-{
-  return ( ((PythonQtPublicPromoter_QHeaderView*)theWrappedObject)->promoted_indexAt(p));
-}
-
-bool  PythonQtWrapper_QHeaderView::cascadingSectionResizes(QHeaderView* theWrappedObject) const
-{
-  return ( theWrappedObject->cascadingSectionResizes());
-}
-
-void PythonQtWrapper_QHeaderView::setMovable(QHeaderView* theWrappedObject, bool  movable)
-{
-  ( theWrappedObject->setMovable(movable));
+  return ( theWrappedObject->restoreState(state));
 }
 

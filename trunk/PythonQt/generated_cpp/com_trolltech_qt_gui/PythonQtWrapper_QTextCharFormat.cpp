@@ -16,29 +16,19 @@ QTextCharFormat* PythonQtWrapper_QTextCharFormat::new_QTextCharFormat()
 { 
 return new PythonQtShell_QTextCharFormat(); }
 
-int  PythonQtWrapper_QTextCharFormat::tableCellRowSpan(QTextCharFormat* theWrappedObject) const
+void PythonQtWrapper_QTextCharFormat::setVerticalAlignment(QTextCharFormat* theWrappedObject, QTextCharFormat::VerticalAlignment  alignment)
 {
-  return ( theWrappedObject->tableCellRowSpan());
+  ( theWrappedObject->setVerticalAlignment(alignment));
 }
 
-void PythonQtWrapper_QTextCharFormat::setTableCellRowSpan(QTextCharFormat* theWrappedObject, int  tableCellRowSpan)
+void PythonQtWrapper_QTextCharFormat::setFontStyleHint(QTextCharFormat* theWrappedObject, QFont::StyleHint  hint, QFont::StyleStrategy  strategy)
 {
-  ( theWrappedObject->setTableCellRowSpan(tableCellRowSpan));
+  ( theWrappedObject->setFontStyleHint(hint, strategy));
 }
 
-void PythonQtWrapper_QTextCharFormat::setUnderlineStyle(QTextCharFormat* theWrappedObject, QTextCharFormat::UnderlineStyle  style)
+void PythonQtWrapper_QTextCharFormat::setFontWeight(QTextCharFormat* theWrappedObject, int  weight)
 {
-  ( theWrappedObject->setUnderlineStyle(style));
-}
-
-bool  PythonQtWrapper_QTextCharFormat::fontUnderline(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontUnderline());
-}
-
-QFont  PythonQtWrapper_QTextCharFormat::font(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->font());
+  ( theWrappedObject->setFontWeight(weight));
 }
 
 void PythonQtWrapper_QTextCharFormat::setAnchorHref(QTextCharFormat* theWrappedObject, const QString&  value)
@@ -46,19 +36,9 @@ void PythonQtWrapper_QTextCharFormat::setAnchorHref(QTextCharFormat* theWrappedO
   ( theWrappedObject->setAnchorHref(value));
 }
 
-void PythonQtWrapper_QTextCharFormat::setFontOverline(QTextCharFormat* theWrappedObject, bool  overline)
+void PythonQtWrapper_QTextCharFormat::setFontLetterSpacing(QTextCharFormat* theWrappedObject, qreal  spacing)
 {
-  ( theWrappedObject->setFontOverline(overline));
-}
-
-QString  PythonQtWrapper_QTextCharFormat::fontFamily(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontFamily());
-}
-
-void PythonQtWrapper_QTextCharFormat::setFontCapitalization(QTextCharFormat* theWrappedObject, QFont::Capitalization  capitalization)
-{
-  ( theWrappedObject->setFontCapitalization(capitalization));
+  ( theWrappedObject->setFontLetterSpacing(spacing));
 }
 
 QStringList  PythonQtWrapper_QTextCharFormat::anchorNames(QTextCharFormat* theWrappedObject) const
@@ -66,69 +46,19 @@ QStringList  PythonQtWrapper_QTextCharFormat::anchorNames(QTextCharFormat* theWr
   return ( theWrappedObject->anchorNames());
 }
 
-void PythonQtWrapper_QTextCharFormat::setFontItalic(QTextCharFormat* theWrappedObject, bool  italic)
+bool  PythonQtWrapper_QTextCharFormat::fontFixedPitch(QTextCharFormat* theWrappedObject) const
 {
-  ( theWrappedObject->setFontItalic(italic));
+  return ( theWrappedObject->fontFixedPitch());
 }
 
-void PythonQtWrapper_QTextCharFormat::setUnderlineColor(QTextCharFormat* theWrappedObject, const QColor&  color)
+QString  PythonQtWrapper_QTextCharFormat::toolTip(QTextCharFormat* theWrappedObject) const
 {
-  ( theWrappedObject->setUnderlineColor(color));
+  return ( theWrappedObject->toolTip());
 }
 
-bool  PythonQtWrapper_QTextCharFormat::isValid(QTextCharFormat* theWrappedObject) const
+bool  PythonQtWrapper_QTextCharFormat::fontUnderline(QTextCharFormat* theWrappedObject) const
 {
-  return ( theWrappedObject->isValid());
-}
-
-void PythonQtWrapper_QTextCharFormat::setTextOutline(QTextCharFormat* theWrappedObject, const QPen&  pen)
-{
-  ( theWrappedObject->setTextOutline(pen));
-}
-
-void PythonQtWrapper_QTextCharFormat::setAnchorNames(QTextCharFormat* theWrappedObject, const QStringList&  names)
-{
-  ( theWrappedObject->setAnchorNames(names));
-}
-
-bool  PythonQtWrapper_QTextCharFormat::isAnchor(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->isAnchor());
-}
-
-QPen  PythonQtWrapper_QTextCharFormat::textOutline(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->textOutline());
-}
-
-void PythonQtWrapper_QTextCharFormat::setAnchor(QTextCharFormat* theWrappedObject, bool  anchor)
-{
-  ( theWrappedObject->setAnchor(anchor));
-}
-
-void PythonQtWrapper_QTextCharFormat::setFontPointSize(QTextCharFormat* theWrappedObject, qreal  size)
-{
-  ( theWrappedObject->setFontPointSize(size));
-}
-
-int  PythonQtWrapper_QTextCharFormat::tableCellColumnSpan(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->tableCellColumnSpan());
-}
-
-QFont::Capitalization  PythonQtWrapper_QTextCharFormat::fontCapitalization(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontCapitalization());
-}
-
-bool  PythonQtWrapper_QTextCharFormat::fontStrikeOut(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontStrikeOut());
-}
-
-void PythonQtWrapper_QTextCharFormat::setToolTip(QTextCharFormat* theWrappedObject, const QString&  tip)
-{
-  ( theWrappedObject->setToolTip(tip));
+  return ( theWrappedObject->fontUnderline());
 }
 
 void PythonQtWrapper_QTextCharFormat::setFontWordSpacing(QTextCharFormat* theWrappedObject, qreal  spacing)
@@ -136,14 +66,129 @@ void PythonQtWrapper_QTextCharFormat::setFontWordSpacing(QTextCharFormat* theWra
   ( theWrappedObject->setFontWordSpacing(spacing));
 }
 
-qreal  PythonQtWrapper_QTextCharFormat::fontLetterSpacing(QTextCharFormat* theWrappedObject) const
+void PythonQtWrapper_QTextCharFormat::setTableCellColumnSpan(QTextCharFormat* theWrappedObject, int  tableCellColumnSpan)
 {
-  return ( theWrappedObject->fontLetterSpacing());
+  ( theWrappedObject->setTableCellColumnSpan(tableCellColumnSpan));
+}
+
+void PythonQtWrapper_QTextCharFormat::setUnderlineStyle(QTextCharFormat* theWrappedObject, QTextCharFormat::UnderlineStyle  style)
+{
+  ( theWrappedObject->setUnderlineStyle(style));
+}
+
+QFont::StyleHint  PythonQtWrapper_QTextCharFormat::fontStyleHint(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontStyleHint());
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontCapitalization(QTextCharFormat* theWrappedObject, QFont::Capitalization  capitalization)
+{
+  ( theWrappedObject->setFontCapitalization(capitalization));
+}
+
+QTextCharFormat::VerticalAlignment  PythonQtWrapper_QTextCharFormat::verticalAlignment(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->verticalAlignment());
+}
+
+QFont::Capitalization  PythonQtWrapper_QTextCharFormat::fontCapitalization(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontCapitalization());
+}
+
+void PythonQtWrapper_QTextCharFormat::setAnchor(QTextCharFormat* theWrappedObject, bool  anchor)
+{
+  ( theWrappedObject->setAnchor(anchor));
+}
+
+int  PythonQtWrapper_QTextCharFormat::tableCellColumnSpan(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->tableCellColumnSpan());
 }
 
 int  PythonQtWrapper_QTextCharFormat::fontWeight(QTextCharFormat* theWrappedObject) const
 {
   return ( theWrappedObject->fontWeight());
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontKerning(QTextCharFormat* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setFontKerning(enable));
+}
+
+void PythonQtWrapper_QTextCharFormat::setAnchorNames(QTextCharFormat* theWrappedObject, const QStringList&  names)
+{
+  ( theWrappedObject->setAnchorNames(names));
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontStyleStrategy(QTextCharFormat* theWrappedObject, QFont::StyleStrategy  strategy)
+{
+  ( theWrappedObject->setFontStyleStrategy(strategy));
+}
+
+void PythonQtWrapper_QTextCharFormat::setTableCellRowSpan(QTextCharFormat* theWrappedObject, int  tableCellRowSpan)
+{
+  ( theWrappedObject->setTableCellRowSpan(tableCellRowSpan));
+}
+
+void PythonQtWrapper_QTextCharFormat::setUnderlineColor(QTextCharFormat* theWrappedObject, const QColor&  color)
+{
+  ( theWrappedObject->setUnderlineColor(color));
+}
+
+QColor  PythonQtWrapper_QTextCharFormat::underlineColor(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->underlineColor());
+}
+
+void PythonQtWrapper_QTextCharFormat::setToolTip(QTextCharFormat* theWrappedObject, const QString&  tip)
+{
+  ( theWrappedObject->setToolTip(tip));
+}
+
+bool  PythonQtWrapper_QTextCharFormat::isAnchor(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->isAnchor());
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontOverline(QTextCharFormat* theWrappedObject, bool  overline)
+{
+  ( theWrappedObject->setFontOverline(overline));
+}
+
+bool  PythonQtWrapper_QTextCharFormat::fontItalic(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontItalic());
+}
+
+QFont::StyleStrategy  PythonQtWrapper_QTextCharFormat::fontStyleStrategy(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontStyleStrategy());
+}
+
+bool  PythonQtWrapper_QTextCharFormat::isValid(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
+}
+
+QTextCharFormat::UnderlineStyle  PythonQtWrapper_QTextCharFormat::underlineStyle(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->underlineStyle());
+}
+
+bool  PythonQtWrapper_QTextCharFormat::fontOverline(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontOverline());
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontFamily(QTextCharFormat* theWrappedObject, const QString&  family)
+{
+  ( theWrappedObject->setFontFamily(family));
+}
+
+int  PythonQtWrapper_QTextCharFormat::tableCellRowSpan(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->tableCellRowSpan());
 }
 
 void PythonQtWrapper_QTextCharFormat::setFont(QTextCharFormat* theWrappedObject, const QFont&  font)
@@ -156,9 +201,29 @@ void PythonQtWrapper_QTextCharFormat::setFontFixedPitch(QTextCharFormat* theWrap
   ( theWrappedObject->setFontFixedPitch(fixedPitch));
 }
 
-void PythonQtWrapper_QTextCharFormat::setFontFamily(QTextCharFormat* theWrappedObject, const QString&  family)
+qreal  PythonQtWrapper_QTextCharFormat::fontPointSize(QTextCharFormat* theWrappedObject) const
 {
-  ( theWrappedObject->setFontFamily(family));
+  return ( theWrappedObject->fontPointSize());
+}
+
+void PythonQtWrapper_QTextCharFormat::setFontPointSize(QTextCharFormat* theWrappedObject, qreal  size)
+{
+  ( theWrappedObject->setFontPointSize(size));
+}
+
+void PythonQtWrapper_QTextCharFormat::setTextOutline(QTextCharFormat* theWrappedObject, const QPen&  pen)
+{
+  ( theWrappedObject->setTextOutline(pen));
+}
+
+qreal  PythonQtWrapper_QTextCharFormat::fontLetterSpacing(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontLetterSpacing());
+}
+
+QFont  PythonQtWrapper_QTextCharFormat::font(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->font());
 }
 
 void PythonQtWrapper_QTextCharFormat::setFontUnderline(QTextCharFormat* theWrappedObject, bool  underline)
@@ -166,54 +231,14 @@ void PythonQtWrapper_QTextCharFormat::setFontUnderline(QTextCharFormat* theWrapp
   ( theWrappedObject->setFontUnderline(underline));
 }
 
-QString  PythonQtWrapper_QTextCharFormat::anchorHref(QTextCharFormat* theWrappedObject) const
+QPen  PythonQtWrapper_QTextCharFormat::textOutline(QTextCharFormat* theWrappedObject) const
 {
-  return ( theWrappedObject->anchorHref());
+  return ( theWrappedObject->textOutline());
 }
 
-QTextCharFormat::VerticalAlignment  PythonQtWrapper_QTextCharFormat::verticalAlignment(QTextCharFormat* theWrappedObject) const
+QString  PythonQtWrapper_QTextCharFormat::fontFamily(QTextCharFormat* theWrappedObject) const
 {
-  return ( theWrappedObject->verticalAlignment());
-}
-
-QColor  PythonQtWrapper_QTextCharFormat::underlineColor(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->underlineColor());
-}
-
-void PythonQtWrapper_QTextCharFormat::setFontWeight(QTextCharFormat* theWrappedObject, int  weight)
-{
-  ( theWrappedObject->setFontWeight(weight));
-}
-
-bool  PythonQtWrapper_QTextCharFormat::fontItalic(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontItalic());
-}
-
-void PythonQtWrapper_QTextCharFormat::setTableCellColumnSpan(QTextCharFormat* theWrappedObject, int  tableCellColumnSpan)
-{
-  ( theWrappedObject->setTableCellColumnSpan(tableCellColumnSpan));
-}
-
-qreal  PythonQtWrapper_QTextCharFormat::fontWordSpacing(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontWordSpacing());
-}
-
-bool  PythonQtWrapper_QTextCharFormat::fontOverline(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->fontOverline());
-}
-
-QTextCharFormat::UnderlineStyle  PythonQtWrapper_QTextCharFormat::underlineStyle(QTextCharFormat* theWrappedObject) const
-{
-  return ( theWrappedObject->underlineStyle());
-}
-
-void PythonQtWrapper_QTextCharFormat::setFontLetterSpacing(QTextCharFormat* theWrappedObject, qreal  spacing)
-{
-  ( theWrappedObject->setFontLetterSpacing(spacing));
+  return ( theWrappedObject->fontFamily());
 }
 
 void PythonQtWrapper_QTextCharFormat::setFontStrikeOut(QTextCharFormat* theWrappedObject, bool  strikeOut)
@@ -221,23 +246,28 @@ void PythonQtWrapper_QTextCharFormat::setFontStrikeOut(QTextCharFormat* theWrapp
   ( theWrappedObject->setFontStrikeOut(strikeOut));
 }
 
-qreal  PythonQtWrapper_QTextCharFormat::fontPointSize(QTextCharFormat* theWrappedObject) const
+bool  PythonQtWrapper_QTextCharFormat::fontKerning(QTextCharFormat* theWrappedObject) const
 {
-  return ( theWrappedObject->fontPointSize());
+  return ( theWrappedObject->fontKerning());
 }
 
-bool  PythonQtWrapper_QTextCharFormat::fontFixedPitch(QTextCharFormat* theWrappedObject) const
+QString  PythonQtWrapper_QTextCharFormat::anchorHref(QTextCharFormat* theWrappedObject) const
 {
-  return ( theWrappedObject->fontFixedPitch());
+  return ( theWrappedObject->anchorHref());
 }
 
-void PythonQtWrapper_QTextCharFormat::setVerticalAlignment(QTextCharFormat* theWrappedObject, QTextCharFormat::VerticalAlignment  alignment)
+qreal  PythonQtWrapper_QTextCharFormat::fontWordSpacing(QTextCharFormat* theWrappedObject) const
 {
-  ( theWrappedObject->setVerticalAlignment(alignment));
+  return ( theWrappedObject->fontWordSpacing());
 }
 
-QString  PythonQtWrapper_QTextCharFormat::toolTip(QTextCharFormat* theWrappedObject) const
+void PythonQtWrapper_QTextCharFormat::setFontItalic(QTextCharFormat* theWrappedObject, bool  italic)
 {
-  return ( theWrappedObject->toolTip());
+  ( theWrappedObject->setFontItalic(italic));
+}
+
+bool  PythonQtWrapper_QTextCharFormat::fontStrikeOut(QTextCharFormat* theWrappedObject) const
+{
+  return ( theWrappedObject->fontStrikeOut());
 }
 

@@ -11,23 +11,23 @@ QCryptographicHash* PythonQtWrapper_QCryptographicHash::new_QCryptographicHash(Q
 { 
 return new QCryptographicHash(method); }
 
-void PythonQtWrapper_QCryptographicHash::addData(QCryptographicHash* theWrappedObject, const QByteArray&  data)
-{
-  ( theWrappedObject->addData(data));
-}
-
 void PythonQtWrapper_QCryptographicHash::reset(QCryptographicHash* theWrappedObject)
 {
   ( theWrappedObject->reset());
 }
 
-QByteArray  PythonQtWrapper_QCryptographicHash::static_QCryptographicHash_hash(const QByteArray&  data, QCryptographicHash::Algorithm  method)
+void PythonQtWrapper_QCryptographicHash::addData(QCryptographicHash* theWrappedObject, const QByteArray&  data)
 {
-  return (QCryptographicHash::hash(data, method));
+  ( theWrappedObject->addData(data));
 }
 
 QByteArray  PythonQtWrapper_QCryptographicHash::result(QCryptographicHash* theWrappedObject) const
 {
   return ( theWrappedObject->result());
+}
+
+QByteArray  PythonQtWrapper_QCryptographicHash::static_QCryptographicHash_hash(const QByteArray&  data, QCryptographicHash::Algorithm  method)
+{
+  return (QCryptographicHash::hash(data, method));
 }
 

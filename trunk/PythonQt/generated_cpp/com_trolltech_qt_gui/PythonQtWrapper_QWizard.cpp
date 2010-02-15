@@ -12,12 +12,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -912,69 +915,14 @@ QWizard* PythonQtWrapper_QWizard::new_QWizard(QWidget*  parent, Qt::WindowFlags 
 { 
 return new PythonQtShell_QWizard(parent, flags); }
 
-QPixmap  PythonQtWrapper_QWizard::pixmap(QWizard* theWrappedObject, QWizard::WizardPixmap  which) const
-{
-  return ( theWrappedObject->pixmap(which));
-}
-
-Qt::TextFormat  PythonQtWrapper_QWizard::subTitleFormat(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->subTitleFormat());
-}
-
-void PythonQtWrapper_QWizard::paintEvent(QWizard* theWrappedObject, QPaintEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_paintEvent(event));
-}
-
 void PythonQtWrapper_QWizard::setSubTitleFormat(QWizard* theWrappedObject, Qt::TextFormat  format)
 {
   ( theWrappedObject->setSubTitleFormat(format));
 }
 
-void PythonQtWrapper_QWizard::setPage(QWizard* theWrappedObject, int  id, QWizardPage*  page)
+int  PythonQtWrapper_QWizard::currentId(QWizard* theWrappedObject) const
 {
-  ( theWrappedObject->setPage(id, page));
-}
-
-QWizardPage*  PythonQtWrapper_QWizard::currentPage(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->currentPage());
-}
-
-Qt::TextFormat  PythonQtWrapper_QWizard::titleFormat(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->titleFormat());
-}
-
-QList<int >  PythonQtWrapper_QWizard::visitedPages(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->visitedPages());
-}
-
-void PythonQtWrapper_QWizard::setWizardStyle(QWizard* theWrappedObject, QWizard::WizardStyle  style)
-{
-  ( theWrappedObject->setWizardStyle(style));
-}
-
-int  PythonQtWrapper_QWizard::addPage(QWizard* theWrappedObject, QWizardPage*  page)
-{
-  return ( theWrappedObject->addPage(page));
-}
-
-void PythonQtWrapper_QWizard::setField(QWizard* theWrappedObject, const QString&  name, const QVariant&  value)
-{
-  ( theWrappedObject->setField(name, value));
-}
-
-QAbstractButton*  PythonQtWrapper_QWizard::button(QWizard* theWrappedObject, QWizard::WizardButton  which) const
-{
-  return ( theWrappedObject->button(which));
-}
-
-QString  PythonQtWrapper_QWizard::buttonText(QWizard* theWrappedObject, QWizard::WizardButton  which) const
-{
-  return ( theWrappedObject->buttonText(which));
+  return ( theWrappedObject->currentId());
 }
 
 bool  PythonQtWrapper_QWizard::hasVisitedPage(QWizard* theWrappedObject, int  id) const
@@ -982,74 +930,9 @@ bool  PythonQtWrapper_QWizard::hasVisitedPage(QWizard* theWrappedObject, int  id
   return ( theWrappedObject->hasVisitedPage(id));
 }
 
-QWizard::WizardOptions  PythonQtWrapper_QWizard::options(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->options());
-}
-
-QVariant  PythonQtWrapper_QWizard::field(QWizard* theWrappedObject, const QString&  name) const
-{
-  return ( theWrappedObject->field(name));
-}
-
-void PythonQtWrapper_QWizard::setButton(QWizard* theWrappedObject, QWizard::WizardButton  which, QAbstractButton*  button)
-{
-  ( theWrappedObject->setButton(which, button));
-}
-
-void PythonQtWrapper_QWizard::setButtonLayout(QWizard* theWrappedObject, const QList<QWizard::WizardButton >&  layout)
-{
-  ( theWrappedObject->setButtonLayout(layout));
-}
-
-void PythonQtWrapper_QWizard::setOption(QWizard* theWrappedObject, QWizard::WizardOption  option, bool  on)
-{
-  ( theWrappedObject->setOption(option, on));
-}
-
 QSize  PythonQtWrapper_QWizard::sizeHint(QWizard* theWrappedObject) const
 {
   return ( theWrappedObject->sizeHint());
-}
-
-void PythonQtWrapper_QWizard::setButtonText(QWizard* theWrappedObject, QWizard::WizardButton  which, const QString&  text)
-{
-  ( theWrappedObject->setButtonText(which, text));
-}
-
-void PythonQtWrapper_QWizard::initializePage(QWizard* theWrappedObject, int  id)
-{
-  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_initializePage(id));
-}
-
-void PythonQtWrapper_QWizard::setStartId(QWizard* theWrappedObject, int  id)
-{
-  ( theWrappedObject->setStartId(id));
-}
-
-void PythonQtWrapper_QWizard::cleanupPage(QWizard* theWrappedObject, int  id)
-{
-  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_cleanupPage(id));
-}
-
-bool  PythonQtWrapper_QWizard::event(QWizard* theWrappedObject, QEvent*  event)
-{
-  return ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_event(event));
-}
-
-QWizardPage*  PythonQtWrapper_QWizard::page(QWizard* theWrappedObject, int  id) const
-{
-  return ( theWrappedObject->page(id));
-}
-
-int  PythonQtWrapper_QWizard::startId(QWizard* theWrappedObject) const
-{
-  return ( theWrappedObject->startId());
-}
-
-void PythonQtWrapper_QWizard::setTitleFormat(QWizard* theWrappedObject, Qt::TextFormat  format)
-{
-  ( theWrappedObject->setTitleFormat(format));
 }
 
 QWizard::WizardStyle  PythonQtWrapper_QWizard::wizardStyle(QWizard* theWrappedObject) const
@@ -1057,24 +940,14 @@ QWizard::WizardStyle  PythonQtWrapper_QWizard::wizardStyle(QWizard* theWrappedOb
   return ( theWrappedObject->wizardStyle());
 }
 
-void PythonQtWrapper_QWizard::resizeEvent(QWizard* theWrappedObject, QResizeEvent*  event)
+void PythonQtWrapper_QWizard::setStartId(QWizard* theWrappedObject, int  id)
 {
-  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_resizeEvent(event));
+  ( theWrappedObject->setStartId(id));
 }
 
-void PythonQtWrapper_QWizard::done(QWizard* theWrappedObject, int  result)
+void PythonQtWrapper_QWizard::setWizardStyle(QWizard* theWrappedObject, QWizard::WizardStyle  style)
 {
-  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_done(result));
-}
-
-void PythonQtWrapper_QWizard::setOptions(QWizard* theWrappedObject, QWizard::WizardOptions  options)
-{
-  ( theWrappedObject->setOptions(options));
-}
-
-void PythonQtWrapper_QWizard::setVisible(QWizard* theWrappedObject, bool  visible)
-{
-  ( theWrappedObject->setVisible(visible));
+  ( theWrappedObject->setWizardStyle(style));
 }
 
 int  PythonQtWrapper_QWizard::nextId(QWizard* theWrappedObject) const
@@ -1082,14 +955,29 @@ int  PythonQtWrapper_QWizard::nextId(QWizard* theWrappedObject) const
   return ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_nextId());
 }
 
-bool  PythonQtWrapper_QWizard::validateCurrentPage(QWizard* theWrappedObject)
+void PythonQtWrapper_QWizard::setOptions(QWizard* theWrappedObject, QWizard::WizardOptions  options)
 {
-  return ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_validateCurrentPage());
+  ( theWrappedObject->setOptions(options));
 }
 
-bool  PythonQtWrapper_QWizard::testOption(QWizard* theWrappedObject, QWizard::WizardOption  option) const
+QWizard::WizardOptions  PythonQtWrapper_QWizard::options(QWizard* theWrappedObject) const
 {
-  return ( theWrappedObject->testOption(option));
+  return ( theWrappedObject->options());
+}
+
+void PythonQtWrapper_QWizard::setButtonText(QWizard* theWrappedObject, QWizard::WizardButton  which, const QString&  text)
+{
+  ( theWrappedObject->setButtonText(which, text));
+}
+
+void PythonQtWrapper_QWizard::cleanupPage(QWizard* theWrappedObject, int  id)
+{
+  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_cleanupPage(id));
+}
+
+int  PythonQtWrapper_QWizard::startId(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->startId());
 }
 
 void PythonQtWrapper_QWizard::setPixmap(QWizard* theWrappedObject, QWizard::WizardPixmap  which, const QPixmap&  pixmap)
@@ -1097,8 +985,133 @@ void PythonQtWrapper_QWizard::setPixmap(QWizard* theWrappedObject, QWizard::Wiza
   ( theWrappedObject->setPixmap(which, pixmap));
 }
 
-int  PythonQtWrapper_QWizard::currentId(QWizard* theWrappedObject) const
+bool  PythonQtWrapper_QWizard::testOption(QWizard* theWrappedObject, QWizard::WizardOption  option) const
 {
-  return ( theWrappedObject->currentId());
+  return ( theWrappedObject->testOption(option));
+}
+
+void PythonQtWrapper_QWizard::setButtonLayout(QWizard* theWrappedObject, const QList<QWizard::WizardButton >&  layout)
+{
+  ( theWrappedObject->setButtonLayout(layout));
+}
+
+QAbstractButton*  PythonQtWrapper_QWizard::button(QWizard* theWrappedObject, QWizard::WizardButton  which) const
+{
+  return ( theWrappedObject->button(which));
+}
+
+bool  PythonQtWrapper_QWizard::event(QWizard* theWrappedObject, QEvent*  event)
+{
+  return ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_event(event));
+}
+
+Qt::TextFormat  PythonQtWrapper_QWizard::titleFormat(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->titleFormat());
+}
+
+void PythonQtWrapper_QWizard::setButton(QWizard* theWrappedObject, QWizard::WizardButton  which, QAbstractButton*  button)
+{
+  ( theWrappedObject->setButton(which, button));
+}
+
+QVariant  PythonQtWrapper_QWizard::field(QWizard* theWrappedObject, const QString&  name) const
+{
+  return ( theWrappedObject->field(name));
+}
+
+QWizardPage*  PythonQtWrapper_QWizard::page(QWizard* theWrappedObject, int  id) const
+{
+  return ( theWrappedObject->page(id));
+}
+
+void PythonQtWrapper_QWizard::initializePage(QWizard* theWrappedObject, int  id)
+{
+  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_initializePage(id));
+}
+
+QList<int >  PythonQtWrapper_QWizard::visitedPages(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->visitedPages());
+}
+
+void PythonQtWrapper_QWizard::setTitleFormat(QWizard* theWrappedObject, Qt::TextFormat  format)
+{
+  ( theWrappedObject->setTitleFormat(format));
+}
+
+void PythonQtWrapper_QWizard::setField(QWizard* theWrappedObject, const QString&  name, const QVariant&  value)
+{
+  ( theWrappedObject->setField(name, value));
+}
+
+Qt::TextFormat  PythonQtWrapper_QWizard::subTitleFormat(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->subTitleFormat());
+}
+
+void PythonQtWrapper_QWizard::setPage(QWizard* theWrappedObject, int  id, QWizardPage*  page)
+{
+  ( theWrappedObject->setPage(id, page));
+}
+
+QString  PythonQtWrapper_QWizard::buttonText(QWizard* theWrappedObject, QWizard::WizardButton  which) const
+{
+  return ( theWrappedObject->buttonText(which));
+}
+
+QWizardPage*  PythonQtWrapper_QWizard::currentPage(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->currentPage());
+}
+
+void PythonQtWrapper_QWizard::setOption(QWizard* theWrappedObject, QWizard::WizardOption  option, bool  on)
+{
+  ( theWrappedObject->setOption(option, on));
+}
+
+void PythonQtWrapper_QWizard::resizeEvent(QWizard* theWrappedObject, QResizeEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_resizeEvent(event));
+}
+
+QList<int >  PythonQtWrapper_QWizard::pageIds(QWizard* theWrappedObject) const
+{
+  return ( theWrappedObject->pageIds());
+}
+
+int  PythonQtWrapper_QWizard::addPage(QWizard* theWrappedObject, QWizardPage*  page)
+{
+  return ( theWrappedObject->addPage(page));
+}
+
+void PythonQtWrapper_QWizard::removePage(QWizard* theWrappedObject, int  id)
+{
+  ( theWrappedObject->removePage(id));
+}
+
+void PythonQtWrapper_QWizard::setVisible(QWizard* theWrappedObject, bool  visible)
+{
+  ( theWrappedObject->setVisible(visible));
+}
+
+void PythonQtWrapper_QWizard::done(QWizard* theWrappedObject, int  result)
+{
+  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_done(result));
+}
+
+bool  PythonQtWrapper_QWizard::validateCurrentPage(QWizard* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_validateCurrentPage());
+}
+
+QPixmap  PythonQtWrapper_QWizard::pixmap(QWizard* theWrappedObject, QWizard::WizardPixmap  which) const
+{
+  return ( theWrappedObject->pixmap(which));
+}
+
+void PythonQtWrapper_QWizard::paintEvent(QWizard* theWrappedObject, QPaintEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QWizard*)theWrappedObject)->promoted_paintEvent(event));
 }
 

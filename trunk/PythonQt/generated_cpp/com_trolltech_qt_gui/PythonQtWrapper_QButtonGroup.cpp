@@ -122,9 +122,44 @@ QButtonGroup* PythonQtWrapper_QButtonGroup::new_QButtonGroup(QObject*  parent)
 { 
 return new PythonQtShell_QButtonGroup(parent); }
 
+void PythonQtWrapper_QButtonGroup::removeButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1)
+{
+  ( theWrappedObject->removeButton(arg__1));
+}
+
+QAbstractButton*  PythonQtWrapper_QButtonGroup::checkedButton(QButtonGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->checkedButton());
+}
+
+bool  PythonQtWrapper_QButtonGroup::exclusive(QButtonGroup* theWrappedObject) const
+{
+  return ( theWrappedObject->exclusive());
+}
+
+void PythonQtWrapper_QButtonGroup::setExclusive(QButtonGroup* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setExclusive(arg__1));
+}
+
+void PythonQtWrapper_QButtonGroup::addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1, int  id)
+{
+  ( theWrappedObject->addButton(arg__1, id));
+}
+
+void PythonQtWrapper_QButtonGroup::addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1)
+{
+  ( theWrappedObject->addButton(arg__1));
+}
+
 int  PythonQtWrapper_QButtonGroup::id(QButtonGroup* theWrappedObject, QAbstractButton*  button) const
 {
   return ( theWrappedObject->id(button));
+}
+
+void PythonQtWrapper_QButtonGroup::setId(QButtonGroup* theWrappedObject, QAbstractButton*  button, int  id)
+{
+  ( theWrappedObject->setId(button, id));
 }
 
 int  PythonQtWrapper_QButtonGroup::checkedId(QButtonGroup* theWrappedObject) const
@@ -137,43 +172,8 @@ QAbstractButton*  PythonQtWrapper_QButtonGroup::button(QButtonGroup* theWrappedO
   return ( theWrappedObject->button(id));
 }
 
-bool  PythonQtWrapper_QButtonGroup::exclusive(QButtonGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->exclusive());
-}
-
-void PythonQtWrapper_QButtonGroup::setId(QButtonGroup* theWrappedObject, QAbstractButton*  button, int  id)
-{
-  ( theWrappedObject->setId(button, id));
-}
-
-void PythonQtWrapper_QButtonGroup::addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1, int  id)
-{
-  ( theWrappedObject->addButton(arg__1, id));
-}
-
-QAbstractButton*  PythonQtWrapper_QButtonGroup::checkedButton(QButtonGroup* theWrappedObject) const
-{
-  return ( theWrappedObject->checkedButton());
-}
-
-void PythonQtWrapper_QButtonGroup::addButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1)
-{
-  ( theWrappedObject->addButton(arg__1));
-}
-
 QList<QAbstractButton* >  PythonQtWrapper_QButtonGroup::buttons(QButtonGroup* theWrappedObject) const
 {
   return ( theWrappedObject->buttons());
-}
-
-void PythonQtWrapper_QButtonGroup::removeButton(QButtonGroup* theWrappedObject, QAbstractButton*  arg__1)
-{
-  ( theWrappedObject->removeButton(arg__1));
-}
-
-void PythonQtWrapper_QButtonGroup::setExclusive(QButtonGroup* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setExclusive(arg__1));
 }
 

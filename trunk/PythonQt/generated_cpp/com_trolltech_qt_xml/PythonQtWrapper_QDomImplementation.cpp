@@ -19,19 +19,9 @@ QDomDocument  PythonQtWrapper_QDomImplementation::createDocument(QDomImplementat
   return ( theWrappedObject->createDocument(nsURI, qName, doctype));
 }
 
-bool  PythonQtWrapper_QDomImplementation::isNull(QDomImplementation* theWrappedObject)
-{
-  return ( theWrappedObject->isNull());
-}
-
 QDomImplementation::InvalidDataPolicy  PythonQtWrapper_QDomImplementation::static_QDomImplementation_invalidDataPolicy()
 {
   return (QDomImplementation::invalidDataPolicy());
-}
-
-bool  PythonQtWrapper_QDomImplementation::operator_equal(QDomImplementation* theWrappedObject, const QDomImplementation&  arg__1) const
-{
-  return ( (*theWrappedObject)== arg__1);
 }
 
 void PythonQtWrapper_QDomImplementation::static_QDomImplementation_setInvalidDataPolicy(QDomImplementation::InvalidDataPolicy  policy)
@@ -44,8 +34,18 @@ QDomDocumentType  PythonQtWrapper_QDomImplementation::createDocumentType(QDomImp
   return ( theWrappedObject->createDocumentType(qName, publicId, systemId));
 }
 
+bool  PythonQtWrapper_QDomImplementation::isNull(QDomImplementation* theWrappedObject)
+{
+  return ( theWrappedObject->isNull());
+}
+
 bool  PythonQtWrapper_QDomImplementation::hasFeature(QDomImplementation* theWrappedObject, const QString&  feature, const QString&  version) const
 {
   return ( theWrappedObject->hasFeature(feature, version));
+}
+
+bool  PythonQtWrapper_QDomImplementation::operator_equal(QDomImplementation* theWrappedObject, const QDomImplementation&  arg__1) const
+{
+  return ( (*theWrappedObject)== arg__1);
 }
 

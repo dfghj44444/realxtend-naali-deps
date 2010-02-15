@@ -14,11 +14,6 @@ QTextListFormat* PythonQtWrapper_QTextListFormat::new_QTextListFormat()
 { 
 return new PythonQtShell_QTextListFormat(); }
 
-void PythonQtWrapper_QTextListFormat::setStyle(QTextListFormat* theWrappedObject, QTextListFormat::Style  style)
-{
-  ( theWrappedObject->setStyle(style));
-}
-
 void PythonQtWrapper_QTextListFormat::setIndent(QTextListFormat* theWrappedObject, int  indent)
 {
   ( theWrappedObject->setIndent(indent));
@@ -27,6 +22,11 @@ void PythonQtWrapper_QTextListFormat::setIndent(QTextListFormat* theWrappedObjec
 bool  PythonQtWrapper_QTextListFormat::isValid(QTextListFormat* theWrappedObject) const
 {
   return ( theWrappedObject->isValid());
+}
+
+void PythonQtWrapper_QTextListFormat::setStyle(QTextListFormat* theWrappedObject, QTextListFormat::Style  style)
+{
+  ( theWrappedObject->setStyle(style));
 }
 
 QTextListFormat::Style  PythonQtWrapper_QTextListFormat::style(QTextListFormat* theWrappedObject) const

@@ -16,12 +16,15 @@
 #include <qdialogbuttonbox.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -110,23 +113,23 @@ QDialogButtonBox* new_QDialogButtonBox(QDialogButtonBox::StandardButtons  button
 QDialogButtonBox* new_QDialogButtonBox(QWidget*  parent = 0);
 QDialogButtonBox* new_QDialogButtonBox(Qt::Orientation  orientation, QWidget*  parent = 0);
 void delete_QDialogButtonBox(QDialogButtonBox* obj) { delete obj; } 
-   bool  centerButtons(QDialogButtonBox* theWrappedObject) const;
-   Qt::Orientation  orientation(QDialogButtonBox* theWrappedObject) const;
-   void setCenterButtons(QDialogButtonBox* theWrappedObject, bool  center);
-   QDialogButtonBox::StandardButton  standardButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button) const;
-   void clear(QDialogButtonBox* theWrappedObject);
-   void setStandardButtons(QDialogButtonBox* theWrappedObject, QDialogButtonBox::StandardButtons  buttons);
-   QPushButton*  addButton(QDialogButtonBox* theWrappedObject, const QString&  text, QDialogButtonBox::ButtonRole  role);
-   QPushButton*  addButton(QDialogButtonBox* theWrappedObject, QDialogButtonBox::StandardButton  button);
-   void setOrientation(QDialogButtonBox* theWrappedObject, Qt::Orientation  orientation);
-   void addButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button, QDialogButtonBox::ButtonRole  role);
-   bool  event(QDialogButtonBox* theWrappedObject, QEvent*  event);
-   QDialogButtonBox::StandardButtons  standardButtons(QDialogButtonBox* theWrappedObject) const;
-   QDialogButtonBox::ButtonRole  buttonRole(QDialogButtonBox* theWrappedObject, QAbstractButton*  button) const;
-   void removeButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button);
    QPushButton*  button(QDialogButtonBox* theWrappedObject, QDialogButtonBox::StandardButton  which) const;
-   QList<QAbstractButton* >  buttons(QDialogButtonBox* theWrappedObject) const;
+   QDialogButtonBox::ButtonRole  buttonRole(QDialogButtonBox* theWrappedObject, QAbstractButton*  button) const;
+   Qt::Orientation  orientation(QDialogButtonBox* theWrappedObject) const;
+   void addButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button, QDialogButtonBox::ButtonRole  role);
+   QDialogButtonBox::StandardButtons  standardButtons(QDialogButtonBox* theWrappedObject) const;
+   bool  event(QDialogButtonBox* theWrappedObject, QEvent*  event);
    void changeEvent(QDialogButtonBox* theWrappedObject, QEvent*  event);
+   void setStandardButtons(QDialogButtonBox* theWrappedObject, QDialogButtonBox::StandardButtons  buttons);
+   QPushButton*  addButton(QDialogButtonBox* theWrappedObject, QDialogButtonBox::StandardButton  button);
+   QPushButton*  addButton(QDialogButtonBox* theWrappedObject, const QString&  text, QDialogButtonBox::ButtonRole  role);
+   bool  centerButtons(QDialogButtonBox* theWrappedObject) const;
+   void setCenterButtons(QDialogButtonBox* theWrappedObject, bool  center);
+   void clear(QDialogButtonBox* theWrappedObject);
+   void setOrientation(QDialogButtonBox* theWrappedObject, Qt::Orientation  orientation);
+   QDialogButtonBox::StandardButton  standardButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button) const;
+   void removeButton(QDialogButtonBox* theWrappedObject, QAbstractButton*  button);
+   QList<QAbstractButton* >  buttons(QDialogButtonBox* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QDIALOGBUTTONBOX_H

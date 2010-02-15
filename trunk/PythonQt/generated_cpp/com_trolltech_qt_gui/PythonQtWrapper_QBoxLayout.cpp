@@ -10,6 +10,7 @@
 #include <qlayout.h>
 #include <qlayoutitem.h>
 #include <qlist.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -457,9 +458,24 @@ QBoxLayout* PythonQtWrapper_QBoxLayout::new_QBoxLayout(QBoxLayout::Direction  ar
 { 
 return new PythonQtShell_QBoxLayout(arg__1, parent); }
 
-void PythonQtWrapper_QBoxLayout::addStretch(QBoxLayout* theWrappedObject, int  stretch)
+bool  PythonQtWrapper_QBoxLayout::setStretchFactor(QBoxLayout* theWrappedObject, QLayout*  l, int  stretch)
 {
-  ( theWrappedObject->addStretch(stretch));
+  return ( theWrappedObject->setStretchFactor(l, stretch));
+}
+
+int  PythonQtWrapper_QBoxLayout::heightForWidth(QBoxLayout* theWrappedObject, int  arg__1) const
+{
+  return ( theWrappedObject->heightForWidth(arg__1));
+}
+
+bool  PythonQtWrapper_QBoxLayout::setStretchFactor(QBoxLayout* theWrappedObject, QWidget*  w, int  stretch)
+{
+  return ( theWrappedObject->setStretchFactor(w, stretch));
+}
+
+void PythonQtWrapper_QBoxLayout::insertWidget(QBoxLayout* theWrappedObject, int  index, QWidget*  widget, int  stretch, Qt::Alignment  alignment)
+{
+  ( theWrappedObject->insertWidget(index, widget, stretch, alignment));
 }
 
 QLayoutItem*  PythonQtWrapper_QBoxLayout::takeAt(QBoxLayout* theWrappedObject, int  arg__1)
@@ -472,89 +488,9 @@ void PythonQtWrapper_QBoxLayout::addSpacerItem(QBoxLayout* theWrappedObject, QSp
   ( theWrappedObject->addSpacerItem(spacerItem));
 }
 
-void PythonQtWrapper_QBoxLayout::addStrut(QBoxLayout* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->addStrut(arg__1));
-}
-
-void PythonQtWrapper_QBoxLayout::insertSpacing(QBoxLayout* theWrappedObject, int  index, int  size)
-{
-  ( theWrappedObject->insertSpacing(index, size));
-}
-
-void PythonQtWrapper_QBoxLayout::setDirection(QBoxLayout* theWrappedObject, QBoxLayout::Direction  arg__1)
-{
-  ( theWrappedObject->setDirection(arg__1));
-}
-
 void PythonQtWrapper_QBoxLayout::insertStretch(QBoxLayout* theWrappedObject, int  index, int  stretch)
 {
   ( theWrappedObject->insertStretch(index, stretch));
-}
-
-int  PythonQtWrapper_QBoxLayout::spacing(QBoxLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->spacing());
-}
-
-int  PythonQtWrapper_QBoxLayout::count(QBoxLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_count());
-}
-
-int  PythonQtWrapper_QBoxLayout::heightForWidth(QBoxLayout* theWrappedObject, int  arg__1) const
-{
-  return ( theWrappedObject->heightForWidth(arg__1));
-}
-
-QBoxLayout::Direction  PythonQtWrapper_QBoxLayout::direction(QBoxLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->direction());
-}
-
-int  PythonQtWrapper_QBoxLayout::minimumHeightForWidth(QBoxLayout* theWrappedObject, int  arg__1) const
-{
-  return ( theWrappedObject->minimumHeightForWidth(arg__1));
-}
-
-void PythonQtWrapper_QBoxLayout::addItem(QBoxLayout* theWrappedObject, QLayoutItem*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_addItem(arg__1));
-}
-
-QSize  PythonQtWrapper_QBoxLayout::minimumSize(QBoxLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_minimumSize());
-}
-
-bool  PythonQtWrapper_QBoxLayout::setStretchFactor(QBoxLayout* theWrappedObject, QLayout*  l, int  stretch)
-{
-  return ( theWrappedObject->setStretchFactor(l, stretch));
-}
-
-void PythonQtWrapper_QBoxLayout::insertSpacerItem(QBoxLayout* theWrappedObject, int  index, QSpacerItem*  spacerItem)
-{
-  ( theWrappedObject->insertSpacerItem(index, spacerItem));
-}
-
-QLayoutItem*  PythonQtWrapper_QBoxLayout::itemAt(QBoxLayout* theWrappedObject, int  arg__1) const
-{
-  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_itemAt(arg__1));
-}
-
-bool  PythonQtWrapper_QBoxLayout::setStretchFactor(QBoxLayout* theWrappedObject, QWidget*  w, int  stretch)
-{
-  return ( theWrappedObject->setStretchFactor(w, stretch));
-}
-
-Qt::Orientations  PythonQtWrapper_QBoxLayout::expandingDirections(QBoxLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_expandingDirections());
-}
-
-QSize  PythonQtWrapper_QBoxLayout::sizeHint(QBoxLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
 }
 
 void PythonQtWrapper_QBoxLayout::setSpacing(QBoxLayout* theWrappedObject, int  spacing)
@@ -562,14 +498,14 @@ void PythonQtWrapper_QBoxLayout::setSpacing(QBoxLayout* theWrappedObject, int  s
   ( theWrappedObject->setSpacing(spacing));
 }
 
-void PythonQtWrapper_QBoxLayout::setGeometry(QBoxLayout* theWrappedObject, const QRect&  arg__1)
+QLayoutItem*  PythonQtWrapper_QBoxLayout::itemAt(QBoxLayout* theWrappedObject, int  arg__1) const
 {
-  ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_setGeometry(arg__1));
+  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_itemAt(arg__1));
 }
 
-void PythonQtWrapper_QBoxLayout::insertWidget(QBoxLayout* theWrappedObject, int  index, QWidget*  widget, int  stretch, Qt::Alignment  alignment)
+void PythonQtWrapper_QBoxLayout::insertSpacing(QBoxLayout* theWrappedObject, int  index, int  size)
 {
-  ( theWrappedObject->insertWidget(index, widget, stretch, alignment));
+  ( theWrappedObject->insertSpacing(index, size));
 }
 
 void PythonQtWrapper_QBoxLayout::invalidate(QBoxLayout* theWrappedObject)
@@ -577,9 +513,79 @@ void PythonQtWrapper_QBoxLayout::invalidate(QBoxLayout* theWrappedObject)
   ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_invalidate());
 }
 
-QSize  PythonQtWrapper_QBoxLayout::maximumSize(QBoxLayout* theWrappedObject) const
+QBoxLayout::Direction  PythonQtWrapper_QBoxLayout::direction(QBoxLayout* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_maximumSize());
+  return ( theWrappedObject->direction());
+}
+
+bool  PythonQtWrapper_QBoxLayout::hasHeightForWidth(QBoxLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->hasHeightForWidth());
+}
+
+int  PythonQtWrapper_QBoxLayout::stretch(QBoxLayout* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->stretch(index));
+}
+
+void PythonQtWrapper_QBoxLayout::addStretch(QBoxLayout* theWrappedObject, int  stretch)
+{
+  ( theWrappedObject->addStretch(stretch));
+}
+
+void PythonQtWrapper_QBoxLayout::addItem(QBoxLayout* theWrappedObject, QLayoutItem*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_addItem(arg__1));
+}
+
+int  PythonQtWrapper_QBoxLayout::spacing(QBoxLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->spacing());
+}
+
+Qt::Orientations  PythonQtWrapper_QBoxLayout::expandingDirections(QBoxLayout* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_expandingDirections());
+}
+
+void PythonQtWrapper_QBoxLayout::setStretch(QBoxLayout* theWrappedObject, int  index, int  stretch)
+{
+  ( theWrappedObject->setStretch(index, stretch));
+}
+
+int  PythonQtWrapper_QBoxLayout::minimumHeightForWidth(QBoxLayout* theWrappedObject, int  arg__1) const
+{
+  return ( theWrappedObject->minimumHeightForWidth(arg__1));
+}
+
+QSize  PythonQtWrapper_QBoxLayout::minimumSize(QBoxLayout* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_minimumSize());
+}
+
+void PythonQtWrapper_QBoxLayout::setDirection(QBoxLayout* theWrappedObject, QBoxLayout::Direction  arg__1)
+{
+  ( theWrappedObject->setDirection(arg__1));
+}
+
+QSize  PythonQtWrapper_QBoxLayout::sizeHint(QBoxLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+void PythonQtWrapper_QBoxLayout::setGeometry(QBoxLayout* theWrappedObject, const QRect&  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_setGeometry(arg__1));
+}
+
+int  PythonQtWrapper_QBoxLayout::count(QBoxLayout* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_count());
+}
+
+void PythonQtWrapper_QBoxLayout::insertSpacerItem(QBoxLayout* theWrappedObject, int  index, QSpacerItem*  spacerItem)
+{
+  ( theWrappedObject->insertSpacerItem(index, spacerItem));
 }
 
 void PythonQtWrapper_QBoxLayout::addSpacing(QBoxLayout* theWrappedObject, int  size)
@@ -587,9 +593,9 @@ void PythonQtWrapper_QBoxLayout::addSpacing(QBoxLayout* theWrappedObject, int  s
   ( theWrappedObject->addSpacing(size));
 }
 
-bool  PythonQtWrapper_QBoxLayout::hasHeightForWidth(QBoxLayout* theWrappedObject) const
+void PythonQtWrapper_QBoxLayout::addLayout(QBoxLayout* theWrappedObject, QLayout*  layout, int  stretch)
 {
-  return ( theWrappedObject->hasHeightForWidth());
+  ( theWrappedObject->addLayout(layout, stretch));
 }
 
 void PythonQtWrapper_QBoxLayout::insertLayout(QBoxLayout* theWrappedObject, int  index, QLayout*  layout, int  stretch)
@@ -602,8 +608,13 @@ void PythonQtWrapper_QBoxLayout::addWidget(QBoxLayout* theWrappedObject, QWidget
   ( theWrappedObject->addWidget(arg__1, stretch, alignment));
 }
 
-void PythonQtWrapper_QBoxLayout::addLayout(QBoxLayout* theWrappedObject, QLayout*  layout, int  stretch)
+void PythonQtWrapper_QBoxLayout::addStrut(QBoxLayout* theWrappedObject, int  arg__1)
 {
-  ( theWrappedObject->addLayout(layout, stretch));
+  ( theWrappedObject->addStrut(arg__1));
+}
+
+QSize  PythonQtWrapper_QBoxLayout::maximumSize(QBoxLayout* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QBoxLayout*)theWrappedObject)->promoted_maximumSize());
 }
 

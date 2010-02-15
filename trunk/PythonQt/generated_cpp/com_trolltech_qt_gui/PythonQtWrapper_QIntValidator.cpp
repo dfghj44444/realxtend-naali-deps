@@ -188,14 +188,24 @@ QIntValidator* PythonQtWrapper_QIntValidator::new_QIntValidator(int  bottom, int
 { 
 return new PythonQtShell_QIntValidator(bottom, top, parent); }
 
-void PythonQtWrapper_QIntValidator::setRange(QIntValidator* theWrappedObject, int  bottom, int  top)
-{
-  ( ((PythonQtPublicPromoter_QIntValidator*)theWrappedObject)->promoted_setRange(bottom, top));
-}
-
 QValidator::State  PythonQtWrapper_QIntValidator::validate(QIntValidator* theWrappedObject, QString&  arg__1, int&  arg__2) const
 {
   return ( ((PythonQtPublicPromoter_QIntValidator*)theWrappedObject)->promoted_validate(arg__1, arg__2));
+}
+
+void PythonQtWrapper_QIntValidator::setBottom(QIntValidator* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setBottom(arg__1));
+}
+
+int  PythonQtWrapper_QIntValidator::bottom(QIntValidator* theWrappedObject) const
+{
+  return ( theWrappedObject->bottom());
+}
+
+void PythonQtWrapper_QIntValidator::setRange(QIntValidator* theWrappedObject, int  bottom, int  top)
+{
+  ( ((PythonQtPublicPromoter_QIntValidator*)theWrappedObject)->promoted_setRange(bottom, top));
 }
 
 int  PythonQtWrapper_QIntValidator::top(QIntValidator* theWrappedObject) const
@@ -206,15 +216,5 @@ int  PythonQtWrapper_QIntValidator::top(QIntValidator* theWrappedObject) const
 void PythonQtWrapper_QIntValidator::setTop(QIntValidator* theWrappedObject, int  arg__1)
 {
   ( theWrappedObject->setTop(arg__1));
-}
-
-int  PythonQtWrapper_QIntValidator::bottom(QIntValidator* theWrappedObject) const
-{
-  return ( theWrappedObject->bottom());
-}
-
-void PythonQtWrapper_QIntValidator::setBottom(QIntValidator* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setBottom(arg__1));
 }
 

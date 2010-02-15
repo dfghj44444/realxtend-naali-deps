@@ -12,12 +12,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -842,24 +845,34 @@ QPushButton* PythonQtWrapper_QPushButton::new_QPushButton(const QString&  text, 
 { 
 return new PythonQtShell_QPushButton(text, parent); }
 
-void PythonQtWrapper_QPushButton::setDefault(QPushButton* theWrappedObject, bool  arg__1)
+void PythonQtWrapper_QPushButton::setFlat(QPushButton* theWrappedObject, bool  arg__1)
 {
-  ( theWrappedObject->setDefault(arg__1));
-}
-
-void PythonQtWrapper_QPushButton::focusOutEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_focusOutEvent(arg__1));
-}
-
-bool  PythonQtWrapper_QPushButton::isFlat(QPushButton* theWrappedObject) const
-{
-  return ( theWrappedObject->isFlat());
+  ( theWrappedObject->setFlat(arg__1));
 }
 
 QSize  PythonQtWrapper_QPushButton::minimumSizeHint(QPushButton* theWrappedObject) const
 {
   return ( theWrappedObject->minimumSizeHint());
+}
+
+void PythonQtWrapper_QPushButton::setDefault(QPushButton* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setDefault(arg__1));
+}
+
+QMenu*  PythonQtWrapper_QPushButton::menu(QPushButton* theWrappedObject) const
+{
+  return ( theWrappedObject->menu());
+}
+
+bool  PythonQtWrapper_QPushButton::event(QPushButton* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_event(e));
+}
+
+void PythonQtWrapper_QPushButton::keyPressEvent(QPushButton* theWrappedObject, QKeyEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_keyPressEvent(arg__1));
 }
 
 bool  PythonQtWrapper_QPushButton::autoDefault(QPushButton* theWrappedObject) const
@@ -872,24 +885,9 @@ void PythonQtWrapper_QPushButton::setAutoDefault(QPushButton* theWrappedObject, 
   ( theWrappedObject->setAutoDefault(arg__1));
 }
 
-void PythonQtWrapper_QPushButton::keyPressEvent(QPushButton* theWrappedObject, QKeyEvent*  arg__1)
+bool  PythonQtWrapper_QPushButton::isFlat(QPushButton* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_keyPressEvent(arg__1));
-}
-
-void PythonQtWrapper_QPushButton::paintEvent(QPushButton* theWrappedObject, QPaintEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_paintEvent(arg__1));
-}
-
-QSize  PythonQtWrapper_QPushButton::sizeHint(QPushButton* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
-bool  PythonQtWrapper_QPushButton::event(QPushButton* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_event(e));
+  return ( theWrappedObject->isFlat());
 }
 
 void PythonQtWrapper_QPushButton::focusInEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1)
@@ -897,23 +895,28 @@ void PythonQtWrapper_QPushButton::focusInEvent(QPushButton* theWrappedObject, QF
   ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_focusInEvent(arg__1));
 }
 
-bool  PythonQtWrapper_QPushButton::isDefault(QPushButton* theWrappedObject) const
+void PythonQtWrapper_QPushButton::paintEvent(QPushButton* theWrappedObject, QPaintEvent*  arg__1)
 {
-  return ( theWrappedObject->isDefault());
-}
-
-void PythonQtWrapper_QPushButton::setFlat(QPushButton* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setFlat(arg__1));
-}
-
-QMenu*  PythonQtWrapper_QPushButton::menu(QPushButton* theWrappedObject) const
-{
-  return ( theWrappedObject->menu());
+  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_paintEvent(arg__1));
 }
 
 void PythonQtWrapper_QPushButton::setMenu(QPushButton* theWrappedObject, QMenu*  menu)
 {
   ( theWrappedObject->setMenu(menu));
+}
+
+bool  PythonQtWrapper_QPushButton::isDefault(QPushButton* theWrappedObject) const
+{
+  return ( theWrappedObject->isDefault());
+}
+
+void PythonQtWrapper_QPushButton::focusOutEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QPushButton*)theWrappedObject)->promoted_focusOutEvent(arg__1));
+}
+
+QSize  PythonQtWrapper_QPushButton::sizeHint(QPushButton* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
 }
 

@@ -12,14 +12,9 @@ QWaitCondition* PythonQtWrapper_QWaitCondition::new_QWaitCondition()
 { 
 return new QWaitCondition(); }
 
-bool  PythonQtWrapper_QWaitCondition::wait(QWaitCondition* theWrappedObject, QReadWriteLock*  readWriteLock, unsigned long  time)
+bool  PythonQtWrapper_QWaitCondition::wait(QWaitCondition* theWrappedObject, QMutex*  mutex, unsigned long  time)
 {
-  return ( theWrappedObject->wait(readWriteLock, time));
-}
-
-void PythonQtWrapper_QWaitCondition::wakeAll(QWaitCondition* theWrappedObject)
-{
-  ( theWrappedObject->wakeAll());
+  return ( theWrappedObject->wait(mutex, time));
 }
 
 void PythonQtWrapper_QWaitCondition::wakeOne(QWaitCondition* theWrappedObject)
@@ -27,8 +22,13 @@ void PythonQtWrapper_QWaitCondition::wakeOne(QWaitCondition* theWrappedObject)
   ( theWrappedObject->wakeOne());
 }
 
-bool  PythonQtWrapper_QWaitCondition::wait(QWaitCondition* theWrappedObject, QMutex*  mutex, unsigned long  time)
+void PythonQtWrapper_QWaitCondition::wakeAll(QWaitCondition* theWrappedObject)
 {
-  return ( theWrappedObject->wait(mutex, time));
+  ( theWrappedObject->wakeAll());
+}
+
+bool  PythonQtWrapper_QWaitCondition::wait(QWaitCondition* theWrappedObject, QReadWriteLock*  readWriteLock, unsigned long  time)
+{
+  return ( theWrappedObject->wait(readWriteLock, time));
 }
 

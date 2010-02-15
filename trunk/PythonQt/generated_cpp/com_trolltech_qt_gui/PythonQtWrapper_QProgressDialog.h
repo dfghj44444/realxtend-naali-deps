@@ -14,6 +14,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -21,6 +23,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -40,14 +43,14 @@
 class PythonQtShell_QProgressDialog : public QProgressDialog
 {
 public:
-    PythonQtShell_QProgressDialog(QWidget*  parent = 0, Qt::WindowFlags  f = 0):QProgressDialog(parent, f),_wrapper(NULL) {};
-    PythonQtShell_QProgressDialog(const QString&  labelText, const QString&  cancelButtonText, int  minimum, int  maximum, QWidget*  parent = 0, Qt::WindowFlags  f = 0):QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, f),_wrapper(NULL) {};
+    PythonQtShell_QProgressDialog(QWidget*  parent = 0, Qt::WindowFlags  flags = 0):QProgressDialog(parent, flags),_wrapper(NULL) {};
+    PythonQtShell_QProgressDialog(const QString&  labelText, const QString&  cancelButtonText, int  minimum, int  maximum, QWidget*  parent = 0, Qt::WindowFlags  flags = 0):QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, flags),_wrapper(NULL) {};
 
 virtual void accept();
 virtual void actionEvent(QActionEvent*  arg__1);
-virtual void changeEvent(QEvent*  arg__1);
+virtual void changeEvent(QEvent*  event);
 virtual void childEvent(QChildEvent*  arg__1);
-virtual void closeEvent(QCloseEvent*  arg__1);
+virtual void closeEvent(QCloseEvent*  event);
 virtual void contextMenuEvent(QContextMenuEvent*  arg__1);
 virtual void customEvent(QEvent*  arg__1);
 virtual int  devType() const;
@@ -79,8 +82,8 @@ virtual void moveEvent(QMoveEvent*  arg__1);
 virtual QPaintEngine*  paintEngine() const;
 virtual void paintEvent(QPaintEvent*  arg__1);
 virtual void reject();
-virtual void resizeEvent(QResizeEvent*  arg__1);
-virtual void showEvent(QShowEvent*  e);
+virtual void resizeEvent(QResizeEvent*  event);
+virtual void showEvent(QShowEvent*  event);
 virtual void tabletEvent(QTabletEvent*  arg__1);
 virtual void timerEvent(QTimerEvent*  arg__1);
 virtual void wheelEvent(QWheelEvent*  arg__1);
@@ -90,37 +93,39 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QProgressDialog : public QProgressDialog
 { public:
-inline void promoted_changeEvent(QEvent*  arg__1) { QProgressDialog::changeEvent(arg__1); }
-inline void promoted_resizeEvent(QResizeEvent*  arg__1) { QProgressDialog::resizeEvent(arg__1); }
-inline void promoted_showEvent(QShowEvent*  e) { QProgressDialog::showEvent(e); }
-inline void promoted_closeEvent(QCloseEvent*  arg__1) { QProgressDialog::closeEvent(arg__1); }
+inline void promoted_showEvent(QShowEvent*  event) { QProgressDialog::showEvent(event); }
+inline void promoted_changeEvent(QEvent*  event) { QProgressDialog::changeEvent(event); }
+inline void promoted_closeEvent(QCloseEvent*  event) { QProgressDialog::closeEvent(event); }
+inline void promoted_resizeEvent(QResizeEvent*  event) { QProgressDialog::resizeEvent(event); }
 };
 
 class PythonQtWrapper_QProgressDialog : public QObject
 { Q_OBJECT
 public:
 public slots:
-QProgressDialog* new_QProgressDialog(QWidget*  parent = 0, Qt::WindowFlags  f = 0);
-QProgressDialog* new_QProgressDialog(const QString&  labelText, const QString&  cancelButtonText, int  minimum, int  maximum, QWidget*  parent = 0, Qt::WindowFlags  f = 0);
+QProgressDialog* new_QProgressDialog(QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
+QProgressDialog* new_QProgressDialog(const QString&  labelText, const QString&  cancelButtonText, int  minimum, int  maximum, QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
 void delete_QProgressDialog(QProgressDialog* obj) { delete obj; } 
-   bool  wasCanceled(QProgressDialog* theWrappedObject) const;
-   void setBar(QProgressDialog* theWrappedObject, QProgressBar*  bar);
+   void showEvent(QProgressDialog* theWrappedObject, QShowEvent*  event);
+   void setCancelButton(QProgressDialog* theWrappedObject, QPushButton*  button);
    int  value(QProgressDialog* theWrappedObject) const;
    bool  autoClose(QProgressDialog* theWrappedObject) const;
+   void setAutoClose(QProgressDialog* theWrappedObject, bool  close);
    int  minimumDuration(QProgressDialog* theWrappedObject) const;
-   void setAutoReset(QProgressDialog* theWrappedObject, bool  b);
-   void setAutoClose(QProgressDialog* theWrappedObject, bool  b);
-   QString  labelText(QProgressDialog* theWrappedObject) const;
-   void changeEvent(QProgressDialog* theWrappedObject, QEvent*  arg__1);
-   void resizeEvent(QProgressDialog* theWrappedObject, QResizeEvent*  arg__1);
-   int  minimum(QProgressDialog* theWrappedObject) const;
+   void setBar(QProgressDialog* theWrappedObject, QProgressBar*  bar);
    void setLabel(QProgressDialog* theWrappedObject, QLabel*  label);
-   QSize  sizeHint(QProgressDialog* theWrappedObject) const;
+   void open(QProgressDialog* theWrappedObject);
+   int  minimum(QProgressDialog* theWrappedObject) const;
    bool  autoReset(QProgressDialog* theWrappedObject) const;
-   void showEvent(QProgressDialog* theWrappedObject, QShowEvent*  e);
+   void changeEvent(QProgressDialog* theWrappedObject, QEvent*  event);
+   QSize  sizeHint(QProgressDialog* theWrappedObject) const;
    int  maximum(QProgressDialog* theWrappedObject) const;
-   void setCancelButton(QProgressDialog* theWrappedObject, QPushButton*  button);
-   void closeEvent(QProgressDialog* theWrappedObject, QCloseEvent*  arg__1);
+   void closeEvent(QProgressDialog* theWrappedObject, QCloseEvent*  event);
+   void open(QProgressDialog* theWrappedObject, QObject*  receiver, const char*  member);
+   void setAutoReset(QProgressDialog* theWrappedObject, bool  reset);
+   bool  wasCanceled(QProgressDialog* theWrappedObject) const;
+   QString  labelText(QProgressDialog* theWrappedObject) const;
+   void resizeEvent(QProgressDialog* theWrappedObject, QResizeEvent*  event);
 };
 
 #endif // PYTHONQTWRAPPER_QPROGRESSDIALOG_H

@@ -28,104 +28,9 @@ QPainterPath* PythonQtWrapper_QPainterPath::new_QPainterPath(const QPointF&  sta
 { 
 return new QPainterPath(startPoint); }
 
-QPainterPath  PythonQtWrapper_QPainterPath::united(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+QPointF  PythonQtWrapper_QPainterPath::pointAtPercent(QPainterPath* theWrappedObject, qreal  t) const
 {
-  return ( theWrappedObject->united(r));
-}
-
-void PythonQtWrapper_QPainterPath::writeTo(QPainterPath* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 <<  (*theWrappedObject);
-}
-
-Qt::FillRule  PythonQtWrapper_QPainterPath::fillRule(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->fillRule());
-}
-
-void PythonQtWrapper_QPainterPath::addPath(QPainterPath* theWrappedObject, const QPainterPath&  path)
-{
-  ( theWrappedObject->addPath(path));
-}
-
-bool  PythonQtWrapper_QPainterPath::operator_equal(QPainterPath* theWrappedObject, const QPainterPath&  other) const
-{
-  return ( (*theWrappedObject)== other);
-}
-
-QList<QPolygonF >  PythonQtWrapper_QPainterPath::toFillPolygons(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
-{
-  return ( theWrappedObject->toFillPolygons(matrix));
-}
-
-qreal  PythonQtWrapper_QPainterPath::percentAtLength(QPainterPath* theWrappedObject, qreal  t) const
-{
-  return ( theWrappedObject->percentAtLength(t));
-}
-
-QPainterPath  PythonQtWrapper_QPainterPath::toReversed(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->toReversed());
-}
-
-void PythonQtWrapper_QPainterPath::addText(QPainterPath* theWrappedObject, qreal  x, qreal  y, const QFont&  f, const QString&  text)
-{
-  ( theWrappedObject->addText(x, y, f, text));
-}
-
-void PythonQtWrapper_QPainterPath::closeSubpath(QPainterPath* theWrappedObject)
-{
-  ( theWrappedObject->closeSubpath());
-}
-
-bool  PythonQtWrapper_QPainterPath::isEmpty(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->isEmpty());
-}
-
-const QPainterPath::Element*  PythonQtWrapper_QPainterPath::elementAt(QPainterPath* theWrappedObject, int  i) const
-{
-  return &( theWrappedObject->elementAt(i));
-}
-
-qreal  PythonQtWrapper_QPainterPath::slopeAtPercent(QPainterPath* theWrappedObject, qreal  t) const
-{
-  return ( theWrappedObject->slopeAtPercent(t));
-}
-
-void PythonQtWrapper_QPainterPath::addRoundedRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, qreal  xRadius, qreal  yRadius, Qt::SizeMode  mode)
-{
-  ( theWrappedObject->addRoundedRect(x, y, w, h, xRadius, yRadius, mode));
-}
-
-bool  PythonQtWrapper_QPainterPath::intersects(QPainterPath* theWrappedObject, const QPainterPath&  p) const
-{
-  return ( theWrappedObject->intersects(p));
-}
-
-void PythonQtWrapper_QPainterPath::setFillRule(QPainterPath* theWrappedObject, Qt::FillRule  fillRule)
-{
-  ( theWrappedObject->setFillRule(fillRule));
-}
-
-QPolygonF  PythonQtWrapper_QPainterPath::toFillPolygon(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
-{
-  return ( theWrappedObject->toFillPolygon(matrix));
-}
-
-QRectF  PythonQtWrapper_QPainterPath::boundingRect(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->boundingRect());
-}
-
-void PythonQtWrapper_QPainterPath::addRegion(QPainterPath* theWrappedObject, const QRegion&  region)
-{
-  ( theWrappedObject->addRegion(region));
-}
-
-void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  roundness)
-{
-  ( theWrappedObject->addRoundRect(x, y, w, h, roundness));
+  return ( theWrappedObject->pointAtPercent(t));
 }
 
 void PythonQtWrapper_QPainterPath::connectPath(QPainterPath* theWrappedObject, const QPainterPath&  path)
@@ -133,74 +38,9 @@ void PythonQtWrapper_QPainterPath::connectPath(QPainterPath* theWrappedObject, c
   ( theWrappedObject->connectPath(path));
 }
 
-bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QRectF&  rect) const
+void PythonQtWrapper_QPainterPath::addRegion(QPainterPath* theWrappedObject, const QRegion&  region)
 {
-  return ( theWrappedObject->contains(rect));
-}
-
-void PythonQtWrapper_QPainterPath::quadTo(QPainterPath* theWrappedObject, const QPointF&  ctrlPt, const QPointF&  endPt)
-{
-  ( theWrappedObject->quadTo(ctrlPt, endPt));
-}
-
-QPointF  PythonQtWrapper_QPainterPath::pointAtPercent(QPainterPath* theWrappedObject, qreal  t) const
-{
-  return ( theWrappedObject->pointAtPercent(t));
-}
-
-void PythonQtWrapper_QPainterPath::arcMoveTo(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  angle)
-{
-  ( theWrappedObject->arcMoveTo(rect, angle));
-}
-
-QList<QPolygonF >  PythonQtWrapper_QPainterPath::toSubpathPolygons(QPainterPath* theWrappedObject, const QTransform&  matrix) const
-{
-  return ( theWrappedObject->toSubpathPolygons(matrix));
-}
-
-void PythonQtWrapper_QPainterPath::arcTo(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, qreal  startAngle, qreal  arcLength)
-{
-  ( theWrappedObject->arcTo(x, y, w, h, startAngle, arcLength));
-}
-
-void PythonQtWrapper_QPainterPath::addRect(QPainterPath* theWrappedObject, const QRectF&  rect)
-{
-  ( theWrappedObject->addRect(rect));
-}
-
-void PythonQtWrapper_QPainterPath::cubicTo(QPainterPath* theWrappedObject, const QPointF&  ctrlPt1, const QPointF&  ctrlPt2, const QPointF&  endPt)
-{
-  ( theWrappedObject->cubicTo(ctrlPt1, ctrlPt2, endPt));
-}
-
-bool  PythonQtWrapper_QPainterPath::intersects(QPainterPath* theWrappedObject, const QRectF&  rect) const
-{
-  return ( theWrappedObject->intersects(rect));
-}
-
-void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, const QPointF&  center, qreal  rx, qreal  ry)
-{
-  ( theWrappedObject->addEllipse(center, rx, ry));
-}
-
-bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QPainterPath&  p) const
-{
-  return ( theWrappedObject->contains(p));
-}
-
-void PythonQtWrapper_QPainterPath::addRoundedRect(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  xRadius, qreal  yRadius, Qt::SizeMode  mode)
-{
-  ( theWrappedObject->addRoundedRect(rect, xRadius, yRadius, mode));
-}
-
-QList<QPolygonF >  PythonQtWrapper_QPainterPath::toSubpathPolygons(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
-{
-  return ( theWrappedObject->toSubpathPolygons(matrix));
-}
-
-qreal  PythonQtWrapper_QPainterPath::length(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->length());
+  ( theWrappedObject->addRegion(region));
 }
 
 QRectF  PythonQtWrapper_QPainterPath::controlPointRect(QPainterPath* theWrappedObject) const
@@ -208,74 +48,44 @@ QRectF  PythonQtWrapper_QPainterPath::controlPointRect(QPainterPath* theWrappedO
   return ( theWrappedObject->controlPointRect());
 }
 
-QPainterPath  PythonQtWrapper_QPainterPath::subtracted(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+bool  PythonQtWrapper_QPainterPath::operator_equal(QPainterPath* theWrappedObject, const QPainterPath&  other) const
 {
-  return ( theWrappedObject->subtracted(r));
+  return ( (*theWrappedObject)== other);
 }
 
-void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h)
+void PythonQtWrapper_QPainterPath::quadTo(QPainterPath* theWrappedObject, const QPointF&  ctrlPt, const QPointF&  endPt)
 {
-  ( theWrappedObject->addEllipse(x, y, w, h));
+  ( theWrappedObject->quadTo(ctrlPt, endPt));
 }
 
-void PythonQtWrapper_QPainterPath::addText(QPainterPath* theWrappedObject, const QPointF&  point, const QFont&  f, const QString&  text)
+QList<QPolygonF >  PythonQtWrapper_QPainterPath::toSubpathPolygons(QPainterPath* theWrappedObject, const QTransform&  matrix) const
 {
-  ( theWrappedObject->addText(point, f, text));
+  return ( theWrappedObject->toSubpathPolygons(matrix));
 }
 
-QList<QPolygonF >  PythonQtWrapper_QPainterPath::toFillPolygons(QPainterPath* theWrappedObject, const QTransform&  matrix) const
+void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, const QPointF&  center, qreal  rx, qreal  ry)
 {
-  return ( theWrappedObject->toFillPolygons(matrix));
+  ( theWrappedObject->addEllipse(center, rx, ry));
 }
 
-void PythonQtWrapper_QPainterPath::moveTo(QPainterPath* theWrappedObject, qreal  x, qreal  y)
+bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QRectF&  rect) const
 {
-  ( theWrappedObject->moveTo(x, y));
+  return ( theWrappedObject->contains(rect));
 }
 
-void PythonQtWrapper_QPainterPath::arcTo(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  startAngle, qreal  arcLength)
+void PythonQtWrapper_QPainterPath::translate(QPainterPath* theWrappedObject, qreal  dx, qreal  dy)
 {
-  ( theWrappedObject->arcTo(rect, startAngle, arcLength));
+  ( theWrappedObject->translate(dx, dy));
 }
 
-void PythonQtWrapper_QPainterPath::moveTo(QPainterPath* theWrappedObject, const QPointF&  p)
+bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QPainterPath&  p) const
 {
-  ( theWrappedObject->moveTo(p));
+  return ( theWrappedObject->contains(p));
 }
 
-bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QPointF&  pt) const
+void PythonQtWrapper_QPainterPath::arcTo(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, qreal  startAngle, qreal  arcLength)
 {
-  return ( theWrappedObject->contains(pt));
-}
-
-void PythonQtWrapper_QPainterPath::addRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h)
-{
-  ( theWrappedObject->addRect(x, y, w, h));
-}
-
-QPainterPath  PythonQtWrapper_QPainterPath::intersected(QPainterPath* theWrappedObject, const QPainterPath&  r) const
-{
-  return ( theWrappedObject->intersected(r));
-}
-
-QPainterPath  PythonQtWrapper_QPainterPath::simplified(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->simplified());
-}
-
-void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, const QRectF&  rect, int  xRnd, int  yRnd)
-{
-  ( theWrappedObject->addRoundRect(rect, xRnd, yRnd));
-}
-
-int  PythonQtWrapper_QPainterPath::elementCount(QPainterPath* theWrappedObject) const
-{
-  return ( theWrappedObject->elementCount());
-}
-
-void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  xRnd, int  yRnd)
-{
-  ( theWrappedObject->addRoundRect(x, y, w, h, xRnd, yRnd));
+  ( theWrappedObject->arcTo(x, y, w, h, startAngle, arcLength));
 }
 
 void PythonQtWrapper_QPainterPath::readFrom(QPainterPath* theWrappedObject, QDataStream&  arg__1)
@@ -283,34 +93,34 @@ void PythonQtWrapper_QPainterPath::readFrom(QPainterPath* theWrappedObject, QDat
   arg__1 >>  (*theWrappedObject);
 }
 
-void PythonQtWrapper_QPainterPath::addPolygon(QPainterPath* theWrappedObject, const QPolygonF&  polygon)
+bool  PythonQtWrapper_QPainterPath::intersects(QPainterPath* theWrappedObject, const QPainterPath&  p) const
 {
-  ( theWrappedObject->addPolygon(polygon));
+  return ( theWrappedObject->intersects(p));
 }
 
-void PythonQtWrapper_QPainterPath::cubicTo(QPainterPath* theWrappedObject, qreal  ctrlPt1x, qreal  ctrlPt1y, qreal  ctrlPt2x, qreal  ctrlPt2y, qreal  endPtx, qreal  endPty)
+QPainterPath  PythonQtWrapper_QPainterPath::translated(QPainterPath* theWrappedObject, qreal  dx, qreal  dy) const
 {
-  ( theWrappedObject->cubicTo(ctrlPt1x, ctrlPt1y, ctrlPt2x, ctrlPt2y, endPtx, endPty));
+  return ( theWrappedObject->translated(dx, dy));
 }
 
-QPointF  PythonQtWrapper_QPainterPath::currentPosition(QPainterPath* theWrappedObject) const
+void PythonQtWrapper_QPainterPath::lineTo(QPainterPath* theWrappedObject, qreal  x, qreal  y)
 {
-  return ( theWrappedObject->currentPosition());
+  ( theWrappedObject->lineTo(x, y));
 }
 
-void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, const QRectF&  rect)
+bool  PythonQtWrapper_QPainterPath::contains(QPainterPath* theWrappedObject, const QPointF&  pt) const
 {
-  ( theWrappedObject->addEllipse(rect));
+  return ( theWrappedObject->contains(pt));
 }
 
-void PythonQtWrapper_QPainterPath::setElementPositionAt(QPainterPath* theWrappedObject, int  i, qreal  x, qreal  y)
+void PythonQtWrapper_QPainterPath::closeSubpath(QPainterPath* theWrappedObject)
 {
-  ( theWrappedObject->setElementPositionAt(i, x, y));
+  ( theWrappedObject->closeSubpath());
 }
 
-QPolygonF  PythonQtWrapper_QPainterPath::toFillPolygon(QPainterPath* theWrappedObject, const QTransform&  matrix) const
+void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, const QRectF&  rect, int  xRnd, int  yRnd)
 {
-  return ( theWrappedObject->toFillPolygon(matrix));
+  ( theWrappedObject->addRoundRect(rect, xRnd, yRnd));
 }
 
 void PythonQtWrapper_QPainterPath::lineTo(QPainterPath* theWrappedObject, const QPointF&  p)
@@ -318,9 +128,64 @@ void PythonQtWrapper_QPainterPath::lineTo(QPainterPath* theWrappedObject, const 
   ( theWrappedObject->lineTo(p));
 }
 
-void PythonQtWrapper_QPainterPath::quadTo(QPainterPath* theWrappedObject, qreal  ctrlPtx, qreal  ctrlPty, qreal  endPtx, qreal  endPty)
+QPainterPath  PythonQtWrapper_QPainterPath::intersected(QPainterPath* theWrappedObject, const QPainterPath&  r) const
 {
-  ( theWrappedObject->quadTo(ctrlPtx, ctrlPty, endPtx, endPty));
+  return ( theWrappedObject->intersected(r));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::__and__(QPainterPath* theWrappedObject, const QPainterPath&  other) const
+{
+  return ( (*theWrappedObject)& other);
+}
+
+QRectF  PythonQtWrapper_QPainterPath::boundingRect(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->boundingRect());
+}
+
+qreal  PythonQtWrapper_QPainterPath::slopeAtPercent(QPainterPath* theWrappedObject, qreal  t) const
+{
+  return ( theWrappedObject->slopeAtPercent(t));
+}
+
+void PythonQtWrapper_QPainterPath::translate(QPainterPath* theWrappedObject, const QPointF&  offset)
+{
+  ( theWrappedObject->translate(offset));
+}
+
+QList<QPolygonF >  PythonQtWrapper_QPainterPath::toFillPolygons(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
+{
+  return ( theWrappedObject->toFillPolygons(matrix));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::__or__(QPainterPath* theWrappedObject, const QPainterPath&  other) const
+{
+  return ( (*theWrappedObject)| other);
+}
+
+void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h)
+{
+  ( theWrappedObject->addEllipse(x, y, w, h));
+}
+
+QPointF  PythonQtWrapper_QPainterPath::currentPosition(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->currentPosition());
+}
+
+QList<QPolygonF >  PythonQtWrapper_QPainterPath::toFillPolygons(QPainterPath* theWrappedObject, const QTransform&  matrix) const
+{
+  return ( theWrappedObject->toFillPolygons(matrix));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::__add__(QPainterPath* theWrappedObject, const QPainterPath&  other) const
+{
+  return ( (*theWrappedObject)+ other);
+}
+
+void PythonQtWrapper_QPainterPath::setElementPositionAt(QPainterPath* theWrappedObject, int  i, qreal  x, qreal  y)
+{
+  ( theWrappedObject->setElementPositionAt(i, x, y));
 }
 
 qreal  PythonQtWrapper_QPainterPath::angleAtPercent(QPainterPath* theWrappedObject, qreal  t) const
@@ -328,14 +193,124 @@ qreal  PythonQtWrapper_QPainterPath::angleAtPercent(QPainterPath* theWrappedObje
   return ( theWrappedObject->angleAtPercent(t));
 }
 
+QPainterPath  PythonQtWrapper_QPainterPath::translated(QPainterPath* theWrappedObject, const QPointF&  offset) const
+{
+  return ( theWrappedObject->translated(offset));
+}
+
+void PythonQtWrapper_QPainterPath::moveTo(QPainterPath* theWrappedObject, qreal  x, qreal  y)
+{
+  ( theWrappedObject->moveTo(x, y));
+}
+
+QList<QPolygonF >  PythonQtWrapper_QPainterPath::toSubpathPolygons(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
+{
+  return ( theWrappedObject->toSubpathPolygons(matrix));
+}
+
+void PythonQtWrapper_QPainterPath::addRect(QPainterPath* theWrappedObject, const QRectF&  rect)
+{
+  ( theWrappedObject->addRect(rect));
+}
+
+void PythonQtWrapper_QPainterPath::arcTo(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  startAngle, qreal  arcLength)
+{
+  ( theWrappedObject->arcTo(rect, startAngle, arcLength));
+}
+
+void PythonQtWrapper_QPainterPath::addRoundedRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, qreal  xRadius, qreal  yRadius, Qt::SizeMode  mode)
+{
+  ( theWrappedObject->addRoundedRect(x, y, w, h, xRadius, yRadius, mode));
+}
+
+Qt::FillRule  PythonQtWrapper_QPainterPath::fillRule(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->fillRule());
+}
+
+void PythonQtWrapper_QPainterPath::addText(QPainterPath* theWrappedObject, const QPointF&  point, const QFont&  f, const QString&  text)
+{
+  ( theWrappedObject->addText(point, f, text));
+}
+
+void PythonQtWrapper_QPainterPath::addEllipse(QPainterPath* theWrappedObject, const QRectF&  rect)
+{
+  ( theWrappedObject->addEllipse(rect));
+}
+
+void PythonQtWrapper_QPainterPath::cubicTo(QPainterPath* theWrappedObject, qreal  ctrlPt1x, qreal  ctrlPt1y, qreal  ctrlPt2x, qreal  ctrlPt2y, qreal  endPtx, qreal  endPty)
+{
+  ( theWrappedObject->cubicTo(ctrlPt1x, ctrlPt1y, ctrlPt2x, ctrlPt2y, endPtx, endPty));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::simplified(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->simplified());
+}
+
+bool  PythonQtWrapper_QPainterPath::isEmpty(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->isEmpty());
+}
+
+qreal  PythonQtWrapper_QPainterPath::percentAtLength(QPainterPath* theWrappedObject, qreal  t) const
+{
+  return ( theWrappedObject->percentAtLength(t));
+}
+
+void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  roundness)
+{
+  ( theWrappedObject->addRoundRect(x, y, w, h, roundness));
+}
+
+QPainterPath*  PythonQtWrapper_QPainterPath::__ior__(QPainterPath* theWrappedObject, const QPainterPath&  other)
+{
+  return &( (*theWrappedObject)|= other);
+}
+
 void PythonQtWrapper_QPainterPath::arcMoveTo(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, qreal  angle)
 {
   ( theWrappedObject->arcMoveTo(x, y, w, h, angle));
 }
 
-QPainterPath  PythonQtWrapper_QPainterPath::subtractedInverted(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+const QPainterPath::Element*  PythonQtWrapper_QPainterPath::elementAt(QPainterPath* theWrappedObject, int  i) const
 {
-  return ( theWrappedObject->subtractedInverted(r));
+  return &( theWrappedObject->elementAt(i));
+}
+
+void PythonQtWrapper_QPainterPath::setFillRule(QPainterPath* theWrappedObject, Qt::FillRule  fillRule)
+{
+  ( theWrappedObject->setFillRule(fillRule));
+}
+
+QPolygonF  PythonQtWrapper_QPainterPath::toFillPolygon(QPainterPath* theWrappedObject, const QTransform&  matrix) const
+{
+  return ( theWrappedObject->toFillPolygon(matrix));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::united(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+{
+  return ( theWrappedObject->united(r));
+}
+
+void PythonQtWrapper_QPainterPath::quadTo(QPainterPath* theWrappedObject, qreal  ctrlPtx, qreal  ctrlPty, qreal  endPtx, qreal  endPty)
+{
+  ( theWrappedObject->quadTo(ctrlPtx, ctrlPty, endPtx, endPty));
+}
+
+void PythonQtWrapper_QPainterPath::addPath(QPainterPath* theWrappedObject, const QPainterPath&  path)
+{
+  ( theWrappedObject->addPath(path));
+}
+
+void PythonQtWrapper_QPainterPath::addText(QPainterPath* theWrappedObject, qreal  x, qreal  y, const QFont&  f, const QString&  text)
+{
+  ( theWrappedObject->addText(x, y, f, text));
+}
+
+bool  PythonQtWrapper_QPainterPath::intersects(QPainterPath* theWrappedObject, const QRectF&  rect) const
+{
+  return ( theWrappedObject->intersects(rect));
 }
 
 void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, const QRectF&  rect, int  roundness)
@@ -343,9 +318,104 @@ void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, 
   ( theWrappedObject->addRoundRect(rect, roundness));
 }
 
-void PythonQtWrapper_QPainterPath::lineTo(QPainterPath* theWrappedObject, qreal  x, qreal  y)
+QPainterPath  PythonQtWrapper_QPainterPath::__mul__(QPainterPath* theWrappedObject, const QMatrix&  m)
 {
-  ( theWrappedObject->lineTo(x, y));
+  return ( (*theWrappedObject)* m);
+}
+
+QPainterPath*  PythonQtWrapper_QPainterPath::__isub__(QPainterPath* theWrappedObject, const QPainterPath&  other)
+{
+  return &( (*theWrappedObject)-= other);
+}
+
+void PythonQtWrapper_QPainterPath::arcMoveTo(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  angle)
+{
+  ( theWrappedObject->arcMoveTo(rect, angle));
+}
+
+void PythonQtWrapper_QPainterPath::addPolygon(QPainterPath* theWrappedObject, const QPolygonF&  polygon)
+{
+  ( theWrappedObject->addPolygon(polygon));
+}
+
+QPainterPath*  PythonQtWrapper_QPainterPath::__iadd__(QPainterPath* theWrappedObject, const QPainterPath&  other)
+{
+  return &( (*theWrappedObject)+= other);
+}
+
+QPainterPath*  PythonQtWrapper_QPainterPath::__iand__(QPainterPath* theWrappedObject, const QPainterPath&  other)
+{
+  return &( (*theWrappedObject)&= other);
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::__mul__(QPainterPath* theWrappedObject, const QTransform&  m)
+{
+  return ( (*theWrappedObject)* m);
+}
+
+void PythonQtWrapper_QPainterPath::writeTo(QPainterPath* theWrappedObject, QDataStream&  arg__1)
+{
+  arg__1 <<  (*theWrappedObject);
+}
+
+qreal  PythonQtWrapper_QPainterPath::length(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->length());
+}
+
+void PythonQtWrapper_QPainterPath::addRoundedRect(QPainterPath* theWrappedObject, const QRectF&  rect, qreal  xRadius, qreal  yRadius, Qt::SizeMode  mode)
+{
+  ( theWrappedObject->addRoundedRect(rect, xRadius, yRadius, mode));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::toReversed(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->toReversed());
+}
+
+void PythonQtWrapper_QPainterPath::addRoundRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h, int  xRnd, int  yRnd)
+{
+  ( theWrappedObject->addRoundRect(x, y, w, h, xRnd, yRnd));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::__sub__(QPainterPath* theWrappedObject, const QPainterPath&  other) const
+{
+  return ( (*theWrappedObject)- other);
+}
+
+void PythonQtWrapper_QPainterPath::addRect(QPainterPath* theWrappedObject, qreal  x, qreal  y, qreal  w, qreal  h)
+{
+  ( theWrappedObject->addRect(x, y, w, h));
+}
+
+int  PythonQtWrapper_QPainterPath::elementCount(QPainterPath* theWrappedObject) const
+{
+  return ( theWrappedObject->elementCount());
+}
+
+void PythonQtWrapper_QPainterPath::cubicTo(QPainterPath* theWrappedObject, const QPointF&  ctrlPt1, const QPointF&  ctrlPt2, const QPointF&  endPt)
+{
+  ( theWrappedObject->cubicTo(ctrlPt1, ctrlPt2, endPt));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::subtracted(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+{
+  return ( theWrappedObject->subtracted(r));
+}
+
+QPainterPath  PythonQtWrapper_QPainterPath::subtractedInverted(QPainterPath* theWrappedObject, const QPainterPath&  r) const
+{
+  return ( theWrappedObject->subtractedInverted(r));
+}
+
+QPolygonF  PythonQtWrapper_QPainterPath::toFillPolygon(QPainterPath* theWrappedObject, const QMatrix&  matrix) const
+{
+  return ( theWrappedObject->toFillPolygon(matrix));
+}
+
+void PythonQtWrapper_QPainterPath::moveTo(QPainterPath* theWrappedObject, const QPointF&  p)
+{
+  ( theWrappedObject->moveTo(p));
 }
 
 QString PythonQtWrapper_QPainterPath::toString(QPainterPath* obj) {

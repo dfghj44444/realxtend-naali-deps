@@ -18,8 +18,8 @@ QXmlStreamNotationDeclaration* new_QXmlStreamNotationDeclaration(const QXmlStrea
 void delete_QXmlStreamNotationDeclaration(QXmlStreamNotationDeclaration* obj) { delete obj; } 
    bool  operator_equal(QXmlStreamNotationDeclaration* theWrappedObject, const QXmlStreamNotationDeclaration&  other) const;
    QStringRef  name(QXmlStreamNotationDeclaration* theWrappedObject) const;
-   QStringRef  systemId(QXmlStreamNotationDeclaration* theWrappedObject) const;
    QStringRef  publicId(QXmlStreamNotationDeclaration* theWrappedObject) const;
+   QStringRef  systemId(QXmlStreamNotationDeclaration* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QXMLSTREAMNOTATIONDECLARATION_H

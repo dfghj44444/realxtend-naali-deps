@@ -15,12 +15,15 @@
 #include <qdialog.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -48,7 +51,7 @@ virtual void closeEvent(QCloseEvent*  arg__1);
 virtual void contextMenuEvent(QContextMenuEvent*  arg__1);
 virtual void customEvent(QEvent*  arg__1);
 virtual int  devType() const;
-virtual void done(int  arg__1);
+virtual void done(int  result);
 virtual void dragEnterEvent(QDragEnterEvent*  arg__1);
 virtual void dragLeaveEvent(QDragLeaveEvent*  arg__1);
 virtual void dragMoveEvent(QDragMoveEvent*  arg__1);
@@ -86,12 +89,18 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
   PythonQtInstanceWrapper* _wrapper; 
 };
 
+class PythonQtPublicPromoter_QAbstractPageSetupDialog : public QAbstractPageSetupDialog
+{ public:
+inline void promoted_done(int  result) { QAbstractPageSetupDialog::done(result); }
+};
+
 class PythonQtWrapper_QAbstractPageSetupDialog : public QObject
 { Q_OBJECT
 public:
 public slots:
 QAbstractPageSetupDialog* new_QAbstractPageSetupDialog(QPrinter*  printer, QWidget*  parent = 0);
 void delete_QAbstractPageSetupDialog(QAbstractPageSetupDialog* obj) { delete obj; } 
+   void done(QAbstractPageSetupDialog* theWrappedObject, int  result);
    QPrinter*  printer(QAbstractPageSetupDialog* theWrappedObject);
 };
 

@@ -34,8 +34,8 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 class PythonQtPublicPromoter_QLocalServer : public QLocalServer
 { public:
 inline void promoted_incomingConnection(quintptr  socketDescriptor) { QLocalServer::incomingConnection(socketDescriptor); }
-inline QLocalSocket*  promoted_nextPendingConnection() { return QLocalServer::nextPendingConnection(); }
 inline bool  promoted_hasPendingConnections() const { return QLocalServer::hasPendingConnections(); }
+inline QLocalSocket*  promoted_nextPendingConnection() { return QLocalServer::nextPendingConnection(); }
 };
 
 class PythonQtWrapper_QLocalServer : public QObject
@@ -44,19 +44,20 @@ public:
 public slots:
 QLocalServer* new_QLocalServer(QObject*  parent = 0);
 void delete_QLocalServer(QLocalServer* obj) { delete obj; } 
-   void incomingConnection(QLocalServer* theWrappedObject, quintptr  socketDescriptor);
-   bool  waitForNewConnection(QLocalServer* theWrappedObject, int  msec = 0, bool*  timedOut = 0);
    QString  serverName(QLocalServer* theWrappedObject) const;
+   void setMaxPendingConnections(QLocalServer* theWrappedObject, int  numConnections);
+   void incomingConnection(QLocalServer* theWrappedObject, quintptr  socketDescriptor);
+   QString  fullServerName(QLocalServer* theWrappedObject) const;
    bool  listen(QLocalServer* theWrappedObject, const QString&  name);
+   bool  waitForNewConnection(QLocalServer* theWrappedObject, int  msec = 0, bool*  timedOut = 0);
+   bool  static_QLocalServer_removeServer(const QString&  name);
+   bool  hasPendingConnections(QLocalServer* theWrappedObject) const;
+   QAbstractSocket::SocketError  serverError(QLocalServer* theWrappedObject) const;
+   void close(QLocalServer* theWrappedObject);
+   bool  isListening(QLocalServer* theWrappedObject) const;
+   QString  errorString(QLocalServer* theWrappedObject) const;
    int  maxPendingConnections(QLocalServer* theWrappedObject) const;
    QLocalSocket*  nextPendingConnection(QLocalServer* theWrappedObject);
-   void close(QLocalServer* theWrappedObject);
-   QString  errorString(QLocalServer* theWrappedObject) const;
-   void setMaxPendingConnections(QLocalServer* theWrappedObject, int  numConnections);
-   bool  hasPendingConnections(QLocalServer* theWrappedObject) const;
-   bool  isListening(QLocalServer* theWrappedObject) const;
-   QAbstractSocket::SocketError  serverError(QLocalServer* theWrappedObject) const;
-   QString  fullServerName(QLocalServer* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QLOCALSERVER_H

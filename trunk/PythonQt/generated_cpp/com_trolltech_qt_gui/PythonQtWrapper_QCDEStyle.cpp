@@ -17,6 +17,7 @@
 #include <qpoint.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qstyle.h>
 #include <qstyleoption.h>
 #include <qwidget.h>
 
@@ -582,6 +583,16 @@ QCDEStyle* PythonQtWrapper_QCDEStyle::new_QCDEStyle(bool  useHighlightCols)
 { 
 return new PythonQtShell_QCDEStyle(useHighlightCols); }
 
+void PythonQtWrapper_QCDEStyle::drawPrimitive(QCDEStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
+}
+
+void PythonQtWrapper_QCDEStyle::drawControl(QCDEStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
+}
+
 int  PythonQtWrapper_QCDEStyle::pixelMetric(QCDEStyle* theWrappedObject, QStyle::PixelMetric  metric, const QStyleOption*  option, const QWidget*  widget) const
 {
   return ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_pixelMetric(metric, option, widget));
@@ -590,15 +601,5 @@ int  PythonQtWrapper_QCDEStyle::pixelMetric(QCDEStyle* theWrappedObject, QStyle:
 QPalette  PythonQtWrapper_QCDEStyle::standardPalette(QCDEStyle* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_standardPalette());
-}
-
-void PythonQtWrapper_QCDEStyle::drawControl(QCDEStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
-{
-  ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
-}
-
-void PythonQtWrapper_QCDEStyle::drawPrimitive(QCDEStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
-{
-  ( ((PythonQtPublicPromoter_QCDEStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
 }
 

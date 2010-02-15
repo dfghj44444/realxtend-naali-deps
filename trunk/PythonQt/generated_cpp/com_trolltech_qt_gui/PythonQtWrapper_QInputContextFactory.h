@@ -26,11 +26,11 @@ public:
 public slots:
 QInputContextFactory* new_QInputContextFactory();
 void delete_QInputContextFactory(QInputContextFactory* obj) { delete obj; } 
-   QString  static_QInputContextFactory_displayName(const QString&  key);
-   QStringList  static_QInputContextFactory_languages(const QString&  key);
-   QStringList  static_QInputContextFactory_keys();
    QString  static_QInputContextFactory_description(const QString&  key);
+   QString  static_QInputContextFactory_displayName(const QString&  key);
+   QStringList  static_QInputContextFactory_keys();
    QInputContext*  static_QInputContextFactory_create(const QString&  key, QObject*  parent);
+   QStringList  static_QInputContextFactory_languages(const QString&  key);
 };
 
 #endif // PYTHONQTWRAPPER_QINPUTCONTEXTFACTORY_H

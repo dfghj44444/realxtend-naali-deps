@@ -15,9 +15,9 @@ QDomProcessingInstruction* PythonQtWrapper_QDomProcessingInstruction::new_QDomPr
 { 
 return new QDomProcessingInstruction(x); }
 
-QString  PythonQtWrapper_QDomProcessingInstruction::data(QDomProcessingInstruction* theWrappedObject) const
+QString  PythonQtWrapper_QDomProcessingInstruction::target(QDomProcessingInstruction* theWrappedObject) const
 {
-  return ( theWrappedObject->data());
+  return ( theWrappedObject->target());
 }
 
 void PythonQtWrapper_QDomProcessingInstruction::setData(QDomProcessingInstruction* theWrappedObject, const QString&  d)
@@ -25,8 +25,8 @@ void PythonQtWrapper_QDomProcessingInstruction::setData(QDomProcessingInstructio
   ( theWrappedObject->setData(d));
 }
 
-QString  PythonQtWrapper_QDomProcessingInstruction::target(QDomProcessingInstruction* theWrappedObject) const
+QString  PythonQtWrapper_QDomProcessingInstruction::data(QDomProcessingInstruction* theWrappedObject) const
 {
-  return ( theWrappedObject->target());
+  return ( theWrappedObject->data());
 }
 

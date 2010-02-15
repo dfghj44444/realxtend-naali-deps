@@ -29,12 +29,12 @@ Q_DECLARE_FLAGS(RenderFlags, RenderFlag)
 public slots:
 QTextItem* new_QTextItem();
 void delete_QTextItem(QTextItem* obj) { delete obj; } 
+   QTextItem::RenderFlags  renderFlags(QTextItem* theWrappedObject) const;
+   qreal  width(QTextItem* theWrappedObject) const;
+   qreal  ascent(QTextItem* theWrappedObject) const;
+   QFont  font(QTextItem* theWrappedObject) const;
    qreal  descent(QTextItem* theWrappedObject) const;
    QString  text(QTextItem* theWrappedObject) const;
-   QTextItem::RenderFlags  renderFlags(QTextItem* theWrappedObject) const;
-   QFont  font(QTextItem* theWrappedObject) const;
-   qreal  ascent(QTextItem* theWrappedObject) const;
-   qreal  width(QTextItem* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTITEM_H

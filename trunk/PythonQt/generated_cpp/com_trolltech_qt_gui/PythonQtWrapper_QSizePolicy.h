@@ -31,23 +31,23 @@ QSizePolicy* a = new QSizePolicy();
 *((QSizePolicy*)a) = other;
 return a; }
 void delete_QSizePolicy(QSizePolicy* obj) { delete obj; } 
-   QSizePolicy::ControlType  controlType(QSizePolicy* theWrappedObject) const;
-   void setHorizontalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d);
-   int  verticalStretch(QSizePolicy* theWrappedObject) const;
-   int  horizontalStretch(QSizePolicy* theWrappedObject) const;
-   bool  operator_equal(QSizePolicy* theWrappedObject, const QSizePolicy&  s) const;
-   void setHorizontalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor);
-   void setHeightForWidth(QSizePolicy* theWrappedObject, bool  b);
-   void writeTo(QSizePolicy* theWrappedObject, QDataStream&  arg__1);
-   void setVerticalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor);
    void transpose(QSizePolicy* theWrappedObject);
-   Qt::Orientations  expandingDirections(QSizePolicy* theWrappedObject) const;
    QSizePolicy::Policy  verticalPolicy(QSizePolicy* theWrappedObject) const;
-   bool  hasHeightForWidth(QSizePolicy* theWrappedObject) const;
-   QSizePolicy::Policy  horizontalPolicy(QSizePolicy* theWrappedObject) const;
+   int  verticalStretch(QSizePolicy* theWrappedObject) const;
+   void setHorizontalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d);
    void setControlType(QSizePolicy* theWrappedObject, QSizePolicy::ControlType  type);
-   void setVerticalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d);
+   void setHeightForWidth(QSizePolicy* theWrappedObject, bool  b);
    void readFrom(QSizePolicy* theWrappedObject, QDataStream&  arg__1);
+   Qt::Orientations  expandingDirections(QSizePolicy* theWrappedObject) const;
+   bool  hasHeightForWidth(QSizePolicy* theWrappedObject) const;
+   QSizePolicy::ControlType  controlType(QSizePolicy* theWrappedObject) const;
+   void setVerticalPolicy(QSizePolicy* theWrappedObject, QSizePolicy::Policy  d);
+   void writeTo(QSizePolicy* theWrappedObject, QDataStream&  arg__1);
+   bool  operator_equal(QSizePolicy* theWrappedObject, const QSizePolicy&  s) const;
+   int  horizontalStretch(QSizePolicy* theWrappedObject) const;
+   void setVerticalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor);
+   QSizePolicy::Policy  horizontalPolicy(QSizePolicy* theWrappedObject) const;
+   void setHorizontalStretch(QSizePolicy* theWrappedObject, uchar  stretchFactor);
 };
 
 #endif // PYTHONQTWRAPPER_QSIZEPOLICY_H

@@ -46,12 +46,12 @@ virtual void widgetDestroyed(QWidget*  w);
 
 class PythonQtPublicPromoter_QInputContext : public QInputContext
 { public:
-inline void promoted_widgetDestroyed(QWidget*  w) { QInputContext::widgetDestroyed(w); }
-inline bool  promoted_filterEvent(const QEvent*  event) { return QInputContext::filterEvent(event); }
-inline QFont  promoted_font() const { return QInputContext::font(); }
-inline void promoted_mouseHandler(int  x, QMouseEvent*  event) { QInputContext::mouseHandler(x, event); }
-inline void promoted_update() { QInputContext::update(); }
 inline QList<QAction* >  promoted_actions() { return QInputContext::actions(); }
+inline QFont  promoted_font() const { return QInputContext::font(); }
+inline bool  promoted_filterEvent(const QEvent*  event) { return QInputContext::filterEvent(event); }
+inline void promoted_mouseHandler(int  x, QMouseEvent*  event) { QInputContext::mouseHandler(x, event); }
+inline void promoted_widgetDestroyed(QWidget*  w) { QInputContext::widgetDestroyed(w); }
+inline void promoted_update() { QInputContext::update(); }
 };
 
 class PythonQtWrapper_QInputContext : public QObject
@@ -63,15 +63,15 @@ enum StandardFormat{
 public slots:
 QInputContext* new_QInputContext(QObject*  parent = 0);
 void delete_QInputContext(QInputContext* obj) { delete obj; } 
-   void widgetDestroyed(QInputContext* theWrappedObject, QWidget*  w);
    QWidget*  focusWidget(QInputContext* theWrappedObject) const;
-   bool  filterEvent(QInputContext* theWrappedObject, const QEvent*  event);
-   QFont  font(QInputContext* theWrappedObject) const;
-   void mouseHandler(QInputContext* theWrappedObject, int  x, QMouseEvent*  event);
-   void update(QInputContext* theWrappedObject);
-   QList<QAction* >  actions(QInputContext* theWrappedObject);
    void sendEvent(QInputContext* theWrappedObject, const QInputMethodEvent&  event);
+   QList<QAction* >  actions(QInputContext* theWrappedObject);
+   QFont  font(QInputContext* theWrappedObject) const;
+   bool  filterEvent(QInputContext* theWrappedObject, const QEvent*  event);
+   void mouseHandler(QInputContext* theWrappedObject, int  x, QMouseEvent*  event);
+   void widgetDestroyed(QInputContext* theWrappedObject, QWidget*  w);
    QTextFormat  standardFormat(QInputContext* theWrappedObject, QInputContext::StandardFormat  s) const;
+   void update(QInputContext* theWrappedObject);
 };
 
 #endif // PYTHONQTWRAPPER_QINPUTCONTEXT_H

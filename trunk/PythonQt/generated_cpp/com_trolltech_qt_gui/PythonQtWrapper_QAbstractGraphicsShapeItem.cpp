@@ -8,9 +8,11 @@
 #include <qcoreevent.h>
 #include <qcursor.h>
 #include <qevent.h>
+#include <qgraphicseffect.h>
 #include <qgraphicsitem.h>
 #include <qgraphicsscene.h>
 #include <qgraphicssceneevent.h>
+#include <qgraphicstransform.h>
 #include <qgraphicswidget.h>
 #include <qlist.h>
 #include <qpainter.h>
@@ -779,21 +781,6 @@ QAbstractGraphicsShapeItem* PythonQtWrapper_QAbstractGraphicsShapeItem::new_QAbs
 { 
 return new PythonQtShell_QAbstractGraphicsShapeItem(parent, scene); }
 
-QPainterPath  PythonQtWrapper_QAbstractGraphicsShapeItem::opaqueArea(QAbstractGraphicsShapeItem* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QAbstractGraphicsShapeItem*)theWrappedObject)->promoted_opaqueArea());
-}
-
-bool  PythonQtWrapper_QAbstractGraphicsShapeItem::isObscuredBy(QAbstractGraphicsShapeItem* theWrappedObject, const QGraphicsItem*  item) const
-{
-  return ( ((PythonQtPublicPromoter_QAbstractGraphicsShapeItem*)theWrappedObject)->promoted_isObscuredBy(item));
-}
-
-QPen  PythonQtWrapper_QAbstractGraphicsShapeItem::pen(QAbstractGraphicsShapeItem* theWrappedObject) const
-{
-  return ( theWrappedObject->pen());
-}
-
 void PythonQtWrapper_QAbstractGraphicsShapeItem::setBrush(QAbstractGraphicsShapeItem* theWrappedObject, const QBrush&  brush)
 {
   ( theWrappedObject->setBrush(brush));
@@ -804,8 +791,23 @@ void PythonQtWrapper_QAbstractGraphicsShapeItem::setPen(QAbstractGraphicsShapeIt
   ( theWrappedObject->setPen(pen));
 }
 
+bool  PythonQtWrapper_QAbstractGraphicsShapeItem::isObscuredBy(QAbstractGraphicsShapeItem* theWrappedObject, const QGraphicsItem*  item) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractGraphicsShapeItem*)theWrappedObject)->promoted_isObscuredBy(item));
+}
+
+QPainterPath  PythonQtWrapper_QAbstractGraphicsShapeItem::opaqueArea(QAbstractGraphicsShapeItem* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QAbstractGraphicsShapeItem*)theWrappedObject)->promoted_opaqueArea());
+}
+
 QBrush  PythonQtWrapper_QAbstractGraphicsShapeItem::brush(QAbstractGraphicsShapeItem* theWrappedObject) const
 {
   return ( theWrappedObject->brush());
+}
+
+QPen  PythonQtWrapper_QAbstractGraphicsShapeItem::pen(QAbstractGraphicsShapeItem* theWrappedObject) const
+{
+  return ( theWrappedObject->pen());
 }
 

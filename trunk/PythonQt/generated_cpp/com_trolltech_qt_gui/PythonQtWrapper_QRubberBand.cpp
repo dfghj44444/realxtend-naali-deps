@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -825,11 +828,6 @@ QRubberBand* PythonQtWrapper_QRubberBand::new_QRubberBand(QRubberBand::Shape  ar
 { 
 return new PythonQtShell_QRubberBand(arg__1, arg__2); }
 
-void PythonQtWrapper_QRubberBand::setGeometry(QRubberBand* theWrappedObject, const QRect&  r)
-{
-  ( theWrappedObject->setGeometry(r));
-}
-
 void PythonQtWrapper_QRubberBand::move(QRubberBand* theWrappedObject, const QPoint&  p)
 {
   ( theWrappedObject->move(p));
@@ -840,19 +838,14 @@ void PythonQtWrapper_QRubberBand::resize(QRubberBand* theWrappedObject, const QS
   ( theWrappedObject->resize(s));
 }
 
-void PythonQtWrapper_QRubberBand::resizeEvent(QRubberBand* theWrappedObject, QResizeEvent*  arg__1)
+void PythonQtWrapper_QRubberBand::changeEvent(QRubberBand* theWrappedObject, QEvent*  arg__1)
 {
-  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_resizeEvent(arg__1));
+  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_changeEvent(arg__1));
 }
 
-QRubberBand::Shape  PythonQtWrapper_QRubberBand::shape(QRubberBand* theWrappedObject) const
+void PythonQtWrapper_QRubberBand::moveEvent(QRubberBand* theWrappedObject, QMoveEvent*  arg__1)
 {
-  return ( theWrappedObject->shape());
-}
-
-void PythonQtWrapper_QRubberBand::setGeometry(QRubberBand* theWrappedObject, int  x, int  y, int  w, int  h)
-{
-  ( theWrappedObject->setGeometry(x, y, w, h));
+  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_moveEvent(arg__1));
 }
 
 void PythonQtWrapper_QRubberBand::resize(QRubberBand* theWrappedObject, int  w, int  h)
@@ -860,9 +853,19 @@ void PythonQtWrapper_QRubberBand::resize(QRubberBand* theWrappedObject, int  w, 
   ( theWrappedObject->resize(w, h));
 }
 
-void PythonQtWrapper_QRubberBand::paintEvent(QRubberBand* theWrappedObject, QPaintEvent*  arg__1)
+void PythonQtWrapper_QRubberBand::setGeometry(QRubberBand* theWrappedObject, const QRect&  r)
 {
-  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_paintEvent(arg__1));
+  ( theWrappedObject->setGeometry(r));
+}
+
+void PythonQtWrapper_QRubberBand::setGeometry(QRubberBand* theWrappedObject, int  x, int  y, int  w, int  h)
+{
+  ( theWrappedObject->setGeometry(x, y, w, h));
+}
+
+void PythonQtWrapper_QRubberBand::resizeEvent(QRubberBand* theWrappedObject, QResizeEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_resizeEvent(arg__1));
 }
 
 void PythonQtWrapper_QRubberBand::move(QRubberBand* theWrappedObject, int  x, int  y)
@@ -870,23 +873,23 @@ void PythonQtWrapper_QRubberBand::move(QRubberBand* theWrappedObject, int  x, in
   ( theWrappedObject->move(x, y));
 }
 
+QRubberBand::Shape  PythonQtWrapper_QRubberBand::shape(QRubberBand* theWrappedObject) const
+{
+  return ( theWrappedObject->shape());
+}
+
+void PythonQtWrapper_QRubberBand::paintEvent(QRubberBand* theWrappedObject, QPaintEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_paintEvent(arg__1));
+}
+
 bool  PythonQtWrapper_QRubberBand::event(QRubberBand* theWrappedObject, QEvent*  e)
 {
   return ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_event(e));
 }
 
-void PythonQtWrapper_QRubberBand::changeEvent(QRubberBand* theWrappedObject, QEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_changeEvent(arg__1));
-}
-
 void PythonQtWrapper_QRubberBand::showEvent(QRubberBand* theWrappedObject, QShowEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_showEvent(arg__1));
-}
-
-void PythonQtWrapper_QRubberBand::moveEvent(QRubberBand* theWrappedObject, QMoveEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QRubberBand*)theWrappedObject)->promoted_moveEvent(arg__1));
 }
 

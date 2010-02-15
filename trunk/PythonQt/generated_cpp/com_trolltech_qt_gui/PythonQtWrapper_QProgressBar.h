@@ -14,12 +14,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -85,8 +88,8 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QProgressBar : public QProgressBar
 { public:
-inline void promoted_paintEvent(QPaintEvent*  arg__1) { QProgressBar::paintEvent(arg__1); }
 inline QString  promoted_text() const { return QProgressBar::text(); }
+inline void promoted_paintEvent(QPaintEvent*  arg__1) { QProgressBar::paintEvent(arg__1); }
 inline bool  promoted_event(QEvent*  e) { return QProgressBar::event(e); }
 };
 
@@ -96,25 +99,25 @@ public:
 public slots:
 QProgressBar* new_QProgressBar(QWidget*  parent = 0);
 void delete_QProgressBar(QProgressBar* obj) { delete obj; } 
-   void setAlignment(QProgressBar* theWrappedObject, Qt::Alignment  alignment);
-   int  value(QProgressBar* theWrappedObject) const;
-   int  minimum(QProgressBar* theWrappedObject) const;
-   Qt::Alignment  alignment(QProgressBar* theWrappedObject) const;
+   void setTextDirection(QProgressBar* theWrappedObject, QProgressBar::Direction  textDirection);
+   void setInvertedAppearance(QProgressBar* theWrappedObject, bool  invert);
+   QProgressBar::Direction  textDirection(QProgressBar* theWrappedObject);
    QString  format(QProgressBar* theWrappedObject) const;
    bool  invertedAppearance(QProgressBar* theWrappedObject);
-   QProgressBar::Direction  textDirection(QProgressBar* theWrappedObject);
    void setFormat(QProgressBar* theWrappedObject, const QString&  format);
+   int  value(QProgressBar* theWrappedObject) const;
    QSize  minimumSizeHint(QProgressBar* theWrappedObject) const;
-   void paintEvent(QProgressBar* theWrappedObject, QPaintEvent*  arg__1);
-   QSize  sizeHint(QProgressBar* theWrappedObject) const;
-   Qt::Orientation  orientation(QProgressBar* theWrappedObject) const;
-   void setInvertedAppearance(QProgressBar* theWrappedObject, bool  invert);
-   int  maximum(QProgressBar* theWrappedObject) const;
-   void setTextDirection(QProgressBar* theWrappedObject, QProgressBar::Direction  textDirection);
-   void setTextVisible(QProgressBar* theWrappedObject, bool  visible);
    QString  text(QProgressBar* theWrappedObject) const;
    bool  isTextVisible(QProgressBar* theWrappedObject) const;
+   int  maximum(QProgressBar* theWrappedObject) const;
+   QSize  sizeHint(QProgressBar* theWrappedObject) const;
+   void paintEvent(QProgressBar* theWrappedObject, QPaintEvent*  arg__1);
+   Qt::Orientation  orientation(QProgressBar* theWrappedObject) const;
+   void setAlignment(QProgressBar* theWrappedObject, Qt::Alignment  alignment);
+   int  minimum(QProgressBar* theWrappedObject) const;
+   Qt::Alignment  alignment(QProgressBar* theWrappedObject) const;
    bool  event(QProgressBar* theWrappedObject, QEvent*  e);
+   void setTextVisible(QProgressBar* theWrappedObject, bool  visible);
 };
 
 #endif // PYTHONQTWRAPPER_QPROGRESSBAR_H

@@ -5,6 +5,7 @@
 #include <PythonQtConversion.h>
 #include <QVariant>
 #include <qcoreevent.h>
+#include <qgraphicsitem.h>
 #include <qgraphicslayout.h>
 #include <qgraphicslayoutitem.h>
 #include <qrect.h>
@@ -204,19 +205,9 @@ QGraphicsLayout* PythonQtWrapper_QGraphicsLayout::new_QGraphicsLayout(QGraphicsL
 { 
 return new PythonQtShell_QGraphicsLayout(parent); }
 
-void PythonQtWrapper_QGraphicsLayout::getContentsMargins(QGraphicsLayout* theWrappedObject, qreal*  left, qreal*  top, qreal*  right, qreal*  bottom) const
+void PythonQtWrapper_QGraphicsLayout::invalidate(QGraphicsLayout* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_getContentsMargins(left, top, right, bottom));
-}
-
-void PythonQtWrapper_QGraphicsLayout::activate(QGraphicsLayout* theWrappedObject)
-{
-  ( theWrappedObject->activate());
-}
-
-void PythonQtWrapper_QGraphicsLayout::widgetEvent(QGraphicsLayout* theWrappedObject, QEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_widgetEvent(e));
+  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_invalidate());
 }
 
 bool  PythonQtWrapper_QGraphicsLayout::isActivated(QGraphicsLayout* theWrappedObject) const
@@ -229,8 +220,23 @@ void PythonQtWrapper_QGraphicsLayout::setContentsMargins(QGraphicsLayout* theWra
   ( theWrappedObject->setContentsMargins(left, top, right, bottom));
 }
 
-void PythonQtWrapper_QGraphicsLayout::invalidate(QGraphicsLayout* theWrappedObject)
+void PythonQtWrapper_QGraphicsLayout::activate(QGraphicsLayout* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_invalidate());
+  ( theWrappedObject->activate());
+}
+
+void PythonQtWrapper_QGraphicsLayout::widgetEvent(QGraphicsLayout* theWrappedObject, QEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_widgetEvent(e));
+}
+
+void PythonQtWrapper_QGraphicsLayout::getContentsMargins(QGraphicsLayout* theWrappedObject, qreal*  left, qreal*  top, qreal*  right, qreal*  bottom) const
+{
+  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_getContentsMargins(left, top, right, bottom));
+}
+
+void PythonQtWrapper_QGraphicsLayout::updateGeometry(QGraphicsLayout* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QGraphicsLayout*)theWrappedObject)->promoted_updateGeometry());
 }
 

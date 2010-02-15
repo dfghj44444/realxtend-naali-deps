@@ -188,24 +188,14 @@ QDoubleValidator* PythonQtWrapper_QDoubleValidator::new_QDoubleValidator(double 
 { 
 return new PythonQtShell_QDoubleValidator(bottom, top, decimals, parent); }
 
-void PythonQtWrapper_QDoubleValidator::setBottom(QDoubleValidator* theWrappedObject, double  arg__1)
-{
-  ( theWrappedObject->setBottom(arg__1));
-}
-
-double  PythonQtWrapper_QDoubleValidator::top(QDoubleValidator* theWrappedObject) const
-{
-  return ( theWrappedObject->top());
-}
-
 double  PythonQtWrapper_QDoubleValidator::bottom(QDoubleValidator* theWrappedObject) const
 {
   return ( theWrappedObject->bottom());
 }
 
-QDoubleValidator::Notation  PythonQtWrapper_QDoubleValidator::notation(QDoubleValidator* theWrappedObject) const
+void PythonQtWrapper_QDoubleValidator::setBottom(QDoubleValidator* theWrappedObject, double  arg__1)
 {
-  return ( theWrappedObject->notation());
+  ( theWrappedObject->setBottom(arg__1));
 }
 
 void PythonQtWrapper_QDoubleValidator::setTop(QDoubleValidator* theWrappedObject, double  arg__1)
@@ -213,19 +203,9 @@ void PythonQtWrapper_QDoubleValidator::setTop(QDoubleValidator* theWrappedObject
   ( theWrappedObject->setTop(arg__1));
 }
 
-void PythonQtWrapper_QDoubleValidator::setNotation(QDoubleValidator* theWrappedObject, QDoubleValidator::Notation  arg__1)
+QValidator::State  PythonQtWrapper_QDoubleValidator::validate(QDoubleValidator* theWrappedObject, QString&  arg__1, int&  arg__2) const
 {
-  ( theWrappedObject->setNotation(arg__1));
-}
-
-int  PythonQtWrapper_QDoubleValidator::decimals(QDoubleValidator* theWrappedObject) const
-{
-  return ( theWrappedObject->decimals());
-}
-
-void PythonQtWrapper_QDoubleValidator::setDecimals(QDoubleValidator* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setDecimals(arg__1));
+  return ( ((PythonQtPublicPromoter_QDoubleValidator*)theWrappedObject)->promoted_validate(arg__1, arg__2));
 }
 
 void PythonQtWrapper_QDoubleValidator::setRange(QDoubleValidator* theWrappedObject, double  bottom, double  top, int  decimals)
@@ -233,8 +213,28 @@ void PythonQtWrapper_QDoubleValidator::setRange(QDoubleValidator* theWrappedObje
   ( ((PythonQtPublicPromoter_QDoubleValidator*)theWrappedObject)->promoted_setRange(bottom, top, decimals));
 }
 
-QValidator::State  PythonQtWrapper_QDoubleValidator::validate(QDoubleValidator* theWrappedObject, QString&  arg__1, int&  arg__2) const
+double  PythonQtWrapper_QDoubleValidator::top(QDoubleValidator* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QDoubleValidator*)theWrappedObject)->promoted_validate(arg__1, arg__2));
+  return ( theWrappedObject->top());
+}
+
+void PythonQtWrapper_QDoubleValidator::setNotation(QDoubleValidator* theWrappedObject, QDoubleValidator::Notation  arg__1)
+{
+  ( theWrappedObject->setNotation(arg__1));
+}
+
+QDoubleValidator::Notation  PythonQtWrapper_QDoubleValidator::notation(QDoubleValidator* theWrappedObject) const
+{
+  return ( theWrappedObject->notation());
+}
+
+void PythonQtWrapper_QDoubleValidator::setDecimals(QDoubleValidator* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setDecimals(arg__1));
+}
+
+int  PythonQtWrapper_QDoubleValidator::decimals(QDoubleValidator* theWrappedObject) const
+{
+  return ( theWrappedObject->decimals());
 }
 

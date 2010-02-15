@@ -863,34 +863,14 @@ QSqlQueryModel* PythonQtWrapper_QSqlQueryModel::new_QSqlQueryModel(QObject*  par
 { 
 return new PythonQtShell_QSqlQueryModel(parent); }
 
-int  PythonQtWrapper_QSqlQueryModel::columnCount(QSqlQueryModel* theWrappedObject, const QModelIndex&  parent) const
+bool  PythonQtWrapper_QSqlQueryModel::removeColumns(QSqlQueryModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
 {
-  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_columnCount(parent));
+  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_removeColumns(column, count, parent));
 }
 
 QVariant  PythonQtWrapper_QSqlQueryModel::data(QSqlQueryModel* theWrappedObject, const QModelIndex&  item, int  role) const
 {
   return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_data(item, role));
-}
-
-void PythonQtWrapper_QSqlQueryModel::queryChange(QSqlQueryModel* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_queryChange());
-}
-
-bool  PythonQtWrapper_QSqlQueryModel::setHeaderData(QSqlQueryModel* theWrappedObject, int  section, Qt::Orientation  orientation, const QVariant&  value, int  role)
-{
-  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_setHeaderData(section, orientation, value, role));
-}
-
-QSqlRecord  PythonQtWrapper_QSqlQueryModel::record(QSqlQueryModel* theWrappedObject) const
-{
-  return ( theWrappedObject->record());
-}
-
-void PythonQtWrapper_QSqlQueryModel::fetchMore(QSqlQueryModel* theWrappedObject, const QModelIndex&  parent)
-{
-  ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_fetchMore(parent));
 }
 
 void PythonQtWrapper_QSqlQueryModel::clear(QSqlQueryModel* theWrappedObject)
@@ -903,14 +883,14 @@ int  PythonQtWrapper_QSqlQueryModel::rowCount(QSqlQueryModel* theWrappedObject, 
   return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_rowCount(parent));
 }
 
-void PythonQtWrapper_QSqlQueryModel::setQuery(QSqlQueryModel* theWrappedObject, const QString&  query, const QSqlDatabase&  db)
+bool  PythonQtWrapper_QSqlQueryModel::setHeaderData(QSqlQueryModel* theWrappedObject, int  section, Qt::Orientation  orientation, const QVariant&  value, int  role)
 {
-  ( theWrappedObject->setQuery(query, db));
+  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_setHeaderData(section, orientation, value, role));
 }
 
-bool  PythonQtWrapper_QSqlQueryModel::insertColumns(QSqlQueryModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
+void PythonQtWrapper_QSqlQueryModel::queryChange(QSqlQueryModel* theWrappedObject)
 {
-  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_insertColumns(column, count, parent));
+  ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_queryChange());
 }
 
 QSqlError  PythonQtWrapper_QSqlQueryModel::lastError(QSqlQueryModel* theWrappedObject) const
@@ -918,9 +898,14 @@ QSqlError  PythonQtWrapper_QSqlQueryModel::lastError(QSqlQueryModel* theWrappedO
   return ( theWrappedObject->lastError());
 }
 
-bool  PythonQtWrapper_QSqlQueryModel::removeColumns(QSqlQueryModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
+QSqlRecord  PythonQtWrapper_QSqlQueryModel::record(QSqlQueryModel* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_removeColumns(column, count, parent));
+  return ( theWrappedObject->record());
+}
+
+bool  PythonQtWrapper_QSqlQueryModel::insertColumns(QSqlQueryModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_insertColumns(column, count, parent));
 }
 
 bool  PythonQtWrapper_QSqlQueryModel::canFetchMore(QSqlQueryModel* theWrappedObject, const QModelIndex&  parent) const
@@ -928,9 +913,9 @@ bool  PythonQtWrapper_QSqlQueryModel::canFetchMore(QSqlQueryModel* theWrappedObj
   return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_canFetchMore(parent));
 }
 
-void PythonQtWrapper_QSqlQueryModel::setQuery(QSqlQueryModel* theWrappedObject, const QSqlQuery&  query)
+int  PythonQtWrapper_QSqlQueryModel::columnCount(QSqlQueryModel* theWrappedObject, const QModelIndex&  parent) const
 {
-  ( theWrappedObject->setQuery(query));
+  return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_columnCount(parent));
 }
 
 QVariant  PythonQtWrapper_QSqlQueryModel::headerData(QSqlQueryModel* theWrappedObject, int  section, Qt::Orientation  orientation, int  role) const
@@ -938,9 +923,24 @@ QVariant  PythonQtWrapper_QSqlQueryModel::headerData(QSqlQueryModel* theWrappedO
   return ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_headerData(section, orientation, role));
 }
 
+void PythonQtWrapper_QSqlQueryModel::fetchMore(QSqlQueryModel* theWrappedObject, const QModelIndex&  parent)
+{
+  ( ((PythonQtPublicPromoter_QSqlQueryModel*)theWrappedObject)->promoted_fetchMore(parent));
+}
+
 QSqlQuery  PythonQtWrapper_QSqlQueryModel::query(QSqlQueryModel* theWrappedObject) const
 {
   return ( theWrappedObject->query());
+}
+
+void PythonQtWrapper_QSqlQueryModel::setQuery(QSqlQueryModel* theWrappedObject, const QSqlQuery&  query)
+{
+  ( theWrappedObject->setQuery(query));
+}
+
+void PythonQtWrapper_QSqlQueryModel::setQuery(QSqlQueryModel* theWrappedObject, const QString&  query, const QSqlDatabase&  db)
+{
+  ( theWrappedObject->setQuery(query, db));
 }
 
 QSqlRecord  PythonQtWrapper_QSqlQueryModel::record(QSqlQueryModel* theWrappedObject, int  row) const

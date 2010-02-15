@@ -10,14 +10,9 @@ QSemaphore* PythonQtWrapper_QSemaphore::new_QSemaphore(int  n)
 { 
 return new QSemaphore(n); }
 
-bool  PythonQtWrapper_QSemaphore::tryAcquire(QSemaphore* theWrappedObject, int  n)
+void PythonQtWrapper_QSemaphore::acquire(QSemaphore* theWrappedObject, int  n)
 {
-  return ( theWrappedObject->tryAcquire(n));
-}
-
-void PythonQtWrapper_QSemaphore::release(QSemaphore* theWrappedObject, int  n)
-{
-  ( theWrappedObject->release(n));
+  ( theWrappedObject->acquire(n));
 }
 
 int  PythonQtWrapper_QSemaphore::available(QSemaphore* theWrappedObject) const
@@ -30,8 +25,13 @@ bool  PythonQtWrapper_QSemaphore::tryAcquire(QSemaphore* theWrappedObject, int  
   return ( theWrappedObject->tryAcquire(n, timeout));
 }
 
-void PythonQtWrapper_QSemaphore::acquire(QSemaphore* theWrappedObject, int  n)
+bool  PythonQtWrapper_QSemaphore::tryAcquire(QSemaphore* theWrappedObject, int  n)
 {
-  ( theWrappedObject->acquire(n));
+  return ( theWrappedObject->tryAcquire(n));
+}
+
+void PythonQtWrapper_QSemaphore::release(QSemaphore* theWrappedObject, int  n)
+{
+  ( theWrappedObject->release(n));
 }
 

@@ -18,9 +18,9 @@ QDomAttr* new_QDomAttr();
 QDomAttr* new_QDomAttr(const QDomAttr&  x);
 void delete_QDomAttr(QDomAttr* obj) { delete obj; } 
    QString  name(QDomAttr* theWrappedObject) const;
+   QDomElement  ownerElement(QDomAttr* theWrappedObject) const;
    void setValue(QDomAttr* theWrappedObject, const QString&  arg__1);
    bool  specified(QDomAttr* theWrappedObject) const;
-   QDomElement  ownerElement(QDomAttr* theWrappedObject) const;
    QString  value(QDomAttr* theWrappedObject) const;
 };
 

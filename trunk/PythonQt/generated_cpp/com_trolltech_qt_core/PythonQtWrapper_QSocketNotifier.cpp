@@ -121,11 +121,6 @@ QSocketNotifier* PythonQtWrapper_QSocketNotifier::new_QSocketNotifier(int  socke
 { 
 return new PythonQtShell_QSocketNotifier(socket, arg__2, parent); }
 
-bool  PythonQtWrapper_QSocketNotifier::isEnabled(QSocketNotifier* theWrappedObject) const
-{
-  return ( theWrappedObject->isEnabled());
-}
-
 QSocketNotifier::Type  PythonQtWrapper_QSocketNotifier::type(QSocketNotifier* theWrappedObject) const
 {
   return ( theWrappedObject->type());
@@ -139,5 +134,10 @@ bool  PythonQtWrapper_QSocketNotifier::event(QSocketNotifier* theWrappedObject, 
 int  PythonQtWrapper_QSocketNotifier::socket(QSocketNotifier* theWrappedObject) const
 {
   return ( theWrappedObject->socket());
+}
+
+bool  PythonQtWrapper_QSocketNotifier::isEnabled(QSocketNotifier* theWrappedObject) const
+{
+  return ( theWrappedObject->isEnabled());
 }
 

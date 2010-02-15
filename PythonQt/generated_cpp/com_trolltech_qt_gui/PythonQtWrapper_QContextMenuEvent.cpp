@@ -23,6 +23,16 @@ const QPoint*  PythonQtWrapper_QContextMenuEvent::globalPos(QContextMenuEvent* t
   return &( theWrappedObject->globalPos());
 }
 
+int  PythonQtWrapper_QContextMenuEvent::x(QContextMenuEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->x());
+}
+
+int  PythonQtWrapper_QContextMenuEvent::y(QContextMenuEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->y());
+}
+
 int  PythonQtWrapper_QContextMenuEvent::globalX(QContextMenuEvent* theWrappedObject) const
 {
   return ( theWrappedObject->globalX());
@@ -33,19 +43,9 @@ int  PythonQtWrapper_QContextMenuEvent::globalY(QContextMenuEvent* theWrappedObj
   return ( theWrappedObject->globalY());
 }
 
-int  PythonQtWrapper_QContextMenuEvent::y(QContextMenuEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->y());
-}
-
 QContextMenuEvent::Reason  PythonQtWrapper_QContextMenuEvent::reason(QContextMenuEvent* theWrappedObject) const
 {
   return ( theWrappedObject->reason());
-}
-
-int  PythonQtWrapper_QContextMenuEvent::x(QContextMenuEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->x());
 }
 
 const QPoint*  PythonQtWrapper_QContextMenuEvent::pos(QContextMenuEvent* theWrappedObject) const

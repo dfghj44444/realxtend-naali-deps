@@ -6,6 +6,7 @@
 #include <QVariant>
 #include <qbytearray.h>
 #include <qcoreevent.h>
+#include <qeasingcurve.h>
 #include <qlist.h>
 #include <qobject.h>
 #include <qtimeline.h>
@@ -149,49 +150,9 @@ QTimeLine* PythonQtWrapper_QTimeLine::new_QTimeLine(int  duration, QObject*  par
 { 
 return new PythonQtShell_QTimeLine(duration, parent); }
 
-int  PythonQtWrapper_QTimeLine::frameForTime(QTimeLine* theWrappedObject, int  msec) const
+qreal  PythonQtWrapper_QTimeLine::currentValue(QTimeLine* theWrappedObject) const
 {
-  return ( theWrappedObject->frameForTime(msec));
-}
-
-qreal  PythonQtWrapper_QTimeLine::valueForTime(QTimeLine* theWrappedObject, int  msec) const
-{
-  return ( ((PythonQtPublicPromoter_QTimeLine*)theWrappedObject)->promoted_valueForTime(msec));
-}
-
-void PythonQtWrapper_QTimeLine::timerEvent(QTimeLine* theWrappedObject, QTimerEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QTimeLine*)theWrappedObject)->promoted_timerEvent(event));
-}
-
-QTimeLine::CurveShape  PythonQtWrapper_QTimeLine::curveShape(QTimeLine* theWrappedObject) const
-{
-  return ( theWrappedObject->curveShape());
-}
-
-void PythonQtWrapper_QTimeLine::setDuration(QTimeLine* theWrappedObject, int  duration)
-{
-  ( theWrappedObject->setDuration(duration));
-}
-
-QTimeLine::State  PythonQtWrapper_QTimeLine::state(QTimeLine* theWrappedObject) const
-{
-  return ( theWrappedObject->state());
-}
-
-void PythonQtWrapper_QTimeLine::setStartFrame(QTimeLine* theWrappedObject, int  frame)
-{
-  ( theWrappedObject->setStartFrame(frame));
-}
-
-void PythonQtWrapper_QTimeLine::setFrameRange(QTimeLine* theWrappedObject, int  startFrame, int  endFrame)
-{
-  ( theWrappedObject->setFrameRange(startFrame, endFrame));
-}
-
-void PythonQtWrapper_QTimeLine::setEndFrame(QTimeLine* theWrappedObject, int  frame)
-{
-  ( theWrappedObject->setEndFrame(frame));
+  return ( theWrappedObject->currentValue());
 }
 
 void PythonQtWrapper_QTimeLine::setLoopCount(QTimeLine* theWrappedObject, int  count)
@@ -199,19 +160,9 @@ void PythonQtWrapper_QTimeLine::setLoopCount(QTimeLine* theWrappedObject, int  c
   ( theWrappedObject->setLoopCount(count));
 }
 
-int  PythonQtWrapper_QTimeLine::duration(QTimeLine* theWrappedObject) const
+QTimeLine::CurveShape  PythonQtWrapper_QTimeLine::curveShape(QTimeLine* theWrappedObject) const
 {
-  return ( theWrappedObject->duration());
-}
-
-int  PythonQtWrapper_QTimeLine::loopCount(QTimeLine* theWrappedObject) const
-{
-  return ( theWrappedObject->loopCount());
-}
-
-void PythonQtWrapper_QTimeLine::setDirection(QTimeLine* theWrappedObject, QTimeLine::Direction  direction)
-{
-  ( theWrappedObject->setDirection(direction));
+  return ( theWrappedObject->curveShape());
 }
 
 QTimeLine::Direction  PythonQtWrapper_QTimeLine::direction(QTimeLine* theWrappedObject) const
@@ -219,9 +170,19 @@ QTimeLine::Direction  PythonQtWrapper_QTimeLine::direction(QTimeLine* theWrapped
   return ( theWrappedObject->direction());
 }
 
-void PythonQtWrapper_QTimeLine::setCurveShape(QTimeLine* theWrappedObject, QTimeLine::CurveShape  shape)
+QTimeLine::State  PythonQtWrapper_QTimeLine::state(QTimeLine* theWrappedObject) const
 {
-  ( theWrappedObject->setCurveShape(shape));
+  return ( theWrappedObject->state());
+}
+
+void PythonQtWrapper_QTimeLine::setEasingCurve(QTimeLine* theWrappedObject, const QEasingCurve&  curve)
+{
+  ( theWrappedObject->setEasingCurve(curve));
+}
+
+void PythonQtWrapper_QTimeLine::timerEvent(QTimeLine* theWrappedObject, QTimerEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QTimeLine*)theWrappedObject)->promoted_timerEvent(event));
 }
 
 void PythonQtWrapper_QTimeLine::setUpdateInterval(QTimeLine* theWrappedObject, int  interval)
@@ -229,19 +190,69 @@ void PythonQtWrapper_QTimeLine::setUpdateInterval(QTimeLine* theWrappedObject, i
   ( theWrappedObject->setUpdateInterval(interval));
 }
 
-int  PythonQtWrapper_QTimeLine::startFrame(QTimeLine* theWrappedObject) const
-{
-  return ( theWrappedObject->startFrame());
-}
-
 int  PythonQtWrapper_QTimeLine::currentTime(QTimeLine* theWrappedObject) const
 {
   return ( theWrappedObject->currentTime());
 }
 
-qreal  PythonQtWrapper_QTimeLine::currentValue(QTimeLine* theWrappedObject) const
+int  PythonQtWrapper_QTimeLine::duration(QTimeLine* theWrappedObject) const
 {
-  return ( theWrappedObject->currentValue());
+  return ( theWrappedObject->duration());
+}
+
+void PythonQtWrapper_QTimeLine::setEndFrame(QTimeLine* theWrappedObject, int  frame)
+{
+  ( theWrappedObject->setEndFrame(frame));
+}
+
+int  PythonQtWrapper_QTimeLine::startFrame(QTimeLine* theWrappedObject) const
+{
+  return ( theWrappedObject->startFrame());
+}
+
+void PythonQtWrapper_QTimeLine::setDuration(QTimeLine* theWrappedObject, int  duration)
+{
+  ( theWrappedObject->setDuration(duration));
+}
+
+void PythonQtWrapper_QTimeLine::setCurveShape(QTimeLine* theWrappedObject, QTimeLine::CurveShape  shape)
+{
+  ( theWrappedObject->setCurveShape(shape));
+}
+
+int  PythonQtWrapper_QTimeLine::frameForTime(QTimeLine* theWrappedObject, int  msec) const
+{
+  return ( theWrappedObject->frameForTime(msec));
+}
+
+void PythonQtWrapper_QTimeLine::setDirection(QTimeLine* theWrappedObject, QTimeLine::Direction  direction)
+{
+  ( theWrappedObject->setDirection(direction));
+}
+
+void PythonQtWrapper_QTimeLine::setFrameRange(QTimeLine* theWrappedObject, int  startFrame, int  endFrame)
+{
+  ( theWrappedObject->setFrameRange(startFrame, endFrame));
+}
+
+qreal  PythonQtWrapper_QTimeLine::valueForTime(QTimeLine* theWrappedObject, int  msec) const
+{
+  return ( ((PythonQtPublicPromoter_QTimeLine*)theWrappedObject)->promoted_valueForTime(msec));
+}
+
+int  PythonQtWrapper_QTimeLine::currentFrame(QTimeLine* theWrappedObject) const
+{
+  return ( theWrappedObject->currentFrame());
+}
+
+QEasingCurve  PythonQtWrapper_QTimeLine::easingCurve(QTimeLine* theWrappedObject) const
+{
+  return ( theWrappedObject->easingCurve());
+}
+
+int  PythonQtWrapper_QTimeLine::loopCount(QTimeLine* theWrappedObject) const
+{
+  return ( theWrappedObject->loopCount());
 }
 
 int  PythonQtWrapper_QTimeLine::endFrame(QTimeLine* theWrappedObject) const
@@ -249,13 +260,13 @@ int  PythonQtWrapper_QTimeLine::endFrame(QTimeLine* theWrappedObject) const
   return ( theWrappedObject->endFrame());
 }
 
+void PythonQtWrapper_QTimeLine::setStartFrame(QTimeLine* theWrappedObject, int  frame)
+{
+  ( theWrappedObject->setStartFrame(frame));
+}
+
 int  PythonQtWrapper_QTimeLine::updateInterval(QTimeLine* theWrappedObject) const
 {
   return ( theWrappedObject->updateInterval());
-}
-
-int  PythonQtWrapper_QTimeLine::currentFrame(QTimeLine* theWrappedObject) const
-{
-  return ( theWrappedObject->currentFrame());
 }
 

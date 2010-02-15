@@ -12,6 +12,7 @@
 #include <qlayout.h>
 #include <qlayoutitem.h>
 #include <qlist.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -49,12 +50,12 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 
 class PythonQtPublicPromoter_QStackedLayout : public QStackedLayout
 { public:
+inline QSize  promoted_minimumSize() const { return QStackedLayout::minimumSize(); }
+inline void promoted_setGeometry(const QRect&  rect) { QStackedLayout::setGeometry(rect); }
 inline int  promoted_count() const { return QStackedLayout::count(); }
 inline void promoted_addItem(QLayoutItem*  item) { QStackedLayout::addItem(item); }
-inline QSize  promoted_minimumSize() const { return QStackedLayout::minimumSize(); }
-inline QLayoutItem*  promoted_takeAt(int  arg__1) { return QStackedLayout::takeAt(arg__1); }
-inline void promoted_setGeometry(const QRect&  rect) { QStackedLayout::setGeometry(rect); }
 inline QLayoutItem*  promoted_itemAt(int  arg__1) const { return QStackedLayout::itemAt(arg__1); }
+inline QLayoutItem*  promoted_takeAt(int  arg__1) { return QStackedLayout::takeAt(arg__1); }
 };
 
 class PythonQtWrapper_QStackedLayout : public QObject
@@ -65,21 +66,21 @@ QStackedLayout* new_QStackedLayout();
 QStackedLayout* new_QStackedLayout(QLayout*  parentLayout);
 QStackedLayout* new_QStackedLayout(QWidget*  parent);
 void delete_QStackedLayout(QStackedLayout* obj) { delete obj; } 
-   int  count(QStackedLayout* theWrappedObject) const;
-   QStackedLayout::StackingMode  stackingMode(QStackedLayout* theWrappedObject) const;
-   void addItem(QStackedLayout* theWrappedObject, QLayoutItem*  item);
-   QSize  sizeHint(QStackedLayout* theWrappedObject) const;
-   int  addWidget(QStackedLayout* theWrappedObject, QWidget*  w);
-   int  insertWidget(QStackedLayout* theWrappedObject, int  index, QWidget*  w);
    QWidget*  widget(QStackedLayout* theWrappedObject);
-   void setStackingMode(QStackedLayout* theWrappedObject, QStackedLayout::StackingMode  stackingMode);
-   QSize  minimumSize(QStackedLayout* theWrappedObject) const;
-   int  currentIndex(QStackedLayout* theWrappedObject) const;
-   QLayoutItem*  takeAt(QStackedLayout* theWrappedObject, int  arg__1);
-   void setGeometry(QStackedLayout* theWrappedObject, const QRect&  rect);
-   QWidget*  widget(QStackedLayout* theWrappedObject, int  arg__1) const;
+   int  addWidget(QStackedLayout* theWrappedObject, QWidget*  w);
    QWidget*  currentWidget(QStackedLayout* theWrappedObject) const;
+   QSize  minimumSize(QStackedLayout* theWrappedObject) const;
+   void setGeometry(QStackedLayout* theWrappedObject, const QRect&  rect);
+   QStackedLayout::StackingMode  stackingMode(QStackedLayout* theWrappedObject) const;
+   int  count(QStackedLayout* theWrappedObject) const;
+   QSize  sizeHint(QStackedLayout* theWrappedObject) const;
+   void setStackingMode(QStackedLayout* theWrappedObject, QStackedLayout::StackingMode  stackingMode);
+   QWidget*  widget(QStackedLayout* theWrappedObject, int  arg__1) const;
+   void addItem(QStackedLayout* theWrappedObject, QLayoutItem*  item);
+   int  insertWidget(QStackedLayout* theWrappedObject, int  index, QWidget*  w);
+   int  currentIndex(QStackedLayout* theWrappedObject) const;
    QLayoutItem*  itemAt(QStackedLayout* theWrappedObject, int  arg__1) const;
+   QLayoutItem*  takeAt(QStackedLayout* theWrappedObject, int  arg__1);
 };
 
 #endif // PYTHONQTWRAPPER_QSTACKEDLAYOUT_H

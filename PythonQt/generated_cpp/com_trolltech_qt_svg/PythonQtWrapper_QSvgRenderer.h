@@ -19,11 +19,13 @@
 #include <qpainter.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qxmlstream.h>
 
 class PythonQtShell_QSvgRenderer : public QSvgRenderer
 {
 public:
     PythonQtShell_QSvgRenderer(QObject*  parent = 0):QSvgRenderer(parent),_wrapper(NULL) {};
+    PythonQtShell_QSvgRenderer(QXmlStreamReader*  contents, QObject*  parent = 0):QSvgRenderer(contents, parent),_wrapper(NULL) {};
     PythonQtShell_QSvgRenderer(const QByteArray&  contents, QObject*  parent = 0):QSvgRenderer(contents, parent),_wrapper(NULL) {};
     PythonQtShell_QSvgRenderer(const QString&  filename, QObject*  parent = 0):QSvgRenderer(filename, parent),_wrapper(NULL) {};
 
@@ -41,24 +43,25 @@ class PythonQtWrapper_QSvgRenderer : public QObject
 public:
 public slots:
 QSvgRenderer* new_QSvgRenderer(QObject*  parent = 0);
+QSvgRenderer* new_QSvgRenderer(QXmlStreamReader*  contents, QObject*  parent = 0);
 QSvgRenderer* new_QSvgRenderer(const QByteArray&  contents, QObject*  parent = 0);
 QSvgRenderer* new_QSvgRenderer(const QString&  filename, QObject*  parent = 0);
 void delete_QSvgRenderer(QSvgRenderer* obj) { delete obj; } 
-   QRect  viewBox(QSvgRenderer* theWrappedObject) const;
    void setCurrentFrame(QSvgRenderer* theWrappedObject, int  arg__1);
-   int  currentFrame(QSvgRenderer* theWrappedObject) const;
-   int  animationDuration(QSvgRenderer* theWrappedObject) const;
-   bool  animated(QSvgRenderer* theWrappedObject) const;
    QSize  defaultSize(QSvgRenderer* theWrappedObject) const;
-   int  framesPerSecond(QSvgRenderer* theWrappedObject) const;
-   void setFramesPerSecond(QSvgRenderer* theWrappedObject, int  num);
-   QRectF  boundsOnElement(QSvgRenderer* theWrappedObject, const QString&  id) const;
+   bool  animated(QSvgRenderer* theWrappedObject) const;
+   QRectF  viewBoxF(QSvgRenderer* theWrappedObject) const;
+   int  animationDuration(QSvgRenderer* theWrappedObject) const;
+   int  currentFrame(QSvgRenderer* theWrappedObject) const;
    QMatrix  matrixForElement(QSvgRenderer* theWrappedObject, const QString&  id) const;
    bool  elementExists(QSvgRenderer* theWrappedObject, const QString&  id) const;
-   bool  isValid(QSvgRenderer* theWrappedObject) const;
    void setViewBox(QSvgRenderer* theWrappedObject, const QRect&  viewbox);
+   QRectF  boundsOnElement(QSvgRenderer* theWrappedObject, const QString&  id) const;
+   bool  isValid(QSvgRenderer* theWrappedObject) const;
    void setViewBox(QSvgRenderer* theWrappedObject, const QRectF&  viewbox);
-   QRectF  viewBoxF(QSvgRenderer* theWrappedObject) const;
+   void setFramesPerSecond(QSvgRenderer* theWrappedObject, int  num);
+   int  framesPerSecond(QSvgRenderer* theWrappedObject) const;
+   QRect  viewBox(QSvgRenderer* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QSVGRENDERER_H

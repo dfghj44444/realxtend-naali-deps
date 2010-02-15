@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -815,39 +818,9 @@ QScrollArea* PythonQtWrapper_QScrollArea::new_QScrollArea(QWidget*  parent)
 { 
 return new PythonQtShell_QScrollArea(parent); }
 
-QWidget*  PythonQtWrapper_QScrollArea::widget(QScrollArea* theWrappedObject) const
-{
-  return ( theWrappedObject->widget());
-}
-
-void PythonQtWrapper_QScrollArea::ensureVisible(QScrollArea* theWrappedObject, int  x, int  y, int  xmargin, int  ymargin)
-{
-  ( theWrappedObject->ensureVisible(x, y, xmargin, ymargin));
-}
-
 QSize  PythonQtWrapper_QScrollArea::sizeHint(QScrollArea* theWrappedObject) const
 {
   return ( theWrappedObject->sizeHint());
-}
-
-Qt::Alignment  PythonQtWrapper_QScrollArea::alignment(QScrollArea* theWrappedObject) const
-{
-  return ( theWrappedObject->alignment());
-}
-
-bool  PythonQtWrapper_QScrollArea::focusNextPrevChild(QScrollArea* theWrappedObject, bool  next)
-{
-  return ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_focusNextPrevChild(next));
-}
-
-void PythonQtWrapper_QScrollArea::setWidgetResizable(QScrollArea* theWrappedObject, bool  resizable)
-{
-  ( theWrappedObject->setWidgetResizable(resizable));
-}
-
-QWidget*  PythonQtWrapper_QScrollArea::takeWidget(QScrollArea* theWrappedObject)
-{
-  return ( theWrappedObject->takeWidget());
 }
 
 bool  PythonQtWrapper_QScrollArea::eventFilter(QScrollArea* theWrappedObject, QObject*  arg__1, QEvent*  arg__2)
@@ -860,24 +833,9 @@ void PythonQtWrapper_QScrollArea::resizeEvent(QScrollArea* theWrappedObject, QRe
   ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_resizeEvent(arg__1));
 }
 
-bool  PythonQtWrapper_QScrollArea::event(QScrollArea* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_event(arg__1));
-}
-
-void PythonQtWrapper_QScrollArea::scrollContentsBy(QScrollArea* theWrappedObject, int  dx, int  dy)
-{
-  ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
-}
-
 void PythonQtWrapper_QScrollArea::setWidget(QScrollArea* theWrappedObject, QWidget*  widget)
 {
   ( theWrappedObject->setWidget(widget));
-}
-
-void PythonQtWrapper_QScrollArea::setAlignment(QScrollArea* theWrappedObject, Qt::Alignment  arg__1)
-{
-  ( theWrappedObject->setAlignment(arg__1));
 }
 
 void PythonQtWrapper_QScrollArea::ensureWidgetVisible(QScrollArea* theWrappedObject, QWidget*  childWidget, int  xmargin, int  ymargin)
@@ -885,8 +843,53 @@ void PythonQtWrapper_QScrollArea::ensureWidgetVisible(QScrollArea* theWrappedObj
   ( theWrappedObject->ensureWidgetVisible(childWidget, xmargin, ymargin));
 }
 
+QWidget*  PythonQtWrapper_QScrollArea::takeWidget(QScrollArea* theWrappedObject)
+{
+  return ( theWrappedObject->takeWidget());
+}
+
+Qt::Alignment  PythonQtWrapper_QScrollArea::alignment(QScrollArea* theWrappedObject) const
+{
+  return ( theWrappedObject->alignment());
+}
+
+void PythonQtWrapper_QScrollArea::setAlignment(QScrollArea* theWrappedObject, Qt::Alignment  arg__1)
+{
+  ( theWrappedObject->setAlignment(arg__1));
+}
+
+bool  PythonQtWrapper_QScrollArea::event(QScrollArea* theWrappedObject, QEvent*  arg__1)
+{
+  return ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_event(arg__1));
+}
+
+void PythonQtWrapper_QScrollArea::ensureVisible(QScrollArea* theWrappedObject, int  x, int  y, int  xmargin, int  ymargin)
+{
+  ( theWrappedObject->ensureVisible(x, y, xmargin, ymargin));
+}
+
 bool  PythonQtWrapper_QScrollArea::widgetResizable(QScrollArea* theWrappedObject) const
 {
   return ( theWrappedObject->widgetResizable());
+}
+
+void PythonQtWrapper_QScrollArea::scrollContentsBy(QScrollArea* theWrappedObject, int  dx, int  dy)
+{
+  ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
+}
+
+void PythonQtWrapper_QScrollArea::setWidgetResizable(QScrollArea* theWrappedObject, bool  resizable)
+{
+  ( theWrappedObject->setWidgetResizable(resizable));
+}
+
+bool  PythonQtWrapper_QScrollArea::focusNextPrevChild(QScrollArea* theWrappedObject, bool  next)
+{
+  return ( ((PythonQtPublicPromoter_QScrollArea*)theWrappedObject)->promoted_focusNextPrevChild(next));
+}
+
+QWidget*  PythonQtWrapper_QScrollArea::widget(QScrollArea* theWrappedObject) const
+{
+  return ( theWrappedObject->widget());
 }
 

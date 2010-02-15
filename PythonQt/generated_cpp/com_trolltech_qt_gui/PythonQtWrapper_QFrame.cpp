@@ -12,12 +12,15 @@
 #include <qevent.h>
 #include <qfont.h>
 #include <qframe.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -802,9 +805,9 @@ void PythonQtWrapper_QFrame::setFrameShape(QFrame* theWrappedObject, QFrame::Sha
   ( theWrappedObject->setFrameShape(arg__1));
 }
 
-int  PythonQtWrapper_QFrame::lineWidth(QFrame* theWrappedObject) const
+void PythonQtWrapper_QFrame::setFrameStyle(QFrame* theWrappedObject, int  arg__1)
 {
-  return ( theWrappedObject->lineWidth());
+  ( theWrappedObject->setFrameStyle(arg__1));
 }
 
 void PythonQtWrapper_QFrame::setFrameRect(QFrame* theWrappedObject, const QRect&  arg__1)
@@ -817,9 +820,14 @@ QRect  PythonQtWrapper_QFrame::frameRect(QFrame* theWrappedObject) const
   return ( theWrappedObject->frameRect());
 }
 
-void PythonQtWrapper_QFrame::changeEvent(QFrame* theWrappedObject, QEvent*  arg__1)
+QFrame::Shape  PythonQtWrapper_QFrame::frameShape(QFrame* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QFrame*)theWrappedObject)->promoted_changeEvent(arg__1));
+  return ( theWrappedObject->frameShape());
+}
+
+bool  PythonQtWrapper_QFrame::event(QFrame* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QFrame*)theWrappedObject)->promoted_event(e));
 }
 
 QFrame::Shadow  PythonQtWrapper_QFrame::frameShadow(QFrame* theWrappedObject) const
@@ -837,34 +845,9 @@ QSize  PythonQtWrapper_QFrame::sizeHint(QFrame* theWrappedObject) const
   return ( theWrappedObject->sizeHint());
 }
 
-int  PythonQtWrapper_QFrame::frameStyle(QFrame* theWrappedObject) const
-{
-  return ( theWrappedObject->frameStyle());
-}
-
-QFrame::Shape  PythonQtWrapper_QFrame::frameShape(QFrame* theWrappedObject) const
-{
-  return ( theWrappedObject->frameShape());
-}
-
-void PythonQtWrapper_QFrame::setMidLineWidth(QFrame* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setMidLineWidth(arg__1));
-}
-
-int  PythonQtWrapper_QFrame::frameWidth(QFrame* theWrappedObject) const
-{
-  return ( theWrappedObject->frameWidth());
-}
-
 void PythonQtWrapper_QFrame::setLineWidth(QFrame* theWrappedObject, int  arg__1)
 {
   ( theWrappedObject->setLineWidth(arg__1));
-}
-
-int  PythonQtWrapper_QFrame::midLineWidth(QFrame* theWrappedObject) const
-{
-  return ( theWrappedObject->midLineWidth());
 }
 
 void PythonQtWrapper_QFrame::setFrameShadow(QFrame* theWrappedObject, QFrame::Shadow  arg__1)
@@ -872,13 +855,33 @@ void PythonQtWrapper_QFrame::setFrameShadow(QFrame* theWrappedObject, QFrame::Sh
   ( theWrappedObject->setFrameShadow(arg__1));
 }
 
-void PythonQtWrapper_QFrame::setFrameStyle(QFrame* theWrappedObject, int  arg__1)
+int  PythonQtWrapper_QFrame::frameWidth(QFrame* theWrappedObject) const
 {
-  ( theWrappedObject->setFrameStyle(arg__1));
+  return ( theWrappedObject->frameWidth());
 }
 
-bool  PythonQtWrapper_QFrame::event(QFrame* theWrappedObject, QEvent*  e)
+int  PythonQtWrapper_QFrame::midLineWidth(QFrame* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QFrame*)theWrappedObject)->promoted_event(e));
+  return ( theWrappedObject->midLineWidth());
+}
+
+void PythonQtWrapper_QFrame::changeEvent(QFrame* theWrappedObject, QEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QFrame*)theWrappedObject)->promoted_changeEvent(arg__1));
+}
+
+int  PythonQtWrapper_QFrame::lineWidth(QFrame* theWrappedObject) const
+{
+  return ( theWrappedObject->lineWidth());
+}
+
+int  PythonQtWrapper_QFrame::frameStyle(QFrame* theWrappedObject) const
+{
+  return ( theWrappedObject->frameStyle());
+}
+
+void PythonQtWrapper_QFrame::setMidLineWidth(QFrame* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setMidLineWidth(arg__1));
 }
 

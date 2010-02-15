@@ -17,6 +17,7 @@ public slots:
 QTextEncoder* new_QTextEncoder(const QTextCodec*  codec);
 void delete_QTextEncoder(QTextEncoder* obj) { delete obj; } 
    QByteArray  fromUnicode(QTextEncoder* theWrappedObject, const QString&  str);
+   bool  hasFailure(QTextEncoder* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTENCODER_H

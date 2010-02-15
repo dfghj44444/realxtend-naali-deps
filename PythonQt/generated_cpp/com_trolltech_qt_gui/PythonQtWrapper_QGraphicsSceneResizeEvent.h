@@ -16,9 +16,9 @@ public:
 public slots:
 QGraphicsSceneResizeEvent* new_QGraphicsSceneResizeEvent();
 void delete_QGraphicsSceneResizeEvent(QGraphicsSceneResizeEvent* obj) { delete obj; } 
-   QSizeF  newSize(QGraphicsSceneResizeEvent* theWrappedObject) const;
-   void setNewSize(QGraphicsSceneResizeEvent* theWrappedObject, const QSizeF&  size);
    void setOldSize(QGraphicsSceneResizeEvent* theWrappedObject, const QSizeF&  size);
+   void setNewSize(QGraphicsSceneResizeEvent* theWrappedObject, const QSizeF&  size);
+   QSizeF  newSize(QGraphicsSceneResizeEvent* theWrappedObject) const;
    QSizeF  oldSize(QGraphicsSceneResizeEvent* theWrappedObject) const;
 };
 

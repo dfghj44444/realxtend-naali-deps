@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -825,19 +828,9 @@ QStatusBar* PythonQtWrapper_QStatusBar::new_QStatusBar(QWidget*  parent)
 { 
 return new PythonQtShell_QStatusBar(parent); }
 
-bool  PythonQtWrapper_QStatusBar::isSizeGripEnabled(QStatusBar* theWrappedObject) const
-{
-  return ( theWrappedObject->isSizeGripEnabled());
-}
-
 void PythonQtWrapper_QStatusBar::addPermanentWidget(QStatusBar* theWrappedObject, QWidget*  widget, int  stretch)
 {
   ( theWrappedObject->addPermanentWidget(widget, stretch));
-}
-
-int  PythonQtWrapper_QStatusBar::insertPermanentWidget(QStatusBar* theWrappedObject, int  index, QWidget*  widget, int  stretch)
-{
-  return ( theWrappedObject->insertPermanentWidget(index, widget, stretch));
 }
 
 QString  PythonQtWrapper_QStatusBar::currentMessage(QStatusBar* theWrappedObject) const
@@ -845,9 +838,14 @@ QString  PythonQtWrapper_QStatusBar::currentMessage(QStatusBar* theWrappedObject
   return ( theWrappedObject->currentMessage());
 }
 
-int  PythonQtWrapper_QStatusBar::insertWidget(QStatusBar* theWrappedObject, int  index, QWidget*  widget, int  stretch)
+void PythonQtWrapper_QStatusBar::addWidget(QStatusBar* theWrappedObject, QWidget*  widget, int  stretch)
 {
-  return ( theWrappedObject->insertWidget(index, widget, stretch));
+  ( theWrappedObject->addWidget(widget, stretch));
+}
+
+void PythonQtWrapper_QStatusBar::setSizeGripEnabled(QStatusBar* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setSizeGripEnabled(arg__1));
 }
 
 void PythonQtWrapper_QStatusBar::paintEvent(QStatusBar* theWrappedObject, QPaintEvent*  arg__1)
@@ -855,24 +853,14 @@ void PythonQtWrapper_QStatusBar::paintEvent(QStatusBar* theWrappedObject, QPaint
   ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_paintEvent(arg__1));
 }
 
-bool  PythonQtWrapper_QStatusBar::event(QStatusBar* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_event(arg__1));
-}
-
-void PythonQtWrapper_QStatusBar::resizeEvent(QStatusBar* theWrappedObject, QResizeEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_resizeEvent(arg__1));
-}
-
 void PythonQtWrapper_QStatusBar::showEvent(QStatusBar* theWrappedObject, QShowEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_showEvent(arg__1));
 }
 
-void PythonQtWrapper_QStatusBar::addWidget(QStatusBar* theWrappedObject, QWidget*  widget, int  stretch)
+bool  PythonQtWrapper_QStatusBar::isSizeGripEnabled(QStatusBar* theWrappedObject) const
 {
-  ( theWrappedObject->addWidget(widget, stretch));
+  return ( theWrappedObject->isSizeGripEnabled());
 }
 
 void PythonQtWrapper_QStatusBar::removeWidget(QStatusBar* theWrappedObject, QWidget*  widget)
@@ -880,8 +868,23 @@ void PythonQtWrapper_QStatusBar::removeWidget(QStatusBar* theWrappedObject, QWid
   ( theWrappedObject->removeWidget(widget));
 }
 
-void PythonQtWrapper_QStatusBar::setSizeGripEnabled(QStatusBar* theWrappedObject, bool  arg__1)
+bool  PythonQtWrapper_QStatusBar::event(QStatusBar* theWrappedObject, QEvent*  arg__1)
 {
-  ( theWrappedObject->setSizeGripEnabled(arg__1));
+  return ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_event(arg__1));
+}
+
+int  PythonQtWrapper_QStatusBar::insertPermanentWidget(QStatusBar* theWrappedObject, int  index, QWidget*  widget, int  stretch)
+{
+  return ( theWrappedObject->insertPermanentWidget(index, widget, stretch));
+}
+
+void PythonQtWrapper_QStatusBar::resizeEvent(QStatusBar* theWrappedObject, QResizeEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QStatusBar*)theWrappedObject)->promoted_resizeEvent(arg__1));
+}
+
+int  PythonQtWrapper_QStatusBar::insertWidget(QStatusBar* theWrappedObject, int  index, QWidget*  widget, int  stretch)
+{
+  return ( theWrappedObject->insertWidget(index, widget, stretch));
 }
 

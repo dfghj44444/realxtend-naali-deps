@@ -19,9 +19,14 @@ QSizeF* PythonQtWrapper_QSizeF::new_QSizeF(qreal  w, qreal  h)
 { 
 return new QSizeF(w, h); }
 
-void PythonQtWrapper_QSizeF::transpose(QSizeF* theWrappedObject)
+QSizeF  PythonQtWrapper_QSizeF::boundedTo(QSizeF* theWrappedObject, const QSizeF&  arg__1) const
 {
-  ( theWrappedObject->transpose());
+  return ( theWrappedObject->boundedTo(arg__1));
+}
+
+QSizeF*  PythonQtWrapper_QSizeF::__imul__(QSizeF* theWrappedObject, qreal  c)
+{
+  return &( (*theWrappedObject)*= c);
 }
 
 QSizeF  PythonQtWrapper_QSizeF::expandedTo(QSizeF* theWrappedObject, const QSizeF&  arg__1) const
@@ -29,14 +34,49 @@ QSizeF  PythonQtWrapper_QSizeF::expandedTo(QSizeF* theWrappedObject, const QSize
   return ( theWrappedObject->expandedTo(arg__1));
 }
 
-QSizeF*  PythonQtWrapper_QSizeF::operator_add_assign(QSizeF* theWrappedObject, const QSizeF&  arg__1)
+void PythonQtWrapper_QSizeF::readFrom(QSizeF* theWrappedObject, QDataStream&  arg__1)
+{
+  arg__1 >>  (*theWrappedObject);
+}
+
+void PythonQtWrapper_QSizeF::transpose(QSizeF* theWrappedObject)
+{
+  ( theWrappedObject->transpose());
+}
+
+bool  PythonQtWrapper_QSizeF::isValid(QSizeF* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
+}
+
+bool  PythonQtWrapper_QSizeF::operator_equal(QSizeF* theWrappedObject, const QSizeF&  s2)
+{
+  return ( (*theWrappedObject)== s2);
+}
+
+void PythonQtWrapper_QSizeF::setWidth(QSizeF* theWrappedObject, qreal  w)
+{
+  ( theWrappedObject->setWidth(w));
+}
+
+QSizeF*  PythonQtWrapper_QSizeF::__idiv__(QSizeF* theWrappedObject, qreal  c)
+{
+  return &( (*theWrappedObject)/= c);
+}
+
+qreal  PythonQtWrapper_QSizeF::height(QSizeF* theWrappedObject) const
+{
+  return ( theWrappedObject->height());
+}
+
+QSizeF*  PythonQtWrapper_QSizeF::__iadd__(QSizeF* theWrappedObject, const QSizeF&  arg__1)
 {
   return &( (*theWrappedObject)+= arg__1);
 }
 
-void PythonQtWrapper_QSizeF::setHeight(QSizeF* theWrappedObject, qreal  h)
+QSize  PythonQtWrapper_QSizeF::toSize(QSizeF* theWrappedObject) const
 {
-  ( theWrappedObject->setHeight(h));
+  return ( theWrappedObject->toSize());
 }
 
 void PythonQtWrapper_QSizeF::scale(QSizeF* theWrappedObject, const QSizeF&  s, Qt::AspectRatioMode  mode)
@@ -49,64 +89,19 @@ void PythonQtWrapper_QSizeF::scale(QSizeF* theWrappedObject, qreal  w, qreal  h,
   ( theWrappedObject->scale(w, h, mode));
 }
 
-QSizeF*  PythonQtWrapper_QSizeF::operator_divide_assign(QSizeF* theWrappedObject, qreal  c)
+qreal  PythonQtWrapper_QSizeF::width(QSizeF* theWrappedObject) const
 {
-  return &( (*theWrappedObject)/= c);
+  return ( theWrappedObject->width());
 }
 
-QSizeF  PythonQtWrapper_QSizeF::boundedTo(QSizeF* theWrappedObject, const QSizeF&  arg__1) const
+const QSizeF  PythonQtWrapper_QSizeF::__add__(QSizeF* theWrappedObject, const QSizeF&  s2)
 {
-  return ( theWrappedObject->boundedTo(arg__1));
+  return ( (*theWrappedObject)+ s2);
 }
 
-bool  PythonQtWrapper_QSizeF::isNull(QSizeF* theWrappedObject) const
-{
-  return ( theWrappedObject->isNull());
-}
-
-void PythonQtWrapper_QSizeF::writeTo(QSizeF* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 <<  (*theWrappedObject);
-}
-
-void PythonQtWrapper_QSizeF::setWidth(QSizeF* theWrappedObject, qreal  w)
-{
-  ( theWrappedObject->setWidth(w));
-}
-
-QSize  PythonQtWrapper_QSizeF::toSize(QSizeF* theWrappedObject) const
-{
-  return ( theWrappedObject->toSize());
-}
-
-bool  PythonQtWrapper_QSizeF::isValid(QSizeF* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
-QSizeF*  PythonQtWrapper_QSizeF::operator_multiply_assign(QSizeF* theWrappedObject, qreal  c)
-{
-  return &( (*theWrappedObject)*= c);
-}
-
-void PythonQtWrapper_QSizeF::readFrom(QSizeF* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 >>  (*theWrappedObject);
-}
-
-QSizeF*  PythonQtWrapper_QSizeF::operator_subtract_assign(QSizeF* theWrappedObject, const QSizeF&  arg__1)
+QSizeF*  PythonQtWrapper_QSizeF::__isub__(QSizeF* theWrappedObject, const QSizeF&  arg__1)
 {
   return &( (*theWrappedObject)-= arg__1);
-}
-
-bool  PythonQtWrapper_QSizeF::operator_equal(QSizeF* theWrappedObject, const QSizeF&  s2)
-{
-  return ( (*theWrappedObject)== s2);
-}
-
-qreal  PythonQtWrapper_QSizeF::height(QSizeF* theWrappedObject) const
-{
-  return ( theWrappedObject->height());
 }
 
 bool  PythonQtWrapper_QSizeF::isEmpty(QSizeF* theWrappedObject) const
@@ -114,9 +109,34 @@ bool  PythonQtWrapper_QSizeF::isEmpty(QSizeF* theWrappedObject) const
   return ( theWrappedObject->isEmpty());
 }
 
-qreal  PythonQtWrapper_QSizeF::width(QSizeF* theWrappedObject) const
+const QSizeF  PythonQtWrapper_QSizeF::__div__(QSizeF* theWrappedObject, qreal  c)
 {
-  return ( theWrappedObject->width());
+  return ( (*theWrappedObject)/ c);
+}
+
+bool  PythonQtWrapper_QSizeF::isNull(QSizeF* theWrappedObject) const
+{
+  return ( theWrappedObject->isNull());
+}
+
+const QSizeF  PythonQtWrapper_QSizeF::__mul__(QSizeF* theWrappedObject, qreal  c)
+{
+  return ( (*theWrappedObject)* c);
+}
+
+void PythonQtWrapper_QSizeF::writeTo(QSizeF* theWrappedObject, QDataStream&  arg__1)
+{
+  arg__1 <<  (*theWrappedObject);
+}
+
+void PythonQtWrapper_QSizeF::setHeight(QSizeF* theWrappedObject, qreal  h)
+{
+  ( theWrappedObject->setHeight(h));
+}
+
+const QSizeF  PythonQtWrapper_QSizeF::__sub__(QSizeF* theWrappedObject, const QSizeF&  s2)
+{
+  return ( (*theWrappedObject)- s2);
 }
 
 QString PythonQtWrapper_QSizeF::toString(QSizeF* obj) {

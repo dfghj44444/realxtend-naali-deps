@@ -1115,19 +1115,9 @@ QSqlTableModel* PythonQtWrapper_QSqlTableModel::new_QSqlTableModel(QObject*  par
 { 
 return new PythonQtShell_QSqlTableModel(parent, db); }
 
-int  PythonQtWrapper_QSqlTableModel::fieldIndex(QSqlTableModel* theWrappedObject, const QString&  fieldName) const
-{
-  return ( theWrappedObject->fieldIndex(fieldName));
-}
-
 QString  PythonQtWrapper_QSqlTableModel::tableName(QSqlTableModel* theWrappedObject) const
 {
   return ( theWrappedObject->tableName());
-}
-
-QString  PythonQtWrapper_QSqlTableModel::selectStatement(QSqlTableModel* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_selectStatement());
 }
 
 bool  PythonQtWrapper_QSqlTableModel::isDirty(QSqlTableModel* theWrappedObject, const QModelIndex&  index) const
@@ -1135,74 +1125,9 @@ bool  PythonQtWrapper_QSqlTableModel::isDirty(QSqlTableModel* theWrappedObject, 
   return ( theWrappedObject->isDirty(index));
 }
 
-QSqlIndex  PythonQtWrapper_QSqlTableModel::primaryKey(QSqlTableModel* theWrappedObject) const
-{
-  return ( theWrappedObject->primaryKey());
-}
-
-bool  PythonQtWrapper_QSqlTableModel::deleteRowFromTable(QSqlTableModel* theWrappedObject, int  row)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_deleteRowFromTable(row));
-}
-
-QSqlTableModel::EditStrategy  PythonQtWrapper_QSqlTableModel::editStrategy(QSqlTableModel* theWrappedObject) const
-{
-  return ( theWrappedObject->editStrategy());
-}
-
-bool  PythonQtWrapper_QSqlTableModel::select(QSqlTableModel* theWrappedObject)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_select());
-}
-
-void PythonQtWrapper_QSqlTableModel::setTable(QSqlTableModel* theWrappedObject, const QString&  tableName)
-{
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setTable(tableName));
-}
-
-int  PythonQtWrapper_QSqlTableModel::rowCount(QSqlTableModel* theWrappedObject, const QModelIndex&  parent) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_rowCount(parent));
-}
-
-Qt::ItemFlags  PythonQtWrapper_QSqlTableModel::flags(QSqlTableModel* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_flags(index));
-}
-
-bool  PythonQtWrapper_QSqlTableModel::insertRows(QSqlTableModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_insertRows(row, count, parent));
-}
-
-void PythonQtWrapper_QSqlTableModel::clear(QSqlTableModel* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_clear());
-}
-
-bool  PythonQtWrapper_QSqlTableModel::removeColumns(QSqlTableModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_removeColumns(column, count, parent));
-}
-
 bool  PythonQtWrapper_QSqlTableModel::insertRowIntoTable(QSqlTableModel* theWrappedObject, const QSqlRecord&  values)
 {
   return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_insertRowIntoTable(values));
-}
-
-bool  PythonQtWrapper_QSqlTableModel::setRecord(QSqlTableModel* theWrappedObject, int  row, const QSqlRecord&  record)
-{
-  return ( theWrappedObject->setRecord(row, record));
-}
-
-bool  PythonQtWrapper_QSqlTableModel::setData(QSqlTableModel* theWrappedObject, const QModelIndex&  index, const QVariant&  value, int  role)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setData(index, value, role));
-}
-
-void PythonQtWrapper_QSqlTableModel::setSort(QSqlTableModel* theWrappedObject, int  column, Qt::SortOrder  order)
-{
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setSort(column, order));
 }
 
 bool  PythonQtWrapper_QSqlTableModel::insertRecord(QSqlTableModel* theWrappedObject, int  row, const QSqlRecord&  record)
@@ -1210,19 +1135,14 @@ bool  PythonQtWrapper_QSqlTableModel::insertRecord(QSqlTableModel* theWrappedObj
   return ( theWrappedObject->insertRecord(row, record));
 }
 
-void PythonQtWrapper_QSqlTableModel::setFilter(QSqlTableModel* theWrappedObject, const QString&  filter)
+void PythonQtWrapper_QSqlTableModel::setTable(QSqlTableModel* theWrappedObject, const QString&  tableName)
 {
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setFilter(filter));
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setTable(tableName));
 }
 
-void PythonQtWrapper_QSqlTableModel::sort(QSqlTableModel* theWrappedObject, int  column, Qt::SortOrder  order)
+void PythonQtWrapper_QSqlTableModel::setSort(QSqlTableModel* theWrappedObject, int  column, Qt::SortOrder  order)
 {
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_sort(column, order));
-}
-
-QString  PythonQtWrapper_QSqlTableModel::orderByClause(QSqlTableModel* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_orderByClause());
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setSort(column, order));
 }
 
 QSqlDatabase  PythonQtWrapper_QSqlTableModel::database(QSqlTableModel* theWrappedObject) const
@@ -1230,14 +1150,9 @@ QSqlDatabase  PythonQtWrapper_QSqlTableModel::database(QSqlTableModel* theWrappe
   return ( theWrappedObject->database());
 }
 
-void PythonQtWrapper_QSqlTableModel::setEditStrategy(QSqlTableModel* theWrappedObject, QSqlTableModel::EditStrategy  strategy)
+bool  PythonQtWrapper_QSqlTableModel::insertRows(QSqlTableModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
 {
-  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setEditStrategy(strategy));
-}
-
-bool  PythonQtWrapper_QSqlTableModel::removeRows(QSqlTableModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_removeRows(row, count, parent));
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_insertRows(row, count, parent));
 }
 
 QVariant  PythonQtWrapper_QSqlTableModel::data(QSqlTableModel* theWrappedObject, const QModelIndex&  idx, int  role) const
@@ -1245,14 +1160,9 @@ QVariant  PythonQtWrapper_QSqlTableModel::data(QSqlTableModel* theWrappedObject,
   return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_data(idx, role));
 }
 
-QString  PythonQtWrapper_QSqlTableModel::filter(QSqlTableModel* theWrappedObject) const
+int  PythonQtWrapper_QSqlTableModel::fieldIndex(QSqlTableModel* theWrappedObject, const QString&  fieldName) const
 {
-  return ( theWrappedObject->filter());
-}
-
-QVariant  PythonQtWrapper_QSqlTableModel::headerData(QSqlTableModel* theWrappedObject, int  section, Qt::Orientation  orientation, int  role) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_headerData(section, orientation, role));
+  return ( theWrappedObject->fieldIndex(fieldName));
 }
 
 void PythonQtWrapper_QSqlTableModel::revertRow(QSqlTableModel* theWrappedObject, int  row)
@@ -1260,8 +1170,98 @@ void PythonQtWrapper_QSqlTableModel::revertRow(QSqlTableModel* theWrappedObject,
   ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_revertRow(row));
 }
 
+int  PythonQtWrapper_QSqlTableModel::rowCount(QSqlTableModel* theWrappedObject, const QModelIndex&  parent) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_rowCount(parent));
+}
+
+bool  PythonQtWrapper_QSqlTableModel::removeColumns(QSqlTableModel* theWrappedObject, int  column, int  count, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_removeColumns(column, count, parent));
+}
+
+QVariant  PythonQtWrapper_QSqlTableModel::headerData(QSqlTableModel* theWrappedObject, int  section, Qt::Orientation  orientation, int  role) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_headerData(section, orientation, role));
+}
+
+QSqlIndex  PythonQtWrapper_QSqlTableModel::primaryKey(QSqlTableModel* theWrappedObject) const
+{
+  return ( theWrappedObject->primaryKey());
+}
+
 bool  PythonQtWrapper_QSqlTableModel::updateRowInTable(QSqlTableModel* theWrappedObject, int  row, const QSqlRecord&  values)
 {
   return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_updateRowInTable(row, values));
+}
+
+QSqlTableModel::EditStrategy  PythonQtWrapper_QSqlTableModel::editStrategy(QSqlTableModel* theWrappedObject) const
+{
+  return ( theWrappedObject->editStrategy());
+}
+
+bool  PythonQtWrapper_QSqlTableModel::setData(QSqlTableModel* theWrappedObject, const QModelIndex&  index, const QVariant&  value, int  role)
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setData(index, value, role));
+}
+
+void PythonQtWrapper_QSqlTableModel::setFilter(QSqlTableModel* theWrappedObject, const QString&  filter)
+{
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setFilter(filter));
+}
+
+bool  PythonQtWrapper_QSqlTableModel::deleteRowFromTable(QSqlTableModel* theWrappedObject, int  row)
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_deleteRowFromTable(row));
+}
+
+void PythonQtWrapper_QSqlTableModel::clear(QSqlTableModel* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_clear());
+}
+
+bool  PythonQtWrapper_QSqlTableModel::removeRows(QSqlTableModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_removeRows(row, count, parent));
+}
+
+QString  PythonQtWrapper_QSqlTableModel::orderByClause(QSqlTableModel* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_orderByClause());
+}
+
+void PythonQtWrapper_QSqlTableModel::setEditStrategy(QSqlTableModel* theWrappedObject, QSqlTableModel::EditStrategy  strategy)
+{
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_setEditStrategy(strategy));
+}
+
+bool  PythonQtWrapper_QSqlTableModel::setRecord(QSqlTableModel* theWrappedObject, int  row, const QSqlRecord&  record)
+{
+  return ( theWrappedObject->setRecord(row, record));
+}
+
+QString  PythonQtWrapper_QSqlTableModel::selectStatement(QSqlTableModel* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_selectStatement());
+}
+
+bool  PythonQtWrapper_QSqlTableModel::select(QSqlTableModel* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_select());
+}
+
+void PythonQtWrapper_QSqlTableModel::sort(QSqlTableModel* theWrappedObject, int  column, Qt::SortOrder  order)
+{
+  ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_sort(column, order));
+}
+
+Qt::ItemFlags  PythonQtWrapper_QSqlTableModel::flags(QSqlTableModel* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlTableModel*)theWrappedObject)->promoted_flags(index));
+}
+
+QString  PythonQtWrapper_QSqlTableModel::filter(QSqlTableModel* theWrappedObject) const
+{
+  return ( theWrappedObject->filter());
 }
 

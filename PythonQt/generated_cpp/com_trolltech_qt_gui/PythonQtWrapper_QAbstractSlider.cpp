@@ -12,12 +12,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -842,19 +845,29 @@ QAbstractSlider* PythonQtWrapper_QAbstractSlider::new_QAbstractSlider(QWidget*  
 { 
 return new PythonQtShell_QAbstractSlider(parent); }
 
-void PythonQtWrapper_QAbstractSlider::setMinimum(QAbstractSlider* theWrappedObject, int  arg__1)
+void PythonQtWrapper_QAbstractSlider::triggerAction(QAbstractSlider* theWrappedObject, QAbstractSlider::SliderAction  action)
 {
-  ( theWrappedObject->setMinimum(arg__1));
+  ( theWrappedObject->triggerAction(action));
 }
 
-void PythonQtWrapper_QAbstractSlider::setTracking(QAbstractSlider* theWrappedObject, bool  enable)
+void PythonQtWrapper_QAbstractSlider::timerEvent(QAbstractSlider* theWrappedObject, QTimerEvent*  arg__1)
 {
-  ( theWrappedObject->setTracking(enable));
+  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_timerEvent(arg__1));
 }
 
-int  PythonQtWrapper_QAbstractSlider::pageStep(QAbstractSlider* theWrappedObject) const
+void PythonQtWrapper_QAbstractSlider::keyPressEvent(QAbstractSlider* theWrappedObject, QKeyEvent*  ev)
 {
-  return ( theWrappedObject->pageStep());
+  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_keyPressEvent(ev));
+}
+
+bool  PythonQtWrapper_QAbstractSlider::isSliderDown(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->isSliderDown());
+}
+
+void PythonQtWrapper_QAbstractSlider::setInvertedControls(QAbstractSlider* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setInvertedControls(arg__1));
 }
 
 void PythonQtWrapper_QAbstractSlider::setRange(QAbstractSlider* theWrappedObject, int  min, int  max)
@@ -862,9 +875,94 @@ void PythonQtWrapper_QAbstractSlider::setRange(QAbstractSlider* theWrappedObject
   ( theWrappedObject->setRange(min, max));
 }
 
+int  PythonQtWrapper_QAbstractSlider::value(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->value());
+}
+
 void PythonQtWrapper_QAbstractSlider::setSliderDown(QAbstractSlider* theWrappedObject, bool  arg__1)
 {
   ( theWrappedObject->setSliderDown(arg__1));
+}
+
+void PythonQtWrapper_QAbstractSlider::setInvertedAppearance(QAbstractSlider* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setInvertedAppearance(arg__1));
+}
+
+void PythonQtWrapper_QAbstractSlider::changeEvent(QAbstractSlider* theWrappedObject, QEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_changeEvent(e));
+}
+
+void PythonQtWrapper_QAbstractSlider::setMinimum(QAbstractSlider* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setMinimum(arg__1));
+}
+
+bool  PythonQtWrapper_QAbstractSlider::invertedAppearance(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->invertedAppearance());
+}
+
+bool  PythonQtWrapper_QAbstractSlider::hasTracking(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->hasTracking());
+}
+
+Qt::Orientation  PythonQtWrapper_QAbstractSlider::orientation(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->orientation());
+}
+
+int  PythonQtWrapper_QAbstractSlider::sliderPosition(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->sliderPosition());
+}
+
+void PythonQtWrapper_QAbstractSlider::wheelEvent(QAbstractSlider* theWrappedObject, QWheelEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_wheelEvent(e));
+}
+
+void PythonQtWrapper_QAbstractSlider::setSliderPosition(QAbstractSlider* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setSliderPosition(arg__1));
+}
+
+int  PythonQtWrapper_QAbstractSlider::singleStep(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->singleStep());
+}
+
+void PythonQtWrapper_QAbstractSlider::setMaximum(QAbstractSlider* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setMaximum(arg__1));
+}
+
+int  PythonQtWrapper_QAbstractSlider::maximum(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->maximum());
+}
+
+void PythonQtWrapper_QAbstractSlider::setTracking(QAbstractSlider* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setTracking(enable));
+}
+
+int  PythonQtWrapper_QAbstractSlider::minimum(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->minimum());
+}
+
+void PythonQtWrapper_QAbstractSlider::setPageStep(QAbstractSlider* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setPageStep(arg__1));
+}
+
+bool  PythonQtWrapper_QAbstractSlider::invertedControls(QAbstractSlider* theWrappedObject) const
+{
+  return ( theWrappedObject->invertedControls());
 }
 
 void PythonQtWrapper_QAbstractSlider::setSingleStep(QAbstractSlider* theWrappedObject, int  arg__1)
@@ -877,103 +975,8 @@ bool  PythonQtWrapper_QAbstractSlider::event(QAbstractSlider* theWrappedObject, 
   return ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_event(e));
 }
 
-int  PythonQtWrapper_QAbstractSlider::value(QAbstractSlider* theWrappedObject) const
+int  PythonQtWrapper_QAbstractSlider::pageStep(QAbstractSlider* theWrappedObject) const
 {
-  return ( theWrappedObject->value());
-}
-
-bool  PythonQtWrapper_QAbstractSlider::invertedControls(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->invertedControls());
-}
-
-void PythonQtWrapper_QAbstractSlider::wheelEvent(QAbstractSlider* theWrappedObject, QWheelEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_wheelEvent(e));
-}
-
-bool  PythonQtWrapper_QAbstractSlider::hasTracking(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->hasTracking());
-}
-
-int  PythonQtWrapper_QAbstractSlider::maximum(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->maximum());
-}
-
-Qt::Orientation  PythonQtWrapper_QAbstractSlider::orientation(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->orientation());
-}
-
-bool  PythonQtWrapper_QAbstractSlider::isSliderDown(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->isSliderDown());
-}
-
-void PythonQtWrapper_QAbstractSlider::setMaximum(QAbstractSlider* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setMaximum(arg__1));
-}
-
-void PythonQtWrapper_QAbstractSlider::triggerAction(QAbstractSlider* theWrappedObject, QAbstractSlider::SliderAction  action)
-{
-  ( theWrappedObject->triggerAction(action));
-}
-
-int  PythonQtWrapper_QAbstractSlider::minimum(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->minimum());
-}
-
-bool  PythonQtWrapper_QAbstractSlider::invertedAppearance(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->invertedAppearance());
-}
-
-void PythonQtWrapper_QAbstractSlider::setSliderPosition(QAbstractSlider* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setSliderPosition(arg__1));
-}
-
-void PythonQtWrapper_QAbstractSlider::changeEvent(QAbstractSlider* theWrappedObject, QEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_changeEvent(e));
-}
-
-int  PythonQtWrapper_QAbstractSlider::sliderPosition(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->sliderPosition());
-}
-
-void PythonQtWrapper_QAbstractSlider::timerEvent(QAbstractSlider* theWrappedObject, QTimerEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_timerEvent(arg__1));
-}
-
-void PythonQtWrapper_QAbstractSlider::setInvertedControls(QAbstractSlider* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setInvertedControls(arg__1));
-}
-
-void PythonQtWrapper_QAbstractSlider::setPageStep(QAbstractSlider* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setPageStep(arg__1));
-}
-
-void PythonQtWrapper_QAbstractSlider::keyPressEvent(QAbstractSlider* theWrappedObject, QKeyEvent*  ev)
-{
-  ( ((PythonQtPublicPromoter_QAbstractSlider*)theWrappedObject)->promoted_keyPressEvent(ev));
-}
-
-void PythonQtWrapper_QAbstractSlider::setInvertedAppearance(QAbstractSlider* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setInvertedAppearance(arg__1));
-}
-
-int  PythonQtWrapper_QAbstractSlider::singleStep(QAbstractSlider* theWrappedObject) const
-{
-  return ( theWrappedObject->singleStep());
+  return ( theWrappedObject->pageStep());
 }
 

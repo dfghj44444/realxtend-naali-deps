@@ -10,9 +10,11 @@
 #include <qcoreevent.h>
 #include <qcursor.h>
 #include <qevent.h>
+#include <qgraphicseffect.h>
 #include <qgraphicsitem.h>
 #include <qgraphicsscene.h>
 #include <qgraphicssceneevent.h>
+#include <qgraphicstransform.h>
 #include <qgraphicswidget.h>
 #include <qline.h>
 #include <qlist.h>
@@ -74,14 +76,14 @@ virtual void wheelEvent(QGraphicsSceneWheelEvent*  event);
 
 class PythonQtPublicPromoter_QGraphicsLineItem : public QGraphicsLineItem
 { public:
-inline QVariant  promoted_extension(const QVariant&  variant) const { return QGraphicsLineItem::extension(variant); }
-inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsLineItem::contains(point); }
-inline QRectF  promoted_boundingRect() const { return QGraphicsLineItem::boundingRect(); }
-inline QPainterPath  promoted_opaqueArea() const { return QGraphicsLineItem::opaqueArea(); }
-inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsLineItem::isObscuredBy(item); }
 inline QPainterPath  promoted_shape() const { return QGraphicsLineItem::shape(); }
+inline QRectF  promoted_boundingRect() const { return QGraphicsLineItem::boundingRect(); }
+inline QVariant  promoted_extension(const QVariant&  variant) const { return QGraphicsLineItem::extension(variant); }
+inline QPainterPath  promoted_opaqueArea() const { return QGraphicsLineItem::opaqueArea(); }
 inline void promoted_paint(QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0) { QGraphicsLineItem::paint(painter, option, widget); }
 inline int  promoted_type() const { return QGraphicsLineItem::type(); }
+inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsLineItem::contains(point); }
+inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsLineItem::isObscuredBy(item); }
 };
 
 class PythonQtWrapper_QGraphicsLineItem : public QObject
@@ -95,19 +97,19 @@ QGraphicsLineItem* new_QGraphicsLineItem(QGraphicsItem*  parent = 0, QGraphicsSc
 QGraphicsLineItem* new_QGraphicsLineItem(const QLineF&  line, QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 QGraphicsLineItem* new_QGraphicsLineItem(qreal  x1, qreal  y1, qreal  x2, qreal  y2, QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 void delete_QGraphicsLineItem(QGraphicsLineItem* obj) { delete obj; } 
-   QPen  pen(QGraphicsLineItem* theWrappedObject) const;
-   void setPen(QGraphicsLineItem* theWrappedObject, const QPen&  pen);
-   QVariant  extension(QGraphicsLineItem* theWrappedObject, const QVariant&  variant) const;
-   bool  contains(QGraphicsLineItem* theWrappedObject, const QPointF&  point) const;
-   QRectF  boundingRect(QGraphicsLineItem* theWrappedObject) const;
-   QPainterPath  opaqueArea(QGraphicsLineItem* theWrappedObject) const;
-   void setLine(QGraphicsLineItem* theWrappedObject, qreal  x1, qreal  y1, qreal  x2, qreal  y2);
-   bool  isObscuredBy(QGraphicsLineItem* theWrappedObject, const QGraphicsItem*  item) const;
-   void setLine(QGraphicsLineItem* theWrappedObject, const QLineF&  line);
-   QLineF  line(QGraphicsLineItem* theWrappedObject) const;
    QPainterPath  shape(QGraphicsLineItem* theWrappedObject) const;
+   QRectF  boundingRect(QGraphicsLineItem* theWrappedObject) const;
+   QVariant  extension(QGraphicsLineItem* theWrappedObject, const QVariant&  variant) const;
+   QPainterPath  opaqueArea(QGraphicsLineItem* theWrappedObject) const;
+   QPen  pen(QGraphicsLineItem* theWrappedObject) const;
+   void setLine(QGraphicsLineItem* theWrappedObject, qreal  x1, qreal  y1, qreal  x2, qreal  y2);
+   void setPen(QGraphicsLineItem* theWrappedObject, const QPen&  pen);
+   void setLine(QGraphicsLineItem* theWrappedObject, const QLineF&  line);
    void paint(QGraphicsLineItem* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0);
    int  type(QGraphicsLineItem* theWrappedObject) const;
+   QLineF  line(QGraphicsLineItem* theWrappedObject) const;
+   bool  contains(QGraphicsLineItem* theWrappedObject, const QPointF&  point) const;
+   bool  isObscuredBy(QGraphicsLineItem* theWrappedObject, const QGraphicsItem*  item) const;
 };
 
 #endif // PYTHONQTWRAPPER_QGRAPHICSLINEITEM_H

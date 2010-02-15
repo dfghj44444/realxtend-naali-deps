@@ -14,6 +14,8 @@
 #include <qnetworkaccessmanager.h>
 #include <qnetworkrequest.h>
 #include <qobject.h>
+#include <qsslconfiguration.h>
+#include <qsslerror.h>
 #include <qurl.h>
 
 class PythonQtShell_QNetworkReply : public QNetworkReply
@@ -52,10 +54,10 @@ virtual qint64  writeData(const char*  data, qint64  len);
 class PythonQtPublicPromoter_QNetworkReply : public QNetworkReply
 { public:
 inline void promoted_close() { QNetworkReply::close(); }
-inline void promoted_ignoreSslErrors() { QNetworkReply::ignoreSslErrors(); }
 inline bool  promoted_isSequential() const { return QNetworkReply::isSequential(); }
-inline void promoted_setReadBufferSize(qint64  size) { QNetworkReply::setReadBufferSize(size); }
 inline qint64  promoted_writeData(const char*  data, qint64  len) { return QNetworkReply::writeData(data, len); }
+inline void promoted_ignoreSslErrors() { QNetworkReply::ignoreSslErrors(); }
+inline void promoted_setReadBufferSize(qint64  size) { QNetworkReply::setReadBufferSize(size); }
 };
 
 class PythonQtWrapper_QNetworkReply : public QObject
@@ -64,20 +66,25 @@ public:
 public slots:
 void delete_QNetworkReply(QNetworkReply* obj) { delete obj; } 
    QNetworkRequest  request(QNetworkReply* theWrappedObject) const;
-   void close(QNetworkReply* theWrappedObject);
    QNetworkReply::NetworkError  error(QNetworkReply* theWrappedObject) const;
-   QUrl  url(QNetworkReply* theWrappedObject) const;
-   bool  hasRawHeader(QNetworkReply* theWrappedObject, const QByteArray&  headerName) const;
-   QList<QByteArray >  rawHeaderList(QNetworkReply* theWrappedObject) const;
-   QByteArray  rawHeader(QNetworkReply* theWrappedObject, const QByteArray&  headerName) const;
-   QNetworkAccessManager::Operation  operation(QNetworkReply* theWrappedObject) const;
-   bool  isSequential(QNetworkReply* theWrappedObject) const;
-   void setReadBufferSize(QNetworkReply* theWrappedObject, qint64  size);
-   QVariant  attribute(QNetworkReply* theWrappedObject, QNetworkRequest::Attribute  code) const;
-   qint64  writeData(QNetworkReply* theWrappedObject, const char*  data, qint64  len);
-   qint64  readBufferSize(QNetworkReply* theWrappedObject) const;
+   void close(QNetworkReply* theWrappedObject);
    QVariant  header(QNetworkReply* theWrappedObject, QNetworkRequest::KnownHeaders  header) const;
    QNetworkAccessManager*  manager(QNetworkReply* theWrappedObject) const;
+   QSslConfiguration  sslConfiguration(QNetworkReply* theWrappedObject) const;
+   void ignoreSslErrors(QNetworkReply* theWrappedObject, const QList<QSslError >&  errors);
+   bool  isSequential(QNetworkReply* theWrappedObject) const;
+   QNetworkAccessManager::Operation  operation(QNetworkReply* theWrappedObject) const;
+   QList<QByteArray >  rawHeaderList(QNetworkReply* theWrappedObject) const;
+   QVariant  attribute(QNetworkReply* theWrappedObject, QNetworkRequest::Attribute  code) const;
+   void setSslConfiguration(QNetworkReply* theWrappedObject, const QSslConfiguration&  configuration);
+   bool  isFinished(QNetworkReply* theWrappedObject) const;
+   qint64  readBufferSize(QNetworkReply* theWrappedObject) const;
+   bool  isRunning(QNetworkReply* theWrappedObject) const;
+   bool  hasRawHeader(QNetworkReply* theWrappedObject, const QByteArray&  headerName) const;
+   qint64  writeData(QNetworkReply* theWrappedObject, const char*  data, qint64  len);
+   void setReadBufferSize(QNetworkReply* theWrappedObject, qint64  size);
+   QUrl  url(QNetworkReply* theWrappedObject) const;
+   QByteArray  rawHeader(QNetworkReply* theWrappedObject, const QByteArray&  headerName) const;
 };
 
 #endif // PYTHONQTWRAPPER_QNETWORKREPLY_H

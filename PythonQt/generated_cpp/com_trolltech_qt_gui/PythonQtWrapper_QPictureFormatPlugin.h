@@ -34,8 +34,8 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 
 class PythonQtPublicPromoter_QPictureFormatPlugin : public QPictureFormatPlugin
 { public:
-inline bool  promoted_loadPicture(const QString&  format, const QString&  filename, QPicture*  pic) { return QPictureFormatPlugin::loadPicture(format, filename, pic); }
 inline bool  promoted_savePicture(const QString&  format, const QString&  filename, const QPicture&  pic) { return QPictureFormatPlugin::savePicture(format, filename, pic); }
+inline bool  promoted_loadPicture(const QString&  format, const QString&  filename, QPicture*  pic) { return QPictureFormatPlugin::loadPicture(format, filename, pic); }
 };
 
 class PythonQtWrapper_QPictureFormatPlugin : public QObject
@@ -44,8 +44,8 @@ public:
 public slots:
 QPictureFormatPlugin* new_QPictureFormatPlugin(QObject*  parent = 0);
 void delete_QPictureFormatPlugin(QPictureFormatPlugin* obj) { delete obj; } 
-   bool  loadPicture(QPictureFormatPlugin* theWrappedObject, const QString&  format, const QString&  filename, QPicture*  pic);
    bool  savePicture(QPictureFormatPlugin* theWrappedObject, const QString&  format, const QString&  filename, const QPicture&  pic);
+   bool  loadPicture(QPictureFormatPlugin* theWrappedObject, const QString&  format, const QString&  filename, QPicture*  pic);
 };
 
 #endif // PYTHONQTWRAPPER_QPICTUREFORMATPLUGIN_H

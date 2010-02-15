@@ -19,6 +19,26 @@ QUuid* PythonQtWrapper_QUuid::new_QUuid(uint  l, ushort  w1, ushort  w2, uchar  
 { 
 return new PythonQtShell_QUuid(l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8); }
 
+bool  PythonQtWrapper_QUuid::operator_equal(QUuid* theWrappedObject, const QUuid&  orig) const
+{
+  return ( (*theWrappedObject)== orig);
+}
+
+QString  PythonQtWrapper_QUuid::toString(QUuid* theWrappedObject) const
+{
+  return ( theWrappedObject->toString());
+}
+
+QUuid::Version  PythonQtWrapper_QUuid::version(QUuid* theWrappedObject) const
+{
+  return ( theWrappedObject->version());
+}
+
+QUuid::Variant  PythonQtWrapper_QUuid::variant(QUuid* theWrappedObject) const
+{
+  return ( theWrappedObject->variant());
+}
+
 void PythonQtWrapper_QUuid::writeTo(QUuid* theWrappedObject, QDataStream&  arg__1)
 {
   arg__1 <<  (*theWrappedObject);
@@ -27,11 +47,6 @@ void PythonQtWrapper_QUuid::writeTo(QUuid* theWrappedObject, QDataStream&  arg__
 bool  PythonQtWrapper_QUuid::operator_less(QUuid* theWrappedObject, const QUuid&  other) const
 {
   return ( (*theWrappedObject)< other);
-}
-
-void PythonQtWrapper_QUuid::readFrom(QUuid* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 >>  (*theWrappedObject);
 }
 
 bool  PythonQtWrapper_QUuid::isNull(QUuid* theWrappedObject) const
@@ -44,23 +59,8 @@ QUuid  PythonQtWrapper_QUuid::static_QUuid_createUuid()
   return (QUuid::createUuid());
 }
 
-bool  PythonQtWrapper_QUuid::operator_equal(QUuid* theWrappedObject, const QUuid&  orig) const
+void PythonQtWrapper_QUuid::readFrom(QUuid* theWrappedObject, QDataStream&  arg__1)
 {
-  return ( (*theWrappedObject)== orig);
-}
-
-QUuid::Version  PythonQtWrapper_QUuid::version(QUuid* theWrappedObject) const
-{
-  return ( theWrappedObject->version());
-}
-
-QString  PythonQtWrapper_QUuid::toString(QUuid* theWrappedObject) const
-{
-  return ( theWrappedObject->toString());
-}
-
-QUuid::Variant  PythonQtWrapper_QUuid::variant(QUuid* theWrappedObject) const
-{
-  return ( theWrappedObject->variant());
+  arg__1 >>  (*theWrappedObject);
 }
 

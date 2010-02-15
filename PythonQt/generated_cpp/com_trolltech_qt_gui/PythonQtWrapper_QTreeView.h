@@ -16,6 +16,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qheaderview.h>
 #include <qicon.h>
 #include <qinputcontext.h>
@@ -24,6 +26,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -130,42 +133,42 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QTreeView : public QTreeView
 { public:
-inline void promoted_mouseReleaseEvent(QMouseEvent*  event) { QTreeView::mouseReleaseEvent(event); }
-inline void promoted_setModel(QAbstractItemModel*  model) { QTreeView::setModel(model); }
-inline void promoted_doItemsLayout() { QTreeView::doItemsLayout(); }
-inline void promoted_scrollContentsBy(int  dx, int  dy) { QTreeView::scrollContentsBy(dx, dy); }
-inline int  promoted_verticalOffset() const { return QTreeView::verticalOffset(); }
-inline void promoted_drawRow(QPainter*  painter, const QStyleOptionViewItem&  options, const QModelIndex&  index) const { QTreeView::drawRow(painter, options, index); }
-inline void promoted_mouseMoveEvent(QMouseEvent*  event) { QTreeView::mouseMoveEvent(event); }
-inline void promoted_setSelection(const QRect&  rect, QItemSelectionModel::SelectionFlags  command) { QTreeView::setSelection(rect, command); }
-inline void promoted_horizontalScrollbarAction(int  action) { QTreeView::horizontalScrollbarAction(action); }
-inline QRegion  promoted_visualRegionForSelection(const QItemSelection&  selection) const { return QTreeView::visualRegionForSelection(selection); }
-inline void promoted_rowsInserted(const QModelIndex&  parent, int  start, int  end) { QTreeView::rowsInserted(parent, start, end); }
-inline void promoted_mouseDoubleClickEvent(QMouseEvent*  event) { QTreeView::mouseDoubleClickEvent(event); }
-inline QList<QModelIndex >  promoted_selectedIndexes() const { return QTreeView::selectedIndexes(); }
-inline bool  promoted_viewportEvent(QEvent*  event) { return QTreeView::viewportEvent(event); }
-inline void promoted_mousePressEvent(QMouseEvent*  event) { QTreeView::mousePressEvent(event); }
-inline void promoted_updateGeometries() { QTreeView::updateGeometries(); }
-inline void promoted_scrollTo(const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible) { QTreeView::scrollTo(index, hint); }
-inline void promoted_rowsAboutToBeRemoved(const QModelIndex&  parent, int  start, int  end) { QTreeView::rowsAboutToBeRemoved(parent, start, end); }
-inline void promoted_selectionChanged(const QItemSelection&  selected, const QItemSelection&  deselected) { QTreeView::selectionChanged(selected, deselected); }
-inline void promoted_reset() { QTreeView::reset(); }
-inline void promoted_dataChanged(const QModelIndex&  topLeft, const QModelIndex&  bottomRight) { QTreeView::dataChanged(topLeft, bottomRight); }
-inline void promoted_keyPressEvent(QKeyEvent*  event) { QTreeView::keyPressEvent(event); }
-inline void promoted_dragMoveEvent(QDragMoveEvent*  event) { QTreeView::dragMoveEvent(event); }
-inline bool  promoted_isIndexHidden(const QModelIndex&  index) const { return QTreeView::isIndexHidden(index); }
-inline void promoted_paintEvent(QPaintEvent*  event) { QTreeView::paintEvent(event); }
-inline void promoted_selectAll() { QTreeView::selectAll(); }
-inline QModelIndex  promoted_indexAt(const QPoint&  p) const { return QTreeView::indexAt(p); }
-inline int  promoted_sizeHintForColumn(int  column) const { return QTreeView::sizeHintForColumn(column); }
-inline void promoted_setSelectionModel(QItemSelectionModel*  selectionModel) { QTreeView::setSelectionModel(selectionModel); }
-inline void promoted_setRootIndex(const QModelIndex&  index) { QTreeView::setRootIndex(index); }
 inline int  promoted_horizontalOffset() const { return QTreeView::horizontalOffset(); }
-inline void promoted_timerEvent(QTimerEvent*  event) { QTreeView::timerEvent(event); }
-inline QRect  promoted_visualRect(const QModelIndex&  index) const { return QTreeView::visualRect(index); }
-inline void promoted_currentChanged(const QModelIndex&  current, const QModelIndex&  previous) { QTreeView::currentChanged(current, previous); }
+inline void promoted_drawRow(QPainter*  painter, const QStyleOptionViewItem&  options, const QModelIndex&  index) const { QTreeView::drawRow(painter, options, index); }
+inline QModelIndex  promoted_indexAt(const QPoint&  p) const { return QTreeView::indexAt(p); }
 inline void promoted_keyboardSearch(const QString&  search) { QTreeView::keyboardSearch(search); }
+inline void promoted_setSelection(const QRect&  rect, QItemSelectionModel::SelectionFlags  command) { QTreeView::setSelection(rect, command); }
+inline void promoted_currentChanged(const QModelIndex&  current, const QModelIndex&  previous) { QTreeView::currentChanged(current, previous); }
+inline void promoted_paintEvent(QPaintEvent*  event) { QTreeView::paintEvent(event); }
+inline void promoted_dragMoveEvent(QDragMoveEvent*  event) { QTreeView::dragMoveEvent(event); }
+inline void promoted_updateGeometries() { QTreeView::updateGeometries(); }
+inline QRect  promoted_visualRect(const QModelIndex&  index) const { return QTreeView::visualRect(index); }
+inline void promoted_rowsAboutToBeRemoved(const QModelIndex&  parent, int  start, int  end) { QTreeView::rowsAboutToBeRemoved(parent, start, end); }
+inline void promoted_setRootIndex(const QModelIndex&  index) { QTreeView::setRootIndex(index); }
+inline void promoted_doItemsLayout() { QTreeView::doItemsLayout(); }
+inline bool  promoted_viewportEvent(QEvent*  event) { return QTreeView::viewportEvent(event); }
+inline void promoted_horizontalScrollbarAction(int  action) { QTreeView::horizontalScrollbarAction(action); }
+inline void promoted_setSelectionModel(QItemSelectionModel*  selectionModel) { QTreeView::setSelectionModel(selectionModel); }
+inline void promoted_mouseReleaseEvent(QMouseEvent*  event) { QTreeView::mouseReleaseEvent(event); }
+inline void promoted_rowsInserted(const QModelIndex&  parent, int  start, int  end) { QTreeView::rowsInserted(parent, start, end); }
+inline int  promoted_verticalOffset() const { return QTreeView::verticalOffset(); }
+inline void promoted_scrollContentsBy(int  dx, int  dy) { QTreeView::scrollContentsBy(dx, dy); }
 inline void promoted_drawBranches(QPainter*  painter, const QRect&  rect, const QModelIndex&  index) const { QTreeView::drawBranches(painter, rect, index); }
+inline int  promoted_sizeHintForColumn(int  column) const { return QTreeView::sizeHintForColumn(column); }
+inline void promoted_reset() { QTreeView::reset(); }
+inline void promoted_scrollTo(const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible) { QTreeView::scrollTo(index, hint); }
+inline void promoted_timerEvent(QTimerEvent*  event) { QTreeView::timerEvent(event); }
+inline QRegion  promoted_visualRegionForSelection(const QItemSelection&  selection) const { return QTreeView::visualRegionForSelection(selection); }
+inline void promoted_keyPressEvent(QKeyEvent*  event) { QTreeView::keyPressEvent(event); }
+inline void promoted_mouseMoveEvent(QMouseEvent*  event) { QTreeView::mouseMoveEvent(event); }
+inline void promoted_mousePressEvent(QMouseEvent*  event) { QTreeView::mousePressEvent(event); }
+inline void promoted_mouseDoubleClickEvent(QMouseEvent*  event) { QTreeView::mouseDoubleClickEvent(event); }
+inline void promoted_setModel(QAbstractItemModel*  model) { QTreeView::setModel(model); }
+inline void promoted_selectAll() { QTreeView::selectAll(); }
+inline QList<QModelIndex >  promoted_selectedIndexes() const { return QTreeView::selectedIndexes(); }
+inline bool  promoted_isIndexHidden(const QModelIndex&  index) const { return QTreeView::isIndexHidden(index); }
+inline void promoted_dataChanged(const QModelIndex&  topLeft, const QModelIndex&  bottomRight) { QTreeView::dataChanged(topLeft, bottomRight); }
+inline void promoted_selectionChanged(const QItemSelection&  selected, const QItemSelection&  deselected) { QTreeView::selectionChanged(selected, deselected); }
 };
 
 class PythonQtWrapper_QTreeView : public QObject
@@ -174,79 +177,81 @@ public:
 public slots:
 QTreeView* new_QTreeView(QWidget*  parent = 0);
 void delete_QTreeView(QTreeView* obj) { delete obj; } 
-   void setWordWrap(QTreeView* theWrappedObject, bool  on);
-   void setExpandsOnDoubleClick(QTreeView* theWrappedObject, bool  enable);
-   bool  isAnimated(QTreeView* theWrappedObject) const;
-   bool  expandsOnDoubleClick(QTreeView* theWrappedObject) const;
-   void mouseReleaseEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
-   void setModel(QTreeView* theWrappedObject, QAbstractItemModel*  model);
-   bool  wordWrap(QTreeView* theWrappedObject) const;
-   void setUniformRowHeights(QTreeView* theWrappedObject, bool  uniform);
-   void doItemsLayout(QTreeView* theWrappedObject);
-   bool  isSortingEnabled(QTreeView* theWrappedObject) const;
-   void scrollContentsBy(QTreeView* theWrappedObject, int  dx, int  dy);
-   bool  allColumnsShowFocus(QTreeView* theWrappedObject) const;
-   int  verticalOffset(QTreeView* theWrappedObject) const;
-   bool  isFirstColumnSpanned(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent) const;
-   void drawRow(QTreeView* theWrappedObject, QPainter*  painter, const QStyleOptionViewItem&  options, const QModelIndex&  index) const;
-   void setRowHidden(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent, bool  hide);
-   void mouseMoveEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
-   int  autoExpandDelay(QTreeView* theWrappedObject) const;
-   void setSelection(QTreeView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command);
-   void horizontalScrollbarAction(QTreeView* theWrappedObject, int  action);
-   QRegion  visualRegionForSelection(QTreeView* theWrappedObject, const QItemSelection&  selection) const;
-   void setColumnWidth(QTreeView* theWrappedObject, int  column, int  width);
-   void setAnimated(QTreeView* theWrappedObject, bool  enable);
-   void rowsInserted(QTreeView* theWrappedObject, const QModelIndex&  parent, int  start, int  end);
-   void mouseDoubleClickEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
-   QList<QModelIndex >  selectedIndexes(QTreeView* theWrappedObject) const;
-   bool  isColumnHidden(QTreeView* theWrappedObject, int  column) const;
-   bool  viewportEvent(QTreeView* theWrappedObject, QEvent*  event);
-   void mousePressEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
-   QModelIndex  indexBelow(QTreeView* theWrappedObject, const QModelIndex&  index) const;
-   void updateGeometries(QTreeView* theWrappedObject);
-   void scrollTo(QTreeView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible);
-   int  columnViewportPosition(QTreeView* theWrappedObject, int  column) const;
-   void setHeaderHidden(QTreeView* theWrappedObject, bool  hide);
-   void rowsAboutToBeRemoved(QTreeView* theWrappedObject, const QModelIndex&  parent, int  start, int  end);
-   void selectionChanged(QTreeView* theWrappedObject, const QItemSelection&  selected, const QItemSelection&  deselected);
-   void reset(QTreeView* theWrappedObject);
-   void setHeader(QTreeView* theWrappedObject, QHeaderView*  header);
-   bool  rootIsDecorated(QTreeView* theWrappedObject) const;
-   void setRootIsDecorated(QTreeView* theWrappedObject, bool  show);
-   void keyPressEvent(QTreeView* theWrappedObject, QKeyEvent*  event);
-   void dragMoveEvent(QTreeView* theWrappedObject, QDragMoveEvent*  event);
-   int  columnWidth(QTreeView* theWrappedObject, int  column) const;
-   int  columnAt(QTreeView* theWrappedObject, int  x) const;
-   void setItemsExpandable(QTreeView* theWrappedObject, bool  enable);
-   bool  isExpanded(QTreeView* theWrappedObject, const QModelIndex&  index) const;
-   bool  isIndexHidden(QTreeView* theWrappedObject, const QModelIndex&  index) const;
-   void paintEvent(QTreeView* theWrappedObject, QPaintEvent*  event);
-   bool  isRowHidden(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent) const;
-   QHeaderView*  header(QTreeView* theWrappedObject) const;
-   void setSortingEnabled(QTreeView* theWrappedObject, bool  enable);
-   QModelIndex  indexAt(QTreeView* theWrappedObject, const QPoint&  p) const;
-   void sortByColumn(QTreeView* theWrappedObject, int  column, Qt::SortOrder  order);
-   void setColumnHidden(QTreeView* theWrappedObject, int  column, bool  hide);
-   int  sizeHintForColumn(QTreeView* theWrappedObject, int  column) const;
-   bool  uniformRowHeights(QTreeView* theWrappedObject) const;
-   bool  itemsExpandable(QTreeView* theWrappedObject) const;
-   void setFirstColumnSpanned(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent, bool  span);
-   QModelIndex  indexAbove(QTreeView* theWrappedObject, const QModelIndex&  index) const;
-   void setSelectionModel(QTreeView* theWrappedObject, QItemSelectionModel*  selectionModel);
-   void setRootIndex(QTreeView* theWrappedObject, const QModelIndex&  index);
    int  horizontalOffset(QTreeView* theWrappedObject) const;
-   void timerEvent(QTreeView* theWrappedObject, QTimerEvent*  event);
-   QRect  visualRect(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   void drawRow(QTreeView* theWrappedObject, QPainter*  painter, const QStyleOptionViewItem&  options, const QModelIndex&  index) const;
+   QModelIndex  indexAt(QTreeView* theWrappedObject, const QPoint&  p) const;
+   QModelIndex  indexBelow(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   void setExpanded(QTreeView* theWrappedObject, const QModelIndex&  index, bool  expand);
+   int  autoExpandDelay(QTreeView* theWrappedObject) const;
+   void keyboardSearch(QTreeView* theWrappedObject, const QString&  search);
+   void setHeader(QTreeView* theWrappedObject, QHeaderView*  header);
+   void setSelection(QTreeView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command);
    void currentChanged(QTreeView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous);
    void setAutoExpandDelay(QTreeView* theWrappedObject, int  delay);
-   void setIndentation(QTreeView* theWrappedObject, int  i);
-   void setExpanded(QTreeView* theWrappedObject, const QModelIndex&  index, bool  expand);
-   bool  isHeaderHidden(QTreeView* theWrappedObject) const;
-   void keyboardSearch(QTreeView* theWrappedObject, const QString&  search);
-   void setAllColumnsShowFocus(QTreeView* theWrappedObject, bool  enable);
+   void paintEvent(QTreeView* theWrappedObject, QPaintEvent*  event);
+   void dragMoveEvent(QTreeView* theWrappedObject, QDragMoveEvent*  event);
+   int  columnAt(QTreeView* theWrappedObject, int  x) const;
+   void updateGeometries(QTreeView* theWrappedObject);
+   QRect  visualRect(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   QModelIndex  indexAbove(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   void rowsAboutToBeRemoved(QTreeView* theWrappedObject, const QModelIndex&  parent, int  start, int  end);
+   bool  isSortingEnabled(QTreeView* theWrappedObject) const;
+   bool  isColumnHidden(QTreeView* theWrappedObject, int  column) const;
+   void setRootIndex(QTreeView* theWrappedObject, const QModelIndex&  index);
+   void doItemsLayout(QTreeView* theWrappedObject);
+   bool  viewportEvent(QTreeView* theWrappedObject, QEvent*  event);
+   void setColumnWidth(QTreeView* theWrappedObject, int  column, int  width);
+   bool  uniformRowHeights(QTreeView* theWrappedObject) const;
+   void horizontalScrollbarAction(QTreeView* theWrappedObject, int  action);
+   int  columnViewportPosition(QTreeView* theWrappedObject, int  column) const;
+   void setSelectionModel(QTreeView* theWrappedObject, QItemSelectionModel*  selectionModel);
+   void mouseReleaseEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
+   void setAnimated(QTreeView* theWrappedObject, bool  enable);
    int  indentation(QTreeView* theWrappedObject) const;
+   void rowsInserted(QTreeView* theWrappedObject, const QModelIndex&  parent, int  start, int  end);
+   bool  isHeaderHidden(QTreeView* theWrappedObject) const;
+   int  verticalOffset(QTreeView* theWrappedObject) const;
+   bool  isAnimated(QTreeView* theWrappedObject) const;
+   void scrollContentsBy(QTreeView* theWrappedObject, int  dx, int  dy);
    void drawBranches(QTreeView* theWrappedObject, QPainter*  painter, const QRect&  rect, const QModelIndex&  index) const;
+   int  sizeHintForColumn(QTreeView* theWrappedObject, int  column) const;
+   int  columnWidth(QTreeView* theWrappedObject, int  column) const;
+   bool  isExpanded(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   bool  isRowHidden(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent) const;
+   void setRootIsDecorated(QTreeView* theWrappedObject, bool  show);
+   void setColumnHidden(QTreeView* theWrappedObject, int  column, bool  hide);
+   void reset(QTreeView* theWrappedObject);
+   void setUniformRowHeights(QTreeView* theWrappedObject, bool  uniform);
+   void setItemsExpandable(QTreeView* theWrappedObject, bool  enable);
+   bool  expandsOnDoubleClick(QTreeView* theWrappedObject) const;
+   void scrollTo(QTreeView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint = QAbstractItemView::EnsureVisible);
+   bool  itemsExpandable(QTreeView* theWrappedObject) const;
+   bool  wordWrap(QTreeView* theWrappedObject) const;
+   void setIndentation(QTreeView* theWrappedObject, int  i);
+   void timerEvent(QTreeView* theWrappedObject, QTimerEvent*  event);
+   QRegion  visualRegionForSelection(QTreeView* theWrappedObject, const QItemSelection&  selection) const;
+   bool  isFirstColumnSpanned(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent) const;
+   void keyPressEvent(QTreeView* theWrappedObject, QKeyEvent*  event);
+   void mouseMoveEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
+   void setAllColumnsShowFocus(QTreeView* theWrappedObject, bool  enable);
+   void mousePressEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
+   void mouseDoubleClickEvent(QTreeView* theWrappedObject, QMouseEvent*  event);
+   void setWordWrap(QTreeView* theWrappedObject, bool  on);
+   void setExpandsOnDoubleClick(QTreeView* theWrappedObject, bool  enable);
+   void setModel(QTreeView* theWrappedObject, QAbstractItemModel*  model);
+   bool  allColumnsShowFocus(QTreeView* theWrappedObject) const;
+   void setSortingEnabled(QTreeView* theWrappedObject, bool  enable);
+   void selectAll(QTreeView* theWrappedObject);
+   QList<QModelIndex >  selectedIndexes(QTreeView* theWrappedObject) const;
+   void sortByColumn(QTreeView* theWrappedObject, int  column, Qt::SortOrder  order);
+   QHeaderView*  header(QTreeView* theWrappedObject) const;
+   bool  isIndexHidden(QTreeView* theWrappedObject, const QModelIndex&  index) const;
+   void dataChanged(QTreeView* theWrappedObject, const QModelIndex&  topLeft, const QModelIndex&  bottomRight);
+   void selectionChanged(QTreeView* theWrappedObject, const QItemSelection&  selected, const QItemSelection&  deselected);
+   void setFirstColumnSpanned(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent, bool  span);
+   void setRowHidden(QTreeView* theWrappedObject, int  row, const QModelIndex&  parent, bool  hide);
+   void setHeaderHidden(QTreeView* theWrappedObject, bool  hide);
+   bool  rootIsDecorated(QTreeView* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTREEVIEW_H

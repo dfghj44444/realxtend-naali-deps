@@ -24,13 +24,13 @@ QStringRef  PythonQtWrapper_QXmlStreamNotationDeclaration::name(QXmlStreamNotati
   return ( theWrappedObject->name());
 }
 
-QStringRef  PythonQtWrapper_QXmlStreamNotationDeclaration::systemId(QXmlStreamNotationDeclaration* theWrappedObject) const
-{
-  return ( theWrappedObject->systemId());
-}
-
 QStringRef  PythonQtWrapper_QXmlStreamNotationDeclaration::publicId(QXmlStreamNotationDeclaration* theWrappedObject) const
 {
   return ( theWrappedObject->publicId());
+}
+
+QStringRef  PythonQtWrapper_QXmlStreamNotationDeclaration::systemId(QXmlStreamNotationDeclaration* theWrappedObject) const
+{
+  return ( theWrappedObject->systemId());
 }
 

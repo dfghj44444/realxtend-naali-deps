@@ -18,14 +18,9 @@ QNetworkCookie* PythonQtWrapper_QNetworkCookie::new_QNetworkCookie(const QNetwor
 { 
 return new QNetworkCookie(other); }
 
-void PythonQtWrapper_QNetworkCookie::setExpirationDate(QNetworkCookie* theWrappedObject, const QDateTime&  date)
+QString  PythonQtWrapper_QNetworkCookie::domain(QNetworkCookie* theWrappedObject) const
 {
-  ( theWrappedObject->setExpirationDate(date));
-}
-
-void PythonQtWrapper_QNetworkCookie::setSecure(QNetworkCookie* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setSecure(enable));
+  return ( theWrappedObject->domain());
 }
 
 QList<QNetworkCookie >  PythonQtWrapper_QNetworkCookie::static_QNetworkCookie_parseCookies(const QByteArray&  cookieString)
@@ -33,29 +28,9 @@ QList<QNetworkCookie >  PythonQtWrapper_QNetworkCookie::static_QNetworkCookie_pa
   return (QNetworkCookie::parseCookies(cookieString));
 }
 
-QByteArray  PythonQtWrapper_QNetworkCookie::value(QNetworkCookie* theWrappedObject) const
-{
-  return ( theWrappedObject->value());
-}
-
 void PythonQtWrapper_QNetworkCookie::setName(QNetworkCookie* theWrappedObject, const QByteArray&  cookieName)
 {
   ( theWrappedObject->setName(cookieName));
-}
-
-QString  PythonQtWrapper_QNetworkCookie::path(QNetworkCookie* theWrappedObject) const
-{
-  return ( theWrappedObject->path());
-}
-
-bool  PythonQtWrapper_QNetworkCookie::operator_equal(QNetworkCookie* theWrappedObject, const QNetworkCookie&  other) const
-{
-  return ( (*theWrappedObject)== other);
-}
-
-void PythonQtWrapper_QNetworkCookie::setValue(QNetworkCookie* theWrappedObject, const QByteArray&  value)
-{
-  ( theWrappedObject->setValue(value));
 }
 
 QByteArray  PythonQtWrapper_QNetworkCookie::toRawForm(QNetworkCookie* theWrappedObject, QNetworkCookie::RawForm  form) const
@@ -63,19 +38,34 @@ QByteArray  PythonQtWrapper_QNetworkCookie::toRawForm(QNetworkCookie* theWrapped
   return ( theWrappedObject->toRawForm(form));
 }
 
+void PythonQtWrapper_QNetworkCookie::setValue(QNetworkCookie* theWrappedObject, const QByteArray&  value)
+{
+  ( theWrappedObject->setValue(value));
+}
+
+QByteArray  PythonQtWrapper_QNetworkCookie::name(QNetworkCookie* theWrappedObject) const
+{
+  return ( theWrappedObject->name());
+}
+
+bool  PythonQtWrapper_QNetworkCookie::isHttpOnly(QNetworkCookie* theWrappedObject) const
+{
+  return ( theWrappedObject->isHttpOnly());
+}
+
+void PythonQtWrapper_QNetworkCookie::setExpirationDate(QNetworkCookie* theWrappedObject, const QDateTime&  date)
+{
+  ( theWrappedObject->setExpirationDate(date));
+}
+
+QString  PythonQtWrapper_QNetworkCookie::path(QNetworkCookie* theWrappedObject) const
+{
+  return ( theWrappedObject->path());
+}
+
 void PythonQtWrapper_QNetworkCookie::setDomain(QNetworkCookie* theWrappedObject, const QString&  domain)
 {
   ( theWrappedObject->setDomain(domain));
-}
-
-QString  PythonQtWrapper_QNetworkCookie::domain(QNetworkCookie* theWrappedObject) const
-{
-  return ( theWrappedObject->domain());
-}
-
-QDateTime  PythonQtWrapper_QNetworkCookie::expirationDate(QNetworkCookie* theWrappedObject) const
-{
-  return ( theWrappedObject->expirationDate());
 }
 
 bool  PythonQtWrapper_QNetworkCookie::isSecure(QNetworkCookie* theWrappedObject) const
@@ -83,9 +73,14 @@ bool  PythonQtWrapper_QNetworkCookie::isSecure(QNetworkCookie* theWrappedObject)
   return ( theWrappedObject->isSecure());
 }
 
-bool  PythonQtWrapper_QNetworkCookie::isSessionCookie(QNetworkCookie* theWrappedObject) const
+QByteArray  PythonQtWrapper_QNetworkCookie::value(QNetworkCookie* theWrappedObject) const
 {
-  return ( theWrappedObject->isSessionCookie());
+  return ( theWrappedObject->value());
+}
+
+void PythonQtWrapper_QNetworkCookie::setHttpOnly(QNetworkCookie* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setHttpOnly(enable));
 }
 
 void PythonQtWrapper_QNetworkCookie::setPath(QNetworkCookie* theWrappedObject, const QString&  path)
@@ -93,9 +88,24 @@ void PythonQtWrapper_QNetworkCookie::setPath(QNetworkCookie* theWrappedObject, c
   ( theWrappedObject->setPath(path));
 }
 
-QByteArray  PythonQtWrapper_QNetworkCookie::name(QNetworkCookie* theWrappedObject) const
+bool  PythonQtWrapper_QNetworkCookie::isSessionCookie(QNetworkCookie* theWrappedObject) const
 {
-  return ( theWrappedObject->name());
+  return ( theWrappedObject->isSessionCookie());
+}
+
+bool  PythonQtWrapper_QNetworkCookie::operator_equal(QNetworkCookie* theWrappedObject, const QNetworkCookie&  other) const
+{
+  return ( (*theWrappedObject)== other);
+}
+
+void PythonQtWrapper_QNetworkCookie::setSecure(QNetworkCookie* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setSecure(enable));
+}
+
+QDateTime  PythonQtWrapper_QNetworkCookie::expirationDate(QNetworkCookie* theWrappedObject) const
+{
+  return ( theWrappedObject->expirationDate());
 }
 
 QString PythonQtWrapper_QNetworkCookie::toString(QNetworkCookie* obj) {

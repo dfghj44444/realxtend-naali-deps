@@ -4,6 +4,7 @@
 #include <PythonQtMethodInfo.h>
 #include <PythonQtConversion.h>
 #include <QVariant>
+#include <qgraphicsitem.h>
 #include <qgraphicslayoutitem.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -93,74 +94,9 @@ QGraphicsLayoutItem* PythonQtWrapper_QGraphicsLayoutItem::new_QGraphicsLayoutIte
 { 
 return new PythonQtShell_QGraphicsLayoutItem(parent, isLayout); }
 
-void PythonQtWrapper_QGraphicsLayoutItem::setPreferredWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
+void PythonQtWrapper_QGraphicsLayoutItem::setSizePolicy(QGraphicsLayoutItem* theWrappedObject, QSizePolicy::Policy  hPolicy, QSizePolicy::Policy  vPolicy, QSizePolicy::ControlType  controlType)
 {
-  ( theWrappedObject->setPreferredWidth(width));
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setMinimumHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
-{
-  ( theWrappedObject->setMinimumHeight(height));
-}
-
-QSizeF  PythonQtWrapper_QGraphicsLayoutItem::minimumSize(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumSize());
-}
-
-QGraphicsLayoutItem*  PythonQtWrapper_QGraphicsLayoutItem::parentLayoutItem(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->parentLayoutItem());
-}
-
-QRectF  PythonQtWrapper_QGraphicsLayoutItem::contentsRect(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->contentsRect());
-}
-
-qreal  PythonQtWrapper_QGraphicsLayoutItem::maximumWidth(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->maximumWidth());
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setMaximumWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
-{
-  ( theWrappedObject->setMaximumWidth(width));
-}
-
-QRectF  PythonQtWrapper_QGraphicsLayoutItem::geometry(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->geometry());
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setMaximumHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
-{
-  ( theWrappedObject->setMaximumHeight(height));
-}
-
-QSizeF  PythonQtWrapper_QGraphicsLayoutItem::effectiveSizeHint(QGraphicsLayoutItem* theWrappedObject, Qt::SizeHint  which, const QSizeF&  constraint) const
-{
-  return ( theWrappedObject->effectiveSizeHint(which, constraint));
-}
-
-qreal  PythonQtWrapper_QGraphicsLayoutItem::maximumHeight(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->maximumHeight());
-}
-
-qreal  PythonQtWrapper_QGraphicsLayoutItem::minimumWidth(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumWidth());
-}
-
-QSizePolicy  PythonQtWrapper_QGraphicsLayoutItem::sizePolicy(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->sizePolicy());
-}
-
-bool  PythonQtWrapper_QGraphicsLayoutItem::isLayout(QGraphicsLayoutItem* theWrappedObject) const
-{
-  return ( theWrappedObject->isLayout());
+  ( theWrappedObject->setSizePolicy(hPolicy, vPolicy, controlType));
 }
 
 void PythonQtWrapper_QGraphicsLayoutItem::setSizePolicy(QGraphicsLayoutItem* theWrappedObject, const QSizePolicy&  policy)
@@ -168,34 +104,39 @@ void PythonQtWrapper_QGraphicsLayoutItem::setSizePolicy(QGraphicsLayoutItem* the
   ( theWrappedObject->setSizePolicy(policy));
 }
 
+QSizePolicy  PythonQtWrapper_QGraphicsLayoutItem::sizePolicy(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->sizePolicy());
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setMaximumWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
+{
+  ( theWrappedObject->setMaximumWidth(width));
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::updateGeometry(QGraphicsLayoutItem* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QGraphicsLayoutItem*)theWrappedObject)->promoted_updateGeometry());
+}
+
 qreal  PythonQtWrapper_QGraphicsLayoutItem::minimumHeight(QGraphicsLayoutItem* theWrappedObject) const
 {
   return ( theWrappedObject->minimumHeight());
 }
 
-void PythonQtWrapper_QGraphicsLayoutItem::setMinimumSize(QGraphicsLayoutItem* theWrappedObject, qreal  w, qreal  h)
+bool  PythonQtWrapper_QGraphicsLayoutItem::isLayout(QGraphicsLayoutItem* theWrappedObject) const
 {
-  ( theWrappedObject->setMinimumSize(w, h));
+  return ( theWrappedObject->isLayout());
 }
 
-QSizeF  PythonQtWrapper_QGraphicsLayoutItem::maximumSize(QGraphicsLayoutItem* theWrappedObject) const
+QGraphicsLayoutItem*  PythonQtWrapper_QGraphicsLayoutItem::parentLayoutItem(QGraphicsLayoutItem* theWrappedObject) const
 {
-  return ( theWrappedObject->maximumSize());
+  return ( theWrappedObject->parentLayoutItem());
 }
 
-qreal  PythonQtWrapper_QGraphicsLayoutItem::preferredWidth(QGraphicsLayoutItem* theWrappedObject) const
+void PythonQtWrapper_QGraphicsLayoutItem::setMaximumHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
 {
-  return ( theWrappedObject->preferredWidth());
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setMinimumSize(QGraphicsLayoutItem* theWrappedObject, const QSizeF&  size)
-{
-  ( theWrappedObject->setMinimumSize(size));
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setMaximumSize(QGraphicsLayoutItem* theWrappedObject, qreal  w, qreal  h)
-{
-  ( theWrappedObject->setMaximumSize(w, h));
+  ( theWrappedObject->setMaximumHeight(height));
 }
 
 void PythonQtWrapper_QGraphicsLayoutItem::setPreferredSize(QGraphicsLayoutItem* theWrappedObject, qreal  w, qreal  h)
@@ -203,9 +144,9 @@ void PythonQtWrapper_QGraphicsLayoutItem::setPreferredSize(QGraphicsLayoutItem* 
   ( theWrappedObject->setPreferredSize(w, h));
 }
 
-qreal  PythonQtWrapper_QGraphicsLayoutItem::preferredHeight(QGraphicsLayoutItem* theWrappedObject) const
+qreal  PythonQtWrapper_QGraphicsLayoutItem::maximumWidth(QGraphicsLayoutItem* theWrappedObject) const
 {
-  return ( theWrappedObject->preferredHeight());
+  return ( theWrappedObject->maximumWidth());
 }
 
 void PythonQtWrapper_QGraphicsLayoutItem::setMaximumSize(QGraphicsLayoutItem* theWrappedObject, const QSizeF&  size)
@@ -213,14 +154,29 @@ void PythonQtWrapper_QGraphicsLayoutItem::setMaximumSize(QGraphicsLayoutItem* th
   ( theWrappedObject->setMaximumSize(size));
 }
 
-void PythonQtWrapper_QGraphicsLayoutItem::setMinimumWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
+void PythonQtWrapper_QGraphicsLayoutItem::setPreferredWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
 {
-  ( theWrappedObject->setMinimumWidth(width));
+  ( theWrappedObject->setPreferredWidth(width));
 }
 
-void PythonQtWrapper_QGraphicsLayoutItem::setParentLayoutItem(QGraphicsLayoutItem* theWrappedObject, QGraphicsLayoutItem*  parent)
+QRectF  PythonQtWrapper_QGraphicsLayoutItem::contentsRect(QGraphicsLayoutItem* theWrappedObject) const
 {
-  ( theWrappedObject->setParentLayoutItem(parent));
+  return ( theWrappedObject->contentsRect());
+}
+
+QRectF  PythonQtWrapper_QGraphicsLayoutItem::geometry(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->geometry());
+}
+
+QGraphicsItem*  PythonQtWrapper_QGraphicsLayoutItem::graphicsItem(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->graphicsItem());
+}
+
+bool  PythonQtWrapper_QGraphicsLayoutItem::ownedByLayout(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->ownedByLayout());
 }
 
 void PythonQtWrapper_QGraphicsLayoutItem::getContentsMargins(QGraphicsLayoutItem* theWrappedObject, qreal*  left, qreal*  top, qreal*  right, qreal*  bottom) const
@@ -228,14 +184,9 @@ void PythonQtWrapper_QGraphicsLayoutItem::getContentsMargins(QGraphicsLayoutItem
   ( ((PythonQtPublicPromoter_QGraphicsLayoutItem*)theWrappedObject)->promoted_getContentsMargins(left, top, right, bottom));
 }
 
-void PythonQtWrapper_QGraphicsLayoutItem::setPreferredHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
+void PythonQtWrapper_QGraphicsLayoutItem::setMinimumHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
 {
-  ( theWrappedObject->setPreferredHeight(height));
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setPreferredSize(QGraphicsLayoutItem* theWrappedObject, const QSizeF&  size)
-{
-  ( theWrappedObject->setPreferredSize(size));
+  ( theWrappedObject->setMinimumHeight(height));
 }
 
 QSizeF  PythonQtWrapper_QGraphicsLayoutItem::preferredSize(QGraphicsLayoutItem* theWrappedObject) const
@@ -243,18 +194,78 @@ QSizeF  PythonQtWrapper_QGraphicsLayoutItem::preferredSize(QGraphicsLayoutItem* 
   return ( theWrappedObject->preferredSize());
 }
 
+qreal  PythonQtWrapper_QGraphicsLayoutItem::preferredWidth(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->preferredWidth());
+}
+
+qreal  PythonQtWrapper_QGraphicsLayoutItem::minimumWidth(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumWidth());
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setMinimumWidth(QGraphicsLayoutItem* theWrappedObject, qreal  width)
+{
+  ( theWrappedObject->setMinimumWidth(width));
+}
+
+QSizeF  PythonQtWrapper_QGraphicsLayoutItem::maximumSize(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->maximumSize());
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setPreferredHeight(QGraphicsLayoutItem* theWrappedObject, qreal  height)
+{
+  ( theWrappedObject->setPreferredHeight(height));
+}
+
+qreal  PythonQtWrapper_QGraphicsLayoutItem::maximumHeight(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->maximumHeight());
+}
+
+QSizeF  PythonQtWrapper_QGraphicsLayoutItem::minimumSize(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumSize());
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setMaximumSize(QGraphicsLayoutItem* theWrappedObject, qreal  w, qreal  h)
+{
+  ( theWrappedObject->setMaximumSize(w, h));
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setPreferredSize(QGraphicsLayoutItem* theWrappedObject, const QSizeF&  size)
+{
+  ( theWrappedObject->setPreferredSize(size));
+}
+
+QSizeF  PythonQtWrapper_QGraphicsLayoutItem::effectiveSizeHint(QGraphicsLayoutItem* theWrappedObject, Qt::SizeHint  which, const QSizeF&  constraint) const
+{
+  return ( theWrappedObject->effectiveSizeHint(which, constraint));
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setMinimumSize(QGraphicsLayoutItem* theWrappedObject, const QSizeF&  size)
+{
+  ( theWrappedObject->setMinimumSize(size));
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setParentLayoutItem(QGraphicsLayoutItem* theWrappedObject, QGraphicsLayoutItem*  parent)
+{
+  ( theWrappedObject->setParentLayoutItem(parent));
+}
+
+qreal  PythonQtWrapper_QGraphicsLayoutItem::preferredHeight(QGraphicsLayoutItem* theWrappedObject) const
+{
+  return ( theWrappedObject->preferredHeight());
+}
+
+void PythonQtWrapper_QGraphicsLayoutItem::setMinimumSize(QGraphicsLayoutItem* theWrappedObject, qreal  w, qreal  h)
+{
+  ( theWrappedObject->setMinimumSize(w, h));
+}
+
 void PythonQtWrapper_QGraphicsLayoutItem::setGeometry(QGraphicsLayoutItem* theWrappedObject, const QRectF&  rect)
 {
   ( ((PythonQtPublicPromoter_QGraphicsLayoutItem*)theWrappedObject)->promoted_setGeometry(rect));
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::setSizePolicy(QGraphicsLayoutItem* theWrappedObject, QSizePolicy::Policy  hPolicy, QSizePolicy::Policy  vPolicy, QSizePolicy::ControlType  controlType)
-{
-  ( theWrappedObject->setSizePolicy(hPolicy, vPolicy, controlType));
-}
-
-void PythonQtWrapper_QGraphicsLayoutItem::updateGeometry(QGraphicsLayoutItem* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QGraphicsLayoutItem*)theWrappedObject)->promoted_updateGeometry());
 }
 

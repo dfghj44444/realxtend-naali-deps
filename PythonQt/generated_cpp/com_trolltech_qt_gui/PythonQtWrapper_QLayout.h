@@ -12,6 +12,7 @@
 #include <qlayout.h>
 #include <qlayoutitem.h>
 #include <qlist.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -53,16 +54,16 @@ virtual QWidget*  widget();
 
 class PythonQtPublicPromoter_QLayout : public QLayout
 { public:
-inline QRect  promoted_geometry() const { return QLayout::geometry(); }
-inline QLayout*  promoted_layout() { return QLayout::layout(); }
+inline void promoted_setGeometry(const QRect&  arg__1) { QLayout::setGeometry(arg__1); }
 inline bool  promoted_isEmpty() const { return QLayout::isEmpty(); }
+inline void promoted_childEvent(QChildEvent*  e) { QLayout::childEvent(e); }
 inline void promoted_invalidate() { QLayout::invalidate(); }
 inline QSize  promoted_maximumSize() const { return QLayout::maximumSize(); }
-inline QSize  promoted_minimumSize() const { return QLayout::minimumSize(); }
-inline int  promoted_indexOf(QWidget*  arg__1) const { return QLayout::indexOf(arg__1); }
-inline void promoted_childEvent(QChildEvent*  e) { QLayout::childEvent(e); }
-inline void promoted_setGeometry(const QRect&  arg__1) { QLayout::setGeometry(arg__1); }
 inline Qt::Orientations  promoted_expandingDirections() const { return QLayout::expandingDirections(); }
+inline QRect  promoted_geometry() const { return QLayout::geometry(); }
+inline QLayout*  promoted_layout() { return QLayout::layout(); }
+inline int  promoted_indexOf(QWidget*  arg__1) const { return QLayout::indexOf(arg__1); }
+inline QSize  promoted_minimumSize() const { return QLayout::minimumSize(); }
 };
 
 class PythonQtWrapper_QLayout : public QObject
@@ -72,42 +73,44 @@ public slots:
 QLayout* new_QLayout();
 QLayout* new_QLayout(QWidget*  parent);
 void delete_QLayout(QLayout* obj) { delete obj; } 
-   QWidget*  parentWidget(QLayout* theWrappedObject) const;
-   QSize  totalMaximumSize(QLayout* theWrappedObject) const;
-   QRect  geometry(QLayout* theWrappedObject) const;
-   void setEnabled(QLayout* theWrappedObject, bool  arg__1);
-   QSize  totalSizeHint(QLayout* theWrappedObject) const;
    bool  setAlignment(QLayout* theWrappedObject, QWidget*  w, Qt::Alignment  alignment);
-   QLayout*  layout(QLayout* theWrappedObject);
+   void update(QLayout* theWrappedObject);
+   void addWidget(QLayout* theWrappedObject, QWidget*  w);
+   void getContentsMargins(QLayout* theWrappedObject, int*  left, int*  top, int*  right, int*  bottom) const;
+   void setGeometry(QLayout* theWrappedObject, const QRect&  arg__1);
+   void setAlignment(QLayout* theWrappedObject, Qt::Alignment  alignment);
    bool  isEmpty(QLayout* theWrappedObject) const;
-   QRect  contentsRect(QLayout* theWrappedObject) const;
-   void setContentsMargins(QLayout* theWrappedObject, int  left, int  top, int  right, int  bottom);
+   int  totalHeightForWidth(QLayout* theWrappedObject, int  w) const;
+   QSize  static_QLayout_closestAcceptableSize(const QWidget*  w, const QSize&  s);
+   void setSpacing(QLayout* theWrappedObject, int  arg__1);
+   void childEvent(QLayout* theWrappedObject, QChildEvent*  e);
+   bool  isEnabled(QLayout* theWrappedObject) const;
+   void removeItem(QLayout* theWrappedObject, QLayoutItem*  arg__1);
+   QMargins  contentsMargins(QLayout* theWrappedObject) const;
+   void setContentsMargins(QLayout* theWrappedObject, const QMargins&  margins);
+   void invalidate(QLayout* theWrappedObject);
+   QSize  maximumSize(QLayout* theWrappedObject) const;
    void removeWidget(QLayout* theWrappedObject, QWidget*  w);
    bool  activate(QLayout* theWrappedObject);
-   QLayout::SizeConstraint  sizeConstraint(QLayout* theWrappedObject) const;
-   void invalidate(QLayout* theWrappedObject);
-   bool  isEnabled(QLayout* theWrappedObject) const;
-   QWidget*  menuBar(QLayout* theWrappedObject) const;
-   QSize  maximumSize(QLayout* theWrappedObject) const;
-   QSize  minimumSize(QLayout* theWrappedObject) const;
-   QSize  static_QLayout_closestAcceptableSize(const QWidget*  w, const QSize&  s);
-   bool  setAlignment(QLayout* theWrappedObject, QLayout*  l, Qt::Alignment  alignment);
-   void setAlignment(QLayout* theWrappedObject, Qt::Alignment  alignment);
-   void setSizeConstraint(QLayout* theWrappedObject, QLayout::SizeConstraint  arg__1);
-   void setMargin(QLayout* theWrappedObject, int  arg__1);
-   void removeItem(QLayout* theWrappedObject, QLayoutItem*  arg__1);
-   void addWidget(QLayout* theWrappedObject, QWidget*  w);
-   int  indexOf(QLayout* theWrappedObject, QWidget*  arg__1) const;
-   void setSpacing(QLayout* theWrappedObject, int  arg__1);
-   int  spacing(QLayout* theWrappedObject) const;
-   void childEvent(QLayout* theWrappedObject, QChildEvent*  e);
-   void setGeometry(QLayout* theWrappedObject, const QRect&  arg__1);
    Qt::Orientations  expandingDirections(QLayout* theWrappedObject) const;
-   int  totalHeightForWidth(QLayout* theWrappedObject, int  w) const;
-   void update(QLayout* theWrappedObject);
-   void getContentsMargins(QLayout* theWrappedObject, int*  left, int*  top, int*  right, int*  bottom) const;
-   void setMenuBar(QLayout* theWrappedObject, QWidget*  w);
+   QRect  contentsRect(QLayout* theWrappedObject) const;
+   void setEnabled(QLayout* theWrappedObject, bool  arg__1);
+   QRect  geometry(QLayout* theWrappedObject) const;
+   void setMargin(QLayout* theWrappedObject, int  arg__1);
    QSize  totalMinimumSize(QLayout* theWrappedObject) const;
+   QWidget*  parentWidget(QLayout* theWrappedObject) const;
+   void setSizeConstraint(QLayout* theWrappedObject, QLayout::SizeConstraint  arg__1);
+   QLayout*  layout(QLayout* theWrappedObject);
+   QSize  totalSizeHint(QLayout* theWrappedObject) const;
+   int  indexOf(QLayout* theWrappedObject, QWidget*  arg__1) const;
+   QSize  totalMaximumSize(QLayout* theWrappedObject) const;
+   QWidget*  menuBar(QLayout* theWrappedObject) const;
+   int  spacing(QLayout* theWrappedObject) const;
+   QLayout::SizeConstraint  sizeConstraint(QLayout* theWrappedObject) const;
+   QSize  minimumSize(QLayout* theWrappedObject) const;
+   void setContentsMargins(QLayout* theWrappedObject, int  left, int  top, int  right, int  bottom);
+   bool  setAlignment(QLayout* theWrappedObject, QLayout*  l, Qt::Alignment  alignment);
+   void setMenuBar(QLayout* theWrappedObject, QWidget*  w);
 };
 
 #endif // PYTHONQTWRAPPER_QLAYOUT_H

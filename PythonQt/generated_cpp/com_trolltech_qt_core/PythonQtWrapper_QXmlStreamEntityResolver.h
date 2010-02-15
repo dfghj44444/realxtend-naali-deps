@@ -21,8 +21,8 @@ virtual QString  resolveUndeclaredEntity(const QString&  name);
 
 class PythonQtPublicPromoter_QXmlStreamEntityResolver : public QXmlStreamEntityResolver
 { public:
-inline QString  promoted_resolveEntity(const QString&  publicId, const QString&  systemId) { return QXmlStreamEntityResolver::resolveEntity(publicId, systemId); }
 inline QString  promoted_resolveUndeclaredEntity(const QString&  name) { return QXmlStreamEntityResolver::resolveUndeclaredEntity(name); }
+inline QString  promoted_resolveEntity(const QString&  publicId, const QString&  systemId) { return QXmlStreamEntityResolver::resolveEntity(publicId, systemId); }
 };
 
 class PythonQtWrapper_QXmlStreamEntityResolver : public QObject
@@ -31,8 +31,8 @@ public:
 public slots:
 QXmlStreamEntityResolver* new_QXmlStreamEntityResolver();
 void delete_QXmlStreamEntityResolver(QXmlStreamEntityResolver* obj) { delete obj; } 
-   QString  resolveEntity(QXmlStreamEntityResolver* theWrappedObject, const QString&  publicId, const QString&  systemId);
    QString  resolveUndeclaredEntity(QXmlStreamEntityResolver* theWrappedObject, const QString&  name);
+   QString  resolveEntity(QXmlStreamEntityResolver* theWrappedObject, const QString&  publicId, const QString&  systemId);
 };
 
 #endif // PYTHONQTWRAPPER_QXMLSTREAMENTITYRESOLVER_H

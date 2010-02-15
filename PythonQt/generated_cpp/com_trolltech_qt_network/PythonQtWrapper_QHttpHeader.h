@@ -38,25 +38,25 @@ public slots:
 QHttpHeader* new_QHttpHeader();
 QHttpHeader* new_QHttpHeader(const QString&  str);
 void delete_QHttpHeader(QHttpHeader* obj) { delete obj; } 
-   void removeAllValues(QHttpHeader* theWrappedObject, const QString&  key);
-   void setValue(QHttpHeader* theWrappedObject, const QString&  key, const QString&  value);
-   bool  isValid(QHttpHeader* theWrappedObject) const;
-   void removeValue(QHttpHeader* theWrappedObject, const QString&  key);
+   void setValues(QHttpHeader* theWrappedObject, const QList<QPair<QString , QString >  >&  values);
    QString  toString(QHttpHeader* theWrappedObject) const;
-   void setContentType(QHttpHeader* theWrappedObject, const QString&  type);
-   QString  contentType(QHttpHeader* theWrappedObject) const;
-   bool  hasContentLength(QHttpHeader* theWrappedObject) const;
+   void removeValue(QHttpHeader* theWrappedObject, const QString&  key);
+   QString  value(QHttpHeader* theWrappedObject, const QString&  key) const;
+   bool  isValid(QHttpHeader* theWrappedObject) const;
    bool  hasContentType(QHttpHeader* theWrappedObject) const;
-   void setContentLength(QHttpHeader* theWrappedObject, int  len);
+   bool  parseLine(QHttpHeader* theWrappedObject, const QString&  line, int  number);
    void addValue(QHttpHeader* theWrappedObject, const QString&  key, const QString&  value);
+   void removeAllValues(QHttpHeader* theWrappedObject, const QString&  key);
+   bool  hasContentLength(QHttpHeader* theWrappedObject) const;
+   QString  contentType(QHttpHeader* theWrappedObject) const;
+   QStringList  allValues(QHttpHeader* theWrappedObject, const QString&  key) const;
+   void setContentLength(QHttpHeader* theWrappedObject, int  len);
+   QStringList  keys(QHttpHeader* theWrappedObject) const;
    QList<QPair<QString , QString >  >  values(QHttpHeader* theWrappedObject) const;
    uint  contentLength(QHttpHeader* theWrappedObject) const;
    bool  hasKey(QHttpHeader* theWrappedObject, const QString&  key) const;
-   QString  value(QHttpHeader* theWrappedObject, const QString&  key) const;
-   QStringList  allValues(QHttpHeader* theWrappedObject, const QString&  key) const;
-   void setValues(QHttpHeader* theWrappedObject, const QList<QPair<QString , QString >  >&  values);
-   QStringList  keys(QHttpHeader* theWrappedObject) const;
-   bool  parseLine(QHttpHeader* theWrappedObject, const QString&  line, int  number);
+   void setContentType(QHttpHeader* theWrappedObject, const QString&  type);
+   void setValue(QHttpHeader* theWrappedObject, const QString&  key, const QString&  value);
 };
 
 #endif // PYTHONQTWRAPPER_QHTTPHEADER_H

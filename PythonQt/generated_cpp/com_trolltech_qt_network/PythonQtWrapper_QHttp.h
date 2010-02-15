@@ -15,6 +15,7 @@
 #include <qlist.h>
 #include <qnetworkproxy.h>
 #include <qobject.h>
+#include <qsslerror.h>
 #include <qtcpsocket.h>
 
 class PythonQtShell_QHttp : public QHttp
@@ -48,32 +49,32 @@ QHttp* new_QHttp(QObject*  parent = 0);
 QHttp* new_QHttp(const QString&  hostname, QHttp::ConnectionMode  mode, unsigned short  port = 0, QObject*  parent = 0);
 QHttp* new_QHttp(const QString&  hostname, unsigned short  port = 80, QObject*  parent = 0);
 void delete_QHttp(QHttp* obj) { delete obj; } 
-   int  setProxy(QHttp* theWrappedObject, const QNetworkProxy&  proxy);
-   int  request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, QIODevice*  device = 0, QIODevice*  to = 0);
-   QHttpRequestHeader  currentRequest(QHttp* theWrappedObject) const;
-   QHttp::State  state(QHttp* theWrappedObject) const;
-   QHttp::Error  error(QHttp* theWrappedObject) const;
-   int  request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, const QByteArray&  data, QIODevice*  to = 0);
+   int  head(QHttp* theWrappedObject, const QString&  path);
    bool  hasPendingRequests(QHttp* theWrappedObject) const;
-   int  setSocket(QHttp* theWrappedObject, QTcpSocket*  socket);
-   int  setUser(QHttp* theWrappedObject, const QString&  username, const QString&  password = QString());
    int  post(QHttp* theWrappedObject, const QString&  path, const QByteArray&  data, QIODevice*  to = 0);
-   QIODevice*  currentDestinationDevice(QHttp* theWrappedObject) const;
    qint64  bytesAvailable(QHttp* theWrappedObject) const;
-   QByteArray  readAll(QHttp* theWrappedObject);
-   int  setHost(QHttp* theWrappedObject, const QString&  hostname, QHttp::ConnectionMode  mode, unsigned short  port = 0);
-   int  currentId(QHttp* theWrappedObject) const;
    int  setHost(QHttp* theWrappedObject, const QString&  hostname, unsigned short  port = 80);
-   int  setProxy(QHttp* theWrappedObject, const QString&  host, int  port, const QString&  username = QString(), const QString&  password = QString());
+   int  close(QHttp* theWrappedObject);
+   int  setHost(QHttp* theWrappedObject, const QString&  hostname, QHttp::ConnectionMode  mode, unsigned short  port = 0);
+   int  setSocket(QHttp* theWrappedObject, QTcpSocket*  socket);
+   QHttp::Error  error(QHttp* theWrappedObject) const;
+   int  get(QHttp* theWrappedObject, const QString&  path, QIODevice*  to = 0);
+   int  request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, const QByteArray&  data, QIODevice*  to = 0);
+   QHttpRequestHeader  currentRequest(QHttp* theWrappedObject) const;
+   QByteArray  readAll(QHttp* theWrappedObject);
    void clearPendingRequests(QHttp* theWrappedObject);
    QHttpResponseHeader  lastResponse(QHttp* theWrappedObject) const;
    qint64  read(QHttp* theWrappedObject, char*  data, qint64  maxlen);
-   QIODevice*  currentSourceDevice(QHttp* theWrappedObject) const;
-   int  get(QHttp* theWrappedObject, const QString&  path, QIODevice*  to = 0);
+   int  setProxy(QHttp* theWrappedObject, const QNetworkProxy&  proxy);
+   int  setProxy(QHttp* theWrappedObject, const QString&  host, int  port, const QString&  username = QString(), const QString&  password = QString());
+   int  request(QHttp* theWrappedObject, const QHttpRequestHeader&  header, QIODevice*  device = 0, QIODevice*  to = 0);
+   int  currentId(QHttp* theWrappedObject) const;
+   QIODevice*  currentDestinationDevice(QHttp* theWrappedObject) const;
+   int  setUser(QHttp* theWrappedObject, const QString&  username, const QString&  password = QString());
+   QHttp::State  state(QHttp* theWrappedObject) const;
    QString  errorString(QHttp* theWrappedObject) const;
-   int  close(QHttp* theWrappedObject);
-   int  head(QHttp* theWrappedObject, const QString&  path);
    int  post(QHttp* theWrappedObject, const QString&  path, QIODevice*  data, QIODevice*  to = 0);
+   QIODevice*  currentSourceDevice(QHttp* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QHTTP_H

@@ -104,6 +104,21 @@ QUndoCommand* PythonQtWrapper_QUndoCommand::new_QUndoCommand(const QString&  tex
 { 
 return new PythonQtShell_QUndoCommand(text, parent); }
 
+void PythonQtWrapper_QUndoCommand::redo(QUndoCommand* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_redo());
+}
+
+bool  PythonQtWrapper_QUndoCommand::mergeWith(QUndoCommand* theWrappedObject, const QUndoCommand*  other)
+{
+  return ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_mergeWith(other));
+}
+
+const QUndoCommand*  PythonQtWrapper_QUndoCommand::child(QUndoCommand* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->child(index));
+}
+
 void PythonQtWrapper_QUndoCommand::setText(QUndoCommand* theWrappedObject, const QString&  text)
 {
   ( theWrappedObject->setText(text));
@@ -114,26 +129,6 @@ QString  PythonQtWrapper_QUndoCommand::text(QUndoCommand* theWrappedObject) cons
   return ( theWrappedObject->text());
 }
 
-bool  PythonQtWrapper_QUndoCommand::mergeWith(QUndoCommand* theWrappedObject, const QUndoCommand*  other)
-{
-  return ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_mergeWith(other));
-}
-
-void PythonQtWrapper_QUndoCommand::redo(QUndoCommand* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_redo());
-}
-
-const QUndoCommand*  PythonQtWrapper_QUndoCommand::child(QUndoCommand* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->child(index));
-}
-
-int  PythonQtWrapper_QUndoCommand::childCount(QUndoCommand* theWrappedObject) const
-{
-  return ( theWrappedObject->childCount());
-}
-
 int  PythonQtWrapper_QUndoCommand::id(QUndoCommand* theWrappedObject) const
 {
   return ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_id());
@@ -142,5 +137,10 @@ int  PythonQtWrapper_QUndoCommand::id(QUndoCommand* theWrappedObject) const
 void PythonQtWrapper_QUndoCommand::undo(QUndoCommand* theWrappedObject)
 {
   ( ((PythonQtPublicPromoter_QUndoCommand*)theWrappedObject)->promoted_undo());
+}
+
+int  PythonQtWrapper_QUndoCommand::childCount(QUndoCommand* theWrappedObject) const
+{
+  return ( theWrappedObject->childCount());
 }
 

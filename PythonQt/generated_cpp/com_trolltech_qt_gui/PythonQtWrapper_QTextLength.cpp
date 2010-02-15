@@ -15,9 +15,9 @@ QTextLength* PythonQtWrapper_QTextLength::new_QTextLength(QTextLength::Type  typ
 { 
 return new QTextLength(type, value); }
 
-void PythonQtWrapper_QTextLength::writeTo(QTextLength* theWrappedObject, QDataStream&  arg__1)
+void PythonQtWrapper_QTextLength::readFrom(QTextLength* theWrappedObject, QDataStream&  arg__1)
 {
-  arg__1 <<  (*theWrappedObject);
+  arg__1 >>  (*theWrappedObject);
 }
 
 bool  PythonQtWrapper_QTextLength::operator_equal(QTextLength* theWrappedObject, const QTextLength&  other) const
@@ -25,14 +25,14 @@ bool  PythonQtWrapper_QTextLength::operator_equal(QTextLength* theWrappedObject,
   return ( (*theWrappedObject)== other);
 }
 
-void PythonQtWrapper_QTextLength::readFrom(QTextLength* theWrappedObject, QDataStream&  arg__1)
-{
-  arg__1 >>  (*theWrappedObject);
-}
-
 qreal  PythonQtWrapper_QTextLength::rawValue(QTextLength* theWrappedObject) const
 {
   return ( theWrappedObject->rawValue());
+}
+
+QTextLength::Type  PythonQtWrapper_QTextLength::type(QTextLength* theWrappedObject) const
+{
+  return ( theWrappedObject->type());
 }
 
 qreal  PythonQtWrapper_QTextLength::value(QTextLength* theWrappedObject, qreal  maximumLength) const
@@ -40,8 +40,8 @@ qreal  PythonQtWrapper_QTextLength::value(QTextLength* theWrappedObject, qreal  
   return ( theWrappedObject->value(maximumLength));
 }
 
-QTextLength::Type  PythonQtWrapper_QTextLength::type(QTextLength* theWrappedObject) const
+void PythonQtWrapper_QTextLength::writeTo(QTextLength* theWrappedObject, QDataStream&  arg__1)
 {
-  return ( theWrappedObject->type());
+  arg__1 <<  (*theWrappedObject);
 }
 

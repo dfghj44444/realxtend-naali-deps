@@ -10,9 +10,11 @@
 #include <qcoreevent.h>
 #include <qcursor.h>
 #include <qevent.h>
+#include <qgraphicseffect.h>
 #include <qgraphicsitem.h>
 #include <qgraphicsscene.h>
 #include <qgraphicssceneevent.h>
+#include <qgraphicstransform.h>
 #include <qgraphicswidget.h>
 #include <qlist.h>
 #include <qpainter.h>
@@ -72,10 +74,10 @@ virtual void wheelEvent(QGraphicsSceneWheelEvent*  event);
 
 class PythonQtPublicPromoter_QGraphicsItemGroup : public QGraphicsItemGroup
 { public:
-inline QRectF  promoted_boundingRect() const { return QGraphicsItemGroup::boundingRect(); }
 inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsItemGroup::isObscuredBy(item); }
-inline void promoted_paint(QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0) { QGraphicsItemGroup::paint(painter, option, widget); }
 inline QPainterPath  promoted_opaqueArea() const { return QGraphicsItemGroup::opaqueArea(); }
+inline QRectF  promoted_boundingRect() const { return QGraphicsItemGroup::boundingRect(); }
+inline void promoted_paint(QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0) { QGraphicsItemGroup::paint(painter, option, widget); }
 inline int  promoted_type() const { return QGraphicsItemGroup::type(); }
 };
 
@@ -88,12 +90,12 @@ enum enum_1{
 public slots:
 QGraphicsItemGroup* new_QGraphicsItemGroup(QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 void delete_QGraphicsItemGroup(QGraphicsItemGroup* obj) { delete obj; } 
-   QRectF  boundingRect(QGraphicsItemGroup* theWrappedObject) const;
    bool  isObscuredBy(QGraphicsItemGroup* theWrappedObject, const QGraphicsItem*  item) const;
-   void paint(QGraphicsItemGroup* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0);
    QPainterPath  opaqueArea(QGraphicsItemGroup* theWrappedObject) const;
-   void removeFromGroup(QGraphicsItemGroup* theWrappedObject, QGraphicsItem*  item);
    void addToGroup(QGraphicsItemGroup* theWrappedObject, QGraphicsItem*  item);
+   void removeFromGroup(QGraphicsItemGroup* theWrappedObject, QGraphicsItem*  item);
+   QRectF  boundingRect(QGraphicsItemGroup* theWrappedObject) const;
+   void paint(QGraphicsItemGroup* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0);
    int  type(QGraphicsItemGroup* theWrappedObject) const;
 };
 

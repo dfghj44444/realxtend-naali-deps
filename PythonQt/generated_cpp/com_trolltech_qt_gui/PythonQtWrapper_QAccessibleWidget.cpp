@@ -424,24 +424,9 @@ QAccessibleWidget* PythonQtWrapper_QAccessibleWidget::new_QAccessibleWidget(QWid
 { 
 return new PythonQtShell_QAccessibleWidget(o, r, name); }
 
-QString  PythonQtWrapper_QAccessibleWidget::text(QAccessibleWidget* theWrappedObject, QAccessible::Text  t, int  child) const
-{
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_text(t, child));
-}
-
-QAccessible::State  PythonQtWrapper_QAccessibleWidget::state(QAccessibleWidget* theWrappedObject, int  child) const
-{
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_state(child));
-}
-
 QString  PythonQtWrapper_QAccessibleWidget::actionText(QAccessibleWidget* theWrappedObject, int  action, QAccessible::Text  t, int  child) const
 {
   return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_actionText(action, t, child));
-}
-
-bool  PythonQtWrapper_QAccessibleWidget::doAction(QAccessibleWidget* theWrappedObject, int  action, int  child, const QList<QVariant >&  params)
-{
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_doAction(action, child, params));
 }
 
 QAccessible::Relation  PythonQtWrapper_QAccessibleWidget::relationTo(QAccessibleWidget* theWrappedObject, int  child, const QAccessibleInterface*  other, int  otherChild) const
@@ -454,9 +439,9 @@ QAccessible::Role  PythonQtWrapper_QAccessibleWidget::role(QAccessibleWidget* th
   return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_role(child));
 }
 
-int  PythonQtWrapper_QAccessibleWidget::childAt(QAccessibleWidget* theWrappedObject, int  x, int  y) const
+int  PythonQtWrapper_QAccessibleWidget::navigate(QAccessibleWidget* theWrappedObject, QAccessible::RelationFlag  rel, int  entry, QAccessibleInterface**  target) const
 {
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_childAt(x, y));
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_navigate(rel, entry, target));
 }
 
 int  PythonQtWrapper_QAccessibleWidget::childCount(QAccessibleWidget* theWrappedObject) const
@@ -464,14 +449,14 @@ int  PythonQtWrapper_QAccessibleWidget::childCount(QAccessibleWidget* theWrapped
   return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_childCount());
 }
 
-int  PythonQtWrapper_QAccessibleWidget::userActionCount(QAccessibleWidget* theWrappedObject, int  child) const
+bool  PythonQtWrapper_QAccessibleWidget::doAction(QAccessibleWidget* theWrappedObject, int  action, int  child, const QList<QVariant >&  params)
 {
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_userActionCount(child));
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_doAction(action, child, params));
 }
 
-int  PythonQtWrapper_QAccessibleWidget::navigate(QAccessibleWidget* theWrappedObject, QAccessible::RelationFlag  rel, int  entry, QAccessibleInterface**  target) const
+int  PythonQtWrapper_QAccessibleWidget::childAt(QAccessibleWidget* theWrappedObject, int  x, int  y) const
 {
-  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_navigate(rel, entry, target));
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_childAt(x, y));
 }
 
 int  PythonQtWrapper_QAccessibleWidget::indexOfChild(QAccessibleWidget* theWrappedObject, const QAccessibleInterface*  child) const
@@ -479,8 +464,23 @@ int  PythonQtWrapper_QAccessibleWidget::indexOfChild(QAccessibleWidget* theWrapp
   return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_indexOfChild(child));
 }
 
+QAccessible::State  PythonQtWrapper_QAccessibleWidget::state(QAccessibleWidget* theWrappedObject, int  child) const
+{
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_state(child));
+}
+
+int  PythonQtWrapper_QAccessibleWidget::userActionCount(QAccessibleWidget* theWrappedObject, int  child) const
+{
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_userActionCount(child));
+}
+
 QRect  PythonQtWrapper_QAccessibleWidget::rect(QAccessibleWidget* theWrappedObject, int  child) const
 {
   return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_rect(child));
+}
+
+QString  PythonQtWrapper_QAccessibleWidget::text(QAccessibleWidget* theWrappedObject, QAccessible::Text  t, int  child) const
+{
+  return ( ((PythonQtPublicPromoter_QAccessibleWidget*)theWrappedObject)->promoted_text(t, child));
 }
 

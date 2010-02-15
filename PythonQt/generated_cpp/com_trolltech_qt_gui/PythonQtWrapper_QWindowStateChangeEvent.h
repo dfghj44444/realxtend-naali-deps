@@ -15,8 +15,8 @@ public slots:
 QWindowStateChangeEvent* new_QWindowStateChangeEvent(Qt::WindowStates  aOldState);
 QWindowStateChangeEvent* new_QWindowStateChangeEvent(Qt::WindowStates  aOldState, bool  isOverride);
 void delete_QWindowStateChangeEvent(QWindowStateChangeEvent* obj) { delete obj; } 
-   Qt::WindowStates  oldState(QWindowStateChangeEvent* theWrappedObject) const;
    bool  isOverride(QWindowStateChangeEvent* theWrappedObject) const;
+   Qt::WindowStates  oldState(QWindowStateChangeEvent* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QWINDOWSTATECHANGEEVENT_H

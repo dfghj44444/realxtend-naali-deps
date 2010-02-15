@@ -14,6 +14,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qgroupbox.h>
 #include <qicon.h>
 #include <qinputcontext.h>
@@ -21,6 +23,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -86,14 +89,14 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QGroupBox : public QGroupBox
 { public:
-inline bool  promoted_event(QEvent*  event) { return QGroupBox::event(event); }
-inline void promoted_paintEvent(QPaintEvent*  event) { QGroupBox::paintEvent(event); }
 inline void promoted_changeEvent(QEvent*  event) { QGroupBox::changeEvent(event); }
-inline void promoted_resizeEvent(QResizeEvent*  event) { QGroupBox::resizeEvent(event); }
-inline void promoted_mouseReleaseEvent(QMouseEvent*  event) { QGroupBox::mouseReleaseEvent(event); }
 inline void promoted_mousePressEvent(QMouseEvent*  event) { QGroupBox::mousePressEvent(event); }
-inline void promoted_focusInEvent(QFocusEvent*  event) { QGroupBox::focusInEvent(event); }
+inline bool  promoted_event(QEvent*  event) { return QGroupBox::event(event); }
+inline void promoted_resizeEvent(QResizeEvent*  event) { QGroupBox::resizeEvent(event); }
 inline void promoted_mouseMoveEvent(QMouseEvent*  event) { QGroupBox::mouseMoveEvent(event); }
+inline void promoted_mouseReleaseEvent(QMouseEvent*  event) { QGroupBox::mouseReleaseEvent(event); }
+inline void promoted_focusInEvent(QFocusEvent*  event) { QGroupBox::focusInEvent(event); }
+inline void promoted_paintEvent(QPaintEvent*  event) { QGroupBox::paintEvent(event); }
 inline void promoted_childEvent(QChildEvent*  event) { QGroupBox::childEvent(event); }
 };
 
@@ -104,25 +107,25 @@ public slots:
 QGroupBox* new_QGroupBox(QWidget*  parent = 0);
 QGroupBox* new_QGroupBox(const QString&  title, QWidget*  parent = 0);
 void delete_QGroupBox(QGroupBox* obj) { delete obj; } 
-   void setFlat(QGroupBox* theWrappedObject, bool  flat);
-   bool  isChecked(QGroupBox* theWrappedObject) const;
-   bool  isCheckable(QGroupBox* theWrappedObject) const;
-   bool  event(QGroupBox* theWrappedObject, QEvent*  event);
-   void setTitle(QGroupBox* theWrappedObject, const QString&  title);
-   Qt::Alignment  alignment(QGroupBox* theWrappedObject) const;
-   void paintEvent(QGroupBox* theWrappedObject, QPaintEvent*  event);
    bool  isFlat(QGroupBox* theWrappedObject) const;
-   void setAlignment(QGroupBox* theWrappedObject, int  alignment);
-   void changeEvent(QGroupBox* theWrappedObject, QEvent*  event);
    QString  title(QGroupBox* theWrappedObject) const;
    QSize  minimumSizeHint(QGroupBox* theWrappedObject) const;
-   void resizeEvent(QGroupBox* theWrappedObject, QResizeEvent*  event);
-   void mouseReleaseEvent(QGroupBox* theWrappedObject, QMouseEvent*  event);
+   void setFlat(QGroupBox* theWrappedObject, bool  flat);
+   bool  isCheckable(QGroupBox* theWrappedObject) const;
+   void changeEvent(QGroupBox* theWrappedObject, QEvent*  event);
+   Qt::Alignment  alignment(QGroupBox* theWrappedObject) const;
    void mousePressEvent(QGroupBox* theWrappedObject, QMouseEvent*  event);
-   void focusInEvent(QGroupBox* theWrappedObject, QFocusEvent*  event);
-   void setCheckable(QGroupBox* theWrappedObject, bool  checkable);
+   void setAlignment(QGroupBox* theWrappedObject, int  alignment);
+   bool  event(QGroupBox* theWrappedObject, QEvent*  event);
+   void resizeEvent(QGroupBox* theWrappedObject, QResizeEvent*  event);
    void mouseMoveEvent(QGroupBox* theWrappedObject, QMouseEvent*  event);
+   void mouseReleaseEvent(QGroupBox* theWrappedObject, QMouseEvent*  event);
+   void focusInEvent(QGroupBox* theWrappedObject, QFocusEvent*  event);
+   void setTitle(QGroupBox* theWrappedObject, const QString&  title);
+   void paintEvent(QGroupBox* theWrappedObject, QPaintEvent*  event);
+   bool  isChecked(QGroupBox* theWrappedObject) const;
    void childEvent(QGroupBox* theWrappedObject, QChildEvent*  event);
+   void setCheckable(QGroupBox* theWrappedObject, bool  checkable);
 };
 
 #endif // PYTHONQTWRAPPER_QGROUPBOX_H

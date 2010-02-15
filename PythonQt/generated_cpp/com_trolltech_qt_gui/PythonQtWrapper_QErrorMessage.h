@@ -15,12 +15,15 @@
 #include <qerrormessage.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -86,8 +89,8 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QErrorMessage : public QErrorMessage
 { public:
-inline void promoted_changeEvent(QEvent*  e) { QErrorMessage::changeEvent(e); }
 inline void promoted_done(int  arg__1) { QErrorMessage::done(arg__1); }
+inline void promoted_changeEvent(QEvent*  e) { QErrorMessage::changeEvent(e); }
 };
 
 class PythonQtWrapper_QErrorMessage : public QObject
@@ -96,9 +99,9 @@ public:
 public slots:
 QErrorMessage* new_QErrorMessage(QWidget*  parent = 0);
 void delete_QErrorMessage(QErrorMessage* obj) { delete obj; } 
-   void changeEvent(QErrorMessage* theWrappedObject, QEvent*  e);
    QErrorMessage*  static_QErrorMessage_qtHandler();
    void done(QErrorMessage* theWrappedObject, int  arg__1);
+   void changeEvent(QErrorMessage* theWrappedObject, QEvent*  e);
 };
 
 #endif // PYTHONQTWRAPPER_QERRORMESSAGE_H

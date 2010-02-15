@@ -121,24 +121,19 @@ QTimer* PythonQtWrapper_QTimer::new_QTimer(QObject*  parent)
 { 
 return new PythonQtShell_QTimer(parent); }
 
+int  PythonQtWrapper_QTimer::timerId(QTimer* theWrappedObject) const
+{
+  return ( theWrappedObject->timerId());
+}
+
 void PythonQtWrapper_QTimer::setInterval(QTimer* theWrappedObject, int  msec)
 {
   ( theWrappedObject->setInterval(msec));
 }
 
-void PythonQtWrapper_QTimer::static_QTimer_singleShot(int  msec, QObject*  receiver, const char*  member)
+void PythonQtWrapper_QTimer::timerEvent(QTimer* theWrappedObject, QTimerEvent*  arg__1)
 {
-  (QTimer::singleShot(msec, receiver, member));
-}
-
-bool  PythonQtWrapper_QTimer::isActive(QTimer* theWrappedObject) const
-{
-  return ( theWrappedObject->isActive());
-}
-
-int  PythonQtWrapper_QTimer::interval(QTimer* theWrappedObject) const
-{
-  return ( theWrappedObject->interval());
+  ( ((PythonQtPublicPromoter_QTimer*)theWrappedObject)->promoted_timerEvent(arg__1));
 }
 
 bool  PythonQtWrapper_QTimer::isSingleShot(QTimer* theWrappedObject) const
@@ -146,9 +141,9 @@ bool  PythonQtWrapper_QTimer::isSingleShot(QTimer* theWrappedObject) const
   return ( theWrappedObject->isSingleShot());
 }
 
-int  PythonQtWrapper_QTimer::timerId(QTimer* theWrappedObject) const
+bool  PythonQtWrapper_QTimer::isActive(QTimer* theWrappedObject) const
 {
-  return ( theWrappedObject->timerId());
+  return ( theWrappedObject->isActive());
 }
 
 void PythonQtWrapper_QTimer::setSingleShot(QTimer* theWrappedObject, bool  singleShot)
@@ -156,8 +151,8 @@ void PythonQtWrapper_QTimer::setSingleShot(QTimer* theWrappedObject, bool  singl
   ( theWrappedObject->setSingleShot(singleShot));
 }
 
-void PythonQtWrapper_QTimer::timerEvent(QTimer* theWrappedObject, QTimerEvent*  arg__1)
+int  PythonQtWrapper_QTimer::interval(QTimer* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QTimer*)theWrappedObject)->promoted_timerEvent(arg__1));
+  return ( theWrappedObject->interval());
 }
 

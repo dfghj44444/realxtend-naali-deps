@@ -22,9 +22,9 @@ QXmlItem* PythonQtWrapper_QXmlItem::new_QXmlItem(const QXmlNodeModelIndex&  node
 { 
 return new QXmlItem(node); }
 
-bool  PythonQtWrapper_QXmlItem::isNode(QXmlItem* theWrappedObject) const
+QVariant  PythonQtWrapper_QXmlItem::toAtomicValue(QXmlItem* theWrappedObject) const
 {
-  return ( theWrappedObject->isNode());
+  return ( theWrappedObject->toAtomicValue());
 }
 
 bool  PythonQtWrapper_QXmlItem::isNull(QXmlItem* theWrappedObject) const
@@ -37,13 +37,13 @@ QXmlNodeModelIndex  PythonQtWrapper_QXmlItem::toNodeModelIndex(QXmlItem* theWrap
   return ( theWrappedObject->toNodeModelIndex());
 }
 
+bool  PythonQtWrapper_QXmlItem::isNode(QXmlItem* theWrappedObject) const
+{
+  return ( theWrappedObject->isNode());
+}
+
 bool  PythonQtWrapper_QXmlItem::isAtomicValue(QXmlItem* theWrappedObject) const
 {
   return ( theWrappedObject->isAtomicValue());
-}
-
-QVariant  PythonQtWrapper_QXmlItem::toAtomicValue(QXmlItem* theWrappedObject) const
-{
-  return ( theWrappedObject->toAtomicValue());
 }
 

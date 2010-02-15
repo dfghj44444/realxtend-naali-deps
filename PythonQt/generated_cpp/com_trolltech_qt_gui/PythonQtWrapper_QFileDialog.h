@@ -19,12 +19,15 @@
 #include <qfiledialog.h>
 #include <qfileiconprovider.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -93,79 +96,82 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QFileDialog : public QFileDialog
 { public:
-inline void promoted_accept() { QFileDialog::accept(); }
-inline void promoted_done(int  result) { QFileDialog::done(result); }
 inline void promoted_changeEvent(QEvent*  e) { QFileDialog::changeEvent(e); }
+inline void promoted_done(int  result) { QFileDialog::done(result); }
+inline void promoted_accept() { QFileDialog::accept(); }
 };
 
 class PythonQtWrapper_QFileDialog : public QObject
 { Q_OBJECT
 public:
-Q_ENUMS(Option DialogLabel )
-Q_FLAGS(Options )
-enum Option{
-  ShowDirsOnly = QFileDialog::ShowDirsOnly,   DontResolveSymlinks = QFileDialog::DontResolveSymlinks,   DontConfirmOverwrite = QFileDialog::DontConfirmOverwrite,   DontUseSheet = QFileDialog::DontUseSheet,   DontUseNativeDialog = QFileDialog::DontUseNativeDialog};
+Q_ENUMS(DialogLabel )
 enum DialogLabel{
   LookIn = QFileDialog::LookIn,   FileName = QFileDialog::FileName,   FileType = QFileDialog::FileType,   Accept = QFileDialog::Accept,   Reject = QFileDialog::Reject};
-Q_DECLARE_FLAGS(Options, Option)
 public slots:
 QFileDialog* new_QFileDialog(QWidget*  parent, Qt::WindowFlags  f);
 QFileDialog* new_QFileDialog(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  directory = QString(), const QString&  filter = QString());
 void delete_QFileDialog(QFileDialog* obj) { delete obj; } 
-   void accept(QFileDialog* theWrappedObject);
-   QFileIconProvider*  iconProvider(QFileDialog* theWrappedObject) const;
-   void setConfirmOverwrite(QFileDialog* theWrappedObject, bool  enabled);
-   QString  static_QFileDialog_getSaveFileName(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
-   void setFilters(QFileDialog* theWrappedObject, const QStringList&  filters);
-   bool  confirmOverwrite(QFileDialog* theWrappedObject) const;
-   void done(QFileDialog* theWrappedObject, int  result);
-   QFileDialog::FileMode  fileMode(QFileDialog* theWrappedObject) const;
-   void setHistory(QFileDialog* theWrappedObject, const QStringList&  paths);
-   void setProxyModel(QFileDialog* theWrappedObject, QAbstractProxyModel*  model);
-   QDir::Filters  filter(QFileDialog* theWrappedObject) const;
-   void setDefaultSuffix(QFileDialog* theWrappedObject, const QString&  suffix);
+   bool  resolveSymlinks(QFileDialog* theWrappedObject) const;
+   void setOption(QFileDialog* theWrappedObject, QFileDialog::Option  option, bool  on = true);
+   bool  isNameFilterDetailsVisible(QFileDialog* theWrappedObject) const;
+   void setIconProvider(QFileDialog* theWrappedObject, QFileIconProvider*  provider);
+   void changeEvent(QFileDialog* theWrappedObject, QEvent*  e);
+   QString  labelText(QFileDialog* theWrappedObject, QFileDialog::DialogLabel  label) const;
+   void setLabelText(QFileDialog* theWrappedObject, QFileDialog::DialogLabel  label, const QString&  text);
+   QStringList  nameFilters(QFileDialog* theWrappedObject) const;
    void setNameFilterDetailsVisible(QFileDialog* theWrappedObject, bool  enabled);
    void setResolveSymlinks(QFileDialog* theWrappedObject, bool  enabled);
-   QStringList  history(QFileDialog* theWrappedObject) const;
-   void selectFile(QFileDialog* theWrappedObject, const QString&  filename);
-   QString  defaultSuffix(QFileDialog* theWrappedObject) const;
-   QString  static_QFileDialog_getOpenFileName(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
-   QFileDialog::AcceptMode  acceptMode(QFileDialog* theWrappedObject) const;
-   QStringList  nameFilters(QFileDialog* theWrappedObject) const;
-   void setFilter(QFileDialog* theWrappedObject, const QString&  filter);
-   QFileDialog::ViewMode  viewMode(QFileDialog* theWrappedObject) const;
-   QString  selectedFilter(QFileDialog* theWrappedObject) const;
-   void setFilter(QFileDialog* theWrappedObject, QDir::Filters  filters);
-   void setNameFilters(QFileDialog* theWrappedObject, const QStringList&  filters);
-   void setReadOnly(QFileDialog* theWrappedObject, bool  enabled);
-   QStringList  filters(QFileDialog* theWrappedObject) const;
-   void changeEvent(QFileDialog* theWrappedObject, QEvent*  e);
-   void setFileMode(QFileDialog* theWrappedObject, QFileDialog::FileMode  mode);
-   QString  labelText(QFileDialog* theWrappedObject, QFileDialog::DialogLabel  label) const;
-   void setIconProvider(QFileDialog* theWrappedObject, QFileIconProvider*  provider);
-   QDir  directory(QFileDialog* theWrappedObject) const;
-   QList<QUrl >  sidebarUrls(QFileDialog* theWrappedObject) const;
-   QString  selectedNameFilter(QFileDialog* theWrappedObject) const;
-   void setDirectory(QFileDialog* theWrappedObject, const QDir&  directory);
-   QByteArray  saveState(QFileDialog* theWrappedObject) const;
-   void selectFilter(QFileDialog* theWrappedObject, const QString&  filter);
-   void selectNameFilter(QFileDialog* theWrappedObject, const QString&  filter);
-   bool  restoreState(QFileDialog* theWrappedObject, const QByteArray&  state);
-   void setLabelText(QFileDialog* theWrappedObject, QFileDialog::DialogLabel  label, const QString&  text);
-   void setNameFilter(QFileDialog* theWrappedObject, const QString&  filter);
-   QAbstractProxyModel*  proxyModel(QFileDialog* theWrappedObject) const;
-   void setItemDelegate(QFileDialog* theWrappedObject, QAbstractItemDelegate*  delegate);
-   void setViewMode(QFileDialog* theWrappedObject, QFileDialog::ViewMode  mode);
-   QStringList  static_QFileDialog_getOpenFileNames(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
-   bool  isNameFilterDetailsVisible(QFileDialog* theWrappedObject) const;
-   QAbstractItemDelegate*  itemDelegate(QFileDialog* theWrappedObject) const;
-   void setDirectory(QFileDialog* theWrappedObject, const QString&  directory);
-   void setSidebarUrls(QFileDialog* theWrappedObject, const QList<QUrl >&  urls);
-   bool  isReadOnly(QFileDialog* theWrappedObject) const;
-   QStringList  selectedFiles(QFileDialog* theWrappedObject) const;
+   QString  static_QFileDialog_getSaveFileName(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
    void setAcceptMode(QFileDialog* theWrappedObject, QFileDialog::AcceptMode  mode);
+   QString  defaultSuffix(QFileDialog* theWrappedObject) const;
+   QDir::Filters  filter(QFileDialog* theWrappedObject) const;
+   QFileIconProvider*  iconProvider(QFileDialog* theWrappedObject) const;
+   bool  isReadOnly(QFileDialog* theWrappedObject) const;
+   QString  static_QFileDialog_getOpenFileName(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
+   void setFilters(QFileDialog* theWrappedObject, const QStringList&  filters);
+   void open(QFileDialog* theWrappedObject);
+   QDir  directory(QFileDialog* theWrappedObject) const;
+   void setFilter(QFileDialog* theWrappedObject, QDir::Filters  filters);
+   QFileDialog::FileMode  fileMode(QFileDialog* theWrappedObject) const;
+   bool  restoreState(QFileDialog* theWrappedObject, const QByteArray&  state);
+   QStringList  selectedFiles(QFileDialog* theWrappedObject) const;
+   QStringList  static_QFileDialog_getOpenFileNames(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), const QString&  filter = QString(), QString*  selectedFilter = 0, QFileDialog::Options  options = 0);
+   QFileDialog::Options  options(QFileDialog* theWrappedObject) const;
+   void setProxyModel(QFileDialog* theWrappedObject, QAbstractProxyModel*  model);
+   void setSidebarUrls(QFileDialog* theWrappedObject, const QList<QUrl >&  urls);
+   QList<QUrl >  sidebarUrls(QFileDialog* theWrappedObject) const;
+   void selectFile(QFileDialog* theWrappedObject, const QString&  filename);
+   QString  selectedNameFilter(QFileDialog* theWrappedObject) const;
+   void setDirectory(QFileDialog* theWrappedObject, const QString&  directory);
+   void done(QFileDialog* theWrappedObject, int  result);
+   void setFileMode(QFileDialog* theWrappedObject, QFileDialog::FileMode  mode);
+   QAbstractProxyModel*  proxyModel(QFileDialog* theWrappedObject) const;
+   bool  confirmOverwrite(QFileDialog* theWrappedObject) const;
+   QByteArray  saveState(QFileDialog* theWrappedObject) const;
    QString  static_QFileDialog_getExistingDirectory(QWidget*  parent = 0, const QString&  caption = QString(), const QString&  dir = QString(), QFileDialog::Options  options = QFileDialog::ShowDirsOnly);
-   bool  resolveSymlinks(QFileDialog* theWrappedObject) const;
+   QStringList  filters(QFileDialog* theWrappedObject) const;
+   void setConfirmOverwrite(QFileDialog* theWrappedObject, bool  enabled);
+   void selectNameFilter(QFileDialog* theWrappedObject, const QString&  filter);
+   void setNameFilter(QFileDialog* theWrappedObject, const QString&  filter);
+   QFileDialog::ViewMode  viewMode(QFileDialog* theWrappedObject) const;
+   QAbstractItemDelegate*  itemDelegate(QFileDialog* theWrappedObject) const;
+   QString  selectedFilter(QFileDialog* theWrappedObject) const;
+   QFileDialog::AcceptMode  acceptMode(QFileDialog* theWrappedObject) const;
+   void setReadOnly(QFileDialog* theWrappedObject, bool  enabled);
+   void open(QFileDialog* theWrappedObject, QObject*  receiver, const char*  member);
+   void setDirectory(QFileDialog* theWrappedObject, const QDir&  directory);
+   void setItemDelegate(QFileDialog* theWrappedObject, QAbstractItemDelegate*  delegate);
+   void setHistory(QFileDialog* theWrappedObject, const QStringList&  paths);
+   QStringList  history(QFileDialog* theWrappedObject) const;
+   void setFilter(QFileDialog* theWrappedObject, const QString&  filter);
+   void setOptions(QFileDialog* theWrappedObject, QFileDialog::Options  options);
+   void setDefaultSuffix(QFileDialog* theWrappedObject, const QString&  suffix);
+   bool  testOption(QFileDialog* theWrappedObject, QFileDialog::Option  option) const;
+   void setViewMode(QFileDialog* theWrappedObject, QFileDialog::ViewMode  mode);
+   void setNameFilters(QFileDialog* theWrappedObject, const QStringList&  filters);
+   void setVisible(QFileDialog* theWrappedObject, bool  visible);
+   void selectFilter(QFileDialog* theWrappedObject, const QString&  filter);
+   void accept(QFileDialog* theWrappedObject);
 };
 
 #endif // PYTHONQTWRAPPER_QFILEDIALOG_H

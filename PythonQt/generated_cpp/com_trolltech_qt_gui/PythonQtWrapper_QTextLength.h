@@ -24,12 +24,12 @@ QTextLength* a = new QTextLength();
 *((QTextLength*)a) = other;
 return a; }
 void delete_QTextLength(QTextLength* obj) { delete obj; } 
-   void writeTo(QTextLength* theWrappedObject, QDataStream&  arg__1);
-   bool  operator_equal(QTextLength* theWrappedObject, const QTextLength&  other) const;
    void readFrom(QTextLength* theWrappedObject, QDataStream&  arg__1);
+   bool  operator_equal(QTextLength* theWrappedObject, const QTextLength&  other) const;
    qreal  rawValue(QTextLength* theWrappedObject) const;
-   qreal  value(QTextLength* theWrappedObject, qreal  maximumLength) const;
    QTextLength::Type  type(QTextLength* theWrappedObject) const;
+   qreal  value(QTextLength* theWrappedObject, qreal  maximumLength) const;
+   void writeTo(QTextLength* theWrappedObject, QDataStream&  arg__1);
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTLENGTH_H

@@ -28,7 +28,7 @@ class PythonQtWrapper_QTextListFormat : public QObject
 public:
 Q_ENUMS(Style )
 enum Style{
-  ListDisc = QTextListFormat::ListDisc,   ListCircle = QTextListFormat::ListCircle,   ListSquare = QTextListFormat::ListSquare,   ListDecimal = QTextListFormat::ListDecimal,   ListLowerAlpha = QTextListFormat::ListLowerAlpha,   ListUpperAlpha = QTextListFormat::ListUpperAlpha,   ListStyleUndefined = QTextListFormat::ListStyleUndefined};
+  ListDisc = QTextListFormat::ListDisc,   ListCircle = QTextListFormat::ListCircle,   ListSquare = QTextListFormat::ListSquare,   ListDecimal = QTextListFormat::ListDecimal,   ListLowerAlpha = QTextListFormat::ListLowerAlpha,   ListUpperAlpha = QTextListFormat::ListUpperAlpha,   ListLowerRoman = QTextListFormat::ListLowerRoman,   ListUpperRoman = QTextListFormat::ListUpperRoman,   ListStyleUndefined = QTextListFormat::ListStyleUndefined};
 public slots:
 QTextListFormat* new_QTextListFormat();
 QTextListFormat* new_QTextListFormat(const QTextListFormat& other) {
@@ -36,9 +36,9 @@ PythonQtShell_QTextListFormat* a = new PythonQtShell_QTextListFormat();
 *((QTextListFormat*)a) = other;
 return a; }
 void delete_QTextListFormat(QTextListFormat* obj) { delete obj; } 
-   void setStyle(QTextListFormat* theWrappedObject, QTextListFormat::Style  style);
    void setIndent(QTextListFormat* theWrappedObject, int  indent);
    bool  isValid(QTextListFormat* theWrappedObject) const;
+   void setStyle(QTextListFormat* theWrappedObject, QTextListFormat::Style  style);
    QTextListFormat::Style  style(QTextListFormat* theWrappedObject) const;
    int  indent(QTextListFormat* theWrappedObject) const;
 };

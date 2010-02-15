@@ -20,9 +20,9 @@ QBasicTimer* a = new QBasicTimer();
 return a; }
 void delete_QBasicTimer(QBasicTimer* obj) { delete obj; } 
    bool  isActive(QBasicTimer* theWrappedObject) const;
-   int  timerId(QBasicTimer* theWrappedObject) const;
-   void start(QBasicTimer* theWrappedObject, int  msec, QObject*  obj);
    void stop(QBasicTimer* theWrappedObject);
+   void start(QBasicTimer* theWrappedObject, int  msec, QObject*  obj);
+   int  timerId(QBasicTimer* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QBASICTIMER_H

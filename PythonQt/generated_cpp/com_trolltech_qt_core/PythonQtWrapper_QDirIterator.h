@@ -39,11 +39,11 @@ QDirIterator* new_QDirIterator(const QString&  path, QDirIterator::IteratorFlags
 QDirIterator* new_QDirIterator(const QString&  path, const QStringList&  nameFilters, QDir::Filters  filters = QDir::NoFilter, QDirIterator::IteratorFlags  flags = QDirIterator::NoIteratorFlags);
 void delete_QDirIterator(QDirIterator* obj) { delete obj; } 
    QString  next(QDirIterator* theWrappedObject);
-   QString  fileName(QDirIterator* theWrappedObject) const;
    QFileInfo  fileInfo(QDirIterator* theWrappedObject) const;
-   QString  filePath(QDirIterator* theWrappedObject) const;
-   bool  hasNext(QDirIterator* theWrappedObject) const;
    QString  path(QDirIterator* theWrappedObject) const;
+   QString  fileName(QDirIterator* theWrappedObject) const;
+   bool  hasNext(QDirIterator* theWrappedObject) const;
+   QString  filePath(QDirIterator* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QDIRITERATOR_H

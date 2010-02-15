@@ -15,9 +15,9 @@ bool  PythonQtWrapper_QBasicTimer::isActive(QBasicTimer* theWrappedObject) const
   return ( theWrappedObject->isActive());
 }
 
-int  PythonQtWrapper_QBasicTimer::timerId(QBasicTimer* theWrappedObject) const
+void PythonQtWrapper_QBasicTimer::stop(QBasicTimer* theWrappedObject)
 {
-  return ( theWrappedObject->timerId());
+  ( theWrappedObject->stop());
 }
 
 void PythonQtWrapper_QBasicTimer::start(QBasicTimer* theWrappedObject, int  msec, QObject*  obj)
@@ -25,8 +25,8 @@ void PythonQtWrapper_QBasicTimer::start(QBasicTimer* theWrappedObject, int  msec
   ( theWrappedObject->start(msec, obj));
 }
 
-void PythonQtWrapper_QBasicTimer::stop(QBasicTimer* theWrappedObject)
+int  PythonQtWrapper_QBasicTimer::timerId(QBasicTimer* theWrappedObject) const
 {
-  ( theWrappedObject->stop());
+  return ( theWrappedObject->timerId());
 }
 

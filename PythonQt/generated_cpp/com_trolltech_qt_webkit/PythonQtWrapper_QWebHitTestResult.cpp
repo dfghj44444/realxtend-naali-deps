@@ -6,7 +6,9 @@
 #include <QVariant>
 #include <qpixmap.h>
 #include <qpoint.h>
+#include <qrect.h>
 #include <qurl.h>
+#include <qwebelement.h>
 #include <qwebframe.h>
 
 QWebHitTestResult* PythonQtWrapper_QWebHitTestResult::new_QWebHitTestResult()
@@ -17,9 +19,9 @@ QWebHitTestResult* PythonQtWrapper_QWebHitTestResult::new_QWebHitTestResult(cons
 { 
 return new QWebHitTestResult(other); }
 
-bool  PythonQtWrapper_QWebHitTestResult::isContentSelected(QWebHitTestResult* theWrappedObject) const
+QWebElement  PythonQtWrapper_QWebHitTestResult::linkElement(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->isContentSelected());
+  return ( theWrappedObject->linkElement());
 }
 
 bool  PythonQtWrapper_QWebHitTestResult::isNull(QWebHitTestResult* theWrappedObject) const
@@ -27,24 +29,19 @@ bool  PythonQtWrapper_QWebHitTestResult::isNull(QWebHitTestResult* theWrappedObj
   return ( theWrappedObject->isNull());
 }
 
-QUrl  PythonQtWrapper_QWebHitTestResult::linkUrl(QWebHitTestResult* theWrappedObject) const
-{
-  return ( theWrappedObject->linkUrl());
-}
-
 QString  PythonQtWrapper_QWebHitTestResult::alternateText(QWebHitTestResult* theWrappedObject) const
 {
   return ( theWrappedObject->alternateText());
 }
 
-QPixmap  PythonQtWrapper_QWebHitTestResult::pixmap(QWebHitTestResult* theWrappedObject) const
+QRect  PythonQtWrapper_QWebHitTestResult::boundingRect(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->pixmap());
+  return ( theWrappedObject->boundingRect());
 }
 
-QWebFrame*  PythonQtWrapper_QWebHitTestResult::linkTargetFrame(QWebHitTestResult* theWrappedObject) const
+QUrl  PythonQtWrapper_QWebHitTestResult::linkTitle(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->linkTargetFrame());
+  return ( theWrappedObject->linkTitle());
 }
 
 QString  PythonQtWrapper_QWebHitTestResult::linkText(QWebHitTestResult* theWrappedObject) const
@@ -52,9 +49,9 @@ QString  PythonQtWrapper_QWebHitTestResult::linkText(QWebHitTestResult* theWrapp
   return ( theWrappedObject->linkText());
 }
 
-QPoint  PythonQtWrapper_QWebHitTestResult::pos(QWebHitTestResult* theWrappedObject) const
+QPixmap  PythonQtWrapper_QWebHitTestResult::pixmap(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->pos());
+  return ( theWrappedObject->pixmap());
 }
 
 QWebFrame*  PythonQtWrapper_QWebHitTestResult::frame(QWebHitTestResult* theWrappedObject) const
@@ -67,18 +64,43 @@ bool  PythonQtWrapper_QWebHitTestResult::isContentEditable(QWebHitTestResult* th
   return ( theWrappedObject->isContentEditable());
 }
 
-QUrl  PythonQtWrapper_QWebHitTestResult::linkTitle(QWebHitTestResult* theWrappedObject) const
+QPoint  PythonQtWrapper_QWebHitTestResult::pos(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->linkTitle());
+  return ( theWrappedObject->pos());
 }
 
-QUrl  PythonQtWrapper_QWebHitTestResult::imageUrl(QWebHitTestResult* theWrappedObject) const
+QWebElement  PythonQtWrapper_QWebHitTestResult::element(QWebHitTestResult* theWrappedObject) const
 {
-  return ( theWrappedObject->imageUrl());
+  return ( theWrappedObject->element());
 }
 
 QString  PythonQtWrapper_QWebHitTestResult::title(QWebHitTestResult* theWrappedObject) const
 {
   return ( theWrappedObject->title());
+}
+
+bool  PythonQtWrapper_QWebHitTestResult::isContentSelected(QWebHitTestResult* theWrappedObject) const
+{
+  return ( theWrappedObject->isContentSelected());
+}
+
+QWebFrame*  PythonQtWrapper_QWebHitTestResult::linkTargetFrame(QWebHitTestResult* theWrappedObject) const
+{
+  return ( theWrappedObject->linkTargetFrame());
+}
+
+QUrl  PythonQtWrapper_QWebHitTestResult::linkUrl(QWebHitTestResult* theWrappedObject) const
+{
+  return ( theWrappedObject->linkUrl());
+}
+
+QWebElement  PythonQtWrapper_QWebHitTestResult::enclosingBlockElement(QWebHitTestResult* theWrappedObject) const
+{
+  return ( theWrappedObject->enclosingBlockElement());
+}
+
+QUrl  PythonQtWrapper_QWebHitTestResult::imageUrl(QWebHitTestResult* theWrappedObject) const
+{
+  return ( theWrappedObject->imageUrl());
 }
 

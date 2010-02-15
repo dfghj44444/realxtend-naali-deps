@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -797,29 +800,9 @@ QStackedWidget* PythonQtWrapper_QStackedWidget::new_QStackedWidget(QWidget*  par
 { 
 return new PythonQtShell_QStackedWidget(parent); }
 
-QWidget*  PythonQtWrapper_QStackedWidget::currentWidget(QStackedWidget* theWrappedObject) const
-{
-  return ( theWrappedObject->currentWidget());
-}
-
 int  PythonQtWrapper_QStackedWidget::indexOf(QStackedWidget* theWrappedObject, QWidget*  arg__1) const
 {
   return ( theWrappedObject->indexOf(arg__1));
-}
-
-int  PythonQtWrapper_QStackedWidget::insertWidget(QStackedWidget* theWrappedObject, int  index, QWidget*  w)
-{
-  return ( theWrappedObject->insertWidget(index, w));
-}
-
-int  PythonQtWrapper_QStackedWidget::currentIndex(QStackedWidget* theWrappedObject) const
-{
-  return ( theWrappedObject->currentIndex());
-}
-
-QWidget*  PythonQtWrapper_QStackedWidget::widget(QStackedWidget* theWrappedObject, int  arg__1) const
-{
-  return ( theWrappedObject->widget(arg__1));
 }
 
 bool  PythonQtWrapper_QStackedWidget::event(QStackedWidget* theWrappedObject, QEvent*  e)
@@ -827,9 +810,14 @@ bool  PythonQtWrapper_QStackedWidget::event(QStackedWidget* theWrappedObject, QE
   return ( ((PythonQtPublicPromoter_QStackedWidget*)theWrappedObject)->promoted_event(e));
 }
 
-int  PythonQtWrapper_QStackedWidget::addWidget(QStackedWidget* theWrappedObject, QWidget*  w)
+int  PythonQtWrapper_QStackedWidget::currentIndex(QStackedWidget* theWrappedObject) const
 {
-  return ( theWrappedObject->addWidget(w));
+  return ( theWrappedObject->currentIndex());
+}
+
+int  PythonQtWrapper_QStackedWidget::insertWidget(QStackedWidget* theWrappedObject, int  index, QWidget*  w)
+{
+  return ( theWrappedObject->insertWidget(index, w));
 }
 
 int  PythonQtWrapper_QStackedWidget::count(QStackedWidget* theWrappedObject) const
@@ -840,5 +828,20 @@ int  PythonQtWrapper_QStackedWidget::count(QStackedWidget* theWrappedObject) con
 void PythonQtWrapper_QStackedWidget::removeWidget(QStackedWidget* theWrappedObject, QWidget*  w)
 {
   ( theWrappedObject->removeWidget(w));
+}
+
+QWidget*  PythonQtWrapper_QStackedWidget::widget(QStackedWidget* theWrappedObject, int  arg__1) const
+{
+  return ( theWrappedObject->widget(arg__1));
+}
+
+int  PythonQtWrapper_QStackedWidget::addWidget(QStackedWidget* theWrappedObject, QWidget*  w)
+{
+  return ( theWrappedObject->addWidget(w));
+}
+
+QWidget*  PythonQtWrapper_QStackedWidget::currentWidget(QStackedWidget* theWrappedObject) const
+{
+  return ( theWrappedObject->currentWidget());
 }
 

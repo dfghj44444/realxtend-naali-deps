@@ -19,13 +19,13 @@ QSourceLocation* new_QSourceLocation(const QSourceLocation&  other);
 QSourceLocation* new_QSourceLocation(const QUrl&  uri, int  line = -1, int  column = -1);
 void delete_QSourceLocation(QSourceLocation* obj) { delete obj; } 
    bool  operator_equal(QSourceLocation* theWrappedObject, const QSourceLocation&  other) const;
-   qint64  line(QSourceLocation* theWrappedObject) const;
-   QUrl  uri(QSourceLocation* theWrappedObject) const;
    void setColumn(QSourceLocation* theWrappedObject, qint64  newColumn);
+   QUrl  uri(QSourceLocation* theWrappedObject) const;
    qint64  column(QSourceLocation* theWrappedObject) const;
-   bool  isNull(QSourceLocation* theWrappedObject) const;
    void setLine(QSourceLocation* theWrappedObject, qint64  newLine);
+   bool  isNull(QSourceLocation* theWrappedObject) const;
    void setUri(QSourceLocation* theWrappedObject, const QUrl&  newUri);
+   qint64  line(QSourceLocation* theWrappedObject) const;
     QString toString(QSourceLocation*);
 };
 

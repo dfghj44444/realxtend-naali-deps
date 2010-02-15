@@ -15,12 +15,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -39,6 +42,7 @@ class PythonQtShell_QPrintDialog : public QPrintDialog
 {
 public:
     PythonQtShell_QPrintDialog(QPrinter*  printer, QWidget*  parent = 0):QPrintDialog(printer, parent),_wrapper(NULL) {};
+    PythonQtShell_QPrintDialog(QWidget*  parent = 0):QPrintDialog(parent),_wrapper(NULL) {};
 
 virtual void accept();
 virtual void actionEvent(QActionEvent*  arg__1);
@@ -48,7 +52,7 @@ virtual void closeEvent(QCloseEvent*  arg__1);
 virtual void contextMenuEvent(QContextMenuEvent*  arg__1);
 virtual void customEvent(QEvent*  arg__1);
 virtual int  devType() const;
-virtual void done(int  arg__1);
+virtual void done(int  result);
 virtual void dragEnterEvent(QDragEnterEvent*  arg__1);
 virtual void dragLeaveEvent(QDragLeaveEvent*  arg__1);
 virtual void dragMoveEvent(QDragMoveEvent*  arg__1);
@@ -88,7 +92,9 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QPrintDialog : public QPrintDialog
 { public:
+inline void promoted_accepted() { QPrintDialog::accepted(); }
 inline int  promoted_exec() { return QPrintDialog::exec(); }
+inline void promoted_done(int  result) { QPrintDialog::done(result); }
 };
 
 class PythonQtWrapper_QPrintDialog : public QObject
@@ -96,8 +102,17 @@ class PythonQtWrapper_QPrintDialog : public QObject
 public:
 public slots:
 QPrintDialog* new_QPrintDialog(QPrinter*  printer, QWidget*  parent = 0);
+QPrintDialog* new_QPrintDialog(QWidget*  parent = 0);
 void delete_QPrintDialog(QPrintDialog* obj) { delete obj; } 
+   void accepted(QPrintDialog* theWrappedObject);
+   void open(QPrintDialog* theWrappedObject, QObject*  receiver, const char*  member);
+   void setOption(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option, bool  on = true);
+   QAbstractPrintDialog::PrintDialogOptions  options(QPrintDialog* theWrappedObject) const;
    int  exec(QPrintDialog* theWrappedObject);
+   void setOptions(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOptions  options);
+   void open(QPrintDialog* theWrappedObject);
+   bool  testOption(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option) const;
+   void done(QPrintDialog* theWrappedObject, int  result);
 };
 
 #endif // PYTHONQTWRAPPER_QPRINTDIALOG_H

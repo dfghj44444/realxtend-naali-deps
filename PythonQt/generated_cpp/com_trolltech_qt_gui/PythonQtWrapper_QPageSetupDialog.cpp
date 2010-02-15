@@ -12,12 +12,15 @@
 #include <qdialog.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -179,7 +182,7 @@ if (_wrapper) {
 }
   return QPageSetupDialog::devType();
 }
-void PythonQtShell_QPageSetupDialog::done(int  arg__1)
+void PythonQtShell_QPageSetupDialog::done(int  result)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "done");
@@ -187,14 +190,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "int"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&result};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QPageSetupDialog::done(arg__1);
+  QPageSetupDialog::done(result);
 }
 void PythonQtShell_QPageSetupDialog::dragEnterEvent(QDragEnterEvent*  arg__1)
 {
@@ -849,19 +852,28 @@ QPageSetupDialog* PythonQtWrapper_QPageSetupDialog::new_QPageSetupDialog(QPrinte
 { 
 return new PythonQtShell_QPageSetupDialog(printer, parent); }
 
+QPageSetupDialog* PythonQtWrapper_QPageSetupDialog::new_QPageSetupDialog(QWidget*  parent)
+{ 
+return new PythonQtShell_QPageSetupDialog(parent); }
+
+bool  PythonQtWrapper_QPageSetupDialog::isOptionEnabled(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOption  option) const
+{
+  return ( theWrappedObject->isOptionEnabled(option));
+}
+
+QPageSetupDialog::PageSetupDialogOptions  PythonQtWrapper_QPageSetupDialog::options(QPageSetupDialog* theWrappedObject) const
+{
+  return ( theWrappedObject->options());
+}
+
 void PythonQtWrapper_QPageSetupDialog::setEnabledOptions(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOptions  options)
 {
   ( theWrappedObject->setEnabledOptions(options));
 }
 
-QPageSetupDialog::PageSetupDialogOptions  PythonQtWrapper_QPageSetupDialog::enabledOptions(QPageSetupDialog* theWrappedObject) const
+bool  PythonQtWrapper_QPageSetupDialog::testOption(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOption  option) const
 {
-  return ( theWrappedObject->enabledOptions());
-}
-
-int  PythonQtWrapper_QPageSetupDialog::exec(QPageSetupDialog* theWrappedObject)
-{
-  return ( ((PythonQtPublicPromoter_QPageSetupDialog*)theWrappedObject)->promoted_exec());
+  return ( theWrappedObject->testOption(option));
 }
 
 void PythonQtWrapper_QPageSetupDialog::addEnabledOption(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOption  option)
@@ -869,8 +881,33 @@ void PythonQtWrapper_QPageSetupDialog::addEnabledOption(QPageSetupDialog* theWra
   ( theWrappedObject->addEnabledOption(option));
 }
 
-bool  PythonQtWrapper_QPageSetupDialog::isOptionEnabled(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOption  option) const
+QPageSetupDialog::PageSetupDialogOptions  PythonQtWrapper_QPageSetupDialog::enabledOptions(QPageSetupDialog* theWrappedObject) const
 {
-  return ( theWrappedObject->isOptionEnabled(option));
+  return ( theWrappedObject->enabledOptions());
+}
+
+void PythonQtWrapper_QPageSetupDialog::setOptions(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOptions  options)
+{
+  ( theWrappedObject->setOptions(options));
+}
+
+void PythonQtWrapper_QPageSetupDialog::open(QPageSetupDialog* theWrappedObject)
+{
+  ( theWrappedObject->open());
+}
+
+int  PythonQtWrapper_QPageSetupDialog::exec(QPageSetupDialog* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QPageSetupDialog*)theWrappedObject)->promoted_exec());
+}
+
+void PythonQtWrapper_QPageSetupDialog::setOption(QPageSetupDialog* theWrappedObject, QPageSetupDialog::PageSetupDialogOption  option, bool  on)
+{
+  ( theWrappedObject->setOption(option, on));
+}
+
+void PythonQtWrapper_QPageSetupDialog::open(QPageSetupDialog* theWrappedObject, QObject*  receiver, const char*  member)
+{
+  ( theWrappedObject->open(receiver, member));
 }
 

@@ -49,17 +49,17 @@ virtual qint64  writeData(const char*  data, qint64  len);
 
 class PythonQtPublicPromoter_QFile : public QFile
 { public:
-inline QAbstractFileEngine*  promoted_fileEngine() const { return QFile::fileEngine(); }
-inline qint64  promoted_pos() const { return QFile::pos(); }
-inline void promoted_close() { QFile::close(); }
-inline bool  promoted_isSequential() const { return QFile::isSequential(); }
-inline bool  promoted_atEnd() const { return QFile::atEnd(); }
-inline qint64  promoted_size() const { return QFile::size(); }
-inline qint64  promoted_readLineData(char*  data, qint64  maxlen) { return QFile::readLineData(data, maxlen); }
 inline qint64  promoted_writeData(const char*  data, qint64  len) { return QFile::writeData(data, len); }
-inline bool  promoted_seek(qint64  offset) { return QFile::seek(offset); }
-inline qint64  promoted_readData(char*  data, qint64  maxlen) { return QFile::readData(data, maxlen); }
 inline bool  promoted_open(QIODevice::OpenMode  flags) { return QFile::open(flags); }
+inline bool  promoted_atEnd() const { return QFile::atEnd(); }
+inline qint64  promoted_readLineData(char*  data, qint64  maxlen) { return QFile::readLineData(data, maxlen); }
+inline bool  promoted_seek(qint64  offset) { return QFile::seek(offset); }
+inline void promoted_close() { QFile::close(); }
+inline qint64  promoted_pos() const { return QFile::pos(); }
+inline qint64  promoted_readData(char*  data, qint64  maxlen) { return QFile::readData(data, maxlen); }
+inline QAbstractFileEngine*  promoted_fileEngine() const { return QFile::fileEngine(); }
+inline bool  promoted_isSequential() const { return QFile::isSequential(); }
+inline qint64  promoted_size() const { return QFile::size(); }
 };
 
 class PythonQtWrapper_QFile : public QObject
@@ -80,43 +80,43 @@ QFile* new_QFile(QObject*  parent);
 QFile* new_QFile(const QString&  name);
 QFile* new_QFile(const QString&  name, QObject*  parent);
 void delete_QFile(QFile* obj) { delete obj; } 
-   QByteArray  static_QFile_encodeName(const QString&  fileName);
-   void unsetError(QFile* theWrappedObject);
-   QFile::FileError  error(QFile* theWrappedObject) const;
-   QAbstractFileEngine*  fileEngine(QFile* theWrappedObject) const;
-   qint64  pos(QFile* theWrappedObject) const;
-   bool  static_QFile_rename(const QString&  oldName, const QString&  newName);
-   void close(QFile* theWrappedObject);
-   bool  isSequential(QFile* theWrappedObject) const;
-   bool  remove(QFile* theWrappedObject);
-   bool  setPermissions(QFile* theWrappedObject, QFile::Permissions  permissionSpec);
-   bool  static_QFile_remove(const QString&  fileName);
-   void setFileName(QFile* theWrappedObject, const QString&  name);
    bool  static_QFile_exists(const QString&  fileName);
-   bool  static_QFile_link(const QString&  oldname, const QString&  newName);
-   QString  static_QFile_decodeName(const QByteArray&  localFileName);
-   bool  atEnd(QFile* theWrappedObject) const;
-   QString  static_QFile_symLinkTarget(const QString&  fileName);
-   qint64  size(QFile* theWrappedObject) const;
-   bool  static_QFile_setPermissions(const QString&  filename, QFile::Permissions  permissionSpec);
-   qint64  readLineData(QFile* theWrappedObject, char*  data, qint64  maxlen);
-   int  handle(QFile* theWrappedObject) const;
-   QString  symLinkTarget(QFile* theWrappedObject) const;
-   qint64  writeData(QFile* theWrappedObject, const char*  data, qint64  len);
    bool  link(QFile* theWrappedObject, const QString&  newName);
-   QString  fileName(QFile* theWrappedObject) const;
-   bool  static_QFile_copy(const QString&  fileName, const QString&  newName);
-   bool  seek(QFile* theWrappedObject, qint64  offset);
-   bool  copy(QFile* theWrappedObject, const QString&  newName);
    QFile::Permissions  static_QFile_permissions(const QString&  filename);
-   qint64  readData(QFile* theWrappedObject, char*  data, qint64  maxlen);
-   bool  flush(QFile* theWrappedObject);
-   bool  resize(QFile* theWrappedObject, qint64  sz);
-   QFile::Permissions  permissions(QFile* theWrappedObject) const;
-   bool  static_QFile_resize(const QString&  filename, qint64  sz);
-   bool  exists(QFile* theWrappedObject) const;
+   bool  setPermissions(QFile* theWrappedObject, QFile::Permissions  permissionSpec);
+   qint64  writeData(QFile* theWrappedObject, const char*  data, qint64  len);
+   QString  static_QFile_symLinkTarget(const QString&  fileName);
    bool  open(QFile* theWrappedObject, QIODevice::OpenMode  flags);
+   bool  remove(QFile* theWrappedObject);
+   void unsetError(QFile* theWrappedObject);
+   bool  exists(QFile* theWrappedObject) const;
+   bool  static_QFile_remove(const QString&  fileName);
+   bool  static_QFile_copy(const QString&  fileName, const QString&  newName);
+   QString  fileName(QFile* theWrappedObject) const;
    bool  rename(QFile* theWrappedObject, const QString&  newName);
+   bool  copy(QFile* theWrappedObject, const QString&  newName);
+   bool  atEnd(QFile* theWrappedObject) const;
+   qint64  readLineData(QFile* theWrappedObject, char*  data, qint64  maxlen);
+   QFile::FileError  error(QFile* theWrappedObject) const;
+   bool  seek(QFile* theWrappedObject, qint64  offset);
+   void close(QFile* theWrappedObject);
+   bool  static_QFile_setPermissions(const QString&  filename, QFile::Permissions  permissionSpec);
+   QFile::Permissions  permissions(QFile* theWrappedObject) const;
+   QByteArray  static_QFile_encodeName(const QString&  fileName);
+   bool  flush(QFile* theWrappedObject);
+   qint64  pos(QFile* theWrappedObject) const;
+   bool  static_QFile_resize(const QString&  filename, qint64  sz);
+   int  handle(QFile* theWrappedObject) const;
+   qint64  readData(QFile* theWrappedObject, char*  data, qint64  maxlen);
+   QAbstractFileEngine*  fileEngine(QFile* theWrappedObject) const;
+   bool  static_QFile_rename(const QString&  oldName, const QString&  newName);
+   bool  resize(QFile* theWrappedObject, qint64  sz);
+   bool  static_QFile_link(const QString&  oldname, const QString&  newName);
+   bool  isSequential(QFile* theWrappedObject) const;
+   QString  symLinkTarget(QFile* theWrappedObject) const;
+   QString  static_QFile_decodeName(const QByteArray&  localFileName);
+   void setFileName(QFile* theWrappedObject, const QString&  name);
+   qint64  size(QFile* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QFILE_H

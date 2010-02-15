@@ -15,12 +15,15 @@
 #include <qdesktopwidget.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -94,19 +97,20 @@ public:
 public slots:
 QDesktopWidget* new_QDesktopWidget();
 void delete_QDesktopWidget(QDesktopWidget* obj) { delete obj; } 
-   void resizeEvent(QDesktopWidget* theWrappedObject, QResizeEvent*  e);
-   int  primaryScreen(QDesktopWidget* theWrappedObject) const;
-   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, int  screen = -1) const;
-   int  screenNumber(QDesktopWidget* theWrappedObject, const QPoint&  arg__1) const;
-   const QRect  screenGeometry(QDesktopWidget* theWrappedObject, const QPoint&  point) const;
-   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, const QWidget*  widget) const;
-   bool  isVirtualDesktop(QDesktopWidget* theWrappedObject) const;
    int  numScreens(QDesktopWidget* theWrappedObject) const;
+   int  screenNumber(QDesktopWidget* theWrappedObject, const QPoint&  arg__1) const;
    QWidget*  screen(QDesktopWidget* theWrappedObject, int  screen = -1);
-   const QRect  screenGeometry(QDesktopWidget* theWrappedObject, const QWidget*  widget) const;
-   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, const QPoint&  point) const;
+   int  screenCount(QDesktopWidget* theWrappedObject) const;
+   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, const QWidget*  widget) const;
+   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, int  screen = -1) const;
+   void resizeEvent(QDesktopWidget* theWrappedObject, QResizeEvent*  e);
    const QRect  screenGeometry(QDesktopWidget* theWrappedObject, int  screen = -1) const;
+   bool  isVirtualDesktop(QDesktopWidget* theWrappedObject) const;
+   const QRect  screenGeometry(QDesktopWidget* theWrappedObject, const QWidget*  widget) const;
    int  screenNumber(QDesktopWidget* theWrappedObject, const QWidget*  widget = 0) const;
+   const QRect  availableGeometry(QDesktopWidget* theWrappedObject, const QPoint&  point) const;
+   const QRect  screenGeometry(QDesktopWidget* theWrappedObject, const QPoint&  point) const;
+   int  primaryScreen(QDesktopWidget* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QDESKTOPWIDGET_H

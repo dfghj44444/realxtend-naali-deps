@@ -12,12 +12,15 @@
 #include <qdialog.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -179,7 +182,7 @@ if (_wrapper) {
 }
   return QAbstractPageSetupDialog::devType();
 }
-void PythonQtShell_QAbstractPageSetupDialog::done(int  arg__1)
+void PythonQtShell_QAbstractPageSetupDialog::done(int  result)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "done");
@@ -187,14 +190,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "int"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&result};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QAbstractPageSetupDialog::done(arg__1);
+  QAbstractPageSetupDialog::done(result);
 }
 void PythonQtShell_QAbstractPageSetupDialog::dragEnterEvent(QDragEnterEvent*  arg__1)
 {
@@ -849,6 +852,11 @@ if (_wrapper) {
 QAbstractPageSetupDialog* PythonQtWrapper_QAbstractPageSetupDialog::new_QAbstractPageSetupDialog(QPrinter*  printer, QWidget*  parent)
 { 
 return new PythonQtShell_QAbstractPageSetupDialog(printer, parent); }
+
+void PythonQtWrapper_QAbstractPageSetupDialog::done(QAbstractPageSetupDialog* theWrappedObject, int  result)
+{
+  ( ((PythonQtPublicPromoter_QAbstractPageSetupDialog*)theWrappedObject)->promoted_done(result));
+}
 
 QPrinter*  PythonQtWrapper_QAbstractPageSetupDialog::printer(QAbstractPageSetupDialog* theWrappedObject)
 {

@@ -8,12 +8,13 @@
 
 #include <QVariant>
 #include <qbitmap.h>
-#include <qbytearray.h>
 #include <qdatastream.h>
+#include <qmatrix.h>
 #include <qpoint.h>
 #include <qpolygon.h>
 #include <qrect.h>
 #include <qregion.h>
+#include <qtransform.h>
 #include <qvector.h>
 
 class PythonQtWrapper_QRegion : public QObject
@@ -30,31 +31,34 @@ QRegion* new_QRegion(const QRect&  r, QRegion::RegionType  t = QRegion::Rectangl
 QRegion* new_QRegion(const QRegion&  region);
 QRegion* new_QRegion(int  x, int  y, int  w, int  h, QRegion::RegionType  t = QRegion::Rectangle);
 void delete_QRegion(QRegion* obj) { delete obj; } 
-   bool  contains(QRegion* theWrappedObject, const QRect&  r) const;
-   QRegion  intersected(QRegion* theWrappedObject, const QRegion&  r) const;
-   const QRegion  operator_and(QRegion* theWrappedObject, const QRect&  r) const;
-   QRegion  unite(QRegion* theWrappedObject, const QRect&  r) const;
-   bool  isEmpty(QRegion* theWrappedObject) const;
-   void translate(QRegion* theWrappedObject, int  dx, int  dy);
-   QRegion  subtracted(QRegion* theWrappedObject, const QRegion&  r) const;
-   QRegion  intersect(QRegion* theWrappedObject, const QRect&  r) const;
    void translate(QRegion* theWrappedObject, const QPoint&  p);
-   bool  intersects(QRegion* theWrappedObject, const QRect&  r) const;
-   QRegion  translated(QRegion* theWrappedObject, int  dx, int  dy) const;
-   bool  intersects(QRegion* theWrappedObject, const QRegion&  r) const;
-   void setRects(QRegion* theWrappedObject, const QRect*  rect, int  num);
+   bool  contains(QRegion* theWrappedObject, const QRect&  r) const;
    QRegion  united(QRegion* theWrappedObject, const QRect&  r) const;
-   QRegion  united(QRegion* theWrappedObject, const QRegion&  r) const;
-   int  numRects(QRegion* theWrappedObject) const;
-   QRegion  translated(QRegion* theWrappedObject, const QPoint&  p) const;
+   QRegion  __mul__(QRegion* theWrappedObject, const QMatrix&  m);
+   void translate(QRegion* theWrappedObject, int  dx, int  dy);
    QRect  boundingRect(QRegion* theWrappedObject) const;
-   const QRegion  operator_add(QRegion* theWrappedObject, const QRect&  r) const;
-   void writeTo(QRegion* theWrappedObject, QDataStream&  arg__1);
-   QVector<QRect >  rects(QRegion* theWrappedObject) const;
+   bool  intersects(QRegion* theWrappedObject, const QRect&  r) const;
    bool  contains(QRegion* theWrappedObject, const QPoint&  p) const;
-   void readFrom(QRegion* theWrappedObject, QDataStream&  arg__1);
-   bool  operator_equal(QRegion* theWrappedObject, const QRegion&  r) const;
+   QRegion  subtracted(QRegion* theWrappedObject, const QRegion&  r) const;
+   int  numRects(QRegion* theWrappedObject) const;
+   void setRects(QRegion* theWrappedObject, const QRect*  rect, int  num);
+   QRegion  __mul__(QRegion* theWrappedObject, const QTransform&  m);
+   QRegion  intersect(QRegion* theWrappedObject, const QRect&  r) const;
    QRegion  intersected(QRegion* theWrappedObject, const QRect&  r) const;
+   QVector<QRect >  rects(QRegion* theWrappedObject) const;
+   const QRegion  __and__(QRegion* theWrappedObject, const QRect&  r) const;
+   int  rectCount(QRegion* theWrappedObject) const;
+   bool  intersects(QRegion* theWrappedObject, const QRegion&  r) const;
+   const QRegion  __add__(QRegion* theWrappedObject, const QRect&  r) const;
+   void writeTo(QRegion* theWrappedObject, QDataStream&  arg__1);
+   QRegion  unite(QRegion* theWrappedObject, const QRect&  r) const;
+   void readFrom(QRegion* theWrappedObject, QDataStream&  arg__1);
+   QRegion  intersected(QRegion* theWrappedObject, const QRegion&  r) const;
+   bool  isEmpty(QRegion* theWrappedObject) const;
+   bool  operator_equal(QRegion* theWrappedObject, const QRegion&  r) const;
+   QRegion  translated(QRegion* theWrappedObject, const QPoint&  p) const;
+   QRegion  united(QRegion* theWrappedObject, const QRegion&  r) const;
+   QRegion  translated(QRegion* theWrappedObject, int  dx, int  dy) const;
    QRegion  xored(QRegion* theWrappedObject, const QRegion&  r) const;
     QString toString(QRegion*);
 };

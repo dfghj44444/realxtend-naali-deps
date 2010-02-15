@@ -5,6 +5,7 @@
 #include <PythonQtConversion.h>
 #include <QVariant>
 #include <qpixmap.h>
+#include <qpixmapcache.h>
 
 QPixmapCache* PythonQtWrapper_QPixmapCache::new_QPixmapCache()
 { 
@@ -15,28 +16,48 @@ int  PythonQtWrapper_QPixmapCache::static_QPixmapCache_cacheLimit()
   return (QPixmapCache::cacheLimit());
 }
 
-bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_find(const QString&  key, QPixmap&  arg__2)
-{
-  return (QPixmapCache::find(key, arg__2));
-}
-
-bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_insert(const QString&  key, const QPixmap&  arg__2)
-{
-  return (QPixmapCache::insert(key, arg__2));
-}
-
 void PythonQtWrapper_QPixmapCache::static_QPixmapCache_clear()
 {
   (QPixmapCache::clear());
 }
 
-void PythonQtWrapper_QPixmapCache::static_QPixmapCache_remove(const QString&  key)
+void PythonQtWrapper_QPixmapCache::static_QPixmapCache_setCacheLimit(int  arg__1)
+{
+  (QPixmapCache::setCacheLimit(arg__1));
+}
+
+void PythonQtWrapper_QPixmapCache::static_QPixmapCache_remove(const QPixmapCache::Key&  key)
 {
   (QPixmapCache::remove(key));
 }
 
-void PythonQtWrapper_QPixmapCache::static_QPixmapCache_setCacheLimit(int  arg__1)
+bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_find(const QPixmapCache::Key&  key, QPixmap*  pixmap)
 {
-  (QPixmapCache::setCacheLimit(arg__1));
+  return (QPixmapCache::find(key, pixmap));
+}
+
+QPixmapCache::Key  PythonQtWrapper_QPixmapCache::static_QPixmapCache_insert(const QPixmap&  pixmap)
+{
+  return (QPixmapCache::insert(pixmap));
+}
+
+bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_insert(const QString&  key, const QPixmap&  pixmap)
+{
+  return (QPixmapCache::insert(key, pixmap));
+}
+
+bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_find(const QString&  key, QPixmap&  pixmap)
+{
+  return (QPixmapCache::find(key, pixmap));
+}
+
+bool  PythonQtWrapper_QPixmapCache::static_QPixmapCache_replace(const QPixmapCache::Key&  key, const QPixmap&  pixmap)
+{
+  return (QPixmapCache::replace(key, pixmap));
+}
+
+void PythonQtWrapper_QPixmapCache::static_QPixmapCache_remove(const QString&  key)
+{
+  (QPixmapCache::remove(key));
 }
 

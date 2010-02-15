@@ -15,12 +15,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -90,16 +93,16 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 class PythonQtPublicPromoter_QToolButton : public QToolButton
 { public:
 inline void promoted_timerEvent(QTimerEvent*  arg__1) { QToolButton::timerEvent(arg__1); }
-inline void promoted_mousePressEvent(QMouseEvent*  arg__1) { QToolButton::mousePressEvent(arg__1); }
-inline void promoted_nextCheckState() { QToolButton::nextCheckState(); }
-inline bool  promoted_event(QEvent*  e) { return QToolButton::event(e); }
 inline bool  promoted_hitButton(const QPoint&  pos) const { return QToolButton::hitButton(pos); }
+inline void promoted_leaveEvent(QEvent*  arg__1) { QToolButton::leaveEvent(arg__1); }
+inline void promoted_nextCheckState() { QToolButton::nextCheckState(); }
 inline void promoted_paintEvent(QPaintEvent*  arg__1) { QToolButton::paintEvent(arg__1); }
+inline void promoted_mousePressEvent(QMouseEvent*  arg__1) { QToolButton::mousePressEvent(arg__1); }
+inline void promoted_changeEvent(QEvent*  arg__1) { QToolButton::changeEvent(arg__1); }
+inline void promoted_mouseReleaseEvent(QMouseEvent*  arg__1) { QToolButton::mouseReleaseEvent(arg__1); }
 inline void promoted_enterEvent(QEvent*  arg__1) { QToolButton::enterEvent(arg__1); }
 inline void promoted_actionEvent(QActionEvent*  arg__1) { QToolButton::actionEvent(arg__1); }
-inline void promoted_changeEvent(QEvent*  arg__1) { QToolButton::changeEvent(arg__1); }
-inline void promoted_leaveEvent(QEvent*  arg__1) { QToolButton::leaveEvent(arg__1); }
-inline void promoted_mouseReleaseEvent(QMouseEvent*  arg__1) { QToolButton::mouseReleaseEvent(arg__1); }
+inline bool  promoted_event(QEvent*  e) { return QToolButton::event(e); }
 };
 
 class PythonQtWrapper_QToolButton : public QObject
@@ -108,29 +111,29 @@ public:
 public slots:
 QToolButton* new_QToolButton(QWidget*  parent = 0);
 void delete_QToolButton(QToolButton* obj) { delete obj; } 
-   bool  autoRaise(QToolButton* theWrappedObject) const;
+   void setMenu(QToolButton* theWrappedObject, QMenu*  menu);
    void timerEvent(QToolButton* theWrappedObject, QTimerEvent*  arg__1);
-   Qt::ArrowType  arrowType(QToolButton* theWrappedObject) const;
-   void mousePressEvent(QToolButton* theWrappedObject, QMouseEvent*  arg__1);
    QSize  sizeHint(QToolButton* theWrappedObject) const;
-   void nextCheckState(QToolButton* theWrappedObject);
-   bool  event(QToolButton* theWrappedObject, QEvent*  e);
-   QAction*  defaultAction(QToolButton* theWrappedObject) const;
-   void setPopupMode(QToolButton* theWrappedObject, QToolButton::ToolButtonPopupMode  mode);
+   void setArrowType(QToolButton* theWrappedObject, Qt::ArrowType  type);
+   QMenu*  menu(QToolButton* theWrappedObject) const;
    bool  hitButton(QToolButton* theWrappedObject, const QPoint&  pos) const;
    QSize  minimumSizeHint(QToolButton* theWrappedObject) const;
-   QToolButton::ToolButtonPopupMode  popupMode(QToolButton* theWrappedObject) const;
-   void paintEvent(QToolButton* theWrappedObject, QPaintEvent*  arg__1);
-   void enterEvent(QToolButton* theWrappedObject, QEvent*  arg__1);
-   void actionEvent(QToolButton* theWrappedObject, QActionEvent*  arg__1);
-   void setAutoRaise(QToolButton* theWrappedObject, bool  enable);
-   void setArrowType(QToolButton* theWrappedObject, Qt::ArrowType  type);
-   void changeEvent(QToolButton* theWrappedObject, QEvent*  arg__1);
-   Qt::ToolButtonStyle  toolButtonStyle(QToolButton* theWrappedObject) const;
-   QMenu*  menu(QToolButton* theWrappedObject) const;
-   void setMenu(QToolButton* theWrappedObject, QMenu*  menu);
    void leaveEvent(QToolButton* theWrappedObject, QEvent*  arg__1);
+   void nextCheckState(QToolButton* theWrappedObject);
+   void setAutoRaise(QToolButton* theWrappedObject, bool  enable);
+   void paintEvent(QToolButton* theWrappedObject, QPaintEvent*  arg__1);
+   QToolButton::ToolButtonPopupMode  popupMode(QToolButton* theWrappedObject) const;
+   Qt::ToolButtonStyle  toolButtonStyle(QToolButton* theWrappedObject) const;
+   void mousePressEvent(QToolButton* theWrappedObject, QMouseEvent*  arg__1);
+   void changeEvent(QToolButton* theWrappedObject, QEvent*  arg__1);
    void mouseReleaseEvent(QToolButton* theWrappedObject, QMouseEvent*  arg__1);
+   void enterEvent(QToolButton* theWrappedObject, QEvent*  arg__1);
+   QAction*  defaultAction(QToolButton* theWrappedObject) const;
+   void setPopupMode(QToolButton* theWrappedObject, QToolButton::ToolButtonPopupMode  mode);
+   bool  autoRaise(QToolButton* theWrappedObject) const;
+   Qt::ArrowType  arrowType(QToolButton* theWrappedObject) const;
+   void actionEvent(QToolButton* theWrappedObject, QActionEvent*  arg__1);
+   bool  event(QToolButton* theWrappedObject, QEvent*  e);
 };
 
 #endif // PYTHONQTWRAPPER_QTOOLBUTTON_H

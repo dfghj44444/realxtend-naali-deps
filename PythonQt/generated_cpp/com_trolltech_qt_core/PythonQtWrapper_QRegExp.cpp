@@ -21,49 +21,9 @@ QRegExp* PythonQtWrapper_QRegExp::new_QRegExp(const QString&  pattern, Qt::CaseS
 { 
 return new QRegExp(pattern, cs, syntax); }
 
-QString  PythonQtWrapper_QRegExp::cap(QRegExp* theWrappedObject, int  nth)
+QStringList  PythonQtWrapper_QRegExp::capturedTexts(QRegExp* theWrappedObject) const
 {
-  return ( theWrappedObject->cap(nth));
-}
-
-Qt::CaseSensitivity  PythonQtWrapper_QRegExp::caseSensitivity(QRegExp* theWrappedObject) const
-{
-  return ( theWrappedObject->caseSensitivity());
-}
-
-QString  PythonQtWrapper_QRegExp::static_QRegExp_escape(const QString&  str)
-{
-  return (QRegExp::escape(str));
-}
-
-void PythonQtWrapper_QRegExp::writeTo(QRegExp* theWrappedObject, QDataStream&  out)
-{
-  out <<  (*theWrappedObject);
-}
-
-QString  PythonQtWrapper_QRegExp::pattern(QRegExp* theWrappedObject) const
-{
-  return ( theWrappedObject->pattern());
-}
-
-void PythonQtWrapper_QRegExp::setMinimal(QRegExp* theWrappedObject, bool  minimal)
-{
-  ( theWrappedObject->setMinimal(minimal));
-}
-
-bool  PythonQtWrapper_QRegExp::operator_equal(QRegExp* theWrappedObject, const QRegExp&  rx) const
-{
-  return ( (*theWrappedObject)== rx);
-}
-
-int  PythonQtWrapper_QRegExp::lastIndexIn(QRegExp* theWrappedObject, const QString&  str, int  offset, QRegExp::CaretMode  caretMode) const
-{
-  return ( theWrappedObject->lastIndexIn(str, offset, caretMode));
-}
-
-int  PythonQtWrapper_QRegExp::numCaptures(QRegExp* theWrappedObject) const
-{
-  return ( theWrappedObject->numCaptures());
+  return ( theWrappedObject->capturedTexts());
 }
 
 void PythonQtWrapper_QRegExp::setPatternSyntax(QRegExp* theWrappedObject, QRegExp::PatternSyntax  syntax)
@@ -71,29 +31,39 @@ void PythonQtWrapper_QRegExp::setPatternSyntax(QRegExp* theWrappedObject, QRegEx
   ( theWrappedObject->setPatternSyntax(syntax));
 }
 
-int  PythonQtWrapper_QRegExp::matchedLength(QRegExp* theWrappedObject) const
+bool  PythonQtWrapper_QRegExp::isMinimal(QRegExp* theWrappedObject) const
 {
-  return ( theWrappedObject->matchedLength());
+  return ( theWrappedObject->isMinimal());
 }
 
-QRegExp::PatternSyntax  PythonQtWrapper_QRegExp::patternSyntax(QRegExp* theWrappedObject) const
+QString  PythonQtWrapper_QRegExp::pattern(QRegExp* theWrappedObject) const
 {
-  return ( theWrappedObject->patternSyntax());
+  return ( theWrappedObject->pattern());
 }
 
-QString  PythonQtWrapper_QRegExp::errorString(QRegExp* theWrappedObject)
+Qt::CaseSensitivity  PythonQtWrapper_QRegExp::caseSensitivity(QRegExp* theWrappedObject) const
+{
+  return ( theWrappedObject->caseSensitivity());
+}
+
+int  PythonQtWrapper_QRegExp::pos(QRegExp* theWrappedObject, int  nth) const
+{
+  return ( theWrappedObject->pos(nth));
+}
+
+int  PythonQtWrapper_QRegExp::lastIndexIn(QRegExp* theWrappedObject, const QString&  str, int  offset, QRegExp::CaretMode  caretMode) const
+{
+  return ( theWrappedObject->lastIndexIn(str, offset, caretMode));
+}
+
+QString  PythonQtWrapper_QRegExp::errorString(QRegExp* theWrappedObject) const
 {
   return ( theWrappedObject->errorString());
 }
 
-void PythonQtWrapper_QRegExp::setCaseSensitivity(QRegExp* theWrappedObject, Qt::CaseSensitivity  cs)
+int  PythonQtWrapper_QRegExp::indexIn(QRegExp* theWrappedObject, const QString&  str, int  offset, QRegExp::CaretMode  caretMode) const
 {
-  ( theWrappedObject->setCaseSensitivity(cs));
-}
-
-void PythonQtWrapper_QRegExp::setPattern(QRegExp* theWrappedObject, const QString&  pattern)
-{
-  ( theWrappedObject->setPattern(pattern));
+  return ( theWrappedObject->indexIn(str, offset, caretMode));
 }
 
 bool  PythonQtWrapper_QRegExp::isValid(QRegExp* theWrappedObject) const
@@ -101,9 +71,9 @@ bool  PythonQtWrapper_QRegExp::isValid(QRegExp* theWrappedObject) const
   return ( theWrappedObject->isValid());
 }
 
-QStringList  PythonQtWrapper_QRegExp::capturedTexts(QRegExp* theWrappedObject)
+void PythonQtWrapper_QRegExp::setMinimal(QRegExp* theWrappedObject, bool  minimal)
 {
-  return ( theWrappedObject->capturedTexts());
+  ( theWrappedObject->setMinimal(minimal));
 }
 
 bool  PythonQtWrapper_QRegExp::isEmpty(QRegExp* theWrappedObject) const
@@ -111,19 +81,19 @@ bool  PythonQtWrapper_QRegExp::isEmpty(QRegExp* theWrappedObject) const
   return ( theWrappedObject->isEmpty());
 }
 
-bool  PythonQtWrapper_QRegExp::isMinimal(QRegExp* theWrappedObject) const
+int  PythonQtWrapper_QRegExp::matchedLength(QRegExp* theWrappedObject) const
 {
-  return ( theWrappedObject->isMinimal());
+  return ( theWrappedObject->matchedLength());
 }
 
-int  PythonQtWrapper_QRegExp::pos(QRegExp* theWrappedObject, int  nth)
+void PythonQtWrapper_QRegExp::writeTo(QRegExp* theWrappedObject, QDataStream&  out)
 {
-  return ( theWrappedObject->pos(nth));
+  out <<  (*theWrappedObject);
 }
 
-bool  PythonQtWrapper_QRegExp::exactMatch(QRegExp* theWrappedObject, const QString&  str) const
+QRegExp::PatternSyntax  PythonQtWrapper_QRegExp::patternSyntax(QRegExp* theWrappedObject) const
 {
-  return ( theWrappedObject->exactMatch(str));
+  return ( theWrappedObject->patternSyntax());
 }
 
 void PythonQtWrapper_QRegExp::readFrom(QRegExp* theWrappedObject, QDataStream&  in)
@@ -131,8 +101,43 @@ void PythonQtWrapper_QRegExp::readFrom(QRegExp* theWrappedObject, QDataStream&  
   in >>  (*theWrappedObject);
 }
 
-int  PythonQtWrapper_QRegExp::indexIn(QRegExp* theWrappedObject, const QString&  str, int  offset, QRegExp::CaretMode  caretMode) const
+void PythonQtWrapper_QRegExp::setPattern(QRegExp* theWrappedObject, const QString&  pattern)
 {
-  return ( theWrappedObject->indexIn(str, offset, caretMode));
+  ( theWrappedObject->setPattern(pattern));
+}
+
+QString  PythonQtWrapper_QRegExp::static_QRegExp_escape(const QString&  str)
+{
+  return (QRegExp::escape(str));
+}
+
+bool  PythonQtWrapper_QRegExp::exactMatch(QRegExp* theWrappedObject, const QString&  str) const
+{
+  return ( theWrappedObject->exactMatch(str));
+}
+
+int  PythonQtWrapper_QRegExp::captureCount(QRegExp* theWrappedObject) const
+{
+  return ( theWrappedObject->captureCount());
+}
+
+int  PythonQtWrapper_QRegExp::numCaptures(QRegExp* theWrappedObject) const
+{
+  return ( theWrappedObject->numCaptures());
+}
+
+bool  PythonQtWrapper_QRegExp::operator_equal(QRegExp* theWrappedObject, const QRegExp&  rx) const
+{
+  return ( (*theWrappedObject)== rx);
+}
+
+QString  PythonQtWrapper_QRegExp::cap(QRegExp* theWrappedObject, int  nth) const
+{
+  return ( theWrappedObject->cap(nth));
+}
+
+void PythonQtWrapper_QRegExp::setCaseSensitivity(QRegExp* theWrappedObject, Qt::CaseSensitivity  cs)
+{
+  ( theWrappedObject->setCaseSensitivity(cs));
 }
 

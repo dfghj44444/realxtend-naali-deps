@@ -15,6 +15,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qitemselectionmodel.h>
@@ -22,6 +24,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -1609,89 +1612,9 @@ QColumnView* PythonQtWrapper_QColumnView::new_QColumnView(QWidget*  parent)
 { 
 return new PythonQtShell_QColumnView(parent); }
 
-void PythonQtWrapper_QColumnView::setSelectionModel(QColumnView* theWrappedObject, QItemSelectionModel*  selectionModel)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setSelectionModel(selectionModel));
-}
-
-QWidget*  PythonQtWrapper_QColumnView::previewWidget(QColumnView* theWrappedObject) const
-{
-  return ( theWrappedObject->previewWidget());
-}
-
-QSize  PythonQtWrapper_QColumnView::sizeHint(QColumnView* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
-void PythonQtWrapper_QColumnView::scrollTo(QColumnView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_scrollTo(index, hint));
-}
-
-void PythonQtWrapper_QColumnView::scrollContentsBy(QColumnView* theWrappedObject, int  dx, int  dy)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
-}
-
-int  PythonQtWrapper_QColumnView::horizontalOffset(QColumnView* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_horizontalOffset());
-}
-
-bool  PythonQtWrapper_QColumnView::isIndexHidden(QColumnView* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_isIndexHidden(index));
-}
-
-QModelIndex  PythonQtWrapper_QColumnView::indexAt(QColumnView* theWrappedObject, const QPoint&  point) const
-{
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_indexAt(point));
-}
-
-void PythonQtWrapper_QColumnView::setResizeGripsVisible(QColumnView* theWrappedObject, bool  visible)
-{
-  ( theWrappedObject->setResizeGripsVisible(visible));
-}
-
-QRect  PythonQtWrapper_QColumnView::visualRect(QColumnView* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_visualRect(index));
-}
-
-void PythonQtWrapper_QColumnView::setColumnWidths(QColumnView* theWrappedObject, const QList<int >&  list)
-{
-  ( theWrappedObject->setColumnWidths(list));
-}
-
-void PythonQtWrapper_QColumnView::setSelection(QColumnView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setSelection(rect, command));
-}
-
-void PythonQtWrapper_QColumnView::setModel(QColumnView* theWrappedObject, QAbstractItemModel*  model)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setModel(model));
-}
-
-QRegion  PythonQtWrapper_QColumnView::visualRegionForSelection(QColumnView* theWrappedObject, const QItemSelection&  selection) const
-{
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_visualRegionForSelection(selection));
-}
-
-void PythonQtWrapper_QColumnView::setRootIndex(QColumnView* theWrappedObject, const QModelIndex&  index)
-{
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setRootIndex(index));
-}
-
 bool  PythonQtWrapper_QColumnView::resizeGripsVisible(QColumnView* theWrappedObject) const
 {
   return ( theWrappedObject->resizeGripsVisible());
-}
-
-void PythonQtWrapper_QColumnView::setPreviewWidget(QColumnView* theWrappedObject, QWidget*  widget)
-{
-  ( theWrappedObject->setPreviewWidget(widget));
 }
 
 void PythonQtWrapper_QColumnView::selectAll(QColumnView* theWrappedObject)
@@ -1699,14 +1622,19 @@ void PythonQtWrapper_QColumnView::selectAll(QColumnView* theWrappedObject)
   ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_selectAll());
 }
 
-void PythonQtWrapper_QColumnView::resizeEvent(QColumnView* theWrappedObject, QResizeEvent*  event)
+QRegion  PythonQtWrapper_QColumnView::visualRegionForSelection(QColumnView* theWrappedObject, const QItemSelection&  selection) const
 {
-  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_resizeEvent(event));
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_visualRegionForSelection(selection));
 }
 
-int  PythonQtWrapper_QColumnView::verticalOffset(QColumnView* theWrappedObject) const
+void PythonQtWrapper_QColumnView::setSelection(QColumnView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command)
 {
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_verticalOffset());
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setSelection(rect, command));
+}
+
+QAbstractItemView*  PythonQtWrapper_QColumnView::createColumn(QColumnView* theWrappedObject, const QModelIndex&  rootIndex)
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_createColumn(rootIndex));
 }
 
 QList<int >  PythonQtWrapper_QColumnView::columnWidths(QColumnView* theWrappedObject) const
@@ -1714,8 +1642,93 @@ QList<int >  PythonQtWrapper_QColumnView::columnWidths(QColumnView* theWrappedOb
   return ( theWrappedObject->columnWidths());
 }
 
-QAbstractItemView*  PythonQtWrapper_QColumnView::createColumn(QColumnView* theWrappedObject, const QModelIndex&  rootIndex)
+void PythonQtWrapper_QColumnView::resizeEvent(QColumnView* theWrappedObject, QResizeEvent*  event)
 {
-  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_createColumn(rootIndex));
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_resizeEvent(event));
+}
+
+void PythonQtWrapper_QColumnView::setResizeGripsVisible(QColumnView* theWrappedObject, bool  visible)
+{
+  ( theWrappedObject->setResizeGripsVisible(visible));
+}
+
+QSize  PythonQtWrapper_QColumnView::sizeHint(QColumnView* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+int  PythonQtWrapper_QColumnView::verticalOffset(QColumnView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_verticalOffset());
+}
+
+void PythonQtWrapper_QColumnView::setModel(QColumnView* theWrappedObject, QAbstractItemModel*  model)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setModel(model));
+}
+
+void PythonQtWrapper_QColumnView::scrollTo(QColumnView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_scrollTo(index, hint));
+}
+
+QModelIndex  PythonQtWrapper_QColumnView::indexAt(QColumnView* theWrappedObject, const QPoint&  point) const
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_indexAt(point));
+}
+
+void PythonQtWrapper_QColumnView::setSelectionModel(QColumnView* theWrappedObject, QItemSelectionModel*  selectionModel)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setSelectionModel(selectionModel));
+}
+
+void PythonQtWrapper_QColumnView::setColumnWidths(QColumnView* theWrappedObject, const QList<int >&  list)
+{
+  ( theWrappedObject->setColumnWidths(list));
+}
+
+void PythonQtWrapper_QColumnView::scrollContentsBy(QColumnView* theWrappedObject, int  dx, int  dy)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
+}
+
+void PythonQtWrapper_QColumnView::rowsInserted(QColumnView* theWrappedObject, const QModelIndex&  parent, int  start, int  end)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_rowsInserted(parent, start, end));
+}
+
+QWidget*  PythonQtWrapper_QColumnView::previewWidget(QColumnView* theWrappedObject) const
+{
+  return ( theWrappedObject->previewWidget());
+}
+
+bool  PythonQtWrapper_QColumnView::isIndexHidden(QColumnView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_isIndexHidden(index));
+}
+
+QRect  PythonQtWrapper_QColumnView::visualRect(QColumnView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_visualRect(index));
+}
+
+void PythonQtWrapper_QColumnView::setRootIndex(QColumnView* theWrappedObject, const QModelIndex&  index)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_setRootIndex(index));
+}
+
+void PythonQtWrapper_QColumnView::currentChanged(QColumnView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous)
+{
+  ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_currentChanged(current, previous));
+}
+
+void PythonQtWrapper_QColumnView::setPreviewWidget(QColumnView* theWrappedObject, QWidget*  widget)
+{
+  ( theWrappedObject->setPreviewWidget(widget));
+}
+
+int  PythonQtWrapper_QColumnView::horizontalOffset(QColumnView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QColumnView*)theWrappedObject)->promoted_horizontalOffset());
 }
 

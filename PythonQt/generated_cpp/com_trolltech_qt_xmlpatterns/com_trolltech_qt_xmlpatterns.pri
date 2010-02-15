@@ -3,6 +3,8 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QAbstractUriResolver.h \
            $$PWD/PythonQtWrapper_QAbstractXmlNodeModel.h \
            $$PWD/PythonQtWrapper_QAbstractXmlReceiver.h \
+           $$PWD/PythonQtWrapper_QPatternist.h \
+           $$PWD/PythonQtWrapper_QPatternistSDK.h \
            $$PWD/PythonQtWrapper_QSimpleXmlNodeModel.h \
            $$PWD/PythonQtWrapper_QSourceLocation.h \
            $$PWD/PythonQtWrapper_QXmlFormatter.h \
@@ -12,6 +14,8 @@ HEADERS += \
            $$PWD/PythonQtWrapper_QXmlNodeModelIndex.h \
            $$PWD/PythonQtWrapper_QXmlQuery.h \
            $$PWD/PythonQtWrapper_QXmlResultItems.h \
+           $$PWD/PythonQtWrapper_QXmlSchema.h \
+#           $$PWD/PythonQtWrapper_QXmlSchemaValidator.h \
            $$PWD/PythonQtWrapper_QXmlSerializer.h \
 
 SOURCES += \
@@ -19,6 +23,8 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QAbstractUriResolver.cpp \
            $$PWD/PythonQtWrapper_QAbstractXmlNodeModel.cpp \
            $$PWD/PythonQtWrapper_QAbstractXmlReceiver.cpp \
+           $$PWD/PythonQtWrapper_QPatternist.cpp \
+           $$PWD/PythonQtWrapper_QPatternistSDK.cpp \
            $$PWD/PythonQtWrapper_QSimpleXmlNodeModel.cpp \
            $$PWD/PythonQtWrapper_QSourceLocation.cpp \
            $$PWD/PythonQtWrapper_QXmlFormatter.cpp \
@@ -28,5 +34,7 @@ SOURCES += \
            $$PWD/PythonQtWrapper_QXmlNodeModelIndex.cpp \
            $$PWD/PythonQtWrapper_QXmlQuery.cpp \
            $$PWD/PythonQtWrapper_QXmlResultItems.cpp \
+           $$PWD/PythonQtWrapper_QXmlSchema.cpp \
+#           $$PWD/PythonQtWrapper_QXmlSchemaValidator.cpp \
            $$PWD/PythonQtWrapper_QXmlSerializer.cpp \
            $$PWD/com_trolltech_qt_xmlpatterns_init.cpp

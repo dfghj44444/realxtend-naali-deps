@@ -17,6 +17,7 @@
 #include <qpoint.h>
 #include <qrect.h>
 #include <qsize.h>
+#include <qstyle.h>
 #include <qstyleoption.h>
 #include <qwidget.h>
 
@@ -582,14 +583,19 @@ QMotifStyle* PythonQtWrapper_QMotifStyle::new_QMotifStyle(bool  useHighlightCols
 { 
 return new PythonQtShell_QMotifStyle(useHighlightCols); }
 
-void PythonQtWrapper_QMotifStyle::setUseHighlightColors(QMotifStyle* theWrappedObject, bool  arg__1)
+void PythonQtWrapper_QMotifStyle::polish(QMotifStyle* theWrappedObject, QWidget*  arg__1)
 {
-  ( theWrappedObject->setUseHighlightColors(arg__1));
+  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
-void PythonQtWrapper_QMotifStyle::unpolish(QMotifStyle* theWrappedObject, QApplication*  arg__1)
+void PythonQtWrapper_QMotifStyle::timerEvent(QMotifStyle* theWrappedObject, QTimerEvent*  event)
 {
-  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_unpolish(arg__1));
+  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_timerEvent(event));
+}
+
+QRect  PythonQtWrapper_QMotifStyle::subElementRect(QMotifStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
 }
 
 void PythonQtWrapper_QMotifStyle::drawPrimitive(QMotifStyle* theWrappedObject, QStyle::PrimitiveElement  pe, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
@@ -597,9 +603,54 @@ void PythonQtWrapper_QMotifStyle::drawPrimitive(QMotifStyle* theWrappedObject, Q
   ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_drawPrimitive(pe, opt, p, w));
 }
 
-void PythonQtWrapper_QMotifStyle::timerEvent(QMotifStyle* theWrappedObject, QTimerEvent*  event)
+bool  PythonQtWrapper_QMotifStyle::event(QMotifStyle* theWrappedObject, QEvent*  arg__1)
 {
-  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_timerEvent(event));
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_event(arg__1));
+}
+
+void PythonQtWrapper_QMotifStyle::drawControl(QMotifStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
+{
+  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
+}
+
+bool  PythonQtWrapper_QMotifStyle::eventFilter(QMotifStyle* theWrappedObject, QObject*  o, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_eventFilter(o, e));
+}
+
+QPalette  PythonQtWrapper_QMotifStyle::standardPalette(QMotifStyle* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_standardPalette());
+}
+
+int  PythonQtWrapper_QMotifStyle::pixelMetric(QMotifStyle* theWrappedObject, QStyle::PixelMetric  metric, const QStyleOption*  option, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_pixelMetric(metric, option, widget));
+}
+
+int  PythonQtWrapper_QMotifStyle::styleHint(QMotifStyle* theWrappedObject, QStyle::StyleHint  hint, const QStyleOption*  opt, const QWidget*  widget, QStyleHintReturn*  returnData) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_styleHint(hint, opt, widget, returnData));
+}
+
+void PythonQtWrapper_QMotifStyle::polish(QMotifStyle* theWrappedObject, QPalette&  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_polish(arg__1));
+}
+
+QSize  PythonQtWrapper_QMotifStyle::sizeFromContents(QMotifStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
+}
+
+QRect  PythonQtWrapper_QMotifStyle::subControlRect(QMotifStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QStyle::SubControl  sc, const QWidget*  widget) const
+{
+  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_subControlRect(cc, opt, sc, widget));
+}
+
+void PythonQtWrapper_QMotifStyle::setUseHighlightColors(QMotifStyle* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setUseHighlightColors(arg__1));
 }
 
 void PythonQtWrapper_QMotifStyle::drawComplexControl(QMotifStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QPainter*  p, const QWidget*  w) const
@@ -612,44 +663,9 @@ void PythonQtWrapper_QMotifStyle::polish(QMotifStyle* theWrappedObject, QApplica
   ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_polish(arg__1));
 }
 
-bool  PythonQtWrapper_QMotifStyle::event(QMotifStyle* theWrappedObject, QEvent*  arg__1)
+void PythonQtWrapper_QMotifStyle::unpolish(QMotifStyle* theWrappedObject, QApplication*  arg__1)
 {
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_event(arg__1));
-}
-
-bool  PythonQtWrapper_QMotifStyle::useHighlightColors(QMotifStyle* theWrappedObject) const
-{
-  return ( theWrappedObject->useHighlightColors());
-}
-
-QSize  PythonQtWrapper_QMotifStyle::sizeFromContents(QMotifStyle* theWrappedObject, QStyle::ContentsType  ct, const QStyleOption*  opt, const QSize&  contentsSize, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_sizeFromContents(ct, opt, contentsSize, widget));
-}
-
-int  PythonQtWrapper_QMotifStyle::styleHint(QMotifStyle* theWrappedObject, QStyle::StyleHint  hint, const QStyleOption*  opt, const QWidget*  widget, QStyleHintReturn*  returnData) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_styleHint(hint, opt, widget, returnData));
-}
-
-int  PythonQtWrapper_QMotifStyle::pixelMetric(QMotifStyle* theWrappedObject, QStyle::PixelMetric  metric, const QStyleOption*  option, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_pixelMetric(metric, option, widget));
-}
-
-void PythonQtWrapper_QMotifStyle::polish(QMotifStyle* theWrappedObject, QWidget*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_polish(arg__1));
-}
-
-QRect  PythonQtWrapper_QMotifStyle::subElementRect(QMotifStyle* theWrappedObject, QStyle::SubElement  r, const QStyleOption*  opt, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_subElementRect(r, opt, widget));
-}
-
-QPalette  PythonQtWrapper_QMotifStyle::standardPalette(QMotifStyle* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_standardPalette());
+  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_unpolish(arg__1));
 }
 
 void PythonQtWrapper_QMotifStyle::unpolish(QMotifStyle* theWrappedObject, QWidget*  arg__1)
@@ -657,23 +673,8 @@ void PythonQtWrapper_QMotifStyle::unpolish(QMotifStyle* theWrappedObject, QWidge
   ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_unpolish(arg__1));
 }
 
-bool  PythonQtWrapper_QMotifStyle::eventFilter(QMotifStyle* theWrappedObject, QObject*  o, QEvent*  e)
+bool  PythonQtWrapper_QMotifStyle::useHighlightColors(QMotifStyle* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_eventFilter(o, e));
-}
-
-QRect  PythonQtWrapper_QMotifStyle::subControlRect(QMotifStyle* theWrappedObject, QStyle::ComplexControl  cc, const QStyleOptionComplex*  opt, QStyle::SubControl  sc, const QWidget*  widget) const
-{
-  return ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_subControlRect(cc, opt, sc, widget));
-}
-
-void PythonQtWrapper_QMotifStyle::drawControl(QMotifStyle* theWrappedObject, QStyle::ControlElement  element, const QStyleOption*  opt, QPainter*  p, const QWidget*  w) const
-{
-  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_drawControl(element, opt, p, w));
-}
-
-void PythonQtWrapper_QMotifStyle::polish(QMotifStyle* theWrappedObject, QPalette&  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMotifStyle*)theWrappedObject)->promoted_polish(arg__1));
+  return ( theWrappedObject->useHighlightColors());
 }
 

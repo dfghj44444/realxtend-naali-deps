@@ -16,24 +16,9 @@ QNetworkInterface* PythonQtWrapper_QNetworkInterface::new_QNetworkInterface(cons
 { 
 return new QNetworkInterface(other); }
 
-QList<QHostAddress >  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_allAddresses()
+bool  PythonQtWrapper_QNetworkInterface::isValid(QNetworkInterface* theWrappedObject) const
 {
-  return (QNetworkInterface::allAddresses());
-}
-
-QNetworkInterface::InterfaceFlags  PythonQtWrapper_QNetworkInterface::flags(QNetworkInterface* theWrappedObject) const
-{
-  return ( theWrappedObject->flags());
-}
-
-QString  PythonQtWrapper_QNetworkInterface::name(QNetworkInterface* theWrappedObject) const
-{
-  return ( theWrappedObject->name());
-}
-
-QString  PythonQtWrapper_QNetworkInterface::hardwareAddress(QNetworkInterface* theWrappedObject) const
-{
-  return ( theWrappedObject->hardwareAddress());
+  return ( theWrappedObject->isValid());
 }
 
 QList<QNetworkAddressEntry >  PythonQtWrapper_QNetworkInterface::addressEntries(QNetworkInterface* theWrappedObject) const
@@ -41,9 +26,9 @@ QList<QNetworkAddressEntry >  PythonQtWrapper_QNetworkInterface::addressEntries(
   return ( theWrappedObject->addressEntries());
 }
 
-bool  PythonQtWrapper_QNetworkInterface::isValid(QNetworkInterface* theWrappedObject) const
+QList<QHostAddress >  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_allAddresses()
 {
-  return ( theWrappedObject->isValid());
+  return (QNetworkInterface::allAddresses());
 }
 
 QNetworkInterface  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_interfaceFromIndex(int  index)
@@ -51,14 +36,39 @@ QNetworkInterface  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_i
   return (QNetworkInterface::interfaceFromIndex(index));
 }
 
+QNetworkInterface  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_interfaceFromName(const QString&  name)
+{
+  return (QNetworkInterface::interfaceFromName(name));
+}
+
+QNetworkInterface::InterfaceFlags  PythonQtWrapper_QNetworkInterface::flags(QNetworkInterface* theWrappedObject) const
+{
+  return ( theWrappedObject->flags());
+}
+
 QList<QNetworkInterface >  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_allInterfaces()
 {
   return (QNetworkInterface::allInterfaces());
 }
 
-QNetworkInterface  PythonQtWrapper_QNetworkInterface::static_QNetworkInterface_interfaceFromName(const QString&  name)
+QString  PythonQtWrapper_QNetworkInterface::name(QNetworkInterface* theWrappedObject) const
 {
-  return (QNetworkInterface::interfaceFromName(name));
+  return ( theWrappedObject->name());
+}
+
+int  PythonQtWrapper_QNetworkInterface::index(QNetworkInterface* theWrappedObject) const
+{
+  return ( theWrappedObject->index());
+}
+
+QString  PythonQtWrapper_QNetworkInterface::humanReadableName(QNetworkInterface* theWrappedObject) const
+{
+  return ( theWrappedObject->humanReadableName());
+}
+
+QString  PythonQtWrapper_QNetworkInterface::hardwareAddress(QNetworkInterface* theWrappedObject) const
+{
+  return ( theWrappedObject->hardwareAddress());
 }
 
 QString PythonQtWrapper_QNetworkInterface::toString(QNetworkInterface* obj) {

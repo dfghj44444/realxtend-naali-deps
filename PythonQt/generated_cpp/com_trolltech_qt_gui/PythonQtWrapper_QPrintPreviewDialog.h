@@ -15,12 +15,15 @@
 #include <qdialog.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -49,7 +52,7 @@ virtual void closeEvent(QCloseEvent*  arg__1);
 virtual void contextMenuEvent(QContextMenuEvent*  arg__1);
 virtual void customEvent(QEvent*  arg__1);
 virtual int  devType() const;
-virtual void done(int  arg__1);
+virtual void done(int  result);
 virtual void dragEnterEvent(QDragEnterEvent*  arg__1);
 virtual void dragLeaveEvent(QDragLeaveEvent*  arg__1);
 virtual void dragMoveEvent(QDragMoveEvent*  arg__1);
@@ -86,6 +89,11 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
   PythonQtInstanceWrapper* _wrapper; 
 };
 
+class PythonQtPublicPromoter_QPrintPreviewDialog : public QPrintPreviewDialog
+{ public:
+inline void promoted_done(int  result) { QPrintPreviewDialog::done(result); }
+};
+
 class PythonQtWrapper_QPrintPreviewDialog : public QObject
 { Q_OBJECT
 public:
@@ -93,6 +101,11 @@ public slots:
 QPrintPreviewDialog* new_QPrintPreviewDialog(QPrinter*  printer, QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
 QPrintPreviewDialog* new_QPrintPreviewDialog(QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
 void delete_QPrintPreviewDialog(QPrintPreviewDialog* obj) { delete obj; } 
+   QPrinter*  printer(QPrintPreviewDialog* theWrappedObject);
+   void setVisible(QPrintPreviewDialog* theWrappedObject, bool  visible);
+   void done(QPrintPreviewDialog* theWrappedObject, int  result);
+   void open(QPrintPreviewDialog* theWrappedObject);
+   void open(QPrintPreviewDialog* theWrappedObject, QObject*  receiver, const char*  member);
 };
 
 #endif // PYTHONQTWRAPPER_QPRINTPREVIEWDIALOG_H

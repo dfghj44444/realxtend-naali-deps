@@ -38,16 +38,16 @@ virtual QWidget*  widget();
 
 class PythonQtPublicPromoter_QWidgetItem : public QWidgetItem
 { public:
-inline QSize  promoted_maximumSize() const { return QWidgetItem::maximumSize(); }
-inline QSize  promoted_sizeHint() const { return QWidgetItem::sizeHint(); }
-inline bool  promoted_isEmpty() const { return QWidgetItem::isEmpty(); }
-inline void promoted_setGeometry(const QRect&  arg__1) { QWidgetItem::setGeometry(arg__1); }
-inline Qt::Orientations  promoted_expandingDirections() const { return QWidgetItem::expandingDirections(); }
-inline QRect  promoted_geometry() const { return QWidgetItem::geometry(); }
 inline bool  promoted_hasHeightForWidth() const { return QWidgetItem::hasHeightForWidth(); }
-inline QWidget*  promoted_widget() { return QWidgetItem::widget(); }
+inline void promoted_setGeometry(const QRect&  arg__1) { QWidgetItem::setGeometry(arg__1); }
 inline QSize  promoted_minimumSize() const { return QWidgetItem::minimumSize(); }
+inline QSize  promoted_maximumSize() const { return QWidgetItem::maximumSize(); }
+inline Qt::Orientations  promoted_expandingDirections() const { return QWidgetItem::expandingDirections(); }
+inline bool  promoted_isEmpty() const { return QWidgetItem::isEmpty(); }
+inline QRect  promoted_geometry() const { return QWidgetItem::geometry(); }
 inline int  promoted_heightForWidth(int  arg__1) const { return QWidgetItem::heightForWidth(arg__1); }
+inline QWidget*  promoted_widget() { return QWidgetItem::widget(); }
+inline QSize  promoted_sizeHint() const { return QWidgetItem::sizeHint(); }
 };
 
 class PythonQtWrapper_QWidgetItem : public QObject
@@ -56,16 +56,16 @@ public:
 public slots:
 QWidgetItem* new_QWidgetItem(QWidget*  w);
 void delete_QWidgetItem(QWidgetItem* obj) { delete obj; } 
-   QSize  maximumSize(QWidgetItem* theWrappedObject) const;
-   QSize  sizeHint(QWidgetItem* theWrappedObject) const;
-   bool  isEmpty(QWidgetItem* theWrappedObject) const;
-   void setGeometry(QWidgetItem* theWrappedObject, const QRect&  arg__1);
-   Qt::Orientations  expandingDirections(QWidgetItem* theWrappedObject) const;
-   QRect  geometry(QWidgetItem* theWrappedObject) const;
    bool  hasHeightForWidth(QWidgetItem* theWrappedObject) const;
-   QWidget*  widget(QWidgetItem* theWrappedObject);
+   void setGeometry(QWidgetItem* theWrappedObject, const QRect&  arg__1);
    QSize  minimumSize(QWidgetItem* theWrappedObject) const;
+   QSize  maximumSize(QWidgetItem* theWrappedObject) const;
+   Qt::Orientations  expandingDirections(QWidgetItem* theWrappedObject) const;
+   bool  isEmpty(QWidgetItem* theWrappedObject) const;
+   QRect  geometry(QWidgetItem* theWrappedObject) const;
    int  heightForWidth(QWidgetItem* theWrappedObject, int  arg__1) const;
+   QWidget*  widget(QWidgetItem* theWrappedObject);
+   QSize  sizeHint(QWidgetItem* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QWIDGETITEM_H

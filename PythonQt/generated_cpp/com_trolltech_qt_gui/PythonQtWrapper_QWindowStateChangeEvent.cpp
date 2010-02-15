@@ -13,13 +13,13 @@ QWindowStateChangeEvent* PythonQtWrapper_QWindowStateChangeEvent::new_QWindowSta
 { 
 return new QWindowStateChangeEvent(aOldState, isOverride); }
 
-Qt::WindowStates  PythonQtWrapper_QWindowStateChangeEvent::oldState(QWindowStateChangeEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->oldState());
-}
-
 bool  PythonQtWrapper_QWindowStateChangeEvent::isOverride(QWindowStateChangeEvent* theWrappedObject) const
 {
   return ( theWrappedObject->isOverride());
+}
+
+Qt::WindowStates  PythonQtWrapper_QWindowStateChangeEvent::oldState(QWindowStateChangeEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->oldState());
 }
 

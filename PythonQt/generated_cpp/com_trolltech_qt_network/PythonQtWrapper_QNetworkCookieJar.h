@@ -1,7 +1,7 @@
 #ifndef PYTHONQTWRAPPER_QNETWORKCOOKIEJAR_H
 #define PYTHONQTWRAPPER_QNETWORKCOOKIEJAR_H
 
-#include <qnetworkcookie.h>
+#include <qnetworkcookiejar.h>
 #include <QObject>
 
 #include <PythonQt.h>
@@ -11,6 +11,7 @@
 #include <qcoreevent.h>
 #include <qlist.h>
 #include <qnetworkcookie.h>
+#include <qnetworkcookiejar.h>
 #include <qobject.h>
 #include <qurl.h>
 
@@ -32,8 +33,8 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 
 class PythonQtPublicPromoter_QNetworkCookieJar : public QNetworkCookieJar
 { public:
-inline QList<QNetworkCookie >  promoted_cookiesForUrl(const QUrl&  url) const { return QNetworkCookieJar::cookiesForUrl(url); }
 inline bool  promoted_setCookiesFromUrl(const QList<QNetworkCookie >&  cookieList, const QUrl&  url) { return QNetworkCookieJar::setCookiesFromUrl(cookieList, url); }
+inline QList<QNetworkCookie >  promoted_cookiesForUrl(const QUrl&  url) const { return QNetworkCookieJar::cookiesForUrl(url); }
 };
 
 class PythonQtWrapper_QNetworkCookieJar : public QObject
@@ -42,8 +43,8 @@ public:
 public slots:
 QNetworkCookieJar* new_QNetworkCookieJar(QObject*  parent = 0);
 void delete_QNetworkCookieJar(QNetworkCookieJar* obj) { delete obj; } 
-   QList<QNetworkCookie >  cookiesForUrl(QNetworkCookieJar* theWrappedObject, const QUrl&  url) const;
    bool  setCookiesFromUrl(QNetworkCookieJar* theWrappedObject, const QList<QNetworkCookie >&  cookieList, const QUrl&  url);
+   QList<QNetworkCookie >  cookiesForUrl(QNetworkCookieJar* theWrappedObject, const QUrl&  url) const;
 };
 
 #endif // PYTHONQTWRAPPER_QNETWORKCOOKIEJAR_H

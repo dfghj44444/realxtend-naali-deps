@@ -7,16 +7,18 @@
 #include <PythonQt.h>
 
 #include <QVariant>
+#include <qabstractnetworkcache.h>
 #include <qauthenticator.h>
 #include <qbytearray.h>
 #include <qcoreevent.h>
 #include <qiodevice.h>
 #include <qlist.h>
-#include <qnetworkcookie.h>
+#include <qnetworkcookiejar.h>
 #include <qnetworkproxy.h>
 #include <qnetworkreply.h>
 #include <qnetworkrequest.h>
 #include <qobject.h>
+#include <qsslerror.h>
 
 class PythonQtShell_QNetworkAccessManager : public QNetworkAccessManager
 {
@@ -43,21 +45,26 @@ class PythonQtWrapper_QNetworkAccessManager : public QObject
 public:
 Q_ENUMS(Operation )
 enum Operation{
-  HeadOperation = QNetworkAccessManager::HeadOperation,   GetOperation = QNetworkAccessManager::GetOperation,   PutOperation = QNetworkAccessManager::PutOperation,   PostOperation = QNetworkAccessManager::PostOperation,   UnknownOperation = QNetworkAccessManager::UnknownOperation};
+  HeadOperation = QNetworkAccessManager::HeadOperation,   GetOperation = QNetworkAccessManager::GetOperation,   PutOperation = QNetworkAccessManager::PutOperation,   PostOperation = QNetworkAccessManager::PostOperation,   DeleteOperation = QNetworkAccessManager::DeleteOperation,   UnknownOperation = QNetworkAccessManager::UnknownOperation};
 public slots:
 QNetworkAccessManager* new_QNetworkAccessManager(QObject*  parent = 0);
 void delete_QNetworkAccessManager(QNetworkAccessManager* obj) { delete obj; } 
-   void setProxy(QNetworkAccessManager* theWrappedObject, const QNetworkProxy&  proxy);
-   QNetworkReply*  head(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);
-   QNetworkReply*  post(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, const QByteArray&  data);
-   QNetworkReply*  get(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);
-   QNetworkProxy  proxy(QNetworkAccessManager* theWrappedObject) const;
-   void setCookieJar(QNetworkAccessManager* theWrappedObject, QNetworkCookieJar*  cookieJar);
    QNetworkReply*  put(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, const QByteArray&  data);
-   QNetworkReply*  put(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, QIODevice*  data);
-   QNetworkCookieJar*  cookieJar(QNetworkAccessManager* theWrappedObject) const;
+   void setProxy(QNetworkAccessManager* theWrappedObject, const QNetworkProxy&  proxy);
    QNetworkReply*  post(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, QIODevice*  data);
    QNetworkReply*  createRequest(QNetworkAccessManager* theWrappedObject, QNetworkAccessManager::Operation  op, const QNetworkRequest&  request, QIODevice*  outgoingData = 0);
+   QAbstractNetworkCache*  cache(QNetworkAccessManager* theWrappedObject) const;
+   QNetworkReply*  post(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, const QByteArray&  data);
+   QNetworkReply*  put(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request, QIODevice*  data);
+   QNetworkReply*  head(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);
+   void setCookieJar(QNetworkAccessManager* theWrappedObject, QNetworkCookieJar*  cookieJar);
+   void setProxyFactory(QNetworkAccessManager* theWrappedObject, QNetworkProxyFactory*  factory);
+   QNetworkReply*  deleteResource(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);
+   QNetworkReply*  get(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);
+   void setCache(QNetworkAccessManager* theWrappedObject, QAbstractNetworkCache*  cache);
+   QNetworkProxy  proxy(QNetworkAccessManager* theWrappedObject) const;
+   QNetworkProxyFactory*  proxyFactory(QNetworkAccessManager* theWrappedObject) const;
+   QNetworkCookieJar*  cookieJar(QNetworkAccessManager* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QNETWORKACCESSMANAGER_H

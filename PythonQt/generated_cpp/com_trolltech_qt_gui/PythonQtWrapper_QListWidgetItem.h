@@ -34,8 +34,8 @@ virtual void write(QDataStream&  out) const;
 
 class PythonQtPublicPromoter_QListWidgetItem : public QListWidgetItem
 { public:
-inline QVariant  promoted_data(int  role) const { return QListWidgetItem::data(role); }
 inline QListWidgetItem*  promoted_clone() const { return QListWidgetItem::clone(); }
+inline QVariant  promoted_data(int  role) const { return QListWidgetItem::data(role); }
 inline void promoted_setData(int  role, const QVariant&  value) { QListWidgetItem::setData(role, value); }
 };
 
@@ -50,41 +50,41 @@ QListWidgetItem* new_QListWidgetItem(QListWidget*  view = 0, int  type = Type);
 QListWidgetItem* new_QListWidgetItem(const QIcon&  icon, const QString&  text, QListWidget*  view = 0, int  type = Type);
 QListWidgetItem* new_QListWidgetItem(const QString&  text, QListWidget*  view = 0, int  type = Type);
 void delete_QListWidgetItem(QListWidgetItem* obj) { delete obj; } 
-   int  type(QListWidgetItem* theWrappedObject) const;
-   void setCheckState(QListWidgetItem* theWrappedObject, Qt::CheckState  state);
-   QBrush  foreground(QListWidgetItem* theWrappedObject) const;
-   QIcon  icon(QListWidgetItem* theWrappedObject) const;
    bool  isHidden(QListWidgetItem* theWrappedObject) const;
-   QSize  sizeHint(QListWidgetItem* theWrappedObject) const;
-   QFont  font(QListWidgetItem* theWrappedObject) const;
-   void setStatusTip(QListWidgetItem* theWrappedObject, const QString&  statusTip);
-   QString  text(QListWidgetItem* theWrappedObject) const;
-   QString  toolTip(QListWidgetItem* theWrappedObject) const;
-   void setBackground(QListWidgetItem* theWrappedObject, const QBrush&  brush);
-   void setIcon(QListWidgetItem* theWrappedObject, const QIcon&  icon);
-   void setHidden(QListWidgetItem* theWrappedObject, bool  hide);
-   QString  statusTip(QListWidgetItem* theWrappedObject) const;
-   QVariant  data(QListWidgetItem* theWrappedObject, int  role) const;
-   void setWhatsThis(QListWidgetItem* theWrappedObject, const QString&  whatsThis);
-   void setFont(QListWidgetItem* theWrappedObject, const QFont&  font);
    void setTextAlignment(QListWidgetItem* theWrappedObject, int  alignment);
-   QListWidgetItem*  clone(QListWidgetItem* theWrappedObject) const;
-   Qt::ItemFlags  flags(QListWidgetItem* theWrappedObject) const;
-   void readFrom(QListWidgetItem* theWrappedObject, QDataStream&  in);
-   void writeTo(QListWidgetItem* theWrappedObject, QDataStream&  out);
-   void setSelected(QListWidgetItem* theWrappedObject, bool  select);
-   QBrush  background(QListWidgetItem* theWrappedObject) const;
-   Qt::CheckState  checkState(QListWidgetItem* theWrappedObject) const;
-   void setData(QListWidgetItem* theWrappedObject, int  role, const QVariant&  value);
-   void setToolTip(QListWidgetItem* theWrappedObject, const QString&  toolTip);
-   void setText(QListWidgetItem* theWrappedObject, const QString&  text);
-   bool  isSelected(QListWidgetItem* theWrappedObject) const;
    QListWidget*  listWidget(QListWidgetItem* theWrappedObject) const;
-   void setForeground(QListWidgetItem* theWrappedObject, const QBrush&  brush);
-   QString  whatsThis(QListWidgetItem* theWrappedObject) const;
-   void setSizeHint(QListWidgetItem* theWrappedObject, const QSize&  size);
-   void setFlags(QListWidgetItem* theWrappedObject, Qt::ItemFlags  flags);
+   QBrush  background(QListWidgetItem* theWrappedObject) const;
+   void setCheckState(QListWidgetItem* theWrappedObject, Qt::CheckState  state);
    int  textAlignment(QListWidgetItem* theWrappedObject) const;
+   QBrush  foreground(QListWidgetItem* theWrappedObject) const;
+   void setText(QListWidgetItem* theWrappedObject, const QString&  text);
+   void readFrom(QListWidgetItem* theWrappedObject, QDataStream&  in);
+   QListWidgetItem*  clone(QListWidgetItem* theWrappedObject) const;
+   int  type(QListWidgetItem* theWrappedObject) const;
+   void setFlags(QListWidgetItem* theWrappedObject, Qt::ItemFlags  flags);
+   QString  whatsThis(QListWidgetItem* theWrappedObject) const;
+   QIcon  icon(QListWidgetItem* theWrappedObject) const;
+   QString  text(QListWidgetItem* theWrappedObject) const;
+   bool  isSelected(QListWidgetItem* theWrappedObject) const;
+   void setToolTip(QListWidgetItem* theWrappedObject, const QString&  toolTip);
+   void setBackground(QListWidgetItem* theWrappedObject, const QBrush&  brush);
+   Qt::CheckState  checkState(QListWidgetItem* theWrappedObject) const;
+   QVariant  data(QListWidgetItem* theWrappedObject, int  role) const;
+   QFont  font(QListWidgetItem* theWrappedObject) const;
+   void setHidden(QListWidgetItem* theWrappedObject, bool  hide);
+   void writeTo(QListWidgetItem* theWrappedObject, QDataStream&  out);
+   void setIcon(QListWidgetItem* theWrappedObject, const QIcon&  icon);
+   void setForeground(QListWidgetItem* theWrappedObject, const QBrush&  brush);
+   void setStatusTip(QListWidgetItem* theWrappedObject, const QString&  statusTip);
+   QString  statusTip(QListWidgetItem* theWrappedObject) const;
+   void setWhatsThis(QListWidgetItem* theWrappedObject, const QString&  whatsThis);
+   QSize  sizeHint(QListWidgetItem* theWrappedObject) const;
+   QString  toolTip(QListWidgetItem* theWrappedObject) const;
+   Qt::ItemFlags  flags(QListWidgetItem* theWrappedObject) const;
+   void setSelected(QListWidgetItem* theWrappedObject, bool  select);
+   void setSizeHint(QListWidgetItem* theWrappedObject, const QSize&  size);
+   void setData(QListWidgetItem* theWrappedObject, int  role, const QVariant&  value);
+   void setFont(QListWidgetItem* theWrappedObject, const QFont&  font);
 };
 
 #endif // PYTHONQTWRAPPER_QLISTWIDGETITEM_H

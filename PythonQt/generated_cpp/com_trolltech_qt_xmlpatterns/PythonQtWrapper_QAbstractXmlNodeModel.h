@@ -8,6 +8,7 @@
 
 #include <QVariant>
 #include <qabstractxmlnodemodel.h>
+#include <qsourcelocation.h>
 #include <qurl.h>
 #include <qvector.h>
 #include <qxmlname.h>
@@ -15,7 +16,6 @@
 class PythonQtShell_QAbstractXmlNodeModel : public QAbstractXmlNodeModel
 {
 public:
-    PythonQtShell_QAbstractXmlNodeModel():QAbstractXmlNodeModel(),_wrapper(NULL) {};
 
 virtual QVector<QXmlNodeModelIndex >  attributes(const QXmlNodeModelIndex&  element) const;
 virtual QUrl  baseUri(const QXmlNodeModelIndex&  ni) const;
@@ -37,12 +37,14 @@ virtual QVariant  typedValue(const QXmlNodeModelIndex&  n) const;
 class PythonQtWrapper_QAbstractXmlNodeModel : public QObject
 { Q_OBJECT
 public:
-Q_ENUMS(SimpleAxis )
+Q_ENUMS(SimpleAxis NodeCopySetting )
 enum SimpleAxis{
   Parent = QAbstractXmlNodeModel::Parent,   FirstChild = QAbstractXmlNodeModel::FirstChild,   PreviousSibling = QAbstractXmlNodeModel::PreviousSibling,   NextSibling = QAbstractXmlNodeModel::NextSibling};
+enum NodeCopySetting{
+  InheritNamespaces = QAbstractXmlNodeModel::InheritNamespaces,   PreserveNamespaces = QAbstractXmlNodeModel::PreserveNamespaces};
 public slots:
-QAbstractXmlNodeModel* new_QAbstractXmlNodeModel();
 void delete_QAbstractXmlNodeModel(QAbstractXmlNodeModel* obj) { delete obj; } 
+   QSourceLocation  sourceLocation(QAbstractXmlNodeModel* theWrappedObject, const QXmlNodeModelIndex&  index) const;
 };
 
 #endif // PYTHONQTWRAPPER_QABSTRACTXMLNODEMODEL_H

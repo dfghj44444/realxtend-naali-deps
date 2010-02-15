@@ -236,39 +236,14 @@ QXmlSerializer* PythonQtWrapper_QXmlSerializer::new_QXmlSerializer(const QXmlQue
 { 
 return new PythonQtShell_QXmlSerializer(query, outputDevice); }
 
-void PythonQtWrapper_QXmlSerializer::startOfSequence(QXmlSerializer* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startOfSequence());
-}
-
 const QTextCodec*  PythonQtWrapper_QXmlSerializer::codec(QXmlSerializer* theWrappedObject) const
 {
   return ( theWrappedObject->codec());
 }
 
-void PythonQtWrapper_QXmlSerializer::processingInstruction(QXmlSerializer* theWrappedObject, const QXmlName&  name, const QString&  value)
+void PythonQtWrapper_QXmlSerializer::setCodec(QXmlSerializer* theWrappedObject, const QTextCodec*  codec)
 {
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_processingInstruction(name, value));
-}
-
-void PythonQtWrapper_QXmlSerializer::endDocument(QXmlSerializer* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_endDocument());
-}
-
-void PythonQtWrapper_QXmlSerializer::startDocument(QXmlSerializer* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startDocument());
-}
-
-void PythonQtWrapper_QXmlSerializer::startElement(QXmlSerializer* theWrappedObject, const QXmlName&  name)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startElement(name));
-}
-
-void PythonQtWrapper_QXmlSerializer::endElement(QXmlSerializer* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_endElement());
+  ( theWrappedObject->setCodec(codec));
 }
 
 void PythonQtWrapper_QXmlSerializer::endOfSequence(QXmlSerializer* theWrappedObject)
@@ -276,14 +251,9 @@ void PythonQtWrapper_QXmlSerializer::endOfSequence(QXmlSerializer* theWrappedObj
   ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_endOfSequence());
 }
 
-void PythonQtWrapper_QXmlSerializer::atomicValue(QXmlSerializer* theWrappedObject, const QVariant&  value)
+void PythonQtWrapper_QXmlSerializer::startElement(QXmlSerializer* theWrappedObject, const QXmlName&  name)
 {
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_atomicValue(value));
-}
-
-void PythonQtWrapper_QXmlSerializer::attribute(QXmlSerializer* theWrappedObject, const QXmlName&  name, const QStringRef&  value)
-{
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_attribute(name, value));
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startElement(name));
 }
 
 void PythonQtWrapper_QXmlSerializer::characters(QXmlSerializer* theWrappedObject, const QStringRef&  value)
@@ -291,14 +261,19 @@ void PythonQtWrapper_QXmlSerializer::characters(QXmlSerializer* theWrappedObject
   ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_characters(value));
 }
 
-void PythonQtWrapper_QXmlSerializer::comment(QXmlSerializer* theWrappedObject, const QString&  value)
+void PythonQtWrapper_QXmlSerializer::startDocument(QXmlSerializer* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_comment(value));
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startDocument());
 }
 
-void PythonQtWrapper_QXmlSerializer::namespaceBinding(QXmlSerializer* theWrappedObject, const QXmlName&  nb)
+void PythonQtWrapper_QXmlSerializer::attribute(QXmlSerializer* theWrappedObject, const QXmlName&  name, const QStringRef&  value)
 {
-  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_namespaceBinding(nb));
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_attribute(name, value));
+}
+
+void PythonQtWrapper_QXmlSerializer::endDocument(QXmlSerializer* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_endDocument());
 }
 
 QIODevice*  PythonQtWrapper_QXmlSerializer::outputDevice(QXmlSerializer* theWrappedObject) const
@@ -306,8 +281,33 @@ QIODevice*  PythonQtWrapper_QXmlSerializer::outputDevice(QXmlSerializer* theWrap
   return ( theWrappedObject->outputDevice());
 }
 
-void PythonQtWrapper_QXmlSerializer::setCodec(QXmlSerializer* theWrappedObject, const QTextCodec*  codec)
+void PythonQtWrapper_QXmlSerializer::processingInstruction(QXmlSerializer* theWrappedObject, const QXmlName&  name, const QString&  value)
 {
-  ( theWrappedObject->setCodec(codec));
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_processingInstruction(name, value));
+}
+
+void PythonQtWrapper_QXmlSerializer::endElement(QXmlSerializer* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_endElement());
+}
+
+void PythonQtWrapper_QXmlSerializer::namespaceBinding(QXmlSerializer* theWrappedObject, const QXmlName&  nb)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_namespaceBinding(nb));
+}
+
+void PythonQtWrapper_QXmlSerializer::startOfSequence(QXmlSerializer* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_startOfSequence());
+}
+
+void PythonQtWrapper_QXmlSerializer::atomicValue(QXmlSerializer* theWrappedObject, const QVariant&  value)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_atomicValue(value));
+}
+
+void PythonQtWrapper_QXmlSerializer::comment(QXmlSerializer* theWrappedObject, const QString&  value)
+{
+  ( ((PythonQtPublicPromoter_QXmlSerializer*)theWrappedObject)->promoted_comment(value));
 }
 

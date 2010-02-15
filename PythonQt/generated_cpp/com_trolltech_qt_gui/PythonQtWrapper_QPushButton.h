@@ -15,12 +15,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -91,11 +94,11 @@ virtual void wheelEvent(QWheelEvent*  arg__1);
 
 class PythonQtPublicPromoter_QPushButton : public QPushButton
 { public:
-inline void promoted_focusOutEvent(QFocusEvent*  arg__1) { QPushButton::focusOutEvent(arg__1); }
-inline void promoted_keyPressEvent(QKeyEvent*  arg__1) { QPushButton::keyPressEvent(arg__1); }
-inline void promoted_paintEvent(QPaintEvent*  arg__1) { QPushButton::paintEvent(arg__1); }
 inline bool  promoted_event(QEvent*  e) { return QPushButton::event(e); }
+inline void promoted_keyPressEvent(QKeyEvent*  arg__1) { QPushButton::keyPressEvent(arg__1); }
 inline void promoted_focusInEvent(QFocusEvent*  arg__1) { QPushButton::focusInEvent(arg__1); }
+inline void promoted_paintEvent(QPaintEvent*  arg__1) { QPushButton::paintEvent(arg__1); }
+inline void promoted_focusOutEvent(QFocusEvent*  arg__1) { QPushButton::focusOutEvent(arg__1); }
 };
 
 class PythonQtWrapper_QPushButton : public QObject
@@ -106,21 +109,21 @@ QPushButton* new_QPushButton(QWidget*  parent = 0);
 QPushButton* new_QPushButton(const QIcon&  icon, const QString&  text, QWidget*  parent = 0);
 QPushButton* new_QPushButton(const QString&  text, QWidget*  parent = 0);
 void delete_QPushButton(QPushButton* obj) { delete obj; } 
-   void setDefault(QPushButton* theWrappedObject, bool  arg__1);
-   void focusOutEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1);
-   bool  isFlat(QPushButton* theWrappedObject) const;
+   void setFlat(QPushButton* theWrappedObject, bool  arg__1);
    QSize  minimumSizeHint(QPushButton* theWrappedObject) const;
+   void setDefault(QPushButton* theWrappedObject, bool  arg__1);
+   QMenu*  menu(QPushButton* theWrappedObject) const;
+   bool  event(QPushButton* theWrappedObject, QEvent*  e);
+   void keyPressEvent(QPushButton* theWrappedObject, QKeyEvent*  arg__1);
    bool  autoDefault(QPushButton* theWrappedObject) const;
    void setAutoDefault(QPushButton* theWrappedObject, bool  arg__1);
-   void keyPressEvent(QPushButton* theWrappedObject, QKeyEvent*  arg__1);
-   void paintEvent(QPushButton* theWrappedObject, QPaintEvent*  arg__1);
-   QSize  sizeHint(QPushButton* theWrappedObject) const;
-   bool  event(QPushButton* theWrappedObject, QEvent*  e);
+   bool  isFlat(QPushButton* theWrappedObject) const;
    void focusInEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1);
-   bool  isDefault(QPushButton* theWrappedObject) const;
-   void setFlat(QPushButton* theWrappedObject, bool  arg__1);
-   QMenu*  menu(QPushButton* theWrappedObject) const;
+   void paintEvent(QPushButton* theWrappedObject, QPaintEvent*  arg__1);
    void setMenu(QPushButton* theWrappedObject, QMenu*  menu);
+   bool  isDefault(QPushButton* theWrappedObject) const;
+   void focusOutEvent(QPushButton* theWrappedObject, QFocusEvent*  arg__1);
+   QSize  sizeHint(QPushButton* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QPUSHBUTTON_H

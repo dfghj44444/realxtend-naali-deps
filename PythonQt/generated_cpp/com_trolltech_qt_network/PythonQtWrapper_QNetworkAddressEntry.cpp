@@ -15,9 +15,14 @@ QNetworkAddressEntry* PythonQtWrapper_QNetworkAddressEntry::new_QNetworkAddressE
 { 
 return new QNetworkAddressEntry(other); }
 
-QHostAddress  PythonQtWrapper_QNetworkAddressEntry::netmask(QNetworkAddressEntry* theWrappedObject) const
+int  PythonQtWrapper_QNetworkAddressEntry::prefixLength(QNetworkAddressEntry* theWrappedObject) const
 {
-  return ( theWrappedObject->netmask());
+  return ( theWrappedObject->prefixLength());
+}
+
+QHostAddress  PythonQtWrapper_QNetworkAddressEntry::ip(QNetworkAddressEntry* theWrappedObject) const
+{
+  return ( theWrappedObject->ip());
 }
 
 void PythonQtWrapper_QNetworkAddressEntry::setBroadcast(QNetworkAddressEntry* theWrappedObject, const QHostAddress&  newBroadcast)
@@ -25,14 +30,19 @@ void PythonQtWrapper_QNetworkAddressEntry::setBroadcast(QNetworkAddressEntry* th
   ( theWrappedObject->setBroadcast(newBroadcast));
 }
 
+QHostAddress  PythonQtWrapper_QNetworkAddressEntry::netmask(QNetworkAddressEntry* theWrappedObject) const
+{
+  return ( theWrappedObject->netmask());
+}
+
+bool  PythonQtWrapper_QNetworkAddressEntry::operator_equal(QNetworkAddressEntry* theWrappedObject, const QNetworkAddressEntry&  other) const
+{
+  return ( (*theWrappedObject)== other);
+}
+
 QHostAddress  PythonQtWrapper_QNetworkAddressEntry::broadcast(QNetworkAddressEntry* theWrappedObject) const
 {
   return ( theWrappedObject->broadcast());
-}
-
-void PythonQtWrapper_QNetworkAddressEntry::setNetmask(QNetworkAddressEntry* theWrappedObject, const QHostAddress&  newNetmask)
-{
-  ( theWrappedObject->setNetmask(newNetmask));
 }
 
 void PythonQtWrapper_QNetworkAddressEntry::setIp(QNetworkAddressEntry* theWrappedObject, const QHostAddress&  newIp)
@@ -40,8 +50,13 @@ void PythonQtWrapper_QNetworkAddressEntry::setIp(QNetworkAddressEntry* theWrappe
   ( theWrappedObject->setIp(newIp));
 }
 
-QHostAddress  PythonQtWrapper_QNetworkAddressEntry::ip(QNetworkAddressEntry* theWrappedObject) const
+void PythonQtWrapper_QNetworkAddressEntry::setNetmask(QNetworkAddressEntry* theWrappedObject, const QHostAddress&  newNetmask)
 {
-  return ( theWrappedObject->ip());
+  ( theWrappedObject->setNetmask(newNetmask));
+}
+
+void PythonQtWrapper_QNetworkAddressEntry::setPrefixLength(QNetworkAddressEntry* theWrappedObject, int  length)
+{
+  ( theWrappedObject->setPrefixLength(length));
 }
 

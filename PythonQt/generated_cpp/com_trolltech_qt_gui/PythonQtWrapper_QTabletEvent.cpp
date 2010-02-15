@@ -10,6 +10,11 @@ QTabletEvent* PythonQtWrapper_QTabletEvent::new_QTabletEvent(QEvent::Type  t, co
 { 
 return new PythonQtShell_QTabletEvent(t, pos, globalPos, hiResGlobalPos, device, pointerType, pressure, xTilt, yTilt, tangentialPressure, rotation, z, keyState, uniqueID); }
 
+qreal  PythonQtWrapper_QTabletEvent::pressure(QTabletEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->pressure());
+}
+
 qreal  PythonQtWrapper_QTabletEvent::tangentialPressure(QTabletEvent* theWrappedObject) const
 {
   return ( theWrappedObject->tangentialPressure());
@@ -20,19 +25,9 @@ QTabletEvent::TabletDevice  PythonQtWrapper_QTabletEvent::device(QTabletEvent* t
   return ( theWrappedObject->device());
 }
 
-const QPoint*  PythonQtWrapper_QTabletEvent::globalPos(QTabletEvent* theWrappedObject) const
+int  PythonQtWrapper_QTabletEvent::globalY(QTabletEvent* theWrappedObject) const
 {
-  return &( theWrappedObject->globalPos());
-}
-
-int  PythonQtWrapper_QTabletEvent::x(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->x());
-}
-
-int  PythonQtWrapper_QTabletEvent::globalX(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->globalX());
+  return ( theWrappedObject->globalY());
 }
 
 QTabletEvent::PointerType  PythonQtWrapper_QTabletEvent::pointerType(QTabletEvent* theWrappedObject) const
@@ -40,19 +35,49 @@ QTabletEvent::PointerType  PythonQtWrapper_QTabletEvent::pointerType(QTabletEven
   return ( theWrappedObject->pointerType());
 }
 
+const QPoint*  PythonQtWrapper_QTabletEvent::pos(QTabletEvent* theWrappedObject) const
+{
+  return &( theWrappedObject->pos());
+}
+
+int  PythonQtWrapper_QTabletEvent::globalX(QTabletEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->globalX());
+}
+
+const QPoint*  PythonQtWrapper_QTabletEvent::globalPos(QTabletEvent* theWrappedObject) const
+{
+  return &( theWrappedObject->globalPos());
+}
+
+int  PythonQtWrapper_QTabletEvent::y(QTabletEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->y());
+}
+
 const QPointF*  PythonQtWrapper_QTabletEvent::hiResGlobalPos(QTabletEvent* theWrappedObject) const
 {
   return &( theWrappedObject->hiResGlobalPos());
 }
 
-qreal  PythonQtWrapper_QTabletEvent::hiResGlobalX(QTabletEvent* theWrappedObject) const
+int  PythonQtWrapper_QTabletEvent::yTilt(QTabletEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->hiResGlobalX());
+  return ( theWrappedObject->yTilt());
 }
 
-qreal  PythonQtWrapper_QTabletEvent::hiResGlobalY(QTabletEvent* theWrappedObject) const
+qint64  PythonQtWrapper_QTabletEvent::uniqueId(QTabletEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->hiResGlobalY());
+  return ( theWrappedObject->uniqueId());
+}
+
+int  PythonQtWrapper_QTabletEvent::x(QTabletEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->x());
+}
+
+qreal  PythonQtWrapper_QTabletEvent::rotation(QTabletEvent* theWrappedObject) const
+{
+  return ( theWrappedObject->rotation());
 }
 
 int  PythonQtWrapper_QTabletEvent::xTilt(QTabletEvent* theWrappedObject) const
@@ -65,38 +90,13 @@ int  PythonQtWrapper_QTabletEvent::z(QTabletEvent* theWrappedObject) const
   return ( theWrappedObject->z());
 }
 
-qreal  PythonQtWrapper_QTabletEvent::rotation(QTabletEvent* theWrappedObject) const
+qreal  PythonQtWrapper_QTabletEvent::hiResGlobalX(QTabletEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->rotation());
+  return ( theWrappedObject->hiResGlobalX());
 }
 
-int  PythonQtWrapper_QTabletEvent::yTilt(QTabletEvent* theWrappedObject) const
+qreal  PythonQtWrapper_QTabletEvent::hiResGlobalY(QTabletEvent* theWrappedObject) const
 {
-  return ( theWrappedObject->yTilt());
-}
-
-qreal  PythonQtWrapper_QTabletEvent::pressure(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->pressure());
-}
-
-qint64  PythonQtWrapper_QTabletEvent::uniqueId(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->uniqueId());
-}
-
-int  PythonQtWrapper_QTabletEvent::globalY(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->globalY());
-}
-
-const QPoint*  PythonQtWrapper_QTabletEvent::pos(QTabletEvent* theWrappedObject) const
-{
-  return &( theWrappedObject->pos());
-}
-
-int  PythonQtWrapper_QTabletEvent::y(QTabletEvent* theWrappedObject) const
-{
-  return ( theWrappedObject->y());
+  return ( theWrappedObject->hiResGlobalY());
 }
 

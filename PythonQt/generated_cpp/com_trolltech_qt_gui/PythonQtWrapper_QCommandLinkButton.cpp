@@ -13,12 +13,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -842,19 +845,14 @@ QCommandLinkButton* PythonQtWrapper_QCommandLinkButton::new_QCommandLinkButton(c
 { 
 return new PythonQtShell_QCommandLinkButton(text, description, parent); }
 
-bool  PythonQtWrapper_QCommandLinkButton::event(QCommandLinkButton* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QCommandLinkButton*)theWrappedObject)->promoted_event(e));
-}
-
 QString  PythonQtWrapper_QCommandLinkButton::description(QCommandLinkButton* theWrappedObject) const
 {
   return ( theWrappedObject->description());
 }
 
-void PythonQtWrapper_QCommandLinkButton::setDescription(QCommandLinkButton* theWrappedObject, const QString&  description)
+void PythonQtWrapper_QCommandLinkButton::paintEvent(QCommandLinkButton* theWrappedObject, QPaintEvent*  arg__1)
 {
-  ( theWrappedObject->setDescription(description));
+  ( ((PythonQtPublicPromoter_QCommandLinkButton*)theWrappedObject)->promoted_paintEvent(arg__1));
 }
 
 int  PythonQtWrapper_QCommandLinkButton::heightForWidth(QCommandLinkButton* theWrappedObject, int  arg__1) const
@@ -862,8 +860,13 @@ int  PythonQtWrapper_QCommandLinkButton::heightForWidth(QCommandLinkButton* theW
   return ( ((PythonQtPublicPromoter_QCommandLinkButton*)theWrappedObject)->promoted_heightForWidth(arg__1));
 }
 
-void PythonQtWrapper_QCommandLinkButton::paintEvent(QCommandLinkButton* theWrappedObject, QPaintEvent*  arg__1)
+void PythonQtWrapper_QCommandLinkButton::setDescription(QCommandLinkButton* theWrappedObject, const QString&  description)
 {
-  ( ((PythonQtPublicPromoter_QCommandLinkButton*)theWrappedObject)->promoted_paintEvent(arg__1));
+  ( theWrappedObject->setDescription(description));
+}
+
+bool  PythonQtWrapper_QCommandLinkButton::event(QCommandLinkButton* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QCommandLinkButton*)theWrappedObject)->promoted_event(e));
 }
 

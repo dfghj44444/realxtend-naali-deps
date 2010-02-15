@@ -25,24 +25,14 @@ QTextDocumentFragment* PythonQtWrapper_QTextDocumentFragment::new_QTextDocumentF
 { 
 return new QTextDocumentFragment(rhs); }
 
-QTextDocumentFragment  PythonQtWrapper_QTextDocumentFragment::static_QTextDocumentFragment_fromHtml(const QString&  html, const QTextDocument*  resourceProvider)
-{
-  return (QTextDocumentFragment::fromHtml(html, resourceProvider));
-}
-
 QString  PythonQtWrapper_QTextDocumentFragment::toPlainText(QTextDocumentFragment* theWrappedObject) const
 {
   return ( theWrappedObject->toPlainText());
 }
 
-QString  PythonQtWrapper_QTextDocumentFragment::toHtml(QTextDocumentFragment* theWrappedObject) const
+QString  PythonQtWrapper_QTextDocumentFragment::toHtml(QTextDocumentFragment* theWrappedObject, const QByteArray&  encoding) const
 {
-  return ( theWrappedObject->toHtml());
-}
-
-bool  PythonQtWrapper_QTextDocumentFragment::isEmpty(QTextDocumentFragment* theWrappedObject) const
-{
-  return ( theWrappedObject->isEmpty());
+  return ( theWrappedObject->toHtml(encoding));
 }
 
 QTextDocumentFragment  PythonQtWrapper_QTextDocumentFragment::static_QTextDocumentFragment_fromPlainText(const QString&  plainText)
@@ -50,13 +40,23 @@ QTextDocumentFragment  PythonQtWrapper_QTextDocumentFragment::static_QTextDocume
   return (QTextDocumentFragment::fromPlainText(plainText));
 }
 
+bool  PythonQtWrapper_QTextDocumentFragment::isEmpty(QTextDocumentFragment* theWrappedObject) const
+{
+  return ( theWrappedObject->isEmpty());
+}
+
+QString  PythonQtWrapper_QTextDocumentFragment::toHtml(QTextDocumentFragment* theWrappedObject) const
+{
+  return ( theWrappedObject->toHtml());
+}
+
 QTextDocumentFragment  PythonQtWrapper_QTextDocumentFragment::static_QTextDocumentFragment_fromHtml(const QString&  html)
 {
   return (QTextDocumentFragment::fromHtml(html));
 }
 
-QString  PythonQtWrapper_QTextDocumentFragment::toHtml(QTextDocumentFragment* theWrappedObject, const QByteArray&  encoding) const
+QTextDocumentFragment  PythonQtWrapper_QTextDocumentFragment::static_QTextDocumentFragment_fromHtml(const QString&  html, const QTextDocument*  resourceProvider)
 {
-  return ( theWrappedObject->toHtml(encoding));
+  return (QTextDocumentFragment::fromHtml(html, resourceProvider));
 }
 

@@ -825,13 +825,13 @@ QAbstractTableModel* PythonQtWrapper_QAbstractTableModel::new_QAbstractTableMode
 { 
 return new PythonQtShell_QAbstractTableModel(parent); }
 
-bool  PythonQtWrapper_QAbstractTableModel::dropMimeData(QAbstractTableModel* theWrappedObject, const QMimeData*  data, Qt::DropAction  action, int  row, int  column, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QAbstractTableModel*)theWrappedObject)->promoted_dropMimeData(data, action, row, column, parent));
-}
-
 QModelIndex  PythonQtWrapper_QAbstractTableModel::index(QAbstractTableModel* theWrappedObject, int  row, int  column, const QModelIndex&  parent) const
 {
   return ( ((PythonQtPublicPromoter_QAbstractTableModel*)theWrappedObject)->promoted_index(row, column, parent));
+}
+
+bool  PythonQtWrapper_QAbstractTableModel::dropMimeData(QAbstractTableModel* theWrappedObject, const QMimeData*  data, Qt::DropAction  action, int  row, int  column, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QAbstractTableModel*)theWrappedObject)->promoted_dropMimeData(data, action, row, column, parent));
 }
 

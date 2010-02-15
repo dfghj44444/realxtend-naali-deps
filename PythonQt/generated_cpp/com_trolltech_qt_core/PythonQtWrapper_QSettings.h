@@ -14,6 +14,7 @@
 #include <qobject.h>
 #include <qsettings.h>
 #include <qstringlist.h>
+#include <qtextcodec.h>
 
 class PythonQtShell_QSettings : public QSettings
 {
@@ -55,35 +56,38 @@ QSettings* new_QSettings(QSettings::Scope  scope, const QString&  organization, 
 QSettings* new_QSettings(const QString&  fileName, QSettings::Format  format, QObject*  parent = 0);
 QSettings* new_QSettings(const QString&  organization, const QString&  application = QString(), QObject*  parent = 0);
 void delete_QSettings(QSettings* obj) { delete obj; } 
-   QSettings::Format  format(QSettings* theWrappedObject) const;
-   void clear(QSettings* theWrappedObject);
+   bool  event(QSettings* theWrappedObject, QEvent*  event);
+   void sync(QSettings* theWrappedObject);
+   bool  contains(QSettings* theWrappedObject, const QString&  key) const;
+   void endGroup(QSettings* theWrappedObject);
    QSettings::Format  static_QSettings_defaultFormat();
    QString  organizationName(QSettings* theWrappedObject) const;
-   bool  contains(QSettings* theWrappedObject, const QString&  key) const;
-   QSettings::Scope  scope(QSettings* theWrappedObject) const;
-   void setFallbacksEnabled(QSettings* theWrappedObject, bool  b);
-   bool  event(QSettings* theWrappedObject, QEvent*  event);
-   QStringList  childGroups(QSettings* theWrappedObject) const;
-   void static_QSettings_setDefaultFormat(QSettings::Format  format);
-   void beginGroup(QSettings* theWrappedObject, const QString&  prefix);
-   bool  fallbacksEnabled(QSettings* theWrappedObject) const;
-   void beginWriteArray(QSettings* theWrappedObject, const QString&  prefix, int  size = -1);
-   void endArray(QSettings* theWrappedObject);
-   void static_QSettings_setPath(QSettings::Format  format, QSettings::Scope  scope, const QString&  path);
-   QString  applicationName(QSettings* theWrappedObject) const;
-   QString  group(QSettings* theWrappedObject) const;
-   bool  isWritable(QSettings* theWrappedObject) const;
-   void setValue(QSettings* theWrappedObject, const QString&  key, const QVariant&  value);
-   void remove(QSettings* theWrappedObject, const QString&  key);
-   QSettings::Status  status(QSettings* theWrappedObject) const;
-   QVariant  value(QSettings* theWrappedObject, const QString&  key, const QVariant&  defaultValue = QVariant()) const;
-   QStringList  allKeys(QSettings* theWrappedObject) const;
    QStringList  childKeys(QSettings* theWrappedObject) const;
-   void setArrayIndex(QSettings* theWrappedObject, int  i);
-   void endGroup(QSettings* theWrappedObject);
-   int  beginReadArray(QSettings* theWrappedObject, const QString&  prefix);
-   void sync(QSettings* theWrappedObject);
+   void remove(QSettings* theWrappedObject, const QString&  key);
+   void static_QSettings_setPath(QSettings::Format  format, QSettings::Scope  scope, const QString&  path);
+   void beginGroup(QSettings* theWrappedObject, const QString&  prefix);
+   void setFallbacksEnabled(QSettings* theWrappedObject, bool  b);
+   bool  fallbacksEnabled(QSettings* theWrappedObject) const;
+   void setIniCodec(QSettings* theWrappedObject, QTextCodec*  codec);
+   QVariant  value(QSettings* theWrappedObject, const QString&  key, const QVariant&  defaultValue = QVariant()) const;
    QString  fileName(QSettings* theWrappedObject) const;
+   void setArrayIndex(QSettings* theWrappedObject, int  i);
+   bool  isWritable(QSettings* theWrappedObject) const;
+   QSettings::Format  format(QSettings* theWrappedObject) const;
+   void static_QSettings_setDefaultFormat(QSettings::Format  format);
+   QStringList  allKeys(QSettings* theWrappedObject) const;
+   void beginWriteArray(QSettings* theWrappedObject, const QString&  prefix, int  size = -1);
+   QSettings::Scope  scope(QSettings* theWrappedObject) const;
+   void clear(QSettings* theWrappedObject);
+   void endArray(QSettings* theWrappedObject);
+   int  beginReadArray(QSettings* theWrappedObject, const QString&  prefix);
+   QString  group(QSettings* theWrappedObject) const;
+   void setIniCodec(QSettings* theWrappedObject, const char*  codecName);
+   QSettings::Status  status(QSettings* theWrappedObject) const;
+   QTextCodec*  iniCodec(QSettings* theWrappedObject) const;
+   QString  applicationName(QSettings* theWrappedObject) const;
+   QStringList  childGroups(QSettings* theWrappedObject) const;
+   void setValue(QSettings* theWrappedObject, const QString&  key, const QVariant&  value);
 };
 
 #endif // PYTHONQTWRAPPER_QSETTINGS_H

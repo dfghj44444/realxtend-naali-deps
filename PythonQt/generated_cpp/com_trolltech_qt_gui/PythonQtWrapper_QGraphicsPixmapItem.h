@@ -10,9 +10,11 @@
 #include <qcoreevent.h>
 #include <qcursor.h>
 #include <qevent.h>
+#include <qgraphicseffect.h>
 #include <qgraphicsitem.h>
 #include <qgraphicsscene.h>
 #include <qgraphicssceneevent.h>
+#include <qgraphicstransform.h>
 #include <qgraphicswidget.h>
 #include <qlist.h>
 #include <qpainter.h>
@@ -74,11 +76,11 @@ class PythonQtPublicPromoter_QGraphicsPixmapItem : public QGraphicsPixmapItem
 { public:
 inline QPainterPath  promoted_opaqueArea() const { return QGraphicsPixmapItem::opaqueArea(); }
 inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsPixmapItem::isObscuredBy(item); }
-inline QPainterPath  promoted_shape() const { return QGraphicsPixmapItem::shape(); }
-inline int  promoted_type() const { return QGraphicsPixmapItem::type(); }
-inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsPixmapItem::contains(point); }
-inline QRectF  promoted_boundingRect() const { return QGraphicsPixmapItem::boundingRect(); }
 inline void promoted_paint(QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget) { QGraphicsPixmapItem::paint(painter, option, widget); }
+inline QPainterPath  promoted_shape() const { return QGraphicsPixmapItem::shape(); }
+inline QRectF  promoted_boundingRect() const { return QGraphicsPixmapItem::boundingRect(); }
+inline bool  promoted_contains(const QPointF&  point) const { return QGraphicsPixmapItem::contains(point); }
+inline int  promoted_type() const { return QGraphicsPixmapItem::type(); }
 inline QVariant  promoted_extension(const QVariant&  variant) const { return QGraphicsPixmapItem::extension(variant); }
 };
 
@@ -94,23 +96,23 @@ public slots:
 QGraphicsPixmapItem* new_QGraphicsPixmapItem(QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 QGraphicsPixmapItem* new_QGraphicsPixmapItem(const QPixmap&  pixmap, QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 void delete_QGraphicsPixmapItem(QGraphicsPixmapItem* obj) { delete obj; } 
-   QPainterPath  opaqueArea(QGraphicsPixmapItem* theWrappedObject) const;
-   QGraphicsPixmapItem::ShapeMode  shapeMode(QGraphicsPixmapItem* theWrappedObject) const;
-   void setOffset(QGraphicsPixmapItem* theWrappedObject, const QPointF&  offset);
-   void setOffset(QGraphicsPixmapItem* theWrappedObject, qreal  x, qreal  y);
-   bool  isObscuredBy(QGraphicsPixmapItem* theWrappedObject, const QGraphicsItem*  item) const;
-   Qt::TransformationMode  transformationMode(QGraphicsPixmapItem* theWrappedObject) const;
-   QPainterPath  shape(QGraphicsPixmapItem* theWrappedObject) const;
-   int  type(QGraphicsPixmapItem* theWrappedObject) const;
-   bool  contains(QGraphicsPixmapItem* theWrappedObject, const QPointF&  point) const;
-   void setShapeMode(QGraphicsPixmapItem* theWrappedObject, QGraphicsPixmapItem::ShapeMode  mode);
-   void setTransformationMode(QGraphicsPixmapItem* theWrappedObject, Qt::TransformationMode  mode);
-   QPointF  offset(QGraphicsPixmapItem* theWrappedObject) const;
-   QRectF  boundingRect(QGraphicsPixmapItem* theWrappedObject) const;
-   void paint(QGraphicsPixmapItem* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget);
-   QPixmap  pixmap(QGraphicsPixmapItem* theWrappedObject) const;
-   QVariant  extension(QGraphicsPixmapItem* theWrappedObject, const QVariant&  variant) const;
    void setPixmap(QGraphicsPixmapItem* theWrappedObject, const QPixmap&  pixmap);
+   QPainterPath  opaqueArea(QGraphicsPixmapItem* theWrappedObject) const;
+   QPixmap  pixmap(QGraphicsPixmapItem* theWrappedObject) const;
+   QPointF  offset(QGraphicsPixmapItem* theWrappedObject) const;
+   void setShapeMode(QGraphicsPixmapItem* theWrappedObject, QGraphicsPixmapItem::ShapeMode  mode);
+   void setOffset(QGraphicsPixmapItem* theWrappedObject, const QPointF&  offset);
+   Qt::TransformationMode  transformationMode(QGraphicsPixmapItem* theWrappedObject) const;
+   bool  isObscuredBy(QGraphicsPixmapItem* theWrappedObject, const QGraphicsItem*  item) const;
+   void paint(QGraphicsPixmapItem* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget);
+   QGraphicsPixmapItem::ShapeMode  shapeMode(QGraphicsPixmapItem* theWrappedObject) const;
+   QPainterPath  shape(QGraphicsPixmapItem* theWrappedObject) const;
+   void setOffset(QGraphicsPixmapItem* theWrappedObject, qreal  x, qreal  y);
+   void setTransformationMode(QGraphicsPixmapItem* theWrappedObject, Qt::TransformationMode  mode);
+   QRectF  boundingRect(QGraphicsPixmapItem* theWrappedObject) const;
+   bool  contains(QGraphicsPixmapItem* theWrappedObject, const QPointF&  point) const;
+   int  type(QGraphicsPixmapItem* theWrappedObject) const;
+   QVariant  extension(QGraphicsPixmapItem* theWrappedObject, const QVariant&  variant) const;
 };
 
 #endif // PYTHONQTWRAPPER_QGRAPHICSPIXMAPITEM_H

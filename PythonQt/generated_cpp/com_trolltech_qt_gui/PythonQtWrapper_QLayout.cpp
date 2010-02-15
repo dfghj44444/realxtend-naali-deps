@@ -9,6 +9,7 @@
 #include <qlayout.h>
 #include <qlayoutitem.h>
 #include <qlist.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -632,39 +633,34 @@ QLayout* PythonQtWrapper_QLayout::new_QLayout(QWidget*  parent)
 { 
 return new PythonQtShell_QLayout(parent); }
 
-QWidget*  PythonQtWrapper_QLayout::parentWidget(QLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->parentWidget());
-}
-
-QSize  PythonQtWrapper_QLayout::totalMaximumSize(QLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->totalMaximumSize());
-}
-
-QRect  PythonQtWrapper_QLayout::geometry(QLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_geometry());
-}
-
-void PythonQtWrapper_QLayout::setEnabled(QLayout* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setEnabled(arg__1));
-}
-
-QSize  PythonQtWrapper_QLayout::totalSizeHint(QLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->totalSizeHint());
-}
-
 bool  PythonQtWrapper_QLayout::setAlignment(QLayout* theWrappedObject, QWidget*  w, Qt::Alignment  alignment)
 {
   return ( theWrappedObject->setAlignment(w, alignment));
 }
 
-QLayout*  PythonQtWrapper_QLayout::layout(QLayout* theWrappedObject)
+void PythonQtWrapper_QLayout::update(QLayout* theWrappedObject)
 {
-  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_layout());
+  ( theWrappedObject->update());
+}
+
+void PythonQtWrapper_QLayout::addWidget(QLayout* theWrappedObject, QWidget*  w)
+{
+  ( theWrappedObject->addWidget(w));
+}
+
+void PythonQtWrapper_QLayout::getContentsMargins(QLayout* theWrappedObject, int*  left, int*  top, int*  right, int*  bottom) const
+{
+  ( theWrappedObject->getContentsMargins(left, top, right, bottom));
+}
+
+void PythonQtWrapper_QLayout::setGeometry(QLayout* theWrappedObject, const QRect&  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_setGeometry(arg__1));
+}
+
+void PythonQtWrapper_QLayout::setAlignment(QLayout* theWrappedObject, Qt::Alignment  alignment)
+{
+  ( theWrappedObject->setAlignment(alignment));
 }
 
 bool  PythonQtWrapper_QLayout::isEmpty(QLayout* theWrappedObject) const
@@ -672,14 +668,54 @@ bool  PythonQtWrapper_QLayout::isEmpty(QLayout* theWrappedObject) const
   return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_isEmpty());
 }
 
-QRect  PythonQtWrapper_QLayout::contentsRect(QLayout* theWrappedObject) const
+int  PythonQtWrapper_QLayout::totalHeightForWidth(QLayout* theWrappedObject, int  w) const
 {
-  return ( theWrappedObject->contentsRect());
+  return ( theWrappedObject->totalHeightForWidth(w));
 }
 
-void PythonQtWrapper_QLayout::setContentsMargins(QLayout* theWrappedObject, int  left, int  top, int  right, int  bottom)
+QSize  PythonQtWrapper_QLayout::static_QLayout_closestAcceptableSize(const QWidget*  w, const QSize&  s)
 {
-  ( theWrappedObject->setContentsMargins(left, top, right, bottom));
+  return (QLayout::closestAcceptableSize(w, s));
+}
+
+void PythonQtWrapper_QLayout::setSpacing(QLayout* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setSpacing(arg__1));
+}
+
+void PythonQtWrapper_QLayout::childEvent(QLayout* theWrappedObject, QChildEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_childEvent(e));
+}
+
+bool  PythonQtWrapper_QLayout::isEnabled(QLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->isEnabled());
+}
+
+void PythonQtWrapper_QLayout::removeItem(QLayout* theWrappedObject, QLayoutItem*  arg__1)
+{
+  ( theWrappedObject->removeItem(arg__1));
+}
+
+QMargins  PythonQtWrapper_QLayout::contentsMargins(QLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->contentsMargins());
+}
+
+void PythonQtWrapper_QLayout::setContentsMargins(QLayout* theWrappedObject, const QMargins&  margins)
+{
+  ( theWrappedObject->setContentsMargins(margins));
+}
+
+void PythonQtWrapper_QLayout::invalidate(QLayout* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_invalidate());
+}
+
+QSize  PythonQtWrapper_QLayout::maximumSize(QLayout* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_maximumSize());
 }
 
 void PythonQtWrapper_QLayout::removeWidget(QLayout* theWrappedObject, QWidget*  w)
@@ -692,54 +728,24 @@ bool  PythonQtWrapper_QLayout::activate(QLayout* theWrappedObject)
   return ( theWrappedObject->activate());
 }
 
-QLayout::SizeConstraint  PythonQtWrapper_QLayout::sizeConstraint(QLayout* theWrappedObject) const
+Qt::Orientations  PythonQtWrapper_QLayout::expandingDirections(QLayout* theWrappedObject) const
 {
-  return ( theWrappedObject->sizeConstraint());
+  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_expandingDirections());
 }
 
-void PythonQtWrapper_QLayout::invalidate(QLayout* theWrappedObject)
+QRect  PythonQtWrapper_QLayout::contentsRect(QLayout* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_invalidate());
+  return ( theWrappedObject->contentsRect());
 }
 
-bool  PythonQtWrapper_QLayout::isEnabled(QLayout* theWrappedObject) const
+void PythonQtWrapper_QLayout::setEnabled(QLayout* theWrappedObject, bool  arg__1)
 {
-  return ( theWrappedObject->isEnabled());
+  ( theWrappedObject->setEnabled(arg__1));
 }
 
-QWidget*  PythonQtWrapper_QLayout::menuBar(QLayout* theWrappedObject) const
+QRect  PythonQtWrapper_QLayout::geometry(QLayout* theWrappedObject) const
 {
-  return ( theWrappedObject->menuBar());
-}
-
-QSize  PythonQtWrapper_QLayout::maximumSize(QLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_maximumSize());
-}
-
-QSize  PythonQtWrapper_QLayout::minimumSize(QLayout* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_minimumSize());
-}
-
-QSize  PythonQtWrapper_QLayout::static_QLayout_closestAcceptableSize(const QWidget*  w, const QSize&  s)
-{
-  return (QLayout::closestAcceptableSize(w, s));
-}
-
-bool  PythonQtWrapper_QLayout::setAlignment(QLayout* theWrappedObject, QLayout*  l, Qt::Alignment  alignment)
-{
-  return ( theWrappedObject->setAlignment(l, alignment));
-}
-
-void PythonQtWrapper_QLayout::setAlignment(QLayout* theWrappedObject, Qt::Alignment  alignment)
-{
-  ( theWrappedObject->setAlignment(alignment));
-}
-
-void PythonQtWrapper_QLayout::setSizeConstraint(QLayout* theWrappedObject, QLayout::SizeConstraint  arg__1)
-{
-  ( theWrappedObject->setSizeConstraint(arg__1));
+  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_geometry());
 }
 
 void PythonQtWrapper_QLayout::setMargin(QLayout* theWrappedObject, int  arg__1)
@@ -747,14 +753,29 @@ void PythonQtWrapper_QLayout::setMargin(QLayout* theWrappedObject, int  arg__1)
   ( theWrappedObject->setMargin(arg__1));
 }
 
-void PythonQtWrapper_QLayout::removeItem(QLayout* theWrappedObject, QLayoutItem*  arg__1)
+QSize  PythonQtWrapper_QLayout::totalMinimumSize(QLayout* theWrappedObject) const
 {
-  ( theWrappedObject->removeItem(arg__1));
+  return ( theWrappedObject->totalMinimumSize());
 }
 
-void PythonQtWrapper_QLayout::addWidget(QLayout* theWrappedObject, QWidget*  w)
+QWidget*  PythonQtWrapper_QLayout::parentWidget(QLayout* theWrappedObject) const
 {
-  ( theWrappedObject->addWidget(w));
+  return ( theWrappedObject->parentWidget());
+}
+
+void PythonQtWrapper_QLayout::setSizeConstraint(QLayout* theWrappedObject, QLayout::SizeConstraint  arg__1)
+{
+  ( theWrappedObject->setSizeConstraint(arg__1));
+}
+
+QLayout*  PythonQtWrapper_QLayout::layout(QLayout* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_layout());
+}
+
+QSize  PythonQtWrapper_QLayout::totalSizeHint(QLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->totalSizeHint());
 }
 
 int  PythonQtWrapper_QLayout::indexOf(QLayout* theWrappedObject, QWidget*  arg__1) const
@@ -762,9 +783,14 @@ int  PythonQtWrapper_QLayout::indexOf(QLayout* theWrappedObject, QWidget*  arg__
   return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_indexOf(arg__1));
 }
 
-void PythonQtWrapper_QLayout::setSpacing(QLayout* theWrappedObject, int  arg__1)
+QSize  PythonQtWrapper_QLayout::totalMaximumSize(QLayout* theWrappedObject) const
 {
-  ( theWrappedObject->setSpacing(arg__1));
+  return ( theWrappedObject->totalMaximumSize());
+}
+
+QWidget*  PythonQtWrapper_QLayout::menuBar(QLayout* theWrappedObject) const
+{
+  return ( theWrappedObject->menuBar());
 }
 
 int  PythonQtWrapper_QLayout::spacing(QLayout* theWrappedObject) const
@@ -772,43 +798,28 @@ int  PythonQtWrapper_QLayout::spacing(QLayout* theWrappedObject) const
   return ( theWrappedObject->spacing());
 }
 
-void PythonQtWrapper_QLayout::childEvent(QLayout* theWrappedObject, QChildEvent*  e)
+QLayout::SizeConstraint  PythonQtWrapper_QLayout::sizeConstraint(QLayout* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_childEvent(e));
+  return ( theWrappedObject->sizeConstraint());
 }
 
-void PythonQtWrapper_QLayout::setGeometry(QLayout* theWrappedObject, const QRect&  arg__1)
+QSize  PythonQtWrapper_QLayout::minimumSize(QLayout* theWrappedObject) const
 {
-  ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_setGeometry(arg__1));
+  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_minimumSize());
 }
 
-Qt::Orientations  PythonQtWrapper_QLayout::expandingDirections(QLayout* theWrappedObject) const
+void PythonQtWrapper_QLayout::setContentsMargins(QLayout* theWrappedObject, int  left, int  top, int  right, int  bottom)
 {
-  return ( ((PythonQtPublicPromoter_QLayout*)theWrappedObject)->promoted_expandingDirections());
+  ( theWrappedObject->setContentsMargins(left, top, right, bottom));
 }
 
-int  PythonQtWrapper_QLayout::totalHeightForWidth(QLayout* theWrappedObject, int  w) const
+bool  PythonQtWrapper_QLayout::setAlignment(QLayout* theWrappedObject, QLayout*  l, Qt::Alignment  alignment)
 {
-  return ( theWrappedObject->totalHeightForWidth(w));
-}
-
-void PythonQtWrapper_QLayout::update(QLayout* theWrappedObject)
-{
-  ( theWrappedObject->update());
-}
-
-void PythonQtWrapper_QLayout::getContentsMargins(QLayout* theWrappedObject, int*  left, int*  top, int*  right, int*  bottom) const
-{
-  ( theWrappedObject->getContentsMargins(left, top, right, bottom));
+  return ( theWrappedObject->setAlignment(l, alignment));
 }
 
 void PythonQtWrapper_QLayout::setMenuBar(QLayout* theWrappedObject, QWidget*  w)
 {
   ( theWrappedObject->setMenuBar(w));
-}
-
-QSize  PythonQtWrapper_QLayout::totalMinimumSize(QLayout* theWrappedObject) const
-{
-  return ( theWrappedObject->totalMinimumSize());
 }
 

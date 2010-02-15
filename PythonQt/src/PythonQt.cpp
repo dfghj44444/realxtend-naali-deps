@@ -83,8 +83,8 @@ void PythonQt::init(int flags)
   PythonQt::self()->registerCPPClass("QRectF", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QRectF>);
   PythonQt::self()->registerCPPClass("QSize", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QSize>);
   PythonQt::self()->registerCPPClass("QSizeF", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QSizeF>);
-  PythonQt::self()->registerCPPClass("QLine", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QLine>);
-  PythonQt::self()->registerCPPClass("QLineF", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QLineF>);
+  //PythonQt::self()->registerCPPClass("QLine", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QLine>);
+  //PythonQt::self()->registerCPPClass("QLineF", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QLineF>);
   PythonQt::self()->registerCPPClass("QPoint", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QPoint>);
   PythonQt::self()->registerCPPClass("QPointF", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QPointF>);
   PythonQt::self()->registerCPPClass("QRegExp", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QRegExp>);
@@ -139,6 +139,14 @@ void PythonQt::init(int flags)
   PythonQtRegisterToolClassesTemplateConverter(QTextLength);
   PythonQtRegisterToolClassesTemplateConverter(QTextFormat);
   PythonQtRegisterToolClassesTemplateConverter(QMatrix);
+
+  //new stuff in Qt 4.6
+  PythonQt::self()->registerCPPClass("QVector2D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector2D>);
+  PythonQt::self()->registerCPPClass("QVector3D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector3D>);
+  PythonQt::self()->registerCPPClass("QVector4D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector4D>);
+  PythonQtRegisterToolClassesTemplateConverter(QVector2D);
+  PythonQtRegisterToolClassesTemplateConverter(QVector3D);
+  PythonQtRegisterToolClassesTemplateConverter(QVector4D);
 
   
   PyObject* pack = PythonQt::priv()->packageByName("QtCore");

@@ -9,6 +9,7 @@
 #include <qcoreevent.h>
 #include <qevent.h>
 #include <qlist.h>
+#include <qmenu.h>
 #include <qnetworkaccessmanager.h>
 #include <qnetworkreply.h>
 #include <qnetworkrequest.h>
@@ -228,6 +229,34 @@ if (_wrapper) {
 }
   return QWebPage::eventFilter(arg__1, arg__2);
 }
+bool  PythonQtShell_QWebPage::extension(QWebPage::Extension  extension, const QWebPage::ExtensionOption*  option, QWebPage::ExtensionReturn*  output)
+{
+if (_wrapper) {
+  PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "extension");
+  PyErr_Clear();
+  if (obj && !PythonQtSlotFunction_Check(obj)) {
+    static const char* argumentList[] ={"bool" , "QWebPage::Extension" , "const QWebPage::ExtensionOption*" , "QWebPage::ExtensionReturn*"};
+    static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(4, argumentList);
+      bool returnValue;
+    void* args[4] = {NULL, (void*)&extension, (void*)&option, (void*)&output};
+    PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
+    if (result) {
+      args[0] = PythonQtConv::ConvertPythonToQt(methodInfo->parameters().at(0), result, false, NULL, &returnValue);
+      if (args[0]!=&returnValue) {
+        if (args[0]==NULL) {
+          PythonQt::priv()->handleVirtualOverloadReturnError("extension", methodInfo, result);
+        } else {
+          returnValue = *((bool*)args[0]);
+        }
+      }
+    }
+    if (result) { Py_DECREF(result); } 
+    Py_DECREF(obj);
+    return returnValue;
+  }
+}
+  return QWebPage::extension(extension, option, output);
+}
 void PythonQtShell_QWebPage::javaScriptAlert(QWebFrame*  originatingFrame, const QString&  msg)
 {
 if (_wrapper) {
@@ -412,174 +441,9 @@ QWebPage* PythonQtWrapper_QWebPage::new_QWebPage(QObject*  parent)
 { 
 return new PythonQtShell_QWebPage(parent); }
 
-QSize  PythonQtWrapper_QWebPage::viewportSize(QWebPage* theWrappedObject) const
+QObject*  PythonQtWrapper_QWebPage::createPlugin(QWebPage* theWrappedObject, const QString&  classid, const QUrl&  url, const QStringList&  paramNames, const QStringList&  paramValues)
 {
-  return ( theWrappedObject->viewportSize());
-}
-
-bool  PythonQtWrapper_QWebPage::javaScriptPrompt(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg, const QString&  defaultValue, QString*  result)
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptPrompt(originatingFrame, msg, defaultValue, result));
-}
-
-bool  PythonQtWrapper_QWebPage::event(QWebPage* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_event(arg__1));
-}
-
-QVariant  PythonQtWrapper_QWebPage::inputMethodQuery(QWebPage* theWrappedObject, Qt::InputMethodQuery  property) const
-{
-  return ( theWrappedObject->inputMethodQuery(property));
-}
-
-bool  PythonQtWrapper_QWebPage::focusNextPrevChild(QWebPage* theWrappedObject, bool  next)
-{
-  return ( theWrappedObject->focusNextPrevChild(next));
-}
-
-bool  PythonQtWrapper_QWebPage::forwardUnsupportedContent(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->forwardUnsupportedContent());
-}
-
-void PythonQtWrapper_QWebPage::setPalette(QWebPage* theWrappedObject, const QPalette&  palette)
-{
-  ( theWrappedObject->setPalette(palette));
-}
-
-QWebSettings*  PythonQtWrapper_QWebPage::settings(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->settings());
-}
-
-QWebPluginFactory*  PythonQtWrapper_QWebPage::pluginFactory(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->pluginFactory());
-}
-
-QWebFrame*  PythonQtWrapper_QWebPage::mainFrame(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->mainFrame());
-}
-
-void PythonQtWrapper_QWebPage::javaScriptAlert(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg)
-{
-  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptAlert(originatingFrame, msg));
-}
-
-QWebPage*  PythonQtWrapper_QWebPage::createWindow(QWebPage* theWrappedObject, QWebPage::WebWindowType  type)
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_createWindow(type));
-}
-
-QUndoStack*  PythonQtWrapper_QWebPage::undoStack(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->undoStack());
-}
-
-bool  PythonQtWrapper_QWebPage::findText(QWebPage* theWrappedObject, const QString&  subString, QWebPage::FindFlags  options)
-{
-  return ( theWrappedObject->findText(subString, options));
-}
-
-bool  PythonQtWrapper_QWebPage::javaScriptConfirm(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg)
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptConfirm(originatingFrame, msg));
-}
-
-QNetworkAccessManager*  PythonQtWrapper_QWebPage::networkAccessManager(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->networkAccessManager());
-}
-
-QPalette  PythonQtWrapper_QWebPage::palette(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->palette());
-}
-
-void PythonQtWrapper_QWebPage::setPluginFactory(QWebPage* theWrappedObject, QWebPluginFactory*  factory)
-{
-  ( theWrappedObject->setPluginFactory(factory));
-}
-
-bool  PythonQtWrapper_QWebPage::isModified(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->isModified());
-}
-
-void PythonQtWrapper_QWebPage::setForwardUnsupportedContent(QWebPage* theWrappedObject, bool  forward)
-{
-  ( theWrappedObject->setForwardUnsupportedContent(forward));
-}
-
-bool  PythonQtWrapper_QWebPage::acceptNavigationRequest(QWebPage* theWrappedObject, QWebFrame*  frame, const QNetworkRequest&  request, QWebPage::NavigationType  type)
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_acceptNavigationRequest(frame, request, type));
-}
-
-quint64  PythonQtWrapper_QWebPage::totalBytes(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->totalBytes());
-}
-
-QString  PythonQtWrapper_QWebPage::userAgentForUrl(QWebPage* theWrappedObject, const QUrl&  url) const
-{
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_userAgentForUrl(url));
-}
-
-void PythonQtWrapper_QWebPage::setViewportSize(QWebPage* theWrappedObject, const QSize&  size) const
-{
-  ( theWrappedObject->setViewportSize(size));
-}
-
-void PythonQtWrapper_QWebPage::setLinkDelegationPolicy(QWebPage* theWrappedObject, QWebPage::LinkDelegationPolicy  policy)
-{
-  ( theWrappedObject->setLinkDelegationPolicy(policy));
-}
-
-void PythonQtWrapper_QWebPage::triggerAction(QWebPage* theWrappedObject, QWebPage::WebAction  action, bool  checked)
-{
-  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_triggerAction(action, checked));
-}
-
-void PythonQtWrapper_QWebPage::javaScriptConsoleMessage(QWebPage* theWrappedObject, const QString&  message, int  lineNumber, const QString&  sourceID)
-{
-  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptConsoleMessage(message, lineNumber, sourceID));
-}
-
-QAction*  PythonQtWrapper_QWebPage::action(QWebPage* theWrappedObject, QWebPage::WebAction  action) const
-{
-  return ( theWrappedObject->action(action));
-}
-
-quint64  PythonQtWrapper_QWebPage::bytesReceived(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->bytesReceived());
-}
-
-void PythonQtWrapper_QWebPage::updatePositionDependentActions(QWebPage* theWrappedObject, const QPoint&  pos)
-{
-  ( theWrappedObject->updatePositionDependentActions(pos));
-}
-
-QWidget*  PythonQtWrapper_QWebPage::view(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->view());
-}
-
-void PythonQtWrapper_QWebPage::setNetworkAccessManager(QWebPage* theWrappedObject, QNetworkAccessManager*  manager)
-{
-  ( theWrappedObject->setNetworkAccessManager(manager));
-}
-
-void PythonQtWrapper_QWebPage::setView(QWebPage* theWrappedObject, QWidget*  view)
-{
-  ( theWrappedObject->setView(view));
-}
-
-QWebHistory*  PythonQtWrapper_QWebPage::history(QWebPage* theWrappedObject) const
-{
-  return ( theWrappedObject->history());
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_createPlugin(classid, url, paramNames, paramValues));
 }
 
 QWebPage::LinkDelegationPolicy  PythonQtWrapper_QWebPage::linkDelegationPolicy(QWebPage* theWrappedObject) const
@@ -587,14 +451,29 @@ QWebPage::LinkDelegationPolicy  PythonQtWrapper_QWebPage::linkDelegationPolicy(Q
   return ( theWrappedObject->linkDelegationPolicy());
 }
 
-bool  PythonQtWrapper_QWebPage::swallowContextMenuEvent(QWebPage* theWrappedObject, QContextMenuEvent*  event)
+QWebPluginFactory*  PythonQtWrapper_QWebPage::pluginFactory(QWebPage* theWrappedObject) const
 {
-  return ( theWrappedObject->swallowContextMenuEvent(event));
+  return ( theWrappedObject->pluginFactory());
 }
 
-QString  PythonQtWrapper_QWebPage::chooseFile(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  oldFile)
+QUndoStack*  PythonQtWrapper_QWebPage::undoStack(QWebPage* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_chooseFile(originatingFrame, oldFile));
+  return ( theWrappedObject->undoStack());
+}
+
+QPalette  PythonQtWrapper_QWebPage::palette(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->palette());
+}
+
+void PythonQtWrapper_QWebPage::javaScriptConsoleMessage(QWebPage* theWrappedObject, const QString&  message, int  lineNumber, const QString&  sourceID)
+{
+  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptConsoleMessage(message, lineNumber, sourceID));
+}
+
+QVariant  PythonQtWrapper_QWebPage::inputMethodQuery(QWebPage* theWrappedObject, Qt::InputMethodQuery  property) const
+{
+  return ( theWrappedObject->inputMethodQuery(property));
 }
 
 QWebFrame*  PythonQtWrapper_QWebPage::currentFrame(QWebPage* theWrappedObject) const
@@ -602,9 +481,94 @@ QWebFrame*  PythonQtWrapper_QWebPage::currentFrame(QWebPage* theWrappedObject) c
   return ( theWrappedObject->currentFrame());
 }
 
-QString  PythonQtWrapper_QWebPage::selectedText(QWebPage* theWrappedObject) const
+quint64  PythonQtWrapper_QWebPage::totalBytes(QWebPage* theWrappedObject) const
 {
-  return ( theWrappedObject->selectedText());
+  return ( theWrappedObject->totalBytes());
+}
+
+quint64  PythonQtWrapper_QWebPage::bytesReceived(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->bytesReceived());
+}
+
+bool  PythonQtWrapper_QWebPage::forwardUnsupportedContent(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->forwardUnsupportedContent());
+}
+
+bool  PythonQtWrapper_QWebPage::focusNextPrevChild(QWebPage* theWrappedObject, bool  next)
+{
+  return ( theWrappedObject->focusNextPrevChild(next));
+}
+
+QString  PythonQtWrapper_QWebPage::chooseFile(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  oldFile)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_chooseFile(originatingFrame, oldFile));
+}
+
+bool  PythonQtWrapper_QWebPage::swallowContextMenuEvent(QWebPage* theWrappedObject, QContextMenuEvent*  event)
+{
+  return ( theWrappedObject->swallowContextMenuEvent(event));
+}
+
+void PythonQtWrapper_QWebPage::triggerAction(QWebPage* theWrappedObject, QWebPage::WebAction  action, bool  checked)
+{
+  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_triggerAction(action, checked));
+}
+
+void PythonQtWrapper_QWebPage::setContentEditable(QWebPage* theWrappedObject, bool  editable)
+{
+  ( theWrappedObject->setContentEditable(editable));
+}
+
+QAction*  PythonQtWrapper_QWebPage::action(QWebPage* theWrappedObject, QWebPage::WebAction  action) const
+{
+  return ( theWrappedObject->action(action));
+}
+
+QWidget*  PythonQtWrapper_QWebPage::view(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->view());
+}
+
+bool  PythonQtWrapper_QWebPage::javaScriptPrompt(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg, const QString&  defaultValue, QString*  result)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptPrompt(originatingFrame, msg, defaultValue, result));
+}
+
+QMenu*  PythonQtWrapper_QWebPage::createStandardContextMenu(QWebPage* theWrappedObject)
+{
+  return ( theWrappedObject->createStandardContextMenu());
+}
+
+bool  PythonQtWrapper_QWebPage::event(QWebPage* theWrappedObject, QEvent*  arg__1)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_event(arg__1));
+}
+
+QWebFrame*  PythonQtWrapper_QWebPage::mainFrame(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->mainFrame());
+}
+
+QNetworkAccessManager*  PythonQtWrapper_QWebPage::networkAccessManager(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->networkAccessManager());
+}
+
+QWebPage*  PythonQtWrapper_QWebPage::createWindow(QWebPage* theWrappedObject, QWebPage::WebWindowType  type)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_createWindow(type));
+}
+
+void PythonQtWrapper_QWebPage::setLinkDelegationPolicy(QWebPage* theWrappedObject, QWebPage::LinkDelegationPolicy  policy)
+{
+  ( theWrappedObject->setLinkDelegationPolicy(policy));
+}
+
+bool  PythonQtWrapper_QWebPage::isContentEditable(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->isContentEditable());
 }
 
 bool  PythonQtWrapper_QWebPage::supportsExtension(QWebPage* theWrappedObject, QWebPage::Extension  extension) const
@@ -612,8 +576,108 @@ bool  PythonQtWrapper_QWebPage::supportsExtension(QWebPage* theWrappedObject, QW
   return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_supportsExtension(extension));
 }
 
-QObject*  PythonQtWrapper_QWebPage::createPlugin(QWebPage* theWrappedObject, const QString&  classid, const QUrl&  url, const QStringList&  paramNames, const QStringList&  paramValues)
+void PythonQtWrapper_QWebPage::setViewportSize(QWebPage* theWrappedObject, const QSize&  size) const
 {
-  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_createPlugin(classid, url, paramNames, paramValues));
+  ( theWrappedObject->setViewportSize(size));
+}
+
+void PythonQtWrapper_QWebPage::updatePositionDependentActions(QWebPage* theWrappedObject, const QPoint&  pos)
+{
+  ( theWrappedObject->updatePositionDependentActions(pos));
+}
+
+void PythonQtWrapper_QWebPage::javaScriptAlert(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg)
+{
+  ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptAlert(originatingFrame, msg));
+}
+
+QWebFrame*  PythonQtWrapper_QWebPage::frameAt(QWebPage* theWrappedObject, const QPoint&  pos) const
+{
+  return ( theWrappedObject->frameAt(pos));
+}
+
+QString  PythonQtWrapper_QWebPage::selectedText(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->selectedText());
+}
+
+void PythonQtWrapper_QWebPage::setPluginFactory(QWebPage* theWrappedObject, QWebPluginFactory*  factory)
+{
+  ( theWrappedObject->setPluginFactory(factory));
+}
+
+bool  PythonQtWrapper_QWebPage::findText(QWebPage* theWrappedObject, const QString&  subString, QWebPage::FindFlags  options)
+{
+  return ( theWrappedObject->findText(subString, options));
+}
+
+void PythonQtWrapper_QWebPage::setPreferredContentsSize(QWebPage* theWrappedObject, const QSize&  size) const
+{
+  ( theWrappedObject->setPreferredContentsSize(size));
+}
+
+QWebHistory*  PythonQtWrapper_QWebPage::history(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->history());
+}
+
+QWebSettings*  PythonQtWrapper_QWebPage::settings(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->settings());
+}
+
+QSize  PythonQtWrapper_QWebPage::viewportSize(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->viewportSize());
+}
+
+QString  PythonQtWrapper_QWebPage::userAgentForUrl(QWebPage* theWrappedObject, const QUrl&  url) const
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_userAgentForUrl(url));
+}
+
+void PythonQtWrapper_QWebPage::setView(QWebPage* theWrappedObject, QWidget*  view)
+{
+  ( theWrappedObject->setView(view));
+}
+
+bool  PythonQtWrapper_QWebPage::extension(QWebPage* theWrappedObject, QWebPage::Extension  extension, const QWebPage::ExtensionOption*  option, QWebPage::ExtensionReturn*  output)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_extension(extension, option, output));
+}
+
+void PythonQtWrapper_QWebPage::setForwardUnsupportedContent(QWebPage* theWrappedObject, bool  forward)
+{
+  ( theWrappedObject->setForwardUnsupportedContent(forward));
+}
+
+bool  PythonQtWrapper_QWebPage::javaScriptConfirm(QWebPage* theWrappedObject, QWebFrame*  originatingFrame, const QString&  msg)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_javaScriptConfirm(originatingFrame, msg));
+}
+
+bool  PythonQtWrapper_QWebPage::isModified(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->isModified());
+}
+
+QSize  PythonQtWrapper_QWebPage::preferredContentsSize(QWebPage* theWrappedObject) const
+{
+  return ( theWrappedObject->preferredContentsSize());
+}
+
+bool  PythonQtWrapper_QWebPage::acceptNavigationRequest(QWebPage* theWrappedObject, QWebFrame*  frame, const QNetworkRequest&  request, QWebPage::NavigationType  type)
+{
+  return ( ((PythonQtPublicPromoter_QWebPage*)theWrappedObject)->promoted_acceptNavigationRequest(frame, request, type));
+}
+
+void PythonQtWrapper_QWebPage::setNetworkAccessManager(QWebPage* theWrappedObject, QNetworkAccessManager*  manager)
+{
+  ( theWrappedObject->setNetworkAccessManager(manager));
+}
+
+void PythonQtWrapper_QWebPage::setPalette(QWebPage* theWrappedObject, const QPalette&  palette)
+{
+  ( theWrappedObject->setPalette(palette));
 }
 

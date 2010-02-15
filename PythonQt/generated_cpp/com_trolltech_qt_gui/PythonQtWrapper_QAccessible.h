@@ -43,9 +43,9 @@ Q_DECLARE_FLAGS(State, StateFlag)
 public slots:
 QAccessible* new_QAccessible();
 void delete_QAccessible(QAccessible* obj) { delete obj; } 
-   bool  static_QAccessible_isActive();
-   void static_QAccessible_setRootObject(QObject*  arg__1);
    void static_QAccessible_updateAccessibility(QObject*  arg__1, int  who, QAccessible::Event  reason);
+   void static_QAccessible_setRootObject(QObject*  arg__1);
+   bool  static_QAccessible_isActive();
    QAccessibleInterface*  static_QAccessible_queryAccessibleInterface(QObject*  arg__1);
 };
 

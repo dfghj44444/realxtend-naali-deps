@@ -15,13 +15,13 @@ bool  PythonQtWrapper_QShortcutEvent::isAmbiguous(QShortcutEvent* theWrappedObje
   return ( theWrappedObject->isAmbiguous());
 }
 
-const QKeySequence*  PythonQtWrapper_QShortcutEvent::key(QShortcutEvent* theWrappedObject) const
-{
-  return &( theWrappedObject->key());
-}
-
 int  PythonQtWrapper_QShortcutEvent::shortcutId(QShortcutEvent* theWrappedObject) const
 {
   return ( theWrappedObject->shortcutId());
+}
+
+const QKeySequence*  PythonQtWrapper_QShortcutEvent::key(QShortcutEvent* theWrappedObject) const
+{
+  return &( theWrappedObject->key());
 }
 

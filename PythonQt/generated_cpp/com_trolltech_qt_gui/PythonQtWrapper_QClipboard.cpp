@@ -15,26 +15,6 @@
 #include <qobject.h>
 #include <qpixmap.h>
 
-bool  PythonQtWrapper_QClipboard::supportsSelection(QClipboard* theWrappedObject) const
-{
-  return ( theWrappedObject->supportsSelection());
-}
-
-bool  PythonQtWrapper_QClipboard::ownsSelection(QClipboard* theWrappedObject) const
-{
-  return ( theWrappedObject->ownsSelection());
-}
-
-void PythonQtWrapper_QClipboard::setPixmap(QClipboard* theWrappedObject, const QPixmap&  arg__1, QClipboard::Mode  mode)
-{
-  ( theWrappedObject->setPixmap(arg__1, mode));
-}
-
-void PythonQtWrapper_QClipboard::clear(QClipboard* theWrappedObject, QClipboard::Mode  mode)
-{
-  ( theWrappedObject->clear(mode));
-}
-
 void PythonQtWrapper_QClipboard::setMimeData(QClipboard* theWrappedObject, QMimeData*  data, QClipboard::Mode  mode)
 {
   ( theWrappedObject->setMimeData(data, mode));
@@ -50,11 +30,6 @@ bool  PythonQtWrapper_QClipboard::ownsClipboard(QClipboard* theWrappedObject) co
   return ( theWrappedObject->ownsClipboard());
 }
 
-QPixmap  PythonQtWrapper_QClipboard::pixmap(QClipboard* theWrappedObject, QClipboard::Mode  mode) const
-{
-  return ( theWrappedObject->pixmap(mode));
-}
-
 void PythonQtWrapper_QClipboard::setImage(QClipboard* theWrappedObject, const QImage&  arg__1, QClipboard::Mode  mode)
 {
   ( theWrappedObject->setImage(arg__1, mode));
@@ -65,9 +40,19 @@ bool  PythonQtWrapper_QClipboard::supportsFindBuffer(QClipboard* theWrappedObjec
   return ( theWrappedObject->supportsFindBuffer());
 }
 
-void PythonQtWrapper_QClipboard::setText(QClipboard* theWrappedObject, const QString&  arg__1, QClipboard::Mode  mode)
+QString  PythonQtWrapper_QClipboard::text(QClipboard* theWrappedObject, QString&  subtype, QClipboard::Mode  mode) const
 {
-  ( theWrappedObject->setText(arg__1, mode));
+  return ( theWrappedObject->text(subtype, mode));
+}
+
+QPixmap  PythonQtWrapper_QClipboard::pixmap(QClipboard* theWrappedObject, QClipboard::Mode  mode) const
+{
+  return ( theWrappedObject->pixmap(mode));
+}
+
+void PythonQtWrapper_QClipboard::clear(QClipboard* theWrappedObject, QClipboard::Mode  mode)
+{
+  ( theWrappedObject->clear(mode));
 }
 
 bool  PythonQtWrapper_QClipboard::event(QClipboard* theWrappedObject, QEvent*  arg__1)
@@ -75,9 +60,9 @@ bool  PythonQtWrapper_QClipboard::event(QClipboard* theWrappedObject, QEvent*  a
   return ( ((PythonQtPublicPromoter_QClipboard*)theWrappedObject)->promoted_event(arg__1));
 }
 
-QString  PythonQtWrapper_QClipboard::text(QClipboard* theWrappedObject, QString&  subtype, QClipboard::Mode  mode) const
+bool  PythonQtWrapper_QClipboard::ownsSelection(QClipboard* theWrappedObject) const
 {
-  return ( theWrappedObject->text(subtype, mode));
+  return ( theWrappedObject->ownsSelection());
 }
 
 const QMimeData*  PythonQtWrapper_QClipboard::mimeData(QClipboard* theWrappedObject, QClipboard::Mode  mode) const
@@ -85,13 +70,28 @@ const QMimeData*  PythonQtWrapper_QClipboard::mimeData(QClipboard* theWrappedObj
   return ( theWrappedObject->mimeData(mode));
 }
 
+bool  PythonQtWrapper_QClipboard::supportsSelection(QClipboard* theWrappedObject) const
+{
+  return ( theWrappedObject->supportsSelection());
+}
+
 bool  PythonQtWrapper_QClipboard::ownsFindBuffer(QClipboard* theWrappedObject) const
 {
   return ( theWrappedObject->ownsFindBuffer());
 }
 
+void PythonQtWrapper_QClipboard::setPixmap(QClipboard* theWrappedObject, const QPixmap&  arg__1, QClipboard::Mode  mode)
+{
+  ( theWrappedObject->setPixmap(arg__1, mode));
+}
+
 QString  PythonQtWrapper_QClipboard::text(QClipboard* theWrappedObject, QClipboard::Mode  mode) const
 {
   return ( theWrappedObject->text(mode));
+}
+
+void PythonQtWrapper_QClipboard::setText(QClipboard* theWrappedObject, const QString&  arg__1, QClipboard::Mode  mode)
+{
+  ( theWrappedObject->setText(arg__1, mode));
 }
 

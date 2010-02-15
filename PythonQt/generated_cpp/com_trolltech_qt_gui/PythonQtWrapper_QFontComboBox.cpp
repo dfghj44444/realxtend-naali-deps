@@ -16,6 +16,8 @@
 #include <qevent.h>
 #include <qfont.h>
 #include <qfontcombobox.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -23,6 +25,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -811,14 +814,9 @@ QFontComboBox* PythonQtWrapper_QFontComboBox::new_QFontComboBox(QWidget*  parent
 { 
 return new PythonQtShell_QFontComboBox(parent); }
 
-QFont  PythonQtWrapper_QFontComboBox::currentFont(QFontComboBox* theWrappedObject) const
+bool  PythonQtWrapper_QFontComboBox::event(QFontComboBox* theWrappedObject, QEvent*  e)
 {
-  return ( theWrappedObject->currentFont());
-}
-
-QFontDatabase::WritingSystem  PythonQtWrapper_QFontComboBox::writingSystem(QFontComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->writingSystem());
+  return ( ((PythonQtPublicPromoter_QFontComboBox*)theWrappedObject)->promoted_event(e));
 }
 
 QFontComboBox::FontFilters  PythonQtWrapper_QFontComboBox::fontFilters(QFontComboBox* theWrappedObject) const
@@ -826,14 +824,19 @@ QFontComboBox::FontFilters  PythonQtWrapper_QFontComboBox::fontFilters(QFontComb
   return ( theWrappedObject->fontFilters());
 }
 
+QFontDatabase::WritingSystem  PythonQtWrapper_QFontComboBox::writingSystem(QFontComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->writingSystem());
+}
+
 void PythonQtWrapper_QFontComboBox::setFontFilters(QFontComboBox* theWrappedObject, QFontComboBox::FontFilters  filters)
 {
   ( theWrappedObject->setFontFilters(filters));
 }
 
-bool  PythonQtWrapper_QFontComboBox::event(QFontComboBox* theWrappedObject, QEvent*  e)
+QFont  PythonQtWrapper_QFontComboBox::currentFont(QFontComboBox* theWrappedObject) const
 {
-  return ( ((PythonQtPublicPromoter_QFontComboBox*)theWrappedObject)->promoted_event(e));
+  return ( theWrappedObject->currentFont());
 }
 
 void PythonQtWrapper_QFontComboBox::setWritingSystem(QFontComboBox* theWrappedObject, QFontDatabase::WritingSystem  arg__1)

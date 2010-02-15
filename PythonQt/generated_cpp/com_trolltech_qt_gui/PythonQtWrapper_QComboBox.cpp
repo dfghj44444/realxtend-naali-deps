@@ -16,6 +16,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -23,6 +25,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -811,6 +814,336 @@ QComboBox* PythonQtWrapper_QComboBox::new_QComboBox(QWidget*  parent)
 { 
 return new PythonQtShell_QComboBox(parent); }
 
+void PythonQtWrapper_QComboBox::inputMethodEvent(QComboBox* theWrappedObject, QInputMethodEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_inputMethodEvent(arg__1));
+}
+
+int  PythonQtWrapper_QComboBox::findData(QComboBox* theWrappedObject, const QVariant&  data, int  role, Qt::MatchFlags  flags) const
+{
+  return ( theWrappedObject->findData(data, role, flags));
+}
+
+QLineEdit*  PythonQtWrapper_QComboBox::lineEdit(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->lineEdit());
+}
+
+void PythonQtWrapper_QComboBox::setFrame(QComboBox* theWrappedObject, bool  arg__1)
+{
+  ( theWrappedObject->setFrame(arg__1));
+}
+
+void PythonQtWrapper_QComboBox::setItemText(QComboBox* theWrappedObject, int  index, const QString&  text)
+{
+  ( theWrappedObject->setItemText(index, text));
+}
+
+void PythonQtWrapper_QComboBox::setModelColumn(QComboBox* theWrappedObject, int  visibleColumn)
+{
+  ( theWrappedObject->setModelColumn(visibleColumn));
+}
+
+void PythonQtWrapper_QComboBox::setEditable(QComboBox* theWrappedObject, bool  editable)
+{
+  ( theWrappedObject->setEditable(editable));
+}
+
+void PythonQtWrapper_QComboBox::mousePressEvent(QComboBox* theWrappedObject, QMouseEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_mousePressEvent(e));
+}
+
+bool  PythonQtWrapper_QComboBox::duplicatesEnabled(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->duplicatesEnabled());
+}
+
+QSize  PythonQtWrapper_QComboBox::minimumSizeHint(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumSizeHint());
+}
+
+void PythonQtWrapper_QComboBox::removeItem(QComboBox* theWrappedObject, int  index)
+{
+  ( theWrappedObject->removeItem(index));
+}
+
+void PythonQtWrapper_QComboBox::changeEvent(QComboBox* theWrappedObject, QEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_changeEvent(e));
+}
+
+void PythonQtWrapper_QComboBox::focusInEvent(QComboBox* theWrappedObject, QFocusEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_focusInEvent(e));
+}
+
+QAbstractItemModel*  PythonQtWrapper_QComboBox::model(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->model());
+}
+
+QString  PythonQtWrapper_QComboBox::currentText(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->currentText());
+}
+
+void PythonQtWrapper_QComboBox::wheelEvent(QComboBox* theWrappedObject, QWheelEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_wheelEvent(e));
+}
+
+QIcon  PythonQtWrapper_QComboBox::itemIcon(QComboBox* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->itemIcon(index));
+}
+
+QModelIndex  PythonQtWrapper_QComboBox::rootModelIndex(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->rootModelIndex());
+}
+
+void PythonQtWrapper_QComboBox::setDuplicatesEnabled(QComboBox* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setDuplicatesEnabled(enable));
+}
+
+QAbstractItemView*  PythonQtWrapper_QComboBox::view(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->view());
+}
+
+QComboBox::InsertPolicy  PythonQtWrapper_QComboBox::insertPolicy(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->insertPolicy());
+}
+
+void PythonQtWrapper_QComboBox::setMaxCount(QComboBox* theWrappedObject, int  max)
+{
+  ( theWrappedObject->setMaxCount(max));
+}
+
+int  PythonQtWrapper_QComboBox::maxCount(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->maxCount());
+}
+
+void PythonQtWrapper_QComboBox::insertItem(QComboBox* theWrappedObject, int  index, const QIcon&  icon, const QString&  text, const QVariant&  userData)
+{
+  ( theWrappedObject->insertItem(index, icon, text, userData));
+}
+
+const QValidator*  PythonQtWrapper_QComboBox::validator(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->validator());
+}
+
+void PythonQtWrapper_QComboBox::setSizeAdjustPolicy(QComboBox* theWrappedObject, QComboBox::SizeAdjustPolicy  policy)
+{
+  ( theWrappedObject->setSizeAdjustPolicy(policy));
+}
+
+void PythonQtWrapper_QComboBox::setRootModelIndex(QComboBox* theWrappedObject, const QModelIndex&  index)
+{
+  ( theWrappedObject->setRootModelIndex(index));
+}
+
+void PythonQtWrapper_QComboBox::setItemIcon(QComboBox* theWrappedObject, int  index, const QIcon&  icon)
+{
+  ( theWrappedObject->setItemIcon(index, icon));
+}
+
+QComboBox::SizeAdjustPolicy  PythonQtWrapper_QComboBox::sizeAdjustPolicy(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeAdjustPolicy());
+}
+
+void PythonQtWrapper_QComboBox::addItems(QComboBox* theWrappedObject, const QStringList&  texts)
+{
+  ( theWrappedObject->addItems(texts));
+}
+
+void PythonQtWrapper_QComboBox::setMaxVisibleItems(QComboBox* theWrappedObject, int  maxItems)
+{
+  ( theWrappedObject->setMaxVisibleItems(maxItems));
+}
+
+void PythonQtWrapper_QComboBox::setItemDelegate(QComboBox* theWrappedObject, QAbstractItemDelegate*  delegate)
+{
+  ( theWrappedObject->setItemDelegate(delegate));
+}
+
+void PythonQtWrapper_QComboBox::showPopup(QComboBox* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_showPopup());
+}
+
+bool  PythonQtWrapper_QComboBox::isEditable(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->isEditable());
+}
+
+QCompleter*  PythonQtWrapper_QComboBox::completer(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->completer());
+}
+
+void PythonQtWrapper_QComboBox::focusOutEvent(QComboBox* theWrappedObject, QFocusEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_focusOutEvent(e));
+}
+
+void PythonQtWrapper_QComboBox::hideEvent(QComboBox* theWrappedObject, QHideEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_hideEvent(e));
+}
+
+bool  PythonQtWrapper_QComboBox::hasFrame(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->hasFrame());
+}
+
+void PythonQtWrapper_QComboBox::keyPressEvent(QComboBox* theWrappedObject, QKeyEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_keyPressEvent(e));
+}
+
+QVariant  PythonQtWrapper_QComboBox::itemData(QComboBox* theWrappedObject, int  index, int  role) const
+{
+  return ( theWrappedObject->itemData(index, role));
+}
+
+int  PythonQtWrapper_QComboBox::count(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->count());
+}
+
+void PythonQtWrapper_QComboBox::setMinimumContentsLength(QComboBox* theWrappedObject, int  characters)
+{
+  ( theWrappedObject->setMinimumContentsLength(characters));
+}
+
+void PythonQtWrapper_QComboBox::setIconSize(QComboBox* theWrappedObject, const QSize&  size)
+{
+  ( theWrappedObject->setIconSize(size));
+}
+
+int  PythonQtWrapper_QComboBox::minimumContentsLength(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->minimumContentsLength());
+}
+
+void PythonQtWrapper_QComboBox::resizeEvent(QComboBox* theWrappedObject, QResizeEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_resizeEvent(e));
+}
+
+void PythonQtWrapper_QComboBox::setValidator(QComboBox* theWrappedObject, const QValidator*  v)
+{
+  ( theWrappedObject->setValidator(v));
+}
+
+void PythonQtWrapper_QComboBox::setLineEdit(QComboBox* theWrappedObject, QLineEdit*  edit)
+{
+  ( theWrappedObject->setLineEdit(edit));
+}
+
+void PythonQtWrapper_QComboBox::insertItem(QComboBox* theWrappedObject, int  index, const QString&  text, const QVariant&  userData)
+{
+  ( theWrappedObject->insertItem(index, text, userData));
+}
+
+QSize  PythonQtWrapper_QComboBox::sizeHint(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
+}
+
+void PythonQtWrapper_QComboBox::setCompleter(QComboBox* theWrappedObject, QCompleter*  c)
+{
+  ( theWrappedObject->setCompleter(c));
+}
+
+bool  PythonQtWrapper_QComboBox::event(QComboBox* theWrappedObject, QEvent*  event)
+{
+  return ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_event(event));
+}
+
+void PythonQtWrapper_QComboBox::setInsertPolicy(QComboBox* theWrappedObject, QComboBox::InsertPolicy  policy)
+{
+  ( theWrappedObject->setInsertPolicy(policy));
+}
+
+QVariant  PythonQtWrapper_QComboBox::inputMethodQuery(QComboBox* theWrappedObject, Qt::InputMethodQuery  arg__1) const
+{
+  return ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_inputMethodQuery(arg__1));
+}
+
+int  PythonQtWrapper_QComboBox::modelColumn(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->modelColumn());
+}
+
+int  PythonQtWrapper_QComboBox::maxVisibleItems(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->maxVisibleItems());
+}
+
+void PythonQtWrapper_QComboBox::setModel(QComboBox* theWrappedObject, QAbstractItemModel*  model)
+{
+  ( theWrappedObject->setModel(model));
+}
+
+void PythonQtWrapper_QComboBox::setItemData(QComboBox* theWrappedObject, int  index, const QVariant&  value, int  role)
+{
+  ( theWrappedObject->setItemData(index, value, role));
+}
+
+void PythonQtWrapper_QComboBox::addItem(QComboBox* theWrappedObject, const QString&  text, const QVariant&  userData)
+{
+  ( theWrappedObject->addItem(text, userData));
+}
+
+void PythonQtWrapper_QComboBox::hidePopup(QComboBox* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_hidePopup());
+}
+
+void PythonQtWrapper_QComboBox::keyReleaseEvent(QComboBox* theWrappedObject, QKeyEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_keyReleaseEvent(e));
+}
+
+void PythonQtWrapper_QComboBox::mouseReleaseEvent(QComboBox* theWrappedObject, QMouseEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_mouseReleaseEvent(e));
+}
+
+int  PythonQtWrapper_QComboBox::currentIndex(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->currentIndex());
+}
+
+int  PythonQtWrapper_QComboBox::findText(QComboBox* theWrappedObject, const QString&  text, Qt::MatchFlags  flags) const
+{
+  return ( theWrappedObject->findText(text, flags));
+}
+
+QAbstractItemDelegate*  PythonQtWrapper_QComboBox::itemDelegate(QComboBox* theWrappedObject) const
+{
+  return ( theWrappedObject->itemDelegate());
+}
+
+void PythonQtWrapper_QComboBox::contextMenuEvent(QComboBox* theWrappedObject, QContextMenuEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_contextMenuEvent(e));
+}
+
+void PythonQtWrapper_QComboBox::setView(QComboBox* theWrappedObject, QAbstractItemView*  itemView)
+{
+  ( theWrappedObject->setView(itemView));
+}
+
 void PythonQtWrapper_QComboBox::paintEvent(QComboBox* theWrappedObject, QPaintEvent*  e)
 {
   ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_paintEvent(e));
@@ -821,99 +1154,9 @@ void PythonQtWrapper_QComboBox::showEvent(QComboBox* theWrappedObject, QShowEven
   ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_showEvent(e));
 }
 
-void PythonQtWrapper_QComboBox::addItem(QComboBox* theWrappedObject, const QString&  text, const QVariant&  userData)
+QSize  PythonQtWrapper_QComboBox::iconSize(QComboBox* theWrappedObject) const
 {
-  ( theWrappedObject->addItem(text, userData));
-}
-
-QSize  PythonQtWrapper_QComboBox::sizeHint(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
-void PythonQtWrapper_QComboBox::setMaxVisibleItems(QComboBox* theWrappedObject, int  maxItems)
-{
-  ( theWrappedObject->setMaxVisibleItems(maxItems));
-}
-
-void PythonQtWrapper_QComboBox::setModelColumn(QComboBox* theWrappedObject, int  visibleColumn)
-{
-  ( theWrappedObject->setModelColumn(visibleColumn));
-}
-
-void PythonQtWrapper_QComboBox::setCompleter(QComboBox* theWrappedObject, QCompleter*  c)
-{
-  ( theWrappedObject->setCompleter(c));
-}
-
-void PythonQtWrapper_QComboBox::setRootModelIndex(QComboBox* theWrappedObject, const QModelIndex&  index)
-{
-  ( theWrappedObject->setRootModelIndex(index));
-}
-
-int  PythonQtWrapper_QComboBox::count(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->count());
-}
-
-void PythonQtWrapper_QComboBox::changeEvent(QComboBox* theWrappedObject, QEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_changeEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::setLineEdit(QComboBox* theWrappedObject, QLineEdit*  edit)
-{
-  ( theWrappedObject->setLineEdit(edit));
-}
-
-void PythonQtWrapper_QComboBox::removeItem(QComboBox* theWrappedObject, int  index)
-{
-  ( theWrappedObject->removeItem(index));
-}
-
-QModelIndex  PythonQtWrapper_QComboBox::rootModelIndex(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->rootModelIndex());
-}
-
-QString  PythonQtWrapper_QComboBox::currentText(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->currentText());
-}
-
-void PythonQtWrapper_QComboBox::hidePopup(QComboBox* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_hidePopup());
-}
-
-void PythonQtWrapper_QComboBox::insertItem(QComboBox* theWrappedObject, int  index, const QString&  text, const QVariant&  userData)
-{
-  ( theWrappedObject->insertItem(index, text, userData));
-}
-
-QAbstractItemModel*  PythonQtWrapper_QComboBox::model(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->model());
-}
-
-void PythonQtWrapper_QComboBox::contextMenuEvent(QComboBox* theWrappedObject, QContextMenuEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_contextMenuEvent(e));
-}
-
-QSize  PythonQtWrapper_QComboBox::minimumSizeHint(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumSizeHint());
-}
-
-QCompleter*  PythonQtWrapper_QComboBox::completer(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->completer());
-}
-
-void PythonQtWrapper_QComboBox::setItemIcon(QComboBox* theWrappedObject, int  index, const QIcon&  icon)
-{
-  ( theWrappedObject->setItemIcon(index, icon));
+  return ( theWrappedObject->iconSize());
 }
 
 void PythonQtWrapper_QComboBox::addItem(QComboBox* theWrappedObject, const QIcon&  icon, const QString&  text, const QVariant&  userData)
@@ -921,234 +1164,9 @@ void PythonQtWrapper_QComboBox::addItem(QComboBox* theWrappedObject, const QIcon
   ( theWrappedObject->addItem(icon, text, userData));
 }
 
-void PythonQtWrapper_QComboBox::inputMethodEvent(QComboBox* theWrappedObject, QInputMethodEvent*  arg__1)
+QString  PythonQtWrapper_QComboBox::itemText(QComboBox* theWrappedObject, int  index) const
 {
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_inputMethodEvent(arg__1));
-}
-
-bool  PythonQtWrapper_QComboBox::hasFrame(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->hasFrame());
-}
-
-QComboBox::InsertPolicy  PythonQtWrapper_QComboBox::insertPolicy(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->insertPolicy());
-}
-
-void PythonQtWrapper_QComboBox::setItemData(QComboBox* theWrappedObject, int  index, const QVariant&  value, int  role)
-{
-  ( theWrappedObject->setItemData(index, value, role));
-}
-
-int  PythonQtWrapper_QComboBox::currentIndex(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->currentIndex());
-}
-
-void PythonQtWrapper_QComboBox::focusOutEvent(QComboBox* theWrappedObject, QFocusEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_focusOutEvent(e));
-}
-
-bool  PythonQtWrapper_QComboBox::duplicatesEnabled(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->duplicatesEnabled());
-}
-
-void PythonQtWrapper_QComboBox::hideEvent(QComboBox* theWrappedObject, QHideEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_hideEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::setIconSize(QComboBox* theWrappedObject, const QSize&  size)
-{
-  ( theWrappedObject->setIconSize(size));
-}
-
-QAbstractItemView*  PythonQtWrapper_QComboBox::view(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->view());
-}
-
-void PythonQtWrapper_QComboBox::wheelEvent(QComboBox* theWrappedObject, QWheelEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_wheelEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::mousePressEvent(QComboBox* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_mousePressEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::mouseReleaseEvent(QComboBox* theWrappedObject, QMouseEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_mouseReleaseEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::showPopup(QComboBox* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_showPopup());
-}
-
-void PythonQtWrapper_QComboBox::insertItem(QComboBox* theWrappedObject, int  index, const QIcon&  icon, const QString&  text, const QVariant&  userData)
-{
-  ( theWrappedObject->insertItem(index, icon, text, userData));
-}
-
-void PythonQtWrapper_QComboBox::addItems(QComboBox* theWrappedObject, const QStringList&  texts)
-{
-  ( theWrappedObject->addItems(texts));
-}
-
-const QValidator*  PythonQtWrapper_QComboBox::validator(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->validator());
-}
-
-QIcon  PythonQtWrapper_QComboBox::itemIcon(QComboBox* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->itemIcon(index));
-}
-
-int  PythonQtWrapper_QComboBox::maxCount(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->maxCount());
-}
-
-int  PythonQtWrapper_QComboBox::findData(QComboBox* theWrappedObject, const QVariant&  data, int  role, Qt::MatchFlags  flags) const
-{
-  return ( theWrappedObject->findData(data, role, flags));
-}
-
-void PythonQtWrapper_QComboBox::resizeEvent(QComboBox* theWrappedObject, QResizeEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_resizeEvent(e));
-}
-
-void PythonQtWrapper_QComboBox::setSizeAdjustPolicy(QComboBox* theWrappedObject, QComboBox::SizeAdjustPolicy  policy)
-{
-  ( theWrappedObject->setSizeAdjustPolicy(policy));
-}
-
-void PythonQtWrapper_QComboBox::setValidator(QComboBox* theWrappedObject, const QValidator*  v)
-{
-  ( theWrappedObject->setValidator(v));
-}
-
-void PythonQtWrapper_QComboBox::setDuplicatesEnabled(QComboBox* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setDuplicatesEnabled(enable));
-}
-
-void PythonQtWrapper_QComboBox::setFrame(QComboBox* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setFrame(arg__1));
-}
-
-bool  PythonQtWrapper_QComboBox::event(QComboBox* theWrappedObject, QEvent*  event)
-{
-  return ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_event(event));
-}
-
-void PythonQtWrapper_QComboBox::setEditable(QComboBox* theWrappedObject, bool  editable)
-{
-  ( theWrappedObject->setEditable(editable));
-}
-
-void PythonQtWrapper_QComboBox::focusInEvent(QComboBox* theWrappedObject, QFocusEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_focusInEvent(e));
-}
-
-QLineEdit*  PythonQtWrapper_QComboBox::lineEdit(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->lineEdit());
-}
-
-void PythonQtWrapper_QComboBox::setItemDelegate(QComboBox* theWrappedObject, QAbstractItemDelegate*  delegate)
-{
-  ( theWrappedObject->setItemDelegate(delegate));
-}
-
-void PythonQtWrapper_QComboBox::keyReleaseEvent(QComboBox* theWrappedObject, QKeyEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_keyReleaseEvent(e));
-}
-
-int  PythonQtWrapper_QComboBox::maxVisibleItems(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->maxVisibleItems());
-}
-
-QComboBox::SizeAdjustPolicy  PythonQtWrapper_QComboBox::sizeAdjustPolicy(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeAdjustPolicy());
-}
-
-void PythonQtWrapper_QComboBox::setInsertPolicy(QComboBox* theWrappedObject, QComboBox::InsertPolicy  policy)
-{
-  ( theWrappedObject->setInsertPolicy(policy));
-}
-
-void PythonQtWrapper_QComboBox::setMaxCount(QComboBox* theWrappedObject, int  max)
-{
-  ( theWrappedObject->setMaxCount(max));
-}
-
-void PythonQtWrapper_QComboBox::keyPressEvent(QComboBox* theWrappedObject, QKeyEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_keyPressEvent(e));
-}
-
-QSize  PythonQtWrapper_QComboBox::iconSize(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->iconSize());
-}
-
-int  PythonQtWrapper_QComboBox::minimumContentsLength(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->minimumContentsLength());
-}
-
-void PythonQtWrapper_QComboBox::setMinimumContentsLength(QComboBox* theWrappedObject, int  characters)
-{
-  ( theWrappedObject->setMinimumContentsLength(characters));
-}
-
-void PythonQtWrapper_QComboBox::insertSeparator(QComboBox* theWrappedObject, int  index)
-{
-  ( theWrappedObject->insertSeparator(index));
-}
-
-int  PythonQtWrapper_QComboBox::modelColumn(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->modelColumn());
-}
-
-int  PythonQtWrapper_QComboBox::findText(QComboBox* theWrappedObject, const QString&  text, Qt::MatchFlags  flags) const
-{
-  return ( theWrappedObject->findText(text, flags));
-}
-
-void PythonQtWrapper_QComboBox::setModel(QComboBox* theWrappedObject, QAbstractItemModel*  model)
-{
-  ( theWrappedObject->setModel(model));
-}
-
-QVariant  PythonQtWrapper_QComboBox::inputMethodQuery(QComboBox* theWrappedObject, Qt::InputMethodQuery  arg__1) const
-{
-  return ( ((PythonQtPublicPromoter_QComboBox*)theWrappedObject)->promoted_inputMethodQuery(arg__1));
-}
-
-void PythonQtWrapper_QComboBox::setItemText(QComboBox* theWrappedObject, int  index, const QString&  text)
-{
-  ( theWrappedObject->setItemText(index, text));
-}
-
-void PythonQtWrapper_QComboBox::setView(QComboBox* theWrappedObject, QAbstractItemView*  itemView)
-{
-  ( theWrappedObject->setView(itemView));
+  return ( theWrappedObject->itemText(index));
 }
 
 void PythonQtWrapper_QComboBox::insertItems(QComboBox* theWrappedObject, int  index, const QStringList&  texts)
@@ -1156,23 +1174,8 @@ void PythonQtWrapper_QComboBox::insertItems(QComboBox* theWrappedObject, int  in
   ( theWrappedObject->insertItems(index, texts));
 }
 
-bool  PythonQtWrapper_QComboBox::isEditable(QComboBox* theWrappedObject) const
+void PythonQtWrapper_QComboBox::insertSeparator(QComboBox* theWrappedObject, int  index)
 {
-  return ( theWrappedObject->isEditable());
-}
-
-QString  PythonQtWrapper_QComboBox::itemText(QComboBox* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->itemText(index));
-}
-
-QAbstractItemDelegate*  PythonQtWrapper_QComboBox::itemDelegate(QComboBox* theWrappedObject) const
-{
-  return ( theWrappedObject->itemDelegate());
-}
-
-QVariant  PythonQtWrapper_QComboBox::itemData(QComboBox* theWrappedObject, int  index, int  role) const
-{
-  return ( theWrappedObject->itemData(index, role));
+  ( theWrappedObject->insertSeparator(index));
 }
 

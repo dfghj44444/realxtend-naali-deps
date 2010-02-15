@@ -172,14 +172,14 @@ QRegExpValidator* PythonQtWrapper_QRegExpValidator::new_QRegExpValidator(const Q
 { 
 return new PythonQtShell_QRegExpValidator(rx, parent); }
 
-const QRegExp*  PythonQtWrapper_QRegExpValidator::regExp(QRegExpValidator* theWrappedObject) const
-{
-  return &( theWrappedObject->regExp());
-}
-
 QValidator::State  PythonQtWrapper_QRegExpValidator::validate(QRegExpValidator* theWrappedObject, QString&  input, int&  pos) const
 {
   return ( ((PythonQtPublicPromoter_QRegExpValidator*)theWrappedObject)->promoted_validate(input, pos));
+}
+
+const QRegExp*  PythonQtWrapper_QRegExpValidator::regExp(QRegExpValidator* theWrappedObject) const
+{
+  return &( theWrappedObject->regExp());
 }
 
 void PythonQtWrapper_QRegExpValidator::setRegExp(QRegExpValidator* theWrappedObject, const QRegExp&  rx)

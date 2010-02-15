@@ -10,9 +10,6 @@
 #include <qimage.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
-#include <qpixmap.h>
-#include <qpoint.h>
-#include <qrect.h>
 #include <qsize.h>
 
 int  PythonQtShell_QGLPixelBuffer::devType() const
@@ -107,14 +104,9 @@ QGLPixelBuffer* PythonQtWrapper_QGLPixelBuffer::new_QGLPixelBuffer(int  width, i
 { 
 return new PythonQtShell_QGLPixelBuffer(width, height, format, shareWidget); }
 
-unsigned int  PythonQtWrapper_QGLPixelBuffer::bindTexture(QGLPixelBuffer* theWrappedObject, const QString&  fileName)
+int  PythonQtWrapper_QGLPixelBuffer::devType(QGLPixelBuffer* theWrappedObject) const
 {
-  return ( theWrappedObject->bindTexture(fileName));
-}
-
-QSize  PythonQtWrapper_QGLPixelBuffer::size(QGLPixelBuffer* theWrappedObject) const
-{
-  return ( theWrappedObject->size());
+  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_devType());
 }
 
 QGLFormat  PythonQtWrapper_QGLPixelBuffer::format(QGLPixelBuffer* theWrappedObject) const
@@ -122,14 +114,9 @@ QGLFormat  PythonQtWrapper_QGLPixelBuffer::format(QGLPixelBuffer* theWrappedObje
   return ( theWrappedObject->format());
 }
 
-void PythonQtWrapper_QGLPixelBuffer::drawTexture(QGLPixelBuffer* theWrappedObject, const QPointF&  point, unsigned int  textureId, unsigned int  textureTarget)
+QPaintEngine*  PythonQtWrapper_QGLPixelBuffer::paintEngine(QGLPixelBuffer* theWrappedObject) const
 {
-  ( theWrappedObject->drawTexture(point, textureId, textureTarget));
-}
-
-Qt::HANDLE  PythonQtWrapper_QGLPixelBuffer::handle(QGLPixelBuffer* theWrappedObject) const
-{
-  return ( theWrappedObject->handle());
+  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_paintEngine());
 }
 
 void PythonQtWrapper_QGLPixelBuffer::releaseFromDynamicTexture(QGLPixelBuffer* theWrappedObject)
@@ -137,64 +124,14 @@ void PythonQtWrapper_QGLPixelBuffer::releaseFromDynamicTexture(QGLPixelBuffer* t
   ( theWrappedObject->releaseFromDynamicTexture());
 }
 
-bool  PythonQtWrapper_QGLPixelBuffer::doneCurrent(QGLPixelBuffer* theWrappedObject)
+QSize  PythonQtWrapper_QGLPixelBuffer::size(QGLPixelBuffer* theWrappedObject) const
 {
-  return ( theWrappedObject->doneCurrent());
+  return ( theWrappedObject->size());
 }
 
-bool  PythonQtWrapper_QGLPixelBuffer::static_QGLPixelBuffer_hasOpenGLPbuffers()
+Qt::HANDLE  PythonQtWrapper_QGLPixelBuffer::handle(QGLPixelBuffer* theWrappedObject) const
 {
-  return (QGLPixelBuffer::hasOpenGLPbuffers());
-}
-
-bool  PythonQtWrapper_QGLPixelBuffer::bindToDynamicTexture(QGLPixelBuffer* theWrappedObject, unsigned int  texture)
-{
-  return ( theWrappedObject->bindToDynamicTexture(texture));
-}
-
-void PythonQtWrapper_QGLPixelBuffer::drawTexture(QGLPixelBuffer* theWrappedObject, const QRectF&  target, unsigned int  textureId, unsigned int  textureTarget)
-{
-  ( theWrappedObject->drawTexture(target, textureId, textureTarget));
-}
-
-unsigned int  PythonQtWrapper_QGLPixelBuffer::bindTexture(QGLPixelBuffer* theWrappedObject, const QImage&  image, unsigned int  target)
-{
-  return ( theWrappedObject->bindTexture(image, target));
-}
-
-void PythonQtWrapper_QGLPixelBuffer::updateDynamicTexture(QGLPixelBuffer* theWrappedObject, unsigned int  texture_id) const
-{
-  ( theWrappedObject->updateDynamicTexture(texture_id));
-}
-
-bool  PythonQtWrapper_QGLPixelBuffer::isValid(QGLPixelBuffer* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
-unsigned int  PythonQtWrapper_QGLPixelBuffer::bindTexture(QGLPixelBuffer* theWrappedObject, const QPixmap&  pixmap, unsigned int  target)
-{
-  return ( theWrappedObject->bindTexture(pixmap, target));
-}
-
-void PythonQtWrapper_QGLPixelBuffer::deleteTexture(QGLPixelBuffer* theWrappedObject, unsigned int  texture_id)
-{
-  ( theWrappedObject->deleteTexture(texture_id));
-}
-
-unsigned int  PythonQtWrapper_QGLPixelBuffer::generateDynamicTexture(QGLPixelBuffer* theWrappedObject) const
-{
-  return ( theWrappedObject->generateDynamicTexture());
-}
-
-int  PythonQtWrapper_QGLPixelBuffer::metric(QGLPixelBuffer* theWrappedObject, QPaintDevice::PaintDeviceMetric  metric) const
-{
-  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_metric(metric));
-}
-
-int  PythonQtWrapper_QGLPixelBuffer::devType(QGLPixelBuffer* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_devType());
+  return ( theWrappedObject->handle());
 }
 
 QImage  PythonQtWrapper_QGLPixelBuffer::toImage(QGLPixelBuffer* theWrappedObject) const
@@ -202,13 +139,28 @@ QImage  PythonQtWrapper_QGLPixelBuffer::toImage(QGLPixelBuffer* theWrappedObject
   return ( theWrappedObject->toImage());
 }
 
-QPaintEngine*  PythonQtWrapper_QGLPixelBuffer::paintEngine(QGLPixelBuffer* theWrappedObject) const
+int  PythonQtWrapper_QGLPixelBuffer::metric(QGLPixelBuffer* theWrappedObject, QPaintDevice::PaintDeviceMetric  metric) const
 {
-  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_paintEngine());
+  return ( ((PythonQtPublicPromoter_QGLPixelBuffer*)theWrappedObject)->promoted_metric(metric));
+}
+
+bool  PythonQtWrapper_QGLPixelBuffer::static_QGLPixelBuffer_hasOpenGLPbuffers()
+{
+  return (QGLPixelBuffer::hasOpenGLPbuffers());
 }
 
 bool  PythonQtWrapper_QGLPixelBuffer::makeCurrent(QGLPixelBuffer* theWrappedObject)
 {
   return ( theWrappedObject->makeCurrent());
+}
+
+bool  PythonQtWrapper_QGLPixelBuffer::doneCurrent(QGLPixelBuffer* theWrappedObject)
+{
+  return ( theWrappedObject->doneCurrent());
+}
+
+bool  PythonQtWrapper_QGLPixelBuffer::isValid(QGLPixelBuffer* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
 }
 

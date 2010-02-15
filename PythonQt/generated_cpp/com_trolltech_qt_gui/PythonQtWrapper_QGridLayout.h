@@ -13,6 +13,7 @@
 #include <qlayout.h>
 #include <qlayoutitem.h>
 #include <qlist.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qrect.h>
 #include <qsize.h>
@@ -48,15 +49,15 @@ virtual void timerEvent(QTimerEvent*  arg__1);
 
 class PythonQtPublicPromoter_QGridLayout : public QGridLayout
 { public:
-inline void promoted_setGeometry(const QRect&  arg__1) { QGridLayout::setGeometry(arg__1); }
-inline QSize  promoted_minimumSize() const { return QGridLayout::minimumSize(); }
-inline QLayoutItem*  promoted_itemAt(int  index) const { return QGridLayout::itemAt(index); }
-inline QLayoutItem*  promoted_takeAt(int  index) { return QGridLayout::takeAt(index); }
-inline void promoted_invalidate() { QGridLayout::invalidate(); }
-inline Qt::Orientations  promoted_expandingDirections() const { return QGridLayout::expandingDirections(); }
-inline int  promoted_count() const { return QGridLayout::count(); }
 inline QSize  promoted_maximumSize() const { return QGridLayout::maximumSize(); }
 inline void promoted_addItem(QLayoutItem*  arg__1) { QGridLayout::addItem(arg__1); }
+inline Qt::Orientations  promoted_expandingDirections() const { return QGridLayout::expandingDirections(); }
+inline QLayoutItem*  promoted_takeAt(int  index) { return QGridLayout::takeAt(index); }
+inline QLayoutItem*  promoted_itemAt(int  index) const { return QGridLayout::itemAt(index); }
+inline int  promoted_count() const { return QGridLayout::count(); }
+inline QSize  promoted_minimumSize() const { return QGridLayout::minimumSize(); }
+inline void promoted_setGeometry(const QRect&  arg__1) { QGridLayout::setGeometry(arg__1); }
+inline void promoted_invalidate() { QGridLayout::invalidate(); }
 };
 
 class PythonQtWrapper_QGridLayout : public QObject
@@ -66,46 +67,46 @@ public slots:
 QGridLayout* new_QGridLayout();
 QGridLayout* new_QGridLayout(QWidget*  parent);
 void delete_QGridLayout(QGridLayout* obj) { delete obj; } 
-   void setGeometry(QGridLayout* theWrappedObject, const QRect&  arg__1);
-   int  rowCount(QGridLayout* theWrappedObject) const;
-   int  heightForWidth(QGridLayout* theWrappedObject, int  arg__1) const;
-   QSize  minimumSize(QGridLayout* theWrappedObject) const;
-   int  spacing(QGridLayout* theWrappedObject) const;
-   QLayoutItem*  itemAt(QGridLayout* theWrappedObject, int  index) const;
-   void setColumnStretch(QGridLayout* theWrappedObject, int  column, int  stretch);
-   int  rowMinimumHeight(QGridLayout* theWrappedObject, int  row) const;
-   void addWidget(QGridLayout* theWrappedObject, QWidget*  arg__1, int  row, int  column, Qt::Alignment  arg__4 = 0);
-   QLayoutItem*  takeAt(QGridLayout* theWrappedObject, int  index);
-   void setColumnMinimumWidth(QGridLayout* theWrappedObject, int  column, int  minSize);
-   QSize  sizeHint(QGridLayout* theWrappedObject) const;
-   void setRowMinimumHeight(QGridLayout* theWrappedObject, int  row, int  minSize);
-   void invalidate(QGridLayout* theWrappedObject);
-   void setOriginCorner(QGridLayout* theWrappedObject, Qt::Corner  arg__1);
-   int  horizontalSpacing(QGridLayout* theWrappedObject) const;
-   int  columnStretch(QGridLayout* theWrappedObject, int  column) const;
-   Qt::Corner  originCorner(QGridLayout* theWrappedObject) const;
-   int  verticalSpacing(QGridLayout* theWrappedObject) const;
-   void setRowStretch(QGridLayout* theWrappedObject, int  row, int  stretch);
-   int  minimumHeightForWidth(QGridLayout* theWrappedObject, int  arg__1) const;
-   void setHorizontalSpacing(QGridLayout* theWrappedObject, int  spacing);
    void setVerticalSpacing(QGridLayout* theWrappedObject, int  spacing);
-   QRect  cellRect(QGridLayout* theWrappedObject, int  row, int  column) const;
-   void setSpacing(QGridLayout* theWrappedObject, int  spacing);
-   void addLayout(QGridLayout* theWrappedObject, QLayout*  arg__1, int  row, int  column, int  rowSpan, int  columnSpan, Qt::Alignment  arg__6 = 0);
-   int  rowStretch(QGridLayout* theWrappedObject, int  row) const;
-   void addWidget(QGridLayout* theWrappedObject, QWidget*  arg__1, int  row, int  column, int  rowSpan, int  columnSpan, Qt::Alignment  arg__6 = 0);
-   bool  hasHeightForWidth(QGridLayout* theWrappedObject) const;
-   Qt::Orientations  expandingDirections(QGridLayout* theWrappedObject) const;
-   void setDefaultPositioning(QGridLayout* theWrappedObject, int  n, Qt::Orientation  orient);
-   int  columnMinimumWidth(QGridLayout* theWrappedObject, int  column) const;
-   void addLayout(QGridLayout* theWrappedObject, QLayout*  arg__1, int  row, int  column, Qt::Alignment  arg__4 = 0);
-   int  columnCount(QGridLayout* theWrappedObject) const;
-   void addItem(QGridLayout* theWrappedObject, QLayoutItem*  item, int  row, int  column, int  rowSpan = 1, int  columnSpan = 1, Qt::Alignment  arg__6 = 0);
-   int  count(QGridLayout* theWrappedObject) const;
+   int  horizontalSpacing(QGridLayout* theWrappedObject) const;
+   void setHorizontalSpacing(QGridLayout* theWrappedObject, int  spacing);
    QSize  maximumSize(QGridLayout* theWrappedObject) const;
    void addItem(QGridLayout* theWrappedObject, QLayoutItem*  arg__1);
-   QLayoutItem*  itemAtPosition(QGridLayout* theWrappedObject, int  row, int  column) const;
+   void addWidget(QGridLayout* theWrappedObject, QWidget*  arg__1, int  row, int  column, int  rowSpan, int  columnSpan, Qt::Alignment  arg__6 = 0);
+   Qt::Orientations  expandingDirections(QGridLayout* theWrappedObject) const;
+   QLayoutItem*  takeAt(QGridLayout* theWrappedObject, int  index);
+   QRect  cellRect(QGridLayout* theWrappedObject, int  row, int  column) const;
+   QLayoutItem*  itemAt(QGridLayout* theWrappedObject, int  index) const;
+   int  minimumHeightForWidth(QGridLayout* theWrappedObject, int  arg__1) const;
+   int  columnMinimumWidth(QGridLayout* theWrappedObject, int  column) const;
+   int  count(QGridLayout* theWrappedObject) const;
+   int  verticalSpacing(QGridLayout* theWrappedObject) const;
+   void addLayout(QGridLayout* theWrappedObject, QLayout*  arg__1, int  row, int  column, int  rowSpan, int  columnSpan, Qt::Alignment  arg__6 = 0);
+   void addWidget(QGridLayout* theWrappedObject, QWidget*  arg__1, int  row, int  column, Qt::Alignment  arg__4 = 0);
+   Qt::Corner  originCorner(QGridLayout* theWrappedObject) const;
+   int  rowMinimumHeight(QGridLayout* theWrappedObject, int  row) const;
+   void setRowStretch(QGridLayout* theWrappedObject, int  row, int  stretch);
    void getItemPosition(QGridLayout* theWrappedObject, int  idx, int*  row, int*  column, int*  rowSpan, int*  columnSpan);
+   void setSpacing(QGridLayout* theWrappedObject, int  spacing);
+   void setDefaultPositioning(QGridLayout* theWrappedObject, int  n, Qt::Orientation  orient);
+   void setOriginCorner(QGridLayout* theWrappedObject, Qt::Corner  arg__1);
+   int  rowStretch(QGridLayout* theWrappedObject, int  row) const;
+   QSize  sizeHint(QGridLayout* theWrappedObject) const;
+   void addItem(QGridLayout* theWrappedObject, QLayoutItem*  item, int  row, int  column, int  rowSpan = 1, int  columnSpan = 1, Qt::Alignment  arg__6 = 0);
+   int  columnCount(QGridLayout* theWrappedObject) const;
+   void addLayout(QGridLayout* theWrappedObject, QLayout*  arg__1, int  row, int  column, Qt::Alignment  arg__4 = 0);
+   QSize  minimumSize(QGridLayout* theWrappedObject) const;
+   int  rowCount(QGridLayout* theWrappedObject) const;
+   bool  hasHeightForWidth(QGridLayout* theWrappedObject) const;
+   void setColumnMinimumWidth(QGridLayout* theWrappedObject, int  column, int  minSize);
+   void setGeometry(QGridLayout* theWrappedObject, const QRect&  arg__1);
+   int  columnStretch(QGridLayout* theWrappedObject, int  column) const;
+   void invalidate(QGridLayout* theWrappedObject);
+   int  spacing(QGridLayout* theWrappedObject) const;
+   QLayoutItem*  itemAtPosition(QGridLayout* theWrappedObject, int  row, int  column) const;
+   int  heightForWidth(QGridLayout* theWrappedObject, int  arg__1) const;
+   void setColumnStretch(QGridLayout* theWrappedObject, int  column, int  stretch);
+   void setRowMinimumHeight(QGridLayout* theWrappedObject, int  row, int  minSize);
 };
 
 #endif // PYTHONQTWRAPPER_QGRIDLAYOUT_H

@@ -14,6 +14,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -21,6 +23,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -93,8 +96,8 @@ virtual void wheelEvent(QWheelEvent*  event);
 class PythonQtPublicPromoter_QDoubleSpinBox : public QDoubleSpinBox
 { public:
 inline QValidator::State  promoted_validate(QString&  input, int&  pos) const { return QDoubleSpinBox::validate(input, pos); }
-inline double  promoted_valueFromText(const QString&  text) const { return QDoubleSpinBox::valueFromText(text); }
 inline void promoted_fixup(QString&  str) const { QDoubleSpinBox::fixup(str); }
+inline double  promoted_valueFromText(const QString&  text) const { return QDoubleSpinBox::valueFromText(text); }
 inline QString  promoted_textFromValue(double  val) const { return QDoubleSpinBox::textFromValue(val); }
 };
 
@@ -104,24 +107,24 @@ public:
 public slots:
 QDoubleSpinBox* new_QDoubleSpinBox(QWidget*  parent = 0);
 void delete_QDoubleSpinBox(QDoubleSpinBox* obj) { delete obj; } 
-   void setMaximum(QDoubleSpinBox* theWrappedObject, double  max);
-   void setDecimals(QDoubleSpinBox* theWrappedObject, int  prec);
-   void setPrefix(QDoubleSpinBox* theWrappedObject, const QString&  prefix);
-   void setSuffix(QDoubleSpinBox* theWrappedObject, const QString&  suffix);
-   QValidator::State  validate(QDoubleSpinBox* theWrappedObject, QString&  input, int&  pos) const;
-   double  valueFromText(QDoubleSpinBox* theWrappedObject, const QString&  text) const;
-   double  value(QDoubleSpinBox* theWrappedObject) const;
-   double  singleStep(QDoubleSpinBox* theWrappedObject) const;
-   double  minimum(QDoubleSpinBox* theWrappedObject) const;
-   QString  suffix(QDoubleSpinBox* theWrappedObject) const;
-   int  decimals(QDoubleSpinBox* theWrappedObject) const;
-   void fixup(QDoubleSpinBox* theWrappedObject, QString&  str) const;
    void setSingleStep(QDoubleSpinBox* theWrappedObject, double  val);
-   void setMinimum(QDoubleSpinBox* theWrappedObject, double  min);
-   QString  textFromValue(QDoubleSpinBox* theWrappedObject, double  val) const;
    QString  cleanText(QDoubleSpinBox* theWrappedObject) const;
+   void setPrefix(QDoubleSpinBox* theWrappedObject, const QString&  prefix);
    QString  prefix(QDoubleSpinBox* theWrappedObject) const;
+   void setMaximum(QDoubleSpinBox* theWrappedObject, double  max);
+   int  decimals(QDoubleSpinBox* theWrappedObject) const;
+   QValidator::State  validate(QDoubleSpinBox* theWrappedObject, QString&  input, int&  pos) const;
    double  maximum(QDoubleSpinBox* theWrappedObject) const;
+   void setMinimum(QDoubleSpinBox* theWrappedObject, double  min);
+   void setDecimals(QDoubleSpinBox* theWrappedObject, int  prec);
+   void fixup(QDoubleSpinBox* theWrappedObject, QString&  str) const;
+   QString  suffix(QDoubleSpinBox* theWrappedObject) const;
+   double  value(QDoubleSpinBox* theWrappedObject) const;
+   double  minimum(QDoubleSpinBox* theWrappedObject) const;
+   void setSuffix(QDoubleSpinBox* theWrappedObject, const QString&  suffix);
+   double  singleStep(QDoubleSpinBox* theWrappedObject) const;
+   double  valueFromText(QDoubleSpinBox* theWrappedObject, const QString&  text) const;
+   QString  textFromValue(QDoubleSpinBox* theWrappedObject, double  val) const;
    void setRange(QDoubleSpinBox* theWrappedObject, double  min, double  max);
 };
 

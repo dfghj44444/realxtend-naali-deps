@@ -28,24 +28,14 @@ QKeySequence* PythonQtWrapper_QKeySequence::new_QKeySequence(int  k1, int  k2, i
 { 
 return new QKeySequence(k1, k2, k3, k4); }
 
-void PythonQtWrapper_QKeySequence::readFrom(QKeySequence* theWrappedObject, QDataStream&  out)
-{
-  out >>  (*theWrappedObject);
-}
-
 uint  PythonQtWrapper_QKeySequence::count(QKeySequence* theWrappedObject) const
 {
   return ( theWrappedObject->count());
 }
 
-QString  PythonQtWrapper_QKeySequence::toString(QKeySequence* theWrappedObject, QKeySequence::SequenceFormat  format) const
+bool  PythonQtWrapper_QKeySequence::operator_equal(QKeySequence* theWrappedObject, const QKeySequence&  other) const
 {
-  return ( theWrappedObject->toString(format));
-}
-
-int  PythonQtWrapper_QKeySequence::operator_cast_int(QKeySequence* theWrappedObject) const
-{
-  return ( theWrappedObject->operator int());
+  return ( (*theWrappedObject)== other);
 }
 
 QKeySequence  PythonQtWrapper_QKeySequence::static_QKeySequence_fromString(const QString&  str, QKeySequence::SequenceFormat  format)
@@ -53,19 +43,14 @@ QKeySequence  PythonQtWrapper_QKeySequence::static_QKeySequence_fromString(const
   return (QKeySequence::fromString(str, format));
 }
 
-QList<QKeySequence >  PythonQtWrapper_QKeySequence::static_QKeySequence_keyBindings(QKeySequence::StandardKey  key)
+int  PythonQtWrapper_QKeySequence::operator_cast_int(QKeySequence* theWrappedObject) const
 {
-  return (QKeySequence::keyBindings(key));
+  return ( theWrappedObject->operator int());
 }
 
-QKeySequence::SequenceMatch  PythonQtWrapper_QKeySequence::matches(QKeySequence* theWrappedObject, const QKeySequence&  seq) const
+void PythonQtWrapper_QKeySequence::readFrom(QKeySequence* theWrappedObject, QDataStream&  out)
 {
-  return ( theWrappedObject->matches(seq));
-}
-
-QKeySequence  PythonQtWrapper_QKeySequence::static_QKeySequence_mnemonic(const QString&  text)
-{
-  return (QKeySequence::mnemonic(text));
+  out >>  (*theWrappedObject);
 }
 
 bool  PythonQtWrapper_QKeySequence::isEmpty(QKeySequence* theWrappedObject) const
@@ -73,14 +58,24 @@ bool  PythonQtWrapper_QKeySequence::isEmpty(QKeySequence* theWrappedObject) cons
   return ( theWrappedObject->isEmpty());
 }
 
+QKeySequence::SequenceMatch  PythonQtWrapper_QKeySequence::matches(QKeySequence* theWrappedObject, const QKeySequence&  seq) const
+{
+  return ( theWrappedObject->matches(seq));
+}
+
 bool  PythonQtWrapper_QKeySequence::operator_less(QKeySequence* theWrappedObject, const QKeySequence&  ks) const
 {
   return ( (*theWrappedObject)< ks);
 }
 
-void PythonQtWrapper_QKeySequence::writeTo(QKeySequence* theWrappedObject, QDataStream&  in)
+QString  PythonQtWrapper_QKeySequence::toString(QKeySequence* theWrappedObject, QKeySequence::SequenceFormat  format) const
 {
-  in <<  (*theWrappedObject);
+  return ( theWrappedObject->toString(format));
+}
+
+QKeySequence  PythonQtWrapper_QKeySequence::static_QKeySequence_mnemonic(const QString&  text)
+{
+  return (QKeySequence::mnemonic(text));
 }
 
 int  PythonQtWrapper_QKeySequence::operator_subscript(QKeySequence* theWrappedObject, uint  i) const
@@ -88,8 +83,13 @@ int  PythonQtWrapper_QKeySequence::operator_subscript(QKeySequence* theWrappedOb
   return ( (*theWrappedObject)[i]);
 }
 
-bool  PythonQtWrapper_QKeySequence::operator_equal(QKeySequence* theWrappedObject, const QKeySequence&  other) const
+QList<QKeySequence >  PythonQtWrapper_QKeySequence::static_QKeySequence_keyBindings(QKeySequence::StandardKey  key)
 {
-  return ( (*theWrappedObject)== other);
+  return (QKeySequence::keyBindings(key));
+}
+
+void PythonQtWrapper_QKeySequence::writeTo(QKeySequence* theWrappedObject, QDataStream&  in)
+{
+  in <<  (*theWrappedObject);
 }
 

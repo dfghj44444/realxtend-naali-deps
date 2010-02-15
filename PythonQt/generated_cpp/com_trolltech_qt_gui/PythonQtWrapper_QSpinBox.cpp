@@ -11,6 +11,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -18,6 +20,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -934,19 +937,9 @@ QSpinBox* PythonQtWrapper_QSpinBox::new_QSpinBox(QWidget*  parent)
 { 
 return new PythonQtShell_QSpinBox(parent); }
 
-int  PythonQtWrapper_QSpinBox::minimum(QSpinBox* theWrappedObject) const
+void PythonQtWrapper_QSpinBox::setPrefix(QSpinBox* theWrappedObject, const QString&  prefix)
 {
-  return ( theWrappedObject->minimum());
-}
-
-void PythonQtWrapper_QSpinBox::setMaximum(QSpinBox* theWrappedObject, int  max)
-{
-  ( theWrappedObject->setMaximum(max));
-}
-
-QString  PythonQtWrapper_QSpinBox::textFromValue(QSpinBox* theWrappedObject, int  val) const
-{
-  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_textFromValue(val));
+  ( theWrappedObject->setPrefix(prefix));
 }
 
 void PythonQtWrapper_QSpinBox::setMinimum(QSpinBox* theWrappedObject, int  min)
@@ -954,34 +947,9 @@ void PythonQtWrapper_QSpinBox::setMinimum(QSpinBox* theWrappedObject, int  min)
   ( theWrappedObject->setMinimum(min));
 }
 
-void PythonQtWrapper_QSpinBox::fixup(QSpinBox* theWrappedObject, QString&  str) const
-{
-  ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_fixup(str));
-}
-
 int  PythonQtWrapper_QSpinBox::valueFromText(QSpinBox* theWrappedObject, const QString&  text) const
 {
   return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_valueFromText(text));
-}
-
-int  PythonQtWrapper_QSpinBox::value(QSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->value());
-}
-
-int  PythonQtWrapper_QSpinBox::maximum(QSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->maximum());
-}
-
-QString  PythonQtWrapper_QSpinBox::cleanText(QSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->cleanText());
-}
-
-void PythonQtWrapper_QSpinBox::setSingleStep(QSpinBox* theWrappedObject, int  val)
-{
-  ( theWrappedObject->setSingleStep(val));
 }
 
 QString  PythonQtWrapper_QSpinBox::prefix(QSpinBox* theWrappedObject) const
@@ -989,14 +957,9 @@ QString  PythonQtWrapper_QSpinBox::prefix(QSpinBox* theWrappedObject) const
   return ( theWrappedObject->prefix());
 }
 
-void PythonQtWrapper_QSpinBox::setSuffix(QSpinBox* theWrappedObject, const QString&  suffix)
+int  PythonQtWrapper_QSpinBox::minimum(QSpinBox* theWrappedObject) const
 {
-  ( theWrappedObject->setSuffix(suffix));
-}
-
-QString  PythonQtWrapper_QSpinBox::suffix(QSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->suffix());
+  return ( theWrappedObject->minimum());
 }
 
 void PythonQtWrapper_QSpinBox::setRange(QSpinBox* theWrappedObject, int  min, int  max)
@@ -1004,23 +967,63 @@ void PythonQtWrapper_QSpinBox::setRange(QSpinBox* theWrappedObject, int  min, in
   ( theWrappedObject->setRange(min, max));
 }
 
-bool  PythonQtWrapper_QSpinBox::event(QSpinBox* theWrappedObject, QEvent*  event)
+QString  PythonQtWrapper_QSpinBox::textFromValue(QSpinBox* theWrappedObject, int  val) const
 {
-  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_event(event));
+  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_textFromValue(val));
 }
 
-QValidator::State  PythonQtWrapper_QSpinBox::validate(QSpinBox* theWrappedObject, QString&  input, int&  pos) const
+void PythonQtWrapper_QSpinBox::setSingleStep(QSpinBox* theWrappedObject, int  val)
 {
-  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_validate(input, pos));
+  ( theWrappedObject->setSingleStep(val));
 }
 
-void PythonQtWrapper_QSpinBox::setPrefix(QSpinBox* theWrappedObject, const QString&  prefix)
+void PythonQtWrapper_QSpinBox::setSuffix(QSpinBox* theWrappedObject, const QString&  suffix)
 {
-  ( theWrappedObject->setPrefix(prefix));
+  ( theWrappedObject->setSuffix(suffix));
+}
+
+int  PythonQtWrapper_QSpinBox::value(QSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->value());
+}
+
+void PythonQtWrapper_QSpinBox::setMaximum(QSpinBox* theWrappedObject, int  max)
+{
+  ( theWrappedObject->setMaximum(max));
+}
+
+void PythonQtWrapper_QSpinBox::fixup(QSpinBox* theWrappedObject, QString&  str) const
+{
+  ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_fixup(str));
+}
+
+QString  PythonQtWrapper_QSpinBox::cleanText(QSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->cleanText());
 }
 
 int  PythonQtWrapper_QSpinBox::singleStep(QSpinBox* theWrappedObject) const
 {
   return ( theWrappedObject->singleStep());
+}
+
+bool  PythonQtWrapper_QSpinBox::event(QSpinBox* theWrappedObject, QEvent*  event)
+{
+  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_event(event));
+}
+
+QString  PythonQtWrapper_QSpinBox::suffix(QSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->suffix());
+}
+
+int  PythonQtWrapper_QSpinBox::maximum(QSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->maximum());
+}
+
+QValidator::State  PythonQtWrapper_QSpinBox::validate(QSpinBox* theWrappedObject, QString&  input, int&  pos) const
+{
+  return ( ((PythonQtPublicPromoter_QSpinBox*)theWrappedObject)->promoted_validate(input, pos));
 }
 

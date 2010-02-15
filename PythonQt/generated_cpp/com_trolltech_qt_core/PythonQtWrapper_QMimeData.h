@@ -47,28 +47,28 @@ public:
 public slots:
 QMimeData* new_QMimeData();
 void delete_QMimeData(QMimeData* obj) { delete obj; } 
-   void setColorData(QMimeData* theWrappedObject, const QVariant&  color);
-   bool  hasImage(QMimeData* theWrappedObject) const;
-   QString  text(QMimeData* theWrappedObject) const;
-   void setData(QMimeData* theWrappedObject, const QString&  mimetype, const QByteArray&  data);
-   void removeFormat(QMimeData* theWrappedObject, const QString&  mimetype);
-   QVariant  colorData(QMimeData* theWrappedObject) const;
-   bool  hasColor(QMimeData* theWrappedObject) const;
-   void setImageData(QMimeData* theWrappedObject, const QVariant&  image);
-   QStringList  formats(QMimeData* theWrappedObject) const;
-   bool  hasText(QMimeData* theWrappedObject) const;
-   void setText(QMimeData* theWrappedObject, const QString&  text);
-   QList<QUrl >  urls(QMimeData* theWrappedObject) const;
-   QByteArray  data(QMimeData* theWrappedObject, const QString&  mimetype) const;
-   bool  hasHtml(QMimeData* theWrappedObject) const;
-   void clear(QMimeData* theWrappedObject);
-   bool  hasFormat(QMimeData* theWrappedObject, const QString&  mimetype) const;
-   bool  hasUrls(QMimeData* theWrappedObject) const;
    QVariant  imageData(QMimeData* theWrappedObject) const;
    void setHtml(QMimeData* theWrappedObject, const QString&  html);
+   void clear(QMimeData* theWrappedObject);
+   bool  hasUrls(QMimeData* theWrappedObject) const;
+   bool  hasImage(QMimeData* theWrappedObject) const;
    void setUrls(QMimeData* theWrappedObject, const QList<QUrl >&  urls);
+   QList<QUrl >  urls(QMimeData* theWrappedObject) const;
+   QVariant  colorData(QMimeData* theWrappedObject) const;
+   void setData(QMimeData* theWrappedObject, const QString&  mimetype, const QByteArray&  data);
+   QStringList  formats(QMimeData* theWrappedObject) const;
+   void setImageData(QMimeData* theWrappedObject, const QVariant&  image);
+   void setText(QMimeData* theWrappedObject, const QString&  text);
+   QByteArray  data(QMimeData* theWrappedObject, const QString&  mimetype) const;
+   bool  hasFormat(QMimeData* theWrappedObject, const QString&  mimetype) const;
+   QString  text(QMimeData* theWrappedObject) const;
+   bool  hasText(QMimeData* theWrappedObject) const;
+   void removeFormat(QMimeData* theWrappedObject, const QString&  mimetype);
+   void setColorData(QMimeData* theWrappedObject, const QVariant&  color);
    QVariant  retrieveData(QMimeData* theWrappedObject, const QString&  mimetype, QVariant::Type  preferredType) const;
    QString  html(QMimeData* theWrappedObject) const;
+   bool  hasColor(QMimeData* theWrappedObject) const;
+   bool  hasHtml(QMimeData* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QMIMEDATA_H

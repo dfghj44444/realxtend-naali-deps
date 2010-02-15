@@ -11,6 +11,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -18,6 +20,7 @@
 #include <qlcdnumber.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -801,29 +804,9 @@ QLCDNumber* PythonQtWrapper_QLCDNumber::new_QLCDNumber(uint  numDigits, QWidget*
 { 
 return new PythonQtShell_QLCDNumber(numDigits, parent); }
 
-void PythonQtWrapper_QLCDNumber::setNumDigits(QLCDNumber* theWrappedObject, int  nDigits)
-{
-  ( theWrappedObject->setNumDigits(nDigits));
-}
-
-int  PythonQtWrapper_QLCDNumber::intValue(QLCDNumber* theWrappedObject) const
-{
-  return ( theWrappedObject->intValue());
-}
-
-bool  PythonQtWrapper_QLCDNumber::checkOverflow(QLCDNumber* theWrappedObject, int  num) const
+bool  PythonQtWrapper_QLCDNumber::checkOverflow(QLCDNumber* theWrappedObject, double  num) const
 {
   return ( theWrappedObject->checkOverflow(num));
-}
-
-bool  PythonQtWrapper_QLCDNumber::event(QLCDNumber* theWrappedObject, QEvent*  e)
-{
-  return ( ((PythonQtPublicPromoter_QLCDNumber*)theWrappedObject)->promoted_event(e));
-}
-
-bool  PythonQtWrapper_QLCDNumber::smallDecimalPoint(QLCDNumber* theWrappedObject) const
-{
-  return ( theWrappedObject->smallDecimalPoint());
 }
 
 QLCDNumber::Mode  PythonQtWrapper_QLCDNumber::mode(QLCDNumber* theWrappedObject) const
@@ -831,19 +814,9 @@ QLCDNumber::Mode  PythonQtWrapper_QLCDNumber::mode(QLCDNumber* theWrappedObject)
   return ( theWrappedObject->mode());
 }
 
-void PythonQtWrapper_QLCDNumber::setMode(QLCDNumber* theWrappedObject, QLCDNumber::Mode  arg__1)
+int  PythonQtWrapper_QLCDNumber::digitCount(QLCDNumber* theWrappedObject) const
 {
-  ( theWrappedObject->setMode(arg__1));
-}
-
-double  PythonQtWrapper_QLCDNumber::value(QLCDNumber* theWrappedObject) const
-{
-  return ( theWrappedObject->value());
-}
-
-int  PythonQtWrapper_QLCDNumber::numDigits(QLCDNumber* theWrappedObject) const
-{
-  return ( theWrappedObject->numDigits());
+  return ( theWrappedObject->digitCount());
 }
 
 QLCDNumber::SegmentStyle  PythonQtWrapper_QLCDNumber::segmentStyle(QLCDNumber* theWrappedObject) const
@@ -856,9 +829,14 @@ void PythonQtWrapper_QLCDNumber::setSegmentStyle(QLCDNumber* theWrappedObject, Q
   ( theWrappedObject->setSegmentStyle(arg__1));
 }
 
-bool  PythonQtWrapper_QLCDNumber::checkOverflow(QLCDNumber* theWrappedObject, double  num) const
+bool  PythonQtWrapper_QLCDNumber::smallDecimalPoint(QLCDNumber* theWrappedObject) const
 {
-  return ( theWrappedObject->checkOverflow(num));
+  return ( theWrappedObject->smallDecimalPoint());
+}
+
+int  PythonQtWrapper_QLCDNumber::numDigits(QLCDNumber* theWrappedObject) const
+{
+  return ( theWrappedObject->numDigits());
 }
 
 QSize  PythonQtWrapper_QLCDNumber::sizeHint(QLCDNumber* theWrappedObject) const
@@ -866,8 +844,43 @@ QSize  PythonQtWrapper_QLCDNumber::sizeHint(QLCDNumber* theWrappedObject) const
   return ( theWrappedObject->sizeHint());
 }
 
+void PythonQtWrapper_QLCDNumber::setMode(QLCDNumber* theWrappedObject, QLCDNumber::Mode  arg__1)
+{
+  ( theWrappedObject->setMode(arg__1));
+}
+
+void PythonQtWrapper_QLCDNumber::setNumDigits(QLCDNumber* theWrappedObject, int  nDigits)
+{
+  ( theWrappedObject->setNumDigits(nDigits));
+}
+
+bool  PythonQtWrapper_QLCDNumber::checkOverflow(QLCDNumber* theWrappedObject, int  num) const
+{
+  return ( theWrappedObject->checkOverflow(num));
+}
+
+int  PythonQtWrapper_QLCDNumber::intValue(QLCDNumber* theWrappedObject) const
+{
+  return ( theWrappedObject->intValue());
+}
+
 void PythonQtWrapper_QLCDNumber::paintEvent(QLCDNumber* theWrappedObject, QPaintEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QLCDNumber*)theWrappedObject)->promoted_paintEvent(arg__1));
+}
+
+double  PythonQtWrapper_QLCDNumber::value(QLCDNumber* theWrappedObject) const
+{
+  return ( theWrappedObject->value());
+}
+
+bool  PythonQtWrapper_QLCDNumber::event(QLCDNumber* theWrappedObject, QEvent*  e)
+{
+  return ( ((PythonQtPublicPromoter_QLCDNumber*)theWrappedObject)->promoted_event(e));
+}
+
+void PythonQtWrapper_QLCDNumber::setDigitCount(QLCDNumber* theWrappedObject, int  nDigits)
+{
+  ( theWrappedObject->setDigitCount(nDigits));
 }
 

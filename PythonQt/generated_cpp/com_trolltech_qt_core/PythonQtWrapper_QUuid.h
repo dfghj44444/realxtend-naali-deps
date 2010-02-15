@@ -38,15 +38,15 @@ PythonQtShell_QUuid* a = new PythonQtShell_QUuid();
 *((QUuid*)a) = other;
 return a; }
 void delete_QUuid(QUuid* obj) { delete obj; } 
+   bool  operator_equal(QUuid* theWrappedObject, const QUuid&  orig) const;
+   QString  toString(QUuid* theWrappedObject) const;
+   QUuid::Version  version(QUuid* theWrappedObject) const;
+   QUuid::Variant  variant(QUuid* theWrappedObject) const;
    void writeTo(QUuid* theWrappedObject, QDataStream&  arg__1);
    bool  operator_less(QUuid* theWrappedObject, const QUuid&  other) const;
-   void readFrom(QUuid* theWrappedObject, QDataStream&  arg__1);
    bool  isNull(QUuid* theWrappedObject) const;
    QUuid  static_QUuid_createUuid();
-   bool  operator_equal(QUuid* theWrappedObject, const QUuid&  orig) const;
-   QUuid::Version  version(QUuid* theWrappedObject) const;
-   QString  toString(QUuid* theWrappedObject) const;
-   QUuid::Variant  variant(QUuid* theWrappedObject) const;
+   void readFrom(QUuid* theWrappedObject, QDataStream&  arg__1);
 };
 
 #endif // PYTHONQTWRAPPER_QUUID_H

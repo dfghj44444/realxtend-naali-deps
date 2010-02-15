@@ -12,12 +12,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -179,7 +182,7 @@ if (_wrapper) {
 }
   return QPrintDialog::devType();
 }
-void PythonQtShell_QPrintDialog::done(int  arg__1)
+void PythonQtShell_QPrintDialog::done(int  result)
 {
 if (_wrapper) {
   PyObject* obj = PyObject_GetAttrString((PyObject*)_wrapper, "done");
@@ -187,14 +190,14 @@ if (_wrapper) {
   if (obj && !PythonQtSlotFunction_Check(obj)) {
     static const char* argumentList[] ={"" , "int"};
     static const PythonQtMethodInfo* methodInfo = PythonQtMethodInfo::getCachedMethodInfoFromArgumentList(2, argumentList);
-    void* args[2] = {NULL, (void*)&arg__1};
+    void* args[2] = {NULL, (void*)&result};
     PyObject* result = PythonQtSignalTarget::call(obj, methodInfo, args, true);
     if (result) { Py_DECREF(result); } 
     Py_DECREF(obj);
     return;
   }
 }
-  QPrintDialog::done(arg__1);
+  QPrintDialog::done(result);
 }
 void PythonQtShell_QPrintDialog::dragEnterEvent(QDragEnterEvent*  arg__1)
 {
@@ -849,8 +852,52 @@ QPrintDialog* PythonQtWrapper_QPrintDialog::new_QPrintDialog(QPrinter*  printer,
 { 
 return new PythonQtShell_QPrintDialog(printer, parent); }
 
+QPrintDialog* PythonQtWrapper_QPrintDialog::new_QPrintDialog(QWidget*  parent)
+{ 
+return new PythonQtShell_QPrintDialog(parent); }
+
+void PythonQtWrapper_QPrintDialog::accepted(QPrintDialog* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QPrintDialog*)theWrappedObject)->promoted_accepted());
+}
+
+void PythonQtWrapper_QPrintDialog::open(QPrintDialog* theWrappedObject, QObject*  receiver, const char*  member)
+{
+  ( theWrappedObject->open(receiver, member));
+}
+
+void PythonQtWrapper_QPrintDialog::setOption(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option, bool  on)
+{
+  ( theWrappedObject->setOption(option, on));
+}
+
+QAbstractPrintDialog::PrintDialogOptions  PythonQtWrapper_QPrintDialog::options(QPrintDialog* theWrappedObject) const
+{
+  return ( theWrappedObject->options());
+}
+
 int  PythonQtWrapper_QPrintDialog::exec(QPrintDialog* theWrappedObject)
 {
   return ( ((PythonQtPublicPromoter_QPrintDialog*)theWrappedObject)->promoted_exec());
+}
+
+void PythonQtWrapper_QPrintDialog::setOptions(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOptions  options)
+{
+  ( theWrappedObject->setOptions(options));
+}
+
+void PythonQtWrapper_QPrintDialog::open(QPrintDialog* theWrappedObject)
+{
+  ( theWrappedObject->open());
+}
+
+bool  PythonQtWrapper_QPrintDialog::testOption(QPrintDialog* theWrappedObject, QAbstractPrintDialog::PrintDialogOption  option) const
+{
+  return ( theWrappedObject->testOption(option));
+}
+
+void PythonQtWrapper_QPrintDialog::done(QPrintDialog* theWrappedObject, int  result)
+{
+  ( ((PythonQtPublicPromoter_QPrintDialog*)theWrappedObject)->promoted_done(result));
 }
 

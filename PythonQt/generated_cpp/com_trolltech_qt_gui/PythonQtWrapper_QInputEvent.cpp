@@ -14,3 +14,8 @@ Qt::KeyboardModifiers  PythonQtWrapper_QInputEvent::modifiers(QInputEvent* theWr
   return ( theWrappedObject->modifiers());
 }
 
+void PythonQtWrapper_QInputEvent::setModifiers(QInputEvent* theWrappedObject, Qt::KeyboardModifiers  amodifiers)
+{
+  ( theWrappedObject->setModifiers(amodifiers));
+}
+

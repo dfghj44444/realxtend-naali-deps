@@ -105,74 +105,14 @@ QPrinter* PythonQtWrapper_QPrinter::new_QPrinter(const QPrinterInfo&  printer, Q
 { 
 return new PythonQtShell_QPrinter(printer, mode); }
 
-int  PythonQtWrapper_QPrinter::devType(QPrinter* theWrappedObject) const
+void PythonQtWrapper_QPrinter::setOutputFileName(QPrinter* theWrappedObject, const QString&  arg__1)
 {
-  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_devType());
+  ( theWrappedObject->setOutputFileName(arg__1));
 }
 
-QPrinter::OutputFormat  PythonQtWrapper_QPrinter::outputFormat(QPrinter* theWrappedObject) const
+void PythonQtWrapper_QPrinter::setCollateCopies(QPrinter* theWrappedObject, bool  collate)
 {
-  return ( theWrappedObject->outputFormat());
-}
-
-int  PythonQtWrapper_QPrinter::fromPage(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->fromPage());
-}
-
-QPrinter::PageSize  PythonQtWrapper_QPrinter::pageSize(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->pageSize());
-}
-
-bool  PythonQtWrapper_QPrinter::fontEmbeddingEnabled(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->fontEmbeddingEnabled());
-}
-
-int  PythonQtWrapper_QPrinter::toPage(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->toPage());
-}
-
-QString  PythonQtWrapper_QPrinter::creator(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->creator());
-}
-
-void PythonQtWrapper_QPrinter::setPrintProgram(QPrinter* theWrappedObject, const QString&  arg__1)
-{
-  ( theWrappedObject->setPrintProgram(arg__1));
-}
-
-QString  PythonQtWrapper_QPrinter::outputFileName(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->outputFileName());
-}
-
-QPrinter::PageOrder  PythonQtWrapper_QPrinter::pageOrder(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->pageOrder());
-}
-
-QString  PythonQtWrapper_QPrinter::printerName(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->printerName());
-}
-
-QPrinter::PageSize  PythonQtWrapper_QPrinter::paperSize(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->paperSize());
-}
-
-QPrinter::PrinterState  PythonQtWrapper_QPrinter::printerState(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->printerState());
-}
-
-void PythonQtWrapper_QPrinter::setPageOrder(QPrinter* theWrappedObject, QPrinter::PageOrder  arg__1)
-{
-  ( theWrappedObject->setPageOrder(arg__1));
+  ( theWrappedObject->setCollateCopies(collate));
 }
 
 void PythonQtWrapper_QPrinter::setPrinterName(QPrinter* theWrappedObject, const QString&  arg__1)
@@ -180,59 +120,14 @@ void PythonQtWrapper_QPrinter::setPrinterName(QPrinter* theWrappedObject, const 
   ( theWrappedObject->setPrinterName(arg__1));
 }
 
-bool  PythonQtWrapper_QPrinter::abort(QPrinter* theWrappedObject)
+QString  PythonQtWrapper_QPrinter::printProgram(QPrinter* theWrappedObject) const
 {
-  return ( theWrappedObject->abort());
+  return ( theWrappedObject->printProgram());
 }
 
-void PythonQtWrapper_QPrinter::setDoubleSidedPrinting(QPrinter* theWrappedObject, bool  enable)
+void PythonQtWrapper_QPrinter::setFullPage(QPrinter* theWrappedObject, bool  arg__1)
 {
-  ( theWrappedObject->setDoubleSidedPrinting(enable));
-}
-
-QSizeF  PythonQtWrapper_QPrinter::paperSize(QPrinter* theWrappedObject, QPrinter::Unit  unit) const
-{
-  return ( theWrappedObject->paperSize(unit));
-}
-
-void PythonQtWrapper_QPrinter::setOutputFileName(QPrinter* theWrappedObject, const QString&  arg__1)
-{
-  ( theWrappedObject->setOutputFileName(arg__1));
-}
-
-bool  PythonQtWrapper_QPrinter::doubleSidedPrinting(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->doubleSidedPrinting());
-}
-
-int  PythonQtWrapper_QPrinter::numCopies(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->numCopies());
-}
-
-QRect  PythonQtWrapper_QPrinter::paperRect(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->paperRect());
-}
-
-QPrinter::ColorMode  PythonQtWrapper_QPrinter::colorMode(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->colorMode());
-}
-
-void PythonQtWrapper_QPrinter::getPageMargins(QPrinter* theWrappedObject, qreal*  left, qreal*  top, qreal*  right, qreal*  bottom, QPrinter::Unit  unit) const
-{
-  ( theWrappedObject->getPageMargins(left, top, right, bottom, unit));
-}
-
-void PythonQtWrapper_QPrinter::setDocName(QPrinter* theWrappedObject, const QString&  arg__1)
-{
-  ( theWrappedObject->setDocName(arg__1));
-}
-
-void PythonQtWrapper_QPrinter::setDuplex(QPrinter* theWrappedObject, QPrinter::DuplexMode  duplex)
-{
-  ( theWrappedObject->setDuplex(duplex));
+  ( theWrappedObject->setFullPage(arg__1));
 }
 
 void PythonQtWrapper_QPrinter::setPageMargins(QPrinter* theWrappedObject, qreal  left, qreal  top, qreal  right, qreal  bottom, QPrinter::Unit  unit)
@@ -245,29 +140,19 @@ void PythonQtWrapper_QPrinter::setPaperSize(QPrinter* theWrappedObject, const QS
   ( theWrappedObject->setPaperSize(paperSize, unit));
 }
 
-QPrintEngine*  PythonQtWrapper_QPrinter::printEngine(QPrinter* theWrappedObject) const
+QPrinter::PageOrder  PythonQtWrapper_QPrinter::pageOrder(QPrinter* theWrappedObject) const
 {
-  return ( theWrappedObject->printEngine());
+  return ( theWrappedObject->pageOrder());
 }
 
-void PythonQtWrapper_QPrinter::setPaperSize(QPrinter* theWrappedObject, QPrinter::PageSize  arg__1)
+QRect  PythonQtWrapper_QPrinter::paperRect(QPrinter* theWrappedObject) const
 {
-  ( theWrappedObject->setPaperSize(arg__1));
+  return ( theWrappedObject->paperRect());
 }
 
-void PythonQtWrapper_QPrinter::setFontEmbeddingEnabled(QPrinter* theWrappedObject, bool  enable)
+void PythonQtWrapper_QPrinter::setDoubleSidedPrinting(QPrinter* theWrappedObject, bool  enable)
 {
-  ( theWrappedObject->setFontEmbeddingEnabled(enable));
-}
-
-QString  PythonQtWrapper_QPrinter::docName(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->docName());
-}
-
-int  PythonQtWrapper_QPrinter::metric(QPrinter* theWrappedObject, QPaintDevice::PaintDeviceMetric  arg__1) const
-{
-  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_metric(arg__1));
+  ( theWrappedObject->setDoubleSidedPrinting(enable));
 }
 
 void PythonQtWrapper_QPrinter::setFromTo(QPrinter* theWrappedObject, int  fromPage, int  toPage)
@@ -275,79 +160,24 @@ void PythonQtWrapper_QPrinter::setFromTo(QPrinter* theWrappedObject, int  fromPa
   ( theWrappedObject->setFromTo(fromPage, toPage));
 }
 
+QPrinter::PrinterState  PythonQtWrapper_QPrinter::printerState(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->printerState());
+}
+
+QPrinter::PageSize  PythonQtWrapper_QPrinter::paperSize(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->paperSize());
+}
+
+QPrinter::ColorMode  PythonQtWrapper_QPrinter::colorMode(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->colorMode());
+}
+
 void PythonQtWrapper_QPrinter::setOrientation(QPrinter* theWrappedObject, QPrinter::Orientation  arg__1)
 {
   ( theWrappedObject->setOrientation(arg__1));
-}
-
-void PythonQtWrapper_QPrinter::setNumCopies(QPrinter* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setNumCopies(arg__1));
-}
-
-void PythonQtWrapper_QPrinter::setPaperSource(QPrinter* theWrappedObject, QPrinter::PaperSource  arg__1)
-{
-  ( theWrappedObject->setPaperSource(arg__1));
-}
-
-QPrinter::Orientation  PythonQtWrapper_QPrinter::orientation(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->orientation());
-}
-
-void PythonQtWrapper_QPrinter::setPrintRange(QPrinter* theWrappedObject, QPrinter::PrintRange  range)
-{
-  ( theWrappedObject->setPrintRange(range));
-}
-
-void PythonQtWrapper_QPrinter::setFullPage(QPrinter* theWrappedObject, bool  arg__1)
-{
-  ( theWrappedObject->setFullPage(arg__1));
-}
-
-QList<int >  PythonQtWrapper_QPrinter::supportedResolutions(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->supportedResolutions());
-}
-
-QRectF  PythonQtWrapper_QPrinter::pageRect(QPrinter* theWrappedObject, QPrinter::Unit  arg__1) const
-{
-  return ( theWrappedObject->pageRect(arg__1));
-}
-
-bool  PythonQtWrapper_QPrinter::fullPage(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->fullPage());
-}
-
-QRectF  PythonQtWrapper_QPrinter::paperRect(QPrinter* theWrappedObject, QPrinter::Unit  arg__1) const
-{
-  return ( theWrappedObject->paperRect(arg__1));
-}
-
-QPrinter::PaperSource  PythonQtWrapper_QPrinter::paperSource(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->paperSource());
-}
-
-void PythonQtWrapper_QPrinter::setCollateCopies(QPrinter* theWrappedObject, bool  collate)
-{
-  ( theWrappedObject->setCollateCopies(collate));
-}
-
-void PythonQtWrapper_QPrinter::setPageSize(QPrinter* theWrappedObject, QPrinter::PageSize  arg__1)
-{
-  ( theWrappedObject->setPageSize(arg__1));
-}
-
-bool  PythonQtWrapper_QPrinter::collateCopies(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->collateCopies());
-}
-
-bool  PythonQtWrapper_QPrinter::newPage(QPrinter* theWrappedObject)
-{
-  return ( theWrappedObject->newPage());
 }
 
 QPrinter::DuplexMode  PythonQtWrapper_QPrinter::duplex(QPrinter* theWrappedObject) const
@@ -355,39 +185,14 @@ QPrinter::DuplexMode  PythonQtWrapper_QPrinter::duplex(QPrinter* theWrappedObjec
   return ( theWrappedObject->duplex());
 }
 
-void PythonQtWrapper_QPrinter::setColorMode(QPrinter* theWrappedObject, QPrinter::ColorMode  arg__1)
+QString  PythonQtWrapper_QPrinter::printerName(QPrinter* theWrappedObject) const
 {
-  ( theWrappedObject->setColorMode(arg__1));
+  return ( theWrappedObject->printerName());
 }
 
-QPaintEngine*  PythonQtWrapper_QPrinter::paintEngine(QPrinter* theWrappedObject) const
+void PythonQtWrapper_QPrinter::setFontEmbeddingEnabled(QPrinter* theWrappedObject, bool  enable)
 {
-  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_paintEngine());
-}
-
-int  PythonQtWrapper_QPrinter::resolution(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->resolution());
-}
-
-bool  PythonQtWrapper_QPrinter::isValid(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
-void PythonQtWrapper_QPrinter::setCreator(QPrinter* theWrappedObject, const QString&  arg__1)
-{
-  ( theWrappedObject->setCreator(arg__1));
-}
-
-void PythonQtWrapper_QPrinter::setResolution(QPrinter* theWrappedObject, int  arg__1)
-{
-  ( theWrappedObject->setResolution(arg__1));
-}
-
-QString  PythonQtWrapper_QPrinter::printProgram(QPrinter* theWrappedObject) const
-{
-  return ( theWrappedObject->printProgram());
+  ( theWrappedObject->setFontEmbeddingEnabled(enable));
 }
 
 void PythonQtWrapper_QPrinter::setOutputFormat(QPrinter* theWrappedObject, QPrinter::OutputFormat  format)
@@ -395,13 +200,213 @@ void PythonQtWrapper_QPrinter::setOutputFormat(QPrinter* theWrappedObject, QPrin
   ( theWrappedObject->setOutputFormat(format));
 }
 
+int  PythonQtWrapper_QPrinter::fromPage(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->fromPage());
+}
+
+QPrinter::PaperSource  PythonQtWrapper_QPrinter::paperSource(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->paperSource());
+}
+
+bool  PythonQtWrapper_QPrinter::abort(QPrinter* theWrappedObject)
+{
+  return ( theWrappedObject->abort());
+}
+
+void PythonQtWrapper_QPrinter::setPageOrder(QPrinter* theWrappedObject, QPrinter::PageOrder  arg__1)
+{
+  ( theWrappedObject->setPageOrder(arg__1));
+}
+
+bool  PythonQtWrapper_QPrinter::isValid(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
+}
+
+void PythonQtWrapper_QPrinter::setResolution(QPrinter* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setResolution(arg__1));
+}
+
+bool  PythonQtWrapper_QPrinter::newPage(QPrinter* theWrappedObject)
+{
+  return ( theWrappedObject->newPage());
+}
+
+void PythonQtWrapper_QPrinter::getPageMargins(QPrinter* theWrappedObject, qreal*  left, qreal*  top, qreal*  right, qreal*  bottom, QPrinter::Unit  unit) const
+{
+  ( theWrappedObject->getPageMargins(left, top, right, bottom, unit));
+}
+
+QPrinter::OutputFormat  PythonQtWrapper_QPrinter::outputFormat(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->outputFormat());
+}
+
+void PythonQtWrapper_QPrinter::setCreator(QPrinter* theWrappedObject, const QString&  arg__1)
+{
+  ( theWrappedObject->setCreator(arg__1));
+}
+
+bool  PythonQtWrapper_QPrinter::doubleSidedPrinting(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->doubleSidedPrinting());
+}
+
+void PythonQtWrapper_QPrinter::setColorMode(QPrinter* theWrappedObject, QPrinter::ColorMode  arg__1)
+{
+  ( theWrappedObject->setColorMode(arg__1));
+}
+
+QString  PythonQtWrapper_QPrinter::docName(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->docName());
+}
+
+QRectF  PythonQtWrapper_QPrinter::paperRect(QPrinter* theWrappedObject, QPrinter::Unit  arg__1) const
+{
+  return ( theWrappedObject->paperRect(arg__1));
+}
+
+bool  PythonQtWrapper_QPrinter::fullPage(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->fullPage());
+}
+
+int  PythonQtWrapper_QPrinter::devType(QPrinter* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_devType());
+}
+
+void PythonQtWrapper_QPrinter::setPaperSize(QPrinter* theWrappedObject, QPrinter::PageSize  arg__1)
+{
+  ( theWrappedObject->setPaperSize(arg__1));
+}
+
+QString  PythonQtWrapper_QPrinter::creator(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->creator());
+}
+
+QRectF  PythonQtWrapper_QPrinter::pageRect(QPrinter* theWrappedObject, QPrinter::Unit  arg__1) const
+{
+  return ( theWrappedObject->pageRect(arg__1));
+}
+
+void PythonQtWrapper_QPrinter::setDocName(QPrinter* theWrappedObject, const QString&  arg__1)
+{
+  ( theWrappedObject->setDocName(arg__1));
+}
+
+int  PythonQtWrapper_QPrinter::actualNumCopies(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->actualNumCopies());
+}
+
 QRect  PythonQtWrapper_QPrinter::pageRect(QPrinter* theWrappedObject) const
 {
   return ( theWrappedObject->pageRect());
 }
 
+QSizeF  PythonQtWrapper_QPrinter::paperSize(QPrinter* theWrappedObject, QPrinter::Unit  unit) const
+{
+  return ( theWrappedObject->paperSize(unit));
+}
+
+QPrinter::PageSize  PythonQtWrapper_QPrinter::pageSize(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->pageSize());
+}
+
+int  PythonQtWrapper_QPrinter::resolution(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->resolution());
+}
+
+void PythonQtWrapper_QPrinter::setNumCopies(QPrinter* theWrappedObject, int  arg__1)
+{
+  ( theWrappedObject->setNumCopies(arg__1));
+}
+
+int  PythonQtWrapper_QPrinter::numCopies(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->numCopies());
+}
+
+void PythonQtWrapper_QPrinter::setDuplex(QPrinter* theWrappedObject, QPrinter::DuplexMode  duplex)
+{
+  ( theWrappedObject->setDuplex(duplex));
+}
+
+int  PythonQtWrapper_QPrinter::toPage(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->toPage());
+}
+
+QList<int >  PythonQtWrapper_QPrinter::supportedResolutions(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->supportedResolutions());
+}
+
+bool  PythonQtWrapper_QPrinter::fontEmbeddingEnabled(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->fontEmbeddingEnabled());
+}
+
+QPrintEngine*  PythonQtWrapper_QPrinter::printEngine(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->printEngine());
+}
+
+void PythonQtWrapper_QPrinter::setPaperSource(QPrinter* theWrappedObject, QPrinter::PaperSource  arg__1)
+{
+  ( theWrappedObject->setPaperSource(arg__1));
+}
+
+void PythonQtWrapper_QPrinter::setPrintProgram(QPrinter* theWrappedObject, const QString&  arg__1)
+{
+  ( theWrappedObject->setPrintProgram(arg__1));
+}
+
+QPrinter::Orientation  PythonQtWrapper_QPrinter::orientation(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->orientation());
+}
+
+QPaintEngine*  PythonQtWrapper_QPrinter::paintEngine(QPrinter* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_paintEngine());
+}
+
+void PythonQtWrapper_QPrinter::setPrintRange(QPrinter* theWrappedObject, QPrinter::PrintRange  range)
+{
+  ( theWrappedObject->setPrintRange(range));
+}
+
+bool  PythonQtWrapper_QPrinter::collateCopies(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->collateCopies());
+}
+
 QPrinter::PrintRange  PythonQtWrapper_QPrinter::printRange(QPrinter* theWrappedObject) const
 {
   return ( theWrappedObject->printRange());
+}
+
+int  PythonQtWrapper_QPrinter::metric(QPrinter* theWrappedObject, QPaintDevice::PaintDeviceMetric  arg__1) const
+{
+  return ( ((PythonQtPublicPromoter_QPrinter*)theWrappedObject)->promoted_metric(arg__1));
+}
+
+QString  PythonQtWrapper_QPrinter::outputFileName(QPrinter* theWrappedObject) const
+{
+  return ( theWrappedObject->outputFileName());
+}
+
+void PythonQtWrapper_QPrinter::setPageSize(QPrinter* theWrappedObject, QPrinter::PageSize  arg__1)
+{
+  ( theWrappedObject->setPageSize(arg__1));
 }
 

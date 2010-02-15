@@ -13,6 +13,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qitemselectionmodel.h>
@@ -20,6 +22,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -1605,6 +1608,11 @@ QUndoStack*  PythonQtWrapper_QUndoView::stack(QUndoView* theWrappedObject) const
   return ( theWrappedObject->stack());
 }
 
+void PythonQtWrapper_QUndoView::setEmptyLabel(QUndoView* theWrappedObject, const QString&  label)
+{
+  ( theWrappedObject->setEmptyLabel(label));
+}
+
 QIcon  PythonQtWrapper_QUndoView::cleanIcon(QUndoView* theWrappedObject) const
 {
   return ( theWrappedObject->cleanIcon());
@@ -1613,10 +1621,5 @@ QIcon  PythonQtWrapper_QUndoView::cleanIcon(QUndoView* theWrappedObject) const
 void PythonQtWrapper_QUndoView::setCleanIcon(QUndoView* theWrappedObject, const QIcon&  icon)
 {
   ( theWrappedObject->setCleanIcon(icon));
-}
-
-void PythonQtWrapper_QUndoView::setEmptyLabel(QUndoView* theWrappedObject, const QString&  label)
-{
-  ( theWrappedObject->setEmptyLabel(label));
 }
 

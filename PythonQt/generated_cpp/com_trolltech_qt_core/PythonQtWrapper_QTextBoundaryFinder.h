@@ -24,17 +24,17 @@ QTextBoundaryFinder* new_QTextBoundaryFinder();
 QTextBoundaryFinder* new_QTextBoundaryFinder(QTextBoundaryFinder::BoundaryType  type, const QString&  string);
 QTextBoundaryFinder* new_QTextBoundaryFinder(const QTextBoundaryFinder&  other);
 void delete_QTextBoundaryFinder(QTextBoundaryFinder* obj) { delete obj; } 
-   void setPosition(QTextBoundaryFinder* theWrappedObject, int  position);
+   void toEnd(QTextBoundaryFinder* theWrappedObject);
+   bool  isAtBoundary(QTextBoundaryFinder* theWrappedObject) const;
+   QTextBoundaryFinder::BoundaryType  type(QTextBoundaryFinder* theWrappedObject) const;
    int  position(QTextBoundaryFinder* theWrappedObject) const;
-   int  toPreviousBoundary(QTextBoundaryFinder* theWrappedObject);
+   void setPosition(QTextBoundaryFinder* theWrappedObject, int  position);
    QTextBoundaryFinder::BoundaryReasons  boundaryReasons(QTextBoundaryFinder* theWrappedObject) const;
    bool  isValid(QTextBoundaryFinder* theWrappedObject) const;
-   QTextBoundaryFinder::BoundaryType  type(QTextBoundaryFinder* theWrappedObject) const;
    QString  string(QTextBoundaryFinder* theWrappedObject) const;
-   bool  isAtBoundary(QTextBoundaryFinder* theWrappedObject) const;
-   void toEnd(QTextBoundaryFinder* theWrappedObject);
-   int  toNextBoundary(QTextBoundaryFinder* theWrappedObject);
    void toStart(QTextBoundaryFinder* theWrappedObject);
+   int  toPreviousBoundary(QTextBoundaryFinder* theWrappedObject);
+   int  toNextBoundary(QTextBoundaryFinder* theWrappedObject);
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTBOUNDARYFINDER_H

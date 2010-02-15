@@ -39,11 +39,11 @@ virtual QWidget*  widget();
 class PythonQtPublicPromoter_QLayoutItem : public QLayoutItem
 { public:
 inline int  promoted_minimumHeightForWidth(int  arg__1) const { return QLayoutItem::minimumHeightForWidth(arg__1); }
-inline void promoted_invalidate() { QLayoutItem::invalidate(); }
-inline bool  promoted_hasHeightForWidth() const { return QLayoutItem::hasHeightForWidth(); }
-inline QLayout*  promoted_layout() { return QLayoutItem::layout(); }
 inline QWidget*  promoted_widget() { return QLayoutItem::widget(); }
+inline bool  promoted_hasHeightForWidth() const { return QLayoutItem::hasHeightForWidth(); }
 inline QSpacerItem*  promoted_spacerItem() { return QLayoutItem::spacerItem(); }
+inline void promoted_invalidate() { QLayoutItem::invalidate(); }
+inline QLayout*  promoted_layout() { return QLayoutItem::layout(); }
 inline int  promoted_heightForWidth(int  arg__1) const { return QLayoutItem::heightForWidth(arg__1); }
 };
 
@@ -53,16 +53,16 @@ public:
 public slots:
 QLayoutItem* new_QLayoutItem(Qt::Alignment  alignment = 0);
 void delete_QLayoutItem(QLayoutItem* obj) { delete obj; } 
-   int  minimumHeightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const;
-   Qt::Alignment  alignment(QLayoutItem* theWrappedObject) const;
-   void invalidate(QLayoutItem* theWrappedObject);
-   void setAlignment(QLayoutItem* theWrappedObject, Qt::Alignment  a);
-   bool  hasHeightForWidth(QLayoutItem* theWrappedObject) const;
-   QLayout*  layout(QLayoutItem* theWrappedObject);
-   QWidget*  widget(QLayoutItem* theWrappedObject);
-   QSpacerItem*  spacerItem(QLayoutItem* theWrappedObject);
-   int  heightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const;
    QSizePolicy::ControlTypes  controlTypes(QLayoutItem* theWrappedObject) const;
+   int  minimumHeightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const;
+   void setAlignment(QLayoutItem* theWrappedObject, Qt::Alignment  a);
+   QWidget*  widget(QLayoutItem* theWrappedObject);
+   Qt::Alignment  alignment(QLayoutItem* theWrappedObject) const;
+   bool  hasHeightForWidth(QLayoutItem* theWrappedObject) const;
+   QSpacerItem*  spacerItem(QLayoutItem* theWrappedObject);
+   void invalidate(QLayoutItem* theWrappedObject);
+   QLayout*  layout(QLayoutItem* theWrappedObject);
+   int  heightForWidth(QLayoutItem* theWrappedObject, int  arg__1) const;
 };
 
 #endif // PYTHONQTWRAPPER_QLAYOUTITEM_H

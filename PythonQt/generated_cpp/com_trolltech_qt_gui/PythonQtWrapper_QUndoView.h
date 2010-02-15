@@ -16,6 +16,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qitemselectionmodel.h>
@@ -23,6 +25,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -140,9 +143,9 @@ void delete_QUndoView(QUndoView* obj) { delete obj; }
    QUndoGroup*  group(QUndoView* theWrappedObject) const;
    QString  emptyLabel(QUndoView* theWrappedObject) const;
    QUndoStack*  stack(QUndoView* theWrappedObject) const;
+   void setEmptyLabel(QUndoView* theWrappedObject, const QString&  label);
    QIcon  cleanIcon(QUndoView* theWrappedObject) const;
    void setCleanIcon(QUndoView* theWrappedObject, const QIcon&  icon);
-   void setEmptyLabel(QUndoView* theWrappedObject, const QString&  label);
 };
 
 #endif // PYTHONQTWRAPPER_QUNDOVIEW_H

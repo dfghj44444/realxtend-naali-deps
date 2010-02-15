@@ -19,10 +19,10 @@ enum Algorithm{
 public slots:
 QCryptographicHash* new_QCryptographicHash(QCryptographicHash::Algorithm  method);
 void delete_QCryptographicHash(QCryptographicHash* obj) { delete obj; } 
-   void addData(QCryptographicHash* theWrappedObject, const QByteArray&  data);
    void reset(QCryptographicHash* theWrappedObject);
-   QByteArray  static_QCryptographicHash_hash(const QByteArray&  data, QCryptographicHash::Algorithm  method);
+   void addData(QCryptographicHash* theWrappedObject, const QByteArray&  data);
    QByteArray  result(QCryptographicHash* theWrappedObject) const;
+   QByteArray  static_QCryptographicHash_hash(const QByteArray&  data, QCryptographicHash::Algorithm  method);
 };
 
 #endif // PYTHONQTWRAPPER_QCRYPTOGRAPHICHASH_H

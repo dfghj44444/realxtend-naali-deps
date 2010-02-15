@@ -27,21 +27,21 @@ PythonQtShell_QXmlAttributes* a = new PythonQtShell_QXmlAttributes();
 *((QXmlAttributes*)a) = other;
 return a; }
 void delete_QXmlAttributes(QXmlAttributes* obj) { delete obj; } 
-   QString  localName(QXmlAttributes* theWrappedObject, int  index) const;
-   void clear(QXmlAttributes* theWrappedObject);
-   int  count(QXmlAttributes* theWrappedObject) const;
-   QString  qName(QXmlAttributes* theWrappedObject, int  index) const;
-   QString  value(QXmlAttributes* theWrappedObject, const QString&  qName) const;
-   int  length(QXmlAttributes* theWrappedObject) const;
-   QString  value(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localName) const;
-   QString  type(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localName) const;
-   int  index(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localPart) const;
    QString  type(QXmlAttributes* theWrappedObject, const QString&  qName) const;
-   void append(QXmlAttributes* theWrappedObject, const QString&  qName, const QString&  uri, const QString&  localPart, const QString&  value);
    QString  type(QXmlAttributes* theWrappedObject, int  index) const;
-   int  index(QXmlAttributes* theWrappedObject, const QString&  qName) const;
-   QString  value(QXmlAttributes* theWrappedObject, int  index) const;
+   QString  localName(QXmlAttributes* theWrappedObject, int  index) const;
+   QString  qName(QXmlAttributes* theWrappedObject, int  index) const;
+   int  length(QXmlAttributes* theWrappedObject) const;
+   QString  type(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localName) const;
+   QString  value(QXmlAttributes* theWrappedObject, const QString&  qName) const;
+   void clear(QXmlAttributes* theWrappedObject);
+   void append(QXmlAttributes* theWrappedObject, const QString&  qName, const QString&  uri, const QString&  localPart, const QString&  value);
+   int  count(QXmlAttributes* theWrappedObject) const;
+   int  index(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localPart) const;
    QString  uri(QXmlAttributes* theWrappedObject, int  index) const;
+   QString  value(QXmlAttributes* theWrappedObject, int  index) const;
+   int  index(QXmlAttributes* theWrappedObject, const QString&  qName) const;
+   QString  value(QXmlAttributes* theWrappedObject, const QString&  uri, const QString&  localName) const;
 };
 
 #endif // PYTHONQTWRAPPER_QXMLATTRIBUTES_H

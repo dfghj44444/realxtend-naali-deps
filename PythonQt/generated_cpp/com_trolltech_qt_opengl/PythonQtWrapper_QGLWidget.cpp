@@ -16,6 +16,8 @@
 #include <qfont.h>
 #include <qgl.h>
 #include <qglcolormap.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qimage.h>
 #include <qinputcontext.h>
@@ -23,6 +25,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -1009,79 +1012,9 @@ QGLWidget* PythonQtWrapper_QGLWidget::new_QGLWidget(const QGLFormat&  format, QW
 { 
 return new PythonQtShell_QGLWidget(format, parent, shareWidget, f); }
 
-QPaintEngine*  PythonQtWrapper_QGLWidget::paintEngine(QGLWidget* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintEngine());
-}
-
-unsigned int  PythonQtWrapper_QGLWidget::bindTexture(QGLWidget* theWrappedObject, const QPixmap&  pixmap, unsigned int  target, int  format)
-{
-  return ( theWrappedObject->bindTexture(pixmap, target, format));
-}
-
-void PythonQtWrapper_QGLWidget::qglColor(QGLWidget* theWrappedObject, const QColor&  c) const
-{
-  ( theWrappedObject->qglColor(c));
-}
-
-void PythonQtWrapper_QGLWidget::drawTexture(QGLWidget* theWrappedObject, const QPointF&  point, unsigned int  textureId, unsigned int  textureTarget)
-{
-  ( theWrappedObject->drawTexture(point, textureId, textureTarget));
-}
-
-QPixmap  PythonQtWrapper_QGLWidget::renderPixmap(QGLWidget* theWrappedObject, int  w, int  h, bool  useContext)
-{
-  return ( theWrappedObject->renderPixmap(w, h, useContext));
-}
-
-void PythonQtWrapper_QGLWidget::resizeGL(QGLWidget* theWrappedObject, int  w, int  h)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeGL(w, h));
-}
-
-QGLFormat  PythonQtWrapper_QGLWidget::format(QGLWidget* theWrappedObject) const
-{
-  return ( theWrappedObject->format());
-}
-
-void PythonQtWrapper_QGLWidget::drawTexture(QGLWidget* theWrappedObject, const QRectF&  target, unsigned int  textureId, unsigned int  textureTarget)
-{
-  ( theWrappedObject->drawTexture(target, textureId, textureTarget));
-}
-
-void PythonQtWrapper_QGLWidget::initializeOverlayGL(QGLWidget* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_initializeOverlayGL());
-}
-
-void PythonQtWrapper_QGLWidget::glDraw(QGLWidget* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_glDraw());
-}
-
-void PythonQtWrapper_QGLWidget::renderText(QGLWidget* theWrappedObject, int  x, int  y, const QString&  str, const QFont&  fnt, int  listBase)
-{
-  ( theWrappedObject->renderText(x, y, str, fnt, listBase));
-}
-
 bool  PythonQtWrapper_QGLWidget::isValid(QGLWidget* theWrappedObject) const
 {
   return ( theWrappedObject->isValid());
-}
-
-unsigned int  PythonQtWrapper_QGLWidget::bindTexture(QGLWidget* theWrappedObject, const QString&  fileName)
-{
-  return ( theWrappedObject->bindTexture(fileName));
-}
-
-void PythonQtWrapper_QGLWidget::resizeEvent(QGLWidget* theWrappedObject, QResizeEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeEvent(arg__1));
-}
-
-void PythonQtWrapper_QGLWidget::renderText(QGLWidget* theWrappedObject, double  x, double  y, double  z, const QString&  str, const QFont&  fnt, int  listBase)
-{
-  ( theWrappedObject->renderText(x, y, z, str, fnt, listBase));
 }
 
 void PythonQtWrapper_QGLWidget::makeOverlayCurrent(QGLWidget* theWrappedObject)
@@ -1089,59 +1022,19 @@ void PythonQtWrapper_QGLWidget::makeOverlayCurrent(QGLWidget* theWrappedObject)
   ( theWrappedObject->makeOverlayCurrent());
 }
 
-void PythonQtWrapper_QGLWidget::qglClearColor(QGLWidget* theWrappedObject, const QColor&  c) const
-{
-  ( theWrappedObject->qglClearColor(c));
-}
-
 void PythonQtWrapper_QGLWidget::glInit(QGLWidget* theWrappedObject)
 {
   ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_glInit());
 }
 
-const QGLContext*  PythonQtWrapper_QGLWidget::overlayContext(QGLWidget* theWrappedObject) const
+void PythonQtWrapper_QGLWidget::initializeOverlayGL(QGLWidget* theWrappedObject)
 {
-  return ( theWrappedObject->overlayContext());
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_initializeOverlayGL());
 }
 
-QImage  PythonQtWrapper_QGLWidget::grabFrameBuffer(QGLWidget* theWrappedObject, bool  withAlpha)
+QPaintEngine*  PythonQtWrapper_QGLWidget::paintEngine(QGLWidget* theWrappedObject) const
 {
-  return ( theWrappedObject->grabFrameBuffer(withAlpha));
-}
-
-void PythonQtWrapper_QGLWidget::resizeOverlayGL(QGLWidget* theWrappedObject, int  w, int  h)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeOverlayGL(w, h));
-}
-
-void PythonQtWrapper_QGLWidget::setColormap(QGLWidget* theWrappedObject, const QGLColormap&  map)
-{
-  ( theWrappedObject->setColormap(map));
-}
-
-void PythonQtWrapper_QGLWidget::paintGL(QGLWidget* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintGL());
-}
-
-bool  PythonQtWrapper_QGLWidget::doubleBuffer(QGLWidget* theWrappedObject) const
-{
-  return ( theWrappedObject->doubleBuffer());
-}
-
-bool  PythonQtWrapper_QGLWidget::isSharing(QGLWidget* theWrappedObject) const
-{
-  return ( theWrappedObject->isSharing());
-}
-
-void PythonQtWrapper_QGLWidget::doneCurrent(QGLWidget* theWrappedObject)
-{
-  ( theWrappedObject->doneCurrent());
-}
-
-void PythonQtWrapper_QGLWidget::initializeGL(QGLWidget* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_initializeGL());
+  return ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintEngine());
 }
 
 bool  PythonQtWrapper_QGLWidget::event(QGLWidget* theWrappedObject, QEvent*  arg__1)
@@ -1149,24 +1042,34 @@ bool  PythonQtWrapper_QGLWidget::event(QGLWidget* theWrappedObject, QEvent*  arg
   return ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_event(arg__1));
 }
 
-void PythonQtWrapper_QGLWidget::swapBuffers(QGLWidget* theWrappedObject)
+void PythonQtWrapper_QGLWidget::qglColor(QGLWidget* theWrappedObject, const QColor&  c) const
 {
-  ( theWrappedObject->swapBuffers());
+  ( theWrappedObject->qglColor(c));
 }
 
-unsigned int  PythonQtWrapper_QGLWidget::bindTexture(QGLWidget* theWrappedObject, const QImage&  image, unsigned int  target, int  format)
+void PythonQtWrapper_QGLWidget::initializeGL(QGLWidget* theWrappedObject)
 {
-  return ( theWrappedObject->bindTexture(image, target, format));
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_initializeGL());
 }
 
-const QGLContext*  PythonQtWrapper_QGLWidget::context(QGLWidget* theWrappedObject) const
+void PythonQtWrapper_QGLWidget::paintEvent(QGLWidget* theWrappedObject, QPaintEvent*  arg__1)
 {
-  return ( theWrappedObject->context());
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintEvent(arg__1));
 }
 
-QImage  PythonQtWrapper_QGLWidget::static_QGLWidget_convertToGLFormat(const QImage&  img)
+void PythonQtWrapper_QGLWidget::glDraw(QGLWidget* theWrappedObject)
 {
-  return (QGLWidget::convertToGLFormat(img));
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_glDraw());
+}
+
+void PythonQtWrapper_QGLWidget::qglClearColor(QGLWidget* theWrappedObject, const QColor&  c) const
+{
+  ( theWrappedObject->qglClearColor(c));
+}
+
+void PythonQtWrapper_QGLWidget::renderText(QGLWidget* theWrappedObject, double  x, double  y, double  z, const QString&  str, const QFont&  fnt, int  listBase)
+{
+  ( theWrappedObject->renderText(x, y, z, str, fnt, listBase));
 }
 
 const QGLColormap*  PythonQtWrapper_QGLWidget::colormap(QGLWidget* theWrappedObject) const
@@ -1179,18 +1082,88 @@ void PythonQtWrapper_QGLWidget::makeCurrent(QGLWidget* theWrappedObject)
   ( theWrappedObject->makeCurrent());
 }
 
+QPixmap  PythonQtWrapper_QGLWidget::renderPixmap(QGLWidget* theWrappedObject, int  w, int  h, bool  useContext)
+{
+  return ( theWrappedObject->renderPixmap(w, h, useContext));
+}
+
+QImage  PythonQtWrapper_QGLWidget::static_QGLWidget_convertToGLFormat(const QImage&  img)
+{
+  return (QGLWidget::convertToGLFormat(img));
+}
+
+void PythonQtWrapper_QGLWidget::resizeEvent(QGLWidget* theWrappedObject, QResizeEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeEvent(arg__1));
+}
+
 void PythonQtWrapper_QGLWidget::paintOverlayGL(QGLWidget* theWrappedObject)
 {
   ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintOverlayGL());
 }
 
-void PythonQtWrapper_QGLWidget::paintEvent(QGLWidget* theWrappedObject, QPaintEvent*  arg__1)
+void PythonQtWrapper_QGLWidget::doneCurrent(QGLWidget* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintEvent(arg__1));
+  ( theWrappedObject->doneCurrent());
 }
 
-void PythonQtWrapper_QGLWidget::deleteTexture(QGLWidget* theWrappedObject, unsigned int  tx_id)
+bool  PythonQtWrapper_QGLWidget::doubleBuffer(QGLWidget* theWrappedObject) const
 {
-  ( theWrappedObject->deleteTexture(tx_id));
+  return ( theWrappedObject->doubleBuffer());
+}
+
+QGLFormat  PythonQtWrapper_QGLWidget::format(QGLWidget* theWrappedObject) const
+{
+  return ( theWrappedObject->format());
+}
+
+const QGLContext*  PythonQtWrapper_QGLWidget::context(QGLWidget* theWrappedObject) const
+{
+  return ( theWrappedObject->context());
+}
+
+bool  PythonQtWrapper_QGLWidget::isSharing(QGLWidget* theWrappedObject) const
+{
+  return ( theWrappedObject->isSharing());
+}
+
+void PythonQtWrapper_QGLWidget::paintGL(QGLWidget* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_paintGL());
+}
+
+void PythonQtWrapper_QGLWidget::setColormap(QGLWidget* theWrappedObject, const QGLColormap&  map)
+{
+  ( theWrappedObject->setColormap(map));
+}
+
+const QGLContext*  PythonQtWrapper_QGLWidget::overlayContext(QGLWidget* theWrappedObject) const
+{
+  return ( theWrappedObject->overlayContext());
+}
+
+void PythonQtWrapper_QGLWidget::swapBuffers(QGLWidget* theWrappedObject)
+{
+  ( theWrappedObject->swapBuffers());
+}
+
+void PythonQtWrapper_QGLWidget::resizeOverlayGL(QGLWidget* theWrappedObject, int  w, int  h)
+{
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeOverlayGL(w, h));
+}
+
+QImage  PythonQtWrapper_QGLWidget::grabFrameBuffer(QGLWidget* theWrappedObject, bool  withAlpha)
+{
+  return ( theWrappedObject->grabFrameBuffer(withAlpha));
+}
+
+void PythonQtWrapper_QGLWidget::renderText(QGLWidget* theWrappedObject, int  x, int  y, const QString&  str, const QFont&  fnt, int  listBase)
+{
+  ( theWrappedObject->renderText(x, y, str, fnt, listBase));
+}
+
+void PythonQtWrapper_QGLWidget::resizeGL(QGLWidget* theWrappedObject, int  w, int  h)
+{
+  ( ((PythonQtPublicPromoter_QGLWidget*)theWrappedObject)->promoted_resizeGL(w, h));
 }
 

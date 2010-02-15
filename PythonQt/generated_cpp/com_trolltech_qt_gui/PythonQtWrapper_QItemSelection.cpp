@@ -17,14 +17,9 @@ QItemSelection* PythonQtWrapper_QItemSelection::new_QItemSelection(const QModelI
 { 
 return new QItemSelection(topLeft, bottomRight); }
 
-bool  PythonQtWrapper_QItemSelection::removeOne(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
+void PythonQtWrapper_QItemSelection::append(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
 {
-  return ( theWrappedObject->removeOne(t));
-}
-
-bool  PythonQtWrapper_QItemSelection::operator_equal(QItemSelection* theWrappedObject, const QList<QItemSelectionRange >&  l) const
-{
-  return ( (*theWrappedObject)== l);
+  ( theWrappedObject->append(t));
 }
 
 void PythonQtWrapper_QItemSelection::prepend(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
@@ -32,84 +27,9 @@ void PythonQtWrapper_QItemSelection::prepend(QItemSelection* theWrappedObject, c
   ( theWrappedObject->prepend(t));
 }
 
-QList<QItemSelectionRange >  PythonQtWrapper_QItemSelection::static_QItemSelection_fromVector(const QVector<QItemSelectionRange >&  vector)
+QItemSelectionRange  PythonQtWrapper_QItemSelection::takeAt(QItemSelection* theWrappedObject, int  i)
 {
-  return (QItemSelection::fromVector(vector));
-}
-
-QVector<QItemSelectionRange >  PythonQtWrapper_QItemSelection::toVector(QItemSelection* theWrappedObject) const
-{
-  return ( theWrappedObject->toVector());
-}
-
-void PythonQtWrapper_QItemSelection::pop_back(QItemSelection* theWrappedObject)
-{
-  ( theWrappedObject->pop_back());
-}
-
-void PythonQtWrapper_QItemSelection::clear(QItemSelection* theWrappedObject)
-{
-  ( theWrappedObject->clear());
-}
-
-void PythonQtWrapper_QItemSelection::pop_front(QItemSelection* theWrappedObject)
-{
-  ( theWrappedObject->pop_front());
-}
-
-void PythonQtWrapper_QItemSelection::push_back(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
-{
-  ( theWrappedObject->push_back(t));
-}
-
-int  PythonQtWrapper_QItemSelection::count(QItemSelection* theWrappedObject) const
-{
-  return ( theWrappedObject->count());
-}
-
-int  PythonQtWrapper_QItemSelection::removeAll(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
-{
-  return ( theWrappedObject->removeAll(t));
-}
-
-void PythonQtWrapper_QItemSelection::merge(QItemSelection* theWrappedObject, const QItemSelection&  other, QItemSelectionModel::SelectionFlags  command)
-{
-  ( theWrappedObject->merge(other, command));
-}
-
-const QItemSelectionRange*  PythonQtWrapper_QItemSelection::last(QItemSelection* theWrappedObject) const
-{
-  return &( theWrappedObject->last());
-}
-
-void PythonQtWrapper_QItemSelection::setSharable(QItemSelection* theWrappedObject, bool  sharable)
-{
-  ( theWrappedObject->setSharable(sharable));
-}
-
-const QItemSelectionRange*  PythonQtWrapper_QItemSelection::back(QItemSelection* theWrappedObject) const
-{
-  return &( theWrappedObject->back());
-}
-
-int  PythonQtWrapper_QItemSelection::indexOf(QItemSelection* theWrappedObject, const QItemSelectionRange&  t, int  from) const
-{
-  return ( theWrappedObject->indexOf(t, from));
-}
-
-void PythonQtWrapper_QItemSelection::select(QItemSelection* theWrappedObject, const QModelIndex&  topLeft, const QModelIndex&  bottomRight)
-{
-  ( theWrappedObject->select(topLeft, bottomRight));
-}
-
-QItemSelectionRange  PythonQtWrapper_QItemSelection::value(QItemSelection* theWrappedObject, int  i, const QItemSelectionRange&  defaultValue) const
-{
-  return ( theWrappedObject->value(i, defaultValue));
-}
-
-QItemSelectionRange  PythonQtWrapper_QItemSelection::takeFirst(QItemSelection* theWrappedObject)
-{
-  return ( theWrappedObject->takeFirst());
+  return ( theWrappedObject->takeAt(i));
 }
 
 QItemSelectionRange  PythonQtWrapper_QItemSelection::value(QItemSelection* theWrappedObject, int  i) const
@@ -117,24 +37,49 @@ QItemSelectionRange  PythonQtWrapper_QItemSelection::value(QItemSelection* theWr
   return ( theWrappedObject->value(i));
 }
 
-const QItemSelectionRange*  PythonQtWrapper_QItemSelection::at(QItemSelection* theWrappedObject, int  i) const
+QVector<QItemSelectionRange >  PythonQtWrapper_QItemSelection::toVector(QItemSelection* theWrappedObject) const
 {
-  return &( theWrappedObject->at(i));
+  return ( theWrappedObject->toVector());
 }
 
-void PythonQtWrapper_QItemSelection::push_front(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
+QItemSelectionRange  PythonQtWrapper_QItemSelection::takeLast(QItemSelection* theWrappedObject)
 {
-  ( theWrappedObject->push_front(t));
+  return ( theWrappedObject->takeLast());
 }
 
-const QItemSelectionRange*  PythonQtWrapper_QItemSelection::first(QItemSelection* theWrappedObject) const
+QList<QItemSelectionRange >  PythonQtWrapper_QItemSelection::mid(QItemSelection* theWrappedObject, int  pos, int  length) const
 {
-  return &( theWrappedObject->first());
+  return ( theWrappedObject->mid(pos, length));
 }
 
-void PythonQtWrapper_QItemSelection::append(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
+bool  PythonQtWrapper_QItemSelection::removeOne(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
 {
-  ( theWrappedObject->append(t));
+  return ( theWrappedObject->removeOne(t));
+}
+
+QItemSelectionRange  PythonQtWrapper_QItemSelection::takeFirst(QItemSelection* theWrappedObject)
+{
+  return ( theWrappedObject->takeFirst());
+}
+
+const QItemSelectionRange*  PythonQtWrapper_QItemSelection::back(QItemSelection* theWrappedObject) const
+{
+  return &( theWrappedObject->back());
+}
+
+void PythonQtWrapper_QItemSelection::replace(QItemSelection* theWrappedObject, int  i, const QItemSelectionRange&  t)
+{
+  ( theWrappedObject->replace(i, t));
+}
+
+bool  PythonQtWrapper_QItemSelection::startsWith(QItemSelection* theWrappedObject, const QItemSelectionRange&  t) const
+{
+  return ( theWrappedObject->startsWith(t));
+}
+
+int  PythonQtWrapper_QItemSelection::indexOf(QItemSelection* theWrappedObject, const QItemSelectionRange&  t, int  from) const
+{
+  return ( theWrappedObject->indexOf(t, from));
 }
 
 bool  PythonQtWrapper_QItemSelection::contains(QItemSelection* theWrappedObject, const QModelIndex&  index) const
@@ -147,64 +92,9 @@ int  PythonQtWrapper_QItemSelection::count(QItemSelection* theWrappedObject, con
   return ( theWrappedObject->count(t));
 }
 
-bool  PythonQtWrapper_QItemSelection::isEmpty(QItemSelection* theWrappedObject) const
-{
-  return ( theWrappedObject->isEmpty());
-}
-
-bool  PythonQtWrapper_QItemSelection::empty(QItemSelection* theWrappedObject) const
-{
-  return ( theWrappedObject->empty());
-}
-
-QItemSelectionRange  PythonQtWrapper_QItemSelection::takeAt(QItemSelection* theWrappedObject, int  i)
-{
-  return ( theWrappedObject->takeAt(i));
-}
-
-void PythonQtWrapper_QItemSelection::replace(QItemSelection* theWrappedObject, int  i, const QItemSelectionRange&  t)
-{
-  ( theWrappedObject->replace(i, t));
-}
-
-void PythonQtWrapper_QItemSelection::removeFirst(QItemSelection* theWrappedObject)
-{
-  ( theWrappedObject->removeFirst());
-}
-
-void PythonQtWrapper_QItemSelection::removeLast(QItemSelection* theWrappedObject)
-{
-  ( theWrappedObject->removeLast());
-}
-
-int  PythonQtWrapper_QItemSelection::size(QItemSelection* theWrappedObject) const
-{
-  return ( theWrappedObject->size());
-}
-
-void PythonQtWrapper_QItemSelection::removeAt(QItemSelection* theWrappedObject, int  i)
-{
-  ( theWrappedObject->removeAt(i));
-}
-
 void PythonQtWrapper_QItemSelection::static_QItemSelection_split(const QItemSelectionRange&  range, const QItemSelectionRange&  other, QItemSelection*  result)
 {
   (QItemSelection::split(range, other, result));
-}
-
-void PythonQtWrapper_QItemSelection::swap(QItemSelection* theWrappedObject, int  i, int  j)
-{
-  ( theWrappedObject->swap(i, j));
-}
-
-void PythonQtWrapper_QItemSelection::move(QItemSelection* theWrappedObject, int  from, int  to)
-{
-  ( theWrappedObject->move(from, to));
-}
-
-int  PythonQtWrapper_QItemSelection::lastIndexOf(QItemSelection* theWrappedObject, const QItemSelectionRange&  t, int  from) const
-{
-  return ( theWrappedObject->lastIndexOf(t, from));
 }
 
 const QItemSelectionRange*  PythonQtWrapper_QItemSelection::front(QItemSelection* theWrappedObject) const
@@ -212,18 +102,153 @@ const QItemSelectionRange*  PythonQtWrapper_QItemSelection::front(QItemSelection
   return &( theWrappedObject->front());
 }
 
+void PythonQtWrapper_QItemSelection::merge(QItemSelection* theWrappedObject, const QItemSelection&  other, QItemSelectionModel::SelectionFlags  command)
+{
+  ( theWrappedObject->merge(other, command));
+}
+
+void PythonQtWrapper_QItemSelection::removeAt(QItemSelection* theWrappedObject, int  i)
+{
+  ( theWrappedObject->removeAt(i));
+}
+
+const QItemSelectionRange*  PythonQtWrapper_QItemSelection::last(QItemSelection* theWrappedObject) const
+{
+  return &( theWrappedObject->last());
+}
+
 QList<QModelIndex >  PythonQtWrapper_QItemSelection::indexes(QItemSelection* theWrappedObject) const
 {
   return ( theWrappedObject->indexes());
 }
 
-QList<QItemSelectionRange >  PythonQtWrapper_QItemSelection::mid(QItemSelection* theWrappedObject, int  pos, int  length) const
+QList<QItemSelectionRange >  PythonQtWrapper_QItemSelection::static_QItemSelection_fromVector(const QVector<QItemSelectionRange >&  vector)
 {
-  return ( theWrappedObject->mid(pos, length));
+  return (QItemSelection::fromVector(vector));
 }
 
-QItemSelectionRange  PythonQtWrapper_QItemSelection::takeLast(QItemSelection* theWrappedObject)
+void PythonQtWrapper_QItemSelection::push_back(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
 {
-  return ( theWrappedObject->takeLast());
+  ( theWrappedObject->push_back(t));
+}
+
+void PythonQtWrapper_QItemSelection::clear(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->clear());
+}
+
+void PythonQtWrapper_QItemSelection::push_front(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
+{
+  ( theWrappedObject->push_front(t));
+}
+
+int  PythonQtWrapper_QItemSelection::count(QItemSelection* theWrappedObject) const
+{
+  return ( theWrappedObject->count());
+}
+
+void PythonQtWrapper_QItemSelection::pop_back(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->pop_back());
+}
+
+void PythonQtWrapper_QItemSelection::swap(QItemSelection* theWrappedObject, int  i, int  j)
+{
+  ( theWrappedObject->swap(i, j));
+}
+
+bool  PythonQtWrapper_QItemSelection::isEmpty(QItemSelection* theWrappedObject) const
+{
+  return ( theWrappedObject->isEmpty());
+}
+
+bool  PythonQtWrapper_QItemSelection::operator_equal(QItemSelection* theWrappedObject, const QList<QItemSelectionRange >&  l) const
+{
+  return ( (*theWrappedObject)== l);
+}
+
+void PythonQtWrapper_QItemSelection::select(QItemSelection* theWrappedObject, const QModelIndex&  topLeft, const QModelIndex&  bottomRight)
+{
+  ( theWrappedObject->select(topLeft, bottomRight));
+}
+
+void PythonQtWrapper_QItemSelection::removeLast(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->removeLast());
+}
+
+const QItemSelectionRange*  PythonQtWrapper_QItemSelection::at(QItemSelection* theWrappedObject, int  i) const
+{
+  return &( theWrappedObject->at(i));
+}
+
+const QItemSelectionRange*  PythonQtWrapper_QItemSelection::first(QItemSelection* theWrappedObject) const
+{
+  return &( theWrappedObject->first());
+}
+
+void PythonQtWrapper_QItemSelection::pop_front(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->pop_front());
+}
+
+int  PythonQtWrapper_QItemSelection::length(QItemSelection* theWrappedObject) const
+{
+  return ( theWrappedObject->length());
+}
+
+void PythonQtWrapper_QItemSelection::append(QItemSelection* theWrappedObject, const QList<QItemSelectionRange >&  t)
+{
+  ( theWrappedObject->append(t));
+}
+
+void PythonQtWrapper_QItemSelection::setSharable(QItemSelection* theWrappedObject, bool  sharable)
+{
+  ( theWrappedObject->setSharable(sharable));
+}
+
+QItemSelectionRange  PythonQtWrapper_QItemSelection::value(QItemSelection* theWrappedObject, int  i, const QItemSelectionRange&  defaultValue) const
+{
+  return ( theWrappedObject->value(i, defaultValue));
+}
+
+void PythonQtWrapper_QItemSelection::detachShared(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->detachShared());
+}
+
+void PythonQtWrapper_QItemSelection::move(QItemSelection* theWrappedObject, int  from, int  to)
+{
+  ( theWrappedObject->move(from, to));
+}
+
+int  PythonQtWrapper_QItemSelection::removeAll(QItemSelection* theWrappedObject, const QItemSelectionRange&  t)
+{
+  return ( theWrappedObject->removeAll(t));
+}
+
+int  PythonQtWrapper_QItemSelection::lastIndexOf(QItemSelection* theWrappedObject, const QItemSelectionRange&  t, int  from) const
+{
+  return ( theWrappedObject->lastIndexOf(t, from));
+}
+
+int  PythonQtWrapper_QItemSelection::size(QItemSelection* theWrappedObject) const
+{
+  return ( theWrappedObject->size());
+}
+
+bool  PythonQtWrapper_QItemSelection::empty(QItemSelection* theWrappedObject) const
+{
+  return ( theWrappedObject->empty());
+}
+
+bool  PythonQtWrapper_QItemSelection::endsWith(QItemSelection* theWrappedObject, const QItemSelectionRange&  t) const
+{
+  return ( theWrappedObject->endsWith(t));
+}
+
+void PythonQtWrapper_QItemSelection::removeFirst(QItemSelection* theWrappedObject)
+{
+  ( theWrappedObject->removeFirst());
 }
 

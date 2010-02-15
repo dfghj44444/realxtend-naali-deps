@@ -25,8 +25,8 @@ virtual void undo();
 
 class PythonQtPublicPromoter_QUndoCommand : public QUndoCommand
 { public:
-inline bool  promoted_mergeWith(const QUndoCommand*  other) { return QUndoCommand::mergeWith(other); }
 inline void promoted_redo() { QUndoCommand::redo(); }
+inline bool  promoted_mergeWith(const QUndoCommand*  other) { return QUndoCommand::mergeWith(other); }
 inline int  promoted_id() const { return QUndoCommand::id(); }
 inline void promoted_undo() { QUndoCommand::undo(); }
 };
@@ -38,14 +38,14 @@ public slots:
 QUndoCommand* new_QUndoCommand(QUndoCommand*  parent = 0);
 QUndoCommand* new_QUndoCommand(const QString&  text, QUndoCommand*  parent = 0);
 void delete_QUndoCommand(QUndoCommand* obj) { delete obj; } 
+   void redo(QUndoCommand* theWrappedObject);
+   bool  mergeWith(QUndoCommand* theWrappedObject, const QUndoCommand*  other);
+   const QUndoCommand*  child(QUndoCommand* theWrappedObject, int  index) const;
    void setText(QUndoCommand* theWrappedObject, const QString&  text);
    QString  text(QUndoCommand* theWrappedObject) const;
-   bool  mergeWith(QUndoCommand* theWrappedObject, const QUndoCommand*  other);
-   void redo(QUndoCommand* theWrappedObject);
-   const QUndoCommand*  child(QUndoCommand* theWrappedObject, int  index) const;
-   int  childCount(QUndoCommand* theWrappedObject) const;
    int  id(QUndoCommand* theWrappedObject) const;
    void undo(QUndoCommand* theWrappedObject);
+   int  childCount(QUndoCommand* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QUNDOCOMMAND_H

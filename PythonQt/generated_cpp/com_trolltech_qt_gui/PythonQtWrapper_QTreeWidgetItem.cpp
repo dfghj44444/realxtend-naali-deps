@@ -180,39 +180,9 @@ QTreeWidgetItem* PythonQtWrapper_QTreeWidgetItem::new_QTreeWidgetItem(int  type)
 { 
 return new PythonQtShell_QTreeWidgetItem(type); }
 
-void PythonQtWrapper_QTreeWidgetItem::setDisabled(QTreeWidgetItem* theWrappedObject, bool  disabled)
+QBrush  PythonQtWrapper_QTreeWidgetItem::foreground(QTreeWidgetItem* theWrappedObject, int  column) const
 {
-  ( theWrappedObject->setDisabled(disabled));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::insertChild(QTreeWidgetItem* theWrappedObject, int  index, QTreeWidgetItem*  child)
-{
-  ( theWrappedObject->insertChild(index, child));
-}
-
-QBrush  PythonQtWrapper_QTreeWidgetItem::background(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->background(column));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::readFrom(QTreeWidgetItem* theWrappedObject, QDataStream&  in)
-{
-  in >>  (*theWrappedObject);
-}
-
-bool  PythonQtWrapper_QTreeWidgetItem::isFirstColumnSpanned(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->isFirstColumnSpanned());
-}
-
-QString  PythonQtWrapper_QTreeWidgetItem::text(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->text(column));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setWhatsThis(QTreeWidgetItem* theWrappedObject, int  column, const QString&  whatsThis)
-{
-  ( theWrappedObject->setWhatsThis(column, whatsThis));
+  return ( theWrappedObject->foreground(column));
 }
 
 bool  PythonQtWrapper_QTreeWidgetItem::isSelected(QTreeWidgetItem* theWrappedObject) const
@@ -220,184 +190,9 @@ bool  PythonQtWrapper_QTreeWidgetItem::isSelected(QTreeWidgetItem* theWrappedObj
   return ( theWrappedObject->isSelected());
 }
 
-void PythonQtWrapper_QTreeWidgetItem::setData(QTreeWidgetItem* theWrappedObject, int  column, int  role, const QVariant&  value)
+void PythonQtWrapper_QTreeWidgetItem::setWhatsThis(QTreeWidgetItem* theWrappedObject, int  column, const QString&  whatsThis)
 {
-  ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_setData(column, role, value));
-}
-
-int  PythonQtWrapper_QTreeWidgetItem::textAlignment(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->textAlignment(column));
-}
-
-QIcon  PythonQtWrapper_QTreeWidgetItem::icon(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->icon(column));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setExpanded(QTreeWidgetItem* theWrappedObject, bool  expand)
-{
-  ( theWrappedObject->setExpanded(expand));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setFirstColumnSpanned(QTreeWidgetItem* theWrappedObject, bool  span)
-{
-  ( theWrappedObject->setFirstColumnSpanned(span));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::addChild(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem*  child)
-{
-  ( theWrappedObject->addChild(child));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::writeTo(QTreeWidgetItem* theWrappedObject, QDataStream&  out)
-{
-  out <<  (*theWrappedObject);
-}
-
-void PythonQtWrapper_QTreeWidgetItem::sortChildren(QTreeWidgetItem* theWrappedObject, int  column, Qt::SortOrder  order)
-{
-  ( theWrappedObject->sortChildren(column, order));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setIcon(QTreeWidgetItem* theWrappedObject, int  column, const QIcon&  icon)
-{
-  ( theWrappedObject->setIcon(column, icon));
-}
-
-QFont  PythonQtWrapper_QTreeWidgetItem::font(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->font(column));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::insertChildren(QTreeWidgetItem* theWrappedObject, int  index, const QList<QTreeWidgetItem* >&  children)
-{
-  ( theWrappedObject->insertChildren(index, children));
-}
-
-QSize  PythonQtWrapper_QTreeWidgetItem::sizeHint(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->sizeHint(column));
-}
-
-QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::child(QTreeWidgetItem* theWrappedObject, int  index) const
-{
-  return ( theWrappedObject->child(index));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setBackground(QTreeWidgetItem* theWrappedObject, int  column, const QBrush&  brush)
-{
-  ( theWrappedObject->setBackground(column, brush));
-}
-
-QList<QTreeWidgetItem* >  PythonQtWrapper_QTreeWidgetItem::takeChildren(QTreeWidgetItem* theWrappedObject)
-{
-  return ( theWrappedObject->takeChildren());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setToolTip(QTreeWidgetItem* theWrappedObject, int  column, const QString&  toolTip)
-{
-  ( theWrappedObject->setToolTip(column, toolTip));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::addChildren(QTreeWidgetItem* theWrappedObject, const QList<QTreeWidgetItem* >&  children)
-{
-  ( theWrappedObject->addChildren(children));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setForeground(QTreeWidgetItem* theWrappedObject, int  column, const QBrush&  brush)
-{
-  ( theWrappedObject->setForeground(column, brush));
-}
-
-int  PythonQtWrapper_QTreeWidgetItem::indexOfChild(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem*  child) const
-{
-  return ( theWrappedObject->indexOfChild(child));
-}
-
-int  PythonQtWrapper_QTreeWidgetItem::childCount(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->childCount());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setHidden(QTreeWidgetItem* theWrappedObject, bool  hide)
-{
-  ( theWrappedObject->setHidden(hide));
-}
-
-QString  PythonQtWrapper_QTreeWidgetItem::toolTip(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->toolTip(column));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setFont(QTreeWidgetItem* theWrappedObject, int  column, const QFont&  font)
-{
-  ( theWrappedObject->setFont(column, font));
-}
-
-QTreeWidget*  PythonQtWrapper_QTreeWidgetItem::treeWidget(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->treeWidget());
-}
-
-bool  PythonQtWrapper_QTreeWidgetItem::isDisabled(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->isDisabled());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setTextAlignment(QTreeWidgetItem* theWrappedObject, int  column, int  alignment)
-{
-  ( theWrappedObject->setTextAlignment(column, alignment));
-}
-
-Qt::CheckState  PythonQtWrapper_QTreeWidgetItem::checkState(QTreeWidgetItem* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->checkState(column));
-}
-
-QTreeWidgetItem::ChildIndicatorPolicy  PythonQtWrapper_QTreeWidgetItem::childIndicatorPolicy(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->childIndicatorPolicy());
-}
-
-Qt::ItemFlags  PythonQtWrapper_QTreeWidgetItem::flags(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->flags());
-}
-
-QVariant  PythonQtWrapper_QTreeWidgetItem::data(QTreeWidgetItem* theWrappedObject, int  column, int  role) const
-{
-  return ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_data(column, role));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setFlags(QTreeWidgetItem* theWrappedObject, Qt::ItemFlags  flags)
-{
-  ( theWrappedObject->setFlags(flags));
-}
-
-int  PythonQtWrapper_QTreeWidgetItem::type(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->type());
-}
-
-int  PythonQtWrapper_QTreeWidgetItem::columnCount(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->columnCount());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setSelected(QTreeWidgetItem* theWrappedObject, bool  select)
-{
-  ( theWrappedObject->setSelected(select));
-}
-
-QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::clone(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_clone());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setCheckState(QTreeWidgetItem* theWrappedObject, int  column, Qt::CheckState  state)
-{
-  ( theWrappedObject->setCheckState(column, state));
+  ( theWrappedObject->setWhatsThis(column, whatsThis));
 }
 
 void PythonQtWrapper_QTreeWidgetItem::removeChild(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem*  child)
@@ -405,24 +200,14 @@ void PythonQtWrapper_QTreeWidgetItem::removeChild(QTreeWidgetItem* theWrappedObj
   ( theWrappedObject->removeChild(child));
 }
 
-QBrush  PythonQtWrapper_QTreeWidgetItem::foreground(QTreeWidgetItem* theWrappedObject, int  column) const
+void PythonQtWrapper_QTreeWidgetItem::setSizeHint(QTreeWidgetItem* theWrappedObject, int  column, const QSize&  size)
 {
-  return ( theWrappedObject->foreground(column));
+  ( theWrappedObject->setSizeHint(column, size));
 }
 
-void PythonQtWrapper_QTreeWidgetItem::setText(QTreeWidgetItem* theWrappedObject, int  column, const QString&  text)
+void PythonQtWrapper_QTreeWidgetItem::writeTo(QTreeWidgetItem* theWrappedObject, QDataStream&  out)
 {
-  ( theWrappedObject->setText(column, text));
-}
-
-bool  PythonQtWrapper_QTreeWidgetItem::isHidden(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->isHidden());
-}
-
-QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::takeChild(QTreeWidgetItem* theWrappedObject, int  index)
-{
-  return ( theWrappedObject->takeChild(index));
+  out <<  (*theWrappedObject);
 }
 
 void PythonQtWrapper_QTreeWidgetItem::setChildIndicatorPolicy(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem::ChildIndicatorPolicy  policy)
@@ -430,24 +215,9 @@ void PythonQtWrapper_QTreeWidgetItem::setChildIndicatorPolicy(QTreeWidgetItem* t
   ( theWrappedObject->setChildIndicatorPolicy(policy));
 }
 
-QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::parent(QTreeWidgetItem* theWrappedObject) const
+QTreeWidgetItem::ChildIndicatorPolicy  PythonQtWrapper_QTreeWidgetItem::childIndicatorPolicy(QTreeWidgetItem* theWrappedObject) const
 {
-  return ( theWrappedObject->parent());
-}
-
-bool  PythonQtWrapper_QTreeWidgetItem::isExpanded(QTreeWidgetItem* theWrappedObject) const
-{
-  return ( theWrappedObject->isExpanded());
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setSizeHint(QTreeWidgetItem* theWrappedObject, int  column, const QSize&  size)
-{
-  ( theWrappedObject->setSizeHint(column, size));
-}
-
-void PythonQtWrapper_QTreeWidgetItem::setStatusTip(QTreeWidgetItem* theWrappedObject, int  column, const QString&  statusTip)
-{
-  ( theWrappedObject->setStatusTip(column, statusTip));
+  return ( theWrappedObject->childIndicatorPolicy());
 }
 
 QString  PythonQtWrapper_QTreeWidgetItem::statusTip(QTreeWidgetItem* theWrappedObject, int  column) const
@@ -455,8 +225,238 @@ QString  PythonQtWrapper_QTreeWidgetItem::statusTip(QTreeWidgetItem* theWrappedO
   return ( theWrappedObject->statusTip(column));
 }
 
+void PythonQtWrapper_QTreeWidgetItem::setTextAlignment(QTreeWidgetItem* theWrappedObject, int  column, int  alignment)
+{
+  ( theWrappedObject->setTextAlignment(column, alignment));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::readFrom(QTreeWidgetItem* theWrappedObject, QDataStream&  in)
+{
+  in >>  (*theWrappedObject);
+}
+
 QString  PythonQtWrapper_QTreeWidgetItem::whatsThis(QTreeWidgetItem* theWrappedObject, int  column) const
 {
   return ( theWrappedObject->whatsThis(column));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setHidden(QTreeWidgetItem* theWrappedObject, bool  hide)
+{
+  ( theWrappedObject->setHidden(hide));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setStatusTip(QTreeWidgetItem* theWrappedObject, int  column, const QString&  statusTip)
+{
+  ( theWrappedObject->setStatusTip(column, statusTip));
+}
+
+QTreeWidget*  PythonQtWrapper_QTreeWidgetItem::treeWidget(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->treeWidget());
+}
+
+QIcon  PythonQtWrapper_QTreeWidgetItem::icon(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->icon(column));
+}
+
+QVariant  PythonQtWrapper_QTreeWidgetItem::data(QTreeWidgetItem* theWrappedObject, int  column, int  role) const
+{
+  return ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_data(column, role));
+}
+
+bool  PythonQtWrapper_QTreeWidgetItem::isFirstColumnSpanned(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->isFirstColumnSpanned());
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setCheckState(QTreeWidgetItem* theWrappedObject, int  column, Qt::CheckState  state)
+{
+  ( theWrappedObject->setCheckState(column, state));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setBackground(QTreeWidgetItem* theWrappedObject, int  column, const QBrush&  brush)
+{
+  ( theWrappedObject->setBackground(column, brush));
+}
+
+QString  PythonQtWrapper_QTreeWidgetItem::text(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->text(column));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::insertChild(QTreeWidgetItem* theWrappedObject, int  index, QTreeWidgetItem*  child)
+{
+  ( theWrappedObject->insertChild(index, child));
+}
+
+QList<QTreeWidgetItem* >  PythonQtWrapper_QTreeWidgetItem::takeChildren(QTreeWidgetItem* theWrappedObject)
+{
+  return ( theWrappedObject->takeChildren());
+}
+
+bool  PythonQtWrapper_QTreeWidgetItem::isHidden(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->isHidden());
+}
+
+QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::parent(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->parent());
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setDisabled(QTreeWidgetItem* theWrappedObject, bool  disabled)
+{
+  ( theWrappedObject->setDisabled(disabled));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setFlags(QTreeWidgetItem* theWrappedObject, Qt::ItemFlags  flags)
+{
+  ( theWrappedObject->setFlags(flags));
+}
+
+int  PythonQtWrapper_QTreeWidgetItem::columnCount(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->columnCount());
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setExpanded(QTreeWidgetItem* theWrappedObject, bool  expand)
+{
+  ( theWrappedObject->setExpanded(expand));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setData(QTreeWidgetItem* theWrappedObject, int  column, int  role, const QVariant&  value)
+{
+  ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_setData(column, role, value));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setForeground(QTreeWidgetItem* theWrappedObject, int  column, const QBrush&  brush)
+{
+  ( theWrappedObject->setForeground(column, brush));
+}
+
+int  PythonQtWrapper_QTreeWidgetItem::childCount(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->childCount());
+}
+
+QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::clone(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QTreeWidgetItem*)theWrappedObject)->promoted_clone());
+}
+
+Qt::CheckState  PythonQtWrapper_QTreeWidgetItem::checkState(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->checkState(column));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::insertChildren(QTreeWidgetItem* theWrappedObject, int  index, const QList<QTreeWidgetItem* >&  children)
+{
+  ( theWrappedObject->insertChildren(index, children));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setToolTip(QTreeWidgetItem* theWrappedObject, int  column, const QString&  toolTip)
+{
+  ( theWrappedObject->setToolTip(column, toolTip));
+}
+
+QString  PythonQtWrapper_QTreeWidgetItem::toolTip(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->toolTip(column));
+}
+
+bool  PythonQtWrapper_QTreeWidgetItem::isDisabled(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->isDisabled());
+}
+
+void PythonQtWrapper_QTreeWidgetItem::addChildren(QTreeWidgetItem* theWrappedObject, const QList<QTreeWidgetItem* >&  children)
+{
+  ( theWrappedObject->addChildren(children));
+}
+
+QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::takeChild(QTreeWidgetItem* theWrappedObject, int  index)
+{
+  return ( theWrappedObject->takeChild(index));
+}
+
+QTreeWidgetItem*  PythonQtWrapper_QTreeWidgetItem::child(QTreeWidgetItem* theWrappedObject, int  index) const
+{
+  return ( theWrappedObject->child(index));
+}
+
+bool  PythonQtWrapper_QTreeWidgetItem::isExpanded(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->isExpanded());
+}
+
+QBrush  PythonQtWrapper_QTreeWidgetItem::background(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->background(column));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setIcon(QTreeWidgetItem* theWrappedObject, int  column, const QIcon&  icon)
+{
+  ( theWrappedObject->setIcon(column, icon));
+}
+
+QSize  PythonQtWrapper_QTreeWidgetItem::sizeHint(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->sizeHint(column));
+}
+
+int  PythonQtWrapper_QTreeWidgetItem::indexOfChild(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem*  child) const
+{
+  return ( theWrappedObject->indexOfChild(child));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setFirstColumnSpanned(QTreeWidgetItem* theWrappedObject, bool  span)
+{
+  ( theWrappedObject->setFirstColumnSpanned(span));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setSelected(QTreeWidgetItem* theWrappedObject, bool  select)
+{
+  ( theWrappedObject->setSelected(select));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::sortChildren(QTreeWidgetItem* theWrappedObject, int  column, Qt::SortOrder  order)
+{
+  ( theWrappedObject->sortChildren(column, order));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setFont(QTreeWidgetItem* theWrappedObject, int  column, const QFont&  font)
+{
+  ( theWrappedObject->setFont(column, font));
+}
+
+QFont  PythonQtWrapper_QTreeWidgetItem::font(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->font(column));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::setText(QTreeWidgetItem* theWrappedObject, int  column, const QString&  text)
+{
+  ( theWrappedObject->setText(column, text));
+}
+
+void PythonQtWrapper_QTreeWidgetItem::addChild(QTreeWidgetItem* theWrappedObject, QTreeWidgetItem*  child)
+{
+  ( theWrappedObject->addChild(child));
+}
+
+Qt::ItemFlags  PythonQtWrapper_QTreeWidgetItem::flags(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->flags());
+}
+
+int  PythonQtWrapper_QTreeWidgetItem::type(QTreeWidgetItem* theWrappedObject) const
+{
+  return ( theWrappedObject->type());
+}
+
+int  PythonQtWrapper_QTreeWidgetItem::textAlignment(QTreeWidgetItem* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->textAlignment(column));
 }
 

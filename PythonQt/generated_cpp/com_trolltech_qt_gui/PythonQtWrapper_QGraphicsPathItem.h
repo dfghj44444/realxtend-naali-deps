@@ -32,8 +32,8 @@ virtual QPainterPath  opaqueArea() const;
 
 class PythonQtPublicPromoter_QGraphicsPathItem : public QGraphicsPathItem
 { public:
-inline QPainterPath  promoted_opaqueArea() const { return QGraphicsPathItem::opaqueArea(); }
 inline bool  promoted_isObscuredBy(const QGraphicsItem*  item) const { return QGraphicsPathItem::isObscuredBy(item); }
+inline QPainterPath  promoted_opaqueArea() const { return QGraphicsPathItem::opaqueArea(); }
 };
 
 class PythonQtWrapper_QGraphicsPathItem : public QObject
@@ -46,15 +46,15 @@ public slots:
 QGraphicsPathItem* new_QGraphicsPathItem(QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 QGraphicsPathItem* new_QGraphicsPathItem(const QPainterPath&  path, QGraphicsItem*  parent = 0, QGraphicsScene*  scene = 0);
 void delete_QGraphicsPathItem(QGraphicsPathItem* obj) { delete obj; } 
-   QPainterPath  opaqueArea(QGraphicsPathItem* theWrappedObject) const;
-   void paint(QGraphicsPathItem* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0);
    QPainterPath  path(QGraphicsPathItem* theWrappedObject) const;
    QPainterPath  shape(QGraphicsPathItem* theWrappedObject) const;
-   int  type(QGraphicsPathItem* theWrappedObject) const;
-   QRectF  boundingRect(QGraphicsPathItem* theWrappedObject) const;
    bool  isObscuredBy(QGraphicsPathItem* theWrappedObject, const QGraphicsItem*  item) const;
-   void setPath(QGraphicsPathItem* theWrappedObject, const QPainterPath&  path);
+   QRectF  boundingRect(QGraphicsPathItem* theWrappedObject) const;
+   QPainterPath  opaqueArea(QGraphicsPathItem* theWrappedObject) const;
+   int  type(QGraphicsPathItem* theWrappedObject) const;
+   void paint(QGraphicsPathItem* theWrappedObject, QPainter*  painter, const QStyleOptionGraphicsItem*  option, QWidget*  widget = 0);
    bool  contains(QGraphicsPathItem* theWrappedObject, const QPointF&  point) const;
+   void setPath(QGraphicsPathItem* theWrappedObject, const QPainterPath&  path);
 };
 
 #endif // PYTHONQTWRAPPER_QGRAPHICSPATHITEM_H

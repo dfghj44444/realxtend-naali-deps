@@ -11,6 +11,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
@@ -18,6 +20,7 @@
 #include <qlineedit.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -934,79 +937,9 @@ QDoubleSpinBox* PythonQtWrapper_QDoubleSpinBox::new_QDoubleSpinBox(QWidget*  par
 { 
 return new PythonQtShell_QDoubleSpinBox(parent); }
 
-void PythonQtWrapper_QDoubleSpinBox::setMaximum(QDoubleSpinBox* theWrappedObject, double  max)
-{
-  ( theWrappedObject->setMaximum(max));
-}
-
-void PythonQtWrapper_QDoubleSpinBox::setDecimals(QDoubleSpinBox* theWrappedObject, int  prec)
-{
-  ( theWrappedObject->setDecimals(prec));
-}
-
-void PythonQtWrapper_QDoubleSpinBox::setPrefix(QDoubleSpinBox* theWrappedObject, const QString&  prefix)
-{
-  ( theWrappedObject->setPrefix(prefix));
-}
-
-void PythonQtWrapper_QDoubleSpinBox::setSuffix(QDoubleSpinBox* theWrappedObject, const QString&  suffix)
-{
-  ( theWrappedObject->setSuffix(suffix));
-}
-
-QValidator::State  PythonQtWrapper_QDoubleSpinBox::validate(QDoubleSpinBox* theWrappedObject, QString&  input, int&  pos) const
-{
-  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_validate(input, pos));
-}
-
-double  PythonQtWrapper_QDoubleSpinBox::valueFromText(QDoubleSpinBox* theWrappedObject, const QString&  text) const
-{
-  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_valueFromText(text));
-}
-
-double  PythonQtWrapper_QDoubleSpinBox::value(QDoubleSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->value());
-}
-
-double  PythonQtWrapper_QDoubleSpinBox::singleStep(QDoubleSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->singleStep());
-}
-
-double  PythonQtWrapper_QDoubleSpinBox::minimum(QDoubleSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->minimum());
-}
-
-QString  PythonQtWrapper_QDoubleSpinBox::suffix(QDoubleSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->suffix());
-}
-
-int  PythonQtWrapper_QDoubleSpinBox::decimals(QDoubleSpinBox* theWrappedObject) const
-{
-  return ( theWrappedObject->decimals());
-}
-
-void PythonQtWrapper_QDoubleSpinBox::fixup(QDoubleSpinBox* theWrappedObject, QString&  str) const
-{
-  ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_fixup(str));
-}
-
 void PythonQtWrapper_QDoubleSpinBox::setSingleStep(QDoubleSpinBox* theWrappedObject, double  val)
 {
   ( theWrappedObject->setSingleStep(val));
-}
-
-void PythonQtWrapper_QDoubleSpinBox::setMinimum(QDoubleSpinBox* theWrappedObject, double  min)
-{
-  ( theWrappedObject->setMinimum(min));
-}
-
-QString  PythonQtWrapper_QDoubleSpinBox::textFromValue(QDoubleSpinBox* theWrappedObject, double  val) const
-{
-  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_textFromValue(val));
 }
 
 QString  PythonQtWrapper_QDoubleSpinBox::cleanText(QDoubleSpinBox* theWrappedObject) const
@@ -1014,14 +947,84 @@ QString  PythonQtWrapper_QDoubleSpinBox::cleanText(QDoubleSpinBox* theWrappedObj
   return ( theWrappedObject->cleanText());
 }
 
+void PythonQtWrapper_QDoubleSpinBox::setPrefix(QDoubleSpinBox* theWrappedObject, const QString&  prefix)
+{
+  ( theWrappedObject->setPrefix(prefix));
+}
+
 QString  PythonQtWrapper_QDoubleSpinBox::prefix(QDoubleSpinBox* theWrappedObject) const
 {
   return ( theWrappedObject->prefix());
 }
 
+void PythonQtWrapper_QDoubleSpinBox::setMaximum(QDoubleSpinBox* theWrappedObject, double  max)
+{
+  ( theWrappedObject->setMaximum(max));
+}
+
+int  PythonQtWrapper_QDoubleSpinBox::decimals(QDoubleSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->decimals());
+}
+
+QValidator::State  PythonQtWrapper_QDoubleSpinBox::validate(QDoubleSpinBox* theWrappedObject, QString&  input, int&  pos) const
+{
+  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_validate(input, pos));
+}
+
 double  PythonQtWrapper_QDoubleSpinBox::maximum(QDoubleSpinBox* theWrappedObject) const
 {
   return ( theWrappedObject->maximum());
+}
+
+void PythonQtWrapper_QDoubleSpinBox::setMinimum(QDoubleSpinBox* theWrappedObject, double  min)
+{
+  ( theWrappedObject->setMinimum(min));
+}
+
+void PythonQtWrapper_QDoubleSpinBox::setDecimals(QDoubleSpinBox* theWrappedObject, int  prec)
+{
+  ( theWrappedObject->setDecimals(prec));
+}
+
+void PythonQtWrapper_QDoubleSpinBox::fixup(QDoubleSpinBox* theWrappedObject, QString&  str) const
+{
+  ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_fixup(str));
+}
+
+QString  PythonQtWrapper_QDoubleSpinBox::suffix(QDoubleSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->suffix());
+}
+
+double  PythonQtWrapper_QDoubleSpinBox::value(QDoubleSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->value());
+}
+
+double  PythonQtWrapper_QDoubleSpinBox::minimum(QDoubleSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->minimum());
+}
+
+void PythonQtWrapper_QDoubleSpinBox::setSuffix(QDoubleSpinBox* theWrappedObject, const QString&  suffix)
+{
+  ( theWrappedObject->setSuffix(suffix));
+}
+
+double  PythonQtWrapper_QDoubleSpinBox::singleStep(QDoubleSpinBox* theWrappedObject) const
+{
+  return ( theWrappedObject->singleStep());
+}
+
+double  PythonQtWrapper_QDoubleSpinBox::valueFromText(QDoubleSpinBox* theWrappedObject, const QString&  text) const
+{
+  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_valueFromText(text));
+}
+
+QString  PythonQtWrapper_QDoubleSpinBox::textFromValue(QDoubleSpinBox* theWrappedObject, double  val) const
+{
+  return ( ((PythonQtPublicPromoter_QDoubleSpinBox*)theWrappedObject)->promoted_textFromValue(val));
 }
 
 void PythonQtWrapper_QDoubleSpinBox::setRange(QDoubleSpinBox* theWrappedObject, double  min, double  max)

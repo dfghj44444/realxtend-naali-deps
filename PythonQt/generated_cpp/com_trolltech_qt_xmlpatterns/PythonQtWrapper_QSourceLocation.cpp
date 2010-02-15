@@ -24,9 +24,9 @@ bool  PythonQtWrapper_QSourceLocation::operator_equal(QSourceLocation* theWrappe
   return ( (*theWrappedObject)== other);
 }
 
-qint64  PythonQtWrapper_QSourceLocation::line(QSourceLocation* theWrappedObject) const
+void PythonQtWrapper_QSourceLocation::setColumn(QSourceLocation* theWrappedObject, qint64  newColumn)
 {
-  return ( theWrappedObject->line());
+  ( theWrappedObject->setColumn(newColumn));
 }
 
 QUrl  PythonQtWrapper_QSourceLocation::uri(QSourceLocation* theWrappedObject) const
@@ -34,19 +34,9 @@ QUrl  PythonQtWrapper_QSourceLocation::uri(QSourceLocation* theWrappedObject) co
   return ( theWrappedObject->uri());
 }
 
-void PythonQtWrapper_QSourceLocation::setColumn(QSourceLocation* theWrappedObject, qint64  newColumn)
-{
-  ( theWrappedObject->setColumn(newColumn));
-}
-
 qint64  PythonQtWrapper_QSourceLocation::column(QSourceLocation* theWrappedObject) const
 {
   return ( theWrappedObject->column());
-}
-
-bool  PythonQtWrapper_QSourceLocation::isNull(QSourceLocation* theWrappedObject) const
-{
-  return ( theWrappedObject->isNull());
 }
 
 void PythonQtWrapper_QSourceLocation::setLine(QSourceLocation* theWrappedObject, qint64  newLine)
@@ -54,9 +44,19 @@ void PythonQtWrapper_QSourceLocation::setLine(QSourceLocation* theWrappedObject,
   ( theWrappedObject->setLine(newLine));
 }
 
+bool  PythonQtWrapper_QSourceLocation::isNull(QSourceLocation* theWrappedObject) const
+{
+  return ( theWrappedObject->isNull());
+}
+
 void PythonQtWrapper_QSourceLocation::setUri(QSourceLocation* theWrappedObject, const QUrl&  newUri)
 {
   ( theWrappedObject->setUri(newUri));
+}
+
+qint64  PythonQtWrapper_QSourceLocation::line(QSourceLocation* theWrappedObject) const
+{
+  return ( theWrappedObject->line());
 }
 
 QString PythonQtWrapper_QSourceLocation::toString(QSourceLocation* obj) {

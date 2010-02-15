@@ -13,6 +13,8 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qheaderview.h>
 #include <qicon.h>
 #include <qinputcontext.h>
@@ -21,6 +23,7 @@
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -1581,84 +1584,14 @@ QTableView* PythonQtWrapper_QTableView::new_QTableView(QWidget*  parent)
 { 
 return new PythonQtShell_QTableView(parent); }
 
-QRect  PythonQtWrapper_QTableView::visualRect(QTableView* theWrappedObject, const QModelIndex&  index) const
+void PythonQtWrapper_QTableView::setRowHeight(QTableView* theWrappedObject, int  row, int  height)
 {
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_visualRect(index));
+  ( theWrappedObject->setRowHeight(row, height));
 }
 
-void PythonQtWrapper_QTableView::verticalScrollbarAction(QTableView* theWrappedObject, int  action)
+void PythonQtWrapper_QTableView::scrollContentsBy(QTableView* theWrappedObject, int  dx, int  dy)
 {
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_verticalScrollbarAction(action));
-}
-
-void PythonQtWrapper_QTableView::setVerticalHeader(QTableView* theWrappedObject, QHeaderView*  header)
-{
-  ( theWrappedObject->setVerticalHeader(header));
-}
-
-QHeaderView*  PythonQtWrapper_QTableView::verticalHeader(QTableView* theWrappedObject) const
-{
-  return ( theWrappedObject->verticalHeader());
-}
-
-void PythonQtWrapper_QTableView::setSpan(QTableView* theWrappedObject, int  row, int  column, int  rowSpan, int  columnSpan)
-{
-  ( theWrappedObject->setSpan(row, column, rowSpan, columnSpan));
-}
-
-void PythonQtWrapper_QTableView::paintEvent(QTableView* theWrappedObject, QPaintEvent*  e)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_paintEvent(e));
-}
-
-int  PythonQtWrapper_QTableView::verticalOffset(QTableView* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_verticalOffset());
-}
-
-void PythonQtWrapper_QTableView::setModel(QTableView* theWrappedObject, QAbstractItemModel*  model)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setModel(model));
-}
-
-bool  PythonQtWrapper_QTableView::showGrid(QTableView* theWrappedObject) const
-{
-  return ( theWrappedObject->showGrid());
-}
-
-void PythonQtWrapper_QTableView::setColumnWidth(QTableView* theWrappedObject, int  column, int  width)
-{
-  ( theWrappedObject->setColumnWidth(column, width));
-}
-
-int  PythonQtWrapper_QTableView::columnViewportPosition(QTableView* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->columnViewportPosition(column));
-}
-
-void PythonQtWrapper_QTableView::setSortingEnabled(QTableView* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setSortingEnabled(enable));
-}
-
-bool  PythonQtWrapper_QTableView::isRowHidden(QTableView* theWrappedObject, int  row) const
-{
-  return ( theWrappedObject->isRowHidden(row));
-}
-
-void PythonQtWrapper_QTableView::setRowHidden(QTableView* theWrappedObject, int  row, bool  hide)
-{
-  ( theWrappedObject->setRowHidden(row, hide));
-}
-
-int  PythonQtWrapper_QTableView::columnSpan(QTableView* theWrappedObject, int  row, int  column) const
-{
-  return ( theWrappedObject->columnSpan(row, column));
-}
-
-int  PythonQtWrapper_QTableView::horizontalOffset(QTableView* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_horizontalOffset());
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
 }
 
 void PythonQtWrapper_QTableView::selectionChanged(QTableView* theWrappedObject, const QItemSelection&  selected, const QItemSelection&  deselected)
@@ -1666,14 +1599,9 @@ void PythonQtWrapper_QTableView::selectionChanged(QTableView* theWrappedObject, 
   ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_selectionChanged(selected, deselected));
 }
 
-QHeaderView*  PythonQtWrapper_QTableView::horizontalHeader(QTableView* theWrappedObject) const
+void PythonQtWrapper_QTableView::currentChanged(QTableView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous)
 {
-  return ( theWrappedObject->horizontalHeader());
-}
-
-QModelIndex  PythonQtWrapper_QTableView::indexAt(QTableView* theWrappedObject, const QPoint&  p) const
-{
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_indexAt(p));
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_currentChanged(current, previous));
 }
 
 int  PythonQtWrapper_QTableView::columnAt(QTableView* theWrappedObject, int  x) const
@@ -1686,14 +1614,154 @@ Qt::PenStyle  PythonQtWrapper_QTableView::gridStyle(QTableView* theWrappedObject
   return ( theWrappedObject->gridStyle());
 }
 
-void PythonQtWrapper_QTableView::timerEvent(QTableView* theWrappedObject, QTimerEvent*  event)
+int  PythonQtWrapper_QTableView::rowAt(QTableView* theWrappedObject, int  y) const
 {
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_timerEvent(event));
+  return ( theWrappedObject->rowAt(y));
+}
+
+void PythonQtWrapper_QTableView::setRowHidden(QTableView* theWrappedObject, int  row, bool  hide)
+{
+  ( theWrappedObject->setRowHidden(row, hide));
+}
+
+void PythonQtWrapper_QTableView::setVerticalHeader(QTableView* theWrappedObject, QHeaderView*  header)
+{
+  ( theWrappedObject->setVerticalHeader(header));
+}
+
+int  PythonQtWrapper_QTableView::horizontalOffset(QTableView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_horizontalOffset());
+}
+
+int  PythonQtWrapper_QTableView::verticalOffset(QTableView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_verticalOffset());
+}
+
+bool  PythonQtWrapper_QTableView::showGrid(QTableView* theWrappedObject) const
+{
+  return ( theWrappedObject->showGrid());
+}
+
+void PythonQtWrapper_QTableView::setColumnWidth(QTableView* theWrappedObject, int  column, int  width)
+{
+  ( theWrappedObject->setColumnWidth(column, width));
+}
+
+void PythonQtWrapper_QTableView::sortByColumn(QTableView* theWrappedObject, int  column, Qt::SortOrder  order)
+{
+  ( theWrappedObject->sortByColumn(column, order));
+}
+
+int  PythonQtWrapper_QTableView::rowSpan(QTableView* theWrappedObject, int  row, int  column) const
+{
+  return ( theWrappedObject->rowSpan(row, column));
 }
 
 void PythonQtWrapper_QTableView::setColumnHidden(QTableView* theWrappedObject, int  column, bool  hide)
 {
   ( theWrappedObject->setColumnHidden(column, hide));
+}
+
+int  PythonQtWrapper_QTableView::rowViewportPosition(QTableView* theWrappedObject, int  row) const
+{
+  return ( theWrappedObject->rowViewportPosition(row));
+}
+
+bool  PythonQtWrapper_QTableView::isColumnHidden(QTableView* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->isColumnHidden(column));
+}
+
+int  PythonQtWrapper_QTableView::sizeHintForColumn(QTableView* theWrappedObject, int  column) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_sizeHintForColumn(column));
+}
+
+void PythonQtWrapper_QTableView::verticalScrollbarAction(QTableView* theWrappedObject, int  action)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_verticalScrollbarAction(action));
+}
+
+bool  PythonQtWrapper_QTableView::isSortingEnabled(QTableView* theWrappedObject) const
+{
+  return ( theWrappedObject->isSortingEnabled());
+}
+
+void PythonQtWrapper_QTableView::setSortingEnabled(QTableView* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setSortingEnabled(enable));
+}
+
+void PythonQtWrapper_QTableView::setSelectionModel(QTableView* theWrappedObject, QItemSelectionModel*  selectionModel)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setSelectionModel(selectionModel));
+}
+
+QHeaderView*  PythonQtWrapper_QTableView::verticalHeader(QTableView* theWrappedObject) const
+{
+  return ( theWrappedObject->verticalHeader());
+}
+
+void PythonQtWrapper_QTableView::setSelection(QTableView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setSelection(rect, command));
+}
+
+void PythonQtWrapper_QTableView::setCornerButtonEnabled(QTableView* theWrappedObject, bool  enable)
+{
+  ( theWrappedObject->setCornerButtonEnabled(enable));
+}
+
+void PythonQtWrapper_QTableView::paintEvent(QTableView* theWrappedObject, QPaintEvent*  e)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_paintEvent(e));
+}
+
+int  PythonQtWrapper_QTableView::columnSpan(QTableView* theWrappedObject, int  row, int  column) const
+{
+  return ( theWrappedObject->columnSpan(row, column));
+}
+
+int  PythonQtWrapper_QTableView::columnWidth(QTableView* theWrappedObject, int  column) const
+{
+  return ( theWrappedObject->columnWidth(column));
+}
+
+bool  PythonQtWrapper_QTableView::isCornerButtonEnabled(QTableView* theWrappedObject) const
+{
+  return ( theWrappedObject->isCornerButtonEnabled());
+}
+
+QHeaderView*  PythonQtWrapper_QTableView::horizontalHeader(QTableView* theWrappedObject) const
+{
+  return ( theWrappedObject->horizontalHeader());
+}
+
+void PythonQtWrapper_QTableView::setWordWrap(QTableView* theWrappedObject, bool  on)
+{
+  ( theWrappedObject->setWordWrap(on));
+}
+
+void PythonQtWrapper_QTableView::scrollTo(QTableView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_scrollTo(index, hint));
+}
+
+void PythonQtWrapper_QTableView::setModel(QTableView* theWrappedObject, QAbstractItemModel*  model)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setModel(model));
+}
+
+void PythonQtWrapper_QTableView::clearSpans(QTableView* theWrappedObject)
+{
+  ( theWrappedObject->clearSpans());
+}
+
+void PythonQtWrapper_QTableView::updateGeometries(QTableView* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_updateGeometries());
 }
 
 void PythonQtWrapper_QTableView::horizontalScrollbarAction(QTableView* theWrappedObject, int  action)
@@ -1706,44 +1774,24 @@ QRegion  PythonQtWrapper_QTableView::visualRegionForSelection(QTableView* theWra
   return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_visualRegionForSelection(selection));
 }
 
-int  PythonQtWrapper_QTableView::rowSpan(QTableView* theWrappedObject, int  row, int  column) const
+void PythonQtWrapper_QTableView::setHorizontalHeader(QTableView* theWrappedObject, QHeaderView*  header)
 {
-  return ( theWrappedObject->rowSpan(row, column));
+  ( theWrappedObject->setHorizontalHeader(header));
 }
 
-QStyleOptionViewItem  PythonQtWrapper_QTableView::viewOptions(QTableView* theWrappedObject) const
+void PythonQtWrapper_QTableView::setSpan(QTableView* theWrappedObject, int  row, int  column, int  rowSpan, int  columnSpan)
 {
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_viewOptions());
+  ( theWrappedObject->setSpan(row, column, rowSpan, columnSpan));
 }
 
-int  PythonQtWrapper_QTableView::sizeHintForColumn(QTableView* theWrappedObject, int  column) const
+int  PythonQtWrapper_QTableView::columnViewportPosition(QTableView* theWrappedObject, int  column) const
 {
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_sizeHintForColumn(column));
+  return ( theWrappedObject->columnViewportPosition(column));
 }
 
-QList<QModelIndex >  PythonQtWrapper_QTableView::selectedIndexes(QTableView* theWrappedObject) const
+QModelIndex  PythonQtWrapper_QTableView::indexAt(QTableView* theWrappedObject, const QPoint&  p) const
 {
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_selectedIndexes());
-}
-
-void PythonQtWrapper_QTableView::clearSpans(QTableView* theWrappedObject)
-{
-  ( theWrappedObject->clearSpans());
-}
-
-void PythonQtWrapper_QTableView::scrollContentsBy(QTableView* theWrappedObject, int  dx, int  dy)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_scrollContentsBy(dx, dy));
-}
-
-int  PythonQtWrapper_QTableView::rowAt(QTableView* theWrappedObject, int  y) const
-{
-  return ( theWrappedObject->rowAt(y));
-}
-
-void PythonQtWrapper_QTableView::setSelectionModel(QTableView* theWrappedObject, QItemSelectionModel*  selectionModel)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setSelectionModel(selectionModel));
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_indexAt(p));
 }
 
 bool  PythonQtWrapper_QTableView::wordWrap(QTableView* theWrappedObject) const
@@ -1751,9 +1799,19 @@ bool  PythonQtWrapper_QTableView::wordWrap(QTableView* theWrappedObject) const
   return ( theWrappedObject->wordWrap());
 }
 
-void PythonQtWrapper_QTableView::setSelection(QTableView* theWrappedObject, const QRect&  rect, QItemSelectionModel::SelectionFlags  command)
+bool  PythonQtWrapper_QTableView::isRowHidden(QTableView* theWrappedObject, int  row) const
 {
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setSelection(rect, command));
+  return ( theWrappedObject->isRowHidden(row));
+}
+
+QRect  PythonQtWrapper_QTableView::visualRect(QTableView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_visualRect(index));
+}
+
+QStyleOptionViewItem  PythonQtWrapper_QTableView::viewOptions(QTableView* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_viewOptions());
 }
 
 void PythonQtWrapper_QTableView::setGridStyle(QTableView* theWrappedObject, Qt::PenStyle  style)
@@ -1761,79 +1819,19 @@ void PythonQtWrapper_QTableView::setGridStyle(QTableView* theWrappedObject, Qt::
   ( theWrappedObject->setGridStyle(style));
 }
 
-bool  PythonQtWrapper_QTableView::isIndexHidden(QTableView* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_isIndexHidden(index));
-}
-
-int  PythonQtWrapper_QTableView::rowViewportPosition(QTableView* theWrappedObject, int  row) const
-{
-  return ( theWrappedObject->rowViewportPosition(row));
-}
-
-void PythonQtWrapper_QTableView::scrollTo(QTableView* theWrappedObject, const QModelIndex&  index, QAbstractItemView::ScrollHint  hint)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_scrollTo(index, hint));
-}
-
 void PythonQtWrapper_QTableView::setRootIndex(QTableView* theWrappedObject, const QModelIndex&  index)
 {
   ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_setRootIndex(index));
 }
 
-bool  PythonQtWrapper_QTableView::isSortingEnabled(QTableView* theWrappedObject) const
+QList<QModelIndex >  PythonQtWrapper_QTableView::selectedIndexes(QTableView* theWrappedObject) const
 {
-  return ( theWrappedObject->isSortingEnabled());
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_selectedIndexes());
 }
 
-bool  PythonQtWrapper_QTableView::isColumnHidden(QTableView* theWrappedObject, int  column) const
+int  PythonQtWrapper_QTableView::rowHeight(QTableView* theWrappedObject, int  row) const
 {
-  return ( theWrappedObject->isColumnHidden(column));
-}
-
-void PythonQtWrapper_QTableView::sortByColumn(QTableView* theWrappedObject, int  column, Qt::SortOrder  order)
-{
-  ( theWrappedObject->sortByColumn(column, order));
-}
-
-bool  PythonQtWrapper_QTableView::isCornerButtonEnabled(QTableView* theWrappedObject) const
-{
-  return ( theWrappedObject->isCornerButtonEnabled());
-}
-
-void PythonQtWrapper_QTableView::setWordWrap(QTableView* theWrappedObject, bool  on)
-{
-  ( theWrappedObject->setWordWrap(on));
-}
-
-void PythonQtWrapper_QTableView::setHorizontalHeader(QTableView* theWrappedObject, QHeaderView*  header)
-{
-  ( theWrappedObject->setHorizontalHeader(header));
-}
-
-void PythonQtWrapper_QTableView::updateGeometries(QTableView* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_updateGeometries());
-}
-
-void PythonQtWrapper_QTableView::currentChanged(QTableView* theWrappedObject, const QModelIndex&  current, const QModelIndex&  previous)
-{
-  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_currentChanged(current, previous));
-}
-
-int  PythonQtWrapper_QTableView::columnWidth(QTableView* theWrappedObject, int  column) const
-{
-  return ( theWrappedObject->columnWidth(column));
-}
-
-void PythonQtWrapper_QTableView::setRowHeight(QTableView* theWrappedObject, int  row, int  height)
-{
-  ( theWrappedObject->setRowHeight(row, height));
-}
-
-void PythonQtWrapper_QTableView::setCornerButtonEnabled(QTableView* theWrappedObject, bool  enable)
-{
-  ( theWrappedObject->setCornerButtonEnabled(enable));
+  return ( theWrappedObject->rowHeight(row));
 }
 
 int  PythonQtWrapper_QTableView::sizeHintForRow(QTableView* theWrappedObject, int  row) const
@@ -1841,8 +1839,13 @@ int  PythonQtWrapper_QTableView::sizeHintForRow(QTableView* theWrappedObject, in
   return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_sizeHintForRow(row));
 }
 
-int  PythonQtWrapper_QTableView::rowHeight(QTableView* theWrappedObject, int  row) const
+void PythonQtWrapper_QTableView::timerEvent(QTableView* theWrappedObject, QTimerEvent*  event)
 {
-  return ( theWrappedObject->rowHeight(row));
+  ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_timerEvent(event));
+}
+
+bool  PythonQtWrapper_QTableView::isIndexHidden(QTableView* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QTableView*)theWrappedObject)->promoted_isIndexHidden(index));
 }
 

@@ -53,8 +53,8 @@
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRectF.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSize.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSizeF.h"
-#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.h"
-#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.h"
+//#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.h"
+//#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPoint.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPointF.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRegExp.h"
@@ -76,6 +76,11 @@
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QTextLength.h"
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QTextFormat.h"
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QMatrix.h"
+
+//new from 4.6
+#include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector2D.h"
+#include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector3D.h"
+#include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector4D.h"
 
 #endif
 

@@ -122,14 +122,9 @@ QThreadPool* PythonQtWrapper_QThreadPool::new_QThreadPool(QObject*  parent)
 { 
 return new PythonQtShell_QThreadPool(parent); }
 
-QThreadPool*  PythonQtWrapper_QThreadPool::static_QThreadPool_globalInstance()
+int  PythonQtWrapper_QThreadPool::expiryTimeout(QThreadPool* theWrappedObject) const
 {
-  return (QThreadPool::globalInstance());
-}
-
-void PythonQtWrapper_QThreadPool::releaseThread(QThreadPool* theWrappedObject)
-{
-  ( theWrappedObject->releaseThread());
+  return ( theWrappedObject->expiryTimeout());
 }
 
 void PythonQtWrapper_QThreadPool::waitForDone(QThreadPool* theWrappedObject)
@@ -142,26 +137,6 @@ void PythonQtWrapper_QThreadPool::setExpiryTimeout(QThreadPool* theWrappedObject
   ( theWrappedObject->setExpiryTimeout(expiryTimeout));
 }
 
-void PythonQtWrapper_QThreadPool::setMaxThreadCount(QThreadPool* theWrappedObject, int  maxThreadCount)
-{
-  ( theWrappedObject->setMaxThreadCount(maxThreadCount));
-}
-
-int  PythonQtWrapper_QThreadPool::activeThreadCount(QThreadPool* theWrappedObject) const
-{
-  return ( theWrappedObject->activeThreadCount());
-}
-
-void PythonQtWrapper_QThreadPool::reserveThread(QThreadPool* theWrappedObject)
-{
-  ( theWrappedObject->reserveThread());
-}
-
-int  PythonQtWrapper_QThreadPool::expiryTimeout(QThreadPool* theWrappedObject) const
-{
-  return ( theWrappedObject->expiryTimeout());
-}
-
 void PythonQtWrapper_QThreadPool::start(QThreadPool* theWrappedObject, QRunnable*  runnable, int  priority)
 {
   ( theWrappedObject->start(runnable, priority));
@@ -170,6 +145,31 @@ void PythonQtWrapper_QThreadPool::start(QThreadPool* theWrappedObject, QRunnable
 bool  PythonQtWrapper_QThreadPool::tryStart(QThreadPool* theWrappedObject, QRunnable*  runnable)
 {
   return ( theWrappedObject->tryStart(runnable));
+}
+
+void PythonQtWrapper_QThreadPool::releaseThread(QThreadPool* theWrappedObject)
+{
+  ( theWrappedObject->releaseThread());
+}
+
+QThreadPool*  PythonQtWrapper_QThreadPool::static_QThreadPool_globalInstance()
+{
+  return (QThreadPool::globalInstance());
+}
+
+int  PythonQtWrapper_QThreadPool::activeThreadCount(QThreadPool* theWrappedObject) const
+{
+  return ( theWrappedObject->activeThreadCount());
+}
+
+void PythonQtWrapper_QThreadPool::setMaxThreadCount(QThreadPool* theWrappedObject, int  maxThreadCount)
+{
+  ( theWrappedObject->setMaxThreadCount(maxThreadCount));
+}
+
+void PythonQtWrapper_QThreadPool::reserveThread(QThreadPool* theWrappedObject)
+{
+  ( theWrappedObject->reserveThread());
 }
 
 int  PythonQtWrapper_QThreadPool::maxThreadCount(QThreadPool* theWrappedObject) const

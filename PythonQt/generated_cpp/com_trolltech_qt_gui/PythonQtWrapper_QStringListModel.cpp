@@ -802,41 +802,6 @@ QVariant  PythonQtWrapper_QStringListModel::data(QStringListModel* theWrappedObj
   return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_data(index, role));
 }
 
-Qt::DropActions  PythonQtWrapper_QStringListModel::supportedDropActions(QStringListModel* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_supportedDropActions());
-}
-
-void PythonQtWrapper_QStringListModel::sort(QStringListModel* theWrappedObject, int  column, Qt::SortOrder  order)
-{
-  ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_sort(column, order));
-}
-
-Qt::ItemFlags  PythonQtWrapper_QStringListModel::flags(QStringListModel* theWrappedObject, const QModelIndex&  index) const
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_flags(index));
-}
-
-bool  PythonQtWrapper_QStringListModel::setData(QStringListModel* theWrappedObject, const QModelIndex&  index, const QVariant&  value, int  role)
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_setData(index, value, role));
-}
-
-bool  PythonQtWrapper_QStringListModel::removeRows(QStringListModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_removeRows(row, count, parent));
-}
-
-int  PythonQtWrapper_QStringListModel::rowCount(QStringListModel* theWrappedObject, const QModelIndex&  parent) const
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_rowCount(parent));
-}
-
-bool  PythonQtWrapper_QStringListModel::insertRows(QStringListModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
-{
-  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_insertRows(row, count, parent));
-}
-
 void PythonQtWrapper_QStringListModel::setStringList(QStringListModel* theWrappedObject, const QStringList&  strings)
 {
   ( theWrappedObject->setStringList(strings));
@@ -845,5 +810,40 @@ void PythonQtWrapper_QStringListModel::setStringList(QStringListModel* theWrappe
 QStringList  PythonQtWrapper_QStringListModel::stringList(QStringListModel* theWrappedObject) const
 {
   return ( theWrappedObject->stringList());
+}
+
+bool  PythonQtWrapper_QStringListModel::removeRows(QStringListModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_removeRows(row, count, parent));
+}
+
+void PythonQtWrapper_QStringListModel::sort(QStringListModel* theWrappedObject, int  column, Qt::SortOrder  order)
+{
+  ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_sort(column, order));
+}
+
+bool  PythonQtWrapper_QStringListModel::setData(QStringListModel* theWrappedObject, const QModelIndex&  index, const QVariant&  value, int  role)
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_setData(index, value, role));
+}
+
+bool  PythonQtWrapper_QStringListModel::insertRows(QStringListModel* theWrappedObject, int  row, int  count, const QModelIndex&  parent)
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_insertRows(row, count, parent));
+}
+
+Qt::ItemFlags  PythonQtWrapper_QStringListModel::flags(QStringListModel* theWrappedObject, const QModelIndex&  index) const
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_flags(index));
+}
+
+Qt::DropActions  PythonQtWrapper_QStringListModel::supportedDropActions(QStringListModel* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_supportedDropActions());
+}
+
+int  PythonQtWrapper_QStringListModel::rowCount(QStringListModel* theWrappedObject, const QModelIndex&  parent) const
+{
+  return ( ((PythonQtPublicPromoter_QStringListModel*)theWrappedObject)->promoted_rowCount(parent));
 }
 

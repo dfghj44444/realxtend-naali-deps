@@ -596,34 +596,9 @@ QSqlDriver* PythonQtWrapper_QSqlDriver::new_QSqlDriver(QObject*  parent)
 { 
 return new PythonQtShell_QSqlDriver(parent); }
 
-QString  PythonQtWrapper_QSqlDriver::sqlStatement(QSqlDriver* theWrappedObject, QSqlDriver::StatementType  type, const QString&  tableName, const QSqlRecord&  rec, bool  preparedStatement) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_sqlStatement(type, tableName, rec, preparedStatement));
-}
-
 bool  PythonQtWrapper_QSqlDriver::subscribeToNotification(QSqlDriver* theWrappedObject, const QString&  name)
 {
   return ( theWrappedObject->subscribeToNotification(name));
-}
-
-QVariant  PythonQtWrapper_QSqlDriver::handle(QSqlDriver* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_handle());
-}
-
-bool  PythonQtWrapper_QSqlDriver::isOpenError(QSqlDriver* theWrappedObject) const
-{
-  return ( theWrappedObject->isOpenError());
-}
-
-void PythonQtWrapper_QSqlDriver::setLastError(QSqlDriver* theWrappedObject, const QSqlError&  e)
-{
-  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setLastError(e));
-}
-
-void PythonQtWrapper_QSqlDriver::setOpenError(QSqlDriver* theWrappedObject, bool  e)
-{
-  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setOpenError(e));
 }
 
 QSqlRecord  PythonQtWrapper_QSqlDriver::record(QSqlDriver* theWrappedObject, const QString&  tableName) const
@@ -631,19 +606,9 @@ QSqlRecord  PythonQtWrapper_QSqlDriver::record(QSqlDriver* theWrappedObject, con
   return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_record(tableName));
 }
 
-QStringList  PythonQtWrapper_QSqlDriver::tables(QSqlDriver* theWrappedObject, QSql::TableType  tableType) const
+void PythonQtWrapper_QSqlDriver::setOpenError(QSqlDriver* theWrappedObject, bool  e)
 {
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_tables(tableType));
-}
-
-bool  PythonQtWrapper_QSqlDriver::isOpen(QSqlDriver* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_isOpen());
-}
-
-QString  PythonQtWrapper_QSqlDriver::formatValue(QSqlDriver* theWrappedObject, const QSqlField&  field, bool  trimStrings) const
-{
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_formatValue(field, trimStrings));
+  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setOpenError(e));
 }
 
 QSqlError  PythonQtWrapper_QSqlDriver::lastError(QSqlDriver* theWrappedObject) const
@@ -651,19 +616,9 @@ QSqlError  PythonQtWrapper_QSqlDriver::lastError(QSqlDriver* theWrappedObject) c
   return ( theWrappedObject->lastError());
 }
 
-bool  PythonQtWrapper_QSqlDriver::beginTransaction(QSqlDriver* theWrappedObject)
+bool  PythonQtWrapper_QSqlDriver::unsubscribeFromNotification(QSqlDriver* theWrappedObject, const QString&  name)
 {
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_beginTransaction());
-}
-
-QStringList  PythonQtWrapper_QSqlDriver::subscribedToNotifications(QSqlDriver* theWrappedObject) const
-{
-  return ( theWrappedObject->subscribedToNotifications());
-}
-
-bool  PythonQtWrapper_QSqlDriver::commitTransaction(QSqlDriver* theWrappedObject)
-{
-  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_commitTransaction());
+  return ( theWrappedObject->unsubscribeFromNotification(name));
 }
 
 QSqlIndex  PythonQtWrapper_QSqlDriver::primaryIndex(QSqlDriver* theWrappedObject, const QString&  tableName) const
@@ -671,14 +626,19 @@ QSqlIndex  PythonQtWrapper_QSqlDriver::primaryIndex(QSqlDriver* theWrappedObject
   return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_primaryIndex(tableName));
 }
 
-bool  PythonQtWrapper_QSqlDriver::unsubscribeFromNotification(QSqlDriver* theWrappedObject, const QString&  name)
+bool  PythonQtWrapper_QSqlDriver::commitTransaction(QSqlDriver* theWrappedObject)
 {
-  return ( theWrappedObject->unsubscribeFromNotification(name));
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_commitTransaction());
 }
 
-void PythonQtWrapper_QSqlDriver::setOpen(QSqlDriver* theWrappedObject, bool  o)
+bool  PythonQtWrapper_QSqlDriver::beginTransaction(QSqlDriver* theWrappedObject)
 {
-  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setOpen(o));
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_beginTransaction());
+}
+
+bool  PythonQtWrapper_QSqlDriver::isOpenError(QSqlDriver* theWrappedObject) const
+{
+  return ( theWrappedObject->isOpenError());
 }
 
 QString  PythonQtWrapper_QSqlDriver::escapeIdentifier(QSqlDriver* theWrappedObject, const QString&  identifier, QSqlDriver::IdentifierType  type) const
@@ -686,8 +646,68 @@ QString  PythonQtWrapper_QSqlDriver::escapeIdentifier(QSqlDriver* theWrappedObje
   return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_escapeIdentifier(identifier, type));
 }
 
+void PythonQtWrapper_QSqlDriver::setNumericalPrecisionPolicy(QSqlDriver* theWrappedObject, QSql::NumericalPrecisionPolicy  precisionPolicy)
+{
+  ( theWrappedObject->setNumericalPrecisionPolicy(precisionPolicy));
+}
+
+QStringList  PythonQtWrapper_QSqlDriver::subscribedToNotifications(QSqlDriver* theWrappedObject) const
+{
+  return ( theWrappedObject->subscribedToNotifications());
+}
+
+QVariant  PythonQtWrapper_QSqlDriver::handle(QSqlDriver* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_handle());
+}
+
+bool  PythonQtWrapper_QSqlDriver::isIdentifierEscaped(QSqlDriver* theWrappedObject, const QString&  identifier, QSqlDriver::IdentifierType  type) const
+{
+  return ( theWrappedObject->isIdentifierEscaped(identifier, type));
+}
+
 bool  PythonQtWrapper_QSqlDriver::rollbackTransaction(QSqlDriver* theWrappedObject)
 {
   return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_rollbackTransaction());
+}
+
+QString  PythonQtWrapper_QSqlDriver::formatValue(QSqlDriver* theWrappedObject, const QSqlField&  field, bool  trimStrings) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_formatValue(field, trimStrings));
+}
+
+QSql::NumericalPrecisionPolicy  PythonQtWrapper_QSqlDriver::numericalPrecisionPolicy(QSqlDriver* theWrappedObject) const
+{
+  return ( theWrappedObject->numericalPrecisionPolicy());
+}
+
+QString  PythonQtWrapper_QSqlDriver::sqlStatement(QSqlDriver* theWrappedObject, QSqlDriver::StatementType  type, const QString&  tableName, const QSqlRecord&  rec, bool  preparedStatement) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_sqlStatement(type, tableName, rec, preparedStatement));
+}
+
+void PythonQtWrapper_QSqlDriver::setLastError(QSqlDriver* theWrappedObject, const QSqlError&  e)
+{
+  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setLastError(e));
+}
+
+QString  PythonQtWrapper_QSqlDriver::stripDelimiters(QSqlDriver* theWrappedObject, const QString&  identifier, QSqlDriver::IdentifierType  type) const
+{
+  return ( theWrappedObject->stripDelimiters(identifier, type));
+}
+
+void PythonQtWrapper_QSqlDriver::setOpen(QSqlDriver* theWrappedObject, bool  o)
+{
+  ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_setOpen(o));
+}
+
+bool  PythonQtWrapper_QSqlDriver::isOpen(QSqlDriver* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_isOpen());
+}
+
+QStringList  PythonQtWrapper_QSqlDriver::tables(QSqlDriver* theWrappedObject, QSql::TableType  tableType) const
+{
+  return ( ((PythonQtPublicPromoter_QSqlDriver*)theWrappedObject)->promoted_tables(tableType));
 }
 

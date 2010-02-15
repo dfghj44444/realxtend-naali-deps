@@ -22,14 +22,19 @@ QXmlStreamAttribute* PythonQtWrapper_QXmlStreamAttribute::new_QXmlStreamAttribut
 { 
 return new QXmlStreamAttribute(arg__1); }
 
+QStringRef  PythonQtWrapper_QXmlStreamAttribute::name(QXmlStreamAttribute* theWrappedObject) const
+{
+  return ( theWrappedObject->name());
+}
+
 QStringRef  PythonQtWrapper_QXmlStreamAttribute::prefix(QXmlStreamAttribute* theWrappedObject) const
 {
   return ( theWrappedObject->prefix());
 }
 
-QStringRef  PythonQtWrapper_QXmlStreamAttribute::namespaceUri(QXmlStreamAttribute* theWrappedObject) const
+QStringRef  PythonQtWrapper_QXmlStreamAttribute::qualifiedName(QXmlStreamAttribute* theWrappedObject) const
 {
-  return ( theWrappedObject->namespaceUri());
+  return ( theWrappedObject->qualifiedName());
 }
 
 QStringRef  PythonQtWrapper_QXmlStreamAttribute::value(QXmlStreamAttribute* theWrappedObject) const
@@ -37,9 +42,9 @@ QStringRef  PythonQtWrapper_QXmlStreamAttribute::value(QXmlStreamAttribute* theW
   return ( theWrappedObject->value());
 }
 
-bool  PythonQtWrapper_QXmlStreamAttribute::operator_equal(QXmlStreamAttribute* theWrappedObject, const QXmlStreamAttribute&  other) const
+QStringRef  PythonQtWrapper_QXmlStreamAttribute::namespaceUri(QXmlStreamAttribute* theWrappedObject) const
 {
-  return ( (*theWrappedObject)== other);
+  return ( theWrappedObject->namespaceUri());
 }
 
 bool  PythonQtWrapper_QXmlStreamAttribute::isDefault(QXmlStreamAttribute* theWrappedObject) const
@@ -47,13 +52,8 @@ bool  PythonQtWrapper_QXmlStreamAttribute::isDefault(QXmlStreamAttribute* theWra
   return ( theWrappedObject->isDefault());
 }
 
-QStringRef  PythonQtWrapper_QXmlStreamAttribute::name(QXmlStreamAttribute* theWrappedObject) const
+bool  PythonQtWrapper_QXmlStreamAttribute::operator_equal(QXmlStreamAttribute* theWrappedObject, const QXmlStreamAttribute&  other) const
 {
-  return ( theWrappedObject->name());
-}
-
-QStringRef  PythonQtWrapper_QXmlStreamAttribute::qualifiedName(QXmlStreamAttribute* theWrappedObject) const
-{
-  return ( theWrappedObject->qualifiedName());
+  return ( (*theWrappedObject)== other);
 }
 

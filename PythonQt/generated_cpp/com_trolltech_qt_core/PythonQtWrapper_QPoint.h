@@ -8,7 +8,10 @@
 
 #include <QVariant>
 #include <qdatastream.h>
+#include <qmatrix.h>
+#include <qmatrix4x4.h>
 #include <qpoint.h>
+#include <qtransform.h>
 
 class PythonQtWrapper_QPoint : public QObject
 { Q_OBJECT
@@ -21,18 +24,25 @@ QPoint* a = new QPoint();
 *((QPoint*)a) = other;
 return a; }
 void delete_QPoint(QPoint* obj) { delete obj; } 
-   bool  operator_equal(QPoint* theWrappedObject, const QPoint&  p2);
-   void setY(QPoint* theWrappedObject, int  y);
-   QPoint*  operator_add_assign(QPoint* theWrappedObject, const QPoint&  p);
-   QPoint*  operator_multiply_assign(QPoint* theWrappedObject, qreal  c);
-   bool  isNull(QPoint* theWrappedObject) const;
-   void writeTo(QPoint* theWrappedObject, QDataStream&  arg__1);
-   int  y(QPoint* theWrappedObject) const;
+   const QPoint  __add__(QPoint* theWrappedObject, const QPoint&  p2);
+   QPoint  __mul__(QPoint* theWrappedObject, const QMatrix4x4&  matrix);
    int  manhattanLength(QPoint* theWrappedObject) const;
-   QPoint*  operator_subtract_assign(QPoint* theWrappedObject, const QPoint&  p);
+   QPoint*  __idiv__(QPoint* theWrappedObject, qreal  c);
+   QPoint*  __isub__(QPoint* theWrappedObject, const QPoint&  p);
+   QPoint  __mul__(QPoint* theWrappedObject, const QMatrix&  m);
+   const QPoint  __mul__(QPoint* theWrappedObject, qreal  c);
+   bool  operator_equal(QPoint* theWrappedObject, const QPoint&  p2);
+   int  y(QPoint* theWrappedObject) const;
    void setX(QPoint* theWrappedObject, int  x);
-   QPoint*  operator_divide_assign(QPoint* theWrappedObject, qreal  c);
    int  x(QPoint* theWrappedObject) const;
+   const QPoint  __div__(QPoint* theWrappedObject, qreal  c);
+   void writeTo(QPoint* theWrappedObject, QDataStream&  arg__1);
+   QPoint  __mul__(QPoint* theWrappedObject, const QTransform&  m);
+   void setY(QPoint* theWrappedObject, int  y);
+   bool  isNull(QPoint* theWrappedObject) const;
+   QPoint*  __imul__(QPoint* theWrappedObject, qreal  c);
+   const QPoint  __sub__(QPoint* theWrappedObject, const QPoint&  p2);
+   QPoint*  __iadd__(QPoint* theWrappedObject, const QPoint&  p);
    void readFrom(QPoint* theWrappedObject, QDataStream&  arg__1);
     QString toString(QPoint*);
 };

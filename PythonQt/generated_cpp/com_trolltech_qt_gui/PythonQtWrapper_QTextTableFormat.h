@@ -33,20 +33,20 @@ PythonQtShell_QTextTableFormat* a = new PythonQtShell_QTextTableFormat();
 *((QTextTableFormat*)a) = other;
 return a; }
 void delete_QTextTableFormat(QTextTableFormat* obj) { delete obj; } 
-   QVector<QTextLength >  columnWidthConstraints(QTextTableFormat* theWrappedObject) const;
-   void setCellPadding(QTextTableFormat* theWrappedObject, qreal  padding);
-   int  headerRowCount(QTextTableFormat* theWrappedObject) const;
-   bool  isValid(QTextTableFormat* theWrappedObject) const;
-   void setHeaderRowCount(QTextTableFormat* theWrappedObject, int  count);
-   void setAlignment(QTextTableFormat* theWrappedObject, Qt::Alignment  alignment);
-   void setColumnWidthConstraints(QTextTableFormat* theWrappedObject, const QVector<QTextLength >&  constraints);
-   void setCellSpacing(QTextTableFormat* theWrappedObject, qreal  spacing);
-   Qt::Alignment  alignment(QTextTableFormat* theWrappedObject) const;
-   void setColumns(QTextTableFormat* theWrappedObject, int  columns);
    qreal  cellSpacing(QTextTableFormat* theWrappedObject) const;
-   void clearColumnWidthConstraints(QTextTableFormat* theWrappedObject);
-   qreal  cellPadding(QTextTableFormat* theWrappedObject) const;
+   void setHeaderRowCount(QTextTableFormat* theWrappedObject, int  count);
+   int  headerRowCount(QTextTableFormat* theWrappedObject) const;
+   void setAlignment(QTextTableFormat* theWrappedObject, Qt::Alignment  alignment);
+   bool  isValid(QTextTableFormat* theWrappedObject) const;
+   void setCellSpacing(QTextTableFormat* theWrappedObject, qreal  spacing);
    int  columns(QTextTableFormat* theWrappedObject) const;
+   void setCellPadding(QTextTableFormat* theWrappedObject, qreal  padding);
+   Qt::Alignment  alignment(QTextTableFormat* theWrappedObject) const;
+   void setColumnWidthConstraints(QTextTableFormat* theWrappedObject, const QVector<QTextLength >&  constraints);
+   void setColumns(QTextTableFormat* theWrappedObject, int  columns);
+   void clearColumnWidthConstraints(QTextTableFormat* theWrappedObject);
+   QVector<QTextLength >  columnWidthConstraints(QTextTableFormat* theWrappedObject) const;
+   qreal  cellPadding(QTextTableFormat* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTTABLEFORMAT_H

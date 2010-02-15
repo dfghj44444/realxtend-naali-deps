@@ -33,8 +33,8 @@ HEADERS +=                    \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRectF.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSize.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSizeF.h \
-  $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.h \
-  $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.h \
+  #$$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.h \
+  #$$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPoint.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPointF.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRegExp.h \
@@ -87,8 +87,8 @@ SOURCES +=                    \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRectF.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSize.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QSizeF.cpp \
-  $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.cpp \
-  $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.cpp \
+  #$$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLine.cpp \
+  #$$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QLineF.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPoint.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QPointF.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QRegExp.cpp \

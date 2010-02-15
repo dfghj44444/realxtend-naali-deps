@@ -14,12 +14,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -96,13 +99,14 @@ public slots:
 QPrintPreviewWidget* new_QPrintPreviewWidget(QPrinter*  printer, QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
 QPrintPreviewWidget* new_QPrintPreviewWidget(QWidget*  parent = 0, Qt::WindowFlags  flags = 0);
 void delete_QPrintPreviewWidget(QPrintPreviewWidget* obj) { delete obj; } 
+   int  pageCount(QPrintPreviewWidget* theWrappedObject) const;
    int  currentPage(QPrintPreviewWidget* theWrappedObject) const;
-   QPrintPreviewWidget::ViewMode  viewMode(QPrintPreviewWidget* theWrappedObject) const;
+   void setVisible(QPrintPreviewWidget* theWrappedObject, bool  visible);
    qreal  zoomFactor(QPrintPreviewWidget* theWrappedObject) const;
    QPrintPreviewWidget::ZoomMode  zoomMode(QPrintPreviewWidget* theWrappedObject) const;
-   int  numPages(QPrintPreviewWidget* theWrappedObject) const;
-   void setVisible(QPrintPreviewWidget* theWrappedObject, bool  visible);
    QPrinter::Orientation  orientation(QPrintPreviewWidget* theWrappedObject) const;
+   QPrintPreviewWidget::ViewMode  viewMode(QPrintPreviewWidget* theWrappedObject) const;
+   int  numPages(QPrintPreviewWidget* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QPRINTPREVIEWWIDGET_H

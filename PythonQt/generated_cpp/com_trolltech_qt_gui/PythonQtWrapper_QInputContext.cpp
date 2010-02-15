@@ -383,39 +383,9 @@ QInputContext* PythonQtWrapper_QInputContext::new_QInputContext(QObject*  parent
 { 
 return new PythonQtShell_QInputContext(parent); }
 
-void PythonQtWrapper_QInputContext::widgetDestroyed(QInputContext* theWrappedObject, QWidget*  w)
-{
-  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_widgetDestroyed(w));
-}
-
 QWidget*  PythonQtWrapper_QInputContext::focusWidget(QInputContext* theWrappedObject) const
 {
   return ( theWrappedObject->focusWidget());
-}
-
-bool  PythonQtWrapper_QInputContext::filterEvent(QInputContext* theWrappedObject, const QEvent*  event)
-{
-  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_filterEvent(event));
-}
-
-QFont  PythonQtWrapper_QInputContext::font(QInputContext* theWrappedObject) const
-{
-  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_font());
-}
-
-void PythonQtWrapper_QInputContext::mouseHandler(QInputContext* theWrappedObject, int  x, QMouseEvent*  event)
-{
-  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_mouseHandler(x, event));
-}
-
-void PythonQtWrapper_QInputContext::update(QInputContext* theWrappedObject)
-{
-  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_update());
-}
-
-QList<QAction* >  PythonQtWrapper_QInputContext::actions(QInputContext* theWrappedObject)
-{
-  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_actions());
 }
 
 void PythonQtWrapper_QInputContext::sendEvent(QInputContext* theWrappedObject, const QInputMethodEvent&  event)
@@ -423,8 +393,38 @@ void PythonQtWrapper_QInputContext::sendEvent(QInputContext* theWrappedObject, c
   ( theWrappedObject->sendEvent(event));
 }
 
+QList<QAction* >  PythonQtWrapper_QInputContext::actions(QInputContext* theWrappedObject)
+{
+  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_actions());
+}
+
+QFont  PythonQtWrapper_QInputContext::font(QInputContext* theWrappedObject) const
+{
+  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_font());
+}
+
+bool  PythonQtWrapper_QInputContext::filterEvent(QInputContext* theWrappedObject, const QEvent*  event)
+{
+  return ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_filterEvent(event));
+}
+
+void PythonQtWrapper_QInputContext::mouseHandler(QInputContext* theWrappedObject, int  x, QMouseEvent*  event)
+{
+  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_mouseHandler(x, event));
+}
+
+void PythonQtWrapper_QInputContext::widgetDestroyed(QInputContext* theWrappedObject, QWidget*  w)
+{
+  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_widgetDestroyed(w));
+}
+
 QTextFormat  PythonQtWrapper_QInputContext::standardFormat(QInputContext* theWrappedObject, QInputContext::StandardFormat  s) const
 {
   return ( theWrappedObject->standardFormat(s));
+}
+
+void PythonQtWrapper_QInputContext::update(QInputContext* theWrappedObject)
+{
+  ( ((PythonQtPublicPromoter_QInputContext*)theWrappedObject)->promoted_update());
 }
 

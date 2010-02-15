@@ -18,11 +18,6 @@ QXmlStreamNamespaceDeclaration* PythonQtWrapper_QXmlStreamNamespaceDeclaration::
 { 
 return new QXmlStreamNamespaceDeclaration(arg__1); }
 
-bool  PythonQtWrapper_QXmlStreamNamespaceDeclaration::operator_equal(QXmlStreamNamespaceDeclaration* theWrappedObject, const QXmlStreamNamespaceDeclaration&  other) const
-{
-  return ( (*theWrappedObject)== other);
-}
-
 QStringRef  PythonQtWrapper_QXmlStreamNamespaceDeclaration::prefix(QXmlStreamNamespaceDeclaration* theWrappedObject) const
 {
   return ( theWrappedObject->prefix());
@@ -31,5 +26,10 @@ QStringRef  PythonQtWrapper_QXmlStreamNamespaceDeclaration::prefix(QXmlStreamNam
 QStringRef  PythonQtWrapper_QXmlStreamNamespaceDeclaration::namespaceUri(QXmlStreamNamespaceDeclaration* theWrappedObject) const
 {
   return ( theWrappedObject->namespaceUri());
+}
+
+bool  PythonQtWrapper_QXmlStreamNamespaceDeclaration::operator_equal(QXmlStreamNamespaceDeclaration* theWrappedObject, const QXmlStreamNamespaceDeclaration&  other) const
+{
+  return ( (*theWrappedObject)== other);
 }
 

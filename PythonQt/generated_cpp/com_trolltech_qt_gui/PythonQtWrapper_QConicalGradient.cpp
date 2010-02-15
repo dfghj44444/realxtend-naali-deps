@@ -22,19 +22,19 @@ QConicalGradient* PythonQtWrapper_QConicalGradient::new_QConicalGradient(qreal  
 { 
 return new QConicalGradient(cx, cy, startAngle); }
 
+void PythonQtWrapper_QConicalGradient::setAngle(QConicalGradient* theWrappedObject, qreal  angle)
+{
+  ( theWrappedObject->setAngle(angle));
+}
+
 QPointF  PythonQtWrapper_QConicalGradient::center(QConicalGradient* theWrappedObject) const
 {
   return ( theWrappedObject->center());
 }
 
-qreal  PythonQtWrapper_QConicalGradient::angle(QConicalGradient* theWrappedObject) const
+void PythonQtWrapper_QConicalGradient::setCenter(QConicalGradient* theWrappedObject, qreal  x, qreal  y)
 {
-  return ( theWrappedObject->angle());
-}
-
-void PythonQtWrapper_QConicalGradient::setAngle(QConicalGradient* theWrappedObject, qreal  angle)
-{
-  ( theWrappedObject->setAngle(angle));
+  ( theWrappedObject->setCenter(x, y));
 }
 
 void PythonQtWrapper_QConicalGradient::setCenter(QConicalGradient* theWrappedObject, const QPointF&  center)
@@ -42,8 +42,8 @@ void PythonQtWrapper_QConicalGradient::setCenter(QConicalGradient* theWrappedObj
   ( theWrappedObject->setCenter(center));
 }
 
-void PythonQtWrapper_QConicalGradient::setCenter(QConicalGradient* theWrappedObject, qreal  x, qreal  y)
+qreal  PythonQtWrapper_QConicalGradient::angle(QConicalGradient* theWrappedObject) const
 {
-  ( theWrappedObject->setCenter(x, y));
+  return ( theWrappedObject->angle());
 }
 

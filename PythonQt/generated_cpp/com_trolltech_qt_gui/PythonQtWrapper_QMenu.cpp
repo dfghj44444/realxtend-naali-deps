@@ -11,12 +11,15 @@
 #include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
+#include <qgraphicseffect.h>
+#include <qgraphicsproxywidget.h>
 #include <qicon.h>
 #include <qinputcontext.h>
 #include <qkeysequence.h>
 #include <qlayout.h>
 #include <qlist.h>
 #include <qlocale.h>
+#include <qmargins.h>
 #include <qmenu.h>
 #include <qobject.h>
 #include <qpaintdevice.h>
@@ -807,104 +810,9 @@ QAction*  PythonQtWrapper_QMenu::exec(QMenu* theWrappedObject, const QPoint&  po
   return ( theWrappedObject->exec(pos, at));
 }
 
-QAction*  PythonQtWrapper_QMenu::addAction(QMenu* theWrappedObject, const QIcon&  icon, const QString&  text)
-{
-  return ( theWrappedObject->addAction(icon, text));
-}
-
-QString  PythonQtWrapper_QMenu::title(QMenu* theWrappedObject) const
-{
-  return ( theWrappedObject->title());
-}
-
-void PythonQtWrapper_QMenu::setDefaultAction(QMenu* theWrappedObject, QAction*  arg__1)
-{
-  ( theWrappedObject->setDefaultAction(arg__1));
-}
-
-QRect  PythonQtWrapper_QMenu::actionGeometry(QMenu* theWrappedObject, QAction*  arg__1) const
-{
-  return ( theWrappedObject->actionGeometry(arg__1));
-}
-
-void PythonQtWrapper_QMenu::enterEvent(QMenu* theWrappedObject, QEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_enterEvent(arg__1));
-}
-
-QMenu*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, const QIcon&  icon, const QString&  title)
-{
-  return ( theWrappedObject->addMenu(icon, title));
-}
-
-QAction*  PythonQtWrapper_QMenu::static_QMenu_exec(QList<QAction* >  actions, const QPoint&  pos, QAction*  at)
-{
-  return (QMenu::exec(actions, pos, at));
-}
-
-void PythonQtWrapper_QMenu::setSeparatorsCollapsible(QMenu* theWrappedObject, bool  collapse)
-{
-  ( theWrappedObject->setSeparatorsCollapsible(collapse));
-}
-
-QAction*  PythonQtWrapper_QMenu::exec(QMenu* theWrappedObject)
-{
-  return ( theWrappedObject->exec());
-}
-
 void PythonQtWrapper_QMenu::paintEvent(QMenu* theWrappedObject, QPaintEvent*  arg__1)
 {
   ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_paintEvent(arg__1));
-}
-
-QAction*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, QMenu*  menu)
-{
-  return ( theWrappedObject->addMenu(menu));
-}
-
-void PythonQtWrapper_QMenu::changeEvent(QMenu* theWrappedObject, QEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_changeEvent(arg__1));
-}
-
-void PythonQtWrapper_QMenu::setIcon(QMenu* theWrappedObject, const QIcon&  icon)
-{
-  ( theWrappedObject->setIcon(icon));
-}
-
-void PythonQtWrapper_QMenu::leaveEvent(QMenu* theWrappedObject, QEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_leaveEvent(arg__1));
-}
-
-void PythonQtWrapper_QMenu::setActiveAction(QMenu* theWrappedObject, QAction*  act)
-{
-  ( theWrappedObject->setActiveAction(act));
-}
-
-QAction*  PythonQtWrapper_QMenu::actionAt(QMenu* theWrappedObject, const QPoint&  arg__1) const
-{
-  return ( theWrappedObject->actionAt(arg__1));
-}
-
-void PythonQtWrapper_QMenu::mouseMoveEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
-}
-
-QAction*  PythonQtWrapper_QMenu::insertMenu(QMenu* theWrappedObject, QAction*  before, QMenu*  menu)
-{
-  return ( theWrappedObject->insertMenu(before, menu));
-}
-
-void PythonQtWrapper_QMenu::keyPressEvent(QMenu* theWrappedObject, QKeyEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_keyPressEvent(arg__1));
-}
-
-void PythonQtWrapper_QMenu::wheelEvent(QMenu* theWrappedObject, QWheelEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_wheelEvent(arg__1));
 }
 
 void PythonQtWrapper_QMenu::actionEvent(QMenu* theWrappedObject, QActionEvent*  arg__1)
@@ -912,59 +820,14 @@ void PythonQtWrapper_QMenu::actionEvent(QMenu* theWrappedObject, QActionEvent*  
   ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_actionEvent(arg__1));
 }
 
-bool  PythonQtWrapper_QMenu::isTearOffMenuVisible(QMenu* theWrappedObject) const
+QMenu*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, const QString&  title)
 {
-  return ( theWrappedObject->isTearOffMenuVisible());
+  return ( theWrappedObject->addMenu(title));
 }
 
-bool  PythonQtWrapper_QMenu::isEmpty(QMenu* theWrappedObject) const
+QAction*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, QMenu*  menu)
 {
-  return ( theWrappedObject->isEmpty());
-}
-
-void PythonQtWrapper_QMenu::mousePressEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mousePressEvent(arg__1));
-}
-
-void PythonQtWrapper_QMenu::hideTearOffMenu(QMenu* theWrappedObject)
-{
-  ( theWrappedObject->hideTearOffMenu());
-}
-
-bool  PythonQtWrapper_QMenu::separatorsCollapsible(QMenu* theWrappedObject) const
-{
-  return ( theWrappedObject->separatorsCollapsible());
-}
-
-bool  PythonQtWrapper_QMenu::event(QMenu* theWrappedObject, QEvent*  arg__1)
-{
-  return ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_event(arg__1));
-}
-
-QSize  PythonQtWrapper_QMenu::sizeHint(QMenu* theWrappedObject) const
-{
-  return ( theWrappedObject->sizeHint());
-}
-
-void PythonQtWrapper_QMenu::hideEvent(QMenu* theWrappedObject, QHideEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_hideEvent(arg__1));
-}
-
-void PythonQtWrapper_QMenu::popup(QMenu* theWrappedObject, const QPoint&  pos, QAction*  at)
-{
-  ( theWrappedObject->popup(pos, at));
-}
-
-QAction*  PythonQtWrapper_QMenu::insertSeparator(QMenu* theWrappedObject, QAction*  before)
-{
-  return ( theWrappedObject->insertSeparator(before));
-}
-
-void PythonQtWrapper_QMenu::mouseReleaseEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
-{
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mouseReleaseEvent(arg__1));
+  return ( theWrappedObject->addMenu(menu));
 }
 
 bool  PythonQtWrapper_QMenu::focusNextPrevChild(QMenu* theWrappedObject, bool  next)
@@ -972,14 +835,14 @@ bool  PythonQtWrapper_QMenu::focusNextPrevChild(QMenu* theWrappedObject, bool  n
   return ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_focusNextPrevChild(next));
 }
 
-QIcon  PythonQtWrapper_QMenu::icon(QMenu* theWrappedObject) const
+QAction*  PythonQtWrapper_QMenu::addAction(QMenu* theWrappedObject, const QString&  text)
 {
-  return ( theWrappedObject->icon());
+  return ( theWrappedObject->addAction(text));
 }
 
-void PythonQtWrapper_QMenu::timerEvent(QMenu* theWrappedObject, QTimerEvent*  arg__1)
+QAction*  PythonQtWrapper_QMenu::insertMenu(QMenu* theWrappedObject, QAction*  before, QMenu*  menu)
 {
-  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_timerEvent(arg__1));
+  return ( theWrappedObject->insertMenu(before, menu));
 }
 
 QAction*  PythonQtWrapper_QMenu::addSeparator(QMenu* theWrappedObject)
@@ -987,34 +850,104 @@ QAction*  PythonQtWrapper_QMenu::addSeparator(QMenu* theWrappedObject)
   return ( theWrappedObject->addSeparator());
 }
 
+void PythonQtWrapper_QMenu::keyPressEvent(QMenu* theWrappedObject, QKeyEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_keyPressEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::enterEvent(QMenu* theWrappedObject, QEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_enterEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::setSeparatorsCollapsible(QMenu* theWrappedObject, bool  collapse)
+{
+  ( theWrappedObject->setSeparatorsCollapsible(collapse));
+}
+
+bool  PythonQtWrapper_QMenu::separatorsCollapsible(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->separatorsCollapsible());
+}
+
+QIcon  PythonQtWrapper_QMenu::icon(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->icon());
+}
+
+QString  PythonQtWrapper_QMenu::title(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->title());
+}
+
 QAction*  PythonQtWrapper_QMenu::menuAction(QMenu* theWrappedObject) const
 {
   return ( theWrappedObject->menuAction());
 }
 
-QAction*  PythonQtWrapper_QMenu::defaultAction(QMenu* theWrappedObject) const
+void PythonQtWrapper_QMenu::leaveEvent(QMenu* theWrappedObject, QEvent*  arg__1)
 {
-  return ( theWrappedObject->defaultAction());
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_leaveEvent(arg__1));
 }
 
-void PythonQtWrapper_QMenu::setTitle(QMenu* theWrappedObject, const QString&  title)
+QAction*  PythonQtWrapper_QMenu::actionAt(QMenu* theWrappedObject, const QPoint&  arg__1) const
 {
-  ( theWrappedObject->setTitle(title));
+  return ( theWrappedObject->actionAt(arg__1));
 }
 
-bool  PythonQtWrapper_QMenu::isTearOffEnabled(QMenu* theWrappedObject) const
+bool  PythonQtWrapper_QMenu::isEmpty(QMenu* theWrappedObject) const
 {
-  return ( theWrappedObject->isTearOffEnabled());
+  return ( theWrappedObject->isEmpty());
 }
 
-QMenu*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, const QString&  title)
+void PythonQtWrapper_QMenu::setDefaultAction(QMenu* theWrappedObject, QAction*  arg__1)
 {
-  return ( theWrappedObject->addMenu(title));
+  ( theWrappedObject->setDefaultAction(arg__1));
 }
 
-QAction*  PythonQtWrapper_QMenu::addAction(QMenu* theWrappedObject, const QString&  text)
+QAction*  PythonQtWrapper_QMenu::static_QMenu_exec(QList<QAction* >  actions, const QPoint&  pos, QAction*  at)
 {
-  return ( theWrappedObject->addAction(text));
+  return (QMenu::exec(actions, pos, at));
+}
+
+QAction*  PythonQtWrapper_QMenu::exec(QMenu* theWrappedObject)
+{
+  return ( theWrappedObject->exec());
+}
+
+void PythonQtWrapper_QMenu::clear(QMenu* theWrappedObject)
+{
+  ( theWrappedObject->clear());
+}
+
+bool  PythonQtWrapper_QMenu::event(QMenu* theWrappedObject, QEvent*  arg__1)
+{
+  return ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_event(arg__1));
+}
+
+void PythonQtWrapper_QMenu::timerEvent(QMenu* theWrappedObject, QTimerEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_timerEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::changeEvent(QMenu* theWrappedObject, QEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_changeEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::setActiveAction(QMenu* theWrappedObject, QAction*  act)
+{
+  ( theWrappedObject->setActiveAction(act));
+}
+
+QMenu*  PythonQtWrapper_QMenu::addMenu(QMenu* theWrappedObject, const QIcon&  icon, const QString&  title)
+{
+  return ( theWrappedObject->addMenu(icon, title));
+}
+
+QAction*  PythonQtWrapper_QMenu::insertSeparator(QMenu* theWrappedObject, QAction*  before)
+{
+  return ( theWrappedObject->insertSeparator(before));
 }
 
 void PythonQtWrapper_QMenu::setTearOffEnabled(QMenu* theWrappedObject, bool  arg__1)
@@ -1027,8 +960,83 @@ QAction*  PythonQtWrapper_QMenu::activeAction(QMenu* theWrappedObject) const
   return ( theWrappedObject->activeAction());
 }
 
-void PythonQtWrapper_QMenu::clear(QMenu* theWrappedObject)
+void PythonQtWrapper_QMenu::setTitle(QMenu* theWrappedObject, const QString&  title)
 {
-  ( theWrappedObject->clear());
+  ( theWrappedObject->setTitle(title));
+}
+
+void PythonQtWrapper_QMenu::hideEvent(QMenu* theWrappedObject, QHideEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_hideEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::mouseReleaseEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mouseReleaseEvent(arg__1));
+}
+
+bool  PythonQtWrapper_QMenu::isTearOffEnabled(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->isTearOffEnabled());
+}
+
+QRect  PythonQtWrapper_QMenu::actionGeometry(QMenu* theWrappedObject, QAction*  arg__1) const
+{
+  return ( theWrappedObject->actionGeometry(arg__1));
+}
+
+void PythonQtWrapper_QMenu::hideTearOffMenu(QMenu* theWrappedObject)
+{
+  ( theWrappedObject->hideTearOffMenu());
+}
+
+void PythonQtWrapper_QMenu::popup(QMenu* theWrappedObject, const QPoint&  pos, QAction*  at)
+{
+  ( theWrappedObject->popup(pos, at));
+}
+
+void PythonQtWrapper_QMenu::setIcon(QMenu* theWrappedObject, const QIcon&  icon)
+{
+  ( theWrappedObject->setIcon(icon));
+}
+
+void PythonQtWrapper_QMenu::mouseMoveEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mouseMoveEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::mousePressEvent(QMenu* theWrappedObject, QMouseEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_mousePressEvent(arg__1));
+}
+
+void PythonQtWrapper_QMenu::wheelEvent(QMenu* theWrappedObject, QWheelEvent*  arg__1)
+{
+  ( ((PythonQtPublicPromoter_QMenu*)theWrappedObject)->promoted_wheelEvent(arg__1));
+}
+
+QAction*  PythonQtWrapper_QMenu::defaultAction(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->defaultAction());
+}
+
+QAction*  PythonQtWrapper_QMenu::addAction(QMenu* theWrappedObject, const QIcon&  icon, const QString&  text)
+{
+  return ( theWrappedObject->addAction(icon, text));
+}
+
+bool  PythonQtWrapper_QMenu::isTearOffMenuVisible(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->isTearOffMenuVisible());
+}
+
+QAction*  PythonQtWrapper_QMenu::static_QMenu_exec(QList<QAction* >  actions, const QPoint&  pos, QAction*  at, QWidget*  parent)
+{
+  return (QMenu::exec(actions, pos, at, parent));
+}
+
+QSize  PythonQtWrapper_QMenu::sizeHint(QMenu* theWrappedObject) const
+{
+  return ( theWrappedObject->sizeHint());
 }
 

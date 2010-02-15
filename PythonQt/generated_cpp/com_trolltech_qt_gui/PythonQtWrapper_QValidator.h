@@ -17,7 +17,7 @@
 class PythonQtShell_QValidator : public QValidator
 {
 public:
-    PythonQtShell_QValidator(QObject*  parent):QValidator(parent),_wrapper(NULL) {};
+    PythonQtShell_QValidator(QObject*  parent = 0):QValidator(parent),_wrapper(NULL) {};
 
 virtual void childEvent(QChildEvent*  arg__1);
 virtual void customEvent(QEvent*  arg__1);
@@ -42,7 +42,7 @@ Q_ENUMS(State )
 enum State{
   Invalid = QValidator::Invalid,   Intermediate = QValidator::Intermediate,   Acceptable = QValidator::Acceptable};
 public slots:
-QValidator* new_QValidator(QObject*  parent);
+QValidator* new_QValidator(QObject*  parent = 0);
 void delete_QValidator(QValidator* obj) { delete obj; } 
    void fixup(QValidator* theWrappedObject, QString&  arg__1) const;
    void setLocale(QValidator* theWrappedObject, const QLocale&  locale);

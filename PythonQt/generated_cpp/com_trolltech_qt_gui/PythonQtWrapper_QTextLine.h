@@ -27,27 +27,30 @@ QTextLine* a = new QTextLine();
 *((QTextLine*)a) = other;
 return a; }
 void delete_QTextLine(QTextLine* obj) { delete obj; } 
-   qreal  height(QTextLine* theWrappedObject) const;
-   void setNumColumns(QTextLine* theWrappedObject, int  columns, qreal  alignmentWidth);
-   qreal  width(QTextLine* theWrappedObject) const;
+   bool  isValid(QTextLine* theWrappedObject) const;
+   void setPosition(QTextLine* theWrappedObject, const QPointF&  pos);
    qreal  y(QTextLine* theWrappedObject) const;
-   void setNumColumns(QTextLine* theWrappedObject, int  columns);
-   qreal  x(QTextLine* theWrappedObject) const;
    qreal  descent(QTextLine* theWrappedObject) const;
-   QRectF  rect(QTextLine* theWrappedObject) const;
-   QRectF  naturalTextRect(QTextLine* theWrappedObject) const;
-   qreal  ascent(QTextLine* theWrappedObject) const;
+   qreal  x(QTextLine* theWrappedObject) const;
+   qreal  height(QTextLine* theWrappedObject) const;
    QPointF  position(QTextLine* theWrappedObject) const;
    int  textStart(QTextLine* theWrappedObject) const;
+   qreal  naturalTextWidth(QTextLine* theWrappedObject) const;
+   void setNumColumns(QTextLine* theWrappedObject, int  columns, qreal  alignmentWidth);
+   bool  leadingIncluded(QTextLine* theWrappedObject) const;
+   qreal  ascent(QTextLine* theWrappedObject) const;
+   qreal  leading(QTextLine* theWrappedObject) const;
+   int  lineNumber(QTextLine* theWrappedObject) const;
+   int  textLength(QTextLine* theWrappedObject) const;
+   qreal  width(QTextLine* theWrappedObject) const;
+   void setLeadingIncluded(QTextLine* theWrappedObject, bool  included);
+   void draw(QTextLine* theWrappedObject, QPainter*  p, const QPointF&  point, const QTextLayout::FormatRange*  selection = 0) const;
    int  xToCursor(QTextLine* theWrappedObject, qreal  x, QTextLine::CursorPosition  arg__2 = QTextLine::CursorBetweenCharacters) const;
    qreal  cursorToX(QTextLine* theWrappedObject, int  cursorPos, QTextLine::Edge  edge = QTextLine::Leading) const;
-   int  textLength(QTextLine* theWrappedObject) const;
-   void setPosition(QTextLine* theWrappedObject, const QPointF&  pos);
-   int  lineNumber(QTextLine* theWrappedObject) const;
-   bool  isValid(QTextLine* theWrappedObject) const;
-   qreal  naturalTextWidth(QTextLine* theWrappedObject) const;
    void setLineWidth(QTextLine* theWrappedObject, qreal  width);
-   void draw(QTextLine* theWrappedObject, QPainter*  p, const QPointF&  point, const QTextLayout::FormatRange*  selection = 0) const;
+   QRectF  naturalTextRect(QTextLine* theWrappedObject) const;
+   QRectF  rect(QTextLine* theWrappedObject) const;
+   void setNumColumns(QTextLine* theWrappedObject, int  columns);
 };
 
 #endif // PYTHONQTWRAPPER_QTEXTLINE_H

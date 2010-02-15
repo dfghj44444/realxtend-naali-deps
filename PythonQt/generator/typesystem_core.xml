@@ -629,11 +629,6 @@
     <modify-function signature="rx()" remove="all"/> 
     <modify-function signature="ry()" remove="all"/> 
   </value-type>
-
-  <value-type name="QLine">
-  </value-type>
-  <value-type name="QLineF">
-  </value-type>
   
   <value-type name="QRect">
     <modify-function signature="getCoords(int*,int*,int*,int*)const"> <remove/> </modify-function>

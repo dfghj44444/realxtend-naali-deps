@@ -27,15 +27,15 @@ public slots:
 QGLColormap* new_QGLColormap();
 QGLColormap* new_QGLColormap(const QGLColormap&  arg__1);
 void delete_QGLColormap(QGLColormap* obj) { delete obj; } 
-   unsigned int  entryRgb(QGLColormap* theWrappedObject, int  idx) const;
-   QColor  entryColor(QGLColormap* theWrappedObject, int  idx) const;
-   int  find(QGLColormap* theWrappedObject, unsigned int  color) const;
-   int  size(QGLColormap* theWrappedObject) const;
    int  findNearest(QGLColormap* theWrappedObject, unsigned int  color) const;
-   void setEntries(QGLColormap* theWrappedObject, int  count, const unsigned int*  colors, int  base = 0);
-   bool  isEmpty(QGLColormap* theWrappedObject) const;
-   void setEntry(QGLColormap* theWrappedObject, int  idx, const QColor&  color);
    void setEntry(QGLColormap* theWrappedObject, int  idx, unsigned int  color);
+   void setEntries(QGLColormap* theWrappedObject, int  count, const unsigned int*  colors, int  base = 0);
+   void setEntry(QGLColormap* theWrappedObject, int  idx, const QColor&  color);
+   int  find(QGLColormap* theWrappedObject, unsigned int  color) const;
+   QColor  entryColor(QGLColormap* theWrappedObject, int  idx) const;
+   unsigned int  entryRgb(QGLColormap* theWrappedObject, int  idx) const;
+   bool  isEmpty(QGLColormap* theWrappedObject) const;
+   int  size(QGLColormap* theWrappedObject) const;
 };
 
 #endif // PYTHONQTWRAPPER_QGLCOLORMAP_H

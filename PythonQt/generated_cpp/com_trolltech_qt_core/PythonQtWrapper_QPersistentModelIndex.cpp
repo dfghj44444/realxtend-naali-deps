@@ -18,9 +18,29 @@ QPersistentModelIndex* PythonQtWrapper_QPersistentModelIndex::new_QPersistentMod
 { 
 return new QPersistentModelIndex(other); }
 
-bool  PythonQtWrapper_QPersistentModelIndex::operator_equal(QPersistentModelIndex* theWrappedObject, const QModelIndex&  other) const
+QModelIndex  PythonQtWrapper_QPersistentModelIndex::child(QPersistentModelIndex* theWrappedObject, int  row, int  column) const
 {
-  return ( (*theWrappedObject)== other);
+  return ( theWrappedObject->child(row, column));
+}
+
+QVariant  PythonQtWrapper_QPersistentModelIndex::data(QPersistentModelIndex* theWrappedObject, int  role) const
+{
+  return ( theWrappedObject->data(role));
+}
+
+Qt::ItemFlags  PythonQtWrapper_QPersistentModelIndex::flags(QPersistentModelIndex* theWrappedObject) const
+{
+  return ( theWrappedObject->flags());
+}
+
+qint64  PythonQtWrapper_QPersistentModelIndex::internalId(QPersistentModelIndex* theWrappedObject) const
+{
+  return ( theWrappedObject->internalId());
+}
+
+bool  PythonQtWrapper_QPersistentModelIndex::isValid(QPersistentModelIndex* theWrappedObject) const
+{
+  return ( theWrappedObject->isValid());
 }
 
 int  PythonQtWrapper_QPersistentModelIndex::row(QPersistentModelIndex* theWrappedObject) const
@@ -28,14 +48,24 @@ int  PythonQtWrapper_QPersistentModelIndex::row(QPersistentModelIndex* theWrappe
   return ( theWrappedObject->row());
 }
 
-QModelIndex  PythonQtWrapper_QPersistentModelIndex::child(QPersistentModelIndex* theWrappedObject, int  row, int  column) const
+QModelIndex  PythonQtWrapper_QPersistentModelIndex::parent(QPersistentModelIndex* theWrappedObject) const
 {
-  return ( theWrappedObject->child(row, column));
+  return ( theWrappedObject->parent());
 }
 
-int  PythonQtWrapper_QPersistentModelIndex::column(QPersistentModelIndex* theWrappedObject) const
+bool  PythonQtWrapper_QPersistentModelIndex::operator_equal(QPersistentModelIndex* theWrappedObject, const QModelIndex&  other) const
 {
-  return ( theWrappedObject->column());
+  return ( (*theWrappedObject)== other);
+}
+
+bool  PythonQtWrapper_QPersistentModelIndex::operator_equal(QPersistentModelIndex* theWrappedObject, const QPersistentModelIndex&  other) const
+{
+  return ( (*theWrappedObject)== other);
+}
+
+QModelIndex  PythonQtWrapper_QPersistentModelIndex::operator_cast_QModelIndex(QPersistentModelIndex* theWrappedObject) const
+{
+  return ( theWrappedObject->operator const QModelIndex&());
 }
 
 bool  PythonQtWrapper_QPersistentModelIndex::operator_less(QPersistentModelIndex* theWrappedObject, const QPersistentModelIndex&  other) const
@@ -43,9 +73,9 @@ bool  PythonQtWrapper_QPersistentModelIndex::operator_less(QPersistentModelIndex
   return ( (*theWrappedObject)< other);
 }
 
-bool  PythonQtWrapper_QPersistentModelIndex::operator_equal(QPersistentModelIndex* theWrappedObject, const QPersistentModelIndex&  other) const
+int  PythonQtWrapper_QPersistentModelIndex::column(QPersistentModelIndex* theWrappedObject) const
 {
-  return ( (*theWrappedObject)== other);
+  return ( theWrappedObject->column());
 }
 
 const QAbstractItemModel*  PythonQtWrapper_QPersistentModelIndex::model(QPersistentModelIndex* theWrappedObject) const
@@ -56,36 +86,6 @@ const QAbstractItemModel*  PythonQtWrapper_QPersistentModelIndex::model(QPersist
 QModelIndex  PythonQtWrapper_QPersistentModelIndex::sibling(QPersistentModelIndex* theWrappedObject, int  row, int  column) const
 {
   return ( theWrappedObject->sibling(row, column));
-}
-
-bool  PythonQtWrapper_QPersistentModelIndex::isValid(QPersistentModelIndex* theWrappedObject) const
-{
-  return ( theWrappedObject->isValid());
-}
-
-QModelIndex  PythonQtWrapper_QPersistentModelIndex::parent(QPersistentModelIndex* theWrappedObject) const
-{
-  return ( theWrappedObject->parent());
-}
-
-qint64  PythonQtWrapper_QPersistentModelIndex::internalId(QPersistentModelIndex* theWrappedObject) const
-{
-  return ( theWrappedObject->internalId());
-}
-
-QVariant  PythonQtWrapper_QPersistentModelIndex::data(QPersistentModelIndex* theWrappedObject, int  role) const
-{
-  return ( theWrappedObject->data(role));
-}
-
-QModelIndex  PythonQtWrapper_QPersistentModelIndex::operator_cast_QModelIndex(QPersistentModelIndex* theWrappedObject) const
-{
-  return ( theWrappedObject->operator const QModelIndex&());
-}
-
-Qt::ItemFlags  PythonQtWrapper_QPersistentModelIndex::flags(QPersistentModelIndex* theWrappedObject) const
-{
-  return ( theWrappedObject->flags());
 }
 
 QString PythonQtWrapper_QPersistentModelIndex::toString(QPersistentModelIndex* obj) {

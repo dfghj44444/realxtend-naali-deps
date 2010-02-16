@@ -141,14 +141,33 @@ void PythonQt::init(int flags)
   PythonQtRegisterToolClassesTemplateConverter(QMatrix);
 
   //new stuff in Qt 4.6
-  PythonQt::self()->registerCPPClass("QVector2D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector2D>);
-  PythonQt::self()->registerCPPClass("QVector3D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector3D>);
-  PythonQt::self()->registerCPPClass("QVector4D", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QVector4D>);
+  //template to copy-paste from when adding new classes
+  //PythonQt::self()->registerCPPClass("@", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine_@>);
+  //PythonQtRegisterToolClassesTemplateConverter(@);
+  PythonQt::self()->registerCPPClass("QVector2D", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QVector2D>);
+  PythonQt::self()->registerCPPClass("QVector3D", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QVector3D>);
+  PythonQt::self()->registerCPPClass("QVector4D", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QVector4D>);
   PythonQtRegisterToolClassesTemplateConverter(QVector2D);
   PythonQtRegisterToolClassesTemplateConverter(QVector3D);
   PythonQtRegisterToolClassesTemplateConverter(QVector4D);
 
-  
+  PythonQt::self()->registerCPPClass("QStateMachine_WrappedEvent", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine_WrappedEvent>);
+  PythonQt::self()->registerCPPClass("QStateMachine", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine>);
+  PythonQt::self()->registerCPPClass("QHistoryState", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QHistoryState>);
+  PythonQt::self()->registerCPPClass("QAbstractState", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QAbstractState>);
+  PythonQt::self()->registerCPPClass("QStateMachine_SignalEvent", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine_SignalEvent>);
+  PythonQt::self()->registerCPPClass("QState", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QState>);
+  PythonQt::self()->registerCPPClass("QFinalState", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QFinalState>);
+
+  //had compile errors with these, am not sure how exactly should use these
+  //PythonQtRegisterToolClassesTemplateConverter(QStateMachine::WrappedEvent);
+  //PythonQtRegisterToolClassesTemplateConverter(QStateMachine);
+  //PythonQtRegisterToolClassesTemplateConverter(QHistoryState);
+  //PythonQtRegisterToolClassesTemplateConverter(QAbstractState);
+  //PythonQtRegisterToolClassesTemplateConverter(QStateMachine::SignalEvent);
+  //PythonQtRegisterToolClassesTemplateConverter(QState);
+  //PythonQtRegisterToolClassesTemplateConverter(QFinalState);
+
   PyObject* pack = PythonQt::priv()->packageByName("QtCore");
   PyObject* pack2 = PythonQt::priv()->packageByName("Qt");
   PyObject* qtNamespace = PythonQt::priv()->getClassInfo("Qt")->pythonQtClassWrapper();

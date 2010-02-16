@@ -42,6 +42,11 @@
 */
 //----------------------------------------------------------------------------------
 
+/* antont / realxtend naali: additions for qt 4.6.
+ * it's kind of like a weird side effect, that the includes written here
+ * define also what is visible in PythonQt.cpp for registering the classes 
+ */
+
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_Qt.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QBitArray.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QDate.h"
@@ -82,5 +87,13 @@
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector3D.h"
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector4D.h"
 
-#endif
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine_WrappedEvent.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QHistoryState.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QAbstractState.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine_SignalEvent.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QState.h"
+#include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QFinalState.h"
 
+
+#endif

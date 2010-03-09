@@ -151,6 +151,10 @@ void PythonQt::init(int flags)
   PythonQtRegisterToolClassesTemplateConverter(QVector3D);
   PythonQtRegisterToolClassesTemplateConverter(QVector4D);
 
+  PythonQt::self()->registerCPPClass("QQuaternion", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QQuaternion>);
+  PythonQtRegisterToolClassesTemplateConverter(QQuaternion);
+    
+
   PythonQt::self()->registerCPPClass("QStateMachine_WrappedEvent", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine_WrappedEvent>);
   PythonQt::self()->registerCPPClass("QStateMachine", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QStateMachine>);
   PythonQt::self()->registerCPPClass("QHistoryState", "", "QtCore", PythonQtCreateObject<PythonQtWrapper_QHistoryState>);

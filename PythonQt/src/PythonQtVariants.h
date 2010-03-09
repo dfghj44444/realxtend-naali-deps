@@ -86,6 +86,7 @@
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector2D.h"
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector3D.h"
 #include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector4D.h"
+#include "../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QQuaternion.h"
 
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine_WrappedEvent.h"
 #include "../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine.h"

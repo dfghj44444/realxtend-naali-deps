@@ -58,6 +58,7 @@ HEADERS +=                    \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector2D.h \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector3D.h \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector4D.h \
+  $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QQuaternion.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine_WrappedEvent.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine.h \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QHistoryState.h \
@@ -120,6 +121,7 @@ SOURCES +=                    \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector2D.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector3D.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QVector4D.cpp \
+  $$PWD/../generated_cpp/com_trolltech_qt_gui/PythonQtWrapper_QQuaternion.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine_WrappedEvent.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QStateMachine.cpp \
   $$PWD/../generated_cpp/com_trolltech_qt_core/PythonQtWrapper_QHistoryState.cpp \

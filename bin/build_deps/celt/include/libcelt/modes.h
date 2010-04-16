@@ -1,5 +1,7 @@
-/* (C) 2007-2008 Jean-Marc Valin, CSIRO
-*/
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Copyright (c) 2008 Gregory Maxwell 
+   Written by Jean-Marc Valin and Gregory Maxwell */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -39,7 +41,7 @@
 #include "psy.h"
 #include "pitch.h"
 
-#define CELT_BITSTREAM_VERSION 0x80000007
+#define CELT_BITSTREAM_VERSION 0x8000000b
 
 #ifdef STATIC_MODES
 #include "static_modes.h"
@@ -47,11 +49,19 @@
 
 #define MAX_PERIOD 1024
 
+#ifndef MCHANNELS
+# ifdef DISABLE_STEREO
+#  define MCHANNELS(mode) (1)
+# else
+#  define MCHANNELS(mode) ((mode)->nbChannels)
+# endif
+#endif
+
 #ifndef CHANNELS
 # ifdef DISABLE_STEREO
-#  define CHANNELS(mode) (1)
+#  define CHANNELS(_C) (1)
 # else
-#  define CHANNELS(mode) ((mode)->nbChannels)
+#  define CHANNELS(_C) (_C)
 # endif
 #endif
 
@@ -69,45 +79,38 @@
  @brief Mode definition 
  */
 struct CELTMode {
-   celt_uint32_t marker_start;
-   celt_int32_t Fs;
+   celt_uint32 marker_start;
+   celt_int32 Fs;
    int          overlap;
    int          mdctSize;
-   int          nbChannels;
-   
+
    int          nbEBands;
-   int          nbPBands;
    int          pitchEnd;
    
-   const celt_int16_t   *eBands;   /**< Definition for each "pseudo-critical band" */
-   const celt_int16_t   *pBands;   /**< Definition of the bands used for the pitch */
+   const celt_int16   *eBands;   /**< Definition for each "pseudo-critical band" */
    
-   celt_word16_t ePredCoef;/**< Prediction coefficient for the energy encoding */
+   celt_word16 ePredCoef;/**< Prediction coefficient for the energy encoding */
    
    int          nbAllocVectors; /**< Number of lines in the matrix below */
-   const celt_int16_t   *allocVectors;   /**< Number of bits in each band for several rates */
+   const celt_int16   *allocVectors;   /**< Number of bits in each band for several rates */
    
-   const celt_int16_t * const *bits; /**< Cache for pulses->bits mapping in each band */
-
-   const celt_int16_t * const *bits_stereo; /**< Cache for pulses->bits mapping in each band */
+   const celt_int16 * const *bits; /**< Cache for pulses->bits mapping in each band */
 
    /* Stuff that could go in the {en,de}coder, but we save space this way */
    mdct_lookup mdct;
    kiss_fftr_cfg fft;
 
-   const celt_word16_t *window;
+   const celt_word16 *window;
 
    int         nbShortMdcts;
    int         shortMdctSize;
    mdct_lookup shortMdct;
-   const celt_word16_t *shortWindow;
+   const celt_word16 *shortWindow;
 
    struct PsyDecay psy;
 
    int *prob;
-   const celt_int16_t *energy_alloc;
-   
-   celt_uint32_t marker_end;
+   celt_uint32 marker_end;
 };
 
 int check_mode(const CELTMode *mode);

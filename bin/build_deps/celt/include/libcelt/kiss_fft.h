@@ -1,8 +1,8 @@
 /*
 Copyright (c) 2003-2004, Mark Borgerding
-Lots of modifications by JMV
-Copyright (c) 2005-2007, Jean-Marc Valin
-Copyright (c) 2008,      Jean-Marc Valin, CSIRO
+Lots of modifications by Jean-Marc Valin
+Copyright (c) 2005-2007, Xiph.Org Foundation
+Copyright (c) 2008,      Xiph.Org Foundation, CSIRO
 
 All rights reserved.
 
@@ -19,7 +19,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef KISS_FFT_H
 #define KISS_FFT_H
 
+#undef restrict
 #include <stdlib.h>
+#define restrict __restrict
 #include <math.h>
 #include "arch.h"
 
@@ -52,12 +54,12 @@ extern "C" {
 #ifdef FIXED_POINT
 #include "arch.h"	
 #ifdef DOUBLE_PRECISION
-#  define kiss_fft_scalar celt_int32_t
-#  define kiss_twiddle_scalar celt_int32_t
+#  define kiss_fft_scalar celt_int32
+#  define kiss_twiddle_scalar celt_int32
 #  define KF_SUFFIX _celt_double
 #else
-#  define kiss_fft_scalar celt_int16_t
-#  define kiss_twiddle_scalar celt_int16_t
+#  define kiss_fft_scalar celt_int16
+#  define kiss_twiddle_scalar celt_int16
 #  define KF_SUFFIX _celt_single
 #endif
 #else

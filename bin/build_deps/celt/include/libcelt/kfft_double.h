@@ -1,4 +1,4 @@
-/* (C) 2008 Jean-Marc Valin, CSIRO
+/* Copyright (c) 2008 Xiph.Org Foundation, CSIRO
 */
 /*
    Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@
 #ifndef KFFT_DOUBLE_H
 #define KFFT_DOUBLE_H
 
-#ifdef ENABLE_TI_DSPLIB
+#ifdef ENABLE_TI_DSPLIB55
 
 #include "dsplib.h"
 #include "_kiss_fft_guts.h"
@@ -53,7 +53,18 @@
     )
 
 
-#else /* ENABLE_TI_DSPLIB */
+#elif defined(ENABLE_TI_DSPLIB64)
+
+#include "kiss_fft.h"
+#include "_kiss_fft_guts.h"
+#include "c64_fft.h"
+
+#define cpx32_fft_alloc(length) 	(kiss_fft_cfg)(c64_fft32_alloc(length, 0, 0))
+#define cpx32_fft_free(state) 		c64_fft32_free((c64_fft_t *)state)
+#define cpx32_fft(state, X, Y, nx) 	c64_fft32 ((c64_fft_t *)state, (const celt_int32 *)(X), (celt_int32 *)(Y))
+#define cpx32_ifft(state, X, Y, nx) 	c64_ifft32((c64_fft_t *)state, (const celt_int32 *)(X), (celt_int32 *)(Y))
+
+#else /* ENABLE_TI_DSPLIB55/64 */
 
 #include "kiss_fft.h"
 #include "_kiss_fft_guts.h"

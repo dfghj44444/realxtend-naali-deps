@@ -1,5 +1,6 @@
-/* (C) 2008 Jean-Marc Valin, CSIRO
-*/
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2008 Xiph.Org Foundation
+   Written by Jean-Marc Valin */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -58,10 +59,10 @@ void mdct_init(mdct_lookup *l,int N);
 void mdct_clear(mdct_lookup *l);
 
 /** Compute a forward MDCT and scale by 4/N */
-void mdct_forward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scalar *out, const celt_word16_t *window, int overlap);
+void mdct_forward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scalar *out, const celt_word16 *window, int overlap);
 
 /** Compute a backward MDCT (no scaling) and performs weighted overlap-add 
     (scales implicitly by 1/2) */
-void mdct_backward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scalar *out, const celt_word16_t * restrict window, int overlap);
+void mdct_backward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scalar *out, const celt_word16 * restrict window, int overlap);
 
 #endif

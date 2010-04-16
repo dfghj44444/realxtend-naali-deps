@@ -1,5 +1,5 @@
-/* (C) 2001-2008 Timothy B. Terriberry
-   (C) 2008 Jean-Marc Valin */
+/* Copyright (c) 2001-2008 Timothy B. Terriberry
+   Copyright (c) 2008-2009 Xiph.Org Foundation */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -52,6 +52,11 @@ struct ec_enc{
    ec_uint32       rng;
    /*The low end of the current range (inclusive).*/
    ec_uint32       low;
+   /*Byte that will be written at the end*/
+   unsigned char   end_byte;
+   /*Number of valid bits in end_byte*/
+   int             end_bits_left;
+   int             nb_end_bits;
 };
 
 
@@ -73,27 +78,18 @@ void ec_enc_init(ec_enc *_this,ec_byte_buffer *_buf);
         decoded value will fall.
   _ft: The sum of the frequencies of all the symbols*/
 void ec_encode(ec_enc *_this,unsigned _fl,unsigned _fh,unsigned _ft);
-void ec_encode_bin(ec_enc *_this,unsigned _fl,unsigned _fh,unsigned bits);
+void ec_encode_bin(ec_enc *_this,unsigned _fl,unsigned _fh,unsigned _bits);
+void ec_encode_raw(ec_enc *_this,unsigned _fl,unsigned _fh,unsigned bits);
 /*Encodes a sequence of raw bits in the stream.
   _fl:  The bits to encode.
   _ftb: The number of bits to encode.
         This must be at least one, and no more than 32.*/
 void ec_enc_bits(ec_enc *_this,ec_uint32 _fl,int _ftb);
-/*Encodes a sequence of raw bits in the stream.
-  _fl:  The bits to encode.
-  _ftb: The number of bits to encode.
-        This must be at least one, and no more than 64.*/
-void ec_enc_bits64(ec_enc *_this,ec_uint64 _fl,int _ftb);
 /*Encodes a raw unsigned integer in the stream.
   _fl: The integer to encode.
   _ft: The number of integers that can be encoded (one more than the max).
        This must be at least one, and no more than 2**32-1.*/
 void ec_enc_uint(ec_enc *_this,ec_uint32 _fl,ec_uint32 _ft);
-/*Encodes a raw unsigned integer in the stream.
-  _fl: The integer to encode.
-  _ft: The number of integers that can be encoded (one more than the max).
-       This must be at least one, and no more than 2**64-1.*/
-void ec_enc_uint64(ec_enc *_this,ec_uint64 _fl,ec_uint64 _ft);
 
 /*Returns the number of bits "used" by the encoded symbols so far.
   The actual number of bits may be larger, due to rounding to whole bytes, or

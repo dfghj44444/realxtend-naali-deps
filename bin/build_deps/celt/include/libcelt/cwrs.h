@@ -1,4 +1,7 @@
-/* (C) 2007-2008 Timothy Terriberry */
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Copyright (c) 2007-2009 Timothy B. Terriberry
+   Written by Timothy B. Terriberry and Jean-Marc Valin */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -38,31 +41,10 @@
 
 int log2_frac(ec_uint32 val, int frac);
 
-/* Returns log of an integer with fractional accuracy */
-int log2_frac64(ec_uint64 val, int frac);
 /* Whether the CWRS codebook will fit into 32 bits */
 int fits_in32(int _n, int _m);
-/* Whether the CWRS codebook will fit into 64 bits */
-int fits_in64(int _n, int _m);
 
-/* 32-bit versions */
-celt_uint32_t ncwrs_u32(int _n,int _m,celt_uint32_t *_u);
-
-void cwrsi32(int _n,int _m,celt_uint32_t _i,int *_y,celt_uint32_t *_u);
-
-celt_uint32_t icwrs32(int _n,int _m,celt_uint32_t *_nc,const int *_y,
- celt_uint32_t *_u);
-
-/* 64-bit versions */
-celt_uint64_t ncwrs_u64(int _n,int _m,celt_uint64_t *_u);
-
-void cwrsi64(int _n,int _m,celt_uint64_t _i,int *_y,celt_uint64_t *_u);
-
-celt_uint64_t icwrs64(int _n,int _m,celt_uint64_t *_nc,const int *_y,
- celt_uint64_t *_u);
-
-
-void get_required_bits(celt_int16_t *bits, int N, int K, int frac);
+void get_required_bits(celt_int16 *bits, int N, int K, int frac);
 
 void encode_pulses(int *_y, int N, int K, ec_enc *enc);
 

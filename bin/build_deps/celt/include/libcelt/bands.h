@@ -1,5 +1,7 @@
-/* (C) 2007 Jean-Marc Valin, CSIRO
-*/
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Copyright (c) 2008-2009 Gregory Maxwell 
+   Written by Jean-Marc Valin and Gregory Maxwell */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -43,9 +45,9 @@
  * @param X Spectrum
  * @param bands Square root of the energy for each band (returned)
  */
-void compute_band_energies(const CELTMode *m, const celt_sig_t *X, celt_ener_t *bands);
+void compute_band_energies(const CELTMode *m, const celt_sig *X, celt_ener *bands, int _C);
 
-void compute_noise_energies(const CELTMode *m, const celt_sig_t *X, const celt_word16_t *tonality, celt_ener_t *bank);
+/*void compute_noise_energies(const CELTMode *m, const celt_sig *X, const celt_word16 *tonality, celt_ener *bank);*/
 
 /** Normalise each band of X such that the energy in each band is 
     equal to 1
@@ -53,16 +55,16 @@ void compute_noise_energies(const CELTMode *m, const celt_sig_t *X, const celt_w
  * @param X Spectrum (returned normalised)
  * @param bands Square root of the energy for each band
  */
-void normalise_bands(const CELTMode *m, const celt_sig_t * restrict freq, celt_norm_t * restrict X, const celt_ener_t *bands);
+void normalise_bands(const CELTMode *m, const celt_sig * restrict freq, celt_norm * restrict X, const celt_ener *bands, int _C);
 
-void renormalise_bands(const CELTMode *m, celt_norm_t * restrict X);
+void renormalise_bands(const CELTMode *m, celt_norm * restrict X, int _C);
 
 /** Denormalise each band of X to restore full amplitude
  * @param m Mode data 
  * @param X Spectrum (returned de-normalised)
  * @param bands Square root of the energy for each band
  */
-void denormalise_bands(const CELTMode *m, const celt_norm_t * restrict X, celt_sig_t * restrict freq, const celt_ener_t *bands);
+void denormalise_bands(const CELTMode *m, const celt_norm * restrict X, celt_sig * restrict freq, const celt_ener *bands, int _C);
 
 /** Compute the pitch predictor gain for each pitch band
  * @param m Mode data 
@@ -71,27 +73,32 @@ void denormalise_bands(const CELTMode *m, const celt_norm_t * restrict X, celt_s
  * @param gains Gain computed for each pitch band (returned)
  * @param bank Square root of the energy for each band
  */
-int compute_pitch_gain(const CELTMode *m, const celt_norm_t *X, const celt_norm_t *P, celt_pgain_t *gains);
+int compute_pitch_gain(const CELTMode *m, const celt_sig *X, const celt_sig *P, int norm_rate, int *gain_id, int _C, celt_word16 *gain_prod);
+
+void apply_pitch(const CELTMode *m, celt_sig *X, const celt_sig *P, int gain_id, int pred, int _C);
+
+int folding_decision(const CELTMode *m, celt_norm *X, celt_word16 *average, int *last_decision, int _C);
 
 /** Quantisation/encoding of the residual spectrum
  * @param m Mode data 
  * @param X Residual (normalised)
- * @param P Pitch vector (normalised)
- * @param W Perceptual weighting
  * @param total_bits Total number of bits that can be used for the frame (including the ones already spent)
  * @param enc Entropy encoder
  */
-void quant_bands(const CELTMode *m, celt_norm_t * restrict X, celt_norm_t *P, celt_mask_t *W, int pitch_used, celt_pgain_t *pgains, const celt_ener_t *bandE, const int *stereo_mode, int *pulses, int time_domain, int fold, int total_bits, ec_enc *enc);
+void quant_bands(const CELTMode *m, celt_norm * restrict X, const celt_ener *bandE, int *pulses, int time_domain, int fold, int total_bits, int encode, void *enc_dec);
+
+void quant_bands_stereo(const CELTMode *m, celt_norm * restrict X, const celt_ener *bandE, int *pulses, int time_domain, int fold, int total_bits, ec_enc *enc);
 
 /** Decoding of the residual spectrum
  * @param m Mode data 
  * @param X Residual (normalised)
- * @param P Pitch vector (normalised)
  * @param total_bits Total number of bits that can be used for the frame (including the ones already spent)
  * @param dec Entropy decoder
 */
-void unquant_bands(const CELTMode *m, celt_norm_t * restrict X, celt_norm_t *P, int pitch_used, celt_pgain_t *pgains, const celt_ener_t *bandE, const int *stereo_mode, int *pulses, int time_domain, int fold, int total_bits, ec_dec *dec);
+void unquant_bands(const CELTMode *m, celt_norm * restrict X, const celt_ener *bandE, int *pulses, int time_domain, int fold, int total_bits, ec_dec *dec);
 
-void stereo_decision(const CELTMode *m, celt_norm_t * restrict X, int *stereo_mode, int len);
+void unquant_bands_stereo(const CELTMode *m, celt_norm * restrict X, const celt_ener *bandE, int *pulses, int time_domain, int fold, int total_bits, ec_dec *dec);
+
+void stereo_decision(const CELTMode *m, celt_norm * restrict X, int *stereo_mode, int len);
 
 #endif /* BANDS_H */

@@ -1,4 +1,7 @@
-/* Copyright (C) 2003-2008 Jean-Marc Valin */
+/* Copyright (c) 2003-2008 Jean-Marc Valin
+   Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Written by Jean-Marc Valin */
 /**
    @file arch.h
    @brief Various architecture definitions for CELT
@@ -37,6 +40,7 @@
 
 #include "celt_types.h"
 
+#define CELT_SIG_SCALE 32768.
 
 #define celt_fatal(str) _celt_fatal(str, __FILE__, __LINE__);
 #ifdef ENABLE_ASSERTIONS
@@ -48,14 +52,17 @@
 #endif
 
 #define IMUL32(a,b) ((a)*(b))
+#define UMUL32(a,b) ((celt_int32)(a)*(celt_int32)(b))
+#define UMUL16_16(a,b) ((celt_int32)(a)*(celt_int32)(b))
 
 #define ABS(x) ((x) < 0 ? (-(x)) : (x))      /**< Absolute integer value. */
 #define ABS16(x) ((x) < 0 ? (-(x)) : (x))    /**< Absolute 16-bit value.  */
-#define MIN16(a,b) ((a) < (b) ? (a) : (b))   /**< Maximum 16-bit value.   */
+#define MIN16(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum 16-bit value.   */
 #define MAX16(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum 16-bit value.   */
 #define ABS32(x) ((x) < 0 ? (-(x)) : (x))    /**< Absolute 32-bit value.  */
-#define MIN32(a,b) ((a) < (b) ? (a) : (b))   /**< Maximum 32-bit value.   */
+#define MIN32(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum 32-bit value.   */
 #define MAX32(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum 32-bit value.   */
+#define IMIN(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum int value.   */
 #define IMAX(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum int value.   */
 #define UADD32(a,b) ((a)+(b))
 #define USUB32(a,b) ((a)-(b))
@@ -64,14 +71,13 @@
 
 #ifdef FIXED_POINT
 
-typedef celt_int16_t celt_word16_t;
-typedef celt_int32_t celt_word32_t;
+typedef celt_int16 celt_word16;
+typedef celt_int32 celt_word32;
 
-typedef celt_word32_t celt_sig_t;
-typedef celt_word16_t celt_norm_t;
-typedef celt_word32_t celt_ener_t;
-typedef celt_word16_t celt_pgain_t;
-typedef celt_word32_t celt_mask_t;
+typedef celt_word32 celt_sig;
+typedef celt_word16 celt_norm;
+typedef celt_word32 celt_ener;
+typedef celt_word32 celt_mask;
 
 #define Q15ONE 32767
 #define Q30ONE 1073741823
@@ -90,14 +96,13 @@ typedef celt_word32_t celt_mask_t;
 #define PGAIN_SCALING_1 (1.f/32768.f)
 #define PGAIN_SHIFT 15
 
-#define DB_SCALING 256.f
-#define DB_SCALING_1 (1.f/256.f)
+#define DB_SHIFT 8
 
 #define EPSILON 1
 #define VERY_SMALL 0
-#define VERY_LARGE32 ((celt_word32_t)2147483647)
-#define VERY_LARGE16 ((celt_word16_t)32767)
-#define Q15_ONE ((celt_word16_t)32767)
+#define VERY_LARGE32 ((celt_word32)2147483647)
+#define VERY_LARGE16 ((celt_word16)32767)
+#define Q15_ONE ((celt_word16)32767)
 #define Q15_ONE_1 (1.f/32768.f)
 
 #define SCALEIN(a)	(a)
@@ -126,14 +131,14 @@ typedef celt_word32_t celt_mask_t;
 
 #else /* FIXED_POINT */
 
-typedef float celt_word16_t;
-typedef float celt_word32_t;
+typedef float celt_word16;
+typedef float celt_word32;
 
-typedef float celt_sig_t;
-typedef float celt_norm_t;
-typedef float celt_ener_t;
-typedef float celt_pgain_t;
-typedef float celt_mask_t;
+typedef float celt_sig;
+typedef float celt_norm;
+typedef float celt_ener;
+typedef float celt_pgain;
+typedef float celt_mask;
 
 #define Q15ONE 1.0f
 #define Q30ONE 1.0f
@@ -145,15 +150,12 @@ typedef float celt_mask_t;
 #define PGAIN_SCALING 1.f
 #define PGAIN_SCALING_1 1.f
 
-#define DB_SCALING 1.f
-#define DB_SCALING_1 1.f
-
 #define EPSILON 1e-15f
 #define VERY_SMALL 1e-15f
 #define VERY_LARGE32 1e15f
 #define VERY_LARGE16 1e15f
-#define Q15_ONE ((celt_word16_t)1.f)
-#define Q15_ONE_1 ((celt_word16_t)1.f)
+#define Q15_ONE ((celt_word16)1.f)
+#define Q15_ONE_1 ((celt_word16)1.f)
 
 #define QCONST16(x,bits) (x)
 #define QCONST32(x,bits) (x)
@@ -185,8 +187,8 @@ typedef float celt_mask_t;
 #define ADD32(a,b) ((a)+(b))
 #define SUB32(a,b) ((a)-(b))
 #define MULT16_16_16(a,b)     ((a)*(b))
-#define MULT16_16(a,b)     ((celt_word32_t)(a)*(celt_word32_t)(b))
-#define MAC16_16(c,a,b)     ((c)+(celt_word32_t)(a)*(celt_word32_t)(b))
+#define MULT16_16(a,b)     ((celt_word32)(a)*(celt_word32)(b))
+#define MAC16_16(c,a,b)     ((c)+(celt_word32)(a)*(celt_word32)(b))
 
 #define MULT16_32_Q11(a,b)     ((a)*(b))
 #define MULT16_32_Q13(a,b)     ((a)*(b))
@@ -211,13 +213,13 @@ typedef float celt_mask_t;
 #define MULT16_16_P13(a,b)     ((a)*(b))
 #define MULT16_16_P14(a,b)     ((a)*(b))
 
-#define DIV32_16(a,b)     (((celt_word32_t)(a))/(celt_word16_t)(b))
-#define PDIV32_16(a,b)     (((celt_word32_t)(a))/(celt_word16_t)(b))
-#define DIV32(a,b)     (((celt_word32_t)(a))/(celt_word32_t)(b))
-#define PDIV32(a,b)     (((celt_word32_t)(a))/(celt_word32_t)(b))
+#define DIV32_16(a,b)     (((celt_word32)(a))/(celt_word16)(b))
+#define PDIV32_16(a,b)     (((celt_word32)(a))/(celt_word16)(b))
+#define DIV32(a,b)     (((celt_word32)(a))/(celt_word32)(b))
+#define PDIV32(a,b)     (((celt_word32)(a))/(celt_word32)(b))
 
-#define SCALEIN(a)	((a)*32768.)
-#define SCALEOUT(a)	((a)*(1/32768.))
+#define SCALEIN(a)	((a)*CELT_SIG_SCALE)
+#define SCALEOUT(a)	((a)*(1/CELT_SIG_SCALE))
 
 #endif /* !FIXED_POINT */
 
@@ -239,9 +241,9 @@ typedef float celt_mask_t;
 
 #ifndef GLOBAL_STACK_SIZE 
 #ifdef FIXED_POINT
-#define GLOBAL_STACK_SIZE 25000
+#define GLOBAL_STACK_SIZE 100000
 #else
-#define GLOBAL_STACK_SIZE 40000
+#define GLOBAL_STACK_SIZE 100000
 #endif
 #endif 
 

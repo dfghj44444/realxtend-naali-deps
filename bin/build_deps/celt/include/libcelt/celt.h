@@ -1,8 +1,10 @@
-/* (C) 2007-2008 Jean-Marc Valin, CSIRO
-   (C) 2008 Gregory Maxwell */
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Copyright (c) 2008 Gregory Maxwell 
+   Written by Jean-Marc Valin and Gregory Maxwell */
 /**
   @file celt.h
-  @brief Contains all the functions for encoding and decoding audio streams
+  @brief Contains all the functions for encoding and decoding audio
  */
 
 /*
@@ -51,7 +53,8 @@ extern "C" {
 #define EXPORT
 #endif
 
-#define _celt_check_int(x) (((void)((x) == (int)0)), (int)(x))
+#define _celt_check_int(x) (((void)((x) == (celt_int32)0)), (celt_int32)(x))
+#define _celt_check_mode_ptr_ptr(ptr) ((ptr) + ((ptr) - (CELTMode**)(ptr)))
 
 /* Error codes */
 /** No error */
@@ -66,41 +69,59 @@ extern "C" {
 #define CELT_CORRUPTED_DATA   -4
 /** Invalid/unsupported request number */
 #define CELT_UNIMPLEMENTED    -5
+/** An encoder or decoder structure is invalid or already freed */
+#define CELT_INVALID_STATE    -6
+/** Memory allocation has failed */
+#define CELT_ALLOC_FAIL       -7
 
 /* Requests */
+#define CELT_GET_MODE_REQUEST    1
+/** Get the CELTMode used by an encoder or decoder */
+#define CELT_GET_MODE(x) CELT_GET_MODE_REQUEST, _celt_check_mode_ptr_ptr(x)
 #define CELT_SET_COMPLEXITY_REQUEST    2
 /** Controls the complexity from 0-10 (int) */
 #define CELT_SET_COMPLEXITY(x) CELT_SET_COMPLEXITY_REQUEST, _celt_check_int(x)
-#define CELT_SET_LTP_REQUEST    3
-/** Activate or deactivate the use of the long term predictor (PITCH) from 0 or 1 (int) */
-#define CELT_SET_LTP(x) CELT_SET_LTP_REQUEST, _celt_check_int(x)
+#define CELT_SET_PREDICTION_REQUEST    4
+/** Controls the use of interframe prediction.
+    0=Independent frames
+    1=Short term interframe prediction allowed
+    2=Long term prediction allowed
+ */
+#define CELT_SET_PREDICTION(x) CELT_SET_PREDICTION_REQUEST, _celt_check_int(x)
+#define CELT_SET_VBR_RATE_REQUEST    6
+/** Set the target VBR rate in bits per second(int); 0=CBR (default) */
+#define CELT_SET_VBR_RATE(x) CELT_SET_VBR_RATE_REQUEST, _celt_check_int(x)
+/** Reset the encoder/decoder memories to zero*/
+#define CELT_RESET_STATE_REQUEST        8
+#define CELT_RESET_STATE       CELT_RESET_STATE_REQUEST
 
 /** GET the frame size used in the current mode */
 #define CELT_GET_FRAME_SIZE   1000
 /** GET the lookahead used in the current mode */
 #define CELT_GET_LOOKAHEAD    1001
-/** GET the number of channels used in the current mode */
-#define CELT_GET_NB_CHANNELS  1002
+/** GET the sample rate used in the current mode */
+#define CELT_GET_SAMPLE_RATE  1003
 
 /** GET the bit-stream version for compatibility check */
 #define CELT_GET_BITSTREAM_VERSION 2000
 
 
-/** Contains the state of an encoder. One encoder state is needed for each 
-    stream. It is initialised once at the beginning of the stream. Do *not*
-    re-initialise the state for every frame.
+/** Contains the state of an encoder. One encoder state is needed 
+    for each stream. It is initialised once at the beginning of the
+    stream. Do *not* re-initialise the state for every frame.
    @brief Encoder state
  */
 typedef struct CELTEncoder CELTEncoder;
 
-/** State of the decoder. One decoder state is needed for each stream. It is
-    initialised once at the beginning of the stream. Do *not* re-initialise
-    the state for every frame */
+/** State of the decoder. One decoder state is needed for each stream.
+    It is initialised once at the beginning of the stream. Do *not*
+    re-initialise the state for every frame */
 typedef struct CELTDecoder CELTDecoder;
 
-/** The mode contains all the information necessary to create an encoder. Both
-    the encoder and decoder need to be initialised with exactly the same mode,
-    otherwise the quality will be very bad */
+/** The mode contains all the information necessary to create an
+    encoder. Both the encoder and decoder need to be initialised
+    with exactly the same mode, otherwise the quality will be very 
+    bad */
 typedef struct CELTMode CELTMode;
 
 
@@ -109,37 +130,39 @@ typedef struct CELTMode CELTMode;
 
 /* Mode calls */
 
-/** Creates a new mode struct. This will be passed to an encoder or decoder.
-    The mode MUST NOT BE DESTROYED until the encoders and decoders that use it
-    are destroyed as well.
+/** Creates a new mode struct. This will be passed to an encoder or 
+    decoder. The mode MUST NOT BE DESTROYED until the encoders and 
+    decoders that use it are destroyed as well.
  @param Fs Sampling rate (32000 to 96000 Hz)
- @param channels Number of channels
- @param frame_size Number of samples (per channel) to encode in each packet (even values; 64 - 512)
- @param lookahead Extra latency (in samples per channel) in addition to the frame size (between 32 and frame_size). 
+ @param frame_size Number of samples (per channel) to encode in each 
+                   packet (even values; 64 - 512)
  @param error Returned error code (if NULL, no error will be returned)
  @return A newly created mode
 */
-EXPORT CELTMode *celt_mode_create(celt_int32_t Fs, int channels, int frame_size, int *error);
+EXPORT CELTMode *celt_mode_create(celt_int32 Fs, int frame_size, int *error);
 
-/** Destroys a mode struct. Only call this after all encoders and decoders
-    using this mode are destroyed as well.
+/** Destroys a mode struct. Only call this after all encoders and 
+    decoders using this mode are destroyed as well.
  @param mode Mode to be destroyed
 */
 EXPORT void celt_mode_destroy(CELTMode *mode);
 
 /** Query information from a mode */
-EXPORT int celt_mode_info(const CELTMode *mode, int request, celt_int32_t *value);
+EXPORT int celt_mode_info(const CELTMode *mode, int request, celt_int32 *value);
 
 /* Encoder stuff */
 
 
-/** Creates a new encoder state. Each stream needs its own encoder state (can't
-    be shared across simultaneous streams).
- @param mode Contains all the information about the characteristics of the stream
-             (must be the same characteristics as used for the decoder)
+/** Creates a new encoder state. Each stream needs its own encoder 
+    state (can't be shared across simultaneous streams).
+ @param mode Contains all the information about the characteristics of
+ *  the stream (must be the same characteristics as used for the 
+ *  decoder)
+ @param channels Number of channels
+ @param error Returns an error code
  @return Newly created encoder state.
 */
-EXPORT CELTEncoder *celt_encoder_create(const CELTMode *mode);
+EXPORT CELTEncoder *celt_encoder_create(const CELTMode *mode, int channels, int *error);
 
 /** Destroys a an encoder state.
  @param st Encoder state to be destroyed
@@ -149,18 +172,19 @@ EXPORT void celt_encoder_destroy(CELTEncoder *st);
 /** Encodes a frame of audio.
  @param st Encoder state
  @param pcm PCM audio in float format, with a normal range of ±1.0. 
- *          Samples with a range beyond ±1.0 are supported but will be clipped by 
- *          decoders using the integer API and should only be used if it is known that
- *          the far end supports extended dynmaic range. There must be exactly
+ *          Samples with a range beyond ±1.0 are supported but will 
+ *          be clipped by decoders using the integer API and should 
+ *          only be used if it is known that the far end supports 
+ *          extended dynmaic range. There must be exactly
  *          frame_size samples per channel. 
  @param optional_synthesis If not NULL, the encoder copies the audio signal that
- *                         the decoder would decode. It is the same as calling the
- *                         decoder on the compressed data, just faster.
- *                         This may alias pcm. 
+ *          the decoder would decode. It is the same as calling the
+ *          decoder on the compressed data, just faster.
+ *          This may alias pcm. 
  @param compressed The compressed data is written here. This may not alias pcm or
- *                         optional_synthesis.
+ *                 optional_synthesis.
  @param nbCompressedBytes Maximum number of bytes to use for compressing the frame
- *                        (can change from one frame to another)
+ *          (can change from one frame to another)
  @return Number of bytes written to "compressed". Will be the same as 
  *       "nbCompressedBytes" unless the stream is VBR and will never be larger.
  *       If negative, an error has occurred (see error codes). It is IMPORTANT that
@@ -187,7 +211,7 @@ EXPORT int celt_encode_float(CELTEncoder *st, const float *pcm, float *optional_
  *       the length returned be somehow transmitted to the decoder. Otherwise, no
  *       decoding is possible.
  */
-EXPORT int celt_encode(CELTEncoder *st, const celt_int16_t *pcm, celt_int16_t *optional_synthesis, unsigned char *compressed, int nbCompressedBytes);
+EXPORT int celt_encode(CELTEncoder *st, const celt_int16 *pcm, celt_int16 *optional_synthesis, unsigned char *compressed, int nbCompressedBytes);
 
 /** Query and set encoder parameters 
  @param st Encoder state
@@ -204,9 +228,11 @@ EXPORT int celt_encoder_ctl(CELTEncoder * st, int request, ...);
     be shared across simultaneous streams).
  @param mode Contains all the information about the characteristics of the
              stream (must be the same characteristics as used for the encoder)
+ @param channels Number of channels
+ @param error Returns an error code
  @return Newly created decoder state.
  */
-EXPORT CELTDecoder *celt_decoder_create(const CELTMode *mode);
+EXPORT CELTDecoder *celt_decoder_create(const CELTMode *mode, int channels, int *error);
 
 /** Destroys a a decoder state.
  @param st Decoder state to be destroyed
@@ -222,7 +248,7 @@ EXPORT void celt_decoder_destroy(CELTDecoder *st);
             returned here in float format. 
  @return Error code.
    */
-EXPORT int celt_decode_float(CELTDecoder *st, unsigned char *data, int len, float *pcm);
+EXPORT int celt_decode_float(CELTDecoder *st, const unsigned char *data, int len, float *pcm);
 
 /** Decodes a frame of audio.
  @param st Decoder state
@@ -233,7 +259,22 @@ EXPORT int celt_decode_float(CELTDecoder *st, unsigned char *data, int len, floa
             returned here in 16-bit PCM format (native endian). 
  @return Error code.
  */
-EXPORT int celt_decode(CELTDecoder *st, unsigned char *data, int len, celt_int16_t *pcm);
+EXPORT int celt_decode(CELTDecoder *st, const unsigned char *data, int len, celt_int16 *pcm);
+
+/** Query and set decoder parameters
+   @param st Decoder state
+   @param request Parameter to change or query
+   @param value Pointer to a 32-bit int value
+   @return Error code
+ */
+EXPORT int celt_decoder_ctl(CELTDecoder * st, int request, ...);
+
+
+/** Returns the English string that corresponds to an error code
+ * @param error Error code (negative for an error, 0 for success
+ * @return Constant string (must NOT be freed)
+ */
+EXPORT const char *celt_strerror(int error);
 
 /*  @} */
 

@@ -1,5 +1,5 @@
-/* (C) 2001-2008 Timothy B. Terriberry
-   (C) 2008 Jean-Marc Valin */
+/* Copyright (c) 2001-2008 Timothy B. Terriberry
+   Copyright (c) 2008-2009 Xiph.Org Foundation */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -38,9 +38,8 @@
 
 
 
-typedef celt_int32_t ec_int32;
-typedef celt_uint32_t ec_uint32;
-typedef celt_uint64_t ec_uint64;
+typedef celt_int32 ec_int32;
+typedef celt_uint32 ec_uint32;
 typedef struct ec_byte_buffer ec_byte_buffer;
 
 
@@ -56,21 +55,24 @@ typedef struct ec_byte_buffer ec_byte_buffer;
 struct ec_byte_buffer{
   unsigned char *buf;
   unsigned char *ptr;
+  unsigned char *end_ptr;
   long           storage;
-  int            resizable;
 };
 
 /*Encoding functions.*/
 void ec_byte_writeinit_buffer(ec_byte_buffer *_b, unsigned char *_buf, long _size);
+void ec_byte_shrink(ec_byte_buffer *_b, long _size);
 void ec_byte_writeinit(ec_byte_buffer *_b);
 void ec_byte_writetrunc(ec_byte_buffer *_b,long _bytes);
 void ec_byte_write1(ec_byte_buffer *_b,unsigned _value);
+void ec_byte_write_at_end(ec_byte_buffer *_b,unsigned _value);
 void ec_byte_write4(ec_byte_buffer *_b,ec_uint32 _value);
 void ec_byte_writecopy(ec_byte_buffer *_b,void *_source,long _bytes);
 void ec_byte_writeclear(ec_byte_buffer *_b);
 /*Decoding functions.*/
 void ec_byte_readinit(ec_byte_buffer *_b,unsigned char *_buf,long _bytes);
 int ec_byte_look1(ec_byte_buffer *_b);
+unsigned char ec_byte_look_at_end(ec_byte_buffer *_b);
 int ec_byte_look4(ec_byte_buffer *_b,ec_uint32 *_val);
 void ec_byte_adv1(ec_byte_buffer *_b);
 void ec_byte_adv4(ec_byte_buffer *_b);
@@ -90,6 +92,5 @@ static inline unsigned char *ec_byte_get_buffer(ec_byte_buffer *_b){
 }
 
 int ec_ilog(ec_uint32 _v);
-int ec_ilog64(ec_uint64 _v);
 
 #endif

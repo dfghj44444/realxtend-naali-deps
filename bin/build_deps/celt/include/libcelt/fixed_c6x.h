@@ -45,7 +45,7 @@
 #define OVERRIDE_CELT_ILOG2
 
 #undef MULT16_32_Q15
-#define MULT16_32_Q15(a,b) ADD32(SHL(_mpylh(a,b),1), SHR(_mpsu(a,b),15)
+#define MULT16_32_Q15(a,b) (_mpylill(a, b) >> 15)
 
 #if 0
 #include "dsplib.h"
@@ -72,7 +72,7 @@
 #define OVERRIDE_CELT_MAXABS16
 
 #define OVERRIDE_FIND_MAX16
-static inline int find_max16(celt_word16_t *x, int len)
+static inline int find_max16(celt_word16 *x, int len)
 {
    DATA max_corr16 = -VERY_LARGE16;
    DATA pitch16 = 0;

@@ -1,5 +1,6 @@
-/* (C) 2007 Jean-Marc Valin, CSIRO
-  */
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Written by Jean-Marc Valin */
 /*
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -36,18 +37,35 @@
 #include "modes.h"
 #include "entenc.h"
 #include "entdec.h"
+#include "mathops.h"
+
+static __inline celt_word16 amp2Log(celt_word32 amp)
+{
+	return celt_log2(MAX32(QCONST32(.001f,14),SHL32(amp,2)));
+}
+
+static __inline celt_word32 log2Amp(celt_word16 lg)
+{
+	return PSHR32(celt_exp2(SHL16(lg,3)),4);
+}
 
 int *quant_prob_alloc(const CELTMode *m);
 void quant_prob_free(int *freq);
 
 void compute_fine_allocation(const CELTMode *m, int *bits, int budget);
 
-void quant_coarse_energy(const CELTMode *m, celt_ener_t *eBands, celt_word16_t *oldEBands, int budget, int *prob, celt_word16_t *error, ec_enc *enc);
+int intra_decision(celt_word16 *eBands, celt_word16 *oldEBands, int len);
 
-void quant_fine_energy(const CELTMode *m, celt_ener_t *eBands, celt_word16_t *oldEBands, celt_word16_t *error, int *fine_quant, ec_enc *enc);
+unsigned quant_coarse_energy(const CELTMode *m, celt_word16 *eBands, celt_word16 *oldEBands, int budget, int intra, int *prob, celt_word16 *error, ec_enc *enc, int _C);
 
-void unquant_coarse_energy(const CELTMode *m, celt_ener_t *eBands, celt_word16_t *oldEBands, int budget, int *prob, ec_dec *dec);
+void quant_fine_energy(const CELTMode *m, celt_ener *eBands, celt_word16 *oldEBands, celt_word16 *error, int *fine_quant, ec_enc *enc, int _C);
 
-void unquant_fine_energy(const CELTMode *m, celt_ener_t *eBands, celt_word16_t *oldEBands, int *fine_quant, ec_dec *dec);
+void quant_energy_finalise(const CELTMode *m, celt_ener *eBands, celt_word16 *oldEBands, celt_word16 *error, int *fine_quant, int *fine_priority, int bits_left, ec_enc *enc, int _C);
+
+void unquant_coarse_energy(const CELTMode *m, celt_ener *eBands, celt_word16 *oldEBands, int budget, int intra, int *prob, ec_dec *dec, int _C);
+
+void unquant_fine_energy(const CELTMode *m, celt_ener *eBands, celt_word16 *oldEBands, int *fine_quant, ec_dec *dec, int _C);
+
+void unquant_energy_finalise(const CELTMode *m, celt_ener *eBands, celt_word16 *oldEBands, int *fine_quant, int *fine_priority, int bits_left, ec_dec *dec, int _C);
 
 #endif /* QUANT_BANDS */

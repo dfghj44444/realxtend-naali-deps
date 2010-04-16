@@ -1,5 +1,6 @@
-/* (C) 2007-2008 Jean-Marc Valin, CSIRO
-*/
+/* Copyright (c) 2007-2008 CSIRO
+   Copyright (c) 2007-2009 Xiph.Org Foundation
+   Written by Jean-Marc Valin */
 /**
    @file vq.h
    @brief Vector quantisation of the residual
@@ -50,7 +51,7 @@
  * @param p Pitch vector (it is assumed that p+x is a unit vector)
  * @param enc Entropy encoder state
 */
-void alg_quant(celt_norm_t *X, celt_mask_t *W, int N, int K, celt_norm_t *P, ec_enc *enc);
+void alg_quant(celt_norm *X, int N, int K, int spread, ec_enc *enc);
 
 /** Algebraic pulse decoder
  * @param x Decoded normalised spectrum (returned)
@@ -59,9 +60,9 @@ void alg_quant(celt_norm_t *X, celt_mask_t *W, int N, int K, celt_norm_t *P, ec_
  * @param p Pitch vector (automatically added to x)
  * @param dec Entropy decoder state
  */
-void alg_unquant(celt_norm_t *X, int N, int K, celt_norm_t *P, ec_dec *dec);
+void alg_unquant(celt_norm *X, int N, int K, int spread, ec_dec *dec);
 
-void renormalise_vector(celt_norm_t *X, celt_word16_t value, int N, int stride);
+celt_word16 renormalise_vector(celt_norm *X, celt_word16 value, int N, int stride);
 
 /** Intra-frame predictor that matches a section of the current frame (at lower
  * frequencies) to encode the current band.
@@ -74,6 +75,6 @@ void renormalise_vector(celt_norm_t *X, celt_word16_t value, int N, int stride);
  * @param B Stride (number of channels multiplied by the number of MDCTs per frame)
  * @param N0 Number of valid offsets
  */
-void intra_fold(const CELTMode *m, celt_norm_t * restrict x, int N, int K, celt_norm_t *Y, celt_norm_t * restrict P, int N0, int B);
+void intra_fold(const CELTMode *m, int N, const celt_norm * restrict Y, celt_norm * restrict P, int N0, int B);
 
 #endif /* VQ_H */

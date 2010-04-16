@@ -38,7 +38,6 @@
 #  include "custom_support.h"
 #endif
 
-#include "celt_types.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

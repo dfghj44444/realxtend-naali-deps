@@ -38,7 +38,6 @@
 #include "celt.h"
 #include "arch.h"
 #include "mdct.h"
-#include "psy.h"
 #include "pitch.h"
 
 #define CELT_BITSTREAM_VERSION 0x8000000b
@@ -98,7 +97,6 @@ struct CELTMode {
 
    /* Stuff that could go in the {en,de}coder, but we save space this way */
    mdct_lookup mdct;
-   kiss_fftr_cfg fft;
 
    const celt_word16 *window;
 
@@ -106,8 +104,6 @@ struct CELTMode {
    int         shortMdctSize;
    mdct_lookup shortMdct;
    const celt_word16 *shortWindow;
-
-   struct PsyDecay psy;
 
    int *prob;
    celt_uint32 marker_end;

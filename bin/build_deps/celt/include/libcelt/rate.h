@@ -47,12 +47,12 @@
 
 #include "cwrs.h"
 
-static __inline int get_pulses(int i)
+static inline int get_pulses(int i)
 {
    return i<8 ? i : (8 + (i&7)) << ((i>>3)-1);
 }
 
-static __inline int bits2pulses(const CELTMode *m, const celt_int16 *cache, int N, int bits)
+static inline int bits2pulses(const CELTMode *m, const celt_int16 *cache, int N, int bits)
 {
    int i;
    int lo, hi;

@@ -19,9 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef KISS_FFT_H
 #define KISS_FFT_H
 
-#undef restrict
 #include <stdlib.h>
-#define restrict __restrict
 #include <math.h>
 #include "arch.h"
 

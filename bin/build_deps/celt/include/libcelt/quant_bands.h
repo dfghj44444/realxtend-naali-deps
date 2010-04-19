@@ -39,12 +39,12 @@
 #include "entdec.h"
 #include "mathops.h"
 
-static __inline celt_word16 amp2Log(celt_word32 amp)
+static inline celt_word16 amp2Log(celt_word32 amp)
 {
 	return celt_log2(MAX32(QCONST32(.001f,14),SHL32(amp,2)));
 }
 
-static __inline celt_word32 log2Amp(celt_word16 lg)
+static inline celt_word32 log2Amp(celt_word16 lg)
 {
 	return PSHR32(celt_exp2(SHL16(lg,3)),4);
 }

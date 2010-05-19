@@ -3,7 +3,7 @@
 
 /*
  *
- *  Copyright (C) 2006 MeVis Research GmbH All Rights Reserved.
+ *  Copyright (C) 2010 MeVis Medical Solutions AG All Rights Reserved.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public
@@ -26,7 +26,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- *  Contact information: MeVis Research GmbH, Universitaetsallee 29,
+ *  Contact information: MeVis Medical Solutions AG, Universitaetsallee 29,
  *  28359 Bremen, Germany or:
  *
  *  http://www.mevis.de
@@ -75,6 +75,9 @@ public slots:
   QList<QObject*> findChildren(QObject* parent, PyObject* type, const QString& name= QString());
   QList<QObject*> findChildren(QObject* parent, PyObject* type, const QRegExp& regExp);
   
+  bool setProperty(QObject* o, const char* name, const QVariant& value);
+  QVariant property(QObject* o, const char* name);
+
   double static_Qt_qAbs(double a) { return qAbs(a); }
   double static_Qt_qBound(double a,double b,double c) { return qBound(a,b,c); }
   void static_Qt_qDebug(const QByteArray& msg) { qDebug(msg.constData()); }

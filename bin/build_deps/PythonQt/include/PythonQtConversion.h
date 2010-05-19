@@ -3,7 +3,7 @@
 
 /*
  *
- *  Copyright (C) 2006 MeVis Research GmbH All Rights Reserved.
+ *  Copyright (C) 2010 MeVis Medical Solutions AG All Rights Reserved.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public
@@ -26,7 +26,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- *  Contact information: MeVis Research GmbH, Universitaetsallee 29,
+ *  Contact information: MeVis Medical Solutions AG, Universitaetsallee 29,
  *  28359 Bremen, Germany or:
  *
  *  http://www.mevis.de
@@ -124,9 +124,6 @@ public:
 
   static PyObject* QVariantMapToPyObject(const QVariantMap& m);
   static PyObject* QVariantListToPyObject(const QVariantList& l);
-
-  //! get human readable string from qvariant
-  static QString qVariantToString(const QVariant& v);
   
   //! get human readable string from CPP object (when the metatype is known)
   static QString CPPObjectToString(int type, const void* data);
@@ -170,6 +167,9 @@ PyObject* PythonQtConvertListOfValueTypeToPythonList(const void* /*QList<T>* */ 
 {
   ListType* list = (ListType*)inList; 
   static const int innerType = PythonQtConv::getInnerTemplateMetaType(QByteArray(QMetaType::typeName(metaTypeId)));
+  if (innerType == QVariant::Invalid) {
+    std::cerr << "PythonQtConvertListOfValueTypeToPythonList: unknown inner type " << QMetaType::typeName(metaTypeId) << std::endl;
+  }
   PyObject* result = PyTuple_New(list->size());
   int i = 0;
   foreach (const T& value, *list) {
@@ -184,6 +184,9 @@ bool PythonQtConvertPythonListToListOfValueType(PyObject* obj, void* /*QList<T>*
 {
   ListType* list = (ListType*)outList; 
   static const int innerType = PythonQtConv::getInnerTemplateMetaType(QByteArray(QMetaType::typeName(metaTypeId)));
+  if (innerType == QVariant::Invalid) {
+    std::cerr << "PythonQtConvertPythonListToListOfValueType: unknown inner type " << QMetaType::typeName(metaTypeId) << std::endl;
+  }
   bool result = false;
   if (PySequence_Check(obj)) {
     result = true;

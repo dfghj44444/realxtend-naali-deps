@@ -3,7 +3,7 @@
 
 /*
  *
- *  Copyright (C) 2006 MeVis Research GmbH All Rights Reserved.
+ *  Copyright (C) 2010 MeVis Medical Solutions AG All Rights Reserved.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public
@@ -26,7 +26,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- *  Contact information: MeVis Research GmbH, Universitaetsallee 29,
+ *  Contact information: MeVis Medical Solutions AG, Universitaetsallee 29,
  *  28359 Bremen, Germany or:
  *
  *  http://www.mevis.de
@@ -82,7 +82,7 @@ struct PythonQtMemberInfo {
 //! a class that stores all required information about a Qt object (and an optional associated C++ class name)
 /*! for fast lookup of slots when calling the object from Python
 */
-class PythonQtClassInfo {
+class PYTHONQT_EXPORT PythonQtClassInfo {
 
 public:
   PythonQtClassInfo();
@@ -103,6 +103,11 @@ public:
 
   //! setup as a CPP (non-QObject), taking the classname
   void setupCPPObject(const QByteArray& classname);
+
+  //! set the type capabilities
+  void setTypeSlots(int typeSlots) { _typeSlots = typeSlots; }
+  //! get the type capabilities
+  int typeSlots() const { return _typeSlots; }
 
   //! get the Python method definition for a given slot name (without return type and signature)
   PythonQtMemberInfo member(const char* member);
@@ -169,7 +174,7 @@ public:
   //! add the parent class info of a CPP object
   void addParentClass(const ParentClassInfo& info) { _parentClasses.append(info); }
 
-  //! check if the special method "hasOwner" is implemented and if it returns false, which means that the object may be destroyed
+  //! check if the special method "py_hasOwner" is implemented and if it returns false, which means that the object may be destroyed
   bool hasOwnerMethodButNoOwner(void* object);
 
   //! set the associated PythonQtClassWrapper (which handles instance creation of this type)
@@ -244,6 +249,7 @@ private:
   PythonQtShellSetInstanceWrapperCB*   _shellSetInstanceWrapperCB;
   
   int                                  _metaTypeId;
+  int                                  _typeSlots;
 
   bool                                 _isQObject;
   bool                                 _enumsCreated;

@@ -64,6 +64,8 @@ along with Caelum. If not, see <http://www.gnu.org/licenses/>.
 
 // Scripting support requires Ogre 1.6
 // Can be also configured on compiler command line
+#define CAELUM_SCRIPT_SUPPORT 0
+/*
 #ifndef CAELUM_SCRIPT_SUPPORT
     #if (OGRE_VERSION >= 0x00010600) && OGRE_USE_NEW_COMPILERS
         #define CAELUM_SCRIPT_SUPPORT 1
@@ -81,6 +83,7 @@ along with Caelum. If not, see <http://www.gnu.org/licenses/>.
         #error "Caelum script support also requires type descriptors."
     #endif
 #endif
+*/
 
 /// @file
 

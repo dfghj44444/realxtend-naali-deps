@@ -108,7 +108,7 @@ public:
 	Socket(const Socket &);
 	~Socket();
 
-	void operator=(const Socket &);
+	Socket &operator=(const Socket &);
 
 	/// Sets the underlying socket send buffer (SO_SNDBUF) size.
 	void SetSendBufferSize(int bytes);
@@ -127,6 +127,10 @@ public:
 	bool IsReadOpen() const { return IsOverlappedReceiveReady() || readOpen; }
 	/// Returns true if the connection is open for writing to.
 	bool IsWriteOpen() const { return writeOpen; }
+	/// Forces this socket to be treated as if it has been read-closed.
+	void MarkReadClosed() { readOpen = false; }
+	/// Forces this socket to be treated as if it has been write-closed.
+	void MarkWriteClosed() { writeOpen = false; }
 
 	/// If this function returns true, this socket represents a UDP server socket instance. For a UDP server,
 	/// the data for all clients is received through this same socket, and there are no individual sockets created for
@@ -175,7 +179,7 @@ public:
 
 	/// Waits for the max given amount of time for new data to be received from the socket.
 	/// @return True if new data was received, false if the timeout period elapsed.
-	bool WaitForData(int msecs);
+//	bool WaitForData(int msecs); // this will be removed completely.
 
 	/// Reads in data from the socket. If there is no data available, this function will not block, but will immediately
 	/// return 0.
@@ -229,6 +233,14 @@ public:
 
 	SOCKET &GetSocketHandle() { return connectSocket; }
 
+	/// Socket objects that represent UDP client connections on the server need to operate in a "slave" mode,
+	/// where socket reads are not performed through that socket, but through the single server UDP server socket.
+	/// Calling this function marks the Socket a slave socket, if isUdpSlaveSocket_==true.
+	void SetUDPSlaveMode(bool isUdpSlaveSocket_) { isUdpSlaveSocket = isUdpSlaveSocket_; }
+
+	/// Returns whether this socket is a UDP slave socket.
+	bool IsUDPSlaveSocket() const { return isUdpSlaveSocket; }
+
 private:
 	SOCKET connectSocket;
 	sockaddr_in udpPeerName;
@@ -244,9 +256,17 @@ private:
 	/// and TCP sockets are always bound to a peer.
 	bool isUdpServerSocket;
 
+	/// If true, this socket is a shared slave copy of a UDP server socket. This boolean is used to remember
+	/// that this Socket object is not authoritative over the OS socket object and should not close it when tearing
+	/// down this socket.
+	bool isUdpSlaveSocket;
+
 #ifdef WIN32
 	WaitFreeQueue<OverlappedTransferBuffer*> queuedReceiveBuffers;
 	WaitFreeQueue<OverlappedTransferBuffer*> queuedSendBuffers;
+
+	/// Frees all allocated data in the queuedReceiveBuffers and queuedSendBuffers queues.
+	void FreeOverlappedTransferBuffers();
 
 	void EnqueueNewReceiveBuffer(OverlappedTransferBuffer *buffer = 0);
 #endif

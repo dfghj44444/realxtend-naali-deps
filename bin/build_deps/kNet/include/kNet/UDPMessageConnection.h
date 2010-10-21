@@ -68,8 +68,6 @@ public:
 
 	void SetDatagramInFlowRatePerSecond(int newDatagramReceiveRate, bool internalCall);
 
-	bool IsSlaveMode() const { return isSlaveSocket; }
-
 private:
 	/// Reads all the new bytes available in the socket. [used internally by worker thread]
 	/// @return The number of bytes successfully read.
@@ -78,7 +76,9 @@ private:
 	/// Parses bytes with have previously been read from the socket to actual application-level messages.
 	void ExtractMessages(const char *data, size_t numBytes);
 
-	/// Reads all available bytes from a datagram socket.
+	/// Reads all available bytes from a datagram socket. This function will read in multiple datagrams
+	/// as long as there are available ones to process.
+	/// @param bytesRead [out] Returns the total number of bytes containes in the datagrams that were read.
 	SocketReadResult UDPReadSocket(size_t &bytesRead);
 
 	// Congestion control and data rate management:
@@ -136,8 +136,6 @@ private:
 	bool rttCleared; ///< If true, smoothedRTT and rttVariation do not contain meaningful values, but "are clear".
 	float smoothedRTT;
 	float rttVariation;
-
-	bool isSlaveSocket;
 
 	// The following are used for statistics purposes:
 
@@ -238,11 +236,6 @@ private:
 	std::vector<NetworkMessage *> datagramSerializedMessages; // MessageConnection::UDPSendOutPacket()
 	std::vector<NetworkMessage *> skippedMessages; // MessageConnection::UDPSendOutPacket()
 	std::vector<char> assembledData; // MessageConnection::DatagramExtractMessages
-
-	/// Socket objects that represent UDP client connections on the server need to operate in a "slave" mode,
-	/// where socket reads are not performed through that socket, but through the single server UDP server socket.
-	/// Calling this function marks the Socket a slave socket, if enabled==true.
-	void SetUDPSlaveMode(bool enabled);
 
 	/// Returns the average number of inbound packet loss, packets/sec.
 	float GetPacketLossCount() const { return packetLossCount; }

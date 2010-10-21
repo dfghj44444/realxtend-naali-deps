@@ -152,7 +152,7 @@ public:
 	/// @return If the connection was successfully opened, this function returns true. Otherwise returns false, and
 	///         either timeout was encountered and the other end has not acknowledged the connection,
 	///         or the connection is in ConnectionClosed state.
-	bool WaitToEstablishConnection(int maxMSecsToWait = 2000);
+	bool WaitToEstablishConnection(int maxMSecsToWait = 500);
 
 	/// Starts a benign disconnect procedure. Transitions ConnectionState to ConnectionDisconnecting. This 
 	/// function will block until the given period expires or the other end acknowledges and also closes 
@@ -165,7 +165,7 @@ public:
 	/// When this function returns, the connection may either be in ConnectionClosing or ConnectionClosed
 	/// state, depending on whether the other end has already acknowledged the disconnection.
 	/// \note You may not call this function in middle of StartNewMessage() - EndAndQueueMessage() function calls.
-	void Disconnect(int maxMSecsToWait = 2000);
+	void Disconnect(int maxMSecsToWait = 500);
 
 	/// Starts a forceful disconnect procedure.
 	/// @param maxMSecsToWait If a positive number, Disconnect message will be sent to the peer and if no response
@@ -174,7 +174,7 @@ public:
 	///                       and the function returns immediately. The other end will remain hanging and will timeout.
 	/// When this function returns, the connection is in ConnectionClosed state.
 	/// \note You may not call this function in middle of StartNewMessage() - EndAndQueueMessage() function calls.
-	void Close(int maxMSecsToWait = 2000);
+	void Close(int maxMSecsToWait = 500);
 
 	/// Stores all the statistics about the current connection.
 	Lockable<ConnectionStatistics> stats;
@@ -354,8 +354,6 @@ public:
 
 	SocketReadResult ReadSocket() { size_t ignored = 0; return ReadSocket(ignored); }
 
-	NetworkWorkerThread *workerThread;
-
 	/// Sets the worker thread object that will handle this connection.
 	void SetWorkerThread(NetworkWorkerThread *thread) { workerThread = thread; }
 
@@ -364,6 +362,9 @@ protected:
 	Network *owner;
 	/// If this MessageConnection represents a client connection on the server side, this gives the owner. [main thread]
 	NetworkServer *ownerServer;
+	/// Stores the thread that manages the background processing of this connection. The same thread can manage multiple
+	/// connections and servers, and not just this one.
+	NetworkWorkerThread *workerThread;
 
 	/// A queue populated by the main thread to give out messages to the MessageConnection work thread to process.
 	/// [produced by main thread, consumed by worker thread]

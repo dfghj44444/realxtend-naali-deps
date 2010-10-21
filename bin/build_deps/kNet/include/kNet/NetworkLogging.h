@@ -30,6 +30,7 @@ const LogChannel LogError = 4;       ///< Successful connects and disconnects.
 const LogChannel LogObjectAlloc = 8; ///< Successful connects and disconnects.
 const LogChannel LogData = 16;       ///< Successful connects and disconnects.
 const LogChannel LogVerbose = 32;    ///< Print all information for debugging purposes.
+const LogChannel LogWaits = 64;      ///< Logs all long performance-related waits (thread/mutex blocks) that occur in the system.
 }
 
 /// Prints a variadic line to log.
@@ -54,6 +55,10 @@ LogChannel GetLogChannels();
 /// redirects all logging to that file. Calling this function with a null filename pointer restores
 /// logging to target std::cout.
 void SetLogFile(const char *filename);
+
+/// When called, sets the runtime to print out all memory leaks at program exit time. Win32-only. On
+/// linux, this is a no-op.
+void EnableMemoryLeakLoggingAtExit();
 
 } // ~kNet
 

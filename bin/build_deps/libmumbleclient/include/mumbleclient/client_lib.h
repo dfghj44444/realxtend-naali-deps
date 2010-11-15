@@ -1,6 +1,8 @@
 #ifndef CLIENT_LIB_H_
 #define CLIENT_LIB_H_
 
+#include <stdint.h>
+
 #include <boost/asio.hpp>
 
 #include "visibility.h"
@@ -15,6 +17,8 @@ class DLL_PUBLIC MumbleClientLib {
 	MumbleClient* NewClient();
 	void Run();
 	void Shutdown();
+	static int32_t GetLogLevel();
+	static void SetLogLevel(int32_t level);
 
   private:
 	DLL_LOCAL MumbleClientLib();
@@ -27,6 +31,6 @@ class DLL_PUBLIC MumbleClientLib {
 	void operator=(const MumbleClientLib&);
 };
 
-}  // end namespace MumbleClient
+}  // namespace MumbleClient
 
 #endif  // CLIENT_LIB_H_

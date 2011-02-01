@@ -46,12 +46,18 @@ public:
 	/// Starts a network server that listens to the given local port.
 	/// @param serverListener [in] A pointer to the listener object that will be registered to receive notifications
 	///	about incoming connections.
-	NetworkServer *StartServer(unsigned short port, SocketTransportLayer transport, INetworkServerListener *serverListener);
+	/// @param allowAddressReuse If true, kNet passes the SO_REUSEADDR parameter to the server listen socket before binding 
+	///        the socket to a local port (== before starting the server). This allows the same port to be forcibly reused
+	///        when restarting the server if a crash occurs, without having to wait for the operating system to free up the port.
+	NetworkServer *StartServer(unsigned short port, SocketTransportLayer transport, INetworkServerListener *serverListener, bool allowAddressReuse);
 
 	/// Starts a network server that listens to multiple local ports.
 	/// This version of the function is given a list of pairs (port, UDP|TCP) values
 	/// and the server will start listening on each of them.
-	NetworkServer *StartServer(const std::vector<std::pair<unsigned short, SocketTransportLayer> > &listenPorts, INetworkServerListener *serverListener);
+	/// @param allowAddressReuse If true, kNet passes the SO_REUSEADDR parameter to the server listen socket before binding 
+	///        the socket to a local port (== before starting the server). This allows the same port to be forcibly reused
+	///        when restarting the server if a crash occurs, without having to wait for the operating system to free up the port.
+	NetworkServer *StartServer(const std::vector<std::pair<unsigned short, SocketTransportLayer> > &listenPorts, INetworkServerListener *serverListener, bool allowAddressReuse);
 
 	void StopServer();
 
@@ -68,10 +74,8 @@ public:
 		free it by letting the refcount go to 0. */
 	Ptr(MessageConnection) Connect(const char *address, unsigned short port, SocketTransportLayer transport, IMessageHandler *messageHandler, Datagram *connectMessage = 0);
 
-	/// @return Local machine IP.
-	const char *MachineIP() const { return machineIP.c_str(); }
-
-	NetworkWorkerThread *WorkerThread() { return workerThread; }
+	/// Returns the local host name of the system (the local machine name or the local IP, whatever is specified by the system).
+	const char *LocalAddress() const { return localHostName.c_str(); }
 
 	/// Returns the error string associated with the given networking error id.
 	static std::string GetErrorString(int error);
@@ -82,12 +86,23 @@ public:
 	/// Returns the error id corresponding to the last error that occurred in the networking library.
 	static int GetLastError();
 
+	/// Takes the given MessageConnection and associates a NetworkWorkerThread for it.
+	void AssignConnectionToWorkerThread(Ptr(MessageConnection) connection);
+
+	/// Returns the amount of currently executing background network worker threads.
+	int NumWorkerThreads() const { return workerThreads.size(); }
+
+	Ptr(NetworkServer) GetServer() { return server; }
+
 private:
-	std::string machineIP;
+	/// Specifies the local network address of the system. This name is cached here on initialization
+	/// to avoid multiple queries to namespace providers whenever the name is needed.
+	std::string localHostName;
 
 	/// Maintains the server-related data structures if this computer
 	/// is acting as a server. Otherwise this data is not used.
 	Ptr(NetworkServer) server;
+
 	/// Contains all active sockets in the system.
 	std::list<Socket> sockets;
 
@@ -98,15 +113,26 @@ private:
 
 	void SendUDPConnectDatagram(Socket &socket, Datagram *connectMessage);
 
-	/// Returns a new UDP socket that is bound to communicating with the given endpoint.
-	/// Does NOT send the connection packet.
+	/// Returns a new UDP socket that is bound to communicating with the given endpoint, under
+	/// the given UDP master server socket.
 	/// The returned pointer is owned by this class.
-	Socket *ConnectUDP(SOCKET connectSocket, const EndPoint &remoteEndPoint);
+	Socket *CreateUDPSlaveSocket(Socket *serverListenSocket, const EndPoint &remoteEndPoint, const char *remoteHostName);
 
 	/// Opens a new socket that listens on the given port using the given transport.
-	Socket *OpenListenSocket(unsigned short port, SocketTransportLayer transport);
+	/// @param allowAddressReuse If true, kNet passes the SO_REUSEADDR parameter to the server listen socket before binding 
+	///        the socket to a local port (== before starting the server). This allows the same port to be forcibly reused
+	///        when restarting the server if a crash occurs, without having to wait for the operating system to free up the port.
+	Socket *OpenListenSocket(unsigned short port, SocketTransportLayer transport, bool allowAddressReuse);
 
-	NetworkWorkerThread *workerThread;
+	/// Stores all the currently running network worker threads. Each thread is assigned
+	/// a list of MessageConnections and NetworkServers to oversee. The worker threads
+	/// then manage the socket reads and writes on these connections.
+	std::vector<NetworkWorkerThread*> workerThreads;
+
+	/// Examines each currently running worker thread and returns one that has sufficiently low load,
+	/// or creates a new thread and returns it if no such thread exists. The thread is added and maintained
+	/// in the workerThreads list.
+	NetworkWorkerThread *GetOrCreateWorkerThread();
 
 	void Init();
 	void DeInit();

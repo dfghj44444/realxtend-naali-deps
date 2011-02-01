@@ -56,3 +56,9 @@
 #include "kNet/Types.h"
 #include "kNet/VLEPacker.h"
 #include "kNet/WaitFreeQueue.h"
+
+#ifdef KNET_USE_QT
+#include "kNet/qt/NetworkDialog.h"
+#include "kNet/qt/NetworkServerDialog.h"
+#include "kNet/qt/MessageConnectionDialog.h"
+#endif

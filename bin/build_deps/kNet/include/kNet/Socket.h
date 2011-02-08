@@ -28,13 +28,14 @@ namespace kNet
 typedef int socklen_t;
 }
 
-#else
+#elif UNIX
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
 #include <errno.h>
+
 #define INVALID_SOCKET (0)
 #define KNET_SOCKET_ERROR (-1)
 #define KNET_ACCEPT_FAILURE (-1)
@@ -43,6 +44,7 @@ typedef int socklen_t;
 #define TIMEVAL timeval
 #define SD_SEND SHUT_WR
 #define SD_BOTH SHUT_RDWR
+#define _stricmp strcasecmp
 
 namespace kNet
 {
@@ -70,6 +72,12 @@ enum SocketTransportLayer
 };
 
 std::string SocketTransportLayerToString(SocketTransportLayer transport);
+
+/// Converts the given string (case-insensitive parsing) to the corresponding SocketTransportLayer enum.
+/// "tcp" & "socketovertcp" -> SocketOverTCP.
+/// "udp" & "socketoverudp" -> SocketOverUDP.
+/// Other strings -> InvalidTransportLayer.
+SocketTransportLayer StringToSocketTransportLayer(const char *str);
 
 enum SocketType
 {
@@ -151,7 +159,7 @@ public:
 	/// the data for all clients is received through this same socket, and there are no individual sockets created for
 	/// each new connection, like is done with TCP.
 	bool IsUDPServerSocket() const { return transport == SocketOverUDP && type == ServerListenSocket; }
-	/// Returns whether this socket is a UDP slave socket.
+	/// Returns whether this socket is a UDP slave socket. [worker thread]
 	bool IsUDPSlaveSocket() const { return transport == SocketOverUDP && type == ServerClientSocket; }
 
 	/// Performs a write close operation on the socket, signalling the other end that no more data will be sent. Any data
@@ -220,7 +228,7 @@ public:
 	/// Returns true if there is new data to be read in. In that case, BeginReceive() will not return 0.
 	bool IsOverlappedReceiveReady() const;
 	/// Returns the event object that will be notified whenever data is available to be read from the socket.
-	Event GetOverlappedReceiveEvent();
+	Event GetOverlappedReceiveEvent(); // [worker thread]
 
 	/// Returns which transport layer the connection is using. This value is either SocketOverUDP or SocketOverTCP.
 	SocketTransportLayer TransportLayer() const { return transport; }

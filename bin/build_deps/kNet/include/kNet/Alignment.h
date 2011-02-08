@@ -15,12 +15,12 @@
 
 /** @file Alignment.h
 	@brief Provides functions for working with pointer data alignment computations.*/
- 
+
 #include <cassert>
 
 #include "Types.h"
 
-#ifdef LINUX
+#ifdef UNIX
 #include <stdint.h>
 #endif
 

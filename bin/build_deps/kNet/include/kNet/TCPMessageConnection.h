@@ -40,16 +40,17 @@ class TCPMessageConnection : public MessageConnection
 {
 public:
 	TCPMessageConnection(Network *owner, NetworkServer *ownerServer, Socket *socket, ConnectionState startingState);
+	~TCPMessageConnection();
 
 private:
 	/// Maintains a byte buffer that contains partial messages. (Used only in TCP mode) [worker thread]
 	RingBuffer tcpInboundSocketData;
 
 	/// Reads all available bytes from a stream socket.
-	SocketReadResult ReadSocket(size_t &bytesRead);
+	SocketReadResult ReadSocket(size_t &bytesRead); // [worker thread]
 
-	PacketSendResult SendOutPacket();
-	void SendOutPackets();
+	PacketSendResult SendOutPacket(); // [worker thread]
+	void SendOutPackets(); // [worker thread]
 
 	unsigned long TimeUntilCanSendPacket() const;
 

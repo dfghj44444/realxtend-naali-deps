@@ -14,7 +14,7 @@
 #pragma once
 
 /** @file DataSerializer.h
-	@brief The class \ref DataSerializer DataSerializer. Stores POD data to bit streams. */
+	@brief The class \ref kNet::DataSerializer DataSerializer. Stores POD data to bit streams. */
 
 #include <vector>
 #include <cassert>
@@ -82,7 +82,7 @@ public:
 	/// parameter of type 's8' with dynamicCount field set to e.g. 8.
 	void AddString(const char *str);
 
-	/// See \ref void DataSerializer::AddString(const char *str); "".
+	/// See \ref void kNet::DataSerializer::AddString(const char *str); "".
 	void AddString(const std::string &str) { AddString(str.c_str()); }
 
 	/// Appends the given amount of elements from the passed array.
@@ -200,10 +200,10 @@ void DataSerializer::AddArray(const T *data, u32 count)
 /// Sums up the sizes of each element of an array.
 template<typename T> size_t SumArray(const T &data, size_t numElems)
 {
-   size_t size = 0;
-   for(size_t i = 0; i < numElems; ++i)
-      size += data[i].Size();
-   return size;
+	size_t size = 0;
+	for(size_t i = 0; i < numElems; ++i)
+		size += data[i].Size();
+	return size;
 }
 
 } // ~kNet

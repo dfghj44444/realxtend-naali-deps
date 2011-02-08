@@ -32,11 +32,11 @@ class NetworkWorkerThread
 public:
 	NetworkWorkerThread();
 
-	void AddConnection(Ptr(MessageConnection) connection);
-	void RemoveConnection(Ptr(MessageConnection) connection);
+	void AddConnection(MessageConnection *connection);
+	void RemoveConnection(MessageConnection *connection);
 
-	void AddServer(Ptr(NetworkServer) server);
-	void RemoveServer(Ptr(NetworkServer) server);
+	void AddServer(NetworkServer *server);
+	void RemoveServer(NetworkServer *server);
 
 	void StartThread();
 	void StopThread();
@@ -44,9 +44,11 @@ public:
 	int NumConnections() const;
 	int NumServers() const;
 
+	Thread &ThreadObject() { return workThread; }
+
 private:
-	Lockable<std::vector<Ptr(MessageConnection)> > connections;
-	Lockable<std::vector<Ptr(NetworkServer)> > servers;
+	Lockable<std::vector<MessageConnection *> > connections;
+	Lockable<std::vector<NetworkServer *> > servers;
 
 	Thread workThread;
 

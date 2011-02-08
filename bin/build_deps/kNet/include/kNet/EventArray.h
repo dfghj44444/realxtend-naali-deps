@@ -14,7 +14,7 @@
 #pragma once
 
 /** @file EventArray.h
-	@brief The class \ref EventArray EventArray. Allows listening to multiple events at once.*/
+	@brief The class \ref kNet::EventArray EventArray. Allows listening to multiple events at once.*/
 
 #include <vector>
 
@@ -59,7 +59,7 @@ private:
 #ifdef WIN32
 	WSAEVENT events[maxEvents]; 
 
-#elif LINUX
+#elif UNIX
 	fd_set readfds;
 	fd_set writefds;
 	int nfds;

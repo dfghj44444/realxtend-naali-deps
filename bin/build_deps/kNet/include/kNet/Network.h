@@ -16,7 +16,7 @@
 /** @file Network.h
 	@brief The class Network. The root point for creating client and server objects. */
 
-#ifdef LINUX
+#ifdef UNIX
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -64,11 +64,12 @@ public:
 	/// Connects a raw socket (low-level, no MessageConnection abstraction) to the given destination.
 	Socket *ConnectSocket(const char *address, unsigned short port, SocketTransportLayer transport);
 
-	/// Closes (==frees) the given Socket object. After calling this function, do not dereference that Socket pointer,
-	/// as it is deleted.
-	void CloseSocket(Socket *socket);
+	/// Frees the given Socket object (performs an immediate bidirectional shutdown and frees the socket). After calling 
+	/// this function, do not dereference that Socket pointer, as it is deleted.
+	void DeleteSocket(Socket *socket);
 
-	void CloseConnection(Ptr(MessageConnection) connection);
+	/// Closes the given MessageConnection object. 
+	void CloseConnection(MessageConnection *connection);
 
 	/** Connects to the given address:port using kNet over UDP or TCP. When you are done with the connection,
 		free it by letting the refcount go to 0. */
@@ -86,13 +87,14 @@ public:
 	/// Returns the error id corresponding to the last error that occurred in the networking library.
 	static int GetLastError();
 
-	/// Takes the given MessageConnection and associates a NetworkWorkerThread for it.
-	void AssignConnectionToWorkerThread(Ptr(MessageConnection) connection);
-
 	/// Returns the amount of currently executing background network worker threads.
 	int NumWorkerThreads() const { return workerThreads.size(); }
 
+	/// Returns the NetworkServer object, or null if no server has been started.
 	Ptr(NetworkServer) GetServer() { return server; }
+
+	/// Returns all current connections in the system.
+	std::set<MessageConnection *> Connections() const { return connections; }
 
 private:
 	/// Specifies the local network address of the system. This name is cached here on initialization
@@ -105,6 +107,9 @@ private:
 
 	/// Contains all active sockets in the system.
 	std::list<Socket> sockets;
+
+	/// Tracks all existing connections in the system.
+	std::set<MessageConnection *> connections;
 
 	/// Takes the ownership of the given socket, and returns a pointer to the owned one.
 	Socket *StoreSocket(const Socket &cp);
@@ -134,6 +139,28 @@ private:
 	/// in the workerThreads list.
 	NetworkWorkerThread *GetOrCreateWorkerThread();
 
+	/// A notification function that is called by NetworkServer whenever it creates a new MessageConnection object.
+	/// The Network subsystem will store this new connection for tracking purposes.
+	void NewMessageConnectionCreated(MessageConnection *connection);
+
+	/// Takes the given MessageConnection and associates a NetworkWorkerThread for it.
+	void AssignConnectionToWorkerThread(MessageConnection *connection);
+
+	/// Takes the given server and associates a NetworkWorkerThread for it.
+	void AssignServerToWorkerThread(NetworkServer *server);
+
+	/// Closes the given workerThread and deletes it (do not reference the passed pointer afterwards). 
+	/// Call this function only after first removing all MessageConnections and NetworkServers from the thread.
+	void CloseWorkerThread(NetworkWorkerThread *workerThread);
+
+	/// Dissociates the given connection from its worker thread, and closes the worker thread if it does not
+	/// have any servers or connections to work on any more.
+	void RemoveConnectionFromItsWorkerThread(MessageConnection *connection);
+
+	/// Dissociates the given server from its worker thread, and closes the worker thread if it does not
+	/// have any servers or connections to work on any more.
+	void RemoveServerFromItsWorkerThread(NetworkServer *server);
+
 	void Init();
 	void DeInit();
 
@@ -143,6 +170,8 @@ private:
 };
 
 /// Outputs the given number of bytes formatted to KB or MB suffix for readability.
-std::string FormatBytes(size_t numBytes);
+std::string FormatBytes(u64 numBytes);
+
+std::string FormatBytes(double numBytes);
 
 } // ~kNet

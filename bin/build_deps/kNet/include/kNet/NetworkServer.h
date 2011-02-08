@@ -49,13 +49,9 @@ public:
 	// Returns whether this server is handling new connection attempts.
 	bool AcceptsNewConnections() const { return acceptNewConnections; }
 
-	/// Enables or disables whether rejected connection attempts are messages back to the client (UDP only).
+	/// Enables or disables whether rejected connection attempts are messaged back to the client (UDP only).
 	/// i.e. whether to message "Connection rejected" back to the peer.
 	void SetStealthMode(bool stealthModeEnabled);
-
-	/// If the server is running in UDP mode, the listenSocket is the socket that receives all application data.
-	/// This function pulls all new data from the socket and sends it to MessageConnection instances for deserialization and processing.
-	void ReadUDPSocketData(Socket *listenSocket);
 
 	/// Handles all new connection attempts and pulls in new messages from all existing connections.
 	/// Periodically call this function to update the NetworkServer object.
@@ -103,6 +99,9 @@ public:
 	/// Returns all the currently tracked connections.
 	ConnectionMap GetConnections();
 
+	/// Returns the number of currently active connections. A connection is active if it is at least read- or write-open.
+	int NumConnections() const;
+
 	/// Returns a one-liner textual summary of this server.
 	std::string ToString() const;
 
@@ -121,10 +120,28 @@ private:
 	/// The Network object this NetworkServer was spawned from.
 	Network *owner;
 
+	/// Stores the thread that manages the background processing of this server. The same thread can manage multiple
+	/// connections and servers, and not just this one.
+	NetworkWorkerThread *workerThread; // [set and read only by worker thread]
+
+#ifdef THREAD_CHECKING_ENABLED
+	/// In debug mode, we track and enforce thread safety constraints through this ID. 
+	ThreadId workerThreadId; // [set by worker thread on thread startup, read by both main and worker thread]
+#endif
+
 	/// If true, new connection attempts are processed. Otherwise, just discard all connection packets.
 	bool acceptNewConnections;
 
 	INetworkServerListener *networkServerListener;
+
+	/// Sets the worker thread object that will handle this server.
+	void SetWorkerThread(NetworkWorkerThread *thread); // [main thread]
+
+	NetworkWorkerThread *WorkerThread() const { return workerThread; }
+
+	/// If the server is running in UDP mode, the listenSocket is the socket that receives all application data.
+	/// This function pulls all new data from the socket and sends it to MessageConnection instances for deserialization and processing.
+	void ReadUDPSocketData(Socket *listenSocket); // [worker thread]
 
 	void RegisterServerListener(INetworkServerListener *listener);
 
@@ -152,6 +169,7 @@ private:
 	bool ProcessNewUDPConnectionAttempt(Socket *listenSocket, const EndPoint &endPoint, const char *data, size_t numBytes);
 
 	friend class Network;
+	friend class NetworkWorkerThread;
 };
 
 } // ~kNet

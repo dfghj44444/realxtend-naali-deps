@@ -14,7 +14,7 @@
 #pragma once
 
 /** @file kNetFwd.h
-	@brief Forward-declares all common symbols defined by KristalliNet. */
+	@brief Forward-declares all common symbols defined by kNet. */
 
 namespace kNet
 {
@@ -37,6 +37,7 @@ namespace kNet
 	class SerializationStructCompiler;
 	class SerializedDataIterator;
 	class Socket;
+	class StatsEventHierarchyNode;
 	class TCPMessageConnection;
 	class Thread;
 	class UDPMessageConnection;

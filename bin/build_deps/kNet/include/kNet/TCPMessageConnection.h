@@ -43,7 +43,7 @@ public:
 	~TCPMessageConnection();
 
 private:
-	/// Maintains a byte buffer that contains partial messages. (Used only in TCP mode) [worker thread]
+	/// Maintains a byte buffer that contains partial messages. [worker thread]
 	RingBuffer tcpInboundSocketData;
 
 	/// Reads all available bytes from a stream socket.
@@ -51,6 +51,8 @@ private:
 
 	PacketSendResult SendOutPacket(); // [worker thread]
 	void SendOutPackets(); // [worker thread]
+
+	void DoUpdateConnection(); // [worker thread]
 
 	unsigned long TimeUntilCanSendPacket() const;
 
@@ -61,6 +63,8 @@ private:
 	std::vector<NetworkMessage*> serializedMessages; // MessageConnection::TCPSendOutPacket()
 
 	void PerformDisconnection();
+
+	void DumpConnectionStatus() const; // [main thread]
 };
 
 } // ~kNet

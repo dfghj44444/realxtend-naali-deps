@@ -17,7 +17,9 @@
 	@brief Shows a debugging console dialog of the main kNet Network object. */
 
 #include <QObject>
+#include <QPointer>
 #include <QWidget>
+
 class QTimer;
 class QTreeWidgetItem;
 class Ui_NetworkDialog;
@@ -27,12 +29,13 @@ class Ui_NetworkDialog;
 namespace kNet
 {
 
+class GraphDialog;
+
 class NetworkDialog : public QWidget
 {
 	Q_OBJECT;
 
 	Network *network;
-	QTimer *updateTimer;
 	Ui_NetworkDialog *dialog;
 
 public:
@@ -42,6 +45,13 @@ public:
 public slots:
 	void Update();
 	void ItemDoubleClicked(QTreeWidgetItem *item);
+	void EventItemDoubleClicked(QTreeWidgetItem *item);
+
+private:
+	void PopulateStatsTree();
+
+	typedef std::map<std::string, QPointer<GraphDialog> > GraphMap;
+	GraphMap graphs;
 };
 
 } // ~kNet

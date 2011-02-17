@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Graph.ui'
 **
-** Created: Wed 16. Feb 14:43:28 2011
+** Created: Thu 17. Feb 18:07:23 2011
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

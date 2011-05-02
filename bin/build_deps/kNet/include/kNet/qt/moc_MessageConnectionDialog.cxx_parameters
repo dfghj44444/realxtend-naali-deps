@@ -1,0 +1,9 @@
+-DTHREAD_CHECKING_ENABLED
+-DKNET_LOGGING_SUPPORT_ENABLED
+-DKNET_NETWORK_PROFILING
+-DKNET_USE_BOOST
+-DKNET_USE_QT
+-DWIN32
+-o
+E:/Projects/kNet/include/kNet/qt/moc_MessageConnectionDialog.cxx
+E:/Projects/kNet/include/kNet/qt/MessageConnectionDialog.h

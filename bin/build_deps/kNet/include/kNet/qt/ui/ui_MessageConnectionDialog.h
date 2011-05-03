@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MessageConnectionDialog.ui'
 **
-** Created: Mon 2. May 11:30:51 2011
+** Created: Mon 2. May 15:49:12 2011
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

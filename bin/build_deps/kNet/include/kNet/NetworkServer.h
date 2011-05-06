@@ -71,6 +71,13 @@ public:
 	                      unsigned long contentID, const char *data, size_t numBytes,
 	                      MessageConnection *exclude = 0);
 
+	template<typename SerializableData>
+	void BroadcastStruct(const SerializableData &data, unsigned long id, bool inOrder, 
+		bool reliable, unsigned long priority, unsigned long contentID = 0, MessageConnection *exclude = 0);
+
+	template<typename SerializableMessage>
+	void Broadcast(const SerializableMessage &data, unsigned long contentID = 0, MessageConnection *exclude = 0);
+
 	/// Sends the given message to the given destination.
 	void SendMessage(const NetworkMessage &msg, MessageConnection &destination);
 
@@ -124,7 +131,7 @@ private:
 	/// connections and servers, and not just this one.
 	NetworkWorkerThread *workerThread; // [set and read only by worker thread]
 
-#ifdef THREAD_CHECKING_ENABLED
+#ifdef KNET_THREAD_CHECKING_ENABLED
 	/// In debug mode, we track and enforce thread safety constraints through this ID. 
 	ThreadId workerThreadId; // [set by worker thread on thread startup, read by both main and worker thread]
 #endif
@@ -171,5 +178,50 @@ private:
 	friend class Network;
 	friend class NetworkWorkerThread;
 };
+
+template<typename SerializableData>
+void NetworkServer::BroadcastStruct(const SerializableData &data, unsigned long id, bool inOrder, 
+	bool reliable, unsigned long priority, unsigned long contentID, MessageConnection *exclude)
+{
+	PolledTimer timer;
+	Lockable<ConnectionMap>::LockType clientsLock = clients.Acquire();
+	if (timer.MSecsElapsed() >= 50.f)
+	{
+		LOG(LogWaits, "NetworkServer::BroadcastMessage: Accessing the connection list took %f msecs.",
+			timer.MSecsElapsed());
+	}
+
+	const size_t dataSize = data.Size();
+
+	for(ConnectionMap::iterator iter = clientsLock->begin(); iter != clientsLock->end(); ++iter)
+	{
+		MessageConnection *connection = iter->second;
+		assert(connection);
+		if (connection == exclude || !connection->IsWriteOpen())
+			continue;
+
+		NetworkMessage *msg = connection->StartNewMessage(id, dataSize);
+
+		if (dataSize > 0)
+		{
+			DataSerializer mb(msg->data, dataSize);
+			data.SerializeTo(mb);
+			assert(mb.BytesFilled() == dataSize); // The SerializableData::Size() estimate must be exact!
+		}
+
+		msg->id = id;
+		msg->reliable = reliable;
+		msg->inOrder = inOrder;
+		msg->priority = priority;
+		msg->contentID = contentID;
+		connection->EndAndQueueMessage(msg);
+	}
+}
+
+template<typename SerializableMessage>
+void NetworkServer::Broadcast(const SerializableMessage &data, unsigned long contentID, MessageConnection *exclude)
+{
+	BroadcastStruct(data, SerializableMessage::messageID, data.inOrder, data.reliable, data.priority, contentID, exclude);
+}
 
 } // ~kNet

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'NetworkDialog.ui'
 **
-** Created: Mon 2. May 15:49:12 2011
+** Created: Fri 6. May 13:47:50 2011
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

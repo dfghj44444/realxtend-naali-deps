@@ -3,8 +3,8 @@
 // These need to match for the client code using kNet.
 #pragma once
 
-#ifndef THREAD_CHECKING_ENABLED
-#define THREAD_CHECKING_ENABLED
+#ifndef KNET_ENABLE_WINXP_SUPPORT
+#define KNET_ENABLE_WINXP_SUPPORT
 #endif
 
 #ifndef KNET_LOGGING_SUPPORT_ENABLED

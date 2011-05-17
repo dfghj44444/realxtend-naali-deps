@@ -197,7 +197,7 @@ void DataSerializer::AddArray(const T *data, u32 count)
 	if (count == 0 && iter)
 		iter->ProceedToNextVariable();
 }
-/*
+
 /// Sums up the sizes of each element of an array.
 template<typename T>
 size_t SumArray(const T &data, size_t numElems)
@@ -207,7 +207,7 @@ size_t SumArray(const T &data, size_t numElems)
 		size += data[i].Size();
 	return size;
 }
-*/
+
 template<typename TypeSerializer, typename T>
 size_t ArraySize(const T &data, size_t numElems)
 {

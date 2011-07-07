@@ -1,16 +1,12 @@
 #ifndef CHANNEL_H_
 #define CHANNEL_H_
 
-#include <boost/weak_ptr.hpp>
-
-#include "logging.h"
-
 namespace MumbleClient {
 
 class Channel {
   public:
-	Channel(int32_t id_) : id(id_) { }
-	~Channel() { DLOG(INFO) << "Channel " << name << " destroyed"; }
+	Channel(int32_t id_) : id(id_) { std::cout << "New channel" << std::endl; }
+	~Channel() { std::cout << "Channel " << name << " destroyed" << std::endl; }
 	int32_t id;
 	boost::weak_ptr<Channel> parent;
 	int32_t position;
@@ -24,6 +20,6 @@ class Channel {
 	void operator=(const Channel&);
 };
 
-}  // namespace MumbleClient
+}  // end namespace MumbleClient
 
 #endif  // CHANNEL_H_

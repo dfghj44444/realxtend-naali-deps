@@ -1,18 +1,14 @@
 #ifndef USER_H_
 #define USER_H_
 
-#include <boost/weak_ptr.hpp>
-
-#include "logging.h"
-
 namespace MumbleClient {
 
 class Channel;
 
 class User {
   public:
-	User(int32_t session_, boost::shared_ptr<Channel> channel_) : session(session_), channel(channel_) { }
-	~User() { DLOG(INFO) << "User " << name << " destroyed"; }
+	User(int32_t session_, boost::shared_ptr<Channel> channel_) : session(session_), channel(channel_) { std::cout << "New user" << std::endl; }
+	~User() { std::cout << "User " << name << " destroyed" << std::endl; }
 	int32_t session;
 	int32_t user_id;
 	boost::weak_ptr<Channel> channel;
@@ -31,6 +27,6 @@ class User {
 
 };
 
-}  // namespace MumbleClient
+}  // end namespace MumbleClient
 
 #endif  // USER_H_

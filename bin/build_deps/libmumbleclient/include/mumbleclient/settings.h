@@ -31,6 +31,6 @@ class DLL_PUBLIC Settings {
 	DLL_LOCAL void operator=(const Settings&);
 };
 
-}  // namespace MumbleClient
+}  // end namespace MumbleClient
 
 #endif  // SETTINGS_H_

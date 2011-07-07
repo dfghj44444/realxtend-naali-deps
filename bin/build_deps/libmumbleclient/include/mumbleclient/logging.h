@@ -1,16 +1,13 @@
-#ifndef LOGGING_H_
-#define LOGGING_H_
+#ifndef LIBMUMBLE_LOGGING_H_
+#define LIBMUMBLE_LOGGING_H_
 
-#include <stdint.h>
+#include "libmumble_stdint.h"
 
 #include <sstream>
 
 namespace MumbleClient {
 
 namespace logging {
-
-void SetLogLevel(int32_t level);
-int32_t GetLogLevel();
 
 typedef int32_t LogSeverity;
 const LogSeverity LOG_INFO = 0;
@@ -62,4 +59,4 @@ class LogMessageVoidify {
 
 }  // namespace MumbleClient
 
-#endif  // LOGGING_H_
+#endif  // LIBMUMBLE_LOGGING_H_

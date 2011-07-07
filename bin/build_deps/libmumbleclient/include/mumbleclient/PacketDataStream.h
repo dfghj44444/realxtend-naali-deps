@@ -31,18 +31,15 @@
 #ifndef _PACKETDATASTREAM_H
 #define _PACKETDATASTREAM_H
 
+#include "client.h"
 #include <string.h>
-
-#include <deque>
 #include <vector>
-
-namespace MumbleClient {
 
 /*
  * GCC doesn't yet do inter-object-file inlining, so unfortunately, this all has to be defined here.
  */
 
-class PacketDataStream {
+class LibMumblePacketDataStream {
 	private:
 //		Q_DISABLE_COPY(PacketDataStream)
 	private:
@@ -170,23 +167,23 @@ class PacketDataStream {
 			ok = true;
 		}
 	public:
-		PacketDataStream(const char *d, int msize) {
+		LibMumblePacketDataStream(const char *d, int msize) {
 			setup(const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(d)), msize);
 		}
 
-		PacketDataStream(char *d, int msize) {
+		LibMumblePacketDataStream(char *d, int msize) {
 			setup(reinterpret_cast<unsigned char *>(d), msize);
 		}
 
-		PacketDataStream(const unsigned char *d, int msize) {
+		LibMumblePacketDataStream(const unsigned char *d, int msize) {
 			setup(const_cast<unsigned char *>(d), msize);
 		}
 
-		PacketDataStream(unsigned char *d, int msize) {
+		LibMumblePacketDataStream(unsigned char *d, int msize) {
 			setup(d, msize);
 		}
 
-		PacketDataStream &operator <<(const uint64_t value) {
+		LibMumblePacketDataStream &operator <<(const uint64_t value) {
 			uint64_t i = value;
 
 			if ((i & 0x8000000000000000LL) && (~i < 0x100000000LL)) {
@@ -240,7 +237,7 @@ class PacketDataStream {
 			return *this;
 		}
 
-		PacketDataStream &operator >>(uint64_t &i) {
+		LibMumblePacketDataStream &operator >>(uint64_t &i) {
 			uint64_t v = next();
 
 			if ((v & 0x80) == 0x00) {
@@ -276,23 +273,23 @@ class PacketDataStream {
 			return *this;
 		}
 
-		PacketDataStream &operator <<(const bool b) {
-			uint32_t v = b ? 1 : 0;
+		LibMumblePacketDataStream &operator <<(const bool b) {
+			unsigned int v = b ? 1 : 0;
 			return *this << v;
 		}
 
-		PacketDataStream &operator >>(bool &b) {
-			uint32_t v;
+		LibMumblePacketDataStream &operator >>(bool &b) {
+			unsigned int v;
 			*this >> v;
 			b = v ? true : false;
 			return *this;
 		}
 
 #define INTMAPOPERATOR(type) \
-		PacketDataStream &operator <<(const type v) { \
+		LibMumblePacketDataStream &operator <<(const type v) { \
 			return *this << static_cast<uint64_t>(v); \
 		} \
-		PacketDataStream &operator >>(type &v) { \
+		LibMumblePacketDataStream &operator >>(type &v) { \
 			uint64_t vv; \
 			*this >> vv; \
 			v = static_cast<type>(vv); \
@@ -312,13 +309,13 @@ class PacketDataStream {
 			double d;
 		};
 
-		PacketDataStream &operator <<(const double v) {
+		LibMumblePacketDataStream &operator <<(const double v) {
 			double64u u;
 			u.d = v;
 			return *this << u.ui;
 		}
 
-		PacketDataStream &operator >>(double &v) {
+		LibMumblePacketDataStream &operator >>(double &v) {
 			double64u u;
 			*this >> u.ui;
 			v = u.d;
@@ -330,7 +327,7 @@ class PacketDataStream {
 			float f;
 		};
 
-		PacketDataStream &operator <<(const float v) {
+		LibMumblePacketDataStream &operator <<(const float v) {
 			float32u u;
 			u.f = v;
 			append(u.ui[0]);
@@ -340,7 +337,7 @@ class PacketDataStream {
 			return *this;
 		}
 
-		PacketDataStream &operator >>(float &v) {
+		LibMumblePacketDataStream &operator >>(float &v) {
 			float32u u;
 			if (left() < 4) {
 				ok = false;
@@ -354,7 +351,5 @@ class PacketDataStream {
 			return *this;
 		}
 };
-
-}  // namespace MumbleClient
 
 #endif

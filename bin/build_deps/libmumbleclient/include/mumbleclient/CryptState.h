@@ -31,8 +31,6 @@
 #ifndef _CRYPTSTATE_H
 #define _CRYPTSTATE_H
 
-#include "libmumble_stdint.h"
-
 #include <openssl/aes.h>
 
 namespace MumbleClient {
@@ -74,6 +72,6 @@ class CryptState {
 		void encrypt(const unsigned char* source, unsigned char* dst, unsigned int plain_length);
 };
 
-}  // end namespace MumbleClient
+}  // namespace MumbleClient
 
 #endif

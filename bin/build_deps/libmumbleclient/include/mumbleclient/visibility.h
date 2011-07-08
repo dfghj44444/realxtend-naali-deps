@@ -1,11 +1,11 @@
 #if defined(_WIN32) || defined(__CYGWIN__)
-	#if defined(LIBMUMBLE_BUILDING_DLL)
+	#if defined(BUILDING_DLL)
 		#ifdef __GNUC__
 			#define DLL_PUBLIC __attribute__((dllexport))
 		#else
 			#define DLL_PUBLIC __declspec(dllexport)
 		#endif
-	#elif defined(LIBMUMBLE_BUILDING_STATIC)
+	#elif defined(BUILDING_STATIC)
 		#define DLL_PUBLIC
 		#define	DLL_LOCAL
 	#else

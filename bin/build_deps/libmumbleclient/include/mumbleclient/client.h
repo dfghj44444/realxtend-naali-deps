@@ -1,49 +1,29 @@
 #ifndef CLIENT_H_
 #define CLIENT_H_
 
-#include "libmumble_stdint.h"
+#include <list>
+#include <deque>
 
-#include <boost/version.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
+#include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/interprocess/containers/deque.hpp>
 
+#include "libmumble_stdint.h"
 #include "messages.h"
 #include "Mumble.pb.h"
 #include "visibility.h"
 
 namespace MumbleClient {
 
-using boost::asio::ip::tcp;
-using boost::asio::ip::udp;
-using boost::asio::ssl::stream;
-
 #define SSL 1
 
 class Channel;
 class CryptState;
+class Message;
+class MessageHeader;
 class Settings;
 class User;
-
-namespace mumble_message {
-
-#pragma pack(push)
-#pragma pack(1)
-struct MessageHeader {
-	int16_t type;
-	int32_t length;
-};
-#pragma pack(pop)
-
-struct Message {
-	MessageHeader header_;
-	std::string msg_;
-
-	Message(const MessageHeader& header, const std::string& msg) : header_(header), msg_(msg) {};
-};
-
-}  // namespace mumble_message
 
 typedef std::list< boost::shared_ptr<User> >::iterator user_list_iterator;
 typedef std::list< boost::shared_ptr<Channel> >::iterator channel_list_iterator;
@@ -73,7 +53,6 @@ class DLL_PUBLIC MumbleClient {
 	void SendRawUdpTunnel(const char* buffer, int32_t len);
 	void SendUdpMessage(const char* buffer, int32_t len);
 	void JoinChannel(int32_t channel_id);
-    std::vector<Channel> Channels();
 
 	void SetTextMessageCallback(TextMessageCallbackType tm) { text_message_callback_ = tm; }
 	void SetAuthCallback(AuthCallbackType a) { auth_callback_ = a; }
@@ -94,10 +73,12 @@ class DLL_PUBLIC MumbleClient {
 	DLL_LOCAL MumbleClient(boost::asio::io_service* io_service);
 
 	DLL_LOCAL void DoPing(const boost::system::error_code& error);
-	DLL_LOCAL void ParseMessage(const mumble_message::MessageHeader& msg_header, void* buffer);
+	DLL_LOCAL void ParseMessage(const MessageHeader& msg_header, void* buffer);
 	DLL_LOCAL void ProcessTCPSendQueue(const boost::system::error_code& error, const size_t bytes_transferred);
 	DLL_LOCAL void SendFirstQueued();
+	DLL_LOCAL bool HandleMessageContent(std::istream& is, const MessageHeader& msg_header);
 	DLL_LOCAL void ReadHandler(const boost::system::error_code& error);
+	DLL_LOCAL void ReadHandlerContinue(const MessageHeader msg_header, const boost::system::error_code& error);
 	DLL_LOCAL void HandleUserRemove(const MumbleProto::UserRemove& ur);
 	DLL_LOCAL void HandleUserState(const MumbleProto::UserState& us);
 	DLL_LOCAL void HandleChannelState(const MumbleProto::ChannelState& cs);
@@ -107,25 +88,19 @@ class DLL_PUBLIC MumbleClient {
 
 	boost::asio::io_service* io_service_;
 #if SSL
-	stream<tcp::socket>* tcp_socket_;
+	boost::asio::ssl::stream<boost::asio::ip::tcp::socket>* tcp_socket_;
 #else
-	tcp::socket* tcp_socket_;
+	boost::asio::ip::tcp::socket* tcp_socket_;
 #endif
-	udp::socket* udp_socket_;
+	boost::asio::ip::udp::socket* udp_socket_;
+	boost::asio::streambuf recv_buffer_;
 	CryptState* cs_;
-
-// Dont know really on what version the namespace was changed :(
-#if (BOOST_VERSION > 104000)
-    boost::container::deque<boost::shared_ptr<mumble_message::Message> > send_queue_;
-#else
-    boost::interprocess_container::deque<boost::shared_ptr<mumble_message::Message> > send_queue_;
-#endif
-
+	std::deque< boost::shared_ptr<Message> > send_queue_;
 	State state_;
 	boost::asio::deadline_timer* ping_timer_;
 	int32_t session_;
-	std::list<boost::shared_ptr<User> > user_list_;
-	std::list<boost::shared_ptr<Channel> > channel_list_;
+	std::list< boost::shared_ptr<User> > user_list_;
+	std::list< boost::shared_ptr<Channel> > channel_list_;
 
 	TextMessageCallbackType text_message_callback_;
 	AuthCallbackType auth_callback_;
@@ -140,6 +115,6 @@ class DLL_PUBLIC MumbleClient {
 	DLL_LOCAL void operator=(const MumbleClient&);
 };
 
-}  // end namespace MumbleClient
+}  // namespace MumbleClient
 
 #endif  // CLIENT_H_

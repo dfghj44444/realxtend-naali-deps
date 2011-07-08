@@ -52,7 +52,7 @@ class ACL_ChanGroup;
 class ACL_ChanACL;
 class QueryUsers;
 class CryptSetup;
-class ContextActionAdd;
+class ContextActionModify;
 class ContextAction;
 class UserList;
 class UserList_User;
@@ -62,6 +62,7 @@ class PermissionQuery;
 class CodecVersion;
 class UserStats;
 class UserStats_Stats;
+class SuggestConfig;
 class RequestBlob;
 
 enum Reject_RejectType {
@@ -116,25 +117,44 @@ inline bool PermissionDenied_DenyType_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<PermissionDenied_DenyType>(
     PermissionDenied_DenyType_descriptor(), name, value);
 }
-enum ContextActionAdd_Context {
-  ContextActionAdd_Context_Server = 1,
-  ContextActionAdd_Context_Channel = 2,
-  ContextActionAdd_Context_User = 4
+enum ContextActionModify_Context {
+  ContextActionModify_Context_Server = 1,
+  ContextActionModify_Context_Channel = 2,
+  ContextActionModify_Context_User = 4
 };
-bool ContextActionAdd_Context_IsValid(int value);
-const ContextActionAdd_Context ContextActionAdd_Context_Context_MIN = ContextActionAdd_Context_Server;
-const ContextActionAdd_Context ContextActionAdd_Context_Context_MAX = ContextActionAdd_Context_User;
-const int ContextActionAdd_Context_Context_ARRAYSIZE = ContextActionAdd_Context_Context_MAX + 1;
+bool ContextActionModify_Context_IsValid(int value);
+const ContextActionModify_Context ContextActionModify_Context_Context_MIN = ContextActionModify_Context_Server;
+const ContextActionModify_Context ContextActionModify_Context_Context_MAX = ContextActionModify_Context_User;
+const int ContextActionModify_Context_Context_ARRAYSIZE = ContextActionModify_Context_Context_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* ContextActionAdd_Context_descriptor();
-inline const ::std::string& ContextActionAdd_Context_Name(ContextActionAdd_Context value) {
+const ::google::protobuf::EnumDescriptor* ContextActionModify_Context_descriptor();
+inline const ::std::string& ContextActionModify_Context_Name(ContextActionModify_Context value) {
   return ::google::protobuf::internal::NameOfEnum(
-    ContextActionAdd_Context_descriptor(), value);
+    ContextActionModify_Context_descriptor(), value);
 }
-inline bool ContextActionAdd_Context_Parse(
-    const ::std::string& name, ContextActionAdd_Context* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<ContextActionAdd_Context>(
-    ContextActionAdd_Context_descriptor(), name, value);
+inline bool ContextActionModify_Context_Parse(
+    const ::std::string& name, ContextActionModify_Context* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ContextActionModify_Context>(
+    ContextActionModify_Context_descriptor(), name, value);
+}
+enum ContextActionModify_Operation {
+  ContextActionModify_Operation_Add = 0,
+  ContextActionModify_Operation_Remove = 1
+};
+bool ContextActionModify_Operation_IsValid(int value);
+const ContextActionModify_Operation ContextActionModify_Operation_Operation_MIN = ContextActionModify_Operation_Add;
+const ContextActionModify_Operation ContextActionModify_Operation_Operation_MAX = ContextActionModify_Operation_Remove;
+const int ContextActionModify_Operation_Operation_ARRAYSIZE = ContextActionModify_Operation_Operation_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ContextActionModify_Operation_descriptor();
+inline const ::std::string& ContextActionModify_Operation_Name(ContextActionModify_Operation value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ContextActionModify_Operation_descriptor(), value);
+}
+inline bool ContextActionModify_Operation_Parse(
+    const ::std::string& name, ContextActionModify_Operation* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ContextActionModify_Operation>(
+    ContextActionModify_Operation_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1624,6 +1644,20 @@ class UserState : public ::google::protobuf::Message {
   inline ::std::string* mutable_texture_hash();
   inline ::std::string* release_texture_hash();
   
+  // optional bool priority_speaker = 18;
+  inline bool has_priority_speaker() const;
+  inline void clear_priority_speaker();
+  static const int kPrioritySpeakerFieldNumber = 18;
+  inline bool priority_speaker() const;
+  inline void set_priority_speaker(bool value);
+  
+  // optional bool recording = 19;
+  inline bool has_recording() const;
+  inline void clear_recording();
+  static const int kRecordingFieldNumber = 19;
+  inline bool recording() const;
+  inline void set_recording(bool value);
+  
   // @@protoc_insertion_point(class_scope:MumbleProto.UserState)
  private:
   inline void set_has_session();
@@ -1660,6 +1694,10 @@ class UserState : public ::google::protobuf::Message {
   inline void clear_has_comment_hash();
   inline void set_has_texture_hash();
   inline void clear_has_texture_hash();
+  inline void set_has_priority_speaker();
+  inline void clear_has_priority_speaker();
+  inline void set_has_recording();
+  inline void clear_has_recording();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
@@ -1668,12 +1706,14 @@ class UserState : public ::google::protobuf::Message {
   ::std::string* name_;
   ::google::protobuf::uint32 user_id_;
   ::google::protobuf::uint32 channel_id_;
+  ::std::string* texture_;
   bool mute_;
   bool deaf_;
   bool suppress_;
   bool self_mute_;
   bool self_deaf_;
-  ::std::string* texture_;
+  bool priority_speaker_;
+  bool recording_;
   ::std::string* plugin_context_;
   ::std::string* plugin_identity_;
   ::std::string* comment_;
@@ -1682,7 +1722,7 @@ class UserState : public ::google::protobuf::Message {
   ::std::string* texture_hash_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(17 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(19 + 31) / 32];
   
   friend void  protobuf_AddDesc_Mumble_2eproto();
   friend void protobuf_AssignDesc_Mumble_2eproto();
@@ -2907,14 +2947,14 @@ class CryptSetup : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ContextActionAdd : public ::google::protobuf::Message {
+class ContextActionModify : public ::google::protobuf::Message {
  public:
-  ContextActionAdd();
-  virtual ~ContextActionAdd();
+  ContextActionModify();
+  virtual ~ContextActionModify();
   
-  ContextActionAdd(const ContextActionAdd& from);
+  ContextActionModify(const ContextActionModify& from);
   
-  inline ContextActionAdd& operator=(const ContextActionAdd& from) {
+  inline ContextActionModify& operator=(const ContextActionModify& from) {
     CopyFrom(from);
     return *this;
   }
@@ -2928,17 +2968,17 @@ class ContextActionAdd : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ContextActionAdd& default_instance();
+  static const ContextActionModify& default_instance();
   
-  void Swap(ContextActionAdd* other);
+  void Swap(ContextActionModify* other);
   
   // implements Message ----------------------------------------------
   
-  ContextActionAdd* New() const;
+  ContextActionModify* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ContextActionAdd& from);
-  void MergeFrom(const ContextActionAdd& from);
+  void CopyFrom(const ContextActionModify& from);
+  void MergeFrom(const ContextActionModify& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -2959,29 +2999,53 @@ class ContextActionAdd : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef ContextActionAdd_Context Context;
-  static const Context Server = ContextActionAdd_Context_Server;
-  static const Context Channel = ContextActionAdd_Context_Channel;
-  static const Context User = ContextActionAdd_Context_User;
+  typedef ContextActionModify_Context Context;
+  static const Context Server = ContextActionModify_Context_Server;
+  static const Context Channel = ContextActionModify_Context_Channel;
+  static const Context User = ContextActionModify_Context_User;
   static inline bool Context_IsValid(int value) {
-    return ContextActionAdd_Context_IsValid(value);
+    return ContextActionModify_Context_IsValid(value);
   }
   static const Context Context_MIN =
-    ContextActionAdd_Context_Context_MIN;
+    ContextActionModify_Context_Context_MIN;
   static const Context Context_MAX =
-    ContextActionAdd_Context_Context_MAX;
+    ContextActionModify_Context_Context_MAX;
   static const int Context_ARRAYSIZE =
-    ContextActionAdd_Context_Context_ARRAYSIZE;
+    ContextActionModify_Context_Context_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
   Context_descriptor() {
-    return ContextActionAdd_Context_descriptor();
+    return ContextActionModify_Context_descriptor();
   }
   static inline const ::std::string& Context_Name(Context value) {
-    return ContextActionAdd_Context_Name(value);
+    return ContextActionModify_Context_Name(value);
   }
   static inline bool Context_Parse(const ::std::string& name,
       Context* value) {
-    return ContextActionAdd_Context_Parse(name, value);
+    return ContextActionModify_Context_Parse(name, value);
+  }
+  
+  typedef ContextActionModify_Operation Operation;
+  static const Operation Add = ContextActionModify_Operation_Add;
+  static const Operation Remove = ContextActionModify_Operation_Remove;
+  static inline bool Operation_IsValid(int value) {
+    return ContextActionModify_Operation_IsValid(value);
+  }
+  static const Operation Operation_MIN =
+    ContextActionModify_Operation_Operation_MIN;
+  static const Operation Operation_MAX =
+    ContextActionModify_Operation_Operation_MAX;
+  static const int Operation_ARRAYSIZE =
+    ContextActionModify_Operation_Operation_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Operation_descriptor() {
+    return ContextActionModify_Operation_descriptor();
+  }
+  static inline const ::std::string& Operation_Name(Operation value) {
+    return ContextActionModify_Operation_Name(value);
+  }
+  static inline bool Operation_Parse(const ::std::string& name,
+      Operation* value) {
+    return ContextActionModify_Operation_Parse(name, value);
   }
   
   // accessors -------------------------------------------------------
@@ -2997,7 +3061,7 @@ class ContextActionAdd : public ::google::protobuf::Message {
   inline ::std::string* mutable_action();
   inline ::std::string* release_action();
   
-  // required string text = 2;
+  // optional string text = 2;
   inline bool has_text() const;
   inline void clear_text();
   static const int kTextFieldNumber = 2;
@@ -3015,7 +3079,14 @@ class ContextActionAdd : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 context() const;
   inline void set_context(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:MumbleProto.ContextActionAdd)
+  // optional .MumbleProto.ContextActionModify.Operation operation = 4;
+  inline bool has_operation() const;
+  inline void clear_operation();
+  static const int kOperationFieldNumber = 4;
+  inline ::MumbleProto::ContextActionModify_Operation operation() const;
+  inline void set_operation(::MumbleProto::ContextActionModify_Operation value);
+  
+  // @@protoc_insertion_point(class_scope:MumbleProto.ContextActionModify)
  private:
   inline void set_has_action();
   inline void clear_has_action();
@@ -3023,22 +3094,25 @@ class ContextActionAdd : public ::google::protobuf::Message {
   inline void clear_has_text();
   inline void set_has_context();
   inline void clear_has_context();
+  inline void set_has_operation();
+  inline void clear_has_operation();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::std::string* action_;
   ::std::string* text_;
   ::google::protobuf::uint32 context_;
+  int operation_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   friend void  protobuf_AddDesc_Mumble_2eproto();
   friend void protobuf_AssignDesc_Mumble_2eproto();
   friend void protobuf_ShutdownFile_Mumble_2eproto();
   
   void InitAsDefaultInstance();
-  static ContextActionAdd* default_instance_;
+  static ContextActionModify* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -4141,6 +4215,108 @@ class UserStats : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static UserStats* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SuggestConfig : public ::google::protobuf::Message {
+ public:
+  SuggestConfig();
+  virtual ~SuggestConfig();
+  
+  SuggestConfig(const SuggestConfig& from);
+  
+  inline SuggestConfig& operator=(const SuggestConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SuggestConfig& default_instance();
+  
+  void Swap(SuggestConfig* other);
+  
+  // implements Message ----------------------------------------------
+  
+  SuggestConfig* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SuggestConfig& from);
+  void MergeFrom(const SuggestConfig& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional uint32 version = 1;
+  inline bool has_version() const;
+  inline void clear_version();
+  static const int kVersionFieldNumber = 1;
+  inline ::google::protobuf::uint32 version() const;
+  inline void set_version(::google::protobuf::uint32 value);
+  
+  // optional bool positional = 2;
+  inline bool has_positional() const;
+  inline void clear_positional();
+  static const int kPositionalFieldNumber = 2;
+  inline bool positional() const;
+  inline void set_positional(bool value);
+  
+  // optional bool push_to_talk = 3;
+  inline bool has_push_to_talk() const;
+  inline void clear_push_to_talk();
+  static const int kPushToTalkFieldNumber = 3;
+  inline bool push_to_talk() const;
+  inline void set_push_to_talk(bool value);
+  
+  // @@protoc_insertion_point(class_scope:MumbleProto.SuggestConfig)
+ private:
+  inline void set_has_version();
+  inline void clear_has_version();
+  inline void set_has_positional();
+  inline void clear_has_positional();
+  inline void set_has_push_to_talk();
+  inline void clear_has_push_to_talk();
+  
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  
+  ::google::protobuf::uint32 version_;
+  bool positional_;
+  bool push_to_talk_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_Mumble_2eproto();
+  friend void protobuf_AssignDesc_Mumble_2eproto();
+  friend void protobuf_ShutdownFile_Mumble_2eproto();
+  
+  void InitAsDefaultInstance();
+  static SuggestConfig* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -6477,6 +6653,50 @@ inline ::std::string* UserState::release_texture_hash() {
   }
 }
 
+// optional bool priority_speaker = 18;
+inline bool UserState::has_priority_speaker() const {
+  return (_has_bits_[0] & 0x00020000u) != 0;
+}
+inline void UserState::set_has_priority_speaker() {
+  _has_bits_[0] |= 0x00020000u;
+}
+inline void UserState::clear_has_priority_speaker() {
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline void UserState::clear_priority_speaker() {
+  priority_speaker_ = false;
+  clear_has_priority_speaker();
+}
+inline bool UserState::priority_speaker() const {
+  return priority_speaker_;
+}
+inline void UserState::set_priority_speaker(bool value) {
+  set_has_priority_speaker();
+  priority_speaker_ = value;
+}
+
+// optional bool recording = 19;
+inline bool UserState::has_recording() const {
+  return (_has_bits_[0] & 0x00040000u) != 0;
+}
+inline void UserState::set_has_recording() {
+  _has_bits_[0] |= 0x00040000u;
+}
+inline void UserState::clear_has_recording() {
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline void UserState::clear_recording() {
+  recording_ = false;
+  clear_has_recording();
+}
+inline bool UserState::recording() const {
+  return recording_;
+}
+inline void UserState::set_recording(bool value) {
+  set_has_recording();
+  recording_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // BanList_BanEntry
@@ -8004,56 +8224,56 @@ inline ::std::string* CryptSetup::release_server_nonce() {
 
 // -------------------------------------------------------------------
 
-// ContextActionAdd
+// ContextActionModify
 
 // required string action = 1;
-inline bool ContextActionAdd::has_action() const {
+inline bool ContextActionModify::has_action() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ContextActionAdd::set_has_action() {
+inline void ContextActionModify::set_has_action() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ContextActionAdd::clear_has_action() {
+inline void ContextActionModify::clear_has_action() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ContextActionAdd::clear_action() {
+inline void ContextActionModify::clear_action() {
   if (action_ != &::google::protobuf::internal::kEmptyString) {
     action_->clear();
   }
   clear_has_action();
 }
-inline const ::std::string& ContextActionAdd::action() const {
+inline const ::std::string& ContextActionModify::action() const {
   return *action_;
 }
-inline void ContextActionAdd::set_action(const ::std::string& value) {
+inline void ContextActionModify::set_action(const ::std::string& value) {
   set_has_action();
   if (action_ == &::google::protobuf::internal::kEmptyString) {
     action_ = new ::std::string;
   }
   action_->assign(value);
 }
-inline void ContextActionAdd::set_action(const char* value) {
+inline void ContextActionModify::set_action(const char* value) {
   set_has_action();
   if (action_ == &::google::protobuf::internal::kEmptyString) {
     action_ = new ::std::string;
   }
   action_->assign(value);
 }
-inline void ContextActionAdd::set_action(const char* value, size_t size) {
+inline void ContextActionModify::set_action(const char* value, size_t size) {
   set_has_action();
   if (action_ == &::google::protobuf::internal::kEmptyString) {
     action_ = new ::std::string;
   }
   action_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ContextActionAdd::mutable_action() {
+inline ::std::string* ContextActionModify::mutable_action() {
   set_has_action();
   if (action_ == &::google::protobuf::internal::kEmptyString) {
     action_ = new ::std::string;
   }
   return action_;
 }
-inline ::std::string* ContextActionAdd::release_action() {
+inline ::std::string* ContextActionModify::release_action() {
   clear_has_action();
   if (action_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -8064,54 +8284,54 @@ inline ::std::string* ContextActionAdd::release_action() {
   }
 }
 
-// required string text = 2;
-inline bool ContextActionAdd::has_text() const {
+// optional string text = 2;
+inline bool ContextActionModify::has_text() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ContextActionAdd::set_has_text() {
+inline void ContextActionModify::set_has_text() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ContextActionAdd::clear_has_text() {
+inline void ContextActionModify::clear_has_text() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ContextActionAdd::clear_text() {
+inline void ContextActionModify::clear_text() {
   if (text_ != &::google::protobuf::internal::kEmptyString) {
     text_->clear();
   }
   clear_has_text();
 }
-inline const ::std::string& ContextActionAdd::text() const {
+inline const ::std::string& ContextActionModify::text() const {
   return *text_;
 }
-inline void ContextActionAdd::set_text(const ::std::string& value) {
+inline void ContextActionModify::set_text(const ::std::string& value) {
   set_has_text();
   if (text_ == &::google::protobuf::internal::kEmptyString) {
     text_ = new ::std::string;
   }
   text_->assign(value);
 }
-inline void ContextActionAdd::set_text(const char* value) {
+inline void ContextActionModify::set_text(const char* value) {
   set_has_text();
   if (text_ == &::google::protobuf::internal::kEmptyString) {
     text_ = new ::std::string;
   }
   text_->assign(value);
 }
-inline void ContextActionAdd::set_text(const char* value, size_t size) {
+inline void ContextActionModify::set_text(const char* value, size_t size) {
   set_has_text();
   if (text_ == &::google::protobuf::internal::kEmptyString) {
     text_ = new ::std::string;
   }
   text_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ContextActionAdd::mutable_text() {
+inline ::std::string* ContextActionModify::mutable_text() {
   set_has_text();
   if (text_ == &::google::protobuf::internal::kEmptyString) {
     text_ = new ::std::string;
   }
   return text_;
 }
-inline ::std::string* ContextActionAdd::release_text() {
+inline ::std::string* ContextActionModify::release_text() {
   clear_has_text();
   if (text_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -8123,25 +8343,48 @@ inline ::std::string* ContextActionAdd::release_text() {
 }
 
 // optional uint32 context = 3;
-inline bool ContextActionAdd::has_context() const {
+inline bool ContextActionModify::has_context() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ContextActionAdd::set_has_context() {
+inline void ContextActionModify::set_has_context() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ContextActionAdd::clear_has_context() {
+inline void ContextActionModify::clear_has_context() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ContextActionAdd::clear_context() {
+inline void ContextActionModify::clear_context() {
   context_ = 0u;
   clear_has_context();
 }
-inline ::google::protobuf::uint32 ContextActionAdd::context() const {
+inline ::google::protobuf::uint32 ContextActionModify::context() const {
   return context_;
 }
-inline void ContextActionAdd::set_context(::google::protobuf::uint32 value) {
+inline void ContextActionModify::set_context(::google::protobuf::uint32 value) {
   set_has_context();
   context_ = value;
+}
+
+// optional .MumbleProto.ContextActionModify.Operation operation = 4;
+inline bool ContextActionModify::has_operation() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ContextActionModify::set_has_operation() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ContextActionModify::clear_has_operation() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ContextActionModify::clear_operation() {
+  operation_ = 0;
+  clear_has_operation();
+}
+inline ::MumbleProto::ContextActionModify_Operation ContextActionModify::operation() const {
+  return static_cast< ::MumbleProto::ContextActionModify_Operation >(operation_);
+}
+inline void ContextActionModify::set_operation(::MumbleProto::ContextActionModify_Operation value) {
+  GOOGLE_DCHECK(::MumbleProto::ContextActionModify_Operation_IsValid(value));
+  set_has_operation();
+  operation_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -9283,6 +9526,76 @@ inline void UserStats::set_strong_certificate(bool value) {
 
 // -------------------------------------------------------------------
 
+// SuggestConfig
+
+// optional uint32 version = 1;
+inline bool SuggestConfig::has_version() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SuggestConfig::set_has_version() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SuggestConfig::clear_has_version() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SuggestConfig::clear_version() {
+  version_ = 0u;
+  clear_has_version();
+}
+inline ::google::protobuf::uint32 SuggestConfig::version() const {
+  return version_;
+}
+inline void SuggestConfig::set_version(::google::protobuf::uint32 value) {
+  set_has_version();
+  version_ = value;
+}
+
+// optional bool positional = 2;
+inline bool SuggestConfig::has_positional() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SuggestConfig::set_has_positional() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SuggestConfig::clear_has_positional() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SuggestConfig::clear_positional() {
+  positional_ = false;
+  clear_has_positional();
+}
+inline bool SuggestConfig::positional() const {
+  return positional_;
+}
+inline void SuggestConfig::set_positional(bool value) {
+  set_has_positional();
+  positional_ = value;
+}
+
+// optional bool push_to_talk = 3;
+inline bool SuggestConfig::has_push_to_talk() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SuggestConfig::set_has_push_to_talk() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SuggestConfig::clear_has_push_to_talk() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SuggestConfig::clear_push_to_talk() {
+  push_to_talk_ = false;
+  clear_has_push_to_talk();
+}
+inline bool SuggestConfig::push_to_talk() const {
+  return push_to_talk_;
+}
+inline void SuggestConfig::set_push_to_talk(bool value) {
+  set_has_push_to_talk();
+  push_to_talk_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // RequestBlob
 
 // repeated uint32 session_texture = 1;
@@ -9378,8 +9691,12 @@ inline const EnumDescriptor* GetEnumDescriptor< ::MumbleProto::PermissionDenied_
   return ::MumbleProto::PermissionDenied_DenyType_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MumbleProto::ContextActionAdd_Context>() {
-  return ::MumbleProto::ContextActionAdd_Context_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::MumbleProto::ContextActionModify_Context>() {
+  return ::MumbleProto::ContextActionModify_Context_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::MumbleProto::ContextActionModify_Operation>() {
+  return ::MumbleProto::ContextActionModify_Operation_descriptor();
 }
 
 }  // namespace google
